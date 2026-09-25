@@ -1,0 +1,140 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+		<artifactId>ClientesWebservices</artifactId>
+		<version>2.2</version>
+	</parent>
+  <groupId>mx.gob.imss.cit.ws</groupId>
+  <artifactId>ClientesWebservices-nss-cuenta-individual</artifactId>
+  <name>ClientesWebservices-nss-cuenta-individual</name>
+  <url>http://maven.apache.org</url>
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>mx.gob.imss.ctirss.delta</groupId>
+      <artifactId>imssdigital-modelo</artifactId>
+      <version>${delta.framework.version}</version>
+      <type>jar</type>
+    </dependency>
+    <!-- Logger -->
+    <dependency>
+	    <groupId>log4j</groupId>
+	    <artifactId>log4j</artifactId>
+	    <version>${org.log4j.version}</version>
+	    <scope>provided</scope>			
+    </dependency>
+    
+    <!-- Dependencia del Proyecto Base DELTA - Framework Base -->
+    <dependency>
+	    <groupId>mx.gob.imss.ctirss.delta</groupId>
+	    <artifactId>delta-framework-base</artifactId>
+	    <version>${delta.framework.version}</version>
+	    <type>jar</type>
+	    <scope>provided</scope>	
+    </dependency>
+    
+    <!-- Dependencia del Proyecto Base DELTA - Modelo Negocio -->
+    <dependency>
+	    <groupId>mx.gob.imss.ctirss.delta</groupId>
+	    <artifactId>delta-modelo-negocio</artifactId>
+	    <version>${delta.framework.version}</version>
+	    <type>jar</type>
+	    <scope>provided</scope>				
+    </dependency>
+  </dependencies>
+  
+  <build>
+    
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+    
+    <plugins>
+      <plugin>
+        <groupId>org.jvnet.jax-ws-commons</groupId>
+        <artifactId>jaxws-maven-plugin</artifactId>
+        <version>2.3</version>
+        <executions>
+          <!--WSDL OperacionesSistrap -->
+          <execution>
+            <goals>
+              <goal>wsimport</goal>
+            </goals>
+            <configuration>
+              <target>2.1</target>
+              <verbose>true</verbose>
+              <args>
+                <arg>-B-XautoNameResolution</arg>
+              </args>
+              <packageName>mx.gob.imss.cit.ws.cuentaindividual.historico</packageName>
+              <wsdlDirectory>${basedir}/src/main/resources/wsdl</wsdlDirectory>
+              <wsdlFiles>
+                <wsdlFile>WSHistoricoCentral.wsdl</wsdlFile>
+              </wsdlFiles>
+              <sourceDestDir>${project.build.directory}/generated-sources/classes</sourceDestDir>
+              <xnocompile>true</xnocompile>
+              <extension>true</extension>
+              <verbose>true</verbose>
+              <catalog>${basedir}/src/jax-ws-catalog.xml</catalog>
+              <wsdlLocation>/wsdl/*</wsdlLocation>
+              <staleFile>${project.build.directory}/jaxws/stale/WSHistoricoCentral.stale</staleFile>
+              <vmArgs>
+                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+              </vmArgs>
+            </configuration>
+            <id>wsimport-generate-historicocentral</id>
+            <phase>generate-sources</phase>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>javax.xml</groupId>
+            <artifactId>webservices-api</artifactId>
+            <version>2.0</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <sourceDestDir>${project.build.directory}/generated-sources/jaxws-wsimport</sourceDestDir>
+          <destDir>${project.build.directory}/generated-sources/classes</destDir>
+          <xnocompile>true</xnocompile>
+          <verbose>true</verbose>
+          <extension>true</extension>
+          <catalog>${basedir}/src/jax-ws-catalog.xml</catalog>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
+  <profiles>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>compile-stage</id>
+			<properties>
+				<mvn.cuentaindividual.web.service.url>http://11.254.13.146:7001/WSNssCuentaIndividual/WSNssCuentaIndividual</mvn.cuentaindividual.web.service.url>
+        <cuentaindividual.historico.url>http://11.254.13.146:7001/WSHistoricoCentral/WSHistoricoCentral</cuentaindividual.historico.url>
+			</properties>
+		</profile>
+		<profile>
+			<id>compile-prod</id>
+			<properties>
+				<mvn.cuentaindividual.web.service.url>http://adodigital.imss.gob.mx/WSNssCuentaIndividual/WSNssCuentaIndividual</mvn.cuentaindividual.web.service.url>
+        <cuentaindividual.historico.url>http://adodigital.imss.gob.mx/WSHistoricoCentral/WSHistoricoCentral</cuentaindividual.historico.url>
+			</properties>
+		</profile>
+	</profiles>
+</project>
+

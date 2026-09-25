@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="[%p] [%d{dd-MM-yy HH:mm:ss}] %c{1}.%M(%L): %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="gestionCobranza" class="org.apache.log4j.RollingFileAppender">
+    	<param name="File" value="imssdigital/logs/gestionCobranza/gestionCobranza_app.log"/>
+    	<param name="MaxFileSize" value="50000KB"/>
+    	<param name="MaxBackupIndex" value="9"/>
+    	<layout class="org.apache.log4j.PatternLayout">
+      	<param name="ConversionPattern" 
+       	 value=" [sapi] %p [%d{dd-MM-yy HH:mm:ss}] (%C{1}.%M:%L)| %m%n"/>
+      </layout>
+  	</appender>
+
+    <logger name="org.apache">
+        <level value="${mvn.log.level.warn}"/>
+    </logger>
+
+	<logger name="org.eclipse.jetty">
+		<level value="${mvn.log.level.warn}" />
+	</logger>
+
+	<logger name="org.cometd">
+		<level value="${mvn.log.level.warn}" />
+	</logger>
+
+    <logger name="org.hibernate">
+        <level value="${mvn.log.level.info}"/>
+    </logger>
+  
+    <logger name="org.hibernate.sql">
+        <level value="${mvn.log.level.info}"/>
+    </logger>
+
+    <logger name="org.springframework">
+        <level value="${mvn.log.level.info}"/>
+    </logger>
+    
+    <logger name="org.apache.struts">
+    	<level value="${mvn.log.level.info}"/>
+    </logger>
+    
+    <logger name="mx.gob.imss.ctirss">
+        <level value="${mvn.log.level.info}"/>
+    </logger>
+    
+    <logger name="mx.gob.imss" additivity="true">
+    	<level value="${mvn.log.level.debug}"/>
+    	<appender-ref ref="gestionCobranza"/> 	
+     </logger>
+
+    <root>
+        <level value="${mvn.log.level.debug}"/>
+        <appender-ref ref="console"/>
+    </root>
+
+</log4j:configuration>

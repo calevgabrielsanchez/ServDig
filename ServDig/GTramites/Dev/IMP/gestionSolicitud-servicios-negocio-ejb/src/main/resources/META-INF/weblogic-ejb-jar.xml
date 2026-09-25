@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wls:weblogic-ejb-jar
+	xmlns:wls="http://xmlns.oracle.com/weblogic/weblogic-ejb-jar"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd http://xmlns.oracle.com/weblogic/weblogic-ejb-jar http://xmlns.oracle.com/weblogic/weblogic-ejb-jar/1.2/weblogic-ejb-jar.xsd">
+
+	<!-- El reporte del RISS cuando se genera completo la consulta es pesada, 
+		es por eso que se aumenta el timeout de la transacción -->
+	<wls:weblogic-enterprise-bean>
+		<wls:ejb-name>reporteRissServiceBusiness</wls:ejb-name>
+		<wls:transaction-descriptor>
+			<wls:trans-timeout-seconds>1800</wls:trans-timeout-seconds>
+		</wls:transaction-descriptor>
+	</wls:weblogic-enterprise-bean>
+
+</wls:weblogic-ejb-jar>

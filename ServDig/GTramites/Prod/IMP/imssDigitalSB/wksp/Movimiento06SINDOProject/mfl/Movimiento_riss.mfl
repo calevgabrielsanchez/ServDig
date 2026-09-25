@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF8'?>
+<!DOCTYPE MessageFormat SYSTEM 'mfl.dtd'>
+<MessageFormat name="Riss" version='2.01.01'>
+<StructFormat name="MovimientoRiss" delim='\n' sharedDelim='y' delimOptional='n' repeat='*'>
+<FieldFormat name='regPatAlf'               type='String' 	 length='8'  strlenInChars='y'  codepage='UTF-8'    defaultValue=' ' pad=' '/>    <!-- 1  - 8      -->  
+<FieldFormat name='regPatMod'               type='Numeric'	 length='2'  strlenInChars='y'  codepage='Default'  defaultValue='0' pad='0'/>    <!-- 9  - 10     --> 
+<FieldFormat name='regPatDv'                type='String' 	 length='1'  strlenInChars='y'  codepage='UTF-8'    defaultValue=' ' pad=' '/>    <!-- 11 - 11     -->
+<FieldFormat name='rfc'                     type='String' 	 length='13' strlenInChars='y'  codepage='UTF-8'    defaultValue=' ' pad=' '/>    <!-- 12 - 24     -->
+<FieldFormat name='nss'                     type='String'	 length='11' strlenInChars='y'  codepage='UTF-8'    defaultValue=' ' pad=' '/>    <!-- 25 - 35     -->
+<FieldFormat name='curp'                    type='String' 	 length='18' strlenInChars='y'  codepage='UTF-8'    defaultValue=' ' pad=' '/>    <!-- 36 - 53     -->
+<FieldFormat name='tipPatPerFis'            type='String' 	 length='1'  strlenInChars='y'  codepage='UTF-8'    defaultValue=' ' pad=' '/>    <!-- 54 - 54     -->
+<FieldFormat name='consecutivo'             type='Numeric'	 length='3'  strlenInChars='y'  codepage='Default'  defaultValue='0' pad='0'/>    <!-- 55 - 57     -->
+<FieldFormat name='fecIniRif'               type='String'	 length='10' strlenInChars='y'  codepage='UTF-8'    defaultValue=' ' pad=' '/>    <!-- 58 - 67     -->
+<FieldFormat name='fecBajaRif'              type='String'	 length='10' strlenInChars='y'  codepage='UTF-8'    defaultValue=' ' pad=' '/>    <!-- 68 - 77     -->
+<FieldFormat name='fecIniRiss'              type='String'	 length='10' strlenInChars='y'  codepage='UTF-8'    defaultValue=' ' pad=' '/>    <!-- 78 - 87     -->
+<FieldFormat name='fecBajaRiss'             type='String'	 length='10' strlenInChars='y'  codepage='UTF-8'    defaultValue=' ' pad=' '/>    <!-- 88 - 97     -->
+<FieldFormat name='motBaja'                 type='Numeric'	 length='1'  strlenInChars='y'  codepage='Default'  defaultValue='0' pad='0'/>    <!-- 98 - 98     -->
+<FieldFormat name='porDescAnioFiscal'       type='Numeric'	 length='2'  strlenInChars='y'  codepage='Default'  defaultValue='0' pad='0'/>    <!-- 99 - 100    -->
+<FieldFormat name='fecMovto'                type='String'	 length='10' strlenInChars='y'  codepage='UTF-8'    defaultValue=' ' pad=' '/>    <!-- 101 - 110   -->
+</StructFormat>
+</MessageFormat>

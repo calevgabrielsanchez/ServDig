@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="simple.base.definition"
+		template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title" value=" Gestión de medios de contacto - Portal DELTA " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<definition name="base.definition"
+		template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title" value=" Gestión de medios de contacto - Portal DELTA " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />
+		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<definition name="base.definition.embebed"
+		template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title" value=" Gestión de medios de contacto - Portal DELTA " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<definition name="base.definition.componente" template="/WEB-INF/views/layout/main-componente.jsp">
+	</definition>
+	
+	<definition name="base.definition.embebed.simple" template="/WEB-INF/views/layout/main-embebed-simple.jsp">
+	</definition>
+	
+	<!-- WIZARDS -->
+	<definition name="wizard.base.definition" template="/WEB-INF/views/layout/main-wizard.jsp">
+		<put-attribute name="title" value=" Portal de Servicios DELTA " />
+	</definition>
+	
+
+<!-- Definicion de la pantalla del gestionMediosContacto -->
+	<definition name="gestionMediosContacto" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/gestionMediosContacto/gestionMediosContacto.jsp "/>
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de logeo -->
+	<definition name="login" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/login.jsp "/>
+	</definition>
+	
+		<!-- Definicion de la pantalla de bienvenida de la aplicacion -->
+	<definition name="welcome" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/welcome.jsp "/>
+	</definition>
+	
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="home" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/home.jsp "/>
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-home.jsp" />
+	</definition>
+	
+	
+	<!-- Definicion de la pantalla de captura de domicilio -->
+	<definition name="domicilioRegistro" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/registro.jsp "/>
+	</definition>
+	
+	
+	<!-- Definicion de la pantalla de captura de domicilio -->
+	<definition name="domicilioRegistroEmbebed" extends="base.definition.embebed">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/registro.jsp "/>
+<!-- 		<put-attribute name="funciones" value="/WEB-INF/views/domicilio/embebed/funciones.jsp" /> -->
+	</definition>
+	
+	
+	
+	<!-- Definicion de la pantalla de Inicio de tramite-->
+	<definition name="tramiteinicio" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/tramite/inicio.jsp "/>
+	</definition>
+	
+	<!-- Definicion de la pantalla de Captura de tramite-->
+	<definition name="tramitecapturar" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/tramite/capturar.jsp "/>
+	</definition>
+	
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+		<!-- Definicion de la pantall de medios de captura-->
+	<definition name="medioContacto" extends="base.definition.componente">
+		<put-attribute name="contenido" value="/WEB-INF/views/mediosContacto/medioContactoTest.jsp "/>
+	</definition>
+	
+	
+	<!-- Definicion de la pantall de medios de captura-->
+	<definition name="mediosContacto.inicio" extends="base.definition.embebed">
+		<put-attribute name="contenido" value="/WEB-INF/views/mediosContacto/inicio.jsp "/>
+	</definition>
+	
+	<!-- Definicion de la pantalla que se muestra cuando
+	     la validacion de los medios de contacto fue correcta-->
+	<definition name="mediosContacto.finalizado" extends="base.definition.embebed">
+		<put-attribute name="contenido" value="/WEB-INF/views/mediosContacto/medioContactoCorrecto.jsp "/>
+	</definition>
+	
+	<definition name="mediosContacto.captura" extends="base.definition.embebed">
+		<put-attribute name="contenido" value="/WEB-INF/views/mediosContacto/servicios/captura.jsp"/>
+	</definition>
+	
+	<!-- Administración de medios de contacto -->
+	<definition name="admonMediosContactoTest" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/mediosContacto/administrar/admonMediosContactoTest.jsp"/>
+	</definition>
+	
+	<definition name="admonMediosContactoWrapper" extends="base.definition.embebed.simple">
+		<put-attribute name="contenido" value="/WEB-INF/views/mediosContacto/administrar/admonMediosContactoWrapper.jsp"/>
+	</definition>
+	
+	<definition name="initAdmonMediosContacto" extends="base.definition.embebed.simple">
+		<put-attribute name="contenido" value="/WEB-INF/views/mediosContacto/administrar/initAdmonMediosContacto.jsp "/>
+	</definition>
+	
+	<definition name="admon.mediosContacto.captura" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/mediosContacto/administrar/agregarMedioContacto.jsp"/>
+		<put-attribute name="pie" value="" />
+	</definition>
+	
+	
+	<definition name="admonMediosFiscalesTest" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/mediosContacto/administrar/admonMediosFiscalesTest.jsp"/>
+	</definition>
+	
+	<definition name="admonMediosFiscalesWrapper" extends="base.definition.embebed.simple">
+		<put-attribute name="contenido" value="/WEB-INF/views/mediosContacto/administrar/admonMediosFiscalesWrapper.jsp"/>
+	</definition>
+	
+	<definition name="initAdmonMediosContactoFiscales" extends="base.definition.embebed.simple">
+		<put-attribute name="contenido" value="/WEB-INF/views/mediosContacto/administrar/initAdmonMediosContactoFiscales.jsp "/>
+	</definition>
+	
+	<definition name="admon.mediosContactoFiscales.captura" extends="base.definition.embebed.simple">
+		<put-attribute name="contenido" value="/WEB-INF/views/mediosContacto/administrar/agregarMedioContactoFiscal.jsp"/>
+		<put-attribute name="pie" value="" />
+	</definition>
+	<!-- Administración de medios de contacto -->
+	
+	<definition name="databaseError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="internalError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="500" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="404" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+
+</tiles-definitions>

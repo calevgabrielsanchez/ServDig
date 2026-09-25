@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ace="http://www.icefaces.org/icefaces/components">
+<h:head>
+<title> Portal de Servicios IMSS Digital </title>
+<link rel="icon" href="http://deltadev.imss.gob.mx/delta/resources/iconos/favicon.ico" />
+<!-- Bootstrap -->
+<link type="text/css" href="http://deltadev.imss.gob.mx/delta/resources/estilos/bootstrap/bootstrap.min.css" rel="stylesheet" />
+<!-- IMSS -->
+<link type="text/css" href="http://deltadev.imss.gob.mx/delta/resources/estilos/imss/reset.css" rel="stylesheet" />
+<link type="text/css" href="http://deltadev.imss.gob.mx/delta/resources/estilos/imss/style.css" rel="stylesheet" />
+
+<script type="text/javascript" src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="../js/jquery/blockUI/jquery.blockUI.js"></script>
+
+<script>
+$(document).ready(function(){
+
+    $('form').submit(function(){
+    $.blockUI();
+    });
+
+  }); 
+
+</script>
+
+
+<script language="javascript">
+function setFocus(){
+    document.getElementById("correoElectronico").focus();
+    return true;
+}
+</script>
+  
+</h:head>
+
+<h:body>
+	<div class="site_position_center_fixed">
+		<div id="cuerpo_principal">
+			
+		    <ui:insert name="encabezado">
+		    	<ui:include src="encabezado.xhtml"/>
+		    </ui:insert>
+			<h:form>
+						
+			<ace:menuBar id="menuBar" autoSubmenuDisplay="true">
+				<!-- ace:submenu label="Administración" BACKGROUND="../imagenes/menu.jpg"-->
+				<table width="100%" border="10" cellpadding="0" cellspacing="2" >
+				<tr>
+		      		<td>
+					<ace:submenu label="Usuarios">
+						<ace:menuItem value="Aprobación" action="#{aprobadorBean.obtenerAprobadores}" />
+						<ace:menuItem value="Actualización" action="update" />
+						<ace:menuItem value="Desactivar/Activar" action="delete" />
+						<ace:menuItem value="Consulta" action="consulta" />
+					</ace:submenu>
+					</td>
+					<td>
+					</td>
+					<td>
+					<ace:submenu label="Solicitud">
+						<ace:menuItem value="Registro de Usuarios" id="registroSol" action="#{solicitudCuentaBean.registraSolicitudInicial}"></ace:menuItem>
+					</ace:submenu>
+					</td>
+					<td>
+					<ace:menuItem value="Cerrar" id="Cerrar" action="#{aprobadorBean.cerrarSesion}"/> 										
+					</td>			
+			    </tr>
+				<!-- /ace:submenu -->
+				</table>
+			</ace:menuBar>	    				
+			</h:form>	
+			<div id="cuerpo">
+				<div id="portal" class="contenedor">
+					<div class="row" style="width: 100% !important">
+						<ui:insert name="body" />
+					</div>
+				</div>
+			</div>
+			
+			<ui:insert name="footer">
+				<ui:include src="pie.xhtml"/>
+			</ui:insert>						
+		</div>
+</div>
+</h:body>
+</html>

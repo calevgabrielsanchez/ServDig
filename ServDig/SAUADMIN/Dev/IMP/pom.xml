@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>mx.gob.imss.ctirss.sso</groupId>
+    <artifactId>AdmonUsuariosDelta</artifactId>
+    <version>1.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Administracion de Usuarios Delta</name>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <skipTests>true</skipTests>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <projectNameTemplate>[artifactId]-[version]</projectNameTemplate>
+                    <wtpmanifest>true</wtpmanifest>
+                    <wtpapplicationxml>true</wtpapplicationxml>
+                    <wtpversion>2.0</wtpversion>
+                    <manifest>${basedir}/src/main/resources/META-INF/MANIFEST.MF</manifest>
+                </configuration>
+            </plugin>
+            <!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <tagBase>http://11.254.16.21/svn/delta_sso/codigo/tags</tagBase>
+                </configuration>
+            </plugin> -->
+        </plugins>
+		
+		<!-- CON ESTO INDICAMOS QUE EN EL PAQUETE DE RESOURCES SE PODRA 
+		     SUSTITUIR LAS VARIABLES DE MAVEN QUE SE DECLARAN EN LOS PERFILES -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		
+    </build>
+	
+	<profiles>
+		<profile>
+			<id>compile-dev</id>
+			<properties>
+				<fqdn.contexto.aplicacion>http://desarrollo.imss.gob.mx:7001/Sauimssdigital</fqdn.contexto.aplicacion>
+				
+				<com.iplanet.services.debug.directory>D:/AgenteSeguridad/AgenteSauImssDigital/j2ee_agents/weblogic_v10_agent/Agent_001/logs/debug</com.iplanet.services.debug.directory>
+				<com.iplanet.am.naming.url>http://ssoadmin-stage.imss.gob.mx:80/openam_10.0.0/namingservice</com.iplanet.am.naming.url>
+				<com.sun.identity.client.notification.url>http://saudigital-stage.imss.gob.mx:80/agentapp/notification</com.sun.identity.client.notification.url>
+				<com.sun.identity.agents.app.username>agent_dnass_admindigital</com.sun.identity.agents.app.username>
+				<com.iplanet.am.service.password>4dM1ND11g</com.iplanet.am.service.password>
+				<am.encryption.pwd>xPAl9VUatBHYWNA1lue+lwdyA1QJ4yRY</am.encryption.pwd>
+				<com.iplanet.am.server.host>ssoadmin-stage.imss.gob.mx</com.iplanet.am.server.host>
+				<com.iplanet.am.server.port>80</com.iplanet.am.server.port>
+				<com.iplanet.am.services.deploymentDescriptor>openam_10.0.0/UI/Login</com.iplanet.am.services.deploymentDescriptor>
+				<com.sun.identity.agents.notification.enabled>true</com.sun.identity.agents.notification.enabled>
+				<com.sun.identity.agents.notification.url>http://saudigital-stage.imss.gob.mx:80/agentapp/notification</com.sun.identity.agents.notification.url>
+				<com.sun.identity.agents.polling.interval>3</com.sun.identity.agents.polling.interval>
+				<com.sun.identity.policy.client.cacheMode>self</com.sun.identity.policy.client.cacheMode>
+				<com.sun.identity.loginurl>http://ssoadmin-stage.imss.gob.mx:80/openam_10.0.0/UI/Login</com.sun.identity.loginurl>
+				<com.sun.identity.logouturl>http://ssoadmin-stage.imss.gob.mx:80/openam_10.0.0</com.sun.identity.logouturl>
+				<com.sun.identity.liberty.authnsvc.url>http://ssoadmin-stage.imss.gob.mx:80/openam_10.0.0/Liberty/authnsvc</com.sun.identity.liberty.authnsvc.url>
+				
+				<!-- CONFIGURACION QUITAR OPEN AM -->
+				<mvn.web.app.security.start></mvn.web.app.security.start>
+                <mvn.web.app.security.end></mvn.web.app.security.end>
+				
+				<!-- CONFIGURACION FIRMA DIGITAL -->
+				<mvn.firma.seria>ID-SELLOS-1</mvn.firma.seria>
+				<mvn.firmaaplicacion>AplPruebas</mvn.firmaaplicacion>
+				<mvn.firma.rfc.imss>IMS421231I45</mvn.firma.rfc.imss>
+				
+				<!-- CONFIGURACION LDAP -->
+				<mvn.java.naming.provider.url>ldap://ldapdata.imss.gob.mx:1389</mvn.java.naming.provider.url>
+				<mvn.java.naming.security.credentials>4dmD1g54U13</mvn.java.naming.security.credentials>
+				<mvn.java.naming.security.principal>cn=AdminQA,ou=saudigital,dc=imss,dc=gob,dc=mx</mvn.java.naming.security.principal>
+				<mvn.userSingleton>cn=AdminQA,ou=saudigital,dc=imss,dc=gob,dc=mx</mvn.userSingleton>
+				<mvn.passSingleton>4dmD1g54U13</mvn.passSingleton>
+				<mvn.hostSingleton>ldapdata.imss.gob.mx</mvn.hostSingleton>
+				<mvn.portSingleton>1389</mvn.portSingleton>
+				
+				<mvn.version.clienteswebservices.guarda.documentos>2.2-SNAPSHOT</mvn.version.clienteswebservices.guarda.documentos>
+				<mvn.version.clienteswebservices.renapo.curp>2.2</mvn.version.clienteswebservices.renapo.curp>
+			</properties>
+		</profile>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>compile-stage-sin-open</id>
+			<properties>
+				<fqdn.contexto.aplicacion>http://saudigital-stage.imss.gob.mx/Sauimssdigital</fqdn.contexto.aplicacion>
+				
+				<com.iplanet.services.debug.directory>/share/oracle/correcion_01_domain/j2ee_agents/j2ee_agents/weblogic_v10_agent/Agent_002/logs/debug</com.iplanet.services.debug.directory>
+				<com.iplanet.am.naming.url>http://ssoadmin-stage.imss.gob.mx:80/openam_10.0.0/namingservice</com.iplanet.am.naming.url>
+				<com.sun.identity.client.notification.url>http://saudigital-stage.imss.gob.mx:80/agentappSAU/notification</com.sun.identity.client.notification.url>
+				<com.sun.identity.agents.app.username>agent_dnass_admindigital</com.sun.identity.agents.app.username>
+				<com.iplanet.am.service.password>4dM1ND11g</com.iplanet.am.service.password>
+				<am.encryption.pwd>xPAl9VUatBHYWNA1lue+lwdyA1QJ4yRY</am.encryption.pwd>
+				<com.iplanet.am.server.host>ssoadmin-stage.imss.gob.mx</com.iplanet.am.server.host>
+				<com.iplanet.am.server.port>80</com.iplanet.am.server.port>
+				<com.iplanet.am.services.deploymentDescriptor>openam_10.0.0/UI/Login</com.iplanet.am.services.deploymentDescriptor>
+				<com.sun.identity.agents.notification.enabled>true</com.sun.identity.agents.notification.enabled>
+				<com.sun.identity.agents.notification.url>http://saudigital-stage.imss.gob.mx:80/agentappSAU/notification</com.sun.identity.agents.notification.url>
+				<com.sun.identity.agents.polling.interval>30</com.sun.identity.agents.polling.interval>
+				<com.sun.identity.policy.client.cacheMode>self</com.sun.identity.policy.client.cacheMode>
+				<com.sun.identity.loginurl>http://ssoadmin-stage.imss.gob.mx:80/openam_10.0.0/UI/Login?realm=SAUDigital</com.sun.identity.loginurl>
+				<com.sun.identity.logouturl>http://ssoadmin-stage.imss.gob.mx:80/openam_10.0.0</com.sun.identity.logouturl>
+				<com.sun.identity.liberty.authnsvc.url>http://ssoadmin-stage.imss.gob.mx:80/openam_10.0.0/Liberty/authnsvc</com.sun.identity.liberty.authnsvc.url>
+				
+				<!-- CONFIGURACION QUITAR OPEN AM -->
+				<mvn.web.app.security.start>&lt;!--</mvn.web.app.security.start>
+                <mvn.web.app.security.end>--&gt;</mvn.web.app.security.end>
+				
+				<!-- CONFIGURACION FIRMA DIGITAL -->
+				<mvn.firma.seria>IMSS_CSD_01</mvn.firma.seria>
+				<mvn.firmaaplicacion>AplPruebas</mvn.firmaaplicacion>
+				<mvn.firma.rfc.imss>IMS421231I45</mvn.firma.rfc.imss>
+				
+				<!-- CONFIGURACION LDAP -->
+				<mvn.java.naming.provider.url>ldap://ldapdata.imss.gob.mx:1389</mvn.java.naming.provider.url>
+				<mvn.java.naming.security.credentials>4dmD1g54U13</mvn.java.naming.security.credentials>
+				<mvn.java.naming.security.principal>cn=AdminQA,ou=saudigital,dc=imss,dc=gob,dc=mx</mvn.java.naming.security.principal>
+				<mvn.userSingleton>cn=AdminQA,ou=saudigital,dc=imss,dc=gob,dc=mx</mvn.userSingleton>
+				<mvn.passSingleton>4dmD1g54U13</mvn.passSingleton>
+				<mvn.hostSingleton>ldapdata.imss.gob.mx</mvn.hostSingleton>
+				<mvn.portSingleton>1389</mvn.portSingleton>
+				
+				<mvn.version.clienteswebservices.guarda.documentos>2.2-SNAPSHOT</mvn.version.clienteswebservices.guarda.documentos>
+				<mvn.version.clienteswebservices.renapo.curp>2.2</mvn.version.clienteswebservices.renapo.curp>
+			</properties>
+		</profile>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>compile-stage</id>
+			<properties>
+				<fqdn.contexto.aplicacion>http://saudigital-stage.imss.gob.mx/Sauimssdigital</fqdn.contexto.aplicacion>
+				
+				<com.iplanet.services.debug.directory>/share/oracle/correcion_01_domain/j2ee_agents/j2ee_agents/weblogic_v10_agent/Agent_002/logs/debug</com.iplanet.services.debug.directory>
+				<com.iplanet.am.naming.url>http://ssoadmin-stage.imss.gob.mx:80/openam_10.0.0/namingservice</com.iplanet.am.naming.url>
+				<com.sun.identity.client.notification.url>http://saudigital-stage.imss.gob.mx:80/agentappSAU/notification</com.sun.identity.client.notification.url>
+				<com.sun.identity.agents.app.username>agent_dnass_admindigital</com.sun.identity.agents.app.username>
+				<com.iplanet.am.service.password>4dM1ND11g</com.iplanet.am.service.password>
+				<am.encryption.pwd>xPAl9VUatBHYWNA1lue+lwdyA1QJ4yRY</am.encryption.pwd>
+				<com.iplanet.am.server.host>ssoadmin-stage.imss.gob.mx</com.iplanet.am.server.host>
+				<com.iplanet.am.server.port>80</com.iplanet.am.server.port>
+				<com.iplanet.am.services.deploymentDescriptor>openam_10.0.0/UI/Login</com.iplanet.am.services.deploymentDescriptor>
+				<com.sun.identity.agents.notification.enabled>true</com.sun.identity.agents.notification.enabled>
+				<com.sun.identity.agents.notification.url>http://saudigital-stage.imss.gob.mx:80/agentappSAU/notification</com.sun.identity.agents.notification.url>
+				<com.sun.identity.agents.polling.interval>30</com.sun.identity.agents.polling.interval>
+				<com.sun.identity.policy.client.cacheMode>self</com.sun.identity.policy.client.cacheMode>
+				<com.sun.identity.loginurl>http://ssoadmin-stage.imss.gob.mx:80/openam_10.0.0/UI/Login?realm=SAUDigital</com.sun.identity.loginurl>
+				<com.sun.identity.logouturl>http://ssoadmin-stage.imss.gob.mx:80/openam_10.0.0</com.sun.identity.logouturl>
+				<com.sun.identity.liberty.authnsvc.url>http://ssoadmin-stage.imss.gob.mx:80/openam_10.0.0/Liberty/authnsvc</com.sun.identity.liberty.authnsvc.url>
+				
+				<!-- CONFIGURACION QUITAR OPEN AM -->
+				<mvn.web.app.security.start></mvn.web.app.security.start>
+                <mvn.web.app.security.end></mvn.web.app.security.end>
+				
+				<!-- CONFIGURACION FIRMA DIGITAL -->
+				<mvn.firma.seria>IMSS_CSD_01</mvn.firma.seria>
+				<mvn.firmaaplicacion>AplPruebas</mvn.firmaaplicacion>
+				<mvn.firma.rfc.imss>IMS421231I45</mvn.firma.rfc.imss>
+				
+				<!-- CONFIGURACION LDAP -->
+				<mvn.java.naming.provider.url>ldap://ldapdata.imss.gob.mx:1389</mvn.java.naming.provider.url>
+				<mvn.java.naming.security.credentials>4dmD1g54U13</mvn.java.naming.security.credentials>
+				<mvn.java.naming.security.principal>cn=AdminQA,ou=saudigital,dc=imss,dc=gob,dc=mx</mvn.java.naming.security.principal>
+				<mvn.userSingleton>cn=AdminQA,ou=saudigital,dc=imss,dc=gob,dc=mx</mvn.userSingleton>
+				<mvn.passSingleton>4dmD1g54U13</mvn.passSingleton>
+				<mvn.hostSingleton>ldapdata.imss.gob.mx</mvn.hostSingleton>
+				<mvn.portSingleton>1389</mvn.portSingleton>
+				
+				<mvn.version.clienteswebservices.guarda.documentos>2.2-SNAPSHOT</mvn.version.clienteswebservices.guarda.documentos>
+				<mvn.version.clienteswebservices.renapo.curp>2.3-QA</mvn.version.clienteswebservices.renapo.curp>
+			</properties>
+		</profile>
+		<profile>
+			<id>compile-prod</id>
+			<properties>
+				<fqdn.contexto.aplicacion>http://saudigital.imss.gob.mx/Sauimssdigital</fqdn.contexto.aplicacion>
+				
+				<com.iplanet.services.debug.directory>/share/oracle/correcion_01_domain/j2ee_agents/j2ee_agents/weblogic_v10_agent/Agent_002/logs/debug</com.iplanet.services.debug.directory>
+				<com.iplanet.am.naming.url>http://ssoadmin.imss.gob.mx:80/openam_10.0.0/namingservice</com.iplanet.am.naming.url>
+				<com.sun.identity.client.notification.url>http://saudigital.imss.gob.mx:80/agentappSAU/notification</com.sun.identity.client.notification.url>
+				<com.sun.identity.agents.app.username>agent_dnass_admindigital</com.sun.identity.agents.app.username>
+				<com.iplanet.am.service.password>4dM1ND11g</com.iplanet.am.service.password>
+				<am.encryption.pwd>xPAl9VUatBHYWNA1lue+lwdyA1QJ4yRY</am.encryption.pwd>
+				<com.iplanet.am.server.host>ssoadmin.imss.gob.mx</com.iplanet.am.server.host>
+				<com.iplanet.am.server.port>80</com.iplanet.am.server.port>
+				<com.iplanet.am.services.deploymentDescriptor>openam_10.0.0/UI/Login</com.iplanet.am.services.deploymentDescriptor>
+				<com.sun.identity.agents.notification.enabled>true</com.sun.identity.agents.notification.enabled>
+				<com.sun.identity.agents.notification.url>http://saudigital.imss.gob.mx:80/agentappSAU/notification</com.sun.identity.agents.notification.url>
+				<com.sun.identity.agents.polling.interval>30</com.sun.identity.agents.polling.interval>
+				<com.sun.identity.policy.client.cacheMode>self</com.sun.identity.policy.client.cacheMode>
+				<com.sun.identity.loginurl>http://ssoadmin.imss.gob.mx:80/openam_10.0.0/UI/Login?realm=SAUDigital</com.sun.identity.loginurl>
+				<com.sun.identity.logouturl>http://ssoadmin.imss.gob.mx:80/openam_10.0.0</com.sun.identity.logouturl>
+				<com.sun.identity.liberty.authnsvc.url>http://ssoadmin.imss.gob.mx:80/openam_10.0.0/Liberty/authnsvc</com.sun.identity.liberty.authnsvc.url>
+				
+				<!-- CONFIGURACION QUITAR OPEN AM -->
+				<mvn.web.app.security.start></mvn.web.app.security.start>
+                <mvn.web.app.security.end></mvn.web.app.security.end>
+				
+				<!-- CONFIGURACION FIRMA DIGITAL -->
+				<mvn.firma.seria>IMSS_CSD_01</mvn.firma.seria>
+				<mvn.firmaaplicacion>AplPruebas</mvn.firmaaplicacion>
+				<mvn.firma.rfc.imss>IMS421231I45</mvn.firma.rfc.imss>
+				
+				<!-- CONFIGURACION LDAP -->
+				<mvn.java.naming.provider.url>ldap://ldapdata.imss.gob.mx:1389</mvn.java.naming.provider.url>
+				<mvn.java.naming.security.credentials>moFW99QDEj8GlpJfLD</mvn.java.naming.security.credentials>
+				<mvn.java.naming.security.principal>cn=AdminPRO,ou=saudigital,dc=imss,dc=gob,dc=mx</mvn.java.naming.security.principal>
+				<mvn.userSingleton>cn=AdminPRO,ou=saudigital,dc=imss,dc=gob,dc=mx</mvn.userSingleton>
+				<mvn.passSingleton>moFW99QDEj8GlpJfLD</mvn.passSingleton>
+				<mvn.hostSingleton>ldapdata.imss.gob.mx</mvn.hostSingleton>
+				<mvn.portSingleton>1389</mvn.portSingleton>
+				
+				<mvn.version.clienteswebservices.guarda.documentos>2.2</mvn.version.clienteswebservices.guarda.documentos>
+				<mvn.version.clienteswebservices.renapo.curp>2.2</mvn.version.clienteswebservices.renapo.curp>
+			</properties>
+		</profile>
+	</profiles>
+	
+    <modules>
+        <module>AdmonUsuariosDelta-ear-1.1-SNAPSHOT</module>
+        <module>AdmonUsuariosDelta-web-1.1-SNAPSHOT</module>
+        <module>AdmonUsuariosDelta-ejb-1.1-SNAPSHOT</module>
+        <module>AdmonUsuariosDelta-remote-1.1-SNAPSHOT</module>
+        <module>AdmonUsuariosDelta-jpa-1.1-SNAPSHOT</module>
+        <module>AdmonUsuariosDelta-cliente-1.1-SNAPSHOT</module>
+        <module>AdmonUsuariosDelta-renapo-1.1-SNAPSHOT</module>
+    </modules>
+	
+  <repositories>
+  	<!-- <repository>
+  		<id>ctirss</id>
+  		<name>CTIRSS repository</name>
+  		<layout>default</layout>
+  		<url>http://11.254.16.21/mvn2_repo/</url>
+  		<snapshots>
+  			<enabled>false</enabled>
+  		</snapshots>
+  	</repository> -->
+	<repository>
+        	<id>ctirss</id>
+            <name>CTIRSS repository</name>
+            <layout>default</layout>
+            <url>http://172.16.5.134:8080/repository/repo/</url>
+            <snapshots>
+            	<enabled>true</enabled>
+            </snapshots>
+		</repository>
+  </repositories>
+  <!-- <pluginRepositories>
+    <pluginRepository>
+      <id>ctirss</id>
+      <name>CTIRSS repository</name>
+      <url>http://11.254.16.21/mvn2_repo/</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+    </pluginRepository>
+  </pluginRepositories> -->
+	<pluginRepositories>
+    	<pluginRepository>
+      		<id>ctirss</id>
+	      	<name>CTIRSS repository</name>
+	      	<url>http://172.16.5.134:8080/repository/repo/</url>
+	      	<layout>default</layout>
+	      	<snapshots>
+	        	<enabled>true</enabled>
+	      	</snapshots>
+	      	<releases>
+	        	<updatePolicy>never</updatePolicy>
+	      	</releases>
+		</pluginRepository>
+	</pluginRepositories>
+</project>

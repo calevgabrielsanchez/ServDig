@@ -1,0 +1,902 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>mx.gob.imss.ctirss.delta.derechohabientes</groupId>
+	<artifactId>gestionDerechohabientes-servicios-negocio-ejb</artifactId>
+	<version>2.2</version>
+	<name>Modulo Servicios de Negocio DELTA (ejb)</name>
+	<url>http://maven.apache.org</url>
+	<packaging>ejb</packaging>
+
+	<parent>
+		<artifactId>gestionDerechohabientes</artifactId>
+		<groupId>mx.gob.imss.ctirss.delta.derechohabientes</groupId>
+		<version>2.2</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+		<org.springframework.version>3.0.5.RELEASE</org.springframework.version>
+		<org.slf4j.version>1.6.1</org.slf4j.version>
+		<org.hibernate.version>3.6.9.Final</org.hibernate.version>
+	</properties>
+	
+	
+
+	<dependencies>
+	
+		<!-- INICIO DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.clienteswebservices.beneficiarios</groupId>
+			<artifactId>ClientesWebservices-derechohabientes</artifactId>
+			<version>${delta.derechohabientes.versionws}</version>
+			<type>ejb</type>
+		</dependency>
+		
+		<!-- Cliente de Webservices. Responsables Subdelegacion -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.clienteswebservices.responsables.subdelegacion</groupId>
+			<artifactId>ClientesWebservices-responsables-subdelegacion</artifactId>
+			<version>${delta.clientews}</version>
+		</dependency>
+
+		<!-- Dependencia del Proyecto de Objetos de modelo DELTA IMSS -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-modelo-negocio</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-framework-base</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>
+		
+		<dependency>
+	      <groupId>mx.gob.imss.ctirss.delta</groupId>
+	      <artifactId>imssdigital-modelo</artifactId>
+	      <version>${delta.framework.version}</version>
+	      <type>jar</type>
+	    </dependency>
+	    
+		<dependency>
+			<groupId>mx.gob.imss.distss.digital</groupId>
+			<artifactId>jaxb-utils</artifactId>
+			<version>${delta.jaxb.version}</version>
+			<type>jar</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-servicios-negocio-ejb</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>
+		
+		
+		
+		<!-- Dependencia del Proyecto de Objetos de Persistencia DELTA IMSS -->
+	  
+		 
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-persistencia</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>
+	  
+	  
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.derechohabientes</groupId>
+			<artifactId>gestionDerechohabientes-modelo</artifactId>
+			<version>${delta.derechohabientes.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.derechohabientes</groupId>
+			<artifactId>gestionDerechohabientes-interfaces-negocio</artifactId>
+			<version>${delta.derechohabientes.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.patronal</groupId>
+        	<artifactId>delta-gestionPatronal-interfaces-negocio</artifactId>
+        	<version>${gestion.patronal.version}</version> 
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.documento.probatorio</groupId>
+			<artifactId>gestionDocumentoProbatorio-servicios-negocio-ejb</artifactId>
+			<version>${delta.documentos.probatorios}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.documento.probatorio</groupId>
+			<artifactId>gestionDocumentoProbatorio-interfaces-negocio</artifactId>
+			<version>${delta.documentos.probatorios}</version>
+		</dependency>
+
+	 	<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.domicilio</groupId>
+			<artifactId>gestionDomicilios-interfaces-negocio</artifactId>	
+			<version>${delta.domicilios}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.solicitud</groupId> 
+        	<artifactId>gestionSolicitud-servicios-negocio-ejb</artifactId> 
+        	<version>${gestion.solicitud.version}</version>
+        	<type>ejb</type>
+		</dependency>
+
+
+
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.solicitud</groupId> 
+		    <artifactId>gestionSolicitud-interfaces-negocio</artifactId> 
+		    <version>${gestion.solicitud.version}</version> 
+		</dependency>
+		
+		<dependency> 
+		      <groupId>mx.gob.imss.ctirss.delta.gestion.individuo.service.interface</groupId> 
+		      <artifactId>gestionIndividuo-service-business-interface</artifactId> 
+		      <version>${delta.personas}</version> 
+		  </dependency> 
+		  
+		 <dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.asegurado</groupId>
+			<artifactId>gestionAsegurados-interfaces-negocio</artifactId>
+			<version>${delta.asegurados}</version>
+		 </dependency> 
+		 
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.medio.contacto</groupId>
+			<artifactId>gestionMediosContacto-interfaces-negocio</artifactId>
+			<version>${delta.medioscontacto}</version>
+				<exclusions>
+		      		<exclusion>
+		        		<groupId>net.sf.jasperreports</groupId>
+						<artifactId>jasperreports</artifactId>
+		      		</exclusion>
+		      	</exclusions>
+		</dependency>
+
+		<!--  DEPENDENCIA PARA CLIENTE DE FOTOGRAFIA ADIMSS -->
+		<dependency>
+		 <groupId>mx.gob.imss.distss.derechohabientes.adimss</groupId>
+ 		 	<artifactId>ClienteWebService-fotoADIMSS</artifactId>
+			  <version>1.0</version>
+  		</dependency>		
+
+		<!-- FIN DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+	
+	
+	
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.extras</groupId>
+			<artifactId>glassfish-embedded-all</artifactId>
+			<version>3.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		
+
+		<!-- EJB -->
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<version>3.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+
+		<!-- HIBERNATE CORE -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-commons-annotations</artifactId>
+			<version>3.2.0.Final</version>
+		</dependency>
+
+		<!-- HIBERNATE DEPENDECIES -->
+		<dependency>
+			<groupId>antlr</groupId>
+			<artifactId>antlr</artifactId>
+			<version>2.7.6</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.12.0.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+		
+
+		<dependency>
+			<groupId>oracle.jdbc</groupId>
+			<artifactId>ojdbc</artifactId>
+			<version>6</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>seguriSignClient</groupId>
+			<artifactId>seguriSignClient</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.dapsua</groupId>
+			<artifactId>PKI</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.dapsua</groupId>
+			<artifactId>PKISoporte</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+	<!-- Jasper -->
+	<dependency>        
+	     	<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>4.1.2</version>
+	    	<exclusions>
+	      		<exclusion>
+	        		<groupId>antlr</groupId>
+	        		<artifactId>antlri</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>commons-beanutils</groupId>
+	        		<artifactId>commons-beanutils</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>commons-collections</groupId>
+	        		<artifactId>commons-collections</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>commons-javaflow</groupId>
+	        		<artifactId>commons-javaflow</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>eclipse</groupId>
+	        		<artifactId>jdtcore</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>javax.persistence</groupId>
+	        		<artifactId>persistence-api</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>javax.servlet</groupId>
+	        		<artifactId>servlet-api</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>javax.xml.soap</groupId>
+	        		<artifactId>saaj-api</artifactId>
+	      		</exclusion>
+	      		
+	      		<exclusion>
+	        		<groupId>jaxen</groupId>
+	        		<artifactId>jaxen</artifactId>
+	      		</exclusion>      		
+	      		<exclusion>
+	        		<groupId>jfree</groupId>
+	        		<artifactId>jcommon</artifactId>
+	      		</exclusion>
+	       		<exclusion>
+	        		<groupId>jfree</groupId>
+	        		<artifactId>jfreechart</artifactId>
+	      		</exclusion>    		
+	      		<exclusion>
+	        		<groupId>mondrian</groupId>
+	        		<artifactId>mondrian</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>net.sf.barcode4j</groupId>
+	        		<artifactId>barcode4j</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>net.sourceforge.barbecue</groupId>
+	        		<artifactId>barbecue</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>net.sourceforge.jexcelapi</groupId>
+	        		<artifactId>jxl</artifactId>
+	      		</exclusion>
+	         	<exclusion>
+	        		<groupId>org.apache.ant</groupId>
+	        		<artifactId>velocity</artifactId>
+	      		</exclusion>      		
+	      		<exclusion>
+	        		<groupId>org.apache.poi</groupId>
+	        		<artifactId>poi</artifactId>
+	      		</exclusion>      		
+	       		<exclusion>
+	        		<groupId>org.apache.poi</groupId>
+	        		<artifactId>poi-ooxml</artifactId>
+	      		</exclusion>      		
+	      		<exclusion>
+	        		<groupId>org.apache.velocity</groupId>
+	        		<artifactId>velocity</artifactId>
+	      		</exclusion>   		
+	      		<exclusion>
+	        		<groupId>org.apache.xmlgraphics</groupId>
+	        		<artifactId>batik-awt-util</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>org.apache.xmlgraphics</groupId>
+	        		<artifactId>batik-bridge</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>org.apache.xmlgraphics</groupId>
+	        		<artifactId>batik-css</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>org.apache.xmlgraphics</groupId>
+	        		<artifactId>batik-dom</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>org.apache.xmlgraphics</groupId>
+	        		<artifactId>batik-gvt</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>org.apache.xmlgraphics</groupId>
+	        		<artifactId>batik-script</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>org.apache.xmlgraphics</groupId>
+	        		<artifactId>batik-svg-dom</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>org.apache.xmlgraphics</groupId>
+	        		<artifactId>batik-svggen</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>org.apache.xmlgraphics</groupId>
+	        		<artifactId>batik-util</artifactId>
+	      		</exclusion>      		
+	       		<exclusion>
+	        		<groupId>org.beanshell</groupId>
+	        		<artifactId>bsh</artifactId>
+	      		</exclusion>     		
+	       		<exclusion>
+	        		<groupId>org.codehaus.castor</groupId>
+	        		<artifactId>castor</artifactId>
+	      		</exclusion>     		
+	      		<exclusion>
+	        		<groupId>org.codehaus.groovy</groupId>
+	        		<artifactId>groovy-all</artifactId>
+	      		</exclusion>      		
+	      		<exclusion>
+	        		<groupId>org.hibernate</groupId>
+	        		<artifactId>hibernate</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>org.springframework</groupId>
+	        		<artifactId>spring-beans</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>org.springframework</groupId>
+	        		<artifactId>spring-core</artifactId>
+	      		</exclusion>
+	      		<exclusion>
+	        		<groupId>rhino</groupId>
+	        		<artifactId>js</artifactId>
+	      		</exclusion>      		<exclusion>
+	        		<groupId>xalan</groupId>
+	        		<artifactId>xalan</artifactId>
+	      		</exclusion>      		
+	      		<exclusion>
+	        		<groupId>xml-apis</groupId>
+	        		<artifactId>xml-apis</artifactId>
+	      		</exclusion>
+	    	</exclusions>		
+		</dependency>
+		<dependency>
+	<groupId>commons-digester</groupId>
+	<artifactId>commons-digester</artifactId>
+	<version>2.1</version>
+</dependency>
+ 
+
+	<dependency>
+		<groupId>commons-lang</groupId>
+		<artifactId>commons-lang</artifactId>
+		<version>2.1</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>mx.gob.imss.mac</groupId>
+		<artifactId>poi</artifactId>
+		<version>3.5</version>
+	</dependency>	
+	
+	<dependency>
+		<groupId>mx.gob.imss.utilerias</groupId>
+		<artifactId>utilMail</artifactId>
+		<version>1.0.03</version>
+	</dependency>
+		
+	<dependency>
+		<groupId>javax.mail</groupId>
+		<artifactId>javax.mail-api</artifactId>
+		<version>1.5.1</version>
+	</dependency>	
+		
+	</dependencies>
+	
+	
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<ejbVersion>3.0</ejbVersion>
+				</configuration>
+			</plugin>
+			<!-- Habilita los facets y natures para que el eclipse
+			     reconoza el proyecto como de tipo de EJB.
+			 -->
+			
+			      <plugin>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <configuration>
+                    <additionalBuildcommands>
+                        <buildCommand>
+                            <name>org.eclipse.jdt.core.javabuilder</name>
+                        </buildCommand>
+                        <buildCommand>
+                            <name>org.eclipse.wst.common.project.facet.core.builder</name>
+                        </buildCommand>
+                        <buildCommand>
+                            <name>org.eclipse.wst.validation.validationbuilder</name>
+                        </buildCommand>
+                        
+                    </additionalBuildcommands>
+                    <additionalProjectnatures>
+                        <projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+                        <projectnature>org.eclipse.jdt.core.javanature</projectnature>
+                        <projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+                        <projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+                    </additionalProjectnatures>
+                    <additionalConfig>
+                        <file>
+                            <name>.settings/org.eclipse.wst.common.project.facet.core.xml</name>
+                            <content>
+                                <![CDATA[<faceted-project>
+    <runtime name="Weblogic Runtime" />
+    <fixed facet="jst.ejb" />
+    <fixed facet="jst.java" />
+    <installed facet="jst.java" version="6.0" />
+    <installed facet="jst.ejb" version="3.0" />
+</faceted-project>]]>
+                            </content>
+                        </file>
+                        <file>
+                            <name>.settings/org.eclipse.wst.common.component</name>
+                            <content>
+                                <![CDATA[
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="${project.artifactId}">
+        <wb-resource deploy-path="/" source-path="/src/main/java" />
+        <wb-resource deploy-path="/" source-path="/src/main/resources" />
+        <property name="java-output-path" value="target/classes" />
+    </wb-module>
+</project-modules>]]>
+                            </content>
+                        </file>
+                        
+                        
+                    </additionalConfig>
+                </configuration>
+            </plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>compile-stage-externo</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.smtp.mail.host}" value="relay.imss.gob.mx" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.user}" value="g.derechohabientes" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.password}" value="g3st10n.d3r3c#0#4b" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>compile-prod-externo-intranet</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.smtp.mail.host}" value="relay.imss.gob.mx" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.user}" value="g.derechohabientes" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.password}" value="g3st10n.d3r3c#0#4b" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>compile-prod-externo-internet</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.smtp.mail.host}" value="relay.imss.gob.mx" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.user}" value="g.derechohabientes" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.password}" value="g3st10n.d3r3c#0#4b" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>compile-stage-ventanilla</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.smtp.mail.host}" value="relay.imss.gob.mx" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.user}" value="g.derechohabientes" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.password}" value="g3st10n.d3r3c#0#4b" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>compile-prod-ventanilla-intranet</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.smtp.mail.host}" value="relay.imss.gob.mx" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.user}" value="g.derechohabientes" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.password}" value="g3st10n.d3r3c#0#4b" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>compile-prod-ventanilla-internet</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.smtp.mail.host}" value="relay.imss.gob.mx" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.user}" value="g.derechohabientes" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.password}" value="g3st10n.d3r3c#0#4b" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>compile-stage-ciudadano</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.smtp.mail.host}" value="relay.imss.gob.mx" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.user}" value="g.derechohabientes" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.password}" value="g3st10n.d3r3c#0#4b" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>compile-prod-ciudadano-intranet</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.smtp.mail.host}" value="relay.imss.gob.mx" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.user}" value="g.derechohabientes" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.password}" value="g3st10n.d3r3c#0#4b" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>compile-prod-ciudadano-internet</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.smtp.mail.host}" value="relay.imss.gob.mx" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.user}" value="g.derechohabientes" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+										<replace token="${mvn.smtp.mail.password}" value="g3st10n.d3r3c#0#4b" dir="target/classes">
+											<include name="**/mailConfigurationDH.properties" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>mx.gob.imss.ctirss.delta.solicitudes.sipare</groupId>
+	<artifactId>gestionSolicitud-sipare</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>SIPARE-SOLICITUDES</name>
+	<url>http://www.imss.gob.mx/instituto/Directorio/ctirss.htm</url>
+
+	<properties>
+		<delta.framework.version>2.6-SNAPSHOT</delta.framework.version>
+		<delta.framework.comboSelect>2.0-SNAPSHOT</delta.framework.comboSelect>
+		<delta.domicilios>2.4-SNAPSHOT</delta.domicilios>
+		<delta.documentos.probatorios>2.4-SNAPSHOT</delta.documentos.probatorios>
+		<delta.medioscontacto>2.3-SNAPSHOT</delta.medioscontacto>
+		<delta.solicitud>2.2-SNAPSHOT</delta.solicitud>
+		<delta.patronal>2.4-SNAPSHOT</delta.patronal>
+		<delta.patronal.sapi>2.0-SNAPSHOT</delta.patronal.sapi>
+		<delta.personas>2.4-SNAPSHOT</delta.personas>
+		<delta.clientews>2.2-SNAPSHOT</delta.clientews>
+		<delta.clientews.calculonrp>2.0-SNAPSHOT</delta.clientews.calculonrp>
+		<delta.clasificacion.empr>2.4-SNAPSHOT</delta.clasificacion.empr>
+		<delta.dashboard>1.2-SNAPSHOT</delta.dashboard>
+		<delta.cobranza>1.0-SNAPSHOT</delta.cobranza>
+	</properties>
+
+	<build>
+		<!-- To define the plugin version in your parent POM -->
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<skipTests>true</skipTests>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<!-- for use JVM 1.6 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<!-- Relase Plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<tagBase>http://11.254.16.21/svn/base_arquitectura_delta/codigo/tags/</tagBase>
+					<tag>${project.artifactId}-${project.version}</tag>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<!--Extension necesaria para el deploy (instalacion) de los componentes 
+			en el repositorio central -->
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+			</extension>
+		</extensions>
+
+	</build>
+
+	<repositories>
+		<repository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<layout>default</layout>
+			<url>http://11.254.16.21/mvn2_repo/</url>
+			<snapshots>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<url>http://11.254.16.21/mvn2_repo/</url>
+			<layout>default</layout>
+			<snapshots>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<distributionManagement>
+		<!-- use the following if you're not using a snapshot version. -->
+		<repository>
+			<id>ctirss-archiva</id>
+			<name>CTIRSS Repository Name</name>
+			<url>dav:http://11.254.16.21:8080/archiva/repository/repo</url>
+		</repository>
+		<snapshotRepository>
+			<id>ctirss-archiva</id>
+			<name>CTIRSS Repository Name</name>
+			<url>dav:http://11.254.16.21:8080/archiva/repository/repo</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<modules>
+		<module>gestionSolicitud-sipare-interfaces-negocio</module>
+		<module>gestionSolicitud-sipare-servicios-negocio-ejb</module>
+		<module>gestionSolicitud-sipare-web</module>
+		<module>gestionSolicitud-sipare-packing</module>
+	</modules>
+</project>

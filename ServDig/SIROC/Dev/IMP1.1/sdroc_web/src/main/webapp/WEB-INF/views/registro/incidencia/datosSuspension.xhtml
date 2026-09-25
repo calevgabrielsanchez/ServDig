@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<div id="pageResumenDatosSuspension" th:fragment="pageDatosSuspension">
+	<div id="pnlIncSuspension" class="panel panel-default">
+		<div class="panel-heading">
+			<label th:text="#{registro.incidencia.anuncio}"/> 
+			<label th:text="${accion}" /> 
+			<label th:text="#{registro.incidencia.anuncio.obra}"/>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="panel col-sm-12 text-left">
+					<label class="control-label col-sm-4 small" for="fecSuspension" th:text="#{reg.incidencia.suspension.fecha}"/>
+					<div class="col-sm-6">
+						<div class="form-group datepicker-group">
+							<input class="form-control input-sm" id="fecSuspension" type="text"  readonly="readonly" style="background: white; cursor: default !important;">
+								<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+							</input>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<p id="msgeFecSuspension" class="col-sm-12 red small"/>
+				</div>
+			</div>
+			<div class="alert alert-info small" th:text="#{info.cantidadesobrasuperficie}">
+			</div>
+			<div class="row">
+				<div class="panel col-sm-12 text-left">
+					<label class="control-label col-sm-4 small" for="txtMonto" th:text="#{reg.incidencia.monto.ejercido}"/>
+					<div class="col-sm-6">
+						<div id="divMonto" class="input-group">
+							<span class="input-group-addon small">$</span> 
+							<input id="txtMonto" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Monto ejercido a la fecha" maxlength="15" />
+							<span class="input-group-addon small"> MXN</span>
+						</div>
+						<span id="msgeMonto" class="col-sm-12 red small"></span>
+					</div>
+					
+				</div>
+			</div>
+			<div class="row">
+				<div id="pnlObjetoContrato" class="form-group col-sm-12 text-left">
+					<label class="control-label col-sm-4 small" for="tipoObra" th:text="#{reg.incidencia.suspension.motivo}"/>
+					<div class="col-sm-6">
+						<select id="motivo" class="form-control input-sm">
+							<option value="0" th:text="#{reg.obra.default.select}"/>
+							<option th:each="motivo : ${motivos}" th:value="${motivo.cveMotivo}" th:text="${motivo.desMotivo}"/>
+						</select>
+						<span id="msgeMotivoSuspension" class="small red"></span>
+					</div>
+				</div>
+				
+			</div>
+
+		</div>
+		<div class="panel-footer"></div>
+
+	</div>
+
+</div>
+
+</html>

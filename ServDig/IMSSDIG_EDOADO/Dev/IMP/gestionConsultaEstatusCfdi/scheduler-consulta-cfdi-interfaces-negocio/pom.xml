@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>mx.gob.imss.dacvass.scheduler</groupId>
+		<artifactId>scheduler-consulta-cfdi</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>scheduler-consulta-cfdi-interfaces-negocio</artifactId>
+	<name>Modulo de Interfaces de Negocio</name>
+	
+	<dependencies>
+		<!-- Dependencias EJB -->
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<version>3.0</version>
+			<!-- Se pone provided ya que esta api será proporcionada por el servidor sobre el que se despliegue la aplicación. -->
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.dacvass.scheduler</groupId>
+			<artifactId>scheduler-consulta-cfdi-modelo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<!-- Maven Compiler Plug-In for use JVM 1.6 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			
+			<!-- Maven EAR Plug-In -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<ejbVersion>3.0</ejbVersion>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

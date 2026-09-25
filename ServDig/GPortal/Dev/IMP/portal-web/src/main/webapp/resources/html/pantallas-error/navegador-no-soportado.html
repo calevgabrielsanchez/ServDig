@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="Instituto Mexicano del Seguro Social Portal DELTA" />
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Navegador no soportado</title>
+
+<link rel="icon" href="/delta/resources/iconos/favicon.ico" />
+
+<!-- GobMx -->
+<link href="http://cdn.imss.gob.mx/qa/assets/styles/main.css" rel="stylesheet">
+</head>
+
+<body>
+	<!-- Contenido -->
+	<main class="page">
+		<div class="container" id="contenido"></div>
+	</main>
+	
+	<!-- GobMx -->
+	<script src="http://cdn.imss.gob.mx/qa/gobmx.js"></script>
+	
+	<script>
+	 	$gmx(document).ready(function() {  
+	 		$('div#contenido').load('/delta/resources/html/pantallas-error/NNS.html');
+		});
+	</script>
+</body>
+</html>

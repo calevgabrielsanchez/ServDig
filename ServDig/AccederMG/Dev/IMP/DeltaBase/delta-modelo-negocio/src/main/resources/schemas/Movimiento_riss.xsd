@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://www.mx.gob.imss.ctirss.delta/movimientoRiss"
+xmlns:tns="http://www.mx.gob.imss.ctirss.delta/movimientoRiss" elementFormDefault="qualified">
+
+    <complexType name="MovimientoRissType">
+    	<sequence>
+			<element name='regPatAlf'               type="string"   />
+			<element name='regPatMod'               type="int" />
+			<element name='regPatDv'                type="string" />
+			<element name='rfc'                     type="string" />
+			<element name='nss'                     type="string"/>
+			<element name='curp'                    type="string" />
+			<element name='tipPatPerFis'            type="string" />
+			<element name='consecutivo'             type="int"/>
+			<element name='fecIniRif'               type="date"/>
+			<element name='fecBajaRif'              type="date"/>
+			<element name='fecIniRiss'              type="date"/>
+			<element name='fecBajaRiss'             type="date"/>
+			<element name='motBaja'                 type="int"/>
+			<element name='porDescAnioFiscal'       type="int"/>
+			<element name='fecMovto'                type="date"/>
+			<element name='fecCargaBd'              type="date"/>
+			<element name='ideProcesoActualiza'     type="string" />
+			<element name='usoFuturo'               type="string" />
+        </sequence>
+    </complexType>
+
+    <element name="MovimientoRiss"
+    	type="tns:MovimientoRissType">
+    </element>
+</schema>

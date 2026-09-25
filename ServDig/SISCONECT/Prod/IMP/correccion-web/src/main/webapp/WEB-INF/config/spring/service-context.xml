@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <context:annotation-config />
+     <aop:aspectj-autoproxy/>
+     <!-- SERVICIO PARA LA ADMINISTRACION DE CATALOGOS -->
+	<bean id="catalogoService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="catalogoService#mx.gob.imss.ctirss.correccion.service.ejb.CatalogoServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.service.interfaces.ICatalogoService"/>
+	</bean>
+	
+	<!-- INVITACION-->
+	<bean id="invitacionService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="invitacionService#mx.gob.imss.ctirss.correccion.invitacion.service.ejb.InvitacionServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.invitacion.service.interfaces.InvitacionService"/>
+	</bean>		
+
+	<!-- SERVICIO PARA LA DETECCION-->
+	<bean id="deteccionService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="deteccionService#mx.gob.imss.ctirss.correccion.deteccion.service.ejb.DeteccionServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.deteccion.service.interfaces.DeteccionService"/>
+	</bean>
+		
+	<!-- SERVICIO PARA LA PROMOCION-->
+	<bean id="promocionService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="promocionService#mx.gob.imss.ctirss.correccion.promocion.service.ejb.PromocionServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.promocion.service.interfaces.PromocionService"/>
+	</bean>
+	
+	<!-- SERVICIO PARA LA REGULARIZACION-->
+	<bean id="regularizacionService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="regularizacionService#mx.gob.imss.ctirss.correccion.promocion.regularizacion.service.ejb.RegularizacionServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.promocion.regularizacion.service.interfaces.RegularizacionService"/>
+	</bean>	
+	
+	<!-- SERVICIO PARA CATALOGOS-->
+	<bean id="catalogosService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="catalogosService#mx.gob.imss.ctirss.correccion.catalogos.service.ejb.CatalogosServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.catalogos.service.interfaces.CatalogosService"/>
+	</bean>
+	
+     <!-- SERVICIO PARA LA GENERACION DE COMPONENTES COMBO -->
+	<bean id="componentComboService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="componentComboService#mx.gob.imss.ctirss.correccion.service.ejb.SelectServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.service.interfaces.ISelectService"/>
+	</bean>
+	
+	 <!-- SERVICIO PARA LA GENERACION DEL MENU APLICATIVO -->
+	<bean id="menuService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="menuService#mx.gob.imss.ctirss.correccion.menu.service.ejb.MenuServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.menu.service.interfaces.MenuService"/>
+	</bean>
+	
+	
+	<!-- SERVICIO PARA LA VALIDAR CREDECIALES DEL APLICATIVO -->
+	<bean id="loginService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="loginService#mx.gob.imss.ctirss.correccion.login.service.ejb.LoginServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.login.service.interfaces.LoginService"/>
+	</bean>			
+		<!-- SERVICIO PARA LA RECUPERAR LOS PERFILES DEL USUARIO DENTRO APLICATIVO -->
+	<bean id="perfilService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="perfilService#mx.gob.imss.ctirss.correccion.login.service.ejb.PerfilServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.login.service.interfaces.PerfilService"/>
+	</bean>	
+	<!-- SERVICIO PARA LA ADMINISTRACION DE CATALOGOS -->
+	<bean id="percepcionesService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="percepcionesService#mx.gob.imss.ctirss.correccion.catalogos.service.ejb.PercepcionesServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.catalogos.service.interfaces.PercepcionesService"/>
+	</bean>
+	
+	<bean id="gastosService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="gastosService#mx.gob.imss.ctirss.correccion.catalogos.service.ejb.GastosServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.catalogos.service.interfaces.GastosService"/>
+	</bean>	
+	
+		
+	<bean id="grupoCategoriaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="grupoCategoriaService#mx.gob.imss.ctirss.correccion.catalogos.service.ejb.GrupoCategoriaServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.catalogos.service.interfaces.GrupoCategoriaService" />
+	</bean>	
+	
+	  <!-- SERVICIO PARA LA IMPLEMENTACION DE LA INVOCACION DE SINDO -->
+	<bean id="patronesService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="patronesService#mx.gob.imss.ctirss.correccion.service.ejb.PatronesServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.service.interfaces.IPatronesService"/>
+	</bean>
+	
+	     <!-- SERVICIO PARA LA ADMINISTRACION DE LA SOLICITUD DE CORRECCION -->
+	<bean id="solicitudService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="solicitudService#mx.gob.imss.ctirss.correccion.solicitud.service.ejb.SolicitudServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.correccion.service.interfaces.SolicitudService"/>
+	</bean>
+	
+	<!-- DOMICILIOS GEOGRAFICOS INEGI -->
+	<bean id="domiciliosInegiService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="domiciliosInegiService#mx.gob.imss.ctirss.domiciliosInegi.service.ejb.DomiciliosInegiServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.domiciliosInegi.service.interfaces.DomiciliosInegiService"/>
+	</bean>
+	
+
+<!-- SERVICIO PARA LA ADMINISTRACION DE LA SOLICITUD DE PRORROGA -->
+	<bean id="prorrogaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="prorrogaService#mx.gob.imss.ctirss.correccion.prorroga.service.ejb.ProrrogaServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.prorroga.service.interfaces.ProrrogaService"/>
+	</bean>
+	
+	<bean id="trabajadoresService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="trabajadoresService#mx.gob.imss.ctirss.correccion.catalogos.service.ejb.TrabajadoresServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.catalogos.service.interfaces.TrabajadoresService"/>
+	</bean>		
+	
+   <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">        
+     <!-- one of the properties available; the maximum file size in bytes -->        
+     <property name="maxUploadSize" value="1000000"/>    
+    </bean>
+     <!-- SERVICIO PARA LA VALIDACION DE LA OBRA -->
+	<bean id="obrasService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="obrasService#mx.gob.imss.ctirss.correccion.service.ejb.ObraServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.service.interfaces.IObraService"/>
+	</bean>
+    <!--  -->
+    <bean id="presentacionCorrecionServiceCtr" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="presentacionCorreccionService#mx.gob.imss.ctirss.correccion.presentacion.service.ejb.PresentacionCorreccionServiceControllerRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.presentacion.service.interfaces.PresentacionCorreccionServiceController"/>
+	</bean>									
+ <!-- SERVICIO PARA MONITOREO DE CARGAS DE CEDULAS -->
+	<bean id="monitorService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="monitorService#mx.gob.imss.ctirss.correccion.monitor.service.ejb.MonitorServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.monitor.service.interfaces.MonitorService"/>
+	</bean>
+	<bean id="habilitarTarea" class="mx.gob.imss.ctirss.correccion.web.servlets.cron.HabilitarTarea"></bean>
+	
+	<!-- DETBASECOTOMITIDA-->
+	<bean id="detBaseCotOmitidaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="detBaseCotOmitidaService#mx.gob.imss.ctirss.correccion.detBaseCotOmitida.service.ejb.DetBaseCotOmitidaServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.detBaseCotOmitida.service.interfaces.DetBaseCotOmitidaService"/>
+	</bean>
+	<bean id="promocionExhortoService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="promocionExhortoService#mx.gob.imss.ctirss.correccion.promocion.service.ejb.PromocionExhortoServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.promocion.service.interfaces.PromocionExhortoService"/>
+	</bean>		
+	<bean id="firmaElectronicaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="firmaElectronicaService#mx.gob.imss.ctirss.correccion.firma.service.ejb.FirmaElectronicaServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.firma.service.interfaces.FirmaElectronicaService"/>
+	</bean>
+	<bean id="iniciarBatchService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="iniciarBatchService#mx.gob.imss.ctirss.correccion.timer.service.ejb.IniciarBatchRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.timer.service.interfaces.IniciarBatchService"/>
+	</bean>	
+	<bean id="auditorService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="auditorService#mx.gob.imss.ctirss.correccion.administracion.auditor.ejb.AuditorServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.administracion.auditor.AuditorService"/>
+	</bean>	
+	 <!-- SERVICIO PARA EL SEGUIMIENTO DE LA CORRECCION -->
+  	<bean id="seguimientoCorreccionServiceCtr" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="seguimientoCorreccionServiceCtr#mx.gob.imss.ctirss.correccion.seguimiento.service.ejb.SeguimientoCorreccionServiceCtrRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.seguimiento.interfaces.SeguimientoCorreccionServiceCtr"/>
+	</bean>	
+	
+	<!-- Pagos Seguimiento Fase II -->
+	<bean id="pagosService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="pagosService#mx.gob.imss.ctirss.correccion.seguimiento.pagos.service.ejb.PagosServiceRemote"/>
+  		<property name="businessInterface" value="mx.gob.imss.ctirss.correccion.seguimiento.service.interfaces.pagos.PagosService"/>
+	</bean>
+
+	<bean id="serviceRepository" class="org.springframework.jndi.JndiTemplate">
+		<property name="environment">
+			<props>
+				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+				<prop key="java.naming.provider.url">${service.provider.url}</prop>
+				<prop key="java.naming.security.principal">${service.security.principal}</prop>
+				<prop key="java.naming.security.credentials">${service.security.credentials}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="domicilioServiceBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="domicilioServiceBusiness#mx.gob.imss.ctirss.delta.gestion.domicilio.service.interfaces.domicilio.DomicilioServiceBusinessRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.domicilio.service.interfaces.domicilio.DomicilioServiceBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+
+	<bean id="sujetoObligadoServiceBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="sujetoObligadoServiceBusiness#mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.SujetoObligadoServiceBusinessRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.SujetoObligadoServiceBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+
+
+	<bean id="solicitudBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="solicitudBusiness#mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.SolicitudBusinessRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.SolicitudBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	 
+	
+</beans>

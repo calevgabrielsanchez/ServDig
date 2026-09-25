@@ -1,0 +1,450 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+
+<div>
+	<div class="contenedor">
+		<div class="row">
+			<h:form id="formaRegistroSolicitudCuenta">
+				<fieldset style="margin: 0; padding: 10px; font-size: 10px;">
+
+					<ace:panel>
+						<div>
+							<h:panelGrid id="pnRegSolicitudCuentaCrPre" columns="4"
+								width="100%">
+								<h:outputLabel value="* CURP:" id="lbCURP" />
+								<h:inputText id="txtCurpRegCta"
+									value="#{registraSolicitudMB.curp}"
+									valueChangeListener="#{registraSolicitudMB.lisCurp}"
+									partialSubmit="true" immediate="true"
+									style="text-transform: uppercase" size="25" maxlength="18" />
+								<h:commandButton id="btnValidaRegSolCta" value="Validar RENAPO"
+									styleClass="btn btn-primary btn-sm" onclick="bloquea();">
+									<f:ajax listener="#{registraSolicitudMB.validaryCargarDatos2}"
+										render="@all" execute="@all" event="click" immediate="true" />
+								</h:commandButton>
+
+								<h:outputLabel
+									value="          NOTA: El * implica que el campo es obligatorio"
+									id="lbOBLIGATORIO" style="color: red" />
+							</h:panelGrid>
+							<h:panelGrid id="pnRegSolicitudCuentaCrPre2" columns="6"
+								width="100%">
+								<h:outputLabel value="* Nombre:" id="lbNombreRegSolicitudCuenta" />
+								<h:inputText
+									value="#{registraSolicitudMB.solicitudMB.solicitudDTO.nomNombre}"
+									id="txRegSolicitudCuenta" required="true"
+									requiredMessage="EL NOMBRE ES REQUERIDO" disabled="true"></h:inputText>
+
+								<h:outputLabel value="* Apellido Paterno:"
+									id="lbApPatRegSolicituCuenta" />
+								<h:inputText
+									value="#{registraSolicitudMB.solicitudMB.solicitudDTO.nomPaterno}"
+									id="txApPatRegSolicitudCuenta" required="true"
+									requiredMessage="EL APELLIDO PATERNO ES REQUERIDO"
+									disabled="true"></h:inputText>
+
+								<h:outputLabel value="Apellido Materno:"
+									id="lbApMatRegSolicituCuenta" />
+								<h:inputText
+									value="#{registraSolicitudMB.solicitudMB.solicitudDTO.nomMaterno}"
+									id="txApMatRegSolicitudCuenta" required="false"
+									requiredMessage="EL APELLIDO MATERNO ES REQUERIDO"
+									disabled="true"></h:inputText>
+							</h:panelGrid>
+						</div>
+					</ace:panel>
+					<br />
+					<ace:panel header="Datos de la nómina">
+						<h:panelGrid id="pnRegSolicitudCuentaCrPre4" columns="6"
+							width="100%" border="0">
+							<h:outputLabel value="Matricula:" id="lbMatRegSolicituCuenta" />
+							<h:inputText
+								value="#{registraSolicitudMB.solicitudMB.solicitudDTO.cveMatricula}"
+								id="txMatSolicitudCuenta" disabled="true"></h:inputText>
+
+							<h:outputLabel value="NSS:" id="lbNssRegSolicituCuenta" />
+							<h:inputText
+								value="#{registraSolicitudMB.solicitudMB.solicitudDTO.nssNom}"
+								id="txNssSolicitudCuenta" disabled="true"></h:inputText>
+
+							<h:outputLabel value="Clave delegación:"
+								id="lbDelRegSolicituCuenta" />
+							<h:inputText
+								value="#{registraSolicitudMB.solicitudMB.solicitudDTO.cveDelegacionNom}"
+								id="txDelSolicitudCuenta" disabled="true"></h:inputText>
+
+							<h:outputLabel value="Puesto:" id="lbPuestoRegSolicituCuenta" />
+							<h:inputText
+								value="#{registraSolicitudMB.solicitudMB.solicitudDTO.puestoDescNom}"
+								id="txPuestoSolicitudCuenta" disabled="true"></h:inputText>
+
+							<h:outputLabel value="Departamento:"
+								id="lbDepartamentoRegSolicituCuenta" />
+							<h:inputText
+								value="#{registraSolicitudMB.solicitudMB.solicitudDTO.departamentoDescNom}"
+								id="txDepartamentoSolicitudCuenta" disabled="true"></h:inputText>
+
+							<h:outputLabel value="Estatus:" id="lbStatusRegSolicituCuenta" />
+							<h:inputText
+								value="#{registraSolicitudMB.solicitudMB.solicitudDTO.estatusNom}"
+								id="txStatusSolicitudCuenta" disabled="true"></h:inputText>
+						</h:panelGrid>
+					</ace:panel>
+					<br />
+					<ace:panel header="Datos generales de la cuenta de usuario">
+						<div>
+							<h:panelGrid id="pnRegSolicitudCuentaCrPre3" columns="6" width="100%">
+								<h:outputLabel value="Delegación:   " id="lbDelRegSolicitudCuenta" style="padding:10px;" />
+								<h:selectOneMenu id="slDelRegSolicitudCuenta" required="false"
+									requiredMessage="SELECCIONE LA DELEGACION" disabled="true"
+									value="#{consultaGenerica.claveDelegacion}"
+									valueChangeListener="#{consultaGenerica.listenerDelegacion}"
+									style="width:150px" styleClass="form-control">
+									<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+									<f:selectItems value="${consultaGenerica.lstDelegacion}" />
+									<f:ajax event="change" render="slDelRegSolicitudCuenta" />
+								</h:selectOneMenu>
+
+								<h:outputLabel value="SubDelegación:" id="lbSubRegSolicitudCuenta" />
+								<h:selectOneMenu id="slSubRegSolicitudCuenta" required="false"
+									requiredMessage="SELECCIONE LA SUBDELEGACION" disabled="true"
+									value="#{consultaGenerica.claveSubdelegacion}"
+									valueChangeListener="#{consultaGenerica.listenerSubdelegacion}"
+									style="width:150px" styleClass="form-control">
+									<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+									<f:selectItems value="${consultaGenerica.lstSubDelegacion}" />
+									<f:ajax event="change" render="slSubRegSolicitudCuenta" />
+								</h:selectOneMenu>
+
+								<h:outputLabel value="UMF: " id="lbUMFRegSolicitudCuenta" />
+								<h:selectOneMenu id="slUMFRegSolicitudCuenta" disabled="true"
+									value="#{consultaGenerica.claveUMF}"
+									valueChangeListener="#{consultaGenerica.listenerUmf}"
+									style="width:150px" styleClass="form-control">
+									<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+									<f:selectItems value="${consultaGenerica.lstUMF}" />
+									<f:ajax event="change" render="slUMFRegSolicitudCuenta" />
+								</h:selectOneMenu>
+
+								<h:outputLabel value="Área Normativa:" id="lbAreaNormRegSolicitudCuenta"  style="padding:10px;" />
+								<h:selectOneMenu id="slAreaNormRegSolicitudCuenta"
+									required="false" requiredMessage="SELECCIONE EL AREA NORMATIVA"
+									disabled="#{consultaGenerica.flag}"
+									value="#{consultaGenerica.claveAreaNormativa}"
+									style="width:150px" styleClass="form-control">
+									<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+									<f:selectItems value="${consultaGenerica.lstAreaNormativa}" />
+								</h:selectOneMenu>
+
+								<h:outputLabel value="Departamento:"
+									id="lbDepRegSolicitudCuenta" />
+								<h:selectOneMenu id="slDepRegSolicitudCuenta" required="false"
+									requiredMessage="SELECCIONE EL DEPARTAMENTO"
+									value="#{consultaGenerica.claveDepartamento}"
+									valueChangeListener="#{consultaGenerica.listenerPuesto}"
+									style="width:150px" styleClass="form-control">
+									<f:selectItems value="${consultaGenerica.lstDepartamento}" />
+									<f:ajax event="change" render="slPuestoRegSolicitudCuenta" />
+								</h:selectOneMenu>
+
+								<h:outputLabel value="Puesto:" id="lbPuestoRegSolicitudCuenta" />
+								<h:selectOneMenu id="slPuestoRegSolicitudCuenta"
+									required="false" requiredMessage="SELECCIONE EL PUESTO"
+									value="#{consultaGenerica.clavePuesto}" 
+									valueChangeListener="#{consultaGenerica.listenerPuestoSel}"
+									style="width:150px" styleClass="form-control">
+									<f:selectItems value="${consultaGenerica.lstPuesto}" />
+									<f:ajax event="change" render="slPuestoRegSolicitudCuenta" />
+								</h:selectOneMenu>
+
+							</h:panelGrid>
+						</div>
+						<div>
+							<h:panelGrid id="pnRegSolicitudCuentaCrPre7" columns="5"
+								width="100%" border="0">
+								<h:outputLabel value="Tel. Oficina / Extensión:" id="lbTelOficinaRegSolicituCuenta" style="padding:10px;" />
+								<h:inputText
+									value="#{registraSolicitudMB.telefono}"
+									id="txTelOficinaSolicitudCuenta" maxlength="19"
+									disabled="#{registraSolicitudMB.flagFirstSlide}" valueChangeListener="#{registraSolicitudMB.lisTelefono}"
+									partialSubmit="true" immediate="true"></h:inputText>
+
+								<h:outputLabel value="* Correo Electrónico:" id="lbMailRegSolicituCuenta" />
+								<h:inputText
+									value="#{registraSolicitudMB.correo}"
+									id="txMailRegSolicitudCuenta" maxlength="49"
+									disabled="#{registraSolicitudMB.flagFirstSlide}" valueChangeListener="#{registraSolicitudMB.lisCorreo}"
+									partialSubmit="true" immediate="true"></h:inputText>
+								<h:outputLabel value="@imss.gob.mx" id="lbComplemetoCorreo" />
+							</h:panelGrid>
+
+						</div>
+						<div class="wp-caption-text">
+							<h:panelGrid id="pnRegSolicitudCuentaS2" columns="1" width="100%" style="text-align:center;">
+								<h:commandButton id="bRegistra"
+									onclick="bloquea();" value="Registrar cuenta de usuario"
+									styleClass="btn btn-primary btn-sm" disabled="#{registraSolicitudMB.botonAdd}">
+									<f:ajax listener="#{registraSolicitudMB.registrarSolicitudCuenta}"
+										render="@all" execute="@all" event="click" immediate="true" />
+								</h:commandButton>
+							</h:panelGrid>
+						</div>
+					</ace:panel>
+
+					<br />
+
+
+					<ace:panel header="Agregar Grupos a la Cuenta">
+						<div>
+							<h:panelGrid id="pnRegSolicitudCuentaCrPre5" columns="6">
+								<h:outputLabel value="Área Normativa:"
+									id="lbAreaNormRegSolicitudCuentaC1" />
+								<h:graphicImage value="../imagenes/blanco1.png"
+									style="width: 143px; " />
+								<h:outputLabel value="Departamento:"
+									id="lbDepRegSolicitudCuentaC1" />
+								<h:graphicImage value="../imagenes/blanco1.png"
+									style="width: 158px; " />
+								<h:outputLabel value="Grupo:" id="lbPuestoRegSolicitudCuentaC1" />
+								<h:graphicImage value="../imagenes/blanco1.png" />
+							</h:panelGrid>
+
+							<h:panelGrid id="pnRegSolicitudCuentaCtrl1" columns="6">
+								<h:selectOneMenu id="slAreaNormRegSolicitudCuenta2"
+									required="false" requiredMessage="SELECCIONE EL AREA NORMATIVA"
+									disabled="#{consultaGenerica.flag}"
+									value="#{consultaGenerica.claveAreaNormativa}"
+									style="width:150px" styleClass="form-control">
+									<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+									<f:selectItems value="${consultaGenerica.lstAreaNormativa}" />
+								</h:selectOneMenu>
+
+								<h:graphicImage value="../imagenes/blanco1.png"
+									style="width: 25px; " />
+
+								<h:selectOneMenu id="slDepRegSolicitudCuenta2" required="false"
+									requiredMessage="SELECCIONE EL DEPARTAMENTO"
+									disabled="#{consultaGenerica.flag}"
+									value="#{consultaGenerica.claveDepartamentoRolAdd}"
+									valueChangeListener="#{consultaGenerica.listenerPuestoAdd}"
+									style="width:150px" styleClass="form-control">
+									<f:selectItems value="${consultaGenerica.lstDepartamentoRol}" />
+									<f:ajax event="change" render="slPuestoRegSolicitudCuentaC1" />
+								</h:selectOneMenu>
+
+								<h:graphicImage value="../imagenes/blanco1.png"
+									style="width: 25px; " />
+
+								<h:selectOneMenu id="slPuestoRegSolicitudCuentaC1"
+									required="true" requiredMessage="SELECCIONE EL GRUPO"
+									value="#{registraSolicitudMB.clavePuestoSub}"
+									disabled="#{registraSolicitudMB.flagSecondSlide}"
+									style="width:150px" styleClass="form-control">
+									<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+									<f:selectItems value="${consultaGenerica.lstPuestoAdd}" />
+								</h:selectOneMenu>
+
+								<h:graphicImage value="../imagenes/blanco1.png"
+									style="width: 25px; " />
+							</h:panelGrid>
+						</div>
+
+						<style type="text/css">
+						/* Important required because row */
+						.ui-datatable-odd {
+							background-color: lightgray !important;
+							background-position-y: -1400px; /* IE7 hack */
+						}
+						</style>
+
+						<ace:dataTable
+							value="${registraSolicitudMB.solicitudMB.solicitudDTO.puestosDTO}"
+							var="rol" id="roles" selectionMode="single"
+							stateMap="${registraSolicitudMB.stateMapFromTableOne}"
+							rowSelectListener="#{registraSolicitudMB.handleSelectUsuarioFromTableOne}">
+							<ace:ajax event="select"
+								render="@this selectForm:datosFromTableOne" execute="@this" />
+
+							<ace:column>
+								<f:facet name="header">
+	                        Default
+	                    </f:facet>
+	                    ${rol.defaultRol}
+	                </ace:column>
+							<ace:column>
+								<f:facet name="header">
+	                        Área
+	                    </f:facet>
+	                    ${rol.nombreArea}
+	                </ace:column>
+							<ace:column>
+								<f:facet name="header">
+	                        Departamento
+	                    </f:facet>
+	                    ${rol.nombreDepartamento}
+	                </ace:column>
+							<ace:column>
+								<f:facet name="header">
+	                        Grupos
+	                    </f:facet>
+	                    ${rol.nombrePuesto}
+	                </ace:column>
+
+						</ace:dataTable>
+						<div class="wp-caption-text">
+							<h:panelGrid id="botonesGrupo" columns="2" width="100%">
+								<h:panelGrid id="botonesGrupoAdd" columns="1" width="100%" style="text-align:center;">
+									<h:commandLink
+										action="${registraSolicitudMB.agregaaTablaUnoPrevio}"
+										onclick="return confirm('¿Deseas agregar el grupo seleccionado?')"
+										render="resultErrorRoles">
+										<h:graphicImage value="../imagenes/agregarareas.png"
+											alt="Agrega roles"></h:graphicImage>
+									</h:commandLink>
+									<h:outputLabel value="Agregar Grupo" id="addGrupo"
+										style="margin: 0; padding: 10px; font-size: 8px;" />
+								</h:panelGrid>
+								<h:panelGrid id="botonesGrupoDel" columns="1" width="100%" style="text-align:center;">
+									<h:commandLink
+										action="${registraSolicitudMB.eliminaDeTablaUno}"
+										onclick="return confirm('¿Deseas eliminar el grupo seleccionado?')"
+										render="resultErrorRoles">
+										<h:graphicImage value="../imagenes/eliminarroles.png"></h:graphicImage>
+									</h:commandLink>
+									<h:outputLabel value="Eliminar Grupo" id="delGrupo"
+										style="margin: 0; padding: 10px; font-size: 8px;" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</div>
+					</ace:panel>
+
+					<br />
+
+					<ace:panel header="Agregar Módulos a la Cuenta">
+						<div id="controles2" align="left">
+							<h:panelGrid id="pnRegSolicitudCuentaCrPre6" columns="6">
+								<h:outputLabel value="Área Normativa:"
+									id="lbAreaNormRegSolicitudCuentaC2" />
+								<h:graphicImage value="../imagenes/blanco1.png"
+									style="width: 141px; " />
+								<h:outputLabel value="Departamento:"
+									id="lbDepRegSolicitudCuentaC2" />
+								<h:graphicImage value="../imagenes/blanco1.png"
+									style="width: 162px; " />
+								<h:outputLabel value="Módulo:" id="lbModRegSolicitudCuentaC2" />
+								<h:graphicImage value="../imagenes/blanco1.png" />
+							</h:panelGrid>
+
+							<h:panelGrid id="pnRegSolicitudCuentaCtrl2" columns="6">
+
+								<h:selectOneMenu id="slAreaNormRegSolicitudCuenta3"
+									required="false" requiredMessage="SELECCIONE EL AREA NORMATIVA"
+									disabled="#{consultaGenerica.flag}"
+									value="#{consultaGenerica.claveAreaNormativa}"
+									style="width:150px" styleClass="form-control">
+									<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+									<f:selectItems value="${consultaGenerica.lstAreaNormativa}" />
+								</h:selectOneMenu>
+
+								<h:graphicImage value="../imagenes/blanco1.png"
+									style="width: 25px; " />
+
+								<h:selectOneMenu id="slDepRegSolicitudCuenta3" required="false"
+									requiredMessage="SELECCIONE EL DEPARTAMENTO"
+									disabled="#{consultaGenerica.flag}"
+									value="#{consultaGenerica.claveDepartamentoModAdd}"
+									valueChangeListener="#{consultaGenerica.listenerModuloAdd}"
+									style="width:150px" styleClass="form-control">
+									<f:selectItems value="${consultaGenerica.lstDepartamentoMod}" />
+									<f:ajax event="change" render="slModRegSolicitudCuentaC2" />
+								</h:selectOneMenu>
+
+								<h:graphicImage value="../imagenes/blanco1.png"
+									style="width: 25px; " />
+
+								<h:selectOneMenu id="slModRegSolicitudCuentaC2" required="true"
+									requiredMessage="SELECCIONE EL MODULO"
+									disabled="#{registraSolicitudMB.flagSecondSlide}"
+									value="#{registraSolicitudMB.claveModulo}"
+									valueChangeListener="#{registraSolicitudMB.listenerModulo}"
+									style="width:150px" styleClass="form-control">
+									<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+									<f:selectItems value="${consultaGenerica.lstModuloAdd}" />
+								</h:selectOneMenu>
+
+								<h:graphicImage value="../imagenes/blanco1.png"
+									style="width: 25px; " />
+
+							</h:panelGrid>
+						</div>
+						<ace:dataTable
+							value="${registraSolicitudMB.solicitudMB.solicitudDTO.modulosDTO}"
+							var="modulo" id="modulos" selectionMode="single"
+							stateMap="${registraSolicitudMB.stateMapFromTableTwo}"
+							rowSelectListener="#{registraSolicitudMB.handleSelectUsuarioFromTableTwo}">
+							<ace:ajax event="select"
+								render="@this selectForm:datosFromTableOne" execute="@this" />
+
+							<ace:column>
+								<f:facet name="header">
+	                        Área
+	                    </f:facet>
+	                    ${modulo.areaNormDTO.desAreanorma}
+	                </ace:column>
+							<ace:column>
+								<f:facet name="header">
+	                        Departamento
+	                    </f:facet>
+	                    ${modulo.dptoDTO.desDepartamento}
+	                </ace:column>
+							<ace:column>
+								<f:facet name="header">
+	                        Módulos
+	                    </f:facet>
+	                    ${modulo.desModulo}
+	                </ace:column>
+
+						</ace:dataTable>
+						<br />
+
+						<div class="wp-caption-text">
+							<h:panelGrid id="btnRegSolCta" columns="2" width="100%">
+								<h:panelGrid id="botonesModuloAdd" columns="1" width="100%" style="text-align:center;">
+									<h:commandLink action="${registraSolicitudMB.agregaaTablaDos}"
+										onclick="return confirm('¿Deseas agregar el modulo seleccionado?')"
+										render="resultErrorModulos">
+										<h:graphicImage value="../imagenes/agregarroles.png"></h:graphicImage>
+									</h:commandLink>
+									<h:outputLabel value="Agregar Módulo" id="addModulo"
+										style="margin: 0; padding: 10px; font-size: 8px;" />
+								</h:panelGrid>
+								<h:panelGrid id="botonesModuloDel" columns="1" width="100%" style="text-align:center;">
+									<h:commandLink
+										action="${registraSolicitudMB.eliminaDeTablaDos}"
+										onclick="return confirm('¿Deseas eliminar el modulo seleccionado?')">
+										<h:graphicImage value="../imagenes/eliminarareas.png"></h:graphicImage>
+									</h:commandLink>
+									<h:outputLabel value="Eliminar Módulo" id="delModulo"
+										style="margin: 0; padding: 10px; font-size: 8px;" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</div>
+
+					</ace:panel>
+				</fieldset>
+			</h:form>
+
+
+
+
+		</div>
+	</div>
+</div>
+</html>

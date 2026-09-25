@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:ejb="http://www.bea.com/wli/sb/transports/ejb">
+  <ser:coreEntry isProxy="false" isEnabled="true" isAutoPublish="false">
+    <ser:description/>
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" transport-typed="true" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:binding>
+        <con:name>JwsServiceSoapBinding</con:name>
+        <con:namespace>http://imss.gob.mx/sistema/</con:namespace>
+      </con:binding>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+    </ser:monitoring>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:result-caching isEnabled="true" isSupported="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>ejb</tran:provider-id>
+    <tran:inbound>false</tran:inbound>
+    <tran:URI>
+      <env:value>ejb:deltaJNDIProvider:ruleServiceBusiness#mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.rule.RuleServiceBusinessRemote</env:value>
+    </tran:URI>
+    <tran:outbound-properties>
+      <tran:load-balancing-algorithm>round-robin</tran:load-balancing-algorithm>
+      <tran:retry-count>0</tran:retry-count>
+      <tran:retry-interval>30</tran:retry-interval>
+      <tran:retry-application-errors>true</tran:retry-application-errors>
+    </tran:outbound-properties>
+    <tran:provider-specific>
+      <ejb:security>
+        <ejb:passClientIdentity>false</ejb:passClientIdentity>
+      </ejb:security>
+      <ejb:service>
+        <ejb:clientJar ref="AsignacionNSSProject/lib/delta-gestionPatronal-interfaces-negocio-1.4-SNAPSHOT"/>
+        <ejb:ejbBizService classname="mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.rule.RuleServiceBusinessRemote">
+          <ejb:method name="calcularPrima" signature="java.math.BigDecimal calcularPrima(java.lang.Integer,java.lang.Long,mx.gob.imss.ctirss.delta.model.gestion.patronal.Clasificacion)" exclude="true">
+            <ejb:operation>calcularPrima</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Integer"/>
+            <ejb:param name="arg1" type="java.lang.Long"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.Clasificacion"/>
+            <ejb:return name="return" type="java.math.BigDecimal"/>
+          </ejb:method>
+          <ejb:method name="estaParametroRIFHabilitado" signature="boolean estaParametroRIFHabilitado()" exclude="true">
+            <ejb:operation>estaParametroRIFHabilitado</ejb:operation>
+            <ejb:return name="return" type="boolean"/>
+          </ejb:method>
+          <ejb:method name="isRegimenRIF" signature="boolean isRegimenRIF(java.util.List)" exclude="true">
+            <ejb:operation>isRegimenRIF</ejb:operation>
+            <ejb:param name="arg0" type="java.util.List"/>
+            <ejb:return name="return" type="boolean"/>
+          </ejb:method>
+          <ejb:method name="obtenerClasificacionEquivalenteValida" signature="mx.gob.imss.ctirss.delta.model.gestion.patronal.Clasificacion obtenerClasificacionEquivalenteValida(mx.gob.imss.ctirss.delta.model.gestion.patronal.Clasificacion,java.lang.Integer) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>obtenerClasificacionEquivalenteValida</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.Clasificacion"/>
+            <ejb:param name="arg1" type="java.lang.Integer"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.Clasificacion"/>
+          </ejb:method>
+          <ejb:method name="obtenerParametroDeConfiguracion" signature="java.lang.String obtenerParametroDeConfiguracion(java.lang.String)" exclude="false">
+            <ejb:operation>obtenerParametroDeConfiguracion</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:return name="return" type="java.lang.String"/>
+          </ejb:method>
+          <ejb:method name="personaConRegimenRIF" signature="boolean personaConRegimenRIF(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica)" exclude="true">
+            <ejb:operation>personaConRegimenRIF</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:return name="return" type="boolean"/>
+          </ejb:method>
+          <ejb:method name="validaPatronExistentePorMunicipioFraccionModalidad" signature="void validaPatronExistentePorMunicipioFraccionModalidad(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado) throws mx.gob.imss.ctirss.delta.exception.gestion.patronal.PatronExistenteMunicipioFraccionModalidadException" exclude="true">
+            <ejb:operation>validaPatronExistentePorMunicipioFraccionModalidad</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+          </ejb:method>
+          <ejb:method name="validarClasificacionPorPatronYMunicipio" signature="void validarClasificacionPorPatronYMunicipio(java.lang.Long,java.lang.Long,java.lang.Long,java.lang.Long,java.lang.Long) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>validarClasificacionPorPatronYMunicipio</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="java.lang.Long"/>
+            <ejb:param name="arg2" type="java.lang.Long"/>
+            <ejb:param name="arg3" type="java.lang.Long"/>
+            <ejb:param name="arg4" type="java.lang.Long"/>
+          </ejb:method>
+          <ejb:method name="validarClasificacionPorPatronYMunicipio" signature="void validarClasificacionPorPatronYMunicipio(java.lang.String,java.lang.Long,java.lang.Long,java.lang.Long,java.lang.Long) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>validarClasificacionPorPatronYMunicipio</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:param name="arg1" type="java.lang.Long"/>
+            <ejb:param name="arg2" type="java.lang.Long"/>
+            <ejb:param name="arg3" type="java.lang.Long"/>
+            <ejb:param name="arg4" type="java.lang.Long"/>
+          </ejb:method>
+          <ejb:method name="validarLimiteMinRepresentanteLegal" signature="void validarLimiteMinRepresentanteLegal(mx.gob.imss.ctirss.delta.model.gestion.patronal.RepresentanteLegal,java.lang.String) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>validarLimiteMinRepresentanteLegal</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.RepresentanteLegal"/>
+            <ejb:param name="arg1" type="java.lang.String"/>
+          </ejb:method>
+          <ejb:method name="validarModalidad" signature="void validarModalidad(java.lang.Long,mx.gob.imss.ctirss.delta.model.gestion.patronal.Clasificacion) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>validarModalidad</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.Clasificacion"/>
+          </ejb:method>
+          <ejb:method name="validarNuevoRegistroPatronal" signature="void validarNuevoRegistroPatronal(java.lang.String) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>validarNuevoRegistroPatronal</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+          </ejb:method>
+          <ejb:method name="validarNumeroDeRegistroPatronal" signature="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado validarNumeroDeRegistroPatronal(java.lang.String) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>validarNumeroDeRegistroPatronal</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+          </ejb:method>
+          <ejb:method name="validarRPC_AP_MOD_MAC" signature="void validarRPC_AP_MOD_MAC(java.lang.String,java.lang.Long,java.lang.String) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>validarRPC_AP_MOD_MAC</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:param name="arg1" type="java.lang.Long"/>
+            <ejb:param name="arg2" type="java.lang.String"/>
+          </ejb:method>
+          <ejb:method name="validarRPC_AP_MOD_MAC" signature="void validarRPC_AP_MOD_MAC(java.lang.String,java.lang.Long) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>validarRPC_AP_MOD_MAC</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:param name="arg1" type="java.lang.Long"/>
+          </ejb:method>
+          <ejb:method name="validarRPCPorModificacionSRT" signature="boolean validarRPCPorModificacionSRT(java.lang.Long,java.lang.String,java.lang.Long,java.lang.String)" exclude="true">
+            <ejb:operation>validarRPCPorModificacionSRT</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="java.lang.String"/>
+            <ejb:param name="arg2" type="java.lang.Long"/>
+            <ejb:param name="arg3" type="java.lang.String"/>
+            <ejb:return name="return" type="boolean"/>
+          </ejb:method>
+          <ejb:method name="validarTipoAmbitoPorMunicipio" signature="void validarTipoAmbitoPorMunicipio(java.lang.String,java.lang.String,java.util.Date) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>validarTipoAmbitoPorMunicipio</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:param name="arg1" type="java.lang.String"/>
+            <ejb:param name="arg2" type="java.util.Date"/>
+          </ejb:method>
+        </ejb:ejbBizService>
+        <ejb:targetNamespace>http://imss.gob.mx/sistema/</ejb:targetNamespace>
+        <ejb:style>Document Wrapped</ejb:style>
+        <ejb:encoding>Literal</ejb:encoding>
+      </ejb:service>
+      <ejb:ejb30>true</ejb:ejb30>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+</xml-fragment>

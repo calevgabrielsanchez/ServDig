@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>ClientesWebservices</artifactId>
+    <groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+    <version>2.2-SNAPSHOT</version>
+  </parent>
+  <groupId>mx.gob.imss.ctirss.delta.ws.seguridad</groupId>
+  <artifactId>ClienteWebservice-Usuario</artifactId>
+  <version>2.3-SNAPSHOT</version>
+  <name>ClienteWebservice-Usuario</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+  
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+  </dependencies>
+  
+  <profiles>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>compile-stage</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.url.ws.admon.usuario}" value="http://saudigital-stage.imss.gob.mx/Sauimssdigital/AdmonUsuariosService" dir="target/classes">
+											<include name="**/*.wsdl" />
+										</replace>
+										
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>compile-prod</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.url.ws.admon.usuario}" value="http://http://saudigital.imss.gob.mx/Sauimssdigital/AdmonUsuariosService" dir="target/classes">
+											<include name="**/*.wsdl" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

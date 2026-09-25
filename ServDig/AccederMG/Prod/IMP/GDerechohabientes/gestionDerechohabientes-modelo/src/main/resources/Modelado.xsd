@@ -1,0 +1,1104 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2012 rel. 2 (http://www.altova.com) by Juan Manuel 
+	Márquez (Juan Manuel Márquez) -->
+<xs:schema xmlns="modelo" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	targetNamespace="modelo" elementFormDefault="qualified"
+	attributeFormDefault="unqualified" jaxb:extensionBindingPrefixes="xjc"
+	jaxb:version="2.1">
+	<xs:import />
+	
+	<xs:complexType name="Acta">
+		<xs:complexContent>
+			<xs:extension base="DocumentoProbatorio">
+				<xs:sequence>
+					<xs:element ref="Municipio" />
+					<xs:element ref="TipoActa" />
+				</xs:sequence>
+				<xs:attribute name="noActa" type="xs:integer" />
+				<xs:attribute name="noFoja" type="xs:integer" />
+				<xs:attribute name="noLibro" type="xs:integer" />
+				<xs:attribute name="fechaSuceso" type="xs:date" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:element name="Acuerdo" type="xs:string">
+	</xs:element>
+	
+	<xs:element name="AseguradoPension">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="BalancePrestacion" />
+				<xs:element ref="Asegurado" />
+				<xs:element ref="TipoRetiro" />
+			</xs:sequence>
+			<xs:attribute name="idAseguradoPension" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Asentamiento">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Localidad" />
+			</xs:sequence>
+			<xs:attribute name="idAsentamiento" type="xs:long" />
+			<xs:attribute name="descripcion" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Municipio">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="EntidadFederativa" />
+			</xs:sequence>
+			<xs:attribute name="idMuniciio" type="xs:long" />
+			<xs:attribute name="descripcion" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Modalidad">
+		<xs:complexType>
+			<xs:attribute name="idModalidad" type="xs:long" />
+			<xs:attribute name="descripcion" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PatronSujetoObligado">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="Fisica">
+					<xs:sequence>
+						<xs:element ref="Modalidad" />
+
+					</xs:sequence>
+					<xs:attribute name="idPatronSujetoObligado"
+						type="xs:long">
+					</xs:attribute>
+					<xs:attribute name="fechaAlta"
+						type="xs:date">
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Asegurado">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PatronSujetoObligado" />
+				<xs:element ref="AsignacionNSS" />
+			</xs:sequence>
+			<xs:attribute name="idAsegurado" />
+			<xs:attribute name="fechaBaja" />
+			<xs:attribute name="fechaAlta" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="AsignacionNSS">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="Fisica">
+					<xs:attribute name="nss" />
+					<xs:attribute name="idAsignacionNSS"
+						type="xs:long">
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Localidad">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Municipio" />
+			</xs:sequence>
+			<xs:attribute name="idLocalidad" type="xs:long" />
+			<xs:attribute name="decripcion" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BalancePrestacion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="TipoRetiro" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Caracter">
+		<xs:complexType>
+			<xs:attribute name="idCaracter" type="xs:long" />
+			<xs:attribute name="descripcion" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="CartillaMilitar">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="Identificacion">
+					<xs:attribute name="noMatricula" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="CategoriaPregunta">
+		<xs:complexType>
+			<xs:attribute name="idCategoriaPregunta" type="xs:long" />
+			<xs:attribute name="descripcion" type="xs:string" />
+			<xs:attribute name="noPreguntas" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="CedulaProfesional">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="Identificacion">
+					<xs:attribute name="cedula" />
+					<xs:attribute name="profesion" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="Otro">
+		<xs:complexContent>
+			<xs:extension base="DocumentoProbatorio">
+				<xs:sequence>
+					<xs:element ref="TipoOtro" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:element name="CertificadoNacimiento">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="Otro">
+					<xs:sequence>
+						<xs:element ref="Sexo" />
+					</xs:sequence>
+					<xs:attribute name="noFolio" type="xs:string" />
+					<xs:attribute name="fechaAlumbramiento" type="xs:date" />
+					<xs:attribute name="unidadMedica" type="xs:string" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="MedicoFamiliar">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="FuncionarioPublicoIMSS">
+					<xs:attribute name="noMatricula" type="xs:string" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="CertificadoSituacionCritica">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="ExtensionVigencia">
+					<xs:sequence>
+						<xs:element ref="MedicoFamiliar" />
+					</xs:sequence>
+					<xs:attribute name="enfermedadPadecida" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="ClavePresupuestal">
+		<xs:complexType>
+			<xs:attribute name="idClavePresupuestal" type="xs:long" />
+			<xs:attribute name="descripcion" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="CodigoPostal">
+		<xs:complexType>
+			<xs:attribute name="codigoPostal" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="CodigoPostalAsentamiento">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Asentamiento" />
+				<xs:element ref="CodigoPostal" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ColoniaLocacionUMF">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UnidadMedicaFamiliar" />
+			</xs:sequence>
+			<xs:attribute name="idColoniaLocacion" type="xs:long" />
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ComprobanteDomicilio">
+		<xs:sequence>
+			<xs:element ref="TipoComprobanteDomicilio" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ConstanciaEstudio">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="ExtensionVigencia">
+					<xs:attribute name="nombreEscuela" type="xs:string" />
+					<xs:attribute name="claveEscuela" type="xs:string" />
+					<xs:attribute name="noIncorporacion" type="xs:string" />
+					<xs:attribute name="gradoEscolar" type="xs:string" />
+					<xs:attribute name="fechaInicioPeriodo" type="xs:date" />
+					<xs:attribute name="fechaFinPeriodo" type="xs:date" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Consultorio">
+		<xs:complexType>
+			<xs:attribute name="idConsultorio" type="xs:long" />
+			<xs:attribute name="descripcion" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="CorreccionDatoDerechohabiente">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="Tramite">
+					<xs:sequence>
+						<xs:element ref="MedicoEnTurno" />
+						<xs:element ref="Sexo" />
+						<xs:element name="domicilio" type="Domicilio"/>
+						<xs:element ref="EstadoCivil" />
+					</xs:sequence>
+					<xs:attribute name="fechaNacimiento" type="xs:date" />
+					<xs:attribute name="nombre" type="xs:string"/>
+					<xs:attribute name="primerApellido" type="xs:string"/>
+					<xs:attribute name="segundoApellido" type="xs:string"/>
+					<xs:attribute name="curp" type="xs:string"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="CURP">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="Identificacion">
+					<xs:sequence>
+						<xs:element ref="EntidadFederativa" />
+					</xs:sequence>
+					<xs:attribute name="curp" type="xs:string" />
+					<xs:attribute name="folio" type="xs:string" />
+					<xs:attribute name="fechaInscripcion" type="xs:date" />
+					<xs:attribute name="anioRegistro" type="xs:integer" />
+					<xs:attribute name="noLibro" type="xs:string" />
+					<xs:attribute name="noActa" type="xs:string" />
+					<xs:attribute name="noTomo" type="xs:string" />
+					<xs:attribute name="crip" type="xs:string" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="DelegacionIMSS">
+		<xs:complexType>
+			<xs:attribute name="idDelegacionIMSS" type="xs:long" />
+			<xs:attribute name="descripcion" type="xs:string" />
+			<xs:attribute name="ciz" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Derechohabiente">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="Fisica">
+					<xs:sequence>
+						<xs:element ref="EstadoDerechohabiente" />
+						<xs:element ref="SubEstadoDerechohabiente" />
+						<xs:element ref="MedicoEnTurno" />
+					</xs:sequence>
+					<xs:attribute name="agregadoMedico" type="xs:string" />
+					<xs:attribute name="fechaInicioVigencia" type="xs:date" />
+					<xs:attribute name="fechaFinVigencia" type="xs:date" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="DiasFestivos">
+		<xs:complexType>
+			<xs:attribute name="fecha" type="xs:date" />
+			<xs:attribute name="descripcion" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="DictamenIntegranteIncapacitado">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="ExtensionVigencia">
+					<xs:attribute name="diagnosticoPadecimiento" type="xs:string" />
+					<xs:attribute name="fechaInicioEnfermedad" type="xs:date" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Divorcio">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="DocumentoProbatorio">
+					<xs:attribute name="noJuzgado" type="xs:string" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="DocumentacionTramite">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DocumentoProbatorio" />
+				<xs:element name="Tramite" type="Tramite" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="DomicilioParticular" type="Domicilio" />
+	
+	<xs:element name="EntidadFederativa">
+		<xs:complexType>
+			<xs:attribute name="idEntidadFederativa" type="xs:long" />
+			<xs:attribute name="descripcion" type="xs:string" />
+			<xs:attribute name="idRenapo" type="xs:long" />
+			<xs:attribute name="claveRenapo" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EstadoCivil">
+		<xs:complexType>
+			<xs:attribute name="idEstadoCivil" type="xs:long" />
+			<xs:attribute name="descripcion" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EstadoDerechohabiente">
+		<xs:complexType>
+			<xs:attribute name="idEstadoDerechohabiente" type="xs:long" />
+			<xs:attribute name="descripcion" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EstadoPersona">
+		<xs:complexType>
+			<xs:attribute name="idEstadoPersona" type="xs:long" />
+			<xs:attribute name="descripcion" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EstadoSolicitud">
+		<xs:complexType>
+			<xs:attribute name="idEstadoSolicitud" type="xs:long"/>
+			<xs:attribute name="descripcion" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EstadoTramite">
+		<xs:complexType>
+			<xs:attribute name="idEstadoTramitePersona"  type="xs:long" />
+			<xs:attribute name="descripcion" />
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="DocumentoProbatorio">
+		<xs:sequence>
+			<xs:element ref="TipoDocumentoProbatorio" />
+		</xs:sequence>
+		<xs:attribute name="digitalizacion" type="xs:byte" />
+		<xs:attribute name="idDocumentoProbatorio" type="xs:long" />
+		<xs:attribute name="fechaExpedicion" type="xs:date" />
+	</xs:complexType>
+	<xs:complexType name="FuncionarioPublicoIMSS">
+		<xs:complexContent>
+			<xs:extension base="Fisica">
+				<xs:sequence>
+					<xs:element ref="DelegacionIMSS" />
+				</xs:sequence>
+				<xs:attribute name="noEmpleado" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="Fisica">
+		<xs:complexContent>
+			<xs:extension base="Persona">
+				<xs:sequence>
+					<xs:element ref="EntidadFederativa" />
+					<xs:element ref="EstadoCivil" />
+					<xs:element ref="Sexo" />
+				</xs:sequence>
+				<xs:attribute name="nombre" type="xs:string" />
+				<xs:attribute name="primerApellido" type="xs:string" />
+				<xs:attribute name="segundoApellido" type="xs:string" />
+				<xs:attribute name="fechaNacimiento" type="xs:date" />
+				<xs:attribute name="correoElectronico" type="xs:string" />
+				<xs:attribute name="lada" type="xs:string" />
+				<xs:attribute name="telefonoFijo" type="xs:long" />
+				<xs:attribute name="telefonoMovil" type="xs:long" />
+				<xs:attribute name="fechaDefuncion" type="xs:date" />
+				<xs:attribute name="nombreUsuario" type="xs:string" />
+				<xs:attribute name="contrasena" type="xs:string" />
+				<xs:attribute name="curp" type="xs:string" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="Persona">
+		<xs:sequence>
+			<xs:element ref="TipoPersona" />
+			<xs:element ref="EstadoPersona" />
+			<xs:element ref="SubEstadoValidado" />
+			<xs:element ref="PersonaDomicilio" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="idPersona" type="xs:long" />
+	</xs:complexType>
+	
+	<xs:element name="PersonaDomicilio">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Persona" type="Persona"></xs:element>
+				<xs:element name="domicilio" type="Domicilio" />
+				<xs:element ref="TipoDomicilio"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="TipoDomicilio">
+		<xs:complexType>
+			<xs:attribute name="cveTipoDomicilio" type="xs:long"></xs:attribute>
+			<xs:attribute name="descripcion" type="xs:string"></xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="Domicilio">
+		<xs:sequence>
+			<xs:element ref="Asentamiento" />
+			<xs:element ref="TipoAsentamiento" />
+			<xs:element ref="Vialidad" />
+		</xs:sequence>
+		<xs:attribute name="numExterior1" type="xs:integer" />
+		<xs:attribute name="numExtAlf" type="xs:string" />
+		<xs:attribute name="numExterior2" type="xs:integer" />
+		<xs:attribute name="numInterior" type="xs:integer" />
+		<xs:attribute name="latitud" type="xs:integer" />
+		<xs:attribute name="longitud" type="xs:integer" />
+	</xs:complexType>
+	
+	<xs:element name="DocumentoProbatorio" type="DocumentoProbatorio" />
+	
+	<xs:complexType name="ExtensionVigencia">
+		<xs:complexContent>
+			<xs:extension base="DocumentoProbatorio">
+				<xs:sequence>
+					<xs:element ref="TipoExtensionVigencia" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:element name="MedicoEnTurno">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="UnidadMedicaFamiliar" />
+				<xs:element ref="Consultorio" />
+				<xs:element ref="Turno" />
+				<xs:element ref="MedicoFamiliar" />
+			</xs:sequence>
+			<xs:attribute name="especialidad" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="Identificacion">
+		<xs:complexContent>
+			<xs:extension base="DocumentoProbatorio">
+				<xs:sequence>
+					<xs:element ref="TipoIdentificacion" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:element name="TipoRetiro" />
+
+	<!-- Guillermo -->
+	<xs:element name="GrupoFamiliar">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="AseguradoPension" />
+				<xs:element ref="Derechohabiente" />
+				<xs:element ref="Parentesco" />
+				<xs:element name="domicilio" type="Domicilio" />
+				<xs:element ref="EstadoDerechohabiente" />
+				<xs:element ref="SubEstadoDerechohabiente" />
+			</xs:sequence>
+
+			<xs:attribute name="calidad" type="xs:integer"></xs:attribute>
+			<xs:attribute name="fechaInicioVigencia" type="xs:date"></xs:attribute>
+			<xs:attribute name="fechaFinVigencia" type="xs:date"></xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Ife">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="Identificacion">
+					<xs:sequence>
+
+					</xs:sequence>
+					<xs:attribute name="anioRegistro" type="xs:integer" />
+					<xs:attribute name="claveElector" type="xs:string" />
+					<xs:attribute name="estado" type="xs:string" />
+					<xs:attribute name="municipio" type="xs:string" />
+					<xs:attribute name="localidad" type="xs:string" />
+					<xs:attribute name="emision" type="xs:string" />
+					<xs:attribute name="codigoSeguridad" type="xs:string" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Matrimonio">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="Acta">
+					<xs:attribute name="noJuzgado" type="xs:string" use="required" />
+				</xs:extension>
+
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Moral">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="TipoEmpresa" />
+				<xs:element ref="Situacion" />
+			</xs:sequence>
+			<xs:attribute name="razonSocial" type="xs:string" />
+			<xs:attribute name="fechaCreacion" type="xs:long" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Nacimiento">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="Acta">
+					<xs:sequence>
+
+					</xs:sequence>
+					<xs:attribute name="tomo" type="xs:string" use="required" />
+					<xs:attribute name="anio" type="xs:integer" use="required" />
+					<xs:attribute name="crip" type="xs:string" use="required" />
+					<xs:attribute name="noJuzgado" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="NivelAtencion">
+		<xs:complexType>
+			<xs:attribute name="idNivelAtencion" type="xs:long"></xs:attribute>
+			<xs:attribute name="descripcion" type="xs:string"></xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Obstetrico">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="ExtensionVigencia">
+					<xs:sequence>
+						<xs:element ref="MedicoFamiliar" />
+					</xs:sequence>
+					<xs:attribute name="fechaParto" type="xs:date" />
+					<xs:attribute name="fechaCertificacionMedico" type="xs:date" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Pasaporte">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="Identificacion">
+					<xs:sequence>
+						<xs:element name="noPasaporte" type="xs:string" />
+						<xs:element name="fechaCaducidad" type="xs:date" />
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PatronGeneral">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PatronSujetoObligado" />
+				<xs:element ref="Municipio" />
+				<xs:element name="Fisica" type="Fisica"/>
+			</xs:sequence>
+			<xs:attribute name="numeroRegistroPatronal" type="xs:string" />
+
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Parentesco">
+		<xs:complexType>
+			<xs:attribute name="idParentesco" type="xs:integer" use="required" />
+			<xs:attribute name="descripcion" type="xs:string" />
+			<xs:attribute name="calidadMaxima" type="xs:integer"
+				use="required" />
+			<xs:attribute name="calidadMinima" type="xs:integer"
+				use="required" />
+			<xs:attribute name="descripcionFemenina" type="xs:string" />
+			<xs:attribute name="descripcionMasculina" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PersonaFisicaRol">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Fisica" type="Fisica"/>
+				<xs:element ref="Rol" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Pregunta">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="TipoPregunta" />
+				<xs:element ref="TipoPregunta" />
+				<xs:element ref="TipoCuestionario" />
+				<xs:element ref="CategoriaPregunta" />
+			</xs:sequence>
+			<xs:attribute name="idPregunta" type="xs:long" use="required" />
+			<xs:attribute name="descripcion" type="xs:string" use="required" />
+			<xs:attribute name="obligatorio" type="xs:boolean" use="required" />
+			<xs:attribute name="preguntaPrimeraPersona" type="xs:string"></xs:attribute>
+			<xs:attribute name="preguntaTerceraPersona" type="xs:string"></xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Prorroga">
+		<xs:sequence>
+			<xs:element ref="Caracter" />
+		</xs:sequence>
+		<xs:attribute name="fechaInicioProrroga" type="xs:date"></xs:attribute>
+		<xs:attribute name="fechaFinProrroga" type="xs:date"></xs:attribute>
+	</xs:complexType>
+	
+	<xs:element name="RazonCancelacion">
+		<xs:complexType>
+			<xs:attribute name="idRazonCancelacion" type="xs:long"
+				use="required" />
+			<xs:attribute name="descripcion" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="RazonRegistro">
+        <xs:complexType>
+            <xs:attribute name="idRazonRegistro" type="xs:long" use="required"/>
+            <xs:attribute name="descripcion" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="RazonResultado">
+        <xs:complexType>
+            <xs:attribute name="idRazonRechazo" type="xs:long" use="required"/>
+            <xs:attribute name="descripcion" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Reconocimiento">
+            <xs:complexType>
+            <xs:complexContent>
+            <xs:extension base="Acta">
+            	<xs:attribute name="noJuzgado" type="xs:string" use="required"/>
+            </xs:extension>
+            </xs:complexContent>
+             </xs:complexType>
+    </xs:element>
+	
+	<xs:element name="RegistroDerechohabiente">
+    	<xs:complexType>
+    	<xs:sequence>
+    		<xs:element ref="RazonRegistro"></xs:element>
+    		<xs:element name ="Tramite" type="Tramite"></xs:element>
+    		<xs:element name="Fisica" type="Fisica"></xs:element>
+    		<xs:element name="personaTramite" type="Persona"></xs:element>
+    		<xs:element ref="Parentesco"></xs:element>
+    	</xs:sequence>
+    		<xs:attribute name="evaluacionCuestionario" type="xs:integer"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="RegistroPatronal">
+    	<xs:complexType>
+    		<xs:attribute name="idPatron" type="xs:long"></xs:attribute>
+    		<xs:attribute name="delegacionMunicipio" type="xs:long"></xs:attribute>
+    		<xs:attribute name="noRegPatronal" type="xs:string"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Respuesta">
+    	<xs:complexType>
+    	<xs:sequence>
+    		<xs:element ref="Pregunta"></xs:element>
+    	</xs:sequence>
+    		<xs:attribute name="idRespuesta" type="xs:long"></xs:attribute>
+    		<xs:attribute name="descripcion" type="xs:string"></xs:attribute>
+    		<xs:attribute name="valor" type="xs:integer"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="RespuestaCuestionario">
+            <xs:complexType>
+            <xs:sequence>
+            	<xs:element ref="Solicitud"></xs:element>
+            	<xs:element ref="Pregunta"></xs:element>
+            	<xs:element name="persona" type="Fisica"></xs:element>
+            </xs:sequence>
+                <xs:attribute name="valorRespuesta" type="xs:integer"/>
+            </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="RestriccionServicio">
+    	<xs:complexType>
+    		<xs:attribute name="idRestriccionServicio" type="xs:long"></xs:attribute>
+    		<xs:attribute name="descripcion" type="xs:string"></xs:attribute>
+    		<xs:attribute name="ponderacionNegativa" type="xs:integer"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Resultante">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element ref="UnidadMedicaFamiliar"/>
+    			<xs:element ref="TipoResultante"/>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Rol">
+    	<xs:complexType>
+    		<xs:attribute name="idRol" type="xs:long"></xs:attribute>
+    		<xs:attribute name="descripcion" type="xs:string"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Servicio">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element ref="RestriccionServicio"/>
+    		</xs:sequence>
+    		<xs:attribute name="idServicio" type="xs:long"></xs:attribute>
+    		<xs:attribute name="descripcion" type="xs:string"></xs:attribute>
+    		<xs:attribute name="ponderacion" type="xs:integer"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="ServiciosModalidad">
+    	<xs:complexType>
+    	<xs:sequence>
+    		<xs:element ref="Modalidad"/>
+    		<xs:element ref="Servicio"/>
+    	</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Sexo">
+            <xs:complexType>
+                <xs:attribute name="idSexo" type="xs:long" use="required"/>
+                <xs:attribute name="descripcion" type="xs:string" use="required"/>
+            </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="SiNo">
+    	<xs:complexType>
+    		<xs:attribute name="valorSi" type="xs:long"></xs:attribute>
+    		<xs:attribute name="valorNo" type="xs:long"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Situacion">
+        <xs:complexType>
+             <xs:attribute name="idSituacion" type="xs:long" use="required"/>
+             <xs:attribute name="descripcion" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Solicitud">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="EstadoSolicitud"></xs:element>
+				<xs:element ref="RazonCancelacion"></xs:element>
+				<xs:element ref="TipoSolicitud"></xs:element>
+				<xs:element ref="UmfTurno"></xs:element>
+				<xs:element name="solicitante" type="Fisica"></xs:element>
+				<xs:element name="tramite" type="Tramite" minOccurs="0" maxOccurs="unbounded"></xs:element>
+			</xs:sequence>
+			<xs:attribute name="noFolioSolicitud" type="xs:long"
+				use="required" />
+			<xs:attribute name="fechaSolicitud" type="xs:string"
+				use="required" />
+			<xs:attribute name="observacion" type="xs:string" />
+			<xs:attribute name="fechaCita" type="xs:date" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="SubdelegacionIMSS">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="DelegacionIMSS"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="idSubdelegacionIMSS" type="xs:long"
+			use="required" />
+		<xs:attribute name="descripcion" type="xs:string" use="required" />
+	</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="SubEstadoDerechohabiente">
+    	<xs:complexType>
+    		<xs:attribute name="idSubEstadoDerechohabiente" type="xs:long"></xs:attribute>
+    		<xs:attribute name="descripcion" type="xs:string"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+	
+	<xs:element name="SubEstadoValidado">
+		<xs:complexType>
+			<xs:attribute name="idSubestadoValidado" type="xs:long"
+				use="required" />
+			<xs:attribute name="descripcion" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="TipoActa">
+    	<xs:complexType>
+    		<xs:attribute name="idTipoActa" type="xs:long"></xs:attribute>
+    		<xs:attribute name="descripcion" type="xs:string"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoAsentamiento">
+        <xs:complexType>
+            <xs:attribute name="idTipoAsentamiento" type="xs:long" use="required"/>
+            <xs:attribute name="descripcion" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoComprobanteDomicilio">
+    	<xs:complexType>
+    		<xs:attribute name="idTipoComprobanteDomicilio" type="xs:long"></xs:attribute>
+    		<xs:attribute name="descripcion" type="xs:string"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoCuestionario">
+        <xs:complexType>
+            <xs:attribute name="idTipoCuestionario" type="xs:long" use="required"/>
+            <xs:attribute name="descripcion" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoDocumentoProbatorio">
+            <xs:complexType>
+                <xs:attribute name="idTipoDocumentoProbatorio" type="xs:long" use="required"/>
+                <xs:attribute name="descripcion" type="xs:string" />
+             </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoEmpresa">
+            <xs:complexType>
+                <xs:attribute name="idTipoEmpresa" type="xs:long" use="required"/>
+                <xs:attribute name="descripcion" type="xs:string" use="required"/>
+            </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoExtensionVigencia">
+    	<xs:complexType>
+    		<xs:attribute name="idTipoExtensionVigencia" type="xs:long"></xs:attribute>
+    		<xs:attribute name="descripcion" type="xs:string"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoIdentificacion">
+    	<xs:complexType>
+    		<xs:attribute name="idTipoIdentificacion" type="xs:long"></xs:attribute>
+    		<xs:attribute name="descripcion" type="xs:string"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoMovimientoPatronal">
+            <xs:complexType>
+                <xs:attribute name="idTipoMovimientoPatronal" type="xs:integer" use="required"/>
+                <xs:attribute name="descripcion" type="xs:string" use="required"/>
+            </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoOtro">
+    	<xs:complexType>
+    		<xs:attribute name="idTipoOtro" type="xs:long"></xs:attribute>
+    		<xs:attribute name="descripcion" type="xs:string"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoPersona">
+	        <xs:complexType>
+	            <xs:attribute name="idTipoPersona" type="xs:long" use="required"/>
+	            <xs:attribute name="descripcion" type="xs:string" use="required"/>
+	        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoPregunta">
+        <xs:complexType>
+            <xs:attribute name="idTipoPregunta" type="xs:long" use="required"/>
+            <xs:attribute name="descripcion" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoResultante">
+    	<xs:complexType>
+    		<xs:attribute name="idTipoResultante" type="xs:long"></xs:attribute>
+    		<xs:attribute name="descripcion" type="xs:string"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoSolicitud">
+        <xs:complexType>
+        	<xs:attribute name="idTipoSolicitud" type="xs:long"
+        		use="required" />
+        	<xs:attribute name="descripcion" type="xs:string"
+        		use="required" />
+        	<xs:attribute name="siglas" type="xs:string"></xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoTramite">
+            <xs:complexType>
+                <xs:attribute name="idTipoTramite" type="xs:long" use="required"/>
+                <xs:attribute name="descripcion" type="xs:string" use="required"/>
+                <xs:attribute name="guiaRapida" type="xs:string"/>
+                <xs:attribute name="guiaDetallada" type="xs:string"/>
+            </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoUMF">
+            <xs:complexType>
+                <xs:attribute name="idTipoUMF" type="xs:integer" use="required"/>
+                <xs:attribute name="descripcion" type="xs:string" use="required"/>
+            </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="TipoVialidad">
+        <xs:complexType>
+            <xs:attribute name="idTipoVialidad" type="xs:long" use="required"/>
+            <xs:attribute name="descripcion" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    
+        <xs:complexType name="Tramite">
+        <xs:sequence>
+        	<xs:element ref="Solicitud"></xs:element>
+        	<xs:element name="persona" type="Fisica"></xs:element>
+        	<xs:element ref="RazonResultado"></xs:element>
+        	<xs:element ref="EstadoTramite"></xs:element>
+        	<xs:element ref="TipoTramite"></xs:element>
+        </xs:sequence>
+        	<xs:attribute name="resultado" type="xs:boolean"
+        		use="required" />
+        	<xs:attribute name="observacion" type="xs:boolean"
+        		use="required" />
+        	<xs:attribute name="fechaTramite" type="xs:date"
+        		use="required" />
+        	<xs:attribute name="detalleTramiteXml" type="xs:string"></xs:attribute>
+        </xs:complexType>
+    
+    <xs:element name="Turno">
+            <xs:complexType>
+                <xs:attribute name="idTurno" type="xs:integer" use="required"/>
+                <xs:attribute name="descripcion" type="xs:string" use="required"/>
+                <xs:attribute name="horaInicioTurno" type="xs:date" use="required"/>
+                <xs:attribute name="horaFinTurno" type="xs:date" use="required"/>
+            </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="UmfTurno">
+    	<xs:complexType>
+    	<xs:sequence>
+    		<xs:element ref="Turno"></xs:element>
+    		<xs:element ref="UnidadMedicaFamiliar"></xs:element>
+    	</xs:sequence>
+    		<xs:attribute name="noCita" type="xs:integer"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="UnidadMedicaFamiliar">
+	        <xs:complexType>
+	        <xs:sequence>
+	        <xs:element ref="SubdelegacionIMSS"></xs:element>
+	        <xs:element ref="TipoUMF"></xs:element>
+	        <xs:element ref="ClavePresupuestal"></xs:element>
+	        <xs:element ref="NivelAtencion"></xs:element>
+	        </xs:sequence>
+	            <xs:attribute name="idUMF" type="xs:long" use="required"/>
+	            <xs:attribute name="descripcion" type="xs:string" use="required"/>
+	            <xs:attribute name="generacionCita" type="xs:boolean" use="required"/>
+	            <xs:attribute name="noConsultorio" type="xs:integer" use="required"/>
+	            <xs:attribute name="nombreCorto" type="xs:string" use="required"/>
+	            <xs:attribute name="noEconomico" type="xs:integer" use="required"/>
+	        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Vialidad">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element ref="TipoVialidad"></xs:element>
+    		</xs:sequence>
+    		<xs:attribute name="idVialidad" type="xs:long" use="required"></xs:attribute>
+    		<xs:attribute name="nombreVialidad" type="xs:string" use="required"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="VigenciaTemporal">
+    	<xs:complexType>
+    	<xs:complexContent>
+    	<xs:extension base="ExtensionVigencia">
+    		<xs:attribute name="noFolio" type="xs:string"></xs:attribute>
+    	</xs:extension>
+    	</xs:complexContent>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Usuario">
+            <xs:complexType>
+            	<xs:sequence>
+
+            		<xs:element ref="PerfilUsuario"></xs:element>
+            	</xs:sequence>
+            	<xs:attribute name="idUsuario" type="xs:long"/>
+            	<xs:attribute name="nombreUsuario" type="xs:string"/>
+            	<xs:attribute name="password" type="xs:string"/>            	
+            </xs:complexType>
+    </xs:element>
+
+    <xs:element name="UsuarioFuncionario">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element ref="Usuario"></xs:element>
+    			<xs:element ref="DelegacionIMSS"></xs:element>
+    			<xs:element ref="SubdelegacionIMSS"></xs:element>
+    		</xs:sequence>
+    		<xs:attribute name="idUsuarioFuncionario" type="xs:long"></xs:attribute>
+    		<xs:attribute name="descCargo" type="xs:string"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+    
+    <xs:element name="UsuarioOrdinario">
+    	<xs:complexType>
+    		<xs:sequence>
+    			<xs:element ref="Usuario"></xs:element>
+    			<xs:element ref="PatronSujetoObligado"></xs:element>
+    		</xs:sequence>
+    		<xs:attribute name="idUsuarioOrdinario" type="xs:long"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+
+    <xs:element name="PerfilUsuario">
+    	<xs:complexType>
+    		<xs:attribute name="idPerfilUsuario" type="xs:long"></xs:attribute>
+    		<xs:attribute name="descripcion" type="xs:string"></xs:attribute>
+    	</xs:complexType>
+    </xs:element>
+</xs:schema>

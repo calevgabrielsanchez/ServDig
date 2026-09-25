@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+
+<div>
+	<div class="contenedor">
+		<div class="wp-caption-text">
+			<h:form id="formSol">
+				<fieldset style="margin: 0; padding: 10px; font-size: 10px;">
+					<h:panelGrid columns="2" id="detalle" width="100%">
+						<h:panelGrid columns="2" width="450" style="text-align:left;">
+							<h:panelGrid columns="1" width="150" style="text-align:left;">
+								<h:outputLabel id="curpLabel" for="curptxt" value="CURP:" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="300" style="text-align:left;">
+								<h:outputText id="curptxt"
+									value="#{modificarSolicitudMB.solicitud.desUsrCurp}" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="150" style="text-align:left;">
+								<h:outputLabel id="matriLabel" for="matritxt" value="Matrícula:" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="300" style="text-align:left;">
+								<h:outputText id="matritxt"
+									value="#{modificarSolicitudMB.solicitud.cveMatricula}" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="150" style="text-align:left;">
+								<h:outputLabel id="nombreLabel" for="nombretxt" value="Nombre:" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="300" style="text-align:left;">
+								<h:outputText id="nombretxt"
+									value="#{modificarSolicitudMB.solicitud.nombreCompleto}" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="150" style="text-align:left;">
+								<h:outputLabel id="deptoLabel" for="deptotxt"
+									value="Departamento:" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="300" style="text-align:left;">
+								<h:outputText id="deptotxt"
+									value="#{modificarSolicitudMB.solicitud.dptoDTO.desDepartamento}" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="150" style="text-align:left;">
+								<h:outputLabel id="ptoLabel" for="ptotxt" value="Puesto:" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="300" style="text-align:left;">
+								<h:outputText id="ptotxt"
+									value="#{modificarSolicitudMB.solicitud.puestoDTO.nombrePuesto}" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="150" style="text-align:left;">
+								<h:outputLabel id="delLabel" for="deltxt" value="Delegación:" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="300" style="text-align:left;">
+								<h:outputText id="deltxt"
+									value="#{modificarSolicitudMB.solicitud.delDTO.nombreDelegacion}" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="150" style="text-align:left;">
+								<h:outputLabel id="fecLabel" for="fectxt"
+									value="Fecha de solicitud:" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="300" style="text-align:left;">
+								<h:outputText id="fectxt"
+									value="#{modificarSolicitudMB.solicitud.fecRegistroAlta}">
+									<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+								</h:outputText>
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="150" style="text-align:left;">
+								<h:outputLabel id="telLabel" for="teltxt" value="Teléfono:" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="300" style="text-align:left;">
+								<h:inputText id="teltxt"
+									value="#{modificarSolicitudMB.telefono}"
+									valueChangeListener="#{modificarSolicitudMB.lisTel}"
+									partialSubmit="true" immediate="true" />
+							</h:panelGrid>
+							<h:panelGrid columns="1" width="150" style="text-align:left;">
+								<h:outputLabel id="correoLabel" for="correotxt" value="Correo:" />
+							</h:panelGrid>
+							<h:panelGrid columns="2" width="300" style="text-align:left;">
+								<h:inputText id="correotxt"
+									value="#{modificarSolicitudMB.correo}"
+									valueChangeListener="#{modificarSolicitudMB.lisMail}"
+									partialSubmit="true" immediate="true" size="50" />
+								<h:outputLabel id="correoLabel2" value="@imss.gob.mx" />
+							</h:panelGrid>
+						</h:panelGrid>
+					</h:panelGrid>
+
+					<ace:tabSet id="idTabs"	tabChangeListener="#{solicitudMB.cambiaTab}" clientSide="true">
+						<ace:tabPane id="solicitud" label="Grupos asociados a la cuenta">
+
+							<ace:dataTable id="perfilesRow"
+								value="#{modificarSolicitudMB.solicitud.perfilesDTO}"
+								var="perfil" rows="5" paginator="true" paginatorPosition="top">
+
+								<ace:column id="descAreaP" headerText="Área">
+									<h:outputLabel id="txdescAreaP#{perfil.cveSsoperfilessol}"
+										value="#{perfil.areaNormDTO.desAreanorma}" />
+								</ace:column>
+								<ace:column id="descDeptoP" headerText="Departamento">
+									<h:outputLabel id="txdescDeptoP#{perfil.cveSsoperfilessol}"
+										value="#{perfil.deptoDTO.desDepartamento}" />
+								</ace:column>
+								<ace:column id="descPerfil" headerText="Grupo">
+									<h:outputLabel id="txdescPerfil#{perfil.cveSsoperfilessol}"
+										value="#{perfil.puestoDTO.nombrePuesto}" />
+								</ace:column>
+
+								<ace:column id="opPerfil" headerText="Operación">
+									<h:commandButton id="btnBorrar" value="Borrar"
+										disabled="#{modificarSolicitudMB.disabledBotonBorrar or perfil.desDefault eq 'Si'}"
+										onclick="bloquea();" styleClass="btn btn-primary btn-sm">
+										<f:ajax listener="#{modificarSolicitudMB.borraPefil}"
+											render="@all" execute="@all" event="click" immediate="true" />
+										<f:attribute name="attPerfil" value="#{perfil}" />
+									</h:commandButton>
+
+								</ace:column>
+							</ace:dataTable>
+
+							<h:panelGrid width="100%" columns="4" id="perfilesAdd">
+								<h:panelGrid width="100%" columns="1" id="perfiles1">
+									<h:outputLabel value="Área Normativa:" id="lbAreaNormPerfil" />
+									<h:selectOneMenu id="slAreaNormRegSolicitudCuentaP"
+										required="false"
+										requiredMessage="SELECCIONE EL AREA NORMATIVA"
+										disabled="#{consultaGenerica.flag}"
+										value="#{consultaGenerica.claveAreaNormativa}"
+										style="width:200px" styleClass="form-control">
+										<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+										<f:selectItems value="${consultaGenerica.lstAreaNormativa}" />
+									</h:selectOneMenu>
+								</h:panelGrid>
+								<h:panelGrid width="100%" columns="1" id="perfiles2">
+									<h:outputLabel value="Departamento:" id="lbDepPerfil" />
+									<h:selectOneMenu id="slDepRegSolicitudCuenta2" required="false"
+										requiredMessage="SELECCIONE EL DEPARTAMENTO"
+										value="#{consultaGenerica.claveDepartamentoRolAdd}"
+										disabled="#{consultaGenerica.flag}"
+										valueChangeListener="#{consultaGenerica.listenerPuestoAdd}"
+										style="width:200px" styleClass="form-control">
+										<f:selectItems value="${consultaGenerica.lstDepartamentoRol}" />
+										<f:ajax event="change" render="slPuestoRegSolicitudCuentaC1" />
+									</h:selectOneMenu>
+								</h:panelGrid>
+								<h:panelGrid width="100%" columns="1" id="perfiles3">
+									<h:outputLabel value="Grupo:" id="lbPuestoPerfil" />
+
+									<h:selectOneMenu id="slPuestoRegSolicitudCuentaC1"
+										required="true" requiredMessage="SELECCIONE EL GRUPO"
+										value="#{modificarSolicitudMB.clavePuesto}"
+										valueChangeListener="#{solicitudMB.listenerPuesto}"
+										style="width:200px" styleClass="form-control">
+										<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+										<f:selectItems value="${consultaGenerica.lstPuestoAdd}" />
+										<f:ajax event="change" render="slPuestoRegSolicitudCuentaC1" />
+									</h:selectOneMenu>
+
+								</h:panelGrid>
+								<h:commandButton value="+" id="btnAgregarPerfil"
+									disabled="#{modificarSolicitudMB.disabledBotonAdd}"
+									onclick="bloquea();" styleClass="btn btn-primary btn-sm">
+									<f:ajax listener="#{modificarSolicitudMB.agregaPerfil}"
+										render="@all" execute="@all" event="click" immediate="true" />
+								</h:commandButton>
+							</h:panelGrid>
+
+						</ace:tabPane>
+						<ace:tabPane id="modulos" label="Módulos asociados a la cuenta">
+
+							<ace:dataTable id="modulosRow"
+								value="#{modificarSolicitudMB.solicitud.modulosDTO}"
+								var="modulo" rows="5" paginator="true" paginatorPosition="top">
+
+								<ace:column id="descAreaM" headerText="Área">
+									<h:outputLabel id="txdescAreaM#{modulo.cveIdModulo}"
+										value="#{modulo.areaNormDTO.desAreanorma}" />
+								</ace:column>
+								<ace:column id="descDeptoM" headerText="Departamento">
+									<h:outputLabel id="txdescDeptoM#{modulo.cveIdModulo}"
+										value="#{modulo.dptoDTO.desDepartamento}" />
+								</ace:column>
+								<ace:column id="descModulo" headerText="Módulo">
+									<h:outputLabel id="txdescModulo#{modulo.cveIdModulo}"
+										value="#{modulo.desModulo}" />
+								</ace:column>
+								<ace:column id="opModulo" headerText="Operación">
+									<h:commandButton id="btnBorrarModulo" value="Borrar"
+										disabled="#{modificarSolicitudMB.disabledBotonBorrar}"
+										onclick="bloquea();" styleClass="btn btn-primary btn-sm">
+										<f:ajax listener="#{modificarSolicitudMB.borraModulo}"
+											render="@all" execute="@all" event="click" immediate="true" />
+										<f:attribute name="attModulo" value="#{modulo}" />
+									</h:commandButton>
+								</ace:column>
+							</ace:dataTable>
+
+
+							<h:panelGrid width="100%" columns="4" id="modulosAdd">
+								<h:panelGrid width="100%" columns="1" id="modulos1">
+									<h:outputLabel value="Área Normativa:" id="lbAreaNormModulo" />
+									<h:selectOneMenu id="slAreaNormRegSolicitudCuentaM"
+										required="false"
+										requiredMessage="SELECCIONE EL AREA NORMATIVA"
+										disabled="#{consultaGenerica.flag}"
+										value="#{consultaGenerica.claveAreaNormativa}"
+										style="width:200px" styleClass="form-control">
+										<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+										<f:selectItems value="${consultaGenerica.lstAreaNormativa}" />
+									</h:selectOneMenu>
+								</h:panelGrid>
+								<h:panelGrid width="100%" columns="1" id="modulos2">
+									<h:outputLabel value="Departamento:" id="lbDepModulo" />
+									<h:selectOneMenu id="slDepRegSolicitudCuenta3" required="false"
+										requiredMessage="SELECCIONE EL DEPARTAMENTO"
+										value="#{consultaGenerica.claveDepartamentoModAdd}"
+										disabled="#{consultaGenerica.flag}"
+										valueChangeListener="#{consultaGenerica.listenerModuloAdd}"
+										style="width:200px" styleClass="form-control">
+										<f:selectItems value="${consultaGenerica.lstDepartamentoMod}" />
+										<f:ajax event="change" render="slModRegSolicitudCuentaC2" />
+									</h:selectOneMenu>
+								</h:panelGrid>
+								<h:panelGrid width="100%" columns="1" id="modulos3">
+									<h:outputLabel value="Módulo:" id="lbModulo" />
+									<h:selectOneMenu id="slModRegSolicitudCuentaC2" required="true"
+										requiredMessage="SELECCIONE EL MODULO"
+										value="#{modificarSolicitudMB.claveModulo}"
+										valueChangeListener="#{modificarSolicitudMB.listenerModulo}"
+										style="width:200px" styleClass="form-control">
+										<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+										<f:selectItems value="${consultaGenerica.lstModuloAdd}" />
+										<f:ajax event="change" render="slModRegSolicitudCuentaC2" />
+									</h:selectOneMenu>
+								</h:panelGrid>
+
+								<h:commandButton value="+" id="btnAgregarModulo"
+									disabled="#{modificarSolicitudMB.disabledBotonAdd}"
+									onclick="bloquea();" styleClass="btn btn-primary btn-sm">
+									<f:ajax listener="#{modificarSolicitudMB.agregaModulo}"
+										render="@all" execute="@all" event="click" immediate="true" />
+								</h:commandButton>
+							</h:panelGrid>
+						</ace:tabPane>
+
+					</ace:tabSet>
+
+					<h:panelGrid width="100%" columns="2" id="botonesGrales"
+						style="text-align:center">
+						<h:commandButton value="Aplicar cambios a cuenta de usuario"
+							disabled="#{modificarSolicitudMB.disabledBotonAutorizar}"
+							onclick="bloquea();" styleClass="btn btn-primary btn-sm">
+							<f:ajax listener="#{modificarSolicitudMB.aplicaCambiosCuenta}"
+								render="@all teltxt" execute="@all teltxt" event="click"
+								immediate="true" />
+						</h:commandButton>
+						<h:commandButton value="Cancelar cambios cuenta de usuario"
+							disabled="#{modificarSolicitudMB.disabledBotonRechazar}"
+							onclick="detallesMod.hide();" styleClass="btn btn-primary btn-sm">
+							<f:ajax listener="#{modificarSolicitudMB.cancelaCambiosCuenta}"
+								render="@all" execute="@all" event="click" immediate="true" />
+						</h:commandButton>
+					</h:panelGrid>
+				</fieldset>
+			</h:form>
+		</div>
+	</div>
+</div>
+</html>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>delta</artifactId>
+		<groupId>mx.gob.imss.ctirss.delta</groupId>
+		<version>2.6-SNAPSHOT</version>
+	</parent>
+
+	<groupId>mx.gob.imss.ctirss.infraestructura</groupId>
+	<artifactId>dashboardServicios</artifactId>
+	<packaging>pom</packaging>
+	<version>1.3-SNAPSHOT</version>
+	<name>Modulo Base del Planificador Delta</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<delta.framework.version>2.6-SNAPSHOT</delta.framework.version>
+		<delta.dashboard>1.3-SNAPSHOT</delta.dashboard>
+		<weblogic.autodeploy>autodeploy</weblogic.autodeploy>
+
+		<skipTests>true</skipTests>
+		<dep>none</dep>
+		<project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+		<junit.version>4.10</junit.version>
+		<org.slf4j.version>1.7.5</org.slf4j.version>
+		<org.log4j.version>1.2.17</org.log4j.version>
+		<org.springframework.version>3.2.2.RELEASE</org.springframework.version>
+		<org.springframework.webflow>2.3.2.RELEASE</org.springframework.webflow>
+		<tiles.framework.version>3.0.1</tiles.framework.version>
+		<org.hibernate.version>3.6.9.Final</org.hibernate.version>
+	</properties>
+
+	<build>
+		<!-- To define the plugin version in your parent POM -->
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<skipTests>true</skipTests>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<!-- for use JVM 1.6 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<!-- Relase Plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<tagBase>http://11.254.16.21/svn/base_arquitectura_delta/codigo/tags/</tagBase>
+					<tag>${project.artifactId}-${project.version}</tag>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<!--Extension necesaria para el deploy (instalacion) de los componentes 
+			en el repositorio central -->
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+			</extension>
+		</extensions>
+
+	</build>
+
+	<repositories>
+		<repository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<layout>default</layout>
+			<url>http://172.16.5.134/mvn2_repo/</url>
+			<snapshots>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<url>http://172.16.5.134/mvn2_repo/</url>
+			<layout>default</layout>
+			<snapshots>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<distributionManagement>
+		<!-- use the following if you're not using a snapshot version. -->
+		<repository>
+			<id>ctirss-archiva</id>
+			<name>CTIRSS Repository Name</name>
+			<url>dav:http://172.16.5.134:8080/archiva/repository/repo</url>
+		</repository>
+		<snapshotRepository>
+			<id>ctirss-archiva</id>
+			<name>CTIRSS Repository Name</name>
+			<url>dav:http://172.16.5.134:8080/archiva/repository/repo</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<scm>
+		<connection>scm:svn:http://11.254.16.21/svn/base_arquitectura_delta/codigo/trunk/gestion_domicilios/</connection>
+		<developerConnection>scm:svn:http://11.254.16.21/svn/base_arquitectura_delta/codigo/trunk/gestion_domicilios/</developerConnection>
+		<url>http://11.254.16.21/svn/base_arquitectura_delta/codigo/trunk/gestion_domicilios/</url>
+	</scm>
+
+	<modules>
+		<!--
+		
+		<module>DashboardServicios-framework</module>
+		-->
+		<module>dashboardServicios-framework</module>
+		<module>dashboardServicios-model-business-pojo</module>
+		<module>dashboardServicios-service-business-interface</module>
+		<module>dashboardServicios-service-business-ejb</module>
+		<module>dashboardServicios-webapp</module>
+		<module>dashboardServicios-interceptor</module>
+		<!--
+		<module>DashboardServicios-webservice</module>
+		-->
+		<module>dashboardServicios-packing</module>
+	</modules>
+</project>

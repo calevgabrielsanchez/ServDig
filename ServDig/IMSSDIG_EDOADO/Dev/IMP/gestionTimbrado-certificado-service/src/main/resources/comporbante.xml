@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante LugarExpedicion="MEXICO" metodoDePago="Desconocido" tipoDeComprobante="ingreso" total="10" subTotal="10" 
+
+    certificado="MIIFaDCCA1CgAwIBAgIUMjAwMDEwMDAwMDAzMDAwMDI3NzEwDQYJKoZIhvcNAQEFBQAwggFmMSAwHgYDVQQDDBdBLkMuIDIgZGUgcHJ1ZWJhcyg0MDk2KTEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMSkwJwYJKoZIhvcNAQkBFhphc2lzbmV0QHBydWViYXMuc2F0LmdvYi5teDEmMCQGA1UECQwdQXYuIEhpZGFsZ28gNzcsIENvbC4gR3VlcnJlcm8xDjAMBgNVBBEMBTA2MzAwMQswCQYDVQQGEwJNWDEZMBcGA1UECAwQRGlzdHJpdG8gRmVkZXJhbDESMBAGA1UEBwwJQ295b2Fjw6FuMRUwEwYDVQQtEwxTQVQ5NzA3MDFOTjMxITAfBgkqhkiG9w0BCQIMElJlc3BvbnNhYmxlOiBBQ0RNQTAeFw0xNDAzMTkwMDEwMDdaFw0xODAzMTkwMDEwMDdaMIHYMSgwJgYDVQQDEx9BR1JJQ09MQSBDQVNBUyBERSBBTFRPIFNBIERFIENWMSgwJgYDVQQpEx9BR1JJQ09MQSBDQVNBUyBERSBBTFRPIFNBIERFIENWMSgwJgYDVQQKEx9BR1JJQ09MQSBDQVNBUyBERSBBTFRPIFNBIERFIENWMSUwIwYDVQQtExxBQ0EwMTA1MzExMzMgLyBGVUFCNzcwMTE3QlhBMR4wHAYDVQQFExUgLyBGVUFCNzcwMTE3TURGUk5OMDkxETAPBgNVBAsTCFBydWViYSAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCThAECVSZXa8fHLSfY84ouHQvffp89yIEN/mXWe7stNOpcGJf7I4t2e/f+TPs06B0R8kPu8lkwihnmL5u6bd5qORLPN91IcIO64JTScBQEE0u6Mg8rfuhsDICBenHFUvBfEtIVcbl4GqZOHECSJ+xXol/0zU2JOF2FZbcOh61LfwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAgEADRdEKwHc40inMOBysh7t4h5sRs/mwSD2gGzvQVgUtJ+vav2Zv9gecvDmcQfk4c17y/w79knKHbXRe7APxqJNCZlHXjGHFJ8fHz3BdinZktugaE9+NorGPQWx4pZdfuCc3JNoJyDxJpZ0e3dCKOGbhFnlnHhQ4D4WcMptNMpzmYGhEfaut3PpcUE2iNVONZAMp8mrruoHdb/Zg0q++B4PtlhZO1WdxYCAqkqZnyUAvqrAJDLyvW0iqtigoqLEMxXTGmidr+yS9SYWdT42VjaCV2a10RZUkzlbgGBKXQBaWODMV/tmjV9a3zojfzdArAwaEk4wjBy8LbryJeM5wm+mdh8c/ytJ5Lofr2xKuzLJ9ktbq5xMybLehM+7jbHE7I2J1Zkh6pj3qKA/muxr62MVQ2Xyy1AZPYt+KeKbbyJ+dSzu+IzD7dQjVkgFAbccyStsv2zIB3i/oQJwYNIl7oEQeK2bBiToiyPwt6EYc5aHLqLrctBi0TB0vRKdxCHPuhRyFHsKkGc6XPHhQfWFc8fABae9vLkd3/kV4/HyrLZPMibOEjS7+4e1hEWtqxzo4G+P42zklzonTSIBESzeY0zRCaSUaARP4xzbPqcJRz3IxRZvkl3Lat+Au9ctGplSgiS5zlcOtfJBn8LXOI4ngZpfDx7n+cHXoFpVqB4veqY6wSk=" 
+    noCertificado="20001000000300002771" 
+    formaDePago="PAGO EN UNA SOLA EXHIBICION" 
+    sello="bSAT+Gu5bDZuFTNZ0ivHU6ScGQiaq9rnGjOY9LC6V52mNk+virbPBcu+NGhVOocgdW3ZjsqRYM0UbR0WMSUklbtXkh51DLKl8OO/u5ZKrN1bAkOCAZBVFVnO78/ur4Xvo/s7hGbFmPD6vTx582pH3Hau0UQSXHmtoPAlIbEzDAg=" 
+    fecha="2014-07-03T12:07:14" 
+    version="3.2" 
+    xsi:schemaLocation="http://www.sat.gob.mx/cfd/3  http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd" 
+    xmlns:ns2="http://www.sat.gob.mx/TimbreFiscalDigital" 
+    xmlns:cfdi="http://www.sat.gob.mx/cfd/3" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <cfdi:Emisor nombre="INSTITUTO MEXICANO DEL SEGURO SOCIAL" rfc="ACA010531133">
+        <cfdi:DomicilioFiscal codigoPostal="06600" pais="MEXICO" estado="DISTRITO FEDERAL" municipio="CUAUHTEMOC" colonia="JUAREZ" noExterior="476" calle="REFORMA"/>
+        <cfdi:ExpedidoEn codigoPostal="06600" pais="MEXICO" estado="DISTRITO FEDERAL" colonia="JUAREZ" noExterior="476" calle="REFORMA"/>
+        <cfdi:RegimenFiscal Regimen="PERSONA MORAL CON FINES NO LUCRATIVOS"/>
+    </cfdi:Emisor>
+    <cfdi:Receptor rfc="HSE580109DW8">
+        <cfdi:Domicilio pais="MEXICO"/>
+    </cfdi:Receptor>
+    <cfdi:Conceptos>
+        <cfdi:Concepto importe="10" valorUnitario="10" descripcion="Cuotas IMSS " unidad="No Aplica" cantidad="1.0"/>
+        <cfdi:Concepto importe="0" valorUnitario="0" descripcion="Cuotas RCV " unidad="No Aplica" cantidad="1.0"/>
+        <cfdi:Concepto importe="0" valorUnitario="0" descripcion="Actualizacion de Cuotas IMSS " unidad="No Aplica" cantidad="1.0"/>
+        <cfdi:Concepto importe="0" valorUnitario="0" descripcion="Actualizacion de cuotas RCV " unidad="No Aplica" cantidad="1.0"/>
+        <cfdi:Concepto importe="0" valorUnitario="0" descripcion="Recargos de Cuotas IMSS " unidad="No Aplica" cantidad="1.0"/>
+        <cfdi:Concepto importe="0" valorUnitario="0" descripcion="Recargos de cuotas RCV " unidad="No Aplica" cantidad="1.0"/>
+    </cfdi:Conceptos>
+    <cfdi:Impuestos/>
+</cfdi:Comprobante>

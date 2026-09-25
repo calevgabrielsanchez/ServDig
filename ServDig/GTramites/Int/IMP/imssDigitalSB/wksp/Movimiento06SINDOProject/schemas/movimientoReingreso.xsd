@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.mx.gob.imss.ctirss.delta/integracion_reingreso"
+    xmlns:tns="http://www.mx.gob.imss.ctirss.delta/integracion_reingreso" elementFormDefault="qualified">
+    <complexType name="MovimientoReingresoType">
+        <sequence>
+            <element name='delOrig'       type='int'/>
+            <element name='subOrig'       type='int'/>
+            <element name='cveAplic'      type='int'/>
+            <element name='tpMovto'       type='int'/>
+            <element name='origenMov'     type='int'/>
+            <element name='numFolio'      type='int'/>
+            <element name='argumento'     type='int'/>
+            <element name='regPatron'     type='string'/>
+            <element name='digVrPat'      type='int'/>
+            <element name='fMovto'        type='date'/>
+            <element name='fRecepMovi'    type='date'/>
+            <element name='cveUnica'      type='string'/>
+            <element name='idSubrServ'    type='int'/>
+            <element name='idEventual'    type='int'/>
+            <element name='numSegSoc'     type='string'/>
+            <element name='digVrNss'      type='int'/>
+            <element name='nomAseg'       type='string'/>
+            <element name='idExtemp'      type='int'/>
+            <element name='reducPago'     type='int'/>
+            <element name='extODel'       type='int'/>
+            <element name='salBase'       type='decimal'/>
+            <element name='salInfonavit'  type='decimal'/>
+            <element name='tpSalario'     type='int'/>
+            <element name='sexo'          type='int'/>
+            <element name='mesNac'        type='int'/>
+            <element name='lugarNac'      type='int'/>
+            <element name='umf'           type='int'/>
+            <element name='autPerm'       type='int'/>
+            <element name='delDest'       type='int'/>
+            <element name='subDest'       type='int'/>
+            <element name='tpDerech'      type='int'/>
+            <element name='aaNac'         type='int'/>
+            <element name='situacion'     type='int'/>
+            <element name='tsalODel'      type='string'/>
+            <element name='nombreDh'      type='string'/>
+            <element name='mesNacAp'      type='int'/>
+            <element name='nssCorr'       type='int'/>
+            <element name='digVrNssCorr'  type='int'/>
+            <element name='nomAsegC'      type='string'/>
+            <element name='tpPens'        type='int'/>
+            <element name='alfGuar'       type='string'/>
+            <element name='numGuar'       type='int'/>
+            <element name='condicion'     type='int'/>
+            <element name='locMpio'       type='string'/>
+            <element name='tpProrroga'    type='int'/>
+            <element name='fecTerProrr'   type='int'/>
+            <element name='idPd'          type='int'/>
+        </sequence>
+    </complexType>
+
+    <element name="MovimientoReingreso" type="tns:MovimientoReingresoType"/>
+</schema>
+<!-- 
+ -->

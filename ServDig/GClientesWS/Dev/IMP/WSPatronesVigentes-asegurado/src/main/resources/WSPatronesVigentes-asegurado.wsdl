@@ -1,0 +1,36 @@
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ws.patronesvigentes.imss.gob.mx/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://ws.patronesvigentes.imss.gob.mx/" name="WSPatronesVigentesService">
+<types>
+<xsd:schema>
+<xsd:import namespace="http://ws.patronesvigentes.imss.gob.mx/" schemaLocation="http://adodigital.imss.gob.mx/WSPatronesVigentes/WSPatronesVigentesService?xsd=1"/>
+</xsd:schema>
+</types>
+<message name="getConsultaPatronesVigentes">
+<part name="parameters" element="tns:getConsultaPatronesVigentes"/>
+</message>
+<message name="getConsultaPatronesVigentesResponse">
+<part name="parameters" element="tns:getConsultaPatronesVigentesResponse"/>
+</message>
+<portType name="WSPatronesVigentes">
+<operation name="getConsultaPatronesVigentes">
+<input message="tns:getConsultaPatronesVigentes"/>
+<output message="tns:getConsultaPatronesVigentesResponse"/>
+</operation>
+</portType>
+<binding name="WSPatronesVigentesPortBinding" type="tns:WSPatronesVigentes">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="getConsultaPatronesVigentes">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+</binding>
+<service name="WSPatronesVigentesService">
+<port name="WSPatronesVigentesPort" binding="tns:WSPatronesVigentesPortBinding">
+<soap:address location="${mvn.servicios.externos.ws.service.url}"/>
+</port>
+</service>
+</definitions>

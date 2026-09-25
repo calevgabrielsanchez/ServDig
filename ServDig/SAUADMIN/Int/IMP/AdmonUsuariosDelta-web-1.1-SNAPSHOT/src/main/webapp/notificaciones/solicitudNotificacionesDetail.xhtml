@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+
+<div>
+	<div class="contenedor">
+		<div class="wp-caption-text">
+			<h:form id="formSolNotificacionesDtl">
+				<div class="wp-caption-text">
+					<h:panelGrid width="100%" columns="2" id="detalle">
+						<h:outputLabel id="curpLabel" for="curptxt" value="CURP:" />
+						<h:outputText id="curptxt"
+							value="#{notificarSolicitudMB.activaCuentaSelect.solicitud.desUsrCurp}" />
+
+						<h:outputLabel id="matriLabel" for="matritxt" value="Matrícula:" />
+						<h:outputText id="matritxt"
+							value="#{notificarSolicitudMB.activaCuentaSelect.solicitud.cveMatricula}" />
+
+						<h:outputLabel id="nombreLabel" for="nombretxt" value="Nombre:" />
+						<h:outputText id="nombretxt"
+							value="#{notificarSolicitudMB.activaCuentaSelect.solicitud.nombreCompleto}" />
+
+						<h:outputLabel id="correoLabel" for="correotxt" value="Correo:" />
+						<h:outputText id="correotxt"
+							value="#{notificarSolicitudMB.activaCuentaSelect.solicitud.refCorreoElectronico}" />
+
+						<h:outputLabel id="telLabel" for="teltxt" value="Teléfono:" />
+						<h:outputText id="teltxt"
+							value="#{notificarSolicitudMB.activaCuentaSelect.solicitud.desTelefonoOfi}" />
+
+						<h:outputLabel id="fecLabel" for="fectxt"
+							value="Fecha de registro de notificación:" />
+						<h:outputText id="fectxt"
+							value="#{notificarSolicitudMB.activaCuentaSelect.fechaRegistro}">
+							<f:convertDateTime pattern="dd/MM/yyyy" for="fectxt" />
+						</h:outputText>
+
+						<h:outputLabel id="fecvigLabel" for="cal"
+							value="Fecha de vigencia:" />
+
+						<ace:dateTimeEntry id="cal"
+							value="#{notificarSolicitudMB.fechaVigencia}"
+							pattern="dd/MM/yyyy" popupIcon="../imagenes/cal1.png"
+							showOn="button" renderAsPopup="true"
+							mindate="#{notificarSolicitudMB.hoy}" popupIconOnly="true">
+							<ace:ajax event="dateSelect"
+								listener="#{notificarSolicitudMB.dateSelectListener}"
+								render="cal" />
+							<ace:ajax event="dateTextChange"
+								listener="#{notificarSolicitudMB.dateTextChangeListener}"
+								render="cal" />
+						</ace:dateTimeEntry>
+						<h:outputLabel id="space" value=" " />
+					</h:panelGrid>
+				</div>
+
+				<h:panelGrid width="100%" columns="2" id="botonesGrales"
+					style="text-align:center">
+					<h:commandButton value="Aplicar cambios a notificación"
+						onclick="bloquea();" styleClass="btn btn-primary btn-sm">
+						<f:ajax listener="#{notificarSolicitudMB.aplicaCambiosCuenta}"
+							render="@all" execute="@all" event="click" immediate="true" />
+					</h:commandButton>
+					<h:commandButton value="Reenviar notificación" onclick="bloquea();" styleClass="btn btn-primary btn-sm">
+						<f:ajax listener="#{notificarSolicitudMB.reenviarNotificacion}"
+							render="@all" execute="@all" event="click" immediate="true" />
+					</h:commandButton>
+				</h:panelGrid>
+			</h:form>
+		</div>
+	</div>
+</div>
+</html>

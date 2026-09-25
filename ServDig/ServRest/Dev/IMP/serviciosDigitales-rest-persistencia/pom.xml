@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>mx.gob.imss.cit.dacvass.servicios.externos</groupId>
+	<artifactId>serviciosDigitales-rest-persistencia</artifactId>
+	<name>Modulo de persistencia  Servicios Digitales REST</name>
+	<version>${revision}</version>
+	<packaging>jar</packaging>
+	<url>http://maven.apache.org</url>
+
+	<parent>
+		<artifactId>serviciosDigitales-rest</artifactId>
+		<groupId>mx.gob.imss.cit.dacvass.servicios.externos</groupId>
+		<version>${revision}</version>
+	</parent>
+	
+	<properties>
+		<project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+		<org.hibernate.version>3.6.9.Final</org.hibernate.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>mx.gob.imss.cit.dacvass.servicios.externos</groupId>
+			<artifactId>serviciosDigitales-rest-modelo</artifactId>
+			<version>${revision}</version>
+		</dependency>
+		<!-- INICIO DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+		<!-- Dependencia del Framework DELTA BASE IMSS -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-framework-base</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>
+		<!-- FIN DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${org.hibernate.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${org.hibernate.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.1.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-commons-annotations</artifactId>
+			<version>3.2.0.Final</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>2.6.9</version>
+		</dependency>
+		<!-- Hibernate EHCache API -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	
+</project>

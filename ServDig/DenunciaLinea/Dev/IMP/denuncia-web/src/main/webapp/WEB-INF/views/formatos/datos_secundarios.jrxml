@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="datos_secundarios" pageWidth="572" pageHeight="752" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.272292855117455"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="658"/>
+	<parameter name="rutaImagen" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:\\Mis Documentos\\projects\\denunciaEnLinea\\denuncia-web\\src\\main\\webapp\\resources\\images\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="numFolioDenuncia" class="java.lang.String"/>
+	<parameter name="rutaReporte" class="java.lang.String"/>
+	<parameter name="nombrePatron" class="java.lang.String"/>
+	<parameter name="callePatron" class="java.lang.String"/>
+	<parameter name="noExtPatron" class="java.lang.String"/>
+	<parameter name="noIntPatron" class="java.lang.String"/>
+	<parameter name="coloniaPatron" class="java.lang.String"/>
+	<parameter name="codigoPostalPatron" class="java.lang.String"/>
+	<parameter name="municipioPatron" class="java.lang.String"/>
+	<parameter name="estadoPatron" class="java.lang.String"/>
+	<parameter name="telefonoPatron" class="java.lang.String"/>
+	<parameter name="documentoIDPatron" class="java.lang.String"/>
+	<parameter name="numDocumentoIDPatron" class="java.lang.String"/>
+	<parameter name="representantePatron" class="java.lang.String"/>
+	<parameter name="actividadPatron" class="java.lang.String"/>
+	<parameter name="callePatronFis" class="java.lang.String"/>
+	<parameter name="noExtPatronFis" class="java.lang.String"/>
+	<parameter name="noIntPatronFis" class="java.lang.String"/>
+	<parameter name="coloniaPatronFis" class="java.lang.String"/>
+	<parameter name="codigoPostalPatronFis" class="java.lang.String"/>
+	<parameter name="municipioPatronFis" class="java.lang.String"/>
+	<parameter name="estadoPatronFis" class="java.lang.String"/>
+	<parameter name="telefonoPatronFis" class="java.lang.String"/>
+	<parameter name="numTrabEst" class="java.lang.String"/>
+	<parameter name="diversosPatrones" class="java.lang.String"/>
+	<parameter name="rfcPatron" class="java.lang.String"/>
+	<parameter name="regPatronal" class="java.lang.String"/>
+	<parameter name="calleCenTrab" class="java.lang.String"/>
+	<parameter name="noExtCenTrab" class="java.lang.String"/>
+	<parameter name="noIntCenTrab" class="java.lang.String"/>
+	<parameter name="coloniaCenTrab" class="java.lang.String"/>
+	<parameter name="codigoPostalCenTrab" class="java.lang.String"/>
+	<parameter name="municipioCenTrab" class="java.lang.String"/>
+	<parameter name="estadoCenTrab" class="java.lang.String"/>
+	<parameter name="telefonoCenTrab" class="java.lang.String"/>
+	<parameter name="labores" class="java.lang.String"/>
+	<parameter name="nombreJefeInmediato" class="java.lang.String"/>
+	<parameter name="horarioLabores" class="java.lang.String"/>
+	<parameter name="contratoSI" class="java.lang.String"/>
+	<parameter name="sueldo" class="java.lang.String"/>
+	<parameter name="vacaciones" class="java.lang.String"/>
+	<parameter name="periodoPagos" class="java.lang.String"/>
+	<parameter name="diasVacaciones" class="java.lang.String"/>
+	<parameter name="contratoNO" class="java.lang.String"/>
+	<parameter name="aguinaldo" class="java.lang.String"/>
+	<parameter name="comisiones" class="java.lang.String"/>
+	<parameter name="baseComisiones" class="java.lang.String"/>
+	<parameter name="formaPago" class="java.lang.String"/>
+	<parameter name="riesgoSI" class="java.lang.String"/>
+	<parameter name="riesgoNO" class="java.lang.String"/>
+	<parameter name="fechaPrestacionTrab" class="java.lang.String"/>
+	<parameter name="fechaIngresoTrab" class="java.lang.String"/>
+	<parameter name="salarioReal" class="java.lang.String"/>
+	<parameter name="fechaDejoLaborar" class="java.lang.String"/>
+	<parameter name="observaciones" class="java.lang.String"/>
+	<parameter name="documentacionAdjunta" class="java.lang.String"/>
+	<parameter name="recibeComprobanteSI" class="java.lang.String"/>
+	<parameter name="recibeComprobanteNO" class="java.lang.String"/>
+	<parameter name="tipoComprobante" class="java.lang.String"/>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="752">
+			<rectangle radius="10">
+				<reportElement x="11" y="60" width="553" height="194"/>
+			</rectangle>
+			<frame>
+				<reportElement x="10" y="360" width="555" height="381"/>
+				<rectangle radius="10">
+					<reportElement x="0" y="1" width="554" height="380"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="0" y="0" width="555" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[INFORMACIÓN DEL TRABAJO QUE DESEMPEÑA Y PRESTACIONES DEL TRABAJADOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="278" y="80" width="277" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[¿Cuenta con contrato?]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="20" width="555" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Labores que desempeña o desempeñaba con el patrón:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="0" y="50" width="555" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Nombre de su jefe inmediato:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="110" width="138" height="15"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Sueldo:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="139" y="110" width="138" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Vacaciones:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="278" y="110" width="277" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Período de pago de salarios:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="140" width="277" height="15"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Días de vacaciones:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="278" y="140" width="277" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Gratificación o aguinaldo:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="170" width="277" height="15"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Comisiones, mediaciones, otros:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="278" y="170" width="277" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Base para su otorgamiento:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="230" width="277" height="15"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Forma de pago:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="200" width="277" height="15"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Recibe o recibía comprobante de pago:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="278" y="200" width="277" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Tipo de comprobante de pago:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="278" y="230" width="277" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[¿Sufrió algún riesgo de trabajo?]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="2" y="260" width="277" height="15"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Salario Real:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="278" y="260" width="277" height="15"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Fecha en la que dejó de laborar:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="2" y="290" width="146" height="15"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Documentación Adjunta:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="35" width="555" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{labores}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="65" width="555" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{nombreJefeInmediato}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="95" width="277" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{horarioLabores}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="411" y="95" width="18" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{contratoSI}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="474" y="95" width="19" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{contratoNO}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="125" width="138" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{sueldo}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="139" y="125" width="138" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{vacaciones}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="278" y="125" width="277" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{periodoPagos}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="155" width="277" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{diasVacaciones}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="278" y="155" width="277" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{aguinaldo}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="185" width="277" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{comisiones}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="278" y="185" width="277" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{baseComisiones}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="245" width="277" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{formaPago}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="411" y="245" width="18" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{riesgoSI}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="474" y="245" width="19" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{riesgoNO}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="172" y="215" width="18" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{recibeComprobanteSI}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="243" y="215" width="18" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{recibeComprobanteNO}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="278" y="215" width="277" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{tipoComprobante}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="275" width="277" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{salarioReal}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="278" y="275" width="277" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{fechaDejoLaborar}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="154" y="215" width="18" height="15"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Si]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="225" y="215" width="18" height="15"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[No]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="393" y="95" width="18" height="15"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Si]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="456" y="95" width="18" height="15"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[No]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="393" y="245" width="18" height="15"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Si]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="80" width="277" height="15"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Horario de labores:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="456" y="245" width="18" height="15"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[No]]></text>
+				</staticText>
+			</frame>
+			<rectangle radius="10">
+				<reportElement x="12" y="254" width="552" height="103"/>
+			</rectangle>
+			<frame>
+				<reportElement x="10" y="10" width="555" height="350"/>
+				<rectangle radius="10">
+					<reportElement x="0" y="0" width="554" height="51"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="0" y="0" width="124" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DATOS DEL PATRÓN]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="37" width="555" height="14"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{nombrePatron}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="376" y="64" width="89" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Número:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="465" y="64" width="89" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Interior:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="237" y="94" width="140" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[C.P.:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="377" y="94" width="177" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Delegación o Municipio:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="377" y="124" width="177" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Número de teléfono:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="64" width="376" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Calle:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="94" width="236" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Colonia:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="124" width="376" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Estado:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="154" width="555" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Nombre del representante legal:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="184" width="555" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Actividad o giro:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="2" y="214" width="281" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[R.F.C.:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="283" y="214" width="271" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Registro Patronal:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="169" width="555" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{representantePatron}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="199" width="555" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{actividadPatron}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="2" y="229" width="281" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{rfcPatron}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="283" y="229" width="271" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{regPatronal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="376" y="257" width="89" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Número:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="465" y="257" width="89" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Interior:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="237" y="287" width="140" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[C.P.:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="377" y="287" width="177" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Delegación o Municipio:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="257" width="376" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Calle:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="287" width="236" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Colonia:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="317" width="376" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Estado:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="377" y="317" width="177" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Número de teléfono:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="1" y="272" width="376" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{callePatronFis}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="376" y="272" width="89" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{noExtPatronFis}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="465" y="272" width="89" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{noIntPatronFis}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="1" y="302" width="236" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{coloniaPatronFis}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="237" y="302" width="140" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{codigoPostalPatronFis}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="377" y="302" width="177" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{municipioPatronFis}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="1" y="332" width="376" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{estadoPatronFis}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="377" y="332" width="177" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{telefonoPatronFis}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="12" y="51" width="543" height="13"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DOMICILIO DEL CENTRO DE TRABAJO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="12" y="244" width="543" height="13"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DOMICILIO FISCAL]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="2" y="79" width="374" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{calleCenTrab}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="377" y="79" width="88" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{noExtCenTrab}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="465" y="79" width="78" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{noIntCenTrab}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="2" y="109" width="235" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{coloniaCenTrab}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="237" y="109" width="139" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{codigoPostalCenTrab}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="377" y="109" width="166" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{municipioCenTrab}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="2" y="139" width="374" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{estadoCenTrab}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="376" y="139" width="167" height="15"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{telefonoCenTrab}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="23" width="555" height="14"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Nombre, Denominación o Razón Social: ]]></text>
+				</staticText>
+			</frame>
+			<textField>
+				<reportElement x="9" y="665" width="552" height="61"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{documentacionAdjunta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd"
+	version="3.0">
+	<enterprise-beans>
+
+		<session>
+			<ejb-name>serieServiceBusiness</ejb-name>
+			<mapped-name>serieServiceBusiness</mapped-name>
+			<business-remote>mx.gob.imss.ctirss.delta.gestion.asegurado.service.interfaces.SerieServiceBusinessRemote</business-remote>
+			<ejb-class>mx.gob.imss.ctirss.delta.gestion.asegurado.serie.service.business.SerieServiceBusiness</ejb-class>
+			<session-type>Stateless</session-type>
+		</session>
+
+		<session>
+			<ejb-name>serieServiceEntity</ejb-name>
+			<mapped-name>serieServiceEntity</mapped-name>
+			<business-local>mx.gob.imss.ctirss.delta.gestion.asegurado.serie.service.entity.SerieServiceEntityLocal</business-local>
+			<ejb-class>mx.gob.imss.ctirss.delta.gestion.asegurado.serie.service.entity.SerieServiceEntity</ejb-class>
+			<session-type>Stateless</session-type>
+		</session>
+		<session>
+			<ejb-name>personaBusiness</ejb-name>
+			<mapped-name>personaBusiness</mapped-name>
+			<business-remote>mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusinessRemote</business-remote>
+			<ejb-class>mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusiness</ejb-class>
+			<session-type>Stateless</session-type>
+		</session>
+		<session>
+			<ejb-name>servicioPersonaBusiness</ejb-name>
+			<mapped-name>servicioPersonaBusiness</mapped-name>
+			<business-remote>mx.gob.imss.ctirss.gestionpersonas.servicios.publicos.ServiciosPersonaBusinessRemote</business-remote>
+			<ejb-class>mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusiness</ejb-class>
+			<session-type>Stateless</session-type>
+		</session>
+
+		<session>
+			<ejb-name>serieServiceUtility</ejb-name>
+			<mapped-name>serieServiceUtility</mapped-name>
+			<business-local>mx.gob.imss.ctirss.delta.gestion.asegurado.serie.service.utility.SerieServiceUtilityLocal</business-local>
+			<ejb-class>mx.gob.imss.ctirss.delta.gestion.asegurado.serie.service.utility.SerieServiceUtility</ejb-class>
+			<session-type>Stateless</session-type>
+		</session>
+
+	</enterprise-beans>
+</ejb-jar>

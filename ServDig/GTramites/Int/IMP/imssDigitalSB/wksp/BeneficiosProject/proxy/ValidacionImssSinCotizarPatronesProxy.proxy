@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description/>
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:request type="XML">
+        <con4:schema ref="BeneficiosProject/schema/ServiceContract/ValidacionImssSinCotizarPatrones" element="validarSinCotizarPatronesRequest" xmlns:con4="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:request>
+      <con:response type="XML">
+        <con4:schema ref="BeneficiosProject/schema/ServiceContract/ValidacionImssSinCotizarPatrones" element="validarSinCotizarPatronesResponse" xmlns:con4="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:response>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:pageAttachments isEnabled="false"/>
+    <ser:transactions isRequired="true" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/BeneficiosProject/proxy/ValidacionImssSinCotizarPatrones</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific xsi:type="http:HttpEndPointConfiguration" xmlns:http="http://www.bea.com/wli/sb/transports/http">
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con1:pipeline name="PipelinePairNode1_request" type="request">
+      <con1:stage name="validarNssSinCotizar" errorHandler="_onErrorHandler-3360921260481779652--51f592cf.14614efb887.-7fcf">
+        <con1:comment/>
+        <con1:context>
+          <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con1:context>
+        <con1:actions>
+          <con4:assign varName="nss" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id>_ActionId-429625865168579810--41b5b2f7.145f10e3e1b.-7fd8</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:validarSinCotizarPatronesRequest/mx:nss/text()</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="cveAsignacion" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id>_ActionId-5101663048627104588-6fd6ef8f.146002b24e4.-7fe7</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:validarSinCotizarPatronesRequest/mx:cveAsignacion/text()</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con3:log>
+            <con2:id>_ActionId-429625865168579810--41b5b2f7.145f10e3e1b.-7fd7</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+            </con3:expr>
+            <con3:message>Se va validar que el NSS no este cotizando hoy en día:</con3:message>
+          </con3:log>
+          <con4:wsCallout xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id>_ActionId-429625865168579810--41b5b2f7.145f10e3e1b.-7fd6</con2:id>
+            <con4:service ref="BeneficiosProject/businessService/ConsPatronesVigXAsigBusinessService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con4:operation>operacion</con4:operation>
+            <con4:request>
+              <con4:body wrapped="false">$validarNssSinCotizarRequest</con4:body>
+              <con4:header/>
+            </con4:request>
+            <con4:response>
+              <con4:body wrapped="false">validarNssSinCotizarResponseTmp</con4:body>
+              <con4:header/>
+            </con4:response>
+            <con4:requestTransform>
+              <con5:assign varName="validarNssSinCotizarRequest" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:con4="http://www.bea.com/wli/sb/pipeline/config" xmlns:con5="http://www.bea.com/wli/sb/stages/transform/config">
+                <con6:id xmlns:con6="http://www.bea.com/wli/sb/stages/config">_ActionId-429625865168579810--41b5b2f7.145f10e3e1b.-7fd5</con6:id>
+                <con5:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<ser:operacionRequest xmlns:ser="http://mx/gob/imss/webservices/patrones/servicio">
+	<ser:entrada xmlns:pat="http://patrones.webservices.imss.gob.mx">
+		<pat:cveAsignacionNSS>{$cveAsignacion}</pat:cveAsignacionNSS>
+	</ser:entrada>
+</ser:operacionRequest>]]></con:xqueryText>
+                </con5:expr>
+              </con5:assign>
+            </con4:requestTransform>
+            <con4:responseTransform>
+              <con3:log>
+                <con2:id>_ActionId-429625865168579810--41b5b2f7.145f10e3e1b.-7fd4</con2:id>
+                <con3:logLevel>error</con3:logLevel>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarNssSinCotizarResponseTmp</con:xqueryText>
+                </con3:expr>
+                <con3:message>La respuesta de la validación para saber si el NSS esta cotizando es</con3:message>
+              </con3:log>
+              <con4:assign varName="validarNssSinCotizarResponse">
+                <con2:id>_ActionId-7213958083713809680-39592cd.1460576dd9e.-7fe7</con2:id>
+                <con4:expr>
+                  <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                    <con:resource ref="BeneficiosProject/xquery/TransformaTrabajadorActivoResponse"/>
+                    <con:param name="operacionResponse">
+                      <con:path>$validarNssSinCotizarResponseTmp</con:path>
+                    </con:param>
+                  </con:xqueryTransform>
+                </con4:expr>
+              </con4:assign>
+              <con4:replace varName="body" contents-only="true">
+                <con2:id>_ActionId-429625865168579810--41b5b2f7.145f10e3e1b.-7fd3</con2:id>
+                <con4:location>
+                  <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                </con4:location>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarNssSinCotizarResponse</con:xqueryText>
+                </con4:expr>
+              </con4:replace>
+            </con4:responseTransform>
+          </con4:wsCallout>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline name="PipelinePairNode1_response" type="response">
+      <con1:stage name="responseStage">
+        <con1:comment/>
+        <con1:context>
+          <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con1:context>
+        <con1:actions>
+          <con3:log>
+            <con2:id>_ActionId-6140452112033537740--5e354702.1464947d828.-7fef</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+            </con3:expr>
+            <con3:message>RESPUESTA DESDE ValidacionImssSinCotizarPatronesProxy</con3:message>
+          </con3:log>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline name="_onErrorHandler-3360921260481779652--51f592cf.14614efb887.-7fcf" type="error">
+      <con1:stage name="errorHandlerStage" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:http="http://www.bea.com/wli/sb/transports/http">
+        <con1:context>
+          <con2:userNsDecl prefix="con" namespace="http://www.bea.com/wli/sb/context"/>
+          <con2:userNsDecl prefix="con1" namespace="http://www.bea.com/wli/sb/stages/transform/config"/>
+          <con2:userNsDecl prefix="m" namespace="http://servicios.imss.gob.mx/beneficio/riss"/>
+          <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con1:context>
+        <con1:actions>
+          <con3:log>
+            <con2:id>_ActionId-3360921260481779652--51f592cf.14614efb887.-7fce</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$fault</con:xqueryText>
+            </con3:expr>
+            <con3:message>EN EL MANEJADOR DE ERRORES</con3:message>
+          </con3:log>
+          <con4:assign varName="cveErrorResp">
+            <con2:id>_ActionId-3360921260481779652--51f592cf.14614efb887.-7fcd</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$fault/con:errorCode/text()</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con3:log>
+            <con2:id>_ActionId-3360921260481779652--51f592cf.14614efb887.-7fcc</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$cveErrorResp</con:xqueryText>
+            </con3:expr>
+            <con3:message>CODIGO ERROR</con3:message>
+          </con3:log>
+          <con4:assign varName="descErrorResp">
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f2e</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'Error de comunicación con el servicio interno del IMSS (cotizando actualmente)'</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con3:log>
+            <con2:id>_ActionId-3360921260481779652--51f592cf.14614efb887.-7fc8</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$descErrorResp</con:xqueryText>
+            </con3:expr>
+            <con3:message>MENSAJE ERROR</con3:message>
+          </con3:log>
+          <con4:assign varName="indDerechoBeneficioResp">
+            <con2:id>_ActionId-3360921260481779652--51f592cf.14614efb887.-7fc7</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">"false"</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:replace varName="body" contents-only="true">
+            <con2:id>_ActionId-3360921260481779652--51f592cf.14614efb887.-7fc6</con2:id>
+            <con4:location>
+              <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+            </con4:location>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<mx:validarSinCotizar24MesesResponse>
+	<mx:indicadorCotizado24Meses></mx:indicadorCotizado24Meses>
+	<mx:exito>1</mx:exito>
+	<mx:claveError>{$cveErrorResp}</mx:claveError>
+	<mx:descripcion>{$descErrorResp}</mx:descripcion>
+</mx:validarSinCotizar24MesesResponse>]]></con:xqueryText>
+            </con4:expr>
+          </con4:replace>
+          <con2:reply isError="false">
+            <con2:id>_ActionId-3360921260481779652--51f592cf.14614efb887.-7fc5</con2:id>
+          </con2:reply>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:flow>
+      <con1:pipeline-node name="PipelinePairNode1">
+        <con1:request>PipelinePairNode1_request</con1:request>
+        <con1:response>PipelinePairNode1_response</con1:response>
+      </con1:pipeline-node>
+    </con1:flow>
+  </ser:router>
+</xml-fragment>

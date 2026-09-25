@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="header :: head">
+<meta name="tipo_contenido" content="text/html;"
+	http-equiv="content-type" charset="utf-8"></meta>
+</head>
+<body>
+	<div class="container">
+		<div th:substituteby="header :: pageHeader"></div>
+		<div id="pnlDatosResumen" class="panel panel-default">
+			<div class="panel-heading" >
+				<div class="row">
+					<div class="col-sm-6 text-left">
+						<small th:text="#{escritorio.titulo}" />
+					</div>
+					<div class="col-sm-6 text-right">	
+						<a class="accordion-toggle text-right" data-toggle="collapse"
+							data-parent="#accordion" href="#collapseOne"> 
+							<img id="imgCollapsable"
+								src="/sdroc_web/static/images/panel-collapsed.png"
+								style="width: 25px">
+							</img>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div id="collapseOne" class="panel-collapse collapse in">
+				<div id="pnlInformation" class="panel-body text-center">
+					<div th:substituteby="registro/obra/datosPatron :: pageDatosPatron"></div>
+				</div>
+	
+			</div>
+		</div>	
+
+		<div id="pnlConsultaObra" class="panel panel-default">
+			<div class="panel-heading">
+				<small>Reporte General.</small>
+			</div>
+			<div class="panel-body text-center">
+				<ul class="nav nav-tabs" id="tabs"></ul>
+				<div class="tab-content"></div>
+			</div>
+				
+		</div>
+			<div class="row">
+				 
+				<div class="col-sm-12">
+					<button class="btn btn-primary btn-sm pull-right" id="btnRepAnualExcel">Genera Reporte</button>
+				
+					<form>
+						<button value="submit" formaction="/sdroc_web/consulta" type="submit"
+							class="btn btn-default btn-sm pull-right" style="margin-right: 10px;" id="btnRegresarConsulta">Cancelar</button>
+					</form>	
+				</div>
+				
+			</div>	 
+			
+		<br></br>
+	</div>
+</body>
+<script type="text/javascript">
+	buildPanel();
+</script>
+</html>
+
+

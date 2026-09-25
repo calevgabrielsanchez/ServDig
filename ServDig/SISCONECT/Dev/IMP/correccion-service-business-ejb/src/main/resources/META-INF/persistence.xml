@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="deltaPersistenceUnit" transaction-type="JTA">
+	    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>ds_ora_delta_inc</jta-data-source> 
+		<class>mx.gob.imss.ctirss.correccion.model.Clase</class>
+		<class>mx.gob.imss.ctirss.correccion.model.Fraccion</class>
+		<class>mx.gob.imss.ctirss.correccion.model.Division</class>
+		<class>mx.gob.imss.ctirss.correccion.model.Grupo</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtSelector</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CgcCatcriterioseleccion</class>
+		<class>mx.gob.imss.ctirss.correccion.deteccion.model.Deteccion</class>
+		<class>mx.gob.imss.ctirss.correccion.deteccion.model.CrtDeteccion</class>
+		<class>mx.gob.imss.ctirss.correccion.promocion.model.CrtPromocion</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CgcCatmotivocancelacion</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrcTipoobra</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrcFaseconstruccion</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrcDelegacion</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrcSubDelegacion</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CgtCatCriterioeleccion</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtDetBaseCotOmitida</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtDetBaseCotOmDet</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtBalanzaComp</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtCopPagadasAnual</class>
+		<class>mx.gob.imss.ctirss.correccion.promocion.regularizacion.model.CrtRegulapagos</class>
+		<class>mx.gob.imss.ctirss.correccion.promocion.regularizacion.model.CrtRegulapagosdet</class>								
+		
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.SacDelegacion</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.SacSubdelegacion</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.SatObra</class>		
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.SacEntidadfed</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.SatAvisosub</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.SatReltrabajadores</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.SatIncidencia</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.SacTipincidenc</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.SacZona</class>
+		
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractClase</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractFraccion</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractDivision</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractGrupo</class>
+		<class>mx.gob.imss.ctirss.correccion.deteccion.base.model.AbstractDeteccion</class>
+		<class>mx.gob.imss.ctirss.correccion.deteccion.base.model.AbstractCrtDeteccion</class>
+		<class>mx.gob.imss.ctirss.correccion.promocion.base.model.AbstractCrtPromocion</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCgtCatcriterioseleccion</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrtDetBaseCotOmitida</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrtDetBaseCotOmDet</class>				
+		
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCgcCatmotivocancelacion</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcTipoobra</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcFaseconstruccion</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcDelegacion</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcSubdelegacion</class>
+		
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractSacDelegacion</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractSacSubdelegacion</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractSatObra</class>		
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractSacEntidadfed</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractSatAvisosub</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractSatReltrabajadores</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractSatIncidencia</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractSacTipincidenc</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractSacZona</class>
+		
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractDicClase</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractDicDivision</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractDicFraccion</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractDicGrupo</class>	
+		<class>mx.gob.imss.ctirss.correccion.model.DicClase</class>
+		<class>mx.gob.imss.ctirss.correccion.model.DicFraccion</class>
+		<class>mx.gob.imss.ctirss.correccion.model.DicDivision</class>
+		<class>mx.gob.imss.ctirss.correccion.model.DicGrupo</class>	
+		
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatAuditor</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatConceptoOmitido</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatDelegacion</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatFlujo</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatMotivoCancelacion</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatMotivoRechazo</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatOrigen</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatProceso</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatRegion</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatSituacionCO</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatStatus</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatSubdelegacion</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatTipo</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatTipoObra</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatTipoObraFuente</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatTipoOrigen</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgtAnexoConceptoOmitido</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgtAnexoPago</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgtAnexoRP</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgtCatCriterioSeleccion</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgtCorreccion</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgtPromocion</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCgcReglaNegocio</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcReglaNegocio</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatAuditor</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatConceptoOmitido</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatDelegacion</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatFlujo</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatMotivoCancelacion</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatMotivoRechazo</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatOrigen</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatProceso</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatRegion</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatSituacionCO</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatStatus</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatSubdelegacion</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatTipo</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatTipoObra</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatTipoObraFuente</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgcCatTipoOrigen</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgtAnexoConceptoOmitido</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgtAnexoPago</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgtAnexoRP</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgtCatCriterioSeleccion</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgtCorreccion</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CgtPromocion</class>
+			
+		
+		
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrcActeconomica</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrcPatron</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrcStatus</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrtAnexosolcorrpat</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrtDomicilioCentrotrabajo</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrtProrroga</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrtSolicitudcorr</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrtMenuPatron</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrtCorrPromInvita</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrtPresentacorr</class>
+
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractSatPatron</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractSatUbicacion</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractSacMunicipio</class>
+
+		<class>mx.gob.imss.ctirss.correccion.model.CrcActeconomica</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrcPatron</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrcStatus</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtAnexosolcorrpat</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtDomicilioCentrotrabajo</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtProrroga</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtSolicitudcorr</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtMenuPatron</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtCorrPromInvita</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtPresentacorr</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrcDiaInhabil</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.SacTipoObra</class>
+		
+		<class>mx.gob.imss.ctirss.correccion.model.SatPatron</class>
+		<class>mx.gob.imss.ctirss.correccion.model.SatUbicacion</class>
+		<class>mx.gob.imss.ctirss.correccion.model.SacMunicipio</class>
+		
+
+		<!-- SISTEMA COMUNES -->
+		<class>mx.gob.imss.ctirss.correccion.menu.model.Menu</class>
+		<class> mx.gob.imss.ctirss.correccion.menu.base.model.AbstractMenu</class>
+		
+		<class>mx.gob.imss.ctirss.correccion.login.model.Login</class>
+		<class>mx.gob.imss.ctirss.correccion.login.base.model.AbstractLogin</class>
+		<class>mx.gob.imss.ctirss.correccion.login.model.SegUsuario</class>
+		<class>mx.gob.imss.ctirss.correccion.login.model.SegMenu</class>
+		<class>mx.gob.imss.ctirss.correccion.login.model.SegMenusistema</class>
+		<class>mx.gob.imss.ctirss.correccion.login.model.SegPerfilUsuario</class>
+		<class>mx.gob.imss.ctirss.correccion.login.model.SegRol</class>
+		<class>mx.gob.imss.ctirss.correccion.login.model.SegSistema</class>
+		
+		<class>mx.gob.imss.ctirss.correccion.login.model.SegUsuarioFuncionario</class>
+		<class>mx.gob.imss.ctirss.correccion.login.model.SacCargo</class>
+		
+		<!-- CATALOGOS -->
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrcPercepciones</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcPercepciones</class>
+		
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrcGastos</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcGastos</class>
+		
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrcTipoCorr</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrtNroFolio</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrcTipoCorr</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrtNroFolio</class>
+		
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrcMes</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcMes</class>
+		
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrcGrupoCategoria</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcGrupoCategoria</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrcEstatusDeteccion</class>
+		
+		
+		<!-- ADMINISTRACION -->
+		<class>mx.gob.imss.ctirss.correccion.model.CrtAuditorAsignado</class>
+		
+		<!-- SINONIMO DE SSO_USUARIO -->
+		<class>mx.gob.imss.ctirss.correccion.model.SsoUsuarios</class>
+		
+		<!-- DOMICILIOS GEOGRAFICOS -->
+
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgAsentamientoId</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatLocalidadId</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatMunicipioId</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCodigosPostalesId</class>
+				
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgAsentamiento</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgAsentamiento</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatAdministracion</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatAdministracion</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatAmbito</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatAmbito</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatDerechosTransito</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatDerechosTransito</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatEstado</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatEstado</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatEstadoCp</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatEstadoCp</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatLocalidad</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatLocalidad</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatMargen</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatMargen</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatMunicipio</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatMunicipio</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatPeriodo</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatPeriodo</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatTermGen</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatTermGen</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatTipoAsen</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatTipoAsen</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatTipoDom</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatTipoDom</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatVialidad</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCatVialidad</class>				
+				
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCodigosPostales</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgCodigosPostales</class>		
+				
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgDomicilioGeografico</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgDomicilioGeografico</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgDomiciliosCaminos</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgDomiciliosCaminos</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgDomiciliosCarreteras</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgDomiciliosCarreteras</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgVialidad</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.base.model.AbstractDgVialidad</class>
+		
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrcTrabajadores</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcTrabajadores</class>
+		
+		       
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrcTramiteMensajes</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcTramiteMensajes</class>
+		       
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrcTramites</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcTramites</class>		       
+		       
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrtTramitePresentado</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrtTramitePresentado</class>		
+		       
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrtEjertrabajador</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrtEjertrabajador</class>
+		
+		
+
+		
+		
+		<class>mx.gob.imss.ctirss.correccion.catalogos.model.CrcEjercicio</class>
+		<class>mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcEjercicio</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtCoppagada</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtInvitacion</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtInvitacionRP</class>
+		<class>mx.gob.imss.ctirss.correccion.base.model.AbstractCrtInvitacion</class>
+		
+		<class>mx.gob.imss.ctirss.correccion.model.CrtControlFlujoCedula</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtErrorCargaCed</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtEstatusFlujoCedula</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtNombreCedula</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtControlFlujoCedulaPK</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtSolicitudcorr</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtRevRecepcion</class>
+		
+		<class>mx.gob.imss.ctirss.correccion.seguimiento.estudioCorreccion.model.CrtRevPagos</class>				
+		<class>mx.gob.imss.ctirss.correccion.seguimiento.estudioCorreccion.base.model.AbstractCrtRevPagos</class>
+		
+		<class>mx.gob.imss.ctirss.correccion.seguimiento.estudioCorreccion.model.CrtCobranzaPagos</class>				
+		<class>mx.gob.imss.ctirss.correccion.seguimiento.estudioCorreccion.base.model.AbstractCrtCobranzaPagos</class>
+		
+		
+			
+		<class>mx.gob.imss.ctirss.correccion.model.CrtRevRecepcion</class>	
+		<class>mx.gob.imss.ctirss.correccion.model.CrtRevOficios</class>	
+		<class>mx.gob.imss.ctirss.correccion.model.CrtSolicitudOficios</class>	
+		<class>mx.gob.imss.ctirss.correccion.model.CrtRevDerivASubd</class>	
+		<class>mx.gob.imss.ctirss.correccion.model.CrtRevDerivAFisca</class>			
+		<class>mx.gob.imss.ctirss.correccion.model.CrtRevCedRevision</class>
+		<class>mx.gob.imss.ctirss.correccion.model.CrtRevCedRevValAclara</class>	
+			   			
+		<properties>
+		  <property name="hibernate.archive.autodetection" value="class"/>
+		  <property name="hibernate.show_sql" value="true"/>
+		  <property name="hibernate.format_sql" value="true"/>
+		  <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
+		  <property name="hibernate.transaction.factory_class" value="org.hibernate.transaction.JTATransactionFactory"/>
+		  <property name="hibernate.query.factory_class" value="org.hibernate.hql.classic.ClassicQueryTranslatorFactory"/>
+		  <property name="connection.pool_size" value="10"/>
+		  <property name="connection.statement_cache.size" value="10"/>
+	      <property name="hibernate.connection.release_mode"  value="auto"/>
+		  <property name="hibernate.transaction.auto_close_session" value="true"/>
+		  <property name="current_session_context_class" value="jta"/>			
+		</properties>
+	</persistence-unit>
+</persistence>

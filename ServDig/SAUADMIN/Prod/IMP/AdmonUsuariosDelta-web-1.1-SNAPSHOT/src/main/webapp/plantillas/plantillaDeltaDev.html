@@ -1,0 +1,444 @@
+
+
+
+
+
+
+
+
+
+<!-- Main simple page template -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="max-age=100, must-revalidate" />
+<meta name="description"
+	content="Instituto Mexicano del Seguro Social Portal DELTA" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Portal de Servicios IMSS Digital</title>
+
+
+<link rel="icon"
+	href="http://deltadev.imss.gob.mx/delta/resources/iconos/favicon.ico" />
+
+
+
+
+
+
+<!-- Estilos Jquery-->
+
+
+<link type="text/css"
+	href="http://deltadev.imss.gob.mx/delta/resources/estilos/jquery/ui-lightness/jquery-ui.css"
+	rel="stylesheet" />
+<link type="text/css"
+	href="http://deltadev.imss.gob.mx/delta/resources/estilos/jquery/demo_page.css"
+	rel="stylesheet" />
+<link type="text/css"
+	href="http://deltadev.imss.gob.mx/delta/resources/estilos/jquery/demo_table.css"
+	rel="stylesheet" />
+<link type="text/css"
+	href="http://deltadev.imss.gob.mx/delta/resources/estilos/jquery/demo_table.css"
+	rel="stylesheet" />
+
+<!-- Bootstrap -->
+<link type="text/css"
+	href="http://deltadev.imss.gob.mx/delta/resources/estilos/bootstrap/bootstrap.min.css"
+	rel="stylesheet" />
+
+<!-- JGrowl -->
+<link type="text/css"
+	href="http://deltadev.imss.gob.mx/delta/resources/estilos/jquery/jquery.jgrowl.css"
+	rel="stylesheet" />
+
+<!-- IMSS -->
+<link type="text/css"
+	href="http://deltadev.imss.gob.mx/delta/resources/estilos/imss/reset.css"
+	rel="stylesheet" />
+<link type="text/css"
+	href="http://deltadev.imss.gob.mx/delta/resources/estilos/imss/style.css"
+	rel="stylesheet" />
+
+<!-- Javascripts -->
+<script>
+	var context_path = '/portal-web';
+	var server_name = 'deltadev.imss.gob.mx';
+</script>
+
+
+
+
+<!-- jQuery -->
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/jquery-post-json.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/jquery-ui.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/dtable/jquery.dataTables.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/dtable/jquery.dataTables.pagination.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/dtable/jquery.dataTables.sort.date.plugin.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/form2Object/form2object.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/form2Object/jquery.toObject.js"></script>
+<!-- Bootstrap -->
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/bootstrap/bootstrap.min.js"></script>
+<!-- JSON -->
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/json/json2.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/json/json.min.js"></script>
+
+
+<!-- Cometd -->
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/org/cometd.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/org/cometd/AckExtension.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/org/cometd/ReloadExtension.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/org/cometd/TimeStampExtension.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/org/cometd/TimeSyncExtension.js"></script>
+
+<!-- Cometd and Jquery-->
+
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/comet/jquery.cookie.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/comet/jquery.cometd.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/comet/jquery.cometd-ack.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/comet/jquery.cometd-reload.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/comet/jquery.cometd-timestamp.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/comet/jquery.cometd-timesync.js"></script>
+
+<!-- JGrowl -->
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/comet/jquery.jgrowl.js"></script>
+
+
+<!-- Generales DELTA -->
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/delta/gestionCtrlSelect.js"></script>
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/delta/general.js"></script>
+<!-- html5 enabled -->
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/delta/html5.js"></script>
+
+<!-- Scripts de "Procesando..." -->
+<script type="text/javascript"
+	src="http://deltadev.imss.gob.mx/delta/resources/js/jquery/blockUI/jquery.blockUI.js"></script>
+<script>
+	$(document).ready(function() {
+
+		$('form:not(.formNotBlock)').submit(function() {
+			$.blockUI();
+		});
+	});
+</script>
+
+</head>
+
+
+<body>
+
+	<div class="site_position_center_fixed">
+
+		<div class="main_wrap">
+
+
+			<div id="cuerpo_principal">
+
+				<div id="encabezado">
+
+
+
+
+
+
+
+
+
+
+					<!--inicia Encabezado-->
+
+					<div class="header_top ">
+
+						<div class="top_version cell">
+							<span> Versión</span>: <span> 0.1.7</span>
+						</div>
+
+						<div class="top_nav cell">
+							<ul>
+								<li><a href="http://www.imss.gob.mx" title="Portal IMSS">Visita
+										el portal oficial del Instituto Mexicano del Seguro Social </a></li>
+							</ul>
+
+						</div>
+
+					</div>
+
+					<!--inicio logo-->
+					<img height="83"
+						src="/portal-web/static/resources/imagenes/banner.gif"
+						title="Portal IMSS" width="471" />
+					<!--Termino logo-->
+
+					<div class="top_search">
+						<!--inicio busqueda-->
+						<form id="cse-search-box"
+							action="http://www.imss.gob.mx/buscador/resultado.html">
+							<input name="cx" type="hidden"
+								value="002360038649913767611:zxhajmgbjye" /> <input name="cof"
+								type="hidden" value="FORID:11" /> <input name="ie"
+								type="hidden" value="ISO-8859-1" />
+							<div>
+								<input id="s" name="q" size="15" type="text" /> <input
+									id="searchsubmit" type="submit" value="Buscar" />
+							</div>
+						</form>
+					</div>
+
+
+					<!-- Termina header -->
+
+				</div>
+				<div id="subencabezado">
+
+
+
+
+
+
+
+
+
+
+					<div class="titulo_sistema texto-centrado">
+						<span> Portal de Servicios IMSS Digital </span>
+					</div>
+
+				</div>
+				<div id="cuerpo">
+
+
+
+
+
+
+
+
+					<script type="text/javascript"
+						src="/gestionSolicitud-web/static/resources/js/delta/firma-digital/FirmaDigital.js"></script>
+					<script type="text/javascript"
+						src=/portal-web/static/resources/js/wizard/registroUsuario/solicitudUsuarioWizard.js>
+						
+					</script>
+					<script type="text/javascript"
+						src=/portal-web/static/resources/js/delta/authenticate.js>
+						
+					</script>
+
+					<script type="text/javascript"
+						src=/portal-web/static/resources/js/delta/portal.js>
+						
+					</script>
+
+					<script type="text/javascript"
+						src="/gestionIndividuo-consulta-web/static/resources/js/wizard/fisica/registro-usuario/registroUsuarioWizard.js"></script>
+
+
+					<!-- Inicio del contenido del portal -->
+					<div id="portal" class="contenedor">
+						<div class="row" style="width: 100% !important">
+							<div id="mediosdeacceso" class="cell portal_medios_acceso">
+								<div id="login" class="row" style="height: 150px !important;">
+
+									<h2>Acceso para usuarios.</h2>
+
+
+									<div>
+										<form id="formlogin" action="/portal-web/portal/ingresar"
+											method="get">
+
+
+											<!-- 							<div id="usuario-contenedor"> -->
+
+
+											<!-- 									<strong class="etiqueta">  -->
+
+											<!-- 									</strong> -->
+
+
+											<!-- 							</div> -->
+
+											<!-- 							<div id="password-contenedor"> -->
+
+
+											<!-- 									<strong class="etiqueta"> -->
+
+											<!-- 									</strong> -->
+
+
+											<!-- 							</div> -->
+											<!-- 							</br> -->
+											<div>
+												<input type="button" id="enviarForm" class="mboton"
+													style="font-size: 10px !important;" value="INGRESAR">
+
+											</div>
+
+
+										</form>
+
+									</div>
+								</div>
+								<div id="registronuevousuario" class="row">
+									<h2>Registrarme como usuario.</h2>
+									<p style="font-size: .9em;">
+										Para poder obtener los servicios del Portal usted debe
+										registrarse previamente. Para ello, debe ingresar los datos
+										que se solicitan a continuación, los cuales serán procesados
+										en un breve plazo. Una vez comprobada la validez de la
+										información, se le enviará su clave de acceso para utilizar
+										los servicios del Portal.<br />
+										<br />Las condiciones para registrarse implican que usted
+										debe poseer una dirección de correo electrónico. Si aún no
+										cuenta con dirección de correo acceda a un servidor de
+										Internet que brinde este servicio y regístrese. Debe
+										suministrar además, un número de teléfono válido que será
+										utilizado para comunicarnos con usted ante cualquier
+										dificultad.<br />
+										<br />En el caso de menores de 18 años de edad NO SE REGISTRA
+										la solicitud, solo el padre, la madre o un representante legal
+										pueden efectuar trámites.
+									</p>
+									</br>
+									<div class="derecha">
+										<form id="formRegistroUsuarioNuevo">
+											<input type="button" id="registrarUsuario" class="mboton"
+												style="font-size: 10px !important;" value="CREAR UNA CUENTA">
+										</form>
+									</div>
+								</div>
+							</div>
+
+							<div id="contenidodeportal" class="cell portal_informacion">
+								<h2>Bienvenido al Portal de Servicios del IMSS</h2>
+								<p style="font-size: .9em;">
+									El IMSS es la institución de seguridad social más grande de
+									América Latina, pilar fundamental del bienestar individual y
+									colectivo de la sociedad mexicana y principal elemento
+									redistribuidor de la riqueza en México; es sin duda, una de las
+									instituciones más queridas por los MEXICANOS.<br />
+									<br />En este espacio encontrará información detallada de
+									todos los trámites disponibles para los distintos públicos a
+									los que el IMSS ofrece sus servicios.<br />
+									<br />
+									<b>Tipos de trámites que puede realizar ante el IMSS:</b><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-¿Cómo
+									realizar un trámite?<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-¿Qué
+									formatos utilizar para presentar un trámite?<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-¿Qué
+									tipo de documentos necesita para realizar un trámite?<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Tiempos
+									de respuesta para algún trámite<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-¿Dónde
+									presentar un trámite, etc.?<br />
+									<br />El IMSS se acerca a ti, en este micrositio encontrarás
+									diversos servicios en línea que puedes consultar desde la
+									comodidad de tu hogar, empresa o cualquier otro lugar con
+									conexión a Internet.
+								</p>
+
+								</br>
+
+								<div id="imagen_portal">
+
+									<img src="/portal-web/static/resources/imagenes/tramites.jpg"
+										title="Portal IMSS" />
+								</div>
+
+								</br>
+								<div id="areas"></div>
+
+							</div>
+							<!-- Divs de soporte para abrir los dialogos de las aplicaciones utilitarias -->
+							<div id="wizardRegistroUsuario"></div>
+							<!-- div para la forma de firma -->
+							<div id="firmaDigitalComponent"></div>
+
+						</div>
+
+
+
+					</div>
+				</div>
+				<div id="pie">
+
+
+
+
+
+
+
+
+
+
+					<!-- Copyright -->
+
+					<hr>
+					<footer>
+
+						<div style="text-align: center">
+
+
+							<img alt=""
+								src="http://deltadev.imss.gob.mx/delta/resources/imagenes/logo_70_final.jpg"
+								width="150px" height="100px" />
+						</div>
+
+						<div class="copyright">
+							<p style="text-align: center">
+								Reforma 476, Col. Ju&aacute;rez, M&eacute;xico DF - Tel 01 800
+								623 23 23 - </br> ALGUNOS DERECHOS RESERVADOS &copy; IMSS - 2012
+							</p>
+						</div>
+
+					</footer>
+					<!-- Copyright -->
+					<!-- fin footer -->
+
+				</div>
+			</div>
+
+
+		</div>
+
+	</div>
+
+
+	<div style="display: none;">
+
+		<form id="formCerrarSesion"
+			action="http://sso-delta.imss.gob.mx:11000/openam_10.0.0/UI/Logout"
+			method="get"></form>
+	</div>
+
+
+
+</body>
+</html>

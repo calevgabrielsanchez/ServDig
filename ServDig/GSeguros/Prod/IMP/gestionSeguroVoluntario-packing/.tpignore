@@ -1,0 +1,5 @@
+\Q/target/\E.*
+\Q/.externalToolBuilders/\E.*
+\Q/.settings/\E.*
+\Q/.project\E
+\Q/bin/\E.*

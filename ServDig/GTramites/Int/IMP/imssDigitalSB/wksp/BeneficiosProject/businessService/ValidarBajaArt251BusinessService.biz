@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:ejb="http://www.bea.com/wli/sb/transports/ejb">
+  <ser:coreEntry isProxy="false" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description>Servicio de negocio que revisa que no el RFC no tenga ningún patrón dado de baja por artículo 251</ser:description>
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" transport-typed="true" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:binding>
+        <con:name>JwsServiceSoapBinding</con:name>
+        <con:namespace>http://servicios.imss.gob.mx/beneficio/riss</con:namespace>
+      </con:binding>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+    </ser:monitoring>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:throttling enabled="false">
+      <ser:capacity>0</ser:capacity>
+      <ser:maxQueueLength>0</ser:maxQueueLength>
+      <ser:timeToLive>0</ser:timeToLive>
+    </ser:throttling>
+    <ser:result-caching isEnabled="true" isSupported="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>ejb</tran:provider-id>
+    <tran:inbound>false</tran:inbound>
+    <tran:URI weight="0">
+      <env:value>ejb:deltaJNDIProvider:afiliacionServiceBusiness#mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.afiliacion.AfiliacionServiceBusinessRemote</env:value>
+    </tran:URI>
+    <tran:outbound-properties>
+      <tran:load-balancing-algorithm>round-robin</tran:load-balancing-algorithm>
+      <tran:retry-count>0</tran:retry-count>
+      <tran:retry-interval>30</tran:retry-interval>
+      <tran:retry-application-errors>true</tran:retry-application-errors>
+      <tran:delay-interval-configuration isEnabled="false">
+        <tran:delay-interval>0</tran:delay-interval>
+      </tran:delay-interval-configuration>
+    </tran:outbound-properties>
+    <tran:provider-specific>
+      <ejb:security>
+        <ejb:passClientIdentity>false</ejb:passClientIdentity>
+      </ejb:security>
+      <ejb:service>
+        <ejb:clientJar ref="libraries/APP-INF/lib/delta-gestionPatronal-interfaces-negocio-2.4-SNAPSHOT"/>
+        <ejb:ejbBizService classname="mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.afiliacion.AfiliacionServiceBusinessRemote">
+          <ejb:method name="actualizarCentroTrabajo" signature="void actualizarCentroTrabajo(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,mx.gob.imss.ctirss.delta.model.gestion.tramite.Tramite,mx.gob.imss.ctirss.delta.model.Usuario,boolean)" exclude="true">
+            <ejb:operation>actualizarCentroTrabajo</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.tramite.Tramite"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:param name="arg3" type="boolean"/>
+          </ejb:method>
+          <ejb:method name="actualizarSolicitudDeAltaPatronal" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud actualizarSolicitudDeAltaPatronal(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud,mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>actualizarSolicitudDeAltaPatronal</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="asociarRepresentantesLegalesANuevoRegistroPatronal" signature="void asociarRepresentantesLegalesANuevoRegistroPatronal(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>asociarRepresentantesLegalesANuevoRegistroPatronal</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+          </ejb:method>
+          <ejb:method name="cancelarSolicitud" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud cancelarSolicitud(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud)" exclude="true">
+            <ejb:operation>cancelarSolicitud</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="cargarDatosDeTramite" signature="java.util.Map cargarDatosDeTramite(mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoTramiteEnum,mx.gob.imss.ctirss.delta.model.gestion.individuo.Persona,java.lang.Long)" exclude="true">
+            <ejb:operation>cargarDatosDeTramite</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoTramiteEnum"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Persona"/>
+            <ejb:param name="arg2" type="java.lang.Long"/>
+            <ejb:return name="return" type="java.util.Map"/>
+          </ejb:method>
+          <ejb:method name="concluirSolicitud" signature="void concluirSolicitud(java.lang.Long,mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,mx.gob.imss.ctirss.delta.model.Usuario) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>concluirSolicitud</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+          </ejb:method>
+          <ejb:method name="concluirSolicitudAfiliacion" signature="void concluirSolicitudAfiliacion(java.lang.Long) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>concluirSolicitudAfiliacion</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+          </ejb:method>
+          <ejb:method name="crearSolicitudAutomaticaDeBaja" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud crearSolicitudAutomaticaDeBaja(java.lang.String,java.lang.Integer,mx.gob.imss.ctirss.delta.model.Usuario) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>crearSolicitudAutomaticaDeBaja</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:param name="arg1" type="java.lang.Integer"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="crearSolicitudDeAltaPatronal" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud crearSolicitudDeAltaPatronal(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,mx.gob.imss.ctirss.delta.model.Usuario) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>crearSolicitudDeAltaPatronal</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="enviarSolicitudAlInstituto" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud enviarSolicitudAlInstituto(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoSolicitudEnum,mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>enviarSolicitudAlInstituto</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoSolicitudEnum"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="existeSolicitudPendienteDeAsignacion" signature="boolean existeSolicitudPendienteDeAsignacion(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoSolicitudEnum)" exclude="true">
+            <ejb:operation>existeSolicitudPendienteDeAsignacion</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoSolicitudEnum"/>
+            <ejb:return name="return" type="boolean"/>
+          </ejb:method>
+          <ejb:method name="finalizarSolicitudDeAltaPatronal" signature="void finalizarSolicitudDeAltaPatronal(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud,mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException,mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException" exclude="true">
+            <ejb:operation>finalizarSolicitudDeAltaPatronal</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica"/>
+          </ejb:method>
+          <ejb:method name="generarDocumentoModificacionDatosPatronales" signature="[B generarDocumentoModificacionDatosPatronales(java.lang.Long,java.lang.Integer)" exclude="true">
+            <ejb:operation>generarDocumentoModificacionDatosPatronales</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="java.lang.Integer"/>
+            <ejb:return name="return" type="[B"/>
+          </ejb:method>
+          <ejb:method name="generarDocumentoModificacionDatosPatronales" signature="[B generarDocumentoModificacionDatosPatronales(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud,java.lang.Integer)" exclude="true">
+            <ejb:operation>generarDocumentoModificacionDatosPatronales</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:param name="arg1" type="java.lang.Integer"/>
+            <ejb:return name="return" type="[B"/>
+          </ejb:method>
+          <ejb:method name="gestionarDatosDeTramite" signature="java.util.Map gestionarDatosDeTramite(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoTramiteEnum,mx.gob.imss.ctirss.delta.model.Usuario,boolean)" exclude="true">
+            <ejb:operation>gestionarDatosDeTramite</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoTramiteEnum"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:param name="arg3" type="boolean"/>
+            <ejb:return name="return" type="java.util.Map"/>
+          </ejb:method>
+          <ejb:method name="gestionarTramiteActualizacionAfiliacion" signature="java.util.Map gestionarTramiteActualizacionAfiliacion(java.lang.Long,mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoTramiteEnum,mx.gob.imss.ctirss.delta.model.Usuario,boolean) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>gestionarTramiteActualizacionAfiliacion</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoTramiteEnum"/>
+            <ejb:param name="arg3" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:param name="arg4" type="boolean"/>
+            <ejb:return name="return" type="java.util.Map"/>
+          </ejb:method>
+          <ejb:method name="inicializarInformacionSujetoTramite" signature="mx.gob.imss.ctirss.delta.model.gestion.tramite.TramiteSujetoObligado inicializarInformacionSujetoTramite(mx.gob.imss.ctirss.delta.model.gestion.tramite.Tramite)" exclude="true">
+            <ejb:operation>inicializarInformacionSujetoTramite</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.tramite.Tramite"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.tramite.TramiteSujetoObligado"/>
+          </ejb:method>
+          <ejb:method name="listarSolicitudesEnProceso" signature="java.util.List listarSolicitudesEnProceso(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,boolean)" exclude="true">
+            <ejb:operation>listarSolicitudesEnProceso</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg1" type="boolean"/>
+            <ejb:return name="return" type="java.util.List"/>
+          </ejb:method>
+          <ejb:method name="notificarPorCorreoElectronico" signature="void notificarPorCorreoElectronico(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,java.lang.Long,java.lang.Integer) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>notificarPorCorreoElectronico</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg1" type="java.lang.Long"/>
+            <ejb:param name="arg2" type="java.lang.Integer"/>
+          </ejb:method>
+          <ejb:method name="obtenerDatosFiscales" signature="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado obtenerDatosFiscales(mx.gob.imss.ctirss.delta.model.gestion.individuo.Persona)" exclude="true">
+            <ejb:operation>obtenerDatosFiscales</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Persona"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+          </ejb:method>
+          <ejb:method name="obtenerDetalleDeRegistroPatronal" signature="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado obtenerDetalleDeRegistroPatronal(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado)" exclude="true">
+            <ejb:operation>obtenerDetalleDeRegistroPatronal</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+          </ejb:method>
+          <ejb:method name="obtenerDocumentoModificacionDatosPatronales" signature="[B obtenerDocumentoModificacionDatosPatronales(java.lang.Long,java.lang.Integer) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>obtenerDocumentoModificacionDatosPatronales</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="java.lang.Integer"/>
+            <ejb:return name="return" type="[B"/>
+          </ejb:method>
+          <ejb:method name="obtenerDocumentoModificacionDatosPatronales" signature="[B obtenerDocumentoModificacionDatosPatronales(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud,java.lang.Integer) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>obtenerDocumentoModificacionDatosPatronales</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:param name="arg1" type="java.lang.Integer"/>
+            <ejb:return name="return" type="[B"/>
+          </ejb:method>
+          <ejb:method name="obtenerInformacionDeSolicitud" signature="java.util.Map obtenerInformacionDeSolicitud(java.lang.Long)" exclude="true">
+            <ejb:operation>obtenerInformacionDeSolicitud</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:return name="return" type="java.util.Map"/>
+          </ejb:method>
+          <ejb:method name="obtenerSolicitudEnProceso" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud obtenerSolicitudEnProceso(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoSolicitudEnum)" exclude="true">
+            <ejb:operation>obtenerSolicitudEnProceso</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoSolicitudEnum"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="obtenerSolicitudPendientePorAsignar" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud obtenerSolicitudPendientePorAsignar(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoSolicitudEnum)" exclude="true">
+            <ejb:operation>obtenerSolicitudPendientePorAsignar</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoSolicitudEnum"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="obtenerSubdelegacion" signature="mx.gob.imss.ctirss.delta.model.domicilio.Subdelegacion obtenerSubdelegacion(java.lang.Long)" exclude="true">
+            <ejb:operation>obtenerSubdelegacion</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.domicilio.Subdelegacion"/>
+          </ejb:method>
+          <ejb:method name="obtenerSubdelegacionPorDomicilio" signature="mx.gob.imss.ctirss.delta.model.domicilio.Subdelegacion obtenerSubdelegacionPorDomicilio(mx.gob.imss.ctirss.delta.model.domicilio.Domicilio) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>obtenerSubdelegacionPorDomicilio</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.domicilio.Domicilio"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.domicilio.Subdelegacion"/>
+          </ejb:method>
+          <ejb:method name="rechazarSolicitud" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud rechazarSolicitud(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud)" exclude="true">
+            <ejb:operation>rechazarSolicitud</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="validaCondicionesDeActualizacionDeSolicitud" signature="void validaCondicionesDeActualizacionDeSolicitud(java.lang.Long,mx.gob.imss.ctirss.delta.model.Usuario,java.lang.String) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>validaCondicionesDeActualizacionDeSolicitud</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:param name="arg2" type="java.lang.String"/>
+          </ejb:method>
+          <ejb:method name="validaRegistroPatronalValidoPorRFC" signature="java.util.Map validaRegistroPatronalValidoPorRFC(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,mx.gob.imss.ctirss.delta.model.Usuario)" exclude="true">
+            <ejb:operation>validaRegistroPatronalValidoPorRFC</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:return name="return" type="java.util.Map"/>
+          </ejb:method>
+          <ejb:method name="validarMediosContacto" signature="java.lang.String validarMediosContacto(java.util.List)" exclude="true">
+            <ejb:operation>validarMediosContacto</ejb:operation>
+            <ejb:param name="arg0" type="java.util.List"/>
+            <ejb:return name="return" type="java.lang.String"/>
+          </ejb:method>
+          <ejb:method name="validarNoAdedudoPorBaja251" signature="void validarNoAdedudoPorBaja251(java.lang.String) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="false">
+            <ejb:operation>validarNoAdedudoPorBaja251</ejb:operation>
+            <ejb:param name="rfc" type="java.lang.String"/>
+          </ejb:method>
+          <ejb:method name="validarSolicitudCompletes" signature="void validarSolicitudCompletes(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoSolicitudEnum) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>validarSolicitudCompletes</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoSolicitudEnum"/>
+          </ejb:method>
+          <ejb:method name="validarSubdelegacion" signature="void validarSubdelegacion(java.lang.Long,mx.gob.imss.ctirss.delta.model.gestion.patronal.CentroTrabajo) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>validarSubdelegacion</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.CentroTrabajo"/>
+          </ejb:method>
+          <ejb:method name="validarSubdOrigenSubDestino" signature="void validarSubdOrigenSubDestino(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado) throws mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException" exclude="true">
+            <ejb:operation>validarSubdOrigenSubDestino</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+          </ejb:method>
+          <ejb:method name="validarTramiteAfiliacionActivo" signature="java.util.Map validarTramiteAfiliacionActivo(java.lang.Long,mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoTramiteEnum,mx.gob.imss.ctirss.delta.model.Usuario)" exclude="true">
+            <ejb:operation>validarTramiteAfiliacionActivo</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoTramiteEnum"/>
+            <ejb:param name="arg3" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:return name="return" type="java.util.Map"/>
+          </ejb:method>
+        </ejb:ejbBizService>
+        <ejb:targetNamespace>http://servicios.imss.gob.mx/beneficio/riss</ejb:targetNamespace>
+        <ejb:style>Document Wrapped</ejb:style>
+        <ejb:encoding>Literal</ejb:encoding>
+      </ejb:service>
+      <ejb:ejb30>true</ejb:ejb30>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+</xml-fragment>

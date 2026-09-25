@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="header :: head">
+<meta name="tipo_contenido" content="text/html;"
+	http-equiv="content-type" charset="utf-8"></meta>
+</head>
+<body>
+	<div class="container">
+	<input id="pasoConsulta" value="5" class="hidden"/>
+		<div th:substituteby="header :: pageHeader"></div>
+		
+		<div id="pnlDatosResumen" class="panel panel-default">
+			<div class="panel-heading" >
+				<div class="row">
+					<div class="col-sm-6 text-left">
+						<small th:text="#{escritorio.titulo}" />
+					</div>
+					<div class="col-sm-6 text-right">	
+						<a class="accordion-toggle text-right" data-toggle="collapse"
+							data-parent="#accordion" href="#collapseOne"> 
+							<img id="imgCollapsable"
+								src="/sdroc_web/static/images/panel-collapsed.png"
+								style="width: 25px">
+							</img>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div id="collapseOne" class="panel-collapse collapse in">
+				<div id="pnlInformation" class="panel-body text-center">
+					<div th:substituteby="registro/obra/datosPatron :: pageDatosPatron"></div>
+				</div>
+	
+			</div>
+		</div>	
+
+		<div id="pnlReporteAvisos" class="panel panel-default small">
+			<div class="panel-heading">
+				<label th:text="#{consulta.aviso.ubicacion.obra.tabla.titulo}" style="font-weight: normal !important;"/>
+			</div>
+			<div class="panel-body text-center">
+				<div class="scrollable-table">
+					<table id="tblConsultaAvisoUbicacionObra" class="table table-striped table-responsive">
+						<thead>
+							<tr>
+								<th class="small" th:text="#{consulta.aviso.ubicacion.obra.tabla.contador}"></th>
+								<th class="small" th:text="#{consulta.aviso.ubicacion.obra.tabla.num.ubicacion}"></th>
+								<th class="small" th:text="#{consulta.aviso.ubicacion.obra.tabla.registro}"></th>
+								<th class="small" th:text="#{consulta.aviso.ubicacion.obra.tabla.rfc}"></th>
+								<th class="small" th:text="#{consulta.aviso.ubicacion.obra.tabla.ubicacion}"></th>
+								<th class="small" th:text="#{consulta.aviso.ubicacion.obra.tabla.acuse}"></th>
+							</tr>
+						</thead>
+						<tbody class="searchable">
+							<tr th:each="ra, status : ${listaReporteAvisos}" class="text-left">
+								<td th:text="${status.count}" class="small"/>
+								<td th:text="${ra.cveRegistroAvisoObra}" class="small"/>
+								<td th:text="${ra.informacionPatronDTO.cveRegPatronal}" class="small"/>
+								<td th:text="${ra.cveRfcPatron}" class="small"/>
+								<td th:utext="${ra.ubicacionObraDTO.calle + ' EXT.'
+									+ (ra.ubicacionObraDTO.numExterior != null and ra.ubicacionObraDTO.numExterior != 'null' and ra.ubicacionObraDTO.numExterior != '' ? ' ' + ra.ubicacionObraDTO.numExterior : '')
+									+ (ra.ubicacionObraDTO.numExteriorAlf != null and ra.ubicacionObraDTO.numExteriorAlf != 'null' and ra.ubicacionObraDTO.numExteriorAlf != '' ? ' ' + ra.ubicacionObraDTO.numExteriorAlf : (ra.ubicacionObraDTO.numExterior != null and ra.ubicacionObraDTO.numExterior != 'null' and ra.ubicacionObraDTO.numExterior != '' ? '' : ' SN'))
+									+ ' INT.' + (ra.ubicacionObraDTO.numInterior != null and ra.ubicacionObraDTO.numInterior != 'null' and ra.ubicacionObraDTO.numInterior != '' and ra.ubicacionObraDTO.numInterior != '0' ? ' ' + ra.ubicacionObraDTO.numInterior : '')
+									+ (ra.ubicacionObraDTO.numInteriorAlf != null and ra.ubicacionObraDTO.numInteriorAlf != 'null' and ra.ubicacionObraDTO.numInteriorAlf != '' and ra.ubicacionObraDTO.numInteriorAlf != '0' ? ' ' + ra.ubicacionObraDTO.numInteriorAlf : (ra.ubicacionObraDTO.numInterior != null and ra.ubicacionObraDTO.numInterior != 'null' and ra.ubicacionObraDTO.numInterior != '' and ra.ubicacionObraDTO.numInterior != '0' ? '' : ' SN'))
+									+ ', ' + ra.ubicacionObraDTO.refColonia
+									+ ', ' + ra.ubicacionObraDTO.refMunicipio 
+									+ ', ' + ra.ubicacionObraDTO.refEntidad
+									+ ', CP ' + ra.ubicacionObraDTO.codigoPostal}" class="small"/>
+								<td class="small"><a th:with="var=*{ra.numSeqNotaria}"
+									th:href="@{|javascript:mostrarAcusesNotaria('${var}')|}">Acuse</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+		<div id="modalVisorAcuses"></div>
+		<div class="row">
+			<div class="col-md-12 text-left">
+				<form>
+					<button value="submit" th:formaction="@{|/avisosUbicacion/exportaExcel|}" 
+						type="submit" class="btn btn-primary pull-right btn-sm" id="btnExpulsarResultados">Exportar resultados</button>
+				</form>
+				<form>
+					<button value="submit" formaction="/sdroc_web/consulta" style="margin-right: 5px;"
+						type="submit" class="btn btn-default pull-right btn-sm" id="btnRegresarConsulta">Regresar</button>
+				</form>
+			</div>
+		</div>
+		<br></br> <br></br>
+
+	</div>
+</body>
+</html>
+
+

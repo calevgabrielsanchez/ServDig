@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ace="http://www.icefaces.org/icefaces/components">
+<h:head>
+  <title><ui:insert name="title">Administración de Usuarios Delta (Test)</ui:insert></title>
+  <link href="../estilos/imss/style.css" type="text/css" rel="stylesheet" />
+  
+
+
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="max-age=100, must-revalidate" />
+<meta name="description" content="Instituto Mexicano del Seguro Social Portal DELTA" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title> Portal de Servicios IMSS Digital </title>
+
+
+<link rel="icon" href="http://deltadev.imss.gob.mx/delta/resources/iconos/favicon.ico" />
+  
+</h:head>
+
+<h:body>
+<div class="container_12_imss">
+	<div id="header" class="grid_9 left-seperator">
+	    <ui:insert name="header">
+	    	<ui:include src="encabezado.xhtml"/>
+	    </ui:insert>
+	</div>
+	
+	<div id="contenido" class="box clear-float">
+		<div class="grid_9 left-seperator">
+			<div class="box-content_clear-float_imss">
+				<ui:insert name="body" />
+			</div>
+		</div>
+	</div>
+	
+	<div id="footer">
+	  <ui:insert name="footer">
+	    	<ui:include src="pie.xhtml"/>
+	  </ui:insert>
+	</div>
+</div>
+</h:body>
+</html>

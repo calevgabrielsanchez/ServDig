@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="terminosCondiciones" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="180"/>
+	<parameter name="cadena" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="517" splitType="Stretch">
+			<textField>
+				<reportElement x="80" y="429" width="492" height="80"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Soberana Sans Light"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{cadena}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="572" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Soberana Sans Light" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Carta de Términos y Condiciones para el Uso del Sistema de Consulta de Riesgos de Trabajo Terminados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="19" width="572" height="20"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Soberana Sans Light"/>
+				</textElement>
+				<text><![CDATA[A través de este instrumento se acepta realizar la consulta de riesgos de trabajo terminados sujetándose a los siguientes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="39" width="572" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Soberana Sans Light" isBold="false"/>
+				</textElement>
+				<text><![CDATA[TÉRMINOS Y CONDICIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="59" width="572" height="296"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Soberana Sans Light"/>
+				</textElement>
+				<text><![CDATA[1. El patrón, o su representante legal, manifiestan conocer que la información contenida en el sistema de consulta de riesgos de trabajo terminados es exclusivamente de carácter informativo y no debe considerarse como un acto de autoridad del Instituto Mexicano del Seguro Social, quien pone a su disposición la mencionada información con el fin de que complemente, en su caso, los controles de documentación y el registro pormenorizado que está obligado a llevar sobre dichos riesgos, en términos de lo dispuesto por los artículos 32, fracciones I y V, y 34 del Reglamento de la Ley del Seguro Social en Materia de Afiliación, Clasificación de Empresas, Recaudación y Fiscalización, y 19 del Reglamento de Prestaciones Médicas.
+
+2. El patrón, o representante legal es responsable del uso adecuado del sistema y la guarda de información.
+
+3. Cuando el patrón o representante legal cuente en sus registros con riesgos de trabajo terminados, adicionales a los enlistados en la consulta, deberá declararlos en su determinación anual de la prima del Seguro de Riesgos de Trabajo, con motivo de la revisión de su siniestralidad, de conformidad con lo establecido en los artículos 72 y 74 de la Ley del Seguro Social y 32, fracciones I y V, del Reglamento de la Ley del Seguro Social en Materia de Afiliación, Clasificación de Empresas, Recaudación y Fiscalización.
+
+4. Si el Instituto identificara otros riesgos de trabajo que no aparezcan en la  relación de casos mostrados y que hayan ocurrido dentro del periodo de revisión de la siniestralidad que se consulta, lo hará de conocimiento del patrón o representante legal mediante resolución de determinación o rectificación de prima , en la cual se detallará el riesgo de trabajo de que se trate, de acuerdo con lo dispuesto por el artículo 32, fracción VI del Reglamento de la Ley del Seguro Social en Materia de Afiliación, Clasificación de Empresas, Recaudación y Fiscalización.
+
+Los términos y condiciones antes señalados son aplicables a la aceptación de los mismos que realice la persona física o moral, al realizar la consulta de riesgos de trabajo terminados.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="359" width="520" height="40"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Soberana Sans Light"/>
+				</textElement>
+				<text><![CDATA[Declaro que he leído y conozco los alcances legales de los términos y condiciones antes señalados, aceptando voluntariamente los mismos.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="19" y="357" width="30" height="34"/>
+				<imageExpression class="java.lang.String"><![CDATA["reportes/checkbox.png"]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="221" y="406" width="100" height="20"/>
+				<textElement>
+					<font fontName="Soberana Sans Light"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="429" width="80" height="20"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Soberana Sans Light"/>
+				</textElement>
+				<text><![CDATA[Cadena notarial:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

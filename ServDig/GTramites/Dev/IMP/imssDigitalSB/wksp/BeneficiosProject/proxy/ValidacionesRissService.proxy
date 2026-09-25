@@ -1,0 +1,961 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config" xmlns:http="http://www.bea.com/wli/sb/transports/http">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description/>
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con4:SoapBindingType" xmlns:con4="http://www.bea.com/wli/sb/services/bindings/config">
+      <con4:wsdl ref="BeneficiosProject/wsdl/ValidacionRissGlobalService"/>
+      <con4:port>
+        <con4:name>ValidacionRissServicePort</con4:name>
+        <con4:namespace>http://mx.gob.imss.delta.global.service/</con4:namespace>
+      </con4:port>
+      <con4:selector type="SOAP body"/>
+      <con4:WSI-compliant>false</con4:WSI-compliant>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:ws-policy>
+      <ser:binding-mode>wsdl-policy-attachments</ser:binding-mode>
+    </ser:ws-policy>
+    <ser:pageAttachments isEnabled="false"/>
+    <ser:transactions isRequired="true" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/Beneficios/ValidacionesRissService</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific>
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con:pipeline name="PipelinePairNode3_response" type="response"/>
+    <con:pipeline name="PipelinePairNode2_request" type="request"/>
+    <con:pipeline name="PipelinePairNode8_request" type="request">
+      <con:stage name="sinDerechoStage">
+        <con:comment>Etapa que pone los valores de respuesta necesarios cuando el SAT informa que no se es sujeto al beneficio</con:comment>
+        <con:context>
+          <con1:userNsDecl prefix="m" namespace="http://servicios.imss.gob.mx/beneficio/riss"/>
+          <con1:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con:context>
+        <con:actions>
+          <con2:log>
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fc4</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$rfc</con:xqueryText>
+            </con2:expr>
+            <con2:message>Sin derecho RFC en Apartado AB:</con2:message>
+          </con2:log>
+          <con3:assign varName="indDerechoBeneficioResp">
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fc3</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">"false"</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="motivRechazoResp">
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fb8</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse/mx:motivoDeRechazo/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="tipoApartadoBeneficioResp">
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fb7</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">"AB"</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="exitoResp">
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fb6</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse/mx:exito/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="cveErrorResp">
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fb5</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse/mx:claveError/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="descErrorResp">
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fb4</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse/mx:descripcion/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode9_response" type="response"/>
+    <con:pipeline name="PipelinePairNode4_request" type="request">
+      <con:stage name="validacionesApartadoBStage">
+        <con:comment/>
+        <con:context>
+          <con1:userNsDecl prefix="m" namespace="http://servicios.imss.gob.mx/beneficio/riss"/>
+          <con1:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con:context>
+        <con:actions>
+          <con2:log>
+            <con1:id>_ActionId-7504224441331154904--7a9018f5.145f62d5edb.-7ff3</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$rfc</con:xqueryText>
+            </con2:expr>
+            <con2:message>Se va validar como apartado B al RFC</con2:message>
+          </con2:log>
+          <con3:wsCallout>
+            <con1:id>_ActionId-7504224441331154904--7a9018f5.145f62d5edb.-7ff2</con1:id>
+            <con3:service ref="BeneficiosProject/proxy/ValidarApartadoBProxy" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con3:request>
+              <con3:payload wrapped="false">$validarApartadoBRequest</con3:payload>
+            </con3:request>
+            <con3:response>
+              <con3:payload wrapped="false">validarApartadoBResponse</con3:payload>
+            </con3:response>
+            <con3:requestTransform>
+              <con3:assign varName="validarApartadoBRequest">
+                <con1:id>_ActionId-7504224441331154904--7a9018f5.145f62d5edb.-7ff1</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<mx:validacionApartadoBRequest xmlns:mx="http://mx.gob.imss.delta.global.service/">
+	<mx:rfc>{$rfc}</mx:rfc>
+	<mx:registrosPatronales>{$nrps/*}</mx:registrosPatronales>
+	<mx:indicadorApartadoC>{$indApartadoC}</mx:indicadorApartadoC>
+</mx:validacionApartadoBRequest>]]></con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+            </con3:requestTransform>
+            <con3:responseTransform>
+              <con2:log>
+                <con1:id>_ActionId-7504224441331154904--7a9018f5.145f62d5edb.-7ff0</con1:id>
+                <con2:logLevel>error</con2:logLevel>
+                <con2:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse</con:xqueryText>
+                </con2:expr>
+                <con2:message>La respuesta de las validaciones como apartado B es:</con2:message>
+              </con2:log>
+              <con3:assign varName="indDerechoBeneficioResp">
+                <con1:id>_ActionId-7504224441331154904--7a9018f5.145f62d5edb.-7fef</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse/mx:indDerechoBeneficioApartadoB/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="tipoApartadoBeneficioResp">
+                <con1:id>_ActionId-7504224441331154904--7a9018f5.145f62d5edb.-7fee</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">"B"</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="motivRechazoResp">
+                <con1:id>_ActionId-7504224441331154904--7a9018f5.145f62d5edb.-7fed</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse/mx:motivoDeRechazo/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="exitoResp">
+                <con1:id>_ActionId-7504224441331154904--7a9018f5.145f62d5edb.-7fec</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse/mx:exito/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="cveErrorResp">
+                <con1:id>_ActionId-7504224441331154904--7a9018f5.145f62d5edb.-7feb</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse/mx:claveError/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="descErrorResp">
+                <con1:id>_ActionId-7504224441331154904--7a9018f5.145f62d5edb.-7fea</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse/mx:descripcion/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+            </con3:responseTransform>
+          </con3:wsCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode10_request" type="request">
+      <con:stage name="respuestaNoExitosaSatStage">
+        <con:comment>Etapa que pone los valores de respuesta necesarios cuando en el WS del SAT no devolvió una respuesta satisfactoria o el RFC es distinto al RFC vigente</con:comment>
+        <con:context>
+          <con1:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con:context>
+        <con:actions>
+          <con2:log>
+            <con1:id>_ActionId-816129164228649134-32f85c25.1461efc9c28.-7ff1</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$rfc</con:xqueryText>
+            </con2:expr>
+            <con2:message>Sin derecho debido a una respuesta no satisfactoria desde el servicio del SAT  con el RFC:</con2:message>
+          </con2:log>
+          <con3:assign varName="indDerechoBeneficioResp">
+            <con1:id>_ActionId-816129164228649134-32f85c25.1461efc9c28.-7ff0</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">"false"</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode5_response" type="response"/>
+    <con:pipeline name="PipelinePairNode7_request" type="request">
+      <con:stage name="validacionesApartadoAStage">
+        <con:comment/>
+        <con:context>
+          <con1:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con:context>
+        <con:actions>
+          <con2:log>
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fce</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$rfc</con:xqueryText>
+            </con2:expr>
+            <con2:message>Se va validar como apartado A al RFC</con2:message>
+          </con2:log>
+          <con3:wsCallout>
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fcd</con1:id>
+            <con3:service ref="BeneficiosProject/proxy/ValidarApartadoAProxy" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con3:request>
+              <con3:payload wrapped="false">$validarApartadoARequest</con3:payload>
+            </con3:request>
+            <con3:response>
+              <con3:payload wrapped="false">validarApartadoAResponse</con3:payload>
+            </con3:response>
+            <con3:requestTransform>
+              <con3:assign varName="validarApartadoARequest">
+                <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fcc</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<mx:validacionApartadoARequest xmlns:mx="http://mx.gob.imss.delta.global.service/">
+    <mx:nss>{$nss}</mx:nss>
+    <mx:cveAsignacion>{$cveAsignacion}</mx:cveAsignacion>
+    <mx:indicadorApartadoC>{$indApartadoC}</mx:indicadorApartadoC>
+</mx:validacionApartadoARequest>]]></con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+            </con3:requestTransform>
+            <con3:responseTransform>
+              <con2:log>
+                <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fcb</con1:id>
+                <con2:logLevel>error</con2:logLevel>
+                <con2:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoAResponse</con:xqueryText>
+                </con2:expr>
+                <con2:message>La respuesta de las validaciones como apartado A es:</con2:message>
+              </con2:log>
+              <con3:assign varName="indDerechoBeneficioResp">
+                <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fca</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoAResponse/mx:indDerechoBeneficioApartadoA/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:ifThenElse>
+                <con1:id>_ActionId-3360921260481779652--51f592cf.14614efb887.-7fdf</con1:id>
+                <con3:case>
+                  <con3:condition>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indDerechoBeneficioResp = 'true'</con:xqueryText>
+                  </con3:condition>
+                  <con3:actions>
+                    <con3:assign varName="tipoApartadoBeneficioResp">
+                      <con1:id>_ActionId-3360921260481779652--51f592cf.14614efb887.-7fdd</con1:id>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">"AB"</con:xqueryText>
+                      </con3:expr>
+                    </con3:assign>
+                  </con3:actions>
+                </con3:case>
+                <con3:default>
+                  <con3:assign varName="tipoApartadoBeneficioResp">
+                    <con1:id>_ActionId-3360921260481779652--51f592cf.14614efb887.-7fdb</con1:id>
+                    <con3:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">"B"</con:xqueryText>
+                    </con3:expr>
+                  </con3:assign>
+                </con3:default>
+              </con3:ifThenElse>
+              <con3:assign varName="motivRechazoResp">
+                <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fc8</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoAResponse/mx:motivoDeRechazo/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="exitoResp">
+                <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fc7</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoAResponse/mx:exito/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="cveErrorResp">
+                <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fc6</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoAResponse/mx:claveError/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="descErrorResp">
+                <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fc5</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoAResponse/mx:descripcion/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+            </con3:responseTransform>
+          </con3:wsCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode1_request" type="request">
+      <con:stage name="prepararVariablesStage">
+        <con:comment>En esta etapa se extraen los datos de entrada y se ponen en variables para tenerlas disponibles a lo largo del flujo</con:comment>
+        <con:context>
+          <con1:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con:context>
+        <con:actions>
+          <con2:log>
+            <con1:id>_ActionId-1680087978032505837-5738e8da.145d7e8f59d.-7fe0</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+            </con2:expr>
+            <con2:message>Los datos de entrada para validar el RISS en el Instituto son</con2:message>
+          </con2:log>
+          <con3:assign varName="rfc">
+            <con1:id>_ActionId-1680087978032505837-5738e8da.145d7e8f59d.-7fe5</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:validacionRissRequest/rfc/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con:assign varName="curp" xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id>_ActionId-1680087978032505837-5738e8da.145d7e8f59d.-7fe4</con1:id>
+            <con:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:validacionRissRequest/curp/text()</con:xqueryText>
+            </con:expr>
+          </con:assign>
+          <con:assign varName="nss" xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id>_ActionId-1680087978032505837-5738e8da.145d7e8f59d.-7fe3</con1:id>
+            <con:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:validacionRissRequest/nss/text()</con:xqueryText>
+            </con:expr>
+          </con:assign>
+          <con:assign varName="cveAsignacion" xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id>_ActionId-1388787346616577609-10eb227a.14649642b7d.-7ff1</con1:id>
+            <con:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:validacionRissRequest/cveAsignacion/text()</con:xqueryText>
+            </con:expr>
+          </con:assign>
+          <con:assign varName="nrps" xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id>_ActionId-1680087978032505837-5738e8da.145d7e8f59d.-7fe2</con1:id>
+            <con:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:validacionRissRequest/registrosPatronales</con:xqueryText>
+            </con:expr>
+          </con:assign>
+          <con2:log>
+            <con1:id>_ActionId-7504224441331154904--7a9018f5.145f62d5edb.-7fe9</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$nrps</con:xqueryText>
+            </con2:expr>
+            <con2:message>Registros Patronales -></con2:message>
+          </con2:log>
+          <con:assign varName="apartadoPersona" xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id>_ActionId-1680087978032505837-5738e8da.145d7e8f59d.-7fe1</con1:id>
+            <con:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:validacionRissRequest/tipoPersona/text()</con:xqueryText>
+            </con:expr>
+          </con:assign>
+          <con3:assign varName="indInstConsulta">
+            <con1:id>_ActionId-7756141520690072863-7c80175e.145e2d1a840.-7fed</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">"1"</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="indDerechoBeneficioResp">
+            <con1:id>_ActionId-4620114698667468896-c11a0ae.145e146d065.-7fa7</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">""</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="tipoApartadoBeneficioResp">
+            <con1:id>_ActionId-7756141520690072863-7c80175e.145e2d1a840.-7fce</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">""</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="motivRechazoResp">
+            <con1:id>_ActionId-4620114698667468896-c11a0ae.145e146d065.-7fa6</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">""</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="exitoResp">
+            <con1:id>_ActionId-4620114698667468896-c11a0ae.145e146d065.-7fa5</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">""</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="cveErrorResp">
+            <con1:id>_ActionId-4620114698667468896-c11a0ae.145e146d065.-7fa4</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">""</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="descErrorResp">
+            <con1:id>_ActionId-4620114698667468896-c11a0ae.145e146d065.-7fa3</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">""</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+        </con:actions>
+      </con:stage>
+      <con:stage name="consultarSATStage">
+        <con:comment>Se llama al servicio del SAT para poder validar si cuenta con el régimen y si ha cumplido con todas las validaciones dentro del SAT. También nos dice si es apartado C</con:comment>
+        <con:context>
+          <con1:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con:context>
+        <con:actions>
+          <con2:log>
+            <con1:id>_ActionId-4620114698667468896-c11a0ae.145e146d065.-7ff3</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$rfc</con:xqueryText>
+            </con2:expr>
+            <con2:message>Se va a consultar al SAT con el siguiente RFC:</con2:message>
+          </con2:log>
+          <con3:wsCallout>
+            <con1:id>_ActionId-4620114698667468896-c11a0ae.145e146d065.-7ff2</con1:id>
+            <con3:service ref="BeneficiosProject/proxy/ValidacionSatServiceProxy" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con3:request>
+              <con3:payload wrapped="false">$validarRifSatRequest</con3:payload>
+            </con3:request>
+            <con3:response>
+              <con3:payload wrapped="false">validarRifSatResponse</con3:payload>
+            </con3:response>
+            <con3:requestTransform>
+              <con3:assign varName="validarRifSatRequest">
+                <con1:id>_ActionId-4620114698667468896-c11a0ae.145e146d065.-7ff1</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<mx:validarRifSatRequest xmlns:mx="http://mx.gob.imss.delta.global.service/">
+    <mx:rfc>{$rfc}</mx:rfc>
+    <mx:indicadorInstitucionConsulta>{$indInstConsulta}</mx:indicadorInstitucionConsulta>
+</mx:validarRifSatRequest>]]></con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+            </con3:requestTransform>
+            <con3:responseTransform>
+              <con2:log>
+                <con1:id>_ActionId-4620114698667468896-c11a0ae.145e146d065.-7ff0</con1:id>
+                <con2:logLevel>error</con2:logLevel>
+                <con2:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarRifSatResponse</con:xqueryText>
+                </con2:expr>
+                <con2:message>LA RESPUESTA DEL SAT ES:</con2:message>
+              </con2:log>
+              <con3:assign varName="indError">
+                <con1:id>_ActionId-4620114698667468896-c11a0ae.145e146d065.-7fb8</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarRifSatResponse/mx:exito/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="rfcVigente">
+                <con1:id>_ActionId-816129164228649134-32f85c25.1461efc9c28.-7fd8</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarRifSatResponse/mx:rfcVigente/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con2:log>
+                <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7f32</con1:id>
+                <con2:logLevel>error</con2:logLevel>
+                <con2:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indError</con:xqueryText>
+                </con2:expr>
+                <con2:message>Código error -></con2:message>
+              </con2:log>
+              <con4:ifThenElse xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                <con2:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7f41</con2:id>
+                <con4:case>
+                  <con4:condition>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indError != "0"</con:xqueryText>
+                  </con4:condition>
+                  <con4:actions>
+                    <con3:log>
+                      <con2:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7f40</con2:id>
+                      <con3:logLevel>error</con3:logLevel>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indError</con:xqueryText>
+                      </con3:expr>
+                      <con3:message>La respuesta del servicio ValidacionSatService no fue exitosa, codigoError -></con3:message>
+                    </con3:log>
+                    <con4:assign varName="exitoResp">
+                      <con2:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7f3f</con2:id>
+                      <con4:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indError</con:xqueryText>
+                      </con4:expr>
+                    </con4:assign>
+                    <con4:assign varName="cveErrorResp">
+                      <con2:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7f3e</con2:id>
+                      <con4:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarRifSatResponse/mx:claveError/text()</con:xqueryText>
+                      </con4:expr>
+                    </con4:assign>
+                    <con4:assign varName="descErrorResp">
+                      <con2:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7f3d</con2:id>
+                      <con4:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat('El SAT informa que "', $validarRifSatResponse/mx:descripcion/text(),'"')</con:xqueryText>
+                      </con4:expr>
+                    </con4:assign>
+                  </con4:actions>
+                </con4:case>
+                <con4:default>
+                  <con5:log xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config">
+                    <con6:id xmlns:con6="http://www.bea.com/wli/sb/stages/config">_ActionId-816129164228649134-32f85c25.1461efc9c28.-7fd9</con6:id>
+                    <con5:logLevel>error</con5:logLevel>
+                    <con5:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat('CHECANDO SI EL RFC [', $rfc, '] ES IGUAL AL RFC VIGENTE [', $rfcVigente, '] DEVUELTO POR EL SAT')</con:xqueryText>
+                    </con5:expr>
+                    <con5:message/>
+                  </con5:log>
+                  <con4:ifThenElse>
+                    <con2:id>_ActionId-816129164228649134-32f85c25.1461efc9c28.-7fe2</con2:id>
+                    <con4:case>
+                      <con4:condition>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$rfc != $rfcVigente</con:xqueryText>
+                      </con4:condition>
+                      <con4:actions>
+                        <con5:log xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config">
+                          <con6:id xmlns:con6="http://www.bea.com/wli/sb/stages/config">_ActionId-816129164228649134-32f85c25.1461efc9c28.-7fd5</con6:id>
+                          <con5:logLevel>error</con5:logLevel>
+                          <con5:expr>
+                            <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat('RFC [', $rfc, '] ES DIFERENTE AL RFC VIGENTE [', $rfcVigente, ']')</con:xqueryText>
+                          </con5:expr>
+                          <con5:message/>
+                        </con5:log>
+                        <con4:assign varName="exitoResp">
+                          <con2:id>_ActionId-816129164228649134-32f85c25.1461efc9c28.-7fd4</con2:id>
+                          <con4:expr>
+                            <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'1'</con:xqueryText>
+                          </con4:expr>
+                        </con4:assign>
+                        <con4:assign varName="cveErrorResp">
+                          <con2:id>_ActionId-816129164228649134-32f85c25.1461efc9c28.-7fd3</con2:id>
+                          <con4:expr>
+                            <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'001'</con:xqueryText>
+                          </con4:expr>
+                        </con4:assign>
+                        <con4:assign varName="descErrorResp">
+                          <con2:id>_ActionId-816129164228649134-32f85c25.1461efc9c28.-7fd2</con2:id>
+                          <con4:expr>
+                            <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'El RFC que se tiene en el Instituto es distinto al RFC vigente en el SAT'</con:xqueryText>
+                          </con4:expr>
+                        </con4:assign>
+                      </con4:actions>
+                    </con4:case>
+                    <con4:default>
+                      <con3:assign varName="indDerechoBeneficioSat" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-816129164228649134-32f85c25.1461efc9c28.-7fe0</con5:id>
+                        <con3:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarRifSatResponse/mx:indicadorDerechoBeneficio/text()</con:xqueryText>
+                        </con3:expr>
+                      </con3:assign>
+                      <con3:assign varName="indApartadoC" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-816129164228649134-32f85c25.1461efc9c28.-7fdf</con5:id>
+                        <con3:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarRifSatResponse/mx:indicadorApartadoC/text()</con:xqueryText>
+                        </con3:expr>
+                      </con3:assign>
+                      <con3:assign varName="fechaRif" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+                        <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-816129164228649134-32f85c25.1461efc9c28.-7fde</con5:id>
+                        <con3:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarRifSatResponse/mx:fechaInicioRIF/text()</con:xqueryText>
+                        </con3:expr>
+                      </con3:assign>
+                      <con5:log xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con6:id xmlns:con6="http://www.bea.com/wli/sb/stages/config">_ActionId-816129164228649134-32f85c25.1461efc9c28.-7fdd</con6:id>
+                        <con5:logLevel>error</con5:logLevel>
+                        <con5:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indDerechoBeneficioSat</con:xqueryText>
+                        </con5:expr>
+                        <con5:message>El RFC es candidato al RIF</con5:message>
+                      </con5:log>
+                    </con4:default>
+                  </con4:ifThenElse>
+                </con4:default>
+              </con4:ifThenElse>
+            </con3:responseTransform>
+          </con3:wsCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode2_response" type="response"/>
+    <con:pipeline name="PipelinePairNode3_request" type="request">
+      <con:stage name="validacionesApartadoAStage">
+        <con:comment/>
+        <con:context>
+          <con1:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con:context>
+        <con:actions>
+          <con2:log>
+            <con1:id>_ActionId-7756141520690072863-7c80175e.145e2d1a840.-7fef</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$rfc</con:xqueryText>
+            </con2:expr>
+            <con2:message>Se va validar como apartado A al RFC</con2:message>
+          </con2:log>
+          <con3:wsCallout>
+            <con1:id>_ActionId-7756141520690072863-7c80175e.145e2d1a840.-7fea</con1:id>
+            <con3:service ref="BeneficiosProject/proxy/ValidarApartadoAProxy" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con3:request>
+              <con3:payload wrapped="false">$validarApartadoARequest</con3:payload>
+            </con3:request>
+            <con3:response>
+              <con3:payload wrapped="false">validarApartadoAResponse</con3:payload>
+            </con3:response>
+            <con3:requestTransform>
+              <con3:assign varName="validarApartadoARequest">
+                <con1:id>_ActionId-7756141520690072863-7c80175e.145e2d1a840.-7fe8</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<mx:validacionApartadoARequest xmlns:mx="http://mx.gob.imss.delta.global.service/">
+    <mx:nss>{$nss}</mx:nss>
+    <mx:cveAsignacion>{$cveAsignacion}</mx:cveAsignacion>
+    <mx:indicadorApartadoC>{$indApartadoC}</mx:indicadorApartadoC>
+</mx:validacionApartadoARequest>]]></con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+            </con3:requestTransform>
+            <con3:responseTransform>
+              <con2:log>
+                <con1:id>_ActionId-7756141520690072863-7c80175e.145e2d1a840.-7fcf</con1:id>
+                <con2:logLevel>error</con2:logLevel>
+                <con2:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoAResponse</con:xqueryText>
+                </con2:expr>
+                <con2:message>La respuesta de las validaciones como apartado A es:</con2:message>
+              </con2:log>
+              <con3:assign varName="indDerechoBeneficioResp">
+                <con1:id>_ActionId-7756141520690072863-7c80175e.145e2d1a840.-7fcd</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoAResponse/mx:indDerechoBeneficioApartadoA/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="tipoApartadoBeneficioResp">
+                <con1:id>_ActionId-7756141520690072863-7c80175e.145e2d1a840.-7fcc</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">"A"</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="motivRechazoResp">
+                <con1:id>_ActionId-7756141520690072863-7c80175e.145e2d1a840.-7fcb</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoAResponse/mx:motivoDeRechazo/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="exitoResp">
+                <con1:id>_ActionId-7756141520690072863-7c80175e.145e2d1a840.-7fca</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoAResponse/mx:exito/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="cveErrorResp">
+                <con1:id>_ActionId-7756141520690072863-7c80175e.145e2d1a840.-7fc9</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoAResponse/mx:claveError/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="descErrorResp">
+                <con1:id>_ActionId-7756141520690072863-7c80175e.145e2d1a840.-7fc8</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoAResponse/mx:descripcion/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+            </con3:responseTransform>
+          </con3:wsCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode9_request" type="request">
+      <con:stage name="errorStage">
+        <con:comment/>
+        <con:context>
+          <con1:userNsDecl prefix="m" namespace="http://servicios.imss.gob.mx/beneficio/riss"/>
+          <con1:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con:context>
+        <con:actions>
+          <con2:log>
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7f1d</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:message>Hubo un error inesperado</con2:message>
+          </con2:log>
+          <con3:assign varName="exitoResp">
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7f19</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse/mx:exito/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="cveErrorResp">
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7f18</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse/mx:claveError/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="descErrorResp">
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7f17</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse/mx:descripcion/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode6_request" type="request">
+      <con:stage name="validacionesApartadoBStage">
+        <con:comment/>
+        <con:context>
+          <con1:userNsDecl prefix="m" namespace="http://servicios.imss.gob.mx/beneficio/riss"/>
+          <con1:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con:context>
+        <con:actions>
+          <con2:log>
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fd8</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$rfc</con:xqueryText>
+            </con2:expr>
+            <con2:message>Se va validar como apartado B al RFC</con2:message>
+          </con2:log>
+          <con3:wsCallout>
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fd7</con1:id>
+            <con3:service ref="BeneficiosProject/proxy/ValidarApartadoBProxy" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con3:request>
+              <con3:payload wrapped="false">$validarApartadoBRequest</con3:payload>
+            </con3:request>
+            <con3:response>
+              <con3:payload wrapped="false">validarApartadoBResponse</con3:payload>
+            </con3:response>
+            <con3:requestTransform>
+              <con3:assign varName="validarApartadoBRequest">
+                <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fd6</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<mx:validacionApartadoBRequest xmlns:mx="http://mx.gob.imss.delta.global.service/">
+	<mx:rfc>{$rfc}</mx:rfc>
+	<mx:registrosPatronales>{$nrps/*}</mx:registrosPatronales>
+	<mx:indicadorApartadoC>{$indApartadoC}</mx:indicadorApartadoC>
+</mx:validacionApartadoBRequest>]]></con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+            </con3:requestTransform>
+            <con3:responseTransform>
+              <con2:log>
+                <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fd5</con1:id>
+                <con2:logLevel>error</con2:logLevel>
+                <con2:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse</con:xqueryText>
+                </con2:expr>
+                <con2:message>La respuesta de las validaciones como apartado B es:</con2:message>
+              </con2:log>
+              <con3:assign varName="indDerechoApartadoB">
+                <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7fb3</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarApartadoBResponse/mx:indDerechoBeneficioApartadoB/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+            </con3:responseTransform>
+          </con3:wsCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode7_response" type="response"/>
+    <con:pipeline name="PipelinePairNode10_response" type="response"/>
+    <con:pipeline name="PipelinePairNode1_response" type="response">
+      <con:stage name="prepararRespuestaStage">
+        <con:comment/>
+        <con:context>
+          <con1:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con:context>
+        <con:actions>
+          <con3:replace varName="body" contents-only="true">
+            <con1:id>_ActionId-4620114698667468896-c11a0ae.145e146d065.-7fb3</con1:id>
+            <con3:location>
+              <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+            </con3:location>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<validacionRissResponse>
+	<indicadorDerechoBeneficio>{$indDerechoBeneficioResp}</indicadorDerechoBeneficio>
+	<tipoApartadoBeneficio>{$tipoApartadoBeneficioResp}</tipoApartadoBeneficio>
+	<fechaRif>{$fechaRif}</fechaRif>
+	<motivoDeRechazo>{$motivRechazoResp}</motivoDeRechazo>
+	<exito>{$exitoResp}</exito>
+	<claveError>{$cveErrorResp}</claveError>
+	<descripcion>{$descErrorResp}</descripcion>
+</validacionRissResponse>]]></con:xqueryText>
+            </con3:expr>
+          </con3:replace>
+          <con2:log>
+            <con1:id>_ActionId-9073002872389677899-14e89f74.145f65dc55b.-7f0c</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+            </con2:expr>
+            <con2:message>RESPUESTA!!!!!!!!!!!!!</con2:message>
+          </con2:log>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode5_request" type="request">
+      <con:stage name="sinDerechoStage">
+        <con:comment>Etapa que pone los valores de respuesta necesarios cuando el SAT informa que no se es sujeto al beneficio</con:comment>
+        <con:context>
+          <con1:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con:context>
+        <con:actions>
+          <con2:log>
+            <con1:id>_ActionId-4620114698667468896-c11a0ae.145e146d065.-7fa9</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$rfc</con:xqueryText>
+            </con2:expr>
+            <con2:message>Sin derecho RFC:</con2:message>
+          </con2:log>
+          <con3:assign varName="indDerechoBeneficioResp">
+            <con1:id>_ActionId-4620114698667468896-c11a0ae.145e146d065.-7fa2</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">"false"</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="motivRechazoResp">
+            <con1:id>_ActionId-4620114698667468896-c11a0ae.145e146d065.-7fa1</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat('El SAT informa que "El RFC ', $rfc, ' no es sujeto al beneficio"')</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode4_response" type="response"/>
+    <con:pipeline name="PipelinePairNode6_response" type="response"/>
+    <con:pipeline name="PipelinePairNode8_response" type="response"/>
+    <con:flow>
+      <con:pipeline-node name="PipelinePairNode1">
+        <con:request>PipelinePairNode1_request</con:request>
+        <con:response>PipelinePairNode1_response</con:response>
+      </con:pipeline-node>
+      <con:branch-node type="condition" name="tieneDerechoBeneficio">
+        <con:comment/>
+        <con:branch-table variable="indDerechoBeneficioSat">
+          <con:branch name="Con derecho">
+            <con:operator>equals</con:operator>
+            <con:value>"true"</con:value>
+            <con:flow>
+              <con:pipeline-node name="PipelinePairNode2">
+                <con:request>PipelinePairNode2_request</con:request>
+                <con:response>PipelinePairNode2_response</con:response>
+              </con:pipeline-node>
+              <con:branch-node type="condition" name="identificarApartado">
+                <con:comment/>
+                <con:branch-table variable="apartadoPersona">
+                  <con:branch name="APARTADO A">
+                    <con:operator>equals</con:operator>
+                    <con:value>"A"</con:value>
+                    <con:flow>
+                      <con:pipeline-node name="PipelinePairNode3">
+                        <con:request>PipelinePairNode3_request</con:request>
+                        <con:response>PipelinePairNode3_response</con:response>
+                      </con:pipeline-node>
+                    </con:flow>
+                  </con:branch>
+                  <con:branch name="APARTADO B">
+                    <con:operator>equals</con:operator>
+                    <con:value>"B"</con:value>
+                    <con:flow>
+                      <con:pipeline-node name="PipelinePairNode4">
+                        <con:request>PipelinePairNode4_request</con:request>
+                        <con:response>PipelinePairNode4_response</con:response>
+                      </con:pipeline-node>
+                    </con:flow>
+                  </con:branch>
+                  <con:branch name="APARTADO AB">
+                    <con:operator>equals</con:operator>
+                    <con:value>"AB"</con:value>
+                    <con:flow>
+                      <con:pipeline-node name="PipelinePairNode6">
+                        <con:request>PipelinePairNode6_request</con:request>
+                        <con:response>PipelinePairNode6_response</con:response>
+                      </con:pipeline-node>
+                      <con:branch-node type="condition" name="conDerechoApartadoB">
+                        <con:comment/>
+                        <con:branch-table variable="indDerechoApartadoB">
+                          <con:branch name="CON DERECHO APARTADO B">
+                            <con:operator>equals</con:operator>
+                            <con:value>"true"</con:value>
+                            <con:flow>
+                              <con:pipeline-node name="PipelinePairNode7">
+                                <con:request>PipelinePairNode7_request</con:request>
+                                <con:response>PipelinePairNode7_response</con:response>
+                              </con:pipeline-node>
+                            </con:flow>
+                          </con:branch>
+                          <con:branch name="SIN DERECHO APARTADO B">
+                            <con:operator>equals</con:operator>
+                            <con:value>"false"</con:value>
+                            <con:flow>
+                              <con:pipeline-node name="PipelinePairNode8">
+                                <con:request>PipelinePairNode8_request</con:request>
+                                <con:response>PipelinePairNode8_response</con:response>
+                              </con:pipeline-node>
+                            </con:flow>
+                          </con:branch>
+                          <con:default-branch>
+                            <con:flow>
+                              <con:pipeline-node name="PipelinePairNode9">
+                                <con:request>PipelinePairNode9_request</con:request>
+                                <con:response>PipelinePairNode9_response</con:response>
+                              </con:pipeline-node>
+                            </con:flow>
+                          </con:default-branch>
+                        </con:branch-table>
+                      </con:branch-node>
+                    </con:flow>
+                  </con:branch>
+                  <con:default-branch>
+                    <con:flow/>
+                  </con:default-branch>
+                </con:branch-table>
+              </con:branch-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="Sin derecho">
+            <con:operator>equals</con:operator>
+            <con:value>"false"</con:value>
+            <con:flow>
+              <con:pipeline-node name="PipelinePairNode5">
+                <con:request>PipelinePairNode5_request</con:request>
+                <con:response>PipelinePairNode5_response</con:response>
+              </con:pipeline-node>
+            </con:flow>
+          </con:branch>
+          <con:default-branch>
+            <con:flow>
+              <con:pipeline-node name="PipelinePairNode10">
+                <con:request>PipelinePairNode10_request</con:request>
+                <con:response>PipelinePairNode10_response</con:response>
+              </con:pipeline-node>
+            </con:flow>
+          </con:default-branch>
+        </con:branch-table>
+      </con:branch-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>

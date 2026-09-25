@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+<!-- <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">-->
+	<persistence-unit name="deltaPersistenceUnit" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>jdbc/delta</jta-data-source> 
+		<class> mx.gob.imss.ctirss.delta.persistence.AccColonia</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.AccColoniaConsultorio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.AccConsultorio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.AccDerechoServicio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.AccHospital</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.AccMovtoDerechohab</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.AccNivelAtencion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.AccTpunidad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.AccUnidadMedica</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.ActInterconsulta</class>
+		
+		<class> mx.gob.imss.ctirss.delta.persistence.DgAsentamiento</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgAsentamientoPK</class>
+
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatAdministracion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatAmbito</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatDerechosTransito</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatEstado</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatEstadoCp</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatLocalidad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatLocalidadPK</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatMargen</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatMunicipio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatMunicipioPK</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatPeriodo</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatTermGen</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatTipoAsen</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatTipoDom</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCatVialidad</class>
+
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCodigosPostale</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgCodigosPostalePK</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgDomicilioGeografico</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgDomiciliosCamino</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgDomiciliosCarretera</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DgVialidad</class>
+
+		<class> mx.gob.imss.ctirss.delta.persistence.DicAccion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicActividadUsuario</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicAreaGeografica</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicAreaSistema</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicCalidadCaracMigrat</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicCausa</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicCausaBajaAseg</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicCausaIncapacidad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicCiclo</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicClasePrima</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicClavePresupuestal</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicConvenio</class>		
+		<class> mx.gob.imss.ctirss.delta.persistence.DicCuestionarioMedico</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicCuestionarioPregunta</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicCuestionarioRespuesta</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicCuotasCotizante</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicCuotasCotizantePK</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicCuotasSujetoObligado</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicCuotasSujetoObligadoPK</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicDelegacion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicDivision</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicDocumentacion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicEstadoCivil</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicEstatusSolicitud</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicFacultad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicFraccion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicGradoParentesco</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicGrupo</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicGuarderia</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicLey</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicMandato</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicMedico</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicMedioDistribucion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicMenu</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicMenuAccion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicModalidad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicModulo</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicMovimientosCotizante</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicMovimientosCotizantePK</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicMunicipioImss</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicNivelEducativo</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicOrigenMovtoAsegurado</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicOrigMovtoPatSujoblig</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicPai</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicParentesco</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicPerfilUsuario</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicPrestacion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicRangoCuotaSsf</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicRegimen</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicServicio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicSexo</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicSubdelegacion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoAmbito</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoAsegurado</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoCombustible</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoContratacion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoContribucion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoConvenio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoDocIdentidad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoDomicilio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoFacultad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoForma</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoIncapacidad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoIndPatSujOblig</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoInteresado</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoJornada</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoMaquinariaEquipo</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoMovtoAsegurado</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoMovtoPatSujoblig</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoPago</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoPagoModalidad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoParentesco</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoPoder</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoRegPatron</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoRetiro</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoSalario</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoSeguro</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoSemana</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTipoSociedad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTramite</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTramiteDocumentacion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicTramiteEstatusSol</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DicUmf</class>
+		
+		<class> mx.gob.imss.ctirss.delta.persistence.DirCuotaCredito</class>
+		
+		<class> mx.gob.imss.ctirss.delta.persistence.DitActaConstitutiva</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitAsegurado</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitAseguradoEstudiante</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitAseguradoGuarderia</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitAseguradoHuelga</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitAseguradoPension</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitAseguradoPensionHist</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitAsignacionNss</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitAsigNssHomDup</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitAsigNssParentesco</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitAutorizacionPermte</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitBalancePrestacion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitBiene</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitBitacora</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitClasificacion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitContratoAseguramiento</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitCorreoElectronico</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitCuestRAsegurado</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitCuestRBenef</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitCuestRPregAsegurado</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitCuestRPregBenef</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitCuestRRespAsegurado</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitCuestRRespBenef</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitCuotacredIncidencia</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitDerechohabConsultorio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitDerechohabHospital</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitDerechohabiente</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitDoctosPatSujOblig</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitDoctosPersona</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitEquipoTransporte</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitFormaMigratoria</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitIncapacidad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitIndicadorPatSujOblig</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitInstitEducativa</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitLeySeguro</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitMaquinariaEquipo</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitMateriaPrimaMaterial</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitMedicoConsultorio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitModalidadLeySeguro</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitModalidadSeguroPrest</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitModSegPrestContrib</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitModSegPrestServ</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitMovimientoAsegurado</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitMovimientoSubdeleg</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitMovtoPatSujOblig</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitMunicipioImssInegi</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitMunicipioSubdelegacion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitParametroArea</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPatronCargaArchivo</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPatronEscision</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPatronFusion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPatronGeneral</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPatronSujetoObligado</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPatSujObligConvenio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPatSujObligDomicilio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPatSujObligSolicitud</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPerfilAccion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPersona</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPersonaDefuncion</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPersonaDomExtranjero</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPersonaDomicilio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPersonaFisica</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPersonal</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPersonaMoral</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPersonaNacimiento</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPersonaTelefono</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPresentadorAviso</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPresentAvisoDomicilio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitPrestadorServ</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitProceso</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitProducto</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitProductoSolicitud</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitRepresentanteLegal</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitRlDomicilio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitRlFacultad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitSalarioGeneral</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitSindicato</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitSocioFideicomiso</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitSocioFideiDomicilio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitSocioFisico</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitSocioFisicoDomicilio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitSocioMoral</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitSocioMoralDomicilio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitSolicitud</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitSolicitudPersona</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitSolicitudSeguimiento</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitTipoAsegModalidad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitTipoContribModalidad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitTipoJornadaModalidad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitTipoParentModalidad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitTipoSalarioModalidad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitTipoSemanaModalidad</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitUmfCodPo</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitUnidadMedConsultorio</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitUsuario</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitUsuarioFuncionario</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DitUsuarioOrdinario</class>
+		<class> mx.gob.imss.ctirss.delta.persistence.DrtParametroInpc</class>
+				
+		<properties>
+		  <property name="hibernate.archive.autodetection" value="class"/>
+		  <property name="hibernate.show_sql" value="true"/>
+		  <property name="hibernate.format_sql" value="true"/>
+		  <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
+		  <property name="hibernate.transaction.factory_class" value="org.hibernate.transaction.JTATransactionFactory"/>
+		  <property name="hibernate.query.factory_class" value="org.hibernate.hql.classic.ClassicQueryTranslatorFactory"/>
+		  <property name="current_session_context_class" value="jta"/>	
+		  <property name="hibernate.hbm2ddl.auto" value="create"/>		
+		</properties>
+	</persistence-unit>
+	
+	
+	
+</persistence>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF8'?>
+<!DOCTYPE MessageFormat SYSTEM 'mfl.dtd'>
+<MessageFormat name="TrabajadoresImssInfonavit" version='2.01.01'>
+<StructFormat name="TrabajadoresInfonavit" delim='\n' sharedDelim='y' delimOptional='n' repeat='*'>
+
+<FieldFormat name='tipPatPerFis'          type='String'      length='1'  strlenInChars='y'  codepage='UTF-8'    defaultValue=' ' pad=' '/>   <!-- 1  - 1 -->
+<FieldFormat name='nss'                   type='Numeric'     length='11' strlenInChars='y'  codepage='Default'  defaultValue='0' pad='0'/>   <!-- 2  - 12 -->
+<FieldFormat name='curp'                  type='String'      length='18' strlenInChars='y'  codepage='UTF-8'    defaultValue=' ' pad=' '/>   <!-- 13 - 30 -->
+<FieldFormat name='rfc'                   type='String'      length='13' strlenInChars='y'  codepage='UTF-8'    defaultValue=' ' pad=' '/>   <!-- 31 - 43 -->
+<FieldFormat name='marcaBeneficio'        type='Numeric'     length='2'  strlenInChars='y'  codepage='Default'  defaultValue='0' pad='0'/>   <!-- 44 - 45 -->
+
+</StructFormat>
+</MessageFormat>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:ejb="http://www.bea.com/wli/sb/transports/ejb">
+  <ser:coreEntry isProxy="false" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description/>
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" transport-typed="true" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:binding>
+        <con:name>JwsServiceSoapBinding</con:name>
+        <con:namespace>http://mx.gob.imss.delta.global.service/</con:namespace>
+      </con:binding>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+    </ser:monitoring>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:throttling enabled="false">
+      <ser:capacity>0</ser:capacity>
+      <ser:maxQueueLength>0</ser:maxQueueLength>
+      <ser:timeToLive>0</ser:timeToLive>
+    </ser:throttling>
+    <ser:result-caching isEnabled="true" isSupported="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>ejb</tran:provider-id>
+    <tran:inbound>false</tran:inbound>
+    <tran:URI weight="0">
+      <env:value>ejb:deltaJNDIProvider:deltaSolicitudService#mx.gob.imss.ctirss.delta.gestion.solicitud.service.global.interfaces.DeltaSolicitudServiceRemote</env:value>
+    </tran:URI>
+    <tran:outbound-properties>
+      <tran:load-balancing-algorithm>round-robin</tran:load-balancing-algorithm>
+      <tran:retry-count>0</tran:retry-count>
+      <tran:retry-interval>30</tran:retry-interval>
+      <tran:retry-application-errors>true</tran:retry-application-errors>
+      <tran:delay-interval-configuration isEnabled="false">
+        <tran:delay-interval>0</tran:delay-interval>
+      </tran:delay-interval-configuration>
+    </tran:outbound-properties>
+    <tran:provider-specific>
+      <ejb:security>
+        <ejb:passClientIdentity>false</ejb:passClientIdentity>
+      </ejb:security>
+      <ejb:service>
+        <ejb:clientJar ref="deltaGestionPatronalService/libs/gestionSolicitud-interfaces-negocio-1.2-SNAPSHOT"/>
+        <ejb:ejbBizService classname="mx.gob.imss.ctirss.delta.gestion.solicitud.service.global.interfaces.DeltaSolicitudServiceRemote">
+          <ejb:method name="actualizarMensajeNotificacion" signature="void actualizarMensajeNotificacion(java.lang.String,java.lang.String)" exclude="false">
+            <ejb:operation>actualizarMensajeNotificacion</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:param name="arg1" type="java.lang.String"/>
+          </ejb:method>
+          <ejb:method name="consultarDatosGenerales" signature="mx.gob.imss.ctirss.delta.global.model.SolicitudTO consultarDatosGenerales(java.lang.String) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException" exclude="false">
+            <ejb:operation>consultarDatosGenerales</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.global.model.SolicitudTO"/>
+          </ejb:method>
+          <ejb:method name="notificarErrorProcesamiento" signature="void notificarErrorProcesamiento(java.lang.Long,java.lang.String,java.lang.String)" exclude="false">
+            <ejb:operation>notificarErrorProcesamiento</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="java.lang.String"/>
+            <ejb:param name="arg2" type="java.lang.String"/>
+          </ejb:method>
+          <ejb:method name="testOne" signature="void testOne(mx.gob.imss.ctirss.delta.global.model.TramiteTO)" exclude="false">
+            <ejb:operation>testOne</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.global.model.TramiteTO"/>
+          </ejb:method>
+          <ejb:method name="testThree" signature="void testThree(mx.gob.imss.ctirss.delta.global.model.SolicitudTO)" exclude="false">
+            <ejb:operation>testThree</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.global.model.SolicitudTO"/>
+          </ejb:method>
+          <ejb:method name="testTwo" signature="void testTwo(mx.gob.imss.ctirss.delta.global.model.TipoTramiteTO)" exclude="false">
+            <ejb:operation>testTwo</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.global.model.TipoTramiteTO"/>
+          </ejb:method>
+        </ejb:ejbBizService>
+        <ejb:targetNamespace>http://mx.gob.imss.delta.global.service/</ejb:targetNamespace>
+        <ejb:style>Document Wrapped</ejb:style>
+        <ejb:encoding>Literal</ejb:encoding>
+      </ejb:service>
+      <ejb:ejb30>true</ejb:ejb30>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+</xml-fragment>

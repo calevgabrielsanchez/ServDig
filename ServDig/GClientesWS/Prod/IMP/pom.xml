@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+	<artifactId>ClientesWebservices</artifactId>
+	<version>2.2</version>
+	<packaging>pom</packaging>
+
+	<name>ClientesWebservices-base</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<skipTests>true</skipTests>
+		<project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+		<junit.version>4.8.2</junit.version>
+		<org.log4j.version>1.2.16</org.log4j.version>
+		<delta.framework.version>2.6</delta.framework.version>
+		<delta.clientews.umfcodigopostal>2.0</delta.clientews.umfcodigopostal>
+		<delta.clientews.wsasignacion>2.0</delta.clientews.wsasignacion>
+		<delta.clientews.calculonrp>2.0</delta.clientews.calculonrp>
+	</properties>
+
+	<modules>
+		<module>ClientesWebservices-buzon-tributario</module>
+		<module>ClientesWebservices-renapo-curp</module>
+		<module>ClientesWebservices-sat-consulta-rfc</module>
+		<module>WebServiceAsignacionNSS</module>
+		<module>WebServiceAsignacionNSS-packing</module>
+		<module>WSUmfCodigoPostal</module>
+		<module>WSUmfCodigoPostal-packing</module>
+		<module>ClienteWebServices-asignacion-nss</module>
+		<module>WebService-CalculoNRP</module>
+		<module>ClienteWebservice-Usuario</module>
+		<module>WebService-CalculoNRP-packing</module>
+		<module>WebService-CalculoNRP-client</module>
+		<module>ClienteWebserviceImssValidaRiss</module>
+		<module>ClientesWebservices-derechohabientes</module>
+		<module>ClientesWebservicesComprobanteFiscal</module>
+		<module>ietc-interfaces-negocio</module>
+		<module>ietc-servicios-negocio-ejb</module>
+		<module>ClientesWebservices-responsables-subdelegacion</module>
+		<module>ClientesWebservices-estatus-vigencia</module>
+		<module>ClientesWebservices-nss-cuenta-individual</module>
+		<module>ClienteWebService-fotoADIMSS</module>
+		<module>ClientesWebservices-estatus-vigencia-individual</module>
+		<module>ClienteWebServiceBoveda</module>
+		<module>ClienteWebService-BovedaDocumental-V2</module>
+		<module>ClienteWebService-BovedaDocumental-V3</module>
+		<module>ClienteWebServiceGuardaDocumentos</module>
+		<module>ClienteWebserviceClasificacion</module>
+		<module>ClienteWebserviceValidaPagoVentanilla</module>
+		<module>Clientes-externos-rest</module>
+		<module>WSPatronesVigentes-asegurado</module>
+		<module>ClienteWebservice-PersonalSubdelegacion</module>
+		
+	</modules>
+
+	<build>
+		<resources>
+    	  <resource>
+    	    <directory>src/main/resources</directory>
+    	    <filtering>true</filtering>
+    	  </resource>
+	    </resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<!--Extension necesaria para el deploy (instalacion) de los componentes 
+			en el repositorio central -->
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+			</extension>
+		</extensions>
+	</build>
+
+	<distributionManagement>
+		<!-- use the following if you're not using a snapshot version. -->
+		<repository>
+			<id>ctirss-archiva</id>
+			<name>CTIRSS Repository Name</name>
+			<url>dav:http://172.16.5.134:8080/repository/repo/</url>
+		</repository>
+		<snapshotRepository>
+			<id>ctirss-archiva</id>
+			<name>CTIRSS Repository Name</name>
+			<url>dav:http://172.16.5.134:8080/repository/repo/</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>

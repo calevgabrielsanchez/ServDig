@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:ejb="http://www.bea.com/wli/sb/transports/ejb">
+  <ser:coreEntry isProxy="false" isEnabled="true" isAutoPublish="false">
+    <ser:description/>
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" transport-typed="true" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:binding>
+        <con:name>JwsServiceSoapBinding</con:name>
+        <con:namespace>http://servicios.globales.imss.gob.mx/</con:namespace>
+      </con:binding>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+    </ser:monitoring>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:result-caching isEnabled="true" isSupported="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>ejb</tran:provider-id>
+    <tran:inbound>false</tran:inbound>
+    <tran:URI weight="1">
+      <env:value>ejb:deltaJNDIProvider:cancelarBeneficioServiceBusiness#mx.gob.imss.ctirss.delta.gestion.beneficio.service.interfaces.CancelarBeneficioServiceBusinessRemote</env:value>
+    </tran:URI>
+    <tran:outbound-properties>
+      <tran:load-balancing-algorithm>round-robin</tran:load-balancing-algorithm>
+      <tran:retry-count>0</tran:retry-count>
+      <tran:retry-interval>30</tran:retry-interval>
+      <tran:retry-application-errors>true</tran:retry-application-errors>
+    </tran:outbound-properties>
+    <tran:provider-specific>
+      <ejb:security>
+        <ejb:passClientIdentity>false</ejb:passClientIdentity>
+      </ejb:security>
+      <ejb:service>
+        <ejb:clientJar ref="libraries/APP-INF/lib/gestionBeneficio-interfaces-negocio-1.0-SNAPSHOT"/>
+        <ejb:ejbBizService classname="mx.gob.imss.ctirss.delta.gestion.beneficio.service.interfaces.CancelarBeneficioServiceBusinessRemote">
+          <ejb:method name="cancelarBeneficio" signature="mx.gob.imss.ctirss.delta.model.beneficio.RespuestaCancelacionBeneficio cancelarBeneficio(java.lang.String,java.lang.String,java.lang.String,java.lang.String,int)" exclude="false">
+            <ejb:operation>cancelarBeneficio</ejb:operation>
+            <ejb:param name="rfc" type="java.lang.String"/>
+            <ejb:param name="nrp" type="java.lang.String"/>
+            <ejb:param name="nss" type="java.lang.String"/>
+            <ejb:param name="fechaBajaRIF" type="java.lang.String"/>
+            <ejb:param name="indicadorInstitucion" type="int"/>
+            <ejb:return name="respuesta" type="mx.gob.imss.ctirss.delta.model.beneficio.RespuestaCancelacionBeneficio"/>
+          </ejb:method>
+        </ejb:ejbBizService>
+        <ejb:targetNamespace>http://servicios.globales.imss.gob.mx/</ejb:targetNamespace>
+        <ejb:style>Document Wrapped</ejb:style>
+        <ejb:encoding>Literal</ejb:encoding>
+      </ejb:service>
+      <ejb:ejb30>true</ejb:ejb30>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+</xml-fragment>

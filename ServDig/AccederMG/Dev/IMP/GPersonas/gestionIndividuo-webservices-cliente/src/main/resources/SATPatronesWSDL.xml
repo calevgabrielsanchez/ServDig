@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s0:definitions name="SATPatronesServiceDefinitions" targetNamespace="http://mx/gob/imss/didt/cia/interoper/sat/ws" xmlns:s0="http://schemas.xmlsoap.org/wsdl/" xmlns:s1="http://mx/gob/imss/didt/cia/interoper/sat/ws" xmlns:s2="http://schemas.xmlsoap.org/wsdl/soap/">
+  <s0:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.didt.cia.interoper.sat.pojos.entrada" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="EntradaSAT">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="curp" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="id_sucursal" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="nit" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="password" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="rfc" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="secciones" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="usuario" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.didt.cia.interoper.sat.pojos.error" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="MensajeControl">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="codigo" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="descripcion" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="exito" nillable="false" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://mx/gob/imss/didt/cia/interoper/sat/ws" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:mx.gob.imss.didt.cia.interoper.sat.pojos.entrada"/>
+      <xs:import namespace="java:mx.gob.imss.didt.cia.interoper.sat.pojos.salida"/>
+      <xs:element name="getPatron">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="datosEntrada" type="java:EntradaSAT" xmlns:java="java:mx.gob.imss.didt.cia.interoper.sat.pojos.entrada"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getPatronResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="java:SalidaSAT" xmlns:java="java:mx.gob.imss.didt.cia.interoper.sat.pojos.salida"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.didt.cia.interoper.sat.pojos.salida" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:mx.gob.imss.didt.cia.interoper.sat.pojos.error"/>
+      <xs:complexType name="SalidaSAT">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="RFC_Original" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="RFC_Solicitado" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="RFC_Vigente" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="actividad" nillable="true" type="java:Actividades" xmlns:java="java:mx.gob.imss.didt.cia.interoper.sat.pojos.salida"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="identificacion" nillable="true" type="java:Identificacion" xmlns:java="java:mx.gob.imss.didt.cia.interoper.sat.pojos.salida"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="mensaje" nillable="true" type="java:Mensajes" xmlns:java="java:mx.gob.imss.didt.cia.interoper.sat.pojos.salida"/>
+          <xs:element minOccurs="1" name="mensajeControl" nillable="true" type="java:MensajeControl" xmlns:java="java:mx.gob.imss.didt.cia.interoper.sat.pojos.error"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="obligacion" nillable="true" type="java:Obligaciones" xmlns:java="java:mx.gob.imss.didt.cia.interoper.sat.pojos.salida"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="regimen" nillable="true" type="java:Regimenes" xmlns:java="java:mx.gob.imss.didt.cia.interoper.sat.pojos.salida"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="replegal" nillable="true" type="java:RepLegales" xmlns:java="java:mx.gob.imss.didt.cia.interoper.sat.pojos.salida"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="rol" nillable="true" type="java:Roles" xmlns:java="java:mx.gob.imss.didt.cia.interoper.sat.pojos.salida"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="sucursal" nillable="true" type="java:Sucursales" xmlns:java="java:mx.gob.imss.didt.cia.interoper.sat.pojos.salida"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="ubicacion" nillable="true" type="java:Ubicacion" xmlns:java="java:mx.gob.imss.didt.cia.interoper.sat.pojos.salida"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Actividades">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Orden" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Porcentaje" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_Actividad" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Actividad" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Alta_Act" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Baja_Act" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Identificacion">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Ap_Materno" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Ap_Paterno" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="CURP" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="NIT" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Nacionalidad" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Nom_Comercial" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Nombre" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Pais_Origen" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Razon_Soc" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_Sit_Cont" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_Sit_Cont_Dom" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_Sit_Dom" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_det_Sit_Cont" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Sit_Cont" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Sit_Cont_Dom" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Sit_Dom" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Constitucion" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Ini_Opers" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Nacimiento" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Sit_Cont" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="t_Sociedad" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Mensajes">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="aviso" nillable="true" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="error" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Obligaciones">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="c_Obligacion" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="cve_pago" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Obligacion" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_oblig_lc" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Alta_Oblig" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Baja_Oblig" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Efec_A_Oblig" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Efec_B_Oblig" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_fin_Legal" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_ini_Legal" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="t_Contribucion" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Regimenes">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="c_Regimen" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Regimen" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Alta_Reg" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Baja_Reg" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Efec_A_Reg" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Efec_B_Reg" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RepLegales">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Ap_Materno" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Ap_Paterno" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="CURP" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Nombre" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="RFC" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Tipo" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Roles">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="c_Rol" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Rol" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Tipo" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Alta_Rol" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Baja_Rol" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Sucursales">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Calle" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Pais_Residencia" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Telefono1" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Telefono2" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_ALR" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_Colonia" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_Ent_Fed" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_Localidad" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_Municipio" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_Sit_Cont_Suc" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_Sit_Suc" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="cp" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_ALR" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Colonia" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Domicilio" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Ent_Fed" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_EntreCalle1" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_EntreCalle2" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Inmueble" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Localidad" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Municipio" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Referencia" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Sit_Cont_Suc" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Sit_Suc" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Vialidad" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="email" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Alta_Suc" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="n_Establecimiento" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="n_Exterior" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="n_Interior" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="t_Inmueble" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="t_Tel1" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="t_Tel2" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="t_Vialidad" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Ubicacion">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Calle" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Email" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Pais_Residencia" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Telefono1" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Telefono2" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_ALR" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_Colonia" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_Ent_Fed" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_Localidad" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="c_Municipio" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="cp" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_ALR" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Colonia" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Domicilio" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Ent_Fed" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_EntreCalle1" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_EntreCalle2" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Inmueble" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Localidad" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Municipio" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Referencia" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="d_Vialidad" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="f_Alta_Dom" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="n_Exterior" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="n_Interior" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="t_Inmueble" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="t_Tel1" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="t_Tel2" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="t_Vialidad" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </s0:types>
+  <s0:message name="getPatron">
+    <s0:part element="s1:getPatron" name="parameters"/>
+  </s0:message>
+  <s0:message name="getPatronResponse">
+    <s0:part element="s1:getPatronResponse" name="parameters"/>
+  </s0:message>
+  <s0:portType name="SATPatrones">
+    <s0:operation name="getPatron" parameterOrder="parameters">
+      <s0:input message="s1:getPatron"/>
+      <s0:output message="s1:getPatronResponse"/>
+    </s0:operation>
+  </s0:portType>
+  <s0:binding name="SATPatronesServiceSoapBinding" type="s1:SATPatrones">
+    <s2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <s0:operation name="getPatron">
+      <s2:operation soapAction="" style="document"/>
+      <s0:input>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body parts="parameters" use="literal"/>
+      </s0:output>
+    </s0:operation>
+  </s0:binding>
+  <s0:service name="SATPatronesService">
+    <s0:port binding="s1:SATPatronesServiceSoapBinding" name="SATPatronesSoapPort">
+      <s2:address location="http://11.254.171.39:17000/CADIS/CTIRSS/SATPatrones.jws"/>
+    </s0:port>
+  </s0:service>
+</s0:definitions>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:th="http://www.thymeleaf.org">
+
+<c:set var="staticResourcesPath" value="#{initParam['STATIC_RESOURCES_PATH']}" />
+
+<head th:fragment="head">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta content="text/html;" http-equiv="Content-Type" charset="utf-8"></meta>
+<meta http-equiv="Pragma" content="no-cache"/> 
+<meta http-equiv="Cache-Control" content="no-cache"/> 
+<meta http-equiv="Expires" content="Sat, 01 Dec 2012 00:00:00 GMT"/>
+<title th:text="#{example.title}"></title>
+
+		<!-- CDN Integracion  -->
+		<link href="https://framework-gb.cdn.gob.mx/favicon.ico" rel="shortcut icon"></link>
+        <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet"></link>
+        <link rel="stylesheet" th:href="@{/static/css/jquery.dataTables.min.css}"  />
+         <link rel="stylesheet" th:href="@{/static/css/sdroc.css}"  />
+        <!-- Jquery-->
+		<link type="text/css" href="/delta/resources/estilos/jquery/ui-lightness/jquery-ui.css" rel="stylesheet" />
+		<!-- IMSS -->
+		<link type="text/css" href="/delta/resources/estilos/imss/portal.css" rel="stylesheet" />
+
+		<script type="text/javascript" src="/delta/resources/js/jquery/jquery.js"></script>		
+		<script type="text/javascript" src="/delta/resources/js/jquery/jquery-ui.js"></script>
+		<script type="text/javascript" src="/delta/resources/js/jquery/jquery.ui.datepicker-es.js"></script>
+		<script type="text/javascript" src="/delta/resources/js/jquery/blockUI/jquery.blockUI.js"></script>
+	    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript" th:src="@{/static/js/jquery.dataTables.min.js?v=3.1}"></script>
+		<script type="text/javascript" th:src="@{/static/js/FuncionesComunes.js?v=3.5}"></script>
+		<script type="text/javascript" th:src="@{/static/js/firmaExterna.js?v=3.1}"></script>		
+		<script type="text/javascript" th:src="@{/static/js/serviciosObra.js?v=3.5}"></script>
+		<script type="text/javascript" th:src="@{/static/js/registroObra.js?v=3.7}"></script>
+		<script type="text/javascript" th:src="@{/static/js/serviciosUbicacion.js?v=3.5}"></script>
+		<script type="text/javascript" th:src="@{/static/js/serviciosIncidencias.js?v=3.5}"></script>
+		<script type="text/javascript" th:src="@{/static/js/panelsCtrl.js?v=3.5}"></script>
+		<script type="text/javascript" th:src="@{/static/js/tablasSiroc.js?v=3.6}"></script>
+		<script type="text/javascript" th:src="@{/static/js/thymol.js?v=3.7}"></script>
+		<script type="text/javascript" th:src="@{/static/js/validacionRegIncidencia.js?v=3.3}"></script>
+		<script type="text/javascript" th:src="@{/static/js/reporteGeneral.js?v=3.1}"></script>
+		<script type="text/javascript" th:src="@{/static/js/consultaObra.js?v=3.2}"></script>
+		<script type="text/javascript" th:src="@{/static/js/jquery.maskMoney.js}"></script>
+		<script type="text/javascript" th:src="@{/static/js/ct.js}"></script>
+
+		<!-- JSON -->
+		<script type="text/javascript" src="/delta/resources/js/json/json2.js"></script>
+		<script type="text/javascript" src="/delta/resources/js/json/json.min.js"></script>	
+		<script type="text/javascript" src="/delta/resources/js/jquery/jquery-post-json.js"></script>	
+		
+</head>
+
+<body>
+<!-- 	<section th:fragment="scripts" th:remove="tag"> -->
+<!-- 		<script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script> -->
+<!-- 	</section> -->
+
+</body>
+</html>

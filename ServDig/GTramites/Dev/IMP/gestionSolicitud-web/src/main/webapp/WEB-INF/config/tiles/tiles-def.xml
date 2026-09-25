@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="simple.base.definition" template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title"
+			value=" Gestión de domicilios - Portal DELTA. " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title"
+			value=" Gestión de domicilios - Portal DELTA. " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />
+
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<definition name="base.definition.embebed" template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title"
+			value=" Gestión de solicitud - Portal DELTA. " />
+	</definition>
+
+
+	<definition name="base.definition.embebed.firma" template="/WEB-INF/views/layout/main-embebed-firma-digital.jsp">
+		<put-attribute name="titulo" value=" Proceso de Firma Digital" />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado-simple.jsp" />
+	</definition>
+
+	<definition name="componente.simple.base.definition" template="/WEB-INF/views/layout/simple-embebed.jsp">
+	</definition>
+
+	<definition name="wizard.base.definition" template="/WEB-INF/views/layout/main-wizard.jsp">
+		<put-attribute name="title" value=" Portal de Servicios DELTA " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-empty.jsp" />
+	</definition>
+
+	<!-- Definicion de la pantalla del gestionSolicitud -->
+	<definition name="gestionSolicitud" extends="simple.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/gestionSolicitud/gestionSolicitud.jsp " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de logeo -->
+	<definition name="login" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/login.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla de bienvenida de la aplicacion -->
+	<definition name="welcome" extends="simple.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/general/welcome.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="home" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/home.jsp " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-home.jsp" />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de espera de solicitud en proceso -->
+	<definition name="solicitudEnproceso" extends="base.definition.embebed">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/enproceso.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla de cnsulta de solicitudes por Persona -->
+	<definition name="solicitudesPersonaFisica" extends="componente.simple.base.definition">
+		<put-attribute name="title" value="RESUMEN DE SOLICITUDES (FISICA)" />
+		<put-attribute name="contenido" value="/WEB-INF/views/solicitud/solicitudesPersonaFisica.jsp"/>
+	</definition>
+
+	<definition name="solicitudesPersonaMoral" extends="componente.simple.base.definition">
+		<put-attribute name="title" value="RESUMEN DE SOLICITUDES (MORAL)" />
+		<put-attribute name="contenido" value="/WEB-INF/views/solicitud/solicitudesPersonaMoral.jsp"/>
+	</definition>
+
+	<!-- Definiciones para el modulo de Firma Digital -->
+	<definition name="initFirmaDigitalTest" extends="simple.base.definition">
+		<put-attribute name="title"
+			value="FIRMA DIGITAL TEST" />
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/firma-digital/initFirmaDigitalTest.jsp" />
+	</definition>
+
+	<definition name="initFirmaDigital" extends="base.definition.embebed.firma">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/firma-digital/initFirmaDigital.jsp" />
+	</definition>
+
+	<definition name="seleccionTipoFirma" extends="base.definition.embebed.firma">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/firma-digital/seleccionarTipoFirmaDigital.jsp" />
+	</definition>
+
+	<definition name="initFirmaConFIEL" extends="base.definition.embebed.firma">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/firma-digital/fiel/firmaDigitalFiel.jsp" />
+	</definition>
+
+	<definition name="initFirmaConIMSS" extends="base.definition.embebed.firma">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/firma-digital/imss/firmaDigitalIMSS.jsp" />
+	</definition>
+	
+	<definition name="resultadoFirmaDigital" extends="base.definition.embebed.firma">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/firma-digital/resultadoFirmaDigital.jsp" />
+	</definition>
+	<!-- Definiciones para el modulo de Firma Digital -->
+
+	<definition name="wizardCartaTerminos" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/firma-digital/cartaTerminos.jsp"/>
+	</definition>
+	
+	<definition name="wizardCartaTerminosRepresentante" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/firma-digital/cartaTerminosRepresentante.jsp"/>
+	</definition>
+	
+	<definition name="pruebaCartaTerminos" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/firma-digital/pruebaCarta.jsp"/>
+	</definition>
+
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="databaseError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="internalError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="500" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="404" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+
+</tiles-definitions>

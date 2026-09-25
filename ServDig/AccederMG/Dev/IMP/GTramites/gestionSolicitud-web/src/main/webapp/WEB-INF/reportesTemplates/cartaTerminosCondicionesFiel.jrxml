@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cartaTerminosCondicionesFiel" pageWidth="612" pageHeight="792" columnWidth="552" leftMargin="30" rightMargin="30" topMargin="30" bottomMargin="30">
+	<property name="ireport.zoom" value="1.2968712300500012"/>
+	<property name="ireport.x" value="2"/>
+	<property name="ireport.y" value="1202"/>
+	<field name="fecha" class="java.util.Date"/>
+	<field name="firmaDocto" class="java.lang.String"/>
+	<field name="selloDigital" class="java.lang.String"/>
+	<field name="cadenaOriginal" class="java.lang.String"/>
+	<detail>
+		<band height="678" splitType="Prevent">
+			<staticText>
+				<reportElement x="0" y="0" width="552" height="49"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CARTA DE TÉRMINOS Y CONDICIONES PARA UTILIZAR LA FIRMA ELECTRÓNICA AVANZADA, EXPEDIDA POR EL SERVICIO DE ADMINISTRACION TRIBUTARIA (SAT) EN LOS ACTOS Y ACTUACIONES ELECTRÓNICAS ANTE EL IMSS.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="72" width="553" height="93"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Las personas físicas y morales podrán optar por realizar los actos o actuaciones que señala la Ley del Seguro Social, sus Reglamentos y demás disposiciones que de ella emanen, de manera electrónica y firmándola con la firma electrónica avanzada (FIEL) que esté amparada por un certificado electrónico vigente emitido por el Servicio de Administración Tributaria (SAT), siempre que el Instituto Mexicano del Seguro Social (IMSS) ponga a disposición de los interesados las herramientas tecnológicas necesarias para ello.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="178" width="553" height="77"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[La FIEL sustituye la firma autógrafa del firmante y producirá los mismos efectos que las leyes otorgan a los documentos con firma autógrafa, teniendo el mismo valor probatorio. Asimismo, con el uso de la FIEL se tiene por reconocida la garantía de la autoría del firmante y de la integridad de los documentos electrónicos que se firmen con ella y, por ende, el contenido de los mismos no podrá desconocerse ni admitirá prueba en contrario.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="268" width="553" height="92"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[La expedición de los Certificados Digitales y la generación de las claves públicas y privadas que conforman la FIEL de personas físicas y morales, se regirán por la Ley de Firma Electrónica Avanzada y, en materia fiscal, por el Código Fiscal de la Federación. Por lo tanto, la expedición de los Certificados Digitales, su renovación, revocación y demás trámites relacionados con la FIEL, se deberán realizar ante el Servicio de Administración Tributaria (SAT), cumpliendo con los requisitos y procedimientos establecidos en la normatividad aplicable.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="371" width="553" height="151"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Las personas físicas y morales podrán optar por realizar cualquier Acto o Actuaciones Electrónicas ante el IMSS con el uso de su FIEL, en cuyo caso, se tendrá por válido y sin que se admita prueba en contrario, el vínculo entre el firmante, sea persona moral o física, y los datos que fueron utilizados para la creación de la respectiva FIEL; por lo cual, los Actos y Actuaciones Electrónicas firmados con la FIEL serán considerados hechos legítima y auténticamente por el firmante y, en caso de personas morales, por el administrador único, el Presidente del Consejo de Administración o la persona o personas, cualquiera que sea el nombre con el que se les designe, que tengan conferida la dirección general, la gerencia general o la administración de la persona moral de que se trate, en el momento en el que se presentaron los documentos digitales, de conformidad con el artículo 19-A del Código Fiscal de la Federación. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="534" width="551" height="139"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Lo anterior no admitirá prueba en contrario ante el IMSS y el titular del Certificado Electrónico será responsable de las consecuencias jurídicas que deriven de los actos y actuaciones electrónicas que se realicen ante el IMSS utilizando la FIEL; por lo cual, quedará bajo la absoluta responsabilidad de la persona física o moral que cuente con FIEL, el resguardo y manejo de los Certificados Digitales, las llaves y claves que conforman la misma, con el fin de evitar la utilización no autorizada de la FIEL. En caso de pérdida, robo o destrucción de la FIEL, o cualquier otro evento que ponga en riesgo la confidencialidad de los certificados electrónicos, las llaves o claves que conforman la FIEL, la persona física o moral, bajo su absoluta responsabilidad, deberá proceder con su inmediata revocación o reposición ante el SAT, sujetándose a los procesos y lineamientos que el mismo determine. ]]></text>
+			</staticText>
+		</band>
+		<band height="732">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="1" y="563" width="440" height="20"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="613" width="551" height="64"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{selloDigital}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="709" width="553" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cadenaOriginal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="214" width="551" height="34"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Los términos y condiciones antes señalados son aplicables a la aceptación de los mismos que realice la persona, física o moral, mediante su firma electrónica FIEL.]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="1" y="266" width="16" height="13"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="23" y="265" width="529" height="32"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Declaro que he leído y conozco los alcances legales de los términos y condiciones antes señalados, aceptando voluntariamente los mismos mediante mi firma electrónica FIEL.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="105" width="551" height="95"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[En el caso de personas morales, una vez que hayan aceptado los términos y condiciones antes descritos, podrán presentar promociones a través de la FIEL de sus representantes legales o personas autorizadas, siempre que las mismas sean señaladas por la persona moral ante el IMSS y así sea aceptado por ellas mediante consentimiento expreso; para lo cual, tanto la persona moral como la persona física que corresponda, firmarán con sus respectivas FIEL el documento electrónico que el Instituto ponga a su disposición para tal efecto.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="12" width="553" height="80"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[La falta de vigencia o revocación del certificado electrónico que ampara la FIEL, no eximirá a la persona física o moral de cumplir con sus obligaciones ante el IMSS; por lo cual, será su responsabilidad tener vigente el Certificado Electrónico que ampara su FIEL en los tiempos en que deba presentar cualquier promoción o trámite ante el IMSS, de conformidad con la Ley del Seguro Social, sus Reglamentos y demás disposiciones aplicables.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="543" width="113" height="20"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="593" width="111" height="20"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello Digital:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="688" width="111" height="20"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena original:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="264" width="13" height="20"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[X]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

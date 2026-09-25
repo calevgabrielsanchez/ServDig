@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con5="http://www.bea.com/wli/sb/stages/transform/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con6="http://www.bea.com/wli/sb/stages/publish/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description>Obtiene los mails agregados a la cola de mensajes global y realiza el envío</ser:description>
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:request type="XML">
+        <con6:schema ref="deltaGestionPatronalService/schema/ServiceContract/EmailRequestSchema" element="EmailPayload" xmlns:con6="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:request>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:transactions isRequired="false" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>jms</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>jms://172.24.116.37:15051,172.24.116.37:15052/jms.EmailConnectionFactory/jms.MsgEmailDistributedQueue</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific>
+      <jms:is-queue>true</jms:is-queue>
+      <jms:is-secure>false</jms:is-secure>
+      <jms:inbound-properties>
+        <jms:response-required>false</jms:response-required>
+        <jms:XA-required>false</jms:XA-required>
+      </jms:inbound-properties>
+      <jms:request-encoding>UTF-8</jms:request-encoding>
+      <jms:jndi-timeout>0</jms:jndi-timeout>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con1:pipeline name="Template_response" type="response"/>
+    <con1:pipeline name="Tipo Tramite_response" type="response"/>
+    <con1:pipeline name="Template_request" type="request">
+      <con1:stage name="obtener parametros del template NSS">
+        <con1:comment/>
+        <con1:context>
+          <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.email.model"/>
+        </con1:context>
+        <con1:actions>
+          <con5:assign varName="apellidoPaterno">
+            <con2:id>_ActionId-830800944085897281--2fb2688e.14257a86a80.-7fe3</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"apellidoPaterno"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:assign varName="apellidoMaterno">
+            <con2:id>_ActionId-830800944085897281--2fb2688e.14257a86a80.-7fe2</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"apellidoMaterno"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:assign varName="nombre">
+            <con2:id>_ActionId-830800944085897281--2fb2688e.14257a86a80.-7fe1</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"nombre"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:assign varName="nss">
+            <con2:id>_ActionId-830800944085897281--2fb2688e.14257a86a80.-7fe0</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"nss"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:assign varName="folio">
+            <con2:id>_ActionId-830800944085897281--2fb2688e.14257a86a80.-7fdf</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"folio"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:assign varName="curp">
+            <con2:id>_ActionId-830800944085897281--2fb2688e.14257a86a80.-7fde</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"curp"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:assign varName="fechaNacimiento">
+            <con2:id>_ActionId-830800944085897281--2fb2688e.14257a86a80.-7fdd</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"fechaNacimiento"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:assign varName="lugarNacimiento">
+            <con2:id>_ActionId-830800944085897281--2fb2688e.14257a86a80.-7fdc</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"lugarNacimiento"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:assign varName="sexo">
+            <con2:id>_ActionId-830800944085897281--2fb2688e.14257a86a80.-7fdb</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"sexo"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:assign varName="fechaOperacion">
+            <con2:id>_ActionId-830800944085897281--2fb2688e.14257a86a80.-7fd8</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"fechaOperacion"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:javaCallout varName="hashedFolio">
+            <con2:id>_ActionId-8983014310238432209--26b17ef7.1437d75bd23.-7fe5</con2:id>
+            <con5:location/>
+            <con5:archive ref="AsignacionNSSProject/lib/delta-modelo-base-1.6-SNAPSHOT"/>
+            <con5:className>mx.gob.imss.ctirss.delta.framework.base.utility.Base64Cipher</con5:className>
+            <con5:method>public static synchronized java.lang.String cifrar(java.lang.String)</con5:method>
+            <con5:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$folio</con:xqueryText>
+            </con5:expr>
+            <con5:return-param-as-ref>false</con5:return-param-as-ref>
+          </con5:javaCallout>
+        </con1:actions>
+      </con1:stage>
+      <con1:stage name="Generar Template">
+        <con1:comment/>
+        <con1:context>
+          <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.email.model"/>
+        </con1:context>
+        <con1:actions>
+          <con5:assign varName="nssTemplate">
+            <con2:id>_ActionId-830800944085897281--2fb2688e.14257a86a80.-7fe4</con2:id>
+            <con5:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Número de Seguridad Social - IMSS Digital</title>
+<style type="text/css">
+<![CDATA[
+.ReadMsgBody {width: 100%;}
+.ExternalClass {width: 100%;}
+.ExternalClass,.ExternalClass p,.ExternalClass span,.ExternalClass font,.ExternalClass td,.ExternalClass div{line-height: 100%;}
+table,td {mso-table-lspace: 0pt;mso-table-rspace: 0pt;}
+#outlook a {padding: 0;}
+img {-ms-interpolation-mode: bicubic;}
+]]]]>><![CDATA[
+</style>
+</head>
+<body
+	style="height: 100% !important; margin: 0; padding: 0; width: 100% !important; font-family: Verdana, Geneva, sans-serif; font-size: 14px !important; text-align: justify;">
+	<div style="width: 100%; background-color: #EDEFF0; display: table;">
+		<div
+			style="background-color: white; margin: 90px 90px 10px; height: auto; border-radius: 4px;">
+			<div style="padding: 30px 50px;">
+				<div id="logo" style="margin-bottom: 20px; width: 100%;">
+					<a href="http://www.imss.gob.mx/"><img
+						src="http://www.imss.gob.mx/sites/all/statics/header.jpg"
+						alt="Portal Institucional" title="Portal Institucional"
+						border="0" /></a>
+				</div>
+				<div style="text-align: center;">
+					<strong>Asignaci&#243;n o Localización de Número de Seguridad
+						Social</strong>
+				</div>
+				<div style="text-align: center; font-size: 10px !important;">
+					<p>A {$fechaOperacion}</p>
+					<p>
+						Folio de Solicitud: <strong>{$folio}</strong>
+					</p>
+				</div>
+				Estimado(a): <strong>{fn:concat($nombre, "
+					",$apellidoPaterno, " ",$apellidoMaterno)}</strong>
+				<p>En atención a la solicitud de Asignación o Localización de
+					Número de Seguridad Social que hiciste al Instituto Mexicano del
+					Seguro Social, te informamos que con base a los datos
+					proporcionados, tu Número de Seguridad Social es:</p>
+				<br />
+				<center>
+					<table class="nssDataWrapper"
+						style="font-size: 14px !important; background-color: #F9FAFA; border: 1px solid #F9FAFA; border-radius: 4px; width: 55%;">
+						<tbody>
+							<tr>
+								<td>
+									<table
+										style="font-size: 14px !important; margin: 30px 45px 15px;">
+										<tbody>
+											<tr>
+												<td>Número de Seguridad Social</td>
+												<td style="width: 20px;"></td>
+												<td>{$nss}</td>
+											</tr>
+											<tr>
+												<td>CURP</td>
+												<td></td>
+												<td>{$curp}</td>
+											</tr>
+											<tr>
+												<td>Nombre(s)</td>
+												<td></td>
+												<td>{$nombre}</td>
+											</tr>
+											<tr>
+												<td>Primer apellido</td>
+												<td></td>
+												<td>{$apellidoPaterno}</td>
+											</tr>
+											<tr>
+												<td>Segundo apellido</td>
+												<td></td>
+												<td>{$apellidoMaterno}</td>
+											</tr>
+											<tr>
+												<td>Fecha de nacimiento</td>
+												<td></td>
+												<td>{$fechaNacimiento}</td>
+											</tr>
+											<tr>
+												<td>Lugar de nacimiento</td>
+												<td></td>
+												<td>{$lugarNacimiento}</td>
+											</tr>
+											<tr>
+												<td>Sexo</td>
+												<td></td>
+												<td>{$sexo}</td>
+											</tr>
+
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<tr style="background-color: white;">
+								<td colspan="3" style="">
+									<table
+										style="margin-top: 10px; font-size: 14px !important; padding: 0px 15px; text-align: center;">
+										<tbody>
+											<tr style="background-color: white;">
+												<td style="color: #999999; font-size: 12px !important;">Si
+													deseas recuperar el comprobante de tu Número de Seguridad
+													Social, lo puedes obtener desde aquí:</td>
+											</tr>
+										</tbody>
+									</table>
+									<table border="0" cellspacing="0" cellpadding="0"
+										style="background-color: #F0F0F0; border-radius: 4px; box-shadow: 0 5px 0 #D3D3D3; margin: 10px auto; width: 60%;">
+										<tbody>
+											<tr>
+												<td valign="top" align="center"
+													style="display: block; font-size: 14px !important; font-weight: bold; letter-spacing: -1px; line-height: 100%; text-align: center; text-decoration: none; padding: 20px 40px;">
+													<a
+													href="http://deltaqa.imss.gob.mx/gestionSolicitud-visor-web/solicitud/detalle?folio={$hashedFolio}"
+													target="_blank" title="Recuperar Acuse"
+													style="text-decoration: none; color: inherit;">Recuperar
+														Comprobante</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</center>
+				<br />
+				<div>
+					<p>Este Número de Seguridad Social es único, permanente e
+						intransferible y se asigna para el control del registro de los
+						trabajadores o sujetos de aseguramiento y sus beneficiarios; las
+						prestaciones en especie y en dinero se otorgarán cuando hayan
+						cumplido con los requisitos previstos en la Ley del Seguro Social
+						y sus Reglamentos; la individualización de los recursos en las
+						Administradoras de Fondos para el Retiro (AFORE) y el Instituto
+						del Fondo Nacional de la Vivienda de los Trabajadores (INFONAVIT)
+						se efectuará durante el periodo en que se encuentren inscritos con
+						un patrón.</p>
+					<p>
+						Ahora que cuentas con tu Número de Seguridad Social, no olvides
+						acudir a la AFORE de tu preferencia a registrar tu cuenta
+						individual donde se depositarán tus aportaciones de Ahorro para el
+						Retiro. También puedes hacerlo vía electrónica en: <a
+							href="http://www.consar.gob.mx" target="_blank" class="link">www.consar.gob.mx</a>
+						en la sección &quot;SAR en línea&quot;. Recuerda que es un dato
+						que solicitará tu patrón o empresa al momento de contratarte.
+					</p>
+				</div>
+				<div style="font-size: 10px !important; font-style: italic;">
+					<p>
+						<strong>AVISO DE PRIVACIDAD:</strong> Los datos personales
+						recabados serán protegidos, tratados e incorporados en el sistema
+						de datos personales denominado Catálogo Nacional de Asegurados
+						(CANASE) con fundamento en los artículos 22 de la Ley del Seguro
+						Social, 13 fracciones IV y V, 18, 19, 20 y 21 de la Ley Federal de
+						Transparencia y Acceso a la Información Pública Gubernamental,
+						cuya finalidad es proteger, contener, ordenar y clasificar los
+						datos de los patrones y asegurados, el CANASE está registrado en
+						el Listado de Sistemas de Datos Personales ante el Instituto
+						Federal de Acceso a la Información Pública <a
+							href="http://www.ifai.org.mx" target="_blank" class="link">(www.ifai.org.mx),</a>
+						y será transmitido, al INFONAVIT y a la CONSAR con la finalidad de
+						que el asegurado haga valer su derecho de ejercicio de crédito de
+						vivienda y disposición del Seguro de Retiro, además de otras
+						transmisiones previstas en la Ley. La Unidad Administrativa
+						responsable del Sistema de Datos Personales es la Dirección de
+						Incorporación y Recaudación en coordinación con la Dirección de
+						Innovación y Desarrollo Tecnológico, ambas dependientes del IMSS;
+						en su caso el interesado podrá ejercer los derechos de acceso y
+						corrección en la Subdelegación de control que corresponde al
+						domicilio del patrón o del asegurado. Lo anterior se informa en
+						cumplimiento del decimoséptimo de los Lineamientos de Protección
+						de Datos Personales, publicados en el Diario Oficial de la
+						Federación el 30 de septiembre de 2005.
+					</p>
+				</div>
+				<div style="font-size: 10px !important; font-style: italic;">
+					<p>
+						<strong>AVISO IMPORTANTE:</strong> Este correo electrónico y/o el
+						material adjunto es para uso exclusivo de la persona o la entidad
+						a la que expresamente se le ha enviado, el cual contiene
+						información confidencial. Si no es el destinatario legítimo del
+						mismo, por favor repórtelo inmediatamente a la cuenta del
+						remitente y elimínelo. Cualquier revisión, almacenamiento,
+						retransmisión, difusión o cualquier otro uso de este correo, por
+						personas o entidades distintas a las del destinatario legítimo,
+						queda expresamente prohibida. Este correo electrónico no pretende
+						ni debe ser considerado como constitutivo de ninguna relación
+						legal, contractual o de otra índole similar.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="pie" style="margin: 0px 80px 90px; padding-top: 13px;">
+			<div
+				style="text-align: center; width: 100%; font-size: 10px !important; text-transform: uppercase; color: #999999; text-decoration: none;"
+				id="footer">
+				IMSS, México - Algunos derechos reservados 2013<br/>
+				<a href="http://www.imss.gob.mx/pages/privacidad.aspx">POLÍTICA
+					DE PRIVACIDAD Y MANEJO DE DATOS PERSONALES </a> - <a target="_parent"
+					href="http://www.imss.gob.mx/Pages/avisolegal.aspx">Aviso LEGAL</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>]]></con:xqueryText>
+            </con5:expr>
+          </con5:assign>
+          <con5:replace varName="body" contents-only="true">
+            <con2:id>_ActionId-830800944085897281--2fb2688e.14257a86a80.-7fda</con2:id>
+            <con5:location>
+              <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">mx:EmailPayload/mx:Content</con:xpathText>
+            </con5:location>
+            <con5:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$nssTemplate</con:xqueryText>
+            </con5:expr>
+          </con5:replace>
+          <con4:log>
+            <con2:id>_ActionId-830800944085897281--2fb2688e.14257a86a80.-7fd9</con2:id>
+            <con4:logLevel>error</con4:logLevel>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+            </con4:expr>
+            <con4:message>Request para envio de correo</con4:message>
+          </con4:log>
+        </con1:actions>
+      </con1:stage>
+      <con1:stage name="Enviar correo">
+        <con1:comment>se invoca al proxy de envio de correo</con1:comment>
+        <con1:context>
+          <con2:userNsDecl prefix="mx" namespace="http://mx.gob.imss.email.model"/>
+        </con1:context>
+        <con1:actions>
+          <con6:route>
+            <con2:id>_ActionId-8983014310238432209--26b17ef7.1437d75bd23.-7fc3</con2:id>
+            <con6:service ref="deltaGestionPatronalService/proxy/mail/DynamicProxyServer" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con6:outboundTransform>
+              <con4:log>
+                <con2:id>_ActionId-8983014310238432209--26b17ef7.1437d75bd23.-7fc2</con2:id>
+                <con4:logLevel>error</con4:logLevel>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'LLAMANDO CRREO'</con:xqueryText>
+                </con4:expr>
+                <con4:message>CORREO</con4:message>
+              </con4:log>
+              <con5:routing-options>
+                <con2:id>_ActionId-8983014310238432209--26b17ef7.1437d75bd23.-7fc1</con2:id>
+                <con5:mode>request-response</con5:mode>
+                <con5:qualityOfService>exactly-once</con5:qualityOfService>
+              </con5:routing-options>
+            </con6:outboundTransform>
+          </con6:route>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline name="Tipo Tramite_request" type="request">
+      <con1:stage name="obtenerTipoTramite">
+        <con1:comment/>
+        <con1:context>
+          <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.email.model"/>
+        </con1:context>
+        <con1:actions>
+          <con5:assign varName="idTipoTramite">
+            <con2:id>_ActionId-830800944085897281--2fb2688e.14257a86a80.-7fe8</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"idTipoTramite"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline name="PipelinePairNode1_request" type="request">
+      <con1:stage name="obtener parametros del template Vigencia">
+        <con1:comment/>
+        <con1:context>
+          <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.email.model"/>
+        </con1:context>
+        <con1:actions>
+          <con5:assign varName="apellidoPaterno">
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f72</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"apellidoPaterno"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:assign varName="apellidoMaterno">
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f71</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"apellidoMaterno"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:assign varName="nombre">
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f70</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"nombre"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:assign varName="folio">
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f6e</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"folio"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:assign varName="secuenciaNotarial">
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f6d</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"secuenciaNotarial"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+          <con5:assign varName="fechaOperacion">
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f69</con2:id>
+            <con5:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReturnValueFromMap"/>
+                <con:param name="keyName">
+                  <con:path>"fechaOperacion"</con:path>
+                </con:param>
+                <con:param name="map">
+                  <con:path>$body/mx:EmailPayload/mx:Parameters</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con5:expr>
+          </con5:assign>
+        </con1:actions>
+      </con1:stage>
+      <con1:stage name="Generar Template">
+        <con1:comment/>
+        <con1:context>
+          <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.email.model"/>
+        </con1:context>
+        <con1:actions>
+          <con5:assign varName="nssTemplate">
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f67</con2:id>
+            <con5:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Número de Seguridad Social - IMSS Digital</title>
+<style type="text/css">
+<![CDATA[
+.ReadMsgBody {width: 100%;}
+.ExternalClass {width: 100%;}
+.ExternalClass,.ExternalClass p,.ExternalClass span,.ExternalClass font,.ExternalClass td,.ExternalClass div{line-height: 100%;}
+table,td {mso-table-lspace: 0pt;mso-table-rspace: 0pt;}
+#outlook a {padding: 0;}
+img {-ms-interpolation-mode: bicubic;}
+]]]]>><![CDATA[
+</style>
+</head>
+<body
+	style="height: 100% !important; margin: 0; padding: 0; width: 100% !important; font-family: Verdana, Geneva, sans-serif; font-size: 14px !important; text-align: justify;">
+	<div style="width: 100%; background-color: #EDEFF0; display: table;">
+		<div
+			style="background-color: white; margin: 90px 90px 10px; height: auto; border-radius: 4px;">
+			<div style="padding: 30px 50px;">
+				<div id="logo" style="margin-bottom: 20px; width: 100%;">
+					<a href="http://www.imss.gob.mx/"><img
+						src="http://www.imss.gob.mx/sites/all/statics/header.jpg"
+						alt="Portal Institucional" title="Portal Institucional"
+						border="0" /></a>
+				</div>
+				<div style="text-align: center;">
+					<strong> Impresión de Vigencia  </strong>
+				</div>
+				<div style="text-align: center; font-size: 10px !important;">
+					<p>A {$fechaOperacion}</p>
+					<p>
+						Folio de Solicitud: <strong>{$folio}</strong>
+					</p>
+				</div>
+				Estimado(a): <strong>{fn:concat($nombre, "
+					",$apellidoPaterno, " ",$apellidoMaterno)}</strong>
+
+				<p>En atención a la solicitud de Impresión de Vigencia que hiciste al Instituto Mexicano del
+					Seguro Social, te informamos que con base a los datos
+					proporcionados puedes descargar el reporte a continuaci&oacute;n:</p>
+				<br />
+				<center>
+					<table class="nssDataWrapper"
+						style="font-size: 14px !important; background-color: #F9FAFA; border: 1px solid #F9FAFA; border-radius: 4px; width: 55%;">
+						<tbody>
+							
+							<tr style="background-color: white;">
+								<td colspan="3" style="">
+									
+									<table border="0" cellspacing="0" cellpadding="0"
+										style="background-color: #F0F0F0; border-radius: 4px; box-shadow: 0 5px 0 #D3D3D3; margin: 10px auto; width: 60%;">
+										<tbody>
+											<tr>
+												<td valign="top" align="center"
+													style="display: block; font-size: 14px !important; font-weight: bold; letter-spacing: -1px; line-height: 100%; text-align: center; text-decoration: none; padding: 20px 40px;">
+													<a
+													href="http://firmadigital.imss.gob.mx/reader/view/visualizadorcomprobantes/mostrarComprobante?id={$secuenciaNotarial}"
+													target="_blank" title="Recuperar Acuse"
+													style="text-decoration: none; color: inherit;">Descargar
+														Reporte de Vigencia</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</center>
+				<br />
+			
+				<div style="font-size: 10px !important; font-style: italic;">
+					<p>
+						<strong>AVISO DE PRIVACIDAD:</strong> Los datos personales
+						recabados serán protegidos, tratados e incorporados en el sistema
+						de datos personales denominado Catálogo Nacional de Asegurados
+						(CANASE) con fundamento en los artículos 22 de la Ley del Seguro
+						Social, 13 fracciones IV y V, 18, 19, 20 y 21 de la Ley Federal de
+						Transparencia y Acceso a la Información Pública Gubernamental,
+						cuya finalidad es proteger, contener, ordenar y clasificar los
+						datos de los patrones y asegurados, el CANASE está registrado en
+						el Listado de Sistemas de Datos Personales ante el Instituto
+						Federal de Acceso a la Información Pública <a
+							href="http://www.ifai.org.mx" target="_blank" class="link">(www.ifai.org.mx),</a>
+						y será transmitido, al INFONAVIT y a la CONSAR con la finalidad de
+						que el asegurado haga valer su derecho de ejercicio de crédito de
+						vivienda y disposición del Seguro de Retiro, además de otras
+						transmisiones previstas en la Ley. La Unidad Administrativa
+						responsable del Sistema de Datos Personales es la Dirección de
+						Incorporación y Recaudación en coordinación con la Dirección de
+						Innovación y Desarrollo Tecnológico, ambas dependientes del IMSS;
+						en su caso el interesado podrá ejercer los derechos de acceso y
+						corrección en la Subdelegación de control que corresponde al
+						domicilio del patrón o del asegurado. Lo anterior se informa en
+						cumplimiento del decimoséptimo de los Lineamientos de Protección
+						de Datos Personales, publicados en el Diario Oficial de la
+						Federación el 30 de septiembre de 2005.
+					</p>
+				</div>
+				<div style="font-size: 10px !important; font-style: italic;">
+					<p>
+						<strong>AVISO IMPORTANTE:</strong> Este correo electrónico y/o el
+						material adjunto es para uso exclusivo de la persona o la entidad
+						a la que expresamente se le ha enviado, el cual contiene
+						información confidencial. Si no es el destinatario legítimo del
+						mismo, por favor repórtelo inmediatamente a la cuenta del
+						remitente y elimínelo. Cualquier revisión, almacenamiento,
+						retransmisión, difusión o cualquier otro uso de este correo, por
+						personas o entidades distintas a las del destinatario legítimo,
+						queda expresamente prohibida. Este correo electrónico no pretende
+						ni debe ser considerado como constitutivo de ninguna relación
+						legal, contractual o de otra índole similar.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="pie" style="margin: 0px 80px 90px; padding-top: 13px;">
+			<div
+				style="text-align: center; width: 100%; font-size: 10px !important; text-transform: uppercase; color: #999999; text-decoration: none;"
+				id="footer">
+				IMSS, México - Algunos derechos reservados 2013<br/>
+				<a href="http://www.imss.gob.mx/pages/privacidad.aspx">POLÍTICA
+					DE PRIVACIDAD Y MANEJO DE DATOS PERSONALES </a> - <a target="_parent"
+					href="http://www.imss.gob.mx/Pages/avisolegal.aspx">Aviso LEGAL</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>]]></con:xqueryText>
+            </con5:expr>
+          </con5:assign>
+          <con5:replace varName="body" contents-only="true">
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f66</con2:id>
+            <con5:location>
+              <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">mx:EmailPayload/mx:Content</con:xpathText>
+            </con5:location>
+            <con5:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$nssTemplate</con:xqueryText>
+            </con5:expr>
+          </con5:replace>
+          <con4:log>
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f65</con2:id>
+            <con4:logLevel>error</con4:logLevel>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+            </con4:expr>
+            <con4:message>Request para envio de correo</con4:message>
+          </con4:log>
+        </con1:actions>
+      </con1:stage>
+      <con1:stage name="Enviar correo">
+        <con1:comment>se invoca al proxy de envio de correo</con1:comment>
+        <con1:context>
+          <con2:userNsDecl prefix="mx" namespace="http://mx.gob.imss.email.model"/>
+        </con1:context>
+        <con1:actions>
+          <con6:route>
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f64</con2:id>
+            <con6:service ref="deltaGestionPatronalService/proxy/mail/DynamicProxyServer" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con6:outboundTransform>
+              <con4:log>
+                <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f63</con2:id>
+                <con4:logLevel>error</con4:logLevel>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'LLAMANDO CRREO'</con:xqueryText>
+                </con4:expr>
+                <con4:message>CORREO</con4:message>
+              </con4:log>
+              <con5:routing-options>
+                <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f62</con2:id>
+                <con5:mode>request-response</con5:mode>
+                <con5:qualityOfService>exactly-once</con5:qualityOfService>
+              </con5:routing-options>
+            </con6:outboundTransform>
+          </con6:route>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline name="PipelinePairNode1_response" type="response"/>
+    <con1:flow>
+      <con1:pipeline-node name="Tipo Tramite">
+        <con1:comment/>
+        <con1:request>Tipo Tramite_request</con1:request>
+        <con1:response>Tipo Tramite_response</con1:response>
+      </con1:pipeline-node>
+      <con1:branch-node type="condition" name="Tipo Tramite Bifurcacion">
+        <con1:comment/>
+        <con1:branch-table variable="idTipoTramite">
+          <con1:branch name="Asignacion_NSS">
+            <con1:operator>equals</con1:operator>
+            <con1:value>43</con1:value>
+            <con1:flow>
+              <con1:pipeline-node name="Template">
+                <con1:comment/>
+                <con1:request>Template_request</con1:request>
+                <con1:response>Template_response</con1:response>
+              </con1:pipeline-node>
+            </con1:flow>
+          </con1:branch>
+          <con1:branch name="Vigencia_Derechohabientes">
+            <con1:operator>equals</con1:operator>
+            <con1:value>94</con1:value>
+            <con1:flow>
+              <con1:pipeline-node name="PipelinePairNode1">
+                <con1:request>PipelinePairNode1_request</con1:request>
+                <con1:response>PipelinePairNode1_response</con1:response>
+              </con1:pipeline-node>
+            </con1:flow>
+          </con1:branch>
+          <con1:default-branch>
+            <con1:flow>
+              <con1:route-node name="RouteDynamicMailProxy">
+                <con1:comment/>
+                <con1:context>
+                  <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.email.model"/>
+                </con1:context>
+                <con1:actions>
+                  <con3:route>
+                    <con2:id>_ActionId-4442570679116773692-2ca00de2.1407d6b8b60.-7ff3</con2:id>
+                    <con3:service ref="deltaGestionPatronalService/proxy/mail/DynamicProxyServer" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con3:outboundTransform>
+                      <con4:log>
+                        <con2:id>_ActionId-3393422559919567367--1df10187.1408293e378.-7ff5</con2:id>
+                        <con4:logLevel>error</con4:logLevel>
+                        <con4:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+                        </con4:expr>
+                        <con4:message>Body para el servicio de Correo::::</con4:message>
+                      </con4:log>
+                    </con3:outboundTransform>
+                    <con3:responseTransform/>
+                  </con3:route>
+                </con1:actions>
+              </con1:route-node>
+            </con1:flow>
+          </con1:default-branch>
+        </con1:branch-table>
+      </con1:branch-node>
+    </con1:flow>
+  </ser:router>
+</xml-fragment>

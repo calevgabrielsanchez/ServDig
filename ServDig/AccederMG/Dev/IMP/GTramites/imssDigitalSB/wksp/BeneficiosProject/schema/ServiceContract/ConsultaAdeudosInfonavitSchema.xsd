@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://services.infonavit.org.mx/riss" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://services.infonavit.org.mx/riss">
+
+<xs:element name="consultaAdeudos" type="tns:consultaAdeudos"/>
+
+<xs:element name="consultaAdeudosResponse" type="tns:consultaAdeudosResponse"/>
+
+<xs:complexType name="consultaAdeudos">
+
+<xs:sequence>
+
+<xs:element minOccurs="0" name="RequestAdeudosVO" type="tns:requestAdeudosVO"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="requestAdeudosVO">
+
+<xs:sequence>
+
+<xs:element minOccurs="0" name="nrp" type="xs:string"/>
+
+<xs:element minOccurs="0" name="nss" type="xs:string"/>
+
+<xs:element minOccurs="0" name="rfc" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultaAdeudosResponse">
+
+<xs:sequence>
+
+<xs:element minOccurs="0" name="ResponseAdeudosVO" type="tns:responseAdeudosVO"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="responseAdeudosVO">
+
+<xs:sequence>
+
+<xs:element name="claveError" type="xs:int"/>
+
+<xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+
+<xs:element name="exito" type="xs:int"/>
+
+<xs:element name="indicadorDerechoBeneficio" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

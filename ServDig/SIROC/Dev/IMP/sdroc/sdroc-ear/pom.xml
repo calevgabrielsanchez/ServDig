@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>sdroc-ear</artifactId>
+	<name>sdroc-ear</name>
+	<description>EAR - sdroc</description>
+	<packaging>ear</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java-version>1.6</java-version>
+	</properties>
+
+	<parent>
+		<artifactId>sdroc</artifactId>
+		<groupId>mx.gob.imss.csdiss.sdroc</groupId>
+		<version>1.1-SNAPSHOT</version>
+	</parent>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.8</version>
+				<configuration>
+					<defaultJavaBundleDir>APP-INF/lib</defaultJavaBundleDir>
+					<modules>
+						<ejbModule>
+							<groupId>mx.gob.imss.csdiss.sdroc</groupId>
+							<artifactId>sdroc-ejb</artifactId>
+						</ejbModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>mx.gob.imss.csdiss.sdroc</groupId>
+			<artifactId>sdroc-interfaces</artifactId>
+			<version>${version}</version>
+		</dependency>	
+		<dependency>
+			<groupId>mx.gob.imss.csdiss.sdroc</groupId>
+			<artifactId>sdroc-ejb</artifactId>
+			<version>${version}</version>
+			<type>ejb</type>
+		</dependency>
+	</dependencies>
+
+</project>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.serviciosdigitales.imss.gob.mx/certificacionDerechoRetiroDesempleo"
+	xmlns:tns="http://www.serviciosdigitales.imss.gob.mx/certificacionDerechoRetiroDesempleo"
+	elementFormDefault="qualified">
+
+	<xs:element name="certificacionDerechoRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="nss" maxOccurs="1" minOccurs="1">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="\d{11}"></xs:pattern>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="curp" maxOccurs="1" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="18" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="fechaSolicitud" maxOccurs="1"
+					minOccurs="1">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern
+								value="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\d\d" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="claveAfore" maxOccurs="1" minOccurs="1">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="3" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="certificacionDerechoResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="certificacion" type="xs:string"
+					maxOccurs="1" minOccurs="1">
+				</xs:element>
+				<xs:element name="folioSolicitud" type="xs:string"
+					maxOccurs="1" minOccurs="1">
+				</xs:element>
+				<xs:element name="exito" type="xs:unsignedShort"
+					maxOccurs="1" minOccurs="1" />
+				<xs:element name="claveError" type="xs:unsignedShort" />
+				<xs:element name="descripcion">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="50" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

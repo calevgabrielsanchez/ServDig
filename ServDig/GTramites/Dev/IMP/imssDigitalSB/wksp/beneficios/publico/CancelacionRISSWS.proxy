@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false">
+    <ser:description/>
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con3:SoapBindingType" xmlns:con3="http://www.bea.com/wli/sb/services/bindings/config">
+      <con3:wsdl ref="beneficios/contratos/BeneficioRISS"/>
+      <con3:binding>
+        <con3:name>JwsServiceSoapBinding</con3:name>
+        <con3:namespace>http://servicios.globales.imss.gob.mx/</con3:namespace>
+      </con3:binding>
+      <con3:selector type="SOAP body"/>
+      <con3:WSI-compliant>false</con3:WSI-compliant>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:ws-policy>
+      <ser:binding-mode>wsdl-policy-attachments</ser:binding-mode>
+    </ser:ws-policy>
+    <ser:pageAttachments isEnabled="false"/>
+    <ser:transactions isRequired="true" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/beneficios/publico/CancelacionRISSWS</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific>
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con:pipeline name="PipelinePairNode1_request" type="request">
+      <con:stage name="Obtener parámetros de entrada">
+        <con:comment>Obtiene los datos provenientes en el servicio nss, nrp, fechaBajaRIF</con:comment>
+        <con:context>
+          <con2:varNsDecl prefix="java" namespace="java:mx.gob.imss.ctirss.delta.model.beneficio"/>
+          <con2:varNsDecl prefix="ser" namespace="http://servicios.globales.imss.gob.mx/"/>
+        </con:context>
+        <con:actions>
+          <con:assign varName="rfc" xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id xmlns:con1="http://www.bea.com/wli/sb/stages/config">_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7ff1</con1:id>
+            <con:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/ser:cancelarBeneficio/ser:rfc/text()</con:xqueryText>
+            </con:expr>
+          </con:assign>
+          <con:assign varName="nrp" xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id xmlns:con1="http://www.bea.com/wli/sb/stages/config">_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7ff0</con1:id>
+            <con:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/ser:cancelarBeneficio/ser:nrp/text()</con:xqueryText>
+            </con:expr>
+          </con:assign>
+          <con:assign varName="nss" xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id xmlns:con1="http://www.bea.com/wli/sb/stages/config">_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7fef</con1:id>
+            <con:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/ser:cancelarBeneficio/ser:nss/text()</con:xqueryText>
+            </con:expr>
+          </con:assign>
+          <con3:assign varName="fechaBajaRIF">
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7fed</con2:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/ser:cancelarBeneficio/ser:fechaBajaRIF/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="indicadorInstitucion">
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7fec</con2:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/ser:cancelarBeneficio/ser:indicadorInstitucion/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="documentoEntradaCancelacionRISS">
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7fee</con2:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<ser:cancelarBeneficio xmlns:ser="http://servicios.globales.imss.gob.mx/">
+    <ser:rfc>{$rfc}</ser:rfc>
+    <ser:nrp>{$nrp}</ser:nrp>
+    <ser:nss>{$nss}</ser:nss>
+    <ser:fechaBajaRIF>{$fechaBajaRIF}</ser:fechaBajaRIF>
+    <ser:indicadorInstitucion>{$indicadorInstitucion}</ser:indicadorInstitucion>
+</ser:cancelarBeneficio>]]></con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:ifThenElse>
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7fea</con2:id>
+            <con3:case>
+              <con3:condition>
+                <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:exists($rfc) or fn:exists($nss) or fn:exists($nrp)</con:xqueryText>
+              </con3:condition>
+              <con3:actions>
+                <con4:log xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config">
+                  <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7fe6</con2:id>
+                  <con4:logLevel>error</con4:logLevel>
+                  <con4:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'Si paso'</con:xqueryText>
+                  </con4:expr>
+                  <con4:message>Si esta al menos un parametro requerido:::</con4:message>
+                </con4:log>
+                <con3:replace varName="body" contents-only="true">
+                  <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7fe9</con2:id>
+                  <con3:location>
+                    <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                  </con3:location>
+                  <con3:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$documentoEntradaCancelacionRISS</con:xqueryText>
+                  </con3:expr>
+                </con3:replace>
+              </con3:actions>
+            </con3:case>
+            <con3:default>
+              <con3:assign varName="respuestaError">
+                <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7fe8</con2:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<m:cancelarBeneficioResponse xmlns:m="http://servicios.globales.imss.gob.mx/">
+    <m:respuesta>
+        <java:Exito xmlns:java="java:mx.gob.imss.ctirss.delta.model.beneficio">-1</java:Exito>
+        <java:ClaveError 	xmlns:java="java:mx.gob.imss.ctirss.delta.model.beneficio">80</java:ClaveError>
+        <java:Descripcion xmlns:java="java:mx.gob.imss.ctirss.delta.model.beneficio">
+           Al menos uno de los siguientes datos: NRP, NSS o RFC debe ser proporcionado 
+        </java:Descripcion>
+    </m:respuesta>
+</m:cancelarBeneficioResponse>]]></con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:replace varName="body" contents-only="true">
+                <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7fe7</con2:id>
+                <con3:location>
+                  <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                </con3:location>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$respuestaError</con:xqueryText>
+                </con3:expr>
+              </con3:replace>
+              <con2:reply isError="false">
+                <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7fe5</con2:id>
+              </con2:reply>
+            </con3:default>
+          </con3:ifThenElse>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode1_response" type="response"/>
+    <con:flow>
+      <con:pipeline-node name="PipelinePairNode1">
+        <con:request>PipelinePairNode1_request</con:request>
+        <con:response>PipelinePairNode1_response</con:response>
+      </con:pipeline-node>
+      <con:route-node name="RouteToCancelarBeneficioService">
+        <con:comment/>
+        <con:actions>
+          <con1:route>
+            <con2:id>_ActionId-6890322023830032076-63bf7dab.145d93bee93.-7ff0</con2:id>
+            <con1:service ref="beneficios/servicios/BeneficioRISS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con1:operation>cancelarBeneficio</con1:operation>
+            <con1:outboundTransform/>
+            <con1:responseTransform/>
+          </con1:route>
+        </con:actions>
+      </con:route-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>

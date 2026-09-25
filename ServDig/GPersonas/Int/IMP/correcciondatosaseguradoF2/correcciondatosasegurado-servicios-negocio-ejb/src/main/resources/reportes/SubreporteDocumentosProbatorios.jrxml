@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubreporteDocumentosProbatorios" pageWidth="554" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="554" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="0.42409761837248494"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\imssWSP\\workspace\\cda-Curp\\correcciondatosasegurado-servicios-negocio-ejb\\src\\main\\resources\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="44" width="234" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Para ser llenado por el IMSS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="72" width="234" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Acta de nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="88" width="234" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Identificación oficial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="104" width="255" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[a) Credencial para votar vigente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="120" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[b) Pasaporte vigente, mexicano o extranjero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="136" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[c) Cartilla del servicio militar nacional]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="152" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[d) Cédula profesional]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="168" width="431" height="19"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[e) Matrícula consular (documento de identidad que expide una oficina consular a favor de un connacional)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="187" width="431" height="17"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[f) Tarjeta/cédula/carnet de identidad para extranjeros (en caso de extranjeros)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="203" width="431" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[g) Documento migratorio vigente que corresponda, emitido por autoridad competente (en su caso prórroga o refrendo migratorio)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="224" width="323" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Clave Única de Registro de Población CURP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="261" width="447" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Comprobante de domicilio de reciente expedición, no mayor de tres meses a la fecha de presentación de la solicitud.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="325" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[d) Recibo de Gas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="293" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[b) Luz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="341" width="431" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[e) Certificación de la presidencia municipal (anual) o boleta predial (bimestral o anual del ejercicio vigente).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="357" width="431" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[No es necesario que el comprobante esté a nombre del solicitante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="309" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[c) Teléfono (excepto celular)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="277" width="255" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[a) Derechos de agua]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="387" width="447" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Documento expedido por el IMSS que contenga el Número de Seguridad Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="435" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[c) Certificado de incapacidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="403" width="442" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[a) Avisos Afiliatorios (Forma 2-A, AFIL-02, AFIL-03, AFIL-04, IDSE-03, AFIL-06 y DST-002).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="451" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[d) Cartilla de citas médicas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="467" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[e) Credencial ADIMSS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="419" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[b) Tarjeta de afiliación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="483" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[f) Liquidaciones pagadas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="531" width="407" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[i) Comprobantes SAR-03, SAR-04 o estado de cuenta de la AFORE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="515" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[h) Carta de renuncia o finiquito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="577" width="510" height="30"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[En caso de que el asegurado autorice que el trámite lo realice un tercero, éste deberá presentar además de los documentos señalados en los puntos del 1 al 5:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="547" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[j) Otros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="499" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[g) Comprobantes de pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="607" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Poder notarial que lo acredite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="623" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Identificación oficial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="654" width="510" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[En caso de fallecimiento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="670" width="369" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Acta de defunción del asegurado en copia simple y original para su cotejo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="695" width="510" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Tratándose de:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="727" width="340" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Hijos: Acta de nacimiento e identificación oficial.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="711" width="340" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Esposa: Acta de matrimonio e identificación oficial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="759" width="494" height="32"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Concubina / Concubinario: Constancia testimonial con que acredite el concubinato expedida por la autoridad judicial competente e Identificación oficial.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="743" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Padres: Identificación oficial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="554" height="38" forecolor="#000000" backcolor="#E7E8E7"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="11" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[VII. Indicar en el recuadro los documentos probatorios que presenta el asegurado o solicitante en copia simple y original para su cotejo]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cobranza="http://mx.gob.imss.digital.modelo.cobranza" xmlns:persona="http://mx.gob.imss.digital.modelo.persona" targetNamespace="http://mx.gob.imss.digital.modelo.cobranza" version="1.0">
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.persona" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/persona.xsd"/>
+
+  <xs:element name="SUAPago" type="cobranza:SUAPago"/>
+
+  <xs:element name="actualizacionCompras" type="cobranza:actualizacionCompras"/>
+
+  <xs:element name="calculoCuota" type="cobranza:calculoCuota"/>
+
+  <xs:element name="compra" type="cobranza:compra"/>
+
+  <xs:element name="cotizacion" type="cobranza:cotizacion"/>
+
+  <xs:element name="cuota" type="cobranza:cuota"/>
+
+  <xs:element name="datosCalculoCuota" type="cobranza:datosCalculoCuota"/>
+
+  <xs:element name="datosCompra" type="cobranza:datosCompra"/>
+
+  <xs:element name="datosEmpleado" type="cobranza:datosEmpleado"/>
+
+  <xs:element name="empleadoCuota" type="cobranza:empleadoCuota"/>
+
+  <xs:element name="estadoCompra" type="cobranza:estadoCompra"/>
+
+  <xs:element name="estadoPago" type="cobranza:estadoPago"/>
+
+  <xs:element name="lineasCapturaPagadas" type="cobranza:lineasCapturaPagadas"/>
+
+  <xs:element name="movimiento" type="cobranza:movimiento"/>
+
+  <xs:element name="movimientoEmpleado" type="cobranza:movimientoEmpleado"/>
+
+  <xs:element name="pago" type="cobranza:pago"/>
+
+  <xs:element name="pagos" type="cobranza:pagos"/>
+
+  <xs:element name="patron" type="cobranza:patron"/>
+
+  <xs:element name="periodoCuota" type="cobranza:periodoCuota"/>
+
+  <xs:element name="registroValidacion" type="cobranza:registroValidacion"/>
+
+  <xs:element name="sumarioPatronal" type="cobranza:sumarioPatronal"/>
+
+  <xs:element name="trabajador" type="cobranza:trabajador"/>
+
+  <xs:complexType name="patron">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="registroPatronalIMSS" type="xs:string"/>
+      <xs:element minOccurs="0" name="rfcPatron" type="xs:string"/>
+      <xs:element minOccurs="0" name="periodoDePago" type="xs:dateTime"/>
+      <xs:element name="folioSUA" type="xs:int"/>
+      <xs:element minOccurs="0" name="nombreORazonSocial" type="xs:string"/>
+      <xs:element minOccurs="0" name="calleNoYColonia" type="xs:string"/>
+      <xs:element minOccurs="0" name="poblacionYMunicipioODelegacionPolitica" type="xs:string"/>
+      <xs:element minOccurs="0" name="municipio" type="xs:string"/>
+      <xs:element name="entidadFederativa" type="xs:int"/>
+      <xs:element name="codigoPostal" type="xs:int"/>
+      <xs:element name="telefono" type="xs:long"/>
+      <xs:element minOccurs="0" name="primaDeRiesgoDeTrabajo" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="fechaDeLaPrimaDeRiesgoDeTrabajo" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="actividadEconomica" type="xs:string"/>
+      <xs:element name="delegacionDelIMSS" type="xs:int"/>
+      <xs:element name="subdelegacionDelIMSS" type="xs:int"/>
+      <xs:element minOccurs="0" name="areaGeograficaSalariosMinimos" type="xs:string"/>
+      <xs:element minOccurs="0" name="porcentajeDeAportacionINFONAVIT" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="convenioDeReembolsoDeSubsidios" type="xs:string"/>
+      <xs:element name="tipoDeCotizacion" type="xs:int"/>
+      <xs:element name="diasCotizadosPeriodoConIncidencias" type="xs:int"/>
+      <xs:element name="numeroDeTrabajadoresCotizantes" type="xs:long"/>
+      <xs:element name="tipoDocumento" type="xs:int"/>
+      <xs:element name="numeroDeCreditoIMSS" type="xs:long"/>
+      <xs:element minOccurs="0" name="filler" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="empleadoCuota">
+    <xs:sequence>
+      <xs:element name="numeroSeguridadSocial" type="xs:string"/>
+      <xs:element minOccurs="0" name="salario" nillable="true" type="xs:decimal"/>
+      <xs:element name="cuotaTotal" type="xs:decimal"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="periodos" nillable="true" type="cobranza:periodoCuota"/>
+      <xs:element name="conBeneficio" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="nombreTrabajador" type="xs:string"/>
+      <xs:element minOccurs="0" name="edad" type="xs:int"/>
+      <xs:element minOccurs="0" ref="persona:parentesco"/>
+      <xs:element minOccurs="0" name="curp" type="xs:string"/>
+      <xs:element minOccurs="0" name="cuotaRecargo" type="xs:decimal"/>
+      <xs:element name="aplicaCuestionario" type="xs:boolean"/>
+      <xs:element name="inscripcion" type="xs:boolean"/>
+      <xs:element name="individual" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="periodoCuota">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="orden" type="xs:int"/>
+      <xs:element name="inicioPeriodo" type="xs:dateTime"/>
+      <xs:element name="finPeriodo" type="xs:dateTime"/>
+      <xs:element name="total" type="xs:decimal"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="cuotas" nillable="true" type="cobranza:cuota"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="movimientos" nillable="true" type="cobranza:movimientoEmpleado"/>
+      <xs:element minOccurs="0" name="factorActualizacion" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="factorRecargo" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="cuotaRecargo" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="salarioPeriodo" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cuota">
+    <xs:sequence>
+      <xs:element name="nombre" nillable="true" type="xs:string"/>
+      <xs:element name="desTipoAportacion" nillable="true" type="xs:string"/>
+      <xs:element name="aportacion" type="xs:decimal"/>
+      <xs:element name="idRama" type="xs:int"/>
+      <xs:element name="idTipoAportacion" type="xs:int"/>
+      <xs:element name="factorCalculo" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="actualizacion" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="recargo" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="movimientoEmpleado">
+    <xs:sequence>
+      <xs:element name="tipoMovimiento" type="xs:int"/>
+      <xs:element name="fecha" type="xs:dateTime"/>
+      <xs:element name="dias" type="xs:int"/>
+      <xs:element minOccurs="0" name="folio" type="xs:string"/>
+      <xs:element name="salario" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="salarioMod40" nillable="true" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="compra">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idCompra" type="xs:long"/>
+      <xs:element minOccurs="0" name="fechaCompra" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaLimite" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="monto" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="idCotizacion" type="xs:long"/>
+      <xs:element minOccurs="0" name="formaPago" type="xs:long"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="pagos" nillable="true" type="cobranza:pago"/>
+      <xs:element minOccurs="0" ref="cobranza:estadoCompra"/>
+      <xs:element minOccurs="0" name="errorFormGeneral" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pago">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idPago" type="xs:long"/>
+      <xs:element minOccurs="0" name="fechaInicioPeriodo" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaFinPeriodo" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaLimitePago" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="monto" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="lineaCaptura" type="xs:string"/>
+      <xs:element minOccurs="0" name="pdf" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="suaPago" type="cobranza:SUAPago"/>
+      <xs:element minOccurs="0" ref="cobranza:estadoPago"/>
+      <xs:element minOccurs="0" name="imprimible" type="xs:boolean"/>
+      <xs:element name="conBeneficio" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="errorFormGeneral" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SUAPago">
+    <xs:sequence>
+      <xs:element ref="cobranza:patron"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="trabajadores" nillable="true" type="cobranza:trabajador"/>
+      <xs:element ref="cobranza:sumarioPatronal"/>
+      <xs:element ref="cobranza:registroValidacion"/>
+      <xs:element name="fechaInicio" type="xs:dateTime"/>
+      <xs:element name="fechaFin" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="monto" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="trabajador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nssTrabajador" type="xs:string"/>
+      <xs:element minOccurs="0" name="rfcDelTrabajador" type="xs:string"/>
+      <xs:element minOccurs="0" name="claveUnicaDelRegistroDePoblacion" type="xs:string"/>
+      <xs:element name="numeroDeCreditoINFONAVIT" type="xs:long"/>
+      <xs:element minOccurs="0" name="fechaDeInicioDelDescuentoDeCreditoINFONAVIT" type="xs:dateTime"/>
+      <xs:element name="numeroDeMovimientosEnElPeriodo" type="xs:int"/>
+      <xs:element minOccurs="0" name="nombreTrabajador" type="xs:string"/>
+      <xs:element minOccurs="0" name="apellidoPaternoTrabajador" type="xs:string"/>
+      <xs:element minOccurs="0" name="apellidoMaternoTrabajador" type="xs:string"/>
+      <xs:element minOccurs="0" name="ultimoSalarioDiarioIntegradoDelPeriodo" type="xs:decimal"/>
+      <xs:element name="tipoDeTrabajador" type="xs:int"/>
+      <xs:element name="jornadaPorSemanaReducida" type="xs:int"/>
+      <xs:element name="diasCotizadosEnElMes" type="xs:int"/>
+      <xs:element name="diasDeIncapacidadEnElMes" type="xs:int"/>
+      <xs:element name="diasDeAusentismoEnElMes" type="xs:int"/>
+      <xs:element minOccurs="0" name="cuotaFijaDeEnfermedadYMaternidad" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="cuotaExcedenteDeEnfermedadYMaternidad" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="prestacionesEnDineroDeEnfermedadYMaternidad" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="gastosMedicosPensionadosArt25" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="riesgosDeTrabajo" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="invalidezYVida" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="guarderiaYPrestacionesSociales" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="actualizacionYRecargosDeLosCuatroSegurosIMSS" type="xs:decimal"/>
+      <xs:element name="diasCotizadosEnElBimestre" type="xs:int"/>
+      <xs:element name="diasDeIncapacidadEnElBimestre" type="xs:int"/>
+      <xs:element name="diasDeAusentismoEnElBimestre" type="xs:int"/>
+      <xs:element minOccurs="0" name="retiro" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="actualizacionYRecargosDeRetiro" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="cesantiaYVejezCuotaPatronal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="cesantiaYVejezCuotaTrabajador" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="actualizacionYRecargosDeCesantiaYVejez" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="aportacionVoluntaria" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="aportacionPatronalINFONAVIT" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="amortizacionDeCreditoINFONAVIT" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="cuotaExcedenteCuotaObrera" type="xs:string"/>
+      <xs:element minOccurs="0" name="cuotaExcedenteCuotaObreraN" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="prestacionesEnDineroCuotaObrera" type="xs:string"/>
+      <xs:element minOccurs="0" name="gastosMedicosPensionadosCuotaObrera" type="xs:string"/>
+      <xs:element minOccurs="0" name="invalidezYVidaCuotaObrera" type="xs:string"/>
+      <xs:element minOccurs="0" name="cesantiaYVejezCuotaObrera" type="xs:string"/>
+      <xs:element minOccurs="0" name="prestacionesEnDineroCuotaObreraN" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="gastosMedicosPensionadosCuotaObreraN" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="invalidezYVidaCuotaObreraN" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="cesantiaYVejezCuotaObreraN" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="municipio" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="movimientos" nillable="true" type="cobranza:movimiento"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="movimiento">
+    <xs:sequence>
+      <xs:element name="tipoDeMovimientoOIncidencia" type="xs:int"/>
+      <xs:element minOccurs="0" name="fechaDeMovimientoOIncidencia" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="folioDeIncapacidad" type="xs:string"/>
+      <xs:element name="diasDeIncidencia" type="xs:int"/>
+      <xs:element minOccurs="0" name="salarioDiarioIntegrado" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="nssTrabajador" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sumarioPatronal">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tasaDeActualizacionEmpleada" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="tasaDeRecargosEmpleada" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="cuotaFijaDeEnfermedadYMaternidad" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="cuotaExcedenteDeEnfermedadYMaternidad" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="prestacionesEnDineroDeEnfermedadYMaternidad" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="gastosMedicosPensionadosArt25" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="riesgosDeTrabajo" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="invalidezYVida" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="guarderiaYPrestacionesSociales" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="subtotalDeCuatroSegurosIMSS" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="actualizacionDeLosCuatroSegurosIMSS" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="recargosDeLosCuatroSegurosIMSS" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="retiro" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="cesantiaYVejez" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="subtotalRetiroCesantiaYVejez" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="actualizacionDeRetiroCesantiaYVejez" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="recargosDeRetiroCesantiaYVejez" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="aportacionesVoluntarias" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="aportacionPatronalINFONAVITParaCuentaIndividual" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="aportacionPatronalINFONAVITParaAmortizacionDeCreditos" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="amortizacionDeCreditoINFONAVIT" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="aportacionesComplementarias" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="multasINFONAVIT" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="donativoFUNDEMEX" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="folioDeRequerimiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="filler" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="registroValidacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sumaDeTasasDeRecargosYActualizacionQueSeAplico" type="xs:decimal"/>
+      <xs:element name="tamanioDelArchivoEnBytes" type="xs:long"/>
+      <xs:element minOccurs="0" name="fechaLimiteDePago" type="xs:dateTime"/>
+      <xs:element name="numeroDeDiscos" type="xs:int"/>
+      <xs:element minOccurs="0" name="versionSUA" type="xs:string"/>
+      <xs:element minOccurs="0" name="totalADepositarEnCuentaIMSS4RSS" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="totalADepositarEnCuentaIMSSRCV" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="totalADepositarINFONAVITAportacionPatronal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="totalADepositarINFONAVITAmortizacionCredito" type="xs:decimal"/>
+      <xs:element name="checkSum" type="xs:long"/>
+      <xs:element minOccurs="0" name="cuotaFija" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="cuotaExcedentePatronal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="cuotaExcedenteObrero" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="prestacionesDineroPatronal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="prestacionesDineroObrero" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="gastosMedicosPensionadosPatronal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="gastosMedicosPensionadosObrero" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="riesgosDeTrabajo" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="invalidezYVidaPatronal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="invalidezYVidaObrero" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="guarderiaYPrestacionesSociales" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="factorDeReversionCF" type="xs:string"/>
+      <xs:element minOccurs="0" name="factorDeReversionExcPatronal" type="xs:string"/>
+      <xs:element minOccurs="0" name="factorDeReversionExcObrero" type="xs:string"/>
+      <xs:element minOccurs="0" name="factorDeReversionPDPatronal" type="xs:string"/>
+      <xs:element minOccurs="0" name="factorDeReversionPDObrero" type="xs:string"/>
+      <xs:element minOccurs="0" name="factorDeReversionGMPPatronal" type="xs:string"/>
+      <xs:element minOccurs="0" name="factorDeReversionGMPObrero" type="xs:string"/>
+      <xs:element minOccurs="0" name="factorDeReversionRT" type="xs:string"/>
+      <xs:element minOccurs="0" name="factorDeReversionIVPatronal" type="xs:string"/>
+      <xs:element minOccurs="0" name="factorDeReversionIVObrero" type="xs:string"/>
+      <xs:element minOccurs="0" name="factorDeReversionGPS" type="xs:string"/>
+      <xs:element minOccurs="0" name="factorDeAusentismo" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="filler" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="estadoPago">
+    <xs:sequence>
+      <xs:element name="idEstadoPago" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="estadoCompra">
+    <xs:sequence>
+      <xs:element name="idEstadoCompra" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cotizacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idCotizacion" type="xs:long"/>
+      <xs:element minOccurs="0" name="fecha" nillable="true" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaVigencia" nillable="true" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="cuotaTotal" nillable="true" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="concepto" type="xs:long"/>
+      <xs:element minOccurs="0" name="renovacion" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="detalle" nillable="true" type="cobranza:calculoCuota"/>
+      <xs:element minOccurs="0" name="aplicaCuestionario" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="errorFormGeneral" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="calculoCuota">
+    <xs:sequence>
+      <xs:element name="fechaInicioCalculo" type="xs:dateTime"/>
+      <xs:element name="fechaFinCalculo" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="numeroRegistroPatronal" type="xs:string"/>
+      <xs:element name="modalidad" type="xs:long"/>
+      <xs:element minOccurs="0" name="zonaSalarial" type="xs:string"/>
+      <xs:element name="cuotaTotal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="cuotaRecargo" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="conBeneficio" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="conRecargos" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="aplicaRecargoPorFechaBaja" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="versionSUA" type="xs:string"/>
+      <xs:element minOccurs="0" name="renovacion" type="xs:boolean"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="empleados" nillable="true" type="cobranza:empleadoCuota"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="datosEmpleado">
+    <xs:sequence>
+      <xs:element name="numeroSeguridadSocial" type="xs:string"/>
+      <xs:element minOccurs="0" name="salario" nillable="true" type="xs:decimal"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="movimientos" nillable="true" type="cobranza:movimientoEmpleado"/>
+      <xs:element minOccurs="0" name="edad" type="xs:int"/>
+      <xs:element minOccurs="0" name="parentesco" type="xs:long"/>
+      <xs:element minOccurs="0" name="curp" type="xs:string"/>
+      <xs:element name="aplicaCuestionario" type="xs:boolean"/>
+      <xs:element name="inscripcion" type="xs:boolean"/>
+      <xs:element name="individual" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pagos">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="pago" nillable="true" type="cobranza:pago"/>
+      <xs:element minOccurs="0" name="errorFormGeneral" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="lineasCapturaPagadas">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="lineaCaptura" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="datosCompra">
+    <xs:sequence>
+      <xs:element name="idCompra" type="xs:long"/>
+      <xs:element name="bimestral" type="xs:boolean"/>
+      <xs:element name="primerPago" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="datosCalculoCuota">
+    <xs:sequence>
+      <xs:element name="fechaInicioCalculo" type="xs:dateTime"/>
+      <xs:element name="fechaFinCalculo" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="numeroRegistroPatronal" nillable="true" type="xs:string"/>
+      <xs:element name="modalidad" type="xs:long"/>
+      <xs:element minOccurs="0" name="zonaSalarial" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="concepto" type="xs:long"/>
+      <xs:element minOccurs="0" name="renovacion" type="xs:boolean"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="empleados" nillable="true" type="cobranza:datosEmpleado"/>
+      <xs:element minOccurs="0" name="aplicaCuestionario" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="salarioMinimo" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="recargos" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="errorFormGeneral" type="xs:string"/>
+      <xs:element minOccurs="0" name="idEmpleador" type="xs:long"/>
+      <xs:element minOccurs="0" name="aplicaRecargoPorFechaBaja" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="actualizacionCompras">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="compras" nillable="true" type="cobranza:datosCompra"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="lineasEnError" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

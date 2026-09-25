@@ -1,0 +1,91 @@
+{
+  "folio": "123456ABC",
+  "informacionRENAPO":{
+    "curp":"SAVA790909HDFMRN29",
+    "apellidoPaterno": "Sampayo",
+    "apellidoMaterno": "Vargas",
+    "nombre": "Antoniommm",
+    "lugarNacimiento": "Mexico",
+    "nacionalidad": "Mexicana",
+    "datosDocumentoProbatorio": "Datos"
+  },
+  "domicilioParticular":{
+    "cp":"12345",
+    "colonia": "La bonita"
+  },
+  "motivoAclaracion":{
+    "cobroIncapacidad":true,
+    "retiroDesempleo":true
+  }, 
+  "gridNSS":{          
+    "data":[
+      {
+        "nss":"12345678901234", 
+        "convencional": true,        
+        "informacionRENAPO":{
+          "curp":"AAAAAAAAA",
+          "nombre": "Antonio"
+        },
+        "informacionBDTU":{
+          "curp":"aaaaa",
+          "nombre": "ntonio"
+        }
+      },
+      {
+        "nss":"12345AAAA901234",
+        "convencional": false,        
+        "informacionRENAPO":{
+          "curp":"ZZZZ",
+          "nombre": "Antonio",
+          "apellidoPaterno": "Sampayo"
+        },
+        "informacionBDTU":{
+          "curp":"ZZZZ",
+          "nombre": "ntonio",
+          "apellidoPaterno": "Sampayos"
+        }
+      },
+      {
+        "nss":"ABCD", 
+        "convencional": false,        
+        "informacionRENAPO":{
+          "curp":"BBBB"
+        },
+        "informacionBDTU":{
+          "curp":"bbbb"
+        }
+      }
+    ],
+    "currentPage": 1,
+    "pageSize":10000,
+    "totalOfRecords": 2          
+  },
+  "gridDocumentos":{          
+    "data":[
+      {"documento":"Documento A"},
+      {"documento":"Documento B"},
+      {"documento":"Documento C"}
+    ],
+    "currentPage": 1,
+    "pageSize":10000,
+    "totalOfRecords": 3
+  },
+  "gridHistoriaLaboral":{          
+    "data":[
+      {"nombre":"Nombre", "entidadFederativa":"Entidad Federativa", "fechaInscripcion":"HOY", "fechaBaja": "Mañana"},
+      {"nombre":"Nombre 2", "entidadFederativa":"Entidad Federativa 2", "fechaInscripcion":"HOY 2", "fechaBaja": "Mañana 2"}
+    ],
+    "currentPage": 1,
+    "pageSize":10000,
+    "totalOfRecords": 2
+  },
+  "gridDatosAdicionales":{          
+    "data":[
+      {"numeroRegistroPatronal":"1234ABC", "actividadEmpresa":"Mineria", "domicilioEmpresa":"Jalisco"},
+      {"numeroRegistroPatronal":"1234ABC 2", "actividadEmpresa":"Mineria 2", "domicilioEmpresa":"Jalisco 2"}
+    ],
+    "currentPage": 1,
+    "pageSize":10000,
+    "totalOfRecords": 2
+  }
+}

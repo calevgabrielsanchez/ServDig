@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>mx.gob.imss.cit.dacvass.servicios.externos</groupId>
+	<artifactId>serviciosDigitales-rest-modelo</artifactId>
+	<version>${revision}</version>
+	<name>Modolo de objetos de negocio REST</name>
+	<url>http://maven.apache.org</url>
+	<packaging>jar</packaging>
+
+
+		
+	<parent>
+		<artifactId>serviciosDigitales-rest</artifactId>
+		<groupId>mx.gob.imss.cit.dacvass.servicios.externos</groupId>
+		<version>${revision}</version>
+	</parent>
+	
+	<properties>
+		<project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+	</properties>
+	
+	<dependencies>
+	<dependency>
+  			<groupId>com.sun.jersey</groupId>
+  			<artifactId>jersey-bundle</artifactId>
+  			<version>1.1.5.1</version>
+  			<scope>provided</scope>
+  	</dependency>
+  	 <dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-modelo-negocio</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency> 
+		
+		<dependency>
+	      <groupId>mx.gob.imss.ctirss.delta</groupId>
+	      <artifactId>imssdigital-modelo</artifactId>
+	      <version>${delta.framework.version}</version>
+	      <type>jar</type>
+	    </dependency>
+	    
+	    <dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-framework-base</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>
+  	</dependencies>
+	
+</project>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<!-- Definicion de layout -->
+
+	<definition name="simple.base.definition"
+		template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title" value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<definition name="base.definition"
+		template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title" value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<definition name="base.firma"
+		template="/WEB-INF/views/layout/main-firma.jsp">
+		<put-attribute name="title" value=" Título del Sistema o Módulo DELTA " />
+	    <put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado-firma.jsp" /> 
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition.embebed"
+		template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title" value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de logeo -->
+	
+	<!-- Definicion de la pantalla BIENVENIDA (2 buttons) de la aplicacion -->
+	<definition name="bienvenida" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/bienvenida.jsp"/>
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+		
+	
+	<!-- Definicion de la pantalla Análisis y Consulta -->
+	<definition name="analisisConsulta" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/consulta/analisisConsulta.jsp"/>
+	</definition>
+
+	<!-- Definicion de la pantalla Reportes de análisis -->
+	<definition name="consultaReportes" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/reportes/reportesAnalisis.jsp"/>
+	</definition>
+
+	<definition name="consultaBitacora" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/reportes/reportesBitacora.jsp"/>
+	</definition>
+
+	<definition name="consultaConcentrado" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/reportes/reportesConcentrado.jsp"/>
+	</definition>
+
+
+	<!-- Definicion de la pantalla Detalle de la Solicitud -->
+	<definition name="detalleSolicitud" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/solicitud/detalleSolicitud.jsp"/>
+	</definition>
+	
+	<definition name="detalleSolicitudDictamen" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/solicitud/detalleSolicitudDictamen.jsp"/>
+	</definition>
+		
+
+
+	<!-- Definicion de las pantalla Rectificación de Movimiento-->
+	<definition name="rectificacionMovimiento" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/analisis/rectificacion.jsp"/>
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<!-- Definicion de las pantalla Rectificación de Movimiento de Dictamen-->
+	<definition name="rectificacionMovimientoDictamen" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/analisis/rectificacionDictamen.jsp"/>
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<!-- Definicion de la pantalla Captura Datos Clem -->
+	<definition name="capturaDatosClem" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/analisis/capturaDatosClem.jsp"/>
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<definition name="databaseError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="internalError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="internalErrorMsj" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/errorMsj.jsp" />
+	</definition>
+	<!--Pantalla para cambiar de error inconsistencia-->
+	<definition name="errorInconsistencia" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/errorIn.jsp" />
+	</definition>
+	
+	<definition name="500" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="404" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+	
+	<definition name="analisisConsultaDictamen" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/consulta/analisisConsultaDictamen.jsp"/>
+	</definition>
+	
+	<definition name="datosPatronDictamen" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/analisis/datosPatronDictamen.jsp"/>
+	</definition>
+
+	<definition name="firmaClem" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/consulta/consultaFirmaClem.jsp"/>
+	</definition>
+
+	<definition name="verClemFirmada" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/consulta/consultaClemFirmada.jsp"/>
+	</definition>
+	
+	<definition name="autenticacionFirma" extends="base.firma">
+		<put-attribute name="contenido" value="/WEB-INF/views/consulta/autenticacionFirma.jsp"/>
+	</definition>
+	
+		<!-- Definicion de las pantalla Desechar Solicitud-->
+	<definition name="desecharSolicitud" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/analisis/desecharSolicitud.jsp"/>
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>

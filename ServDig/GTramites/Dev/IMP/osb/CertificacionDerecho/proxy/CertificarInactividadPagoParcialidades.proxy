@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config" xmlns:http="http://www.bea.com/wli/sb/transports/http">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description/>
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con4:SoapBindingType" xmlns:con4="http://www.bea.com/wli/sb/services/bindings/config">
+      <con4:wsdl ref="CertificacionDerecho/wsdl/certificacionInactividadPagoParcialidades"/>
+      <con4:port>
+        <con4:name>certificarInactividadPagoParcialidadesSOAP</con4:name>
+        <con4:namespace>http://www.serviciosdigitales.imss.gob.mx/certificarInactividadPagoParcialidades</con4:namespace>
+      </con4:port>
+      <con4:selector type="SOAP body"/>
+      <con4:WSI-compliant>false</con4:WSI-compliant>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:ws-policy>
+      <ser:binding-mode>wsdl-policy-attachments</ser:binding-mode>
+    </ser:ws-policy>
+    <ser:pageAttachments isEnabled="false"/>
+    <ser:transactions isRequired="true" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/CertificacionDerecho/CertificarInactividadPagoParcialidades</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific>
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con:pipeline name="PipelinePairNode1_request" type="request">
+      <con:stage name="certificarStage" errorHandler="_onErrorHandler-4016657890136713620-66a6344d.148413b0290.-7fdc">
+        <con:comment/>
+        <con:context>
+          <con1:userNsDecl prefix="m" namespace="http://servicios.imss.gob.mx/certificacion/derecho/desempleo"/>
+          <con1:userNsDecl prefix="del" namespace="http://delta.global.services/"/>
+          <con1:userNsDecl prefix="java1" namespace="java:mx.gob.imss.ctirss.delta.global.model"/>
+          <con1:userNsDecl prefix="java5" namespace="java:mx.gob.imss.ctirss.delta.model.gestion.patronal"/>
+          <con1:userNsDecl prefix="open" namespace="http://www.openuri.org/"/>
+          <con1:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+          <con1:varNsDecl prefix="cer" namespace="http://www.serviciosdigitales.imss.gob.mx/certificacionDerechoRetiroDesempleo"/>
+          <con1:varNsDecl prefix="cer1" namespace="http://www.serviciosdigitales.imss.gob.mx/certificacionInactividadPagoParcialidades"/>
+        </con:context>
+        <con:actions>
+          <con2:log>
+            <con1:id>_ActionId-1680087978032505837-5738e8da.145d7e8f59d.-7fe0</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+            </con2:expr>
+            <con2:message>::::::: ENTRADA PRINCIPAL AL SERVICIO DE CERTIFICACION DE DERECHOS :::::::</con2:message>
+          </con2:log>
+          <con3:validate>
+            <con1:id>_ActionId-4016657890136713620-66a6344d.148413b0290.-7fdd</con1:id>
+            <con3:schema ref="CertificacionDerecho/schema/certificacionInactividadPagoParcialidades"/>
+            <con3:schemaElement xmlns:cer="http://www.serviciosdigitales.imss.gob.mx/certificacionDerechoRetiroDesempleo" xmlns:cer1="http://www.serviciosdigitales.imss.gob.mx/certificacionInactividadPagoParcialidades">cer1:certificacionInactividadRequest</con3:schemaElement>
+            <con3:varName>body</con3:varName>
+            <con3:location>
+              <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">./cer1:certificacionInactividadRequest</con:xpathText>
+            </con3:location>
+            <con3:resultVarName/>
+          </con3:validate>
+          <con3:assign varName="nss">
+            <con1:id>_ActionId-3770791993104471582-39128751.148a31824b1.-7fab</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/cer1:certificacionInactividadRequest/cer1:nss/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="curp">
+            <con1:id>_ActionId-2678650908885781992-6ae067a9.148f5e929c9.-7fdc</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/cer1:certificacionInactividadRequest/cer1:curp/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="prestacionSolicitada">
+            <con1:id>_ActionId-2678650908885781992-6ae067a9.148f5e929c9.-7fdb</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/cer1:certificacionInactividadRequest/cer1:prestacionSolicitada/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="numeroResolucion">
+            <con1:id>_ActionId-2678650908885781992-6ae067a9.148f5e929c9.-7fda</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/cer1:certificacionInactividadRequest/cer1:numeroResolucion/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:wsCallout>
+            <con1:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fe2</con1:id>
+            <con3:service ref="CertificacionDerecho/businessService/inactividadPagoParcialidadesBusinessService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con3:operation>certificacionInactividad</con3:operation>
+            <con3:request>
+              <con3:body wrapped="false">$certificarInactividadRequest</con3:body>
+              <con3:header/>
+            </con3:request>
+            <con3:response>
+              <con3:body wrapped="false">certificarInactividadResponse</con3:body>
+              <con3:header/>
+            </con3:response>
+            <con3:requestTransform>
+              <con3:assign varName="certificarInactividadRequest">
+                <con1:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fe1</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<inac:certificacionInactividad xmlns:inac="http://inactividad.service.imss.gob.mx/">
+    <!--Optional:-->
+    <Mensaje>
+        <nss>{$nss}</nss>
+        <!--Optional:-->
+        <curp>{$curp}</curp>
+        <prestacionSolicitada>{$prestacionSolicitada}</prestacionSolicitada>
+        <numeroResolucion>{$numeroResolucion}</numeroResolucion>
+    </Mensaje>
+</inac:certificacionInactividad>]]></con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con2:log>
+                <con1:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fe0</con1:id>
+                <con2:logLevel>error</con2:logLevel>
+                <con2:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$certificarInactividadRequest</con:xqueryText>
+                </con2:expr>
+                <con2:message>ANTES DE LLAMADA AL WS DE ALMACEN PARA INACTIVIDAD PAGO EN PARCIALIDADES ::::::</con2:message>
+              </con2:log>
+            </con3:requestTransform>
+            <con3:responseTransform>
+              <con2:log>
+                <con1:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fdf</con1:id>
+                <con2:logLevel>error</con2:logLevel>
+                <con2:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$certificarInactividadResponse</con:xqueryText>
+                </con2:expr>
+                <con2:message>:::::: RESPUESTA DESDE EL ALMACEN PARA LA CERTIFICACION DE INACTIVIDAD PAGO EN PARCIALIDADES ::::</con2:message>
+              </con2:log>
+              <con3:assign varName="indError">
+                <con1:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fde</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$certificarInactividadResponse/Respuesta/codigoError/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con4:ifThenElse xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                <con2:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fdd</con2:id>
+                <con4:case>
+                  <con4:condition>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indError != "0"</con:xqueryText>
+                  </con4:condition>
+                  <con4:actions>
+                    <con3:log>
+                      <con2:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fdc</con2:id>
+                      <con3:logLevel>error</con3:logLevel>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indError</con:xqueryText>
+                      </con3:expr>
+                      <con3:message>LA RESPUESTA DEL SERVICIO  inactividadPagoParcialidadesBusinessService NO FUE EXITOSA, CODIGO_ERROR ::::::::::::::::::</con3:message>
+                    </con3:log>
+                    <con4:assign varName="exito">
+                      <con2:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fdb</con2:id>
+                      <con4:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indError</con:xqueryText>
+                      </con4:expr>
+                    </con4:assign>
+                    <con4:assign varName="claveError">
+                      <con2:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fda</con2:id>
+                      <con4:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indError</con:xqueryText>
+                      </con4:expr>
+                    </con4:assign>
+                    <con4:assign varName="descripcionError">
+                      <con2:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fd9</con2:id>
+                      <con4:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$certificarInactividadResponse/Respuesta/mensajeError/text()</con:xqueryText>
+                      </con4:expr>
+                    </con4:assign>
+                  </con4:actions>
+                </con4:case>
+                <con4:default>
+                  <con3:assign varName="xmlCertificacion" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+                    <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fd8</con5:id>
+                    <con3:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn-bea:serialize($certificarInactividadResponse)</con:xqueryText>
+                    </con3:expr>
+                  </con3:assign>
+                  <con5:log xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config">
+                    <con6:id xmlns:con6="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fd7</con6:id>
+                    <con5:logLevel>error</con5:logLevel>
+                    <con5:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$xmlCertificacion</con:xqueryText>
+                    </con5:expr>
+                    <con5:message>XML PARA FIRMAR DESE INACTIVIDAD PAGO EN PARCIALIDADES ::::::</con5:message>
+                  </con5:log>
+                  <con3:wsCallout xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+                    <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fd6</con5:id>
+                    <con3:service ref="GestionSolicitudes/businessService/FirmaDigitalBusinessService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con3:operation>firmarXML</con3:operation>
+                    <con3:request>
+                      <con3:body wrapped="false">$firmarXmlRequest</con3:body>
+                      <con3:header/>
+                    </con3:request>
+                    <con3:response>
+                      <con3:body wrapped="false">firmarXmlResponse</con3:body>
+                      <con3:header/>
+                    </con3:response>
+                    <con3:requestTransform>
+                      <con3:assign varName="nombreArchivo">
+                        <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fd5</con5:id>
+                        <con3:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat('inactividadPagoParcialidades_', $nss)</con:xqueryText>
+                        </con3:expr>
+                      </con3:assign>
+                      <con3:assign varName="firmarXmlRequest">
+                        <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fd4</con5:id>
+                        <con3:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<des:firmarXML xmlns:des="http://servicios.imss.gob.mx/certificacion/derecho/desempleo">
+    <des:xml>{$xmlCertificacion}</des:xml>
+    <des:nombreArchivo>{$nombreArchivo}</des:nombreArchivo>
+</des:firmarXML>]]></con:xqueryText>
+                        </con3:expr>
+                      </con3:assign>
+                      <con5:log xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con6:id xmlns:con6="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fd3</con6:id>
+                        <con5:logLevel>error</con5:logLevel>
+                        <con5:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$firmarXmlRequest</con:xqueryText>
+                        </con5:expr>
+                        <con5:message>PETICION DEL XML A FIRMAR ::::::::</con5:message>
+                      </con5:log>
+                    </con3:requestTransform>
+                    <con3:responseTransform>
+                      <con5:log xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config">
+                        <con6:id xmlns:con6="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fd2</con6:id>
+                        <con5:logLevel>error</con5:logLevel>
+                        <con5:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$firmarXmlResponse</con:xqueryText>
+                        </con5:expr>
+                        <con5:message>RESPUESTA DEL SERVICIO DE FIRMADO DEL XML :::::::</con5:message>
+                      </con5:log>
+                      <con3:assign varName="xmlCertificacion">
+                        <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fd1</con5:id>
+                        <con3:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$firmarXmlResponse/m:response/*:XmlFirmado/text()</con:xqueryText>
+                        </con3:expr>
+                      </con3:assign>
+                      <con3:assign varName="exito">
+                        <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fd0</con5:id>
+                        <con3:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$firmarXmlResponse/m:response/*:Exito/text()</con:xqueryText>
+                        </con3:expr>
+                      </con3:assign>
+                      <con3:assign varName="claveError">
+                        <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fcf</con5:id>
+                        <con3:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">0</con:xqueryText>
+                        </con3:expr>
+                      </con3:assign>
+                      <con3:assign varName="descripcionError">
+                        <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fce</con5:id>
+                        <con3:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$firmarXmlResponse/m:response/*:Descripcion/text()</con:xqueryText>
+                        </con3:expr>
+                      </con3:assign>
+                    </con3:responseTransform>
+                  </con3:wsCallout>
+                </con4:default>
+              </con4:ifThenElse>
+            </con3:responseTransform>
+          </con3:wsCallout>
+          <con3:wsCallout>
+            <con1:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fcd</con1:id>
+            <con3:service ref="CertificacionDerecho/proxy/GuardarSolicitudCertificacion" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con3:request>
+              <con3:payload wrapped="false">$crearSolicitudRequest</con3:payload>
+            </con3:request>
+            <con3:response>
+              <con3:payload wrapped="false">crearSolicitudResponse</con3:payload>
+            </con3:response>
+            <con3:requestTransform>
+              <con3:assign varName="crearSolicitudRequest">
+                <con1:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fcc</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<cer:guardarSolicCertificacion xmlns:cer="http://www.serviciosdigitales.imss.gob.mx/certificacionDerechoRetiroDesempleo">
+    <cer:tipoSolicitud>34</cer:tipoSolicitud>
+    <cer:tipoTramite>123</cer:tipoTramite>
+    <cer:exito>{$exito}</cer:exito>
+    <cer:descripcion>{$descripcionError}</cer:descripcion>
+    <cer:numeroResolucion>{$numeroResolucion}</cer:numeroResolucion>
+</cer:guardarSolicCertificacion>]]></con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con4:ifThenElse xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fcb</con5:id>
+                <con4:case>
+                  <con4:condition>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:exists($firmarXmlResponse)</con:xqueryText>
+                  </con4:condition>
+                  <con4:actions>
+                    <con5:log xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config">
+                      <con6:id xmlns:con6="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fca</con6:id>
+                      <con5:logLevel>error</con5:logLevel>
+                      <con5:message>SE TIENEN DATOS PARA FIRMA DIGITAL::::::::::::</con5:message>
+                    </con5:log>
+                    <con4:insert varName="crearSolicitudRequest">
+                      <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fc9</con5:id>
+                      <con4:location>
+                        <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">./cer:numeroResolucion</con:xpathText>
+                      </con4:location>
+                      <con4:where>after</con4:where>
+                      <con4:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$firmarXmlResponse</con:xqueryText>
+                      </con4:expr>
+                    </con4:insert>
+                    <con2:log>
+                      <con1:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fc8</con1:id>
+                      <con2:logLevel>error</con2:logLevel>
+                      <con2:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$crearSolicitudRequest</con:xqueryText>
+                      </con2:expr>
+                      <con2:message>DATOS DE PETICION CON FIRMA XML :::::::::</con2:message>
+                    </con2:log>
+                  </con4:actions>
+                </con4:case>
+              </con4:ifThenElse>
+            </con3:requestTransform>
+            <con3:responseTransform>
+              <con4:assign varName="folioSolicitud" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fc7</con5:id>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$crearSolicitudResponse/*:solicitud/*:NoFolioSolicitud/text()</con:xqueryText>
+                </con4:expr>
+              </con4:assign>
+              <con5:log xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                <con6:id xmlns:con6="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fc6</con6:id>
+                <con5:logLevel>error</con5:logLevel>
+                <con5:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$folioSolicitud</con:xqueryText>
+                </con5:expr>
+                <con5:message>FOLIO DE SOLICITUD DE CERTIFICACION DE DERECHO POR DESEMPLEO :::::::</con5:message>
+              </con5:log>
+            </con3:responseTransform>
+          </con3:wsCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode1_response" type="response">
+      <con:stage name="responseStage">
+        <con:comment/>
+        <con:context>
+          <con1:varNsDecl prefix="cer" namespace="http://www.serviciosdigitales.imss.gob.mx/certificacionDerechoRetiroDesempleo"/>
+          <con1:varNsDecl prefix="cer1" namespace="http://www.serviciosdigitales.imss.gob.mx/certificacionInactividadPagoParcialidades"/>
+        </con:context>
+        <con:actions>
+          <con:replace varName="body" contents-only="true" xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id>_ActionId-4016657890136713620-66a6344d.148413b0290.-7fd5</con1:id>
+            <con:location>
+              <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+            </con:location>
+            <con:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<cer:certificacionInactividadResponse xmlns:cer="http://www.serviciosdigitales.imss.gob.mx/certificacionInactividadPagoParcialidades">
+	<cer:certificacionInactividad>{$xmlCertificacion}</cer:certificacionInactividad>
+	<cer:folioSolicitud>{$folioSolicitud}</cer:folioSolicitud>
+	<cer:exito>{$exito}</cer:exito>
+	<cer:claveError>{$claveError}</cer:claveError>
+	<cer:descripcion>{$descripcionError}</cer:descripcion>
+</cer:certificacionInactividadResponse>]]></con:xqueryText>
+            </con:expr>
+          </con:replace>
+          <con2:log>
+            <con1:id>_ActionId-4016657890136713620-66a6344d.148413b0290.-7fcf</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+            </con2:expr>
+            <con2:message>:::::: RESPUESTA SERVICIO CERTIFICACION ::::::</con2:message>
+          </con2:log>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="_onErrorHandler-4016657890136713620-66a6344d.148413b0290.-7fdc" type="error">
+      <con:stage name="errorHandlerStage">
+        <con:context>
+          <con1:userNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+          <con1:userNsDecl prefix="m" namespace="http://servicios.imss.gob.mx/certificacion/derecho/desempleo"/>
+          <con1:userNsDecl prefix="del" namespace="http://delta.global.services/"/>
+          <con1:userNsDecl prefix="java1" namespace="java:mx.gob.imss.ctirss.delta.global.model"/>
+          <con1:userNsDecl prefix="java5" namespace="java:mx.gob.imss.ctirss.delta.model.gestion.patronal"/>
+          <con1:userNsDecl prefix="con" namespace="http://www.bea.com/wli/sb/context"/>
+          <con1:userNsDecl prefix="open" namespace="http://www.openuri.org/"/>
+          <con1:varNsDecl prefix="cer" namespace="http://www.serviciosdigitales.imss.gob.mx/certificacionDerechoRetiroDesempleo"/>
+          <con1:varNsDecl prefix="cer1" namespace="http://www.serviciosdigitales.imss.gob.mx/certificacionInactividadPagoParcialidades"/>
+        </con:context>
+        <con:actions>
+          <con2:log>
+            <con1:id>_ActionId-4016657890136713620-66a6344d.148413b0290.-7fdb</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$fault</con:xqueryText>
+            </con2:expr>
+            <con2:message>::::: EN EL MANEJADOR DE ERRORES DE LA CERTIFICACION DE INACTIVIDAD PARA EL PAGO EN PARCIALIDADES :::::</con2:message>
+          </con2:log>
+          <con3:ifThenElse>
+            <con1:id>_ActionId-4016657890136713620-66a6344d.148413b0290.-7fd9</con1:id>
+            <con3:case>
+              <con3:condition>
+                <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$fault/ctx:errorCode = 'BEA-382505'</con:xqueryText>
+              </con3:condition>
+              <con3:actions>
+                <con2:log>
+                  <con1:id>_ActionId-4016657890136713620-66a6344d.148413b0290.-7fd7</con1:id>
+                  <con2:logLevel>error</con2:logLevel>
+                  <con2:message>:::::: DATOS DE ENTRADA INVALIDOS :::::</con2:message>
+                </con2:log>
+                <con3:assign varName="exito">
+                  <con1:id>_ActionId-4016657890136713620-66a6344d.148413b0290.-7fd4</con1:id>
+                  <con3:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'1'</con:xqueryText>
+                  </con3:expr>
+                </con3:assign>
+                <con3:assign varName="claveError">
+                  <con1:id>_ActionId-4016657890136713620-66a6344d.148413b0290.-7fd3</con1:id>
+                  <con3:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'10'</con:xqueryText>
+                  </con3:expr>
+                </con3:assign>
+                <con3:assign varName="descripcionError">
+                  <con1:id>_ActionId-4016657890136713620-66a6344d.148413b0290.-7fd2</con1:id>
+                  <con3:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'Estructura inválida'</con:xqueryText>
+                  </con3:expr>
+                </con3:assign>
+              </con3:actions>
+            </con3:case>
+            <con3:case>
+              <con3:condition>
+                <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:exists($fault/ctx:details/*:ReceivedFaultDetail/*:detail/*:GenerarFolioCertificacionException)</con:xqueryText>
+              </con3:condition>
+              <con3:actions>
+                <con3:assign varName="exito">
+                  <con1:id>_ActionId-4295895260554638779-1071822a.148f63ec0b3.-7fd2</con1:id>
+                  <con3:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'1'</con:xqueryText>
+                  </con3:expr>
+                </con3:assign>
+                <con3:assign varName="claveError">
+                  <con1:id>_ActionId-4295895260554638779-1071822a.148f63ec0b3.-7fd3</con1:id>
+                  <con3:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$fault/ctx:details/*:ReceivedFaultDetail/*:detail/*:GenerarFolioCertificacionException/*:Codigo/text()</con:xqueryText>
+                  </con3:expr>
+                </con3:assign>
+                <con3:assign varName="descripcionError">
+                  <con1:id>_ActionId-4295895260554638779-1071822a.148f63ec0b3.-7fd4</con1:id>
+                  <con3:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$fault/ctx:details/*:ReceivedFaultDetail/*:detail/*:GenerarFolioCertificacionException/*:Situacion/text()</con:xqueryText>
+                  </con3:expr>
+                </con3:assign>
+                <con2:log>
+                  <con1:id>_ActionId-4295895260554638779-1071822a.148f63ec0b3.-7fd0</con1:id>
+                  <con2:logLevel>error</con2:logLevel>
+                  <con2:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat($claveError , '-' , $descripcionError)</con:xqueryText>
+                  </con2:expr>
+                  <con2:message>:::::: ERROR DE NEGOCIO :::::</con2:message>
+                </con2:log>
+              </con3:actions>
+            </con3:case>
+            <con3:case>
+              <con3:condition>
+                <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:exists($fault/ctx:details/*:ReceivedFaultDetail/*:detail/*:ErrorValidacionIdentidadCertificacionException)</con:xqueryText>
+              </con3:condition>
+              <con3:actions>
+                <con3:assign varName="exito">
+                  <con1:id>_ActionId-4092044255057728158--b4e8a4b.149e86e8ce4.-7fa6</con1:id>
+                  <con3:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'1'</con:xqueryText>
+                  </con3:expr>
+                </con3:assign>
+                <con3:assign varName="claveError">
+                  <con1:id>_ActionId-8729992600038799285--7c627cd5.149ed027732.-7fd9</con1:id>
+                  <con3:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$fault/ctx:details/*:ReceivedFaultDetail/*:detail/*:ErrorValidacionIdentidadCertificacionException/*:Codigo/text()</con:xqueryText>
+                  </con3:expr>
+                </con3:assign>
+                <con3:assign varName="descripcionError">
+                  <con1:id>_ActionId-4092044255057728158--b4e8a4b.149e86e8ce4.-7fa5</con1:id>
+                  <con3:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$fault/ctx:details/*:ReceivedFaultDetail/*:detail/*:ErrorValidacionIdentidadCertificacionException/*:Situacion/text()</con:xqueryText>
+                  </con3:expr>
+                </con3:assign>
+                <con2:log>
+                  <con1:id>_ActionId-4092044255057728158--b4e8a4b.149e86e8ce4.-7fa4</con1:id>
+                  <con2:logLevel>error</con2:logLevel>
+                  <con2:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat($claveError , '-' , $descripcionError)</con:xqueryText>
+                  </con2:expr>
+                  <con2:message>::::: ERROR DE VALIDACION IDENTIDAD :::::</con2:message>
+                </con2:log>
+              </con3:actions>
+            </con3:case>
+            <con3:case>
+              <con3:condition>
+                <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$fault/con:errorCode/text() = '40'</con:xqueryText>
+              </con3:condition>
+              <con3:actions>
+                <con2:log>
+                  <con1:id>_ActionId-8648936684739562561--4b5f81a.14a544f5559.-7d17</con1:id>
+                  <con2:logLevel>error</con2:logLevel>
+                  <con2:message>ERROR DE NSS NO EXISTE</con2:message>
+                </con2:log>
+                <con3:assign varName="exito">
+                  <con1:id>_ActionId-8648936684739562561--4b5f81a.14a544f5559.-7d11</con1:id>
+                  <con3:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'1'</con:xqueryText>
+                  </con3:expr>
+                </con3:assign>
+                <con3:assign varName="claveError">
+                  <con1:id>_ActionId-8648936684739562561--4b5f81a.14a544f5559.-7d0b</con1:id>
+                  <con3:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'40'</con:xqueryText>
+                  </con3:expr>
+                </con3:assign>
+                <con3:assign varName="descripcionError">
+                  <con1:id>_ActionId-8648936684739562561--4b5f81a.14a544f5559.-7d0a</con1:id>
+                  <con3:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'NSS no localizado en el IMSS'</con:xqueryText>
+                  </con3:expr>
+                </con3:assign>
+              </con3:actions>
+            </con3:case>
+            <con3:default>
+              <con2:log>
+                <con1:id>_ActionId-6590646713509569077-449ef812.147b6bcb6ba.-7fbc</con1:id>
+                <con2:logLevel>error</con2:logLevel>
+                <con2:message>:::::: ERROR DESCONOCIDO :::::</con2:message>
+              </con2:log>
+              <con3:assign varName="exito">
+                <con1:id>_ActionId-6590646713509569077-449ef812.147b6bcb6ba.-7fbb</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'1'</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="claveError">
+                <con1:id>_ActionId-6590646713509569077-449ef812.147b6bcb6ba.-7fba</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'20'</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="descripcionError">
+                <con1:id>_ActionId-6590646713509569077-449ef812.147b6bcb6ba.-7fb9</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'Error inesperado'</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+            </con3:default>
+          </con3:ifThenElse>
+          <con3:ifThenElse>
+            <con1:id>_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b6b</con1:id>
+            <con3:case>
+              <con3:condition>
+                <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$numeroResolucion != ''</con:xqueryText>
+              </con3:condition>
+              <con3:actions>
+                <con2:log>
+                  <con1:id>_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b3a</con1:id>
+                  <con2:logLevel>error</con2:logLevel>
+                  <con2:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$numeroResolucion</con:xqueryText>
+                  </con2:expr>
+                  <con2:message>SE VA A CREAR SOLICITUD DESDE EL MANEJADOR DE ERRORES DE LA INACTIVIDAD PARA PAGO PARA REGISTRAR EVENTO ::::::::::::::</con2:message>
+                </con2:log>
+                <con3:wsCallout>
+                  <con1:id>_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b04</con1:id>
+                  <con3:service ref="CertificacionDerecho/proxy/GuardarSolicitudCertificacion" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                  <con3:request>
+                    <con3:payload wrapped="false">$crearSolicitudRequest</con3:payload>
+                  </con3:request>
+                  <con3:response>
+                    <con3:payload wrapped="false">crearSolicitudResponse</con3:payload>
+                  </con3:response>
+                  <con3:requestTransform>
+                    <con3:assign varName="crearSolicitudRequest">
+                      <con1:id>_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b03</con1:id>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<cer:guardarSolicCertificacion xmlns:cer="http://www.serviciosdigitales.imss.gob.mx/certificacionDerechoRetiroDesempleo">
+    <cer:tipoSolicitud>34</cer:tipoSolicitud>
+    <cer:tipoTramite>123</cer:tipoTramite>
+    <cer:exito>{$exito}</cer:exito>
+    <cer:descripcion>{$descripcionError}</cer:descripcion>
+    <cer:numeroResolucion>{$numeroResolucion}</cer:numeroResolucion>
+</cer:guardarSolicCertificacion>]]></con:xqueryText>
+                      </con3:expr>
+                    </con3:assign>
+                  </con3:requestTransform>
+                  <con3:responseTransform>
+                    <con4:assign varName="folioSolicitud" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                      <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7afe</con5:id>
+                      <con4:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$crearSolicitudResponse/*:solicitud/*:NoFolioSolicitud/text()</con:xqueryText>
+                      </con4:expr>
+                    </con4:assign>
+                    <con5:log xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                      <con6:id xmlns:con6="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7afd</con6:id>
+                      <con5:logLevel>error</con5:logLevel>
+                      <con5:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$folioSolicitud</con:xqueryText>
+                      </con5:expr>
+                      <con5:message>FOLIO DE SOLICITUD DE CERTIFICACION DE INACTIVIDAD PARA PAGO DESDE MANEJADOR DE ERRORES :::::::</con5:message>
+                    </con5:log>
+                  </con3:responseTransform>
+                </con3:wsCallout>
+              </con3:actions>
+            </con3:case>
+          </con3:ifThenElse>
+          <con:replace varName="body" contents-only="true" xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id>_ActionId-4016657890136713620-66a6344d.148413b0290.-7fce</con1:id>
+            <con:location>
+              <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+            </con:location>
+            <con:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<cer:certificacionInactividadResponse xmlns:cer="http://www.serviciosdigitales.imss.gob.mx/certificacionInactividadPagoParcialidades">
+	<cer:certificacionInactividad></cer:certificacionInactividad>
+	<cer:folioSolicitud>{$folioSolicitud}</cer:folioSolicitud>
+	<cer:exito>{$exito}</cer:exito>
+	<cer:claveError>{$claveError}</cer:claveError>
+	<cer:descripcion>{$descripcionError}</cer:descripcion>
+</cer:certificacionInactividadResponse>]]></con:xqueryText>
+            </con:expr>
+          </con:replace>
+          <con2:log>
+            <con1:id>_ActionId-4016657890136713620-66a6344d.148413b0290.-7fcd</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+            </con2:expr>
+            <con2:message>::::: RESPUESTA SERVICIO CERTIFICACION ::::::</con2:message>
+          </con2:log>
+          <con1:reply isError="false">
+            <con1:id>_ActionId-4016657890136713620-66a6344d.148413b0290.-7fd1</con1:id>
+          </con1:reply>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:flow>
+      <con:pipeline-node name="PipelinePairNode1">
+        <con:request>PipelinePairNode1_request</con:request>
+        <con:response>PipelinePairNode1_response</con:response>
+      </con:pipeline-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>

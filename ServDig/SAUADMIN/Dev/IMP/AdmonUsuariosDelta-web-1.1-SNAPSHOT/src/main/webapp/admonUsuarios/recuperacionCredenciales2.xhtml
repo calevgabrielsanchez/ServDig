@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="../plantillas/plantillaSinMenu.xhtml">
+
+
+	<ui:define name="body">
+		<div class="wp-caption-text">
+			<h3>Recuperación de Contraseña</h3>
+		</div>
+		<h:form id="formaCredenciales">
+			<fieldset style="margin: 0; padding: 10px; font-size: 10px;">
+            <ace:panel header="Datos a consultar">
+					<div class="wp-caption-text">
+
+						<h:panelGrid id="pnDatosCredenciales" columns="3" width="100%" >
+							<h:outputLabel value="CURP:" id="lbCURP" style="padding:10px;"/>
+							<h:inputText 
+								value="${recuperacionController.curp}"
+								id="txCurp" size="25"
+								maxlength="18"
+								style="text-transform: uppercase" 
+								onchange="document.getElementById('formaRegistroSolicitudCuenta:txRegSolicitudCuenta').value='';document.getElementById('formaRegistroSolicitudCuenta:txApPatRegSolicitudCuenta').value='';document.getElementById('formaRegistroSolicitudCuenta:txApMatRegSolicitudCuenta').value='';"/>
+							<h:outputLabel value="" id="lbComplemeto1" />
+							
+							<h:outputLabel value="Correo Electrónico:"	id="lbMail" style="padding:10px;"/>
+							<h:inputText
+								value="#{recuperacionController.correo}"
+								id="txMailRegSolicitudCuenta" maxlength="49"
+								style="text-transform: lowercase" size="25"></h:inputText>
+							<h:outputLabel value="@imss.gob.mx" id="lbComplemetoCorreo" />
+
+							<h:outputLabel value="Codigo Seguridad:" id="lbCaptcha"  style="padding:10px;"/>
+							<h:inputText value="#{recuperacionController.patron}" id="txPatron" maxlength="49" size="25"></h:inputText>
+							<h:outputLabel value="" id="lbComplemeto2" />
+						</h:panelGrid>
+					</div>
+					<div class="wp-caption-text">
+						<img src="#{request.contextPath}/jcaptcha.jpg" />
+					</div>
+					<div class="wp-caption-text">
+						<h:panelGrid id="pnBtnCredeiciales" columns="2" width="100%">
+							<h:commandButton id="bValida"
+								action="#{recuperacionController.recuperaContrasena2}" onclick="bloquea();" 
+								value="Recuperar contraseña" styleClass="btn btn-primary btn-sm">
+							</h:commandButton>
+							<h:commandButton id="bReturn"
+								action="#{solicitudPrincipalMB.regresaPantallaPrincipal}" onclick="bloquea();" 
+								value="Consulta de cuentas" styleClass="btn btn-primary btn-sm">
+							</h:commandButton>
+						</h:panelGrid>
+					</div>
+				</ace:panel>
+			</fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

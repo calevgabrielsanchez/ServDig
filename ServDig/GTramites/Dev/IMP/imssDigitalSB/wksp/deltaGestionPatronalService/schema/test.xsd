@@ -1,0 +1,20 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://mx.gob.imss.delta.solicitud/" xmlns:tns="http://mx.gob.imss.delta.solicitud/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="java:mx.gob.imss.ctirss.delta.model.gestion.patronal" schemaLocation="fraccionEsquema.xsd"/>
+	
+	<xs:element name="transactionRequest">
+		<xs:complexType>
+		  <xs:sequence>
+		    <xs:element minOccurs="0" name="idSolicitud" nillable="true" type="xs:long"/>
+		    <xs:element minOccurs="0" name="idFraccion" nillable="true" type="xs:long"/>
+		  </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="transactionResponse">
+	<xs:complexType>
+	  <xs:sequence>
+	  	<xs:element name="return" type="java:Fraccion" xmlns:java="java:mx.gob.imss.ctirss.delta.model.gestion.patronal"/>
+	  </xs:sequence>
+	</xs:complexType>
+	</xs:element>
+	
+</xs:schema>

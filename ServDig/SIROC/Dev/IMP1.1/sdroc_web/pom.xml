@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>mx.gob.imss.csdiss.sdroc</groupId>
+	<artifactId>sdroc_web</artifactId>
+	<packaging>war</packaging>
+	<version>1.1</version>
+	<name>sdroc_web</name>
+
+	<description>Sistema Digital para el Registro de Obras de la Construccion</description>
+	<url>http://imss.gob.mx</url>
+	<inceptionYear>2016</inceptionYear>
+
+	<developers>
+		<developer>
+			<id>043h68</id>
+			<name>Daniel Hernandez Ramirez</name>
+			<email>043h68@gmail.com</email>
+			<organization>Softtek</organization>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<javax.servlet-api.version>3.0.1</javax.servlet-api.version>
+		<spring.version>4.1.6.RELEASE</spring.version>
+		<gson.version>2.7</gson.version>
+		<javax.mail.version>1.4.3</javax.mail.version>
+		<java-version>1.6</java-version>
+		<delta.personas>2.4</delta.personas>
+		<gestion.solicitud.version>2.2</gestion.solicitud.version>
+		<delta.framework.version>2.6</delta.framework.version>
+		<gestion.patronal.version>2.4</gestion.patronal.version>
+		<spring.security.version>2.0.4</spring.security.version>
+		<delta.medioscontacto>2.3</delta.medioscontacto>
+		<delta.derechohabientes>2.2</delta.derechohabientes>
+
+		<!-- Template engine versions -->
+		<thymeleaf.version>2.1.4.RELEASE</thymeleaf.version>
+		<thymeleaf-spring4.version>2.1.4.RELEASE</thymeleaf-spring4.version>
+		<thymeleaf-extras-conditionalcomments.version>2.1.4.RELEASE</thymeleaf-extras-conditionalcomments.version>
+		<thymeleaf-extras-springsecurity3.version>2.1.4.RELEASE</thymeleaf-extras-springsecurity3.version>
+		<httl-springmvc.version>1.0.11</httl-springmvc.version>
+		<sdroc-version>1.1</sdroc-version>
+	</properties>
+
+	<repositories>
+
+		<!-- For Hibernate Validator -->
+		<repository>
+			<id>org.jboss.repository.release</id>
+			<name>JBoss Maven Release Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<layout>default</layout>
+			<url>http://172.16.5.134:8080/repository/repo/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>mvnrepository</id>
+			<name>mvnrepository</name>
+			<url>http://www.mvnrepository.com</url>
+		</repository>
+		<repository>
+			<id>mvnrepository2</id>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<!-- Codigo QR -->
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.2.21.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.csdiss.sdroc</groupId>
+			<artifactId>sdroc-model</artifactId>
+			<version>${sdroc-version}</version>
+		</dependency>
+		<!-- WS Client -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.axis/axis -->
+		<dependency>
+			<groupId>org.apache.axis</groupId>
+			<artifactId>axis</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.xml.rpc/javax.xml.rpc-api -->
+		<dependency>
+			<groupId>javax.xml.rpc</groupId>
+			<artifactId>javax.xml.rpc-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-discovery</groupId>
+			<artifactId>commons-discovery</artifactId>
+			<version>0.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>ar.com.fdvs</groupId>
+			<artifactId>DynamicJasper-core-fonts</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- Mailer -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>${javax.mail.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson.version}</version>
+		</dependency>
+
+		<!-- reportes -->
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>3.7.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>el-api</artifactId>
+			<version>2.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.lowagie/itext -->
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+
+		<!-- Core -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- Template engines -->
+
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf</artifactId>
+			<version>${thymeleaf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring4</artifactId>
+			<version>${thymeleaf-spring4.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.httl</groupId>
+			<artifactId>httl-springmvc</artifactId>
+			<version>${httl-springmvc.version}</version>
+		</dependency>
+		<!-- Test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.0.b2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Deendencias delta -->
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.individuo.service.interface</groupId>
+			<artifactId>gestionIndividuo-service-business-interface</artifactId>
+			<version>${delta.personas}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.solicitud</groupId>
+			<artifactId>gestionSolicitud-interfaces-negocio</artifactId>
+			<version>${gestion.solicitud.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-framework-base</artifactId>
+			<version>${delta.framework.version}</version>
+			<exclusions>
+		        <exclusion>
+		            <groupId>mx.gob.imss.ctirss.clienteswebservices.sat.consulta.rfc</groupId>
+					<artifactId>ClientesWebservices-sat-consulta-rfc</artifactId>
+		        </exclusion>
+			</exclusions>
+			<type>jar</type>
+		</dependency>
+
+		<!-- Dependencia del Proyecto de Objetos de modelo DELTA IMSS -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-modelo-negocio</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>
+
+		<!-- Dependencia de las Interfaces de Negocio de DELTA IMSS -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-interfaces-negocio</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>
+
+		<!-- Dependencia de gestionPatronal -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.patronal</groupId>
+			<artifactId>delta-gestionPatronal-interfaces-negocio</artifactId>
+			<version>${gestion.patronal.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.medio.contacto</groupId>
+			<artifactId>gestionMediosContacto-interfaces-negocio</artifactId>
+			<version>${delta.medioscontacto}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.derechohabientes</groupId>
+			<artifactId>gestionDerechohabientes-interfaces-negocio</artifactId>
+			<version>${delta.derechohabientes}</version>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.cobranza</groupId>
+			<artifactId>gestionCobranza-interfaces-negocio</artifactId>
+			<version>2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.csdiss.sdroc</groupId>
+			<artifactId>sdroc-interfaces</artifactId>
+			<version>1.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}-${project.version}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.3</version>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.14.1</version>
+					<configuration>
+						<includes>
+							<include>**/*Tests.java</include>
+						</includes>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+		<!-- Perfil para aplicacion externa -->
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>sin_seguridad</id>
+			<properties>
+				<mvn.web.app.security.start>&lt;!--</mvn.web.app.security.start>
+				<mvn.web.app.security.end>--&gt;</mvn.web.app.security.end>
+			</properties>
+			<build>
+				<finalName>sdroc_web</finalName>
+			</build>
+		</profile>
+		<!-- Perfil para aplicacion externa - PORTAL CIUDADANO -->
+		<profile>
+			<id>con_seguridad</id>
+			<properties>
+				<mvn.web.app.security.start>
+				</mvn.web.app.security.start>
+				<mvn.web.app.security.end>
+				</mvn.web.app.security.end>
+			</properties>
+			<build>
+				<finalName>sdroc_web_seguridad</finalName>
+			</build>
+		</profile>
+		<profile>
+			<id>desarrollo</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>dev</value>
+				</property>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<log4j.level>ALL</log4j.level>
+				<endpoint.rest.services>localhost:7001</endpoint.rest.services>
+			</properties>
+		</profile>
+		<profile>
+			<id>calidad</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>qa</value>
+				</property>
+			</activation>
+			<properties>
+				<log4j.level>DEBBUG</log4j.level>
+				<endpoint.rest.services>serviciosdigitales-stage.imss.gob.mx</endpoint.rest.services>
+			</properties>
+		</profile>
+		<profile>
+			<id>produccion</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>prod</value>
+				</property>
+			</activation>
+			<properties>
+				<log4j.level>ERROR</log4j.level>
+				<endpoint.rest.services>serviciosdigitales.imss.gob.mx</endpoint.rest.services>
+			</properties>
+		</profile>
+
+	</profiles>
+</project>

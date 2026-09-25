@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<div id="pageDatosReporteBim" th:fragment="pageDatosReporteBimestral">
+	<div id="msgSinBimestres" class="row hidden">
+		<div class="alert alert-success col-sm-12" role="alert">
+			<label class="small" th:text="#{reg.incidencia.reporte.corriente}"/>
+		</div>
+	</div>
+	<div id="pnlIncReporteB" class="panel panel-default">
+		<div class="panel-heading">
+			<label class="small" th:text="#{registro.incidencia.anuncio.rb}"/> 
+			<label class="small" th:text="${accion}" /> 
+			<label class="small" th:text="#{registro.incidencia.anuncio.obra}"/>
+		</div>
+		<div class="panel-body">
+			<label id="bimIni" th:text="${bimIni}" class="hidden small"></label>
+			<label id="bimTer" th:text="${bimTer}" class="hidden small"></label>
+			<label id="bimAct" th:text="${bimAct}" class="hidden small"></label>
+			<div class="row">
+				<div class="panel col-sm-12 text-left">
+					<label class="control-label col-sm-4 small" for="fecBimestral" th:text="#{reg.incidencia.bimestre.anno}"></label>
+					<div class="col-sm-7">
+						<div class="form-group">
+						<label class="small" id="fecBimestral" th:text="${bimestre}" th:value="${bimestre}"></label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="alert alert-info small" th:text="#{info.cantidadesobrasuperficie}">
+			</div>
+			<div class="row">
+				<div class="panel col-sm-12 text-left">
+					<label class="control-label col-sm-4 small" for="txtMontoEjercido" th:text="#{reg.incidencia.monto.ejercido}"></label>
+					<div class="col-sm-6">
+						<div id="divMonto" class="input-group">
+							<span class="small input-group-addon">$</span> 
+							<input id="txtMontoEjercido" type="text" class="form-control input-sm" placeholder="Monto ejercido a la fecha" maxlength="15"> </input> 
+							<span class="small input-group-addon"> MXN</span> 
+						</div>
+						<span id="msgMontoEjercido" class="red small hidden"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer"></div>
+
+	</div>
+
+</div>
+
+</html>

@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CartaNoAdeudo" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.7715610000000013"/>
+	<property name="ireport.x" value="29"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["reportes/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGENES_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["reportes/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="imagenQR" class="java.lang.Object"/>
+	<parameter name="cadenaOriginal" class="java.lang.String"/>
+	<parameter name="selloDigital" class="java.lang.String"/>
+	<parameter name="secuenciaNotaria" class="java.lang.String"/>
+	<parameter name="numSerialCertificado" class="java.lang.String"/>
+	<parameter name="fechaSolicitud" class="java.lang.String">
+		<parameterDescription><![CDATA[fechaReporte]]></parameterDescription>
+	</parameter>
+	<parameter name="horaSolicitud" class="java.lang.String"/>
+	<parameter name="folioSolicitud" class="java.lang.String">
+		<parameterDescription><![CDATA[folioSolicitud]]></parameterDescription>
+	</parameter>
+	<parameter name="rfc" class="java.lang.String"/>
+	<parameter name="nombreRS" class="java.lang.String"/>
+	<parameter name="fechaInicioVigencia" class="java.lang.String"/>
+	<parameter name="fechaFinVigencia" class="java.lang.String"/>
+	<parameter name="adeudoCreditosImss" class="java.util.List"/>
+	<parameter name="adeudoCreditosRcv" class="java.util.List"/>
+	<parameter name="adeudoBaja251Imss" class="java.util.List"/>
+	<parameter name="adeudoBaja251Rcv" class="java.util.List"/>
+	<parameter name="adeudoHuelgaImss" class="java.util.List"/>
+	<parameter name="adeudoHuelgaRcv" class="java.util.List"/>
+	<parameter name="numTrabajadores" class="java.lang.Integer"/>
+	<parameter name="respuestaOpinion" class="java.lang.String"/>
+	<parameter name="numAcuerdo" class="java.lang.String"/>
+	<parameter name="fechaAcuerdo" class="java.lang.String"/>
+	<parameter name="leyendaJuicio" class="java.lang.String"/>
+	<parameter name="leyendaAuditoria" class="java.lang.String"/>
+	<parameter name="leyendaConvenio" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<pageHeader>
+		<band height="93">
+			<image>
+				<reportElement x="165" y="17" width="221" height="40"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "LogoIMSS.PNG"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="11" y="11" width="123" height="41"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "GobiernoMexico.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="472" y="2" width="79" height="72"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "Mujer.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="120" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="165" y="76" width="406" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{rfc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="22" width="571" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Opinión del Cumplimiento de Obligaciones Fiscales en materia de Seguridad Social]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="571" height="22"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["FECHA: " + $P{fechaSolicitud}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="54" width="165" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Folio:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="76" width="165" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Clave de R.F.C.:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="165" y="54" width="406" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{folioSolicitud}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="165" y="98" width="406" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nombreRS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="98" width="165" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Nombre, Denominación o Razón Social:"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="92" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="572" height="26"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Estimado Patrón:"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="11" y="26" width="556" height="66" backcolor="#FFFFFF"/>
+				<box topPadding="5" leftPadding="5" bottomPadding="5" rightPadding="5">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Respuesta de opinión:" + "<br><br>" +
+"En atención a su consulta sobre el Cumplimiento de Obligaciones, se le informa lo siguiente:"+ "<br><br>" +
+"En los controles electrónicos del Instituto Mexicano del Seguro Social, se detecta " +
+( $P{respuestaOpinion}.equals( "NEGATIVA_SIN_TRABAJADORES" ) ?
+    "que está inscrito en el IMSS pero no tiene trabajadores afiliados, por lo anterior se emite opinión <b>Negativa</b>." :
+    ($P{respuestaOpinion}.equals( "NEGATIVA_SIN_ADEUDOS_HUELGA" ) ?
+        "que usted se encuentra con Registro (s) Patronal (es) en Huelga, por lo anterior se emite opinión Negativa." :
+        "la posible existencia de créditos fiscales firmes a su cargo, por lo anterior se le informa que a la fecha " + $P{fechaSolicitud} + ", su situación fiscal no se encuentra al corriente en el cumplimiento de obligaciones en materia de Seguridad Social, por lo anterior se emite opinión <b>Negativa</b>."
++"<br><br>"+
+"Esta carta opinión del cumplimiento de obligaciones fiscales tiene una vigencia hasta el <style isBold=\"true\" isUnderline=\"true\">" + $P{fechaFinVigencia} + "</style>."
++"<br>"+
+		($P{leyendaJuicio}.isEmpty()? "":"<br>"+$P{leyendaJuicio}+"<br>")+
+		($P{leyendaAuditoria}.isEmpty()? "":"<br>"+$P{leyendaAuditoria}+"<br>")+
+        ($P{leyendaConvenio}.isEmpty()? "":"<br>"+$P{leyendaConvenio}+"<br>")+
+		"<br>Las inconsistencias detectadas son las siguientes:"))]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="55" splitType="Stretch">
+			<printWhenExpression><![CDATA[($P{adeudoCreditosImss} != null && !$P{adeudoCreditosImss}.isEmpty()) || ($P{adeudoCreditosRcv} != null && !$P{adeudoCreditosRcv}.isEmpty())]]></printWhenExpression>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement x="11" y="10" width="556" height="22"/>
+				<box leftPadding="5" rightPadding="5">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Se ubican los siguientes créditos fiscales firmes a su cargo: "]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="false">
+				<reportElement stretchType="RelativeToBandHeight" x="11" y="32" width="556" height="23" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<subreportParameter name="ORIGEN">
+					<subreportParameterExpression><![CDATA["IMSS"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{adeudoCreditosImss})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "SubreporteAdeudos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="23" splitType="Stretch">
+			<printWhenExpression><![CDATA[($P{adeudoCreditosRcv} != null && !$P{adeudoCreditosRcv}.isEmpty())]]></printWhenExpression>
+			<subreport isUsingCache="false">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="11" y="0" width="556" height="23" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<subreportParameter name="ORIGEN">
+					<subreportParameterExpression><![CDATA["RCV"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{adeudoCreditosRcv})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "SubreporteAdeudos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="55" splitType="Stretch">
+			<printWhenExpression><![CDATA[($P{adeudoBaja251Imss} != null && !$P{adeudoBaja251Imss}.isEmpty()) || ($P{adeudoBaja251Rcv} != null && !$P{adeudoBaja251Rcv}.isEmpty())]]></printWhenExpression>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement x="11" y="10" width="556" height="22"/>
+				<box leftPadding="5" rightPadding="5">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Se ubican el (los) siguiente(s) registro(s) patronal(es) dado(s) de baja con fundamento en el artículo 251 de la Ley del Seguro Social, por lo cual se le solicita atentamente, acuda a la subdelegación correspondiente a efectuar las aclaraciones pertinentes:"]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="false">
+				<reportElement stretchType="RelativeToBandHeight" x="11" y="32" width="556" height="23" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<subreportParameter name="ORIGEN">
+					<subreportParameterExpression><![CDATA["IMSS"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{adeudoBaja251Imss})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "SubreporteAdeudos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="29" splitType="Stretch">
+			<printWhenExpression><![CDATA[($P{adeudoBaja251Rcv} != null && !$P{adeudoBaja251Rcv}.isEmpty())]]></printWhenExpression>
+			<subreport isUsingCache="false">
+				<reportElement stretchType="RelativeToBandHeight" x="11" y="0" width="556" height="23" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<subreportParameter name="ORIGEN">
+					<subreportParameterExpression><![CDATA["RCV"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{adeudoBaja251Rcv})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "SubreporteAdeudos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="55" splitType="Stretch">
+			<printWhenExpression><![CDATA[($P{adeudoHuelgaImss} != null && !$P{adeudoHuelgaImss}.isEmpty()) || ($P{adeudoHuelgaRcv} != null && !$P{adeudoHuelgaRcv}.isEmpty())]]></printWhenExpression>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement x="11" y="10" width="556" height="22"/>
+				<box leftPadding="5" rightPadding="5">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="html">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Registros Patronales y/o Créditos asociados a Registros Patronales que se encuentran en Huelga:"]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="false">
+				<reportElement stretchType="RelativeToBandHeight" x="11" y="32" width="556" height="23" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<subreportParameter name="ORIGEN">
+					<subreportParameterExpression><![CDATA["IMSS"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{adeudoHuelgaImss})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "SubreporteAdeudos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="29" splitType="Stretch">
+			<printWhenExpression><![CDATA[($P{adeudoHuelgaRcv} != null && !$P{adeudoHuelgaRcv}.isEmpty())]]></printWhenExpression>
+			<subreport isUsingCache="false">
+				<reportElement stretchType="RelativeToBandHeight" x="11" y="0" width="556" height="23" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<subreportParameter name="ORIGEN">
+					<subreportParameterExpression><![CDATA["RCV"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{adeudoHuelgaRcv})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "SubreporteAdeudos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="149" splitType="Prevent">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="11" y="29" width="561" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["NOTAS:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="96" width="572" height="52"/>
+				<box topPadding="7"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Este servicio es gratuito. " + "<br>" +
+"El IMSS es el instrumento básico de Seguridad Social para todos los trabajadores y sus familias." + "<br><br>" +
+
+"Sus datos personales son incorporados y protegidos en los sistemas del IMSS, de conformidad con los Lineamientos de Protección de Datos Personales y con las diversas disposiciones fiscales y legales sobre confidencialidad y protección de datos, a fin de ejercer las facultades conferidas a la autoridad fiscal." + "<br><br>" +
+"Si desea modificar o corregir sus datos personales, puede acudir a la Subdelegación competente."]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="11" y="7" width="556" height="22" backcolor="#FFFFFF"/>
+				<box topPadding="5" leftPadding="5" bottomPadding="5" rightPadding="5">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="styled">
+					<font size="8" isBold="true" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Usted tiene registrado(s) " + $P{numTrabajadores} + " trabajador(es) activo(s) ante el IMSS."]]></textFieldExpression>
+			</textField>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="45" width="11" height="8"/>
+					<box bottomPadding="1"/>
+					<textElement verticalAlignment="Top" markup="none">
+						<font size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[1.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="11" y="45" width="559" height="8"/>
+					<box bottomPadding="1"/>
+					<textElement markup="none">
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["En caso de estar inconforme y usted sea el particular que esté inscrito ante el IMSS o sea el representante legal, podrá usted promover una aclaración ante la Subdelegación que controla el (los) crédito(s) fiscales y adjuntar este documento, así como los documentos que soporten su aclaración."]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="53" width="11" height="8"/>
+					<box bottomPadding="1"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[2.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="11" y="53" width="559" height="8"/>
+					<box bottomPadding="1"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["La presente opinión se emite considerando lo establecido en los incisos a) y b), del Acuerdo de fecha 27 de abril de 2022 emitido por el H. Consejo Técnico del Instituto Mexicano del Seguro Social."]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="61" width="11" height="8"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[3.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="11" y="61" width="559" height="8"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Tiene una vigencia del mismo día que fue consultada, de conformidad con el Acuerdo de fecha 27 de abril de 2022 emitido por el H. Consejo Técnico del Instituto Mexicano del Seguro Social."]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="69" width="11" height="8"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[4.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="11" y="69" width="559" height="8"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["La opinión del cumplimiento, se genera atendiendo a la situación fiscal del patrón en los siguientes sentidos: POSITIVA.- Cuando el particular esté inscrito ante el IMSS y al corriente en el cumplimiento de las obligaciones que se consideran en los incisos a) y b) de la regla cuarta, de conformidad con el Acuerdo de fecha 27 de abril de 2022 emitido por el H. Consejo Técnico del Instituto Mexicano del Seguro Social; NEGATIVA.- Cuando el particular no esté al corriente en el cumplimiento de las obligaciones en materia de seguridad social que se consideran en los incisos a) y b) de la regla cuarta del acuerdo antes citado; SIN OPINIÓN.- Cuando no se localice en los controles electrónicos del IMSS la información suficiente para determinar el cumplimiento de las obligaciones fiscales en materia de seguridad social de los particulares."]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="77" width="11" height="8"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[5.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="11" y="77" width="559" height="8"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Se incluyen datos informativos, en su caso tales como: si el particular cuenta con algún acto de fiscalización en proceso o si cuenta con medios de defensa interpuestos en contra de acto administrativos o resoluciones emitidas por el IMSS o si cuenta con algún convenio de pago a plazos, los cuales no inciden en el sentido que se emita la opinión."]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="85" width="11" height="8"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[6.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="11" y="85" width="559" height="8"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["La presente opinión se emite de conformidad con lo establecido en el artículo 32-D del Código Fiscal de la Federación y del Acuerdo ACDO.SA2.HCT.270422/107.P.DIR de fecha 27 de abril de 2022 emitido por el H. Consejo Técnico del Instituto Mexicano del Seguro Social."]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+		</band>
+		<band height="107" splitType="Prevent">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="572" height="7"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+			</textField>
+			<staticText>
+				<reportElement x="121" y="7" width="451" height="7" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<image>
+				<reportElement x="11" y="7" width="100" height="100"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{imagenQR}]]></imageExpression>
+			</image>
+			<elementGroup/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="175" y="14" width="397" height="22"/>
+				<box bottomPadding="0"/>
+				<textElement markup="styled">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{cadenaOriginal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="121" y="14" width="54" height="22"/>
+				<box bottomPadding="0"/>
+				<textElement verticalAlignment="Top" markup="none">
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena Original:]]></text>
+			</staticText>
+			<elementGroup/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="175" y="36" width="397" height="17"/>
+				<box topPadding="5"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{selloDigital}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="121" y="36" width="54" height="17"/>
+				<box topPadding="5"/>
+				<textElement verticalAlignment="Top">
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello digital: ]]></text>
+			</staticText>
+			<elementGroup/>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="121" y="53" width="54" height="17"/>
+				<box topPadding="5"/>
+				<textElement verticalAlignment="Top">
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Secuencia Notarial:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="175" y="53" width="397" height="17"/>
+				<box topPadding="5"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{secuenciaNotaria}]]></textFieldExpression>
+			</textField>
+			<elementGroup/>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="121" y="70" width="54" height="17"/>
+				<box topPadding="5"/>
+				<textElement verticalAlignment="Top">
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número de Serie:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="175" y="70" width="397" height="17"/>
+				<box topPadding="5"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{numSerialCertificado}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="6" width="571" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement x="450" y="3" width="80" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Hoja "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="530" y="3" width="40" height="15"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:annotation-config />
+	
+	${mvn.web.app.security.start}
+	<aop:aspectj-autoproxy/>
+	${mvn.web.app.security.end}
+	
+	<!-- SERVICIO PARA PRUEBA DE ARQUETIPO -->
+   <bean id="registroNotificacionServiceB" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">  																	  	
+  		<property name="jndiName" value="registroNotificacionServiceB#mx.imss.estrados.service.interfaces.RegistroNotificacionServiceRemote"/>
+  		<property name="businessInterface" value="mx.imss.estrados.service.interfaces.RegistroNotificacionServiceRemote"/>
+	</bean>
+	
+	<!-- SERVICIO DE CONSULTA EXTERNA DE NOTIFICACIONES -->
+	<bean id="consultaExternaServiceBean" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">  																	  	
+  		<property name="jndiName" value="consultaExternaServiceBean#mx.imss.estrados.service.interfaces.ConsultaExternaServiceRemote"/>
+  		<property name="businessInterface" value="mx.imss.estrados.service.interfaces.ConsultaExternaServiceRemote"/>
+	</bean>
+	
+	<!-- SERVICIO DE CONSULTA INTERNA DE NOTIFICACIONES -->
+	<bean id="consultaInternaServiceBean" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">  																	  	
+  		<property name="jndiName" value="consultaInternaServiceBean#mx.imss.estrados.service.interfaces.ConsultaInternaServiceRemote"/>
+  		<property name="businessInterface" value="mx.imss.estrados.service.interfaces.ConsultaInternaServiceRemote"/>
+	</bean>
+	
+	<!-- SERVICIO PARA GENERAR REPORTES DE UNA NOTIFICACION -->
+	<bean id="reporteNotificacionServiceBean" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">  																	  	
+  		<property name="jndiName" value="reporteNotificacionServiceBean#mx.imss.estrados.service.interfaces.ReporteNotificacionServiceRemote"/>
+  		<property name="businessInterface" value="mx.imss.estrados.service.interfaces.ReporteNotificacionServiceRemote"/>
+	</bean>
+
+	<!-- SERVICIO QUE EJECUTA LAS TAREAS DEL CRON -->
+	<bean id="ejecutaTareasCron" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="ejecutaTareasCronServiceBean#mx.imss.estrados.cron.EjecutaTareasCronServiceRemote"/>
+		<property name="businessInterface" value="mx.imss.estrados.cron.EjecutaTareasCronServiceRemote"/>
+	</bean>
+	
+	
+
+	
+</beans>

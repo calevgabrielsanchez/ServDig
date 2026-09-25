@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+	<!-- Scans the classpath of this application for @Components to deploy as beans -->
+	<context:component-scan base-package="mx.gob.imss.ctirss.delta.derechohabientes.web" />
+	<!-- Configures the @Controller programming model -->
+	<mvc:annotation-driven />
+	<task:annotation-driven/>
+	
+	<mvc:view-controller path="/" view-name="tramita"/>
+	
+	<!-- Jackson Custom Mapping
+	<bean id="messageAdapter"
+	    class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	    <property name="messageConverters">
+	        <list>
+	            <bean id="jacksonJsonMessageConvertor"
+	                class="mx.gob.imss.ctirss.delta.derechohabientes.web.mapping.converter.CustomObjectMapper"/>                   
+	        </list>
+	    </property>
+	</bean> -->
+	
+	<bean         
+		class="mx.gob.imss.ctirss.delta.derechohabientes.web.mapping.converter.ConverterRegister">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+					<property name="objectMapper">
+						<ref bean="jacksonDateMapper" />
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Bean que contendra atributo opciones que contiene indicadores para mostrar menus -->
+	<bean id="opcionesProperties" class="mx.gob.imss.ctirss.delta.derechohabientes.web.utils.OpcionesProperties"/>
+	
+	<!-- Se crea la tarea para recargar opciones -->
+	<bean id="schedulerTask" 
+	  class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+	    <property name="targetObject" ref="opcionesProperties" />
+	    <property name="targetMethod" value="reloadProperties" />
+	</bean>
+	
+	<!-- Se crea timer para ejecutar la tare de recargado de propiedades cada cierto tiempo -->
+	<bean id="timerTask" class="org.springframework.scheduling.timer.ScheduledTimerTask">
+	    <property name="timerTask" ref="schedulerTask" />
+	    <property name="delay" value="1000" />
+	    <property name="period" value="60000" />
+	</bean>
+	
+	<!-- se programa la tarea de recargar las opciones -->
+	<bean class="org.springframework.scheduling.timer.TimerFactoryBean">
+	    <property name="scheduledTimerTasks">
+	        <list>
+	            <ref local="timerTask" />
+	        </list>
+	    </property>
+	</bean>
+	
+	<!-- JSR303 - Bean Validation Implementation -->
+	<bean id="validator"
+	      class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>	
+	
+	
+	<mvc:interceptors>
+		<!-- Changes the locale when a 'locale' request parameter is sent -->
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+	</mvc:interceptors>
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver" />
+
+	<!-- Application Message Bundle -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="/WEB-INF/config/messages/messages" />
+		<property name="cacheSeconds" value="0" />
+		<property name="useCodeAsDefaultMessage" value="true" />
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+
+	<mvc:default-servlet-handler/>
+	
+	<!-- the ResourceBundleViewResolver -->
+	<bean id="resourceBundleViewResolver"
+		class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+		<property name="basename" value="views" />
+	</bean>
+		<!-- UrlBasedViewResolver to Handle Redirects & Forward -->
+	<bean id="urlViewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles2.TilesView" />
+		<property name="order" value="2" />
+	</bean>
+	
+	
+
+<!-- Only needed because we require fileupload in the org.springframework.samples.mvc.fileupload package -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+    
+ 	  <bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/config/tiles/tiles-def.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+</beans>

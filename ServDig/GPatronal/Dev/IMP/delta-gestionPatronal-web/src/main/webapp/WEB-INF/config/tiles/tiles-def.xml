@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="base.definition.gobMX" template="/WEB-INF/views/layout/main-GOBMX.jsp">
+		<put-attribute name="title" value="Gestión patronal" />
+		<put-attribute name="subencabezado" value="" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="breadcrumbs" value="" />
+		<put-attribute name="navegacion" value="" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="simple.base.definition"
+		template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title" value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<definition name="base.definition"
+		template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title" value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />
+		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<definition name="base.definition.embebed"
+		template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title" value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	
+	<definition name="portal.base.definition"
+		template="/WEB-INF/views/layout/portal-template.jsp">
+		<put-attribute name="title" value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+	</definition>
+	
+	
+	<!--Definicion de la pantalla del delta-gestionPatronal -->
+	<definition name="delta-gestionPatronal" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/delta-gestionPatronal/delta-gestionPatronal.jsp "/>
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de logeo -->
+	<definition name="login" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/login.jsp "/>
+	</definition>
+	
+		<!-- Definicion de la pantalla de bienvenida de la aplicacion -->
+	<definition name="welcome" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/welcome.jsp "/>
+	</definition>
+	
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="home" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/home.jsp "/>
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-home.jsp" />
+	</definition>
+	
+	
+	<!-- Definicion de la pantalla de captura de domicilio -->
+	<definition name="domicilioRegistro" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/registro.jsp "/>
+	</definition>
+	
+	
+	<!-- Definicion de la pantalla de captura de domicilio -->
+	<definition name="domicilioRegistroEmbebed" extends="base.definition.embebed">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/registro.jsp "/>
+		<put-attribute name="controles" value="/WEB-INF/views/domicilio/embebed/controles.jsp" />
+		<put-attribute name="funciones" value="/WEB-INF/views/domicilio/embebed/funciones.jsp" />
+	</definition>
+	
+	
+	
+	<!-- Definicion de la pantalla de Inicio de tramite-->
+	<definition name="tramiteinicio" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/tramite/inicio.jsp "/>
+	</definition>
+	
+	<!-- Definicion de la pantalla de Captura de tramite-->
+	<definition name="tramitecapturar" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/tramite/capturar.jsp "/>
+	</definition>
+	
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<!-- WIZARDS -->
+	<definition name="wizard.base.definition" template="/WEB-INF/views/layout/main-wizard.jsp">
+		<put-attribute name="title" value=" Portal de Servicios DELTA " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-empty.jsp" />
+		<put-attribute name="nameComScore" value="" />
+	</definition>
+	
+	<definition name="wizardModifPatronClasificacionInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/modificacion/patron/clasificacion/inicial.jsp"/>
+		<put-attribute name="nameComScore" value=".clasificacion.inicio" />
+	</definition>
+
+	<definition name="wizardModifPatronClasificacionContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/modificacion/patron/clasificacion/contenido.jsp"/>
+		<put-attribute name="nameComScore" value=".clasificacion.contenido" />
+	</definition>
+	
+	<definition name="wizardModifPatronClasificacionAviso" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/modificacion/patron/clasificacion/avisoClasificacionConcluida.jsp"/>
+		<put-attribute name="nameComScore" value=".clasificacion.aviso_clasificacion_concluida" />
+	</definition>
+
+	<definition name="wizardModifPatronCentroTrabajoInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/modificacion/patron/centroTrabajo/inicial.jsp"/>
+		<put-attribute name="nameComScore" value=".modificacion.centro_trabajo.inicio" />
+	</definition>
+
+	<definition name="wizardAltaPatronalInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/modificacion/patron/altaPatronal/inicial.jsp"/>
+		<put-attribute name="nameComScore" value=".alta_patronal.inicio" />
+	</definition>
+
+	<definition name="wizardAltaPatronalICA" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/modificacion/patron/altaPatronal/comprobacionICA.jsp"/>
+	</definition>
+
+	<definition name="wizardAltaPatronalRFCBloqueado" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/modificacion/patron/altaPatronal/bloqueorfc.jsp"/>
+	</definition>
+	
+	<definition name="wizardAltaPatronalICAMoral" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/modificacion/patron/altaPatronal/comprobacionICAMoral.jsp"/>
+	</definition>
+	
+	<definition name="wizardAltaPatronalDomicilioCT" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/modificacion/patron/altaPatronal/domicilioCentroTrabajo.jsp"/>
+		<put-attribute name="nameComScore" value=".alta_patronal.domicilio" />
+	</definition>
+
+	<definition name="wizardAltaPatronalClasificacion" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/modificacion/patron/altaPatronal/clasificacion.jsp"/>
+		<put-attribute name="nameComScore" value=".alta_patronal.clasificacion" />
+	</definition>
+
+	<definition name="wizardAltaPatronalComplementoClasif" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/modificacion/patron/altaPatronal/asignacionSubdelegacion.jsp"/>
+		<put-attribute name="nameComScore" value=".alta_patronal.subdelegacion" />
+	</definition>
+	
+	<definition name="wizardContactoCentroTrabajoInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/modificacion/patron/centroTrabajo/contacto/inicial.jsp"/>
+		<put-attribute name="nameComScore" value=".modificacion.centro_trabajo.contacto.inicio" />
+	</definition>
+	<definition name="wizardContactoCentroTrabajoContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/modificacion/patron/centroTrabajo/contacto/contenido.jsp"/>
+		<put-attribute name="nameComScore" value=".modificacion.centro_trabajo.contacto.contenido" />
+	</definition>
+	<definition name="wizardRepresentantesVentanilla" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/modificacion/patron/altaPatronal/representantesVentanilla.jsp"/>
+	</definition>
+	<definition name="WizardRegistroMovimientosAfiliatorios" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/afiliacion/registroMovimientosAfiliatorios/inicial.jsp"/>
+	</definition>
+	
+	<!--<definition name="wizardAmpliacionRegistroEventMod14contenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/afiliacion/ampliacionRegistroEvent/contenido.jsp"/>
+	</definition> -->
+	
+	<!--  -->
+
+	<definition name="databaseError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="internalError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="500" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="404" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+	
+	<!-- Seccion Clasificación --><!-- Seccion Clasificación --><!-- Seccion Clasificación --><!-- Seccion Clasificación --><!-- Seccion Clasificación --><!-- Seccion Clasificación -->
+	
+	<definition name="clasificacion" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/clasificacion/clasificacion.jsp "/>
+	</definition>
+	
+		<definition name="modificacion.acuse" extends="base.definition">
+			<put-attribute name="contenido" value="/WEB-INF/views/patron/clasificacion/avisoClasificacionFinalizada.jsp "/>
+		</definition>
+		
+		<definition name="modificacion.aviso" extends="base.definition">
+			<put-attribute name="contenido" value="/WEB-INF/views/patron/clasificacion/avisoClasificacionConcluida.jsp "/>
+		</definition>
+	 
+	<!-- Seccion Clasificación --><!-- Seccion Clasificación --><!-- Seccion Clasificación --><!-- Seccion Clasificación --><!-- Seccion Clasificación --><!-- Seccion Clasificación -->
+	
+	
+	
+	<!-- Seccion Firma Digital -->
+	<definition name="captura.datos.firma" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/solicitud/firma/capturaDatosFirma.jsp"/>
+	</definition>
+	
+	<definition name="captura.datos.firmaAfiliacion" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/afiliacion/firma/capturaDatosFirma.jsp"/>
+	</definition>
+	
+	<definition name="exito.Firma.SolicitudAfiliacion" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/afiliacion/firma/exitoFirma.jsp"/>
+	</definition>
+	
+	<definition name="exito.Firma.Solicitud" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/solicitud/firma/exitoFirma.jsp"/>
+	</definition>
+	
+	<definition name="exito.Firma.Terminada" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/solicitud/firma/exitoSolicitud.jsp"/>
+	</definition>		
+
+	<!-- Seccion Patron -->
+	<definition name="socios" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/socios/socios.jsp "/>
+	</definition>
+	
+	<definition name="nuevoSocio" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/afiliacion/socios/nuevo.jsp "/>
+	</definition>
+	
+	<definition name="datosFiscales" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/datos_fiscales/datosFiscales.jsp "/>
+	</definition>
+	
+	<definition name="repLegal" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/representante_legal/repLegal.jsp "/>
+	</definition>
+	
+	<definition name="fb.rep.legal" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/representante_legal/fbRepLegal.jsp"/>
+	</definition>
+	
+	
+	<definition name="buscar.patron.rfc" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/consultar.jsp"/>
+	</definition>
+	
+	<definition name="centroTrabajoRP" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/centro/trabajo/cTrabajo.jsp "/>
+	</definition>
+		
+	
+	<!-- Sección centro de trabajo -->
+	<!-- Definicion de la pantalla de captura de domicilio -->
+	<definition name="agregarDomicilio" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/centroTrabajo/agregarDomicilio.jsp "/>
+	</definition>
+	
+	<!-- Sección Flujo Base de actualización de datos generales -->	
+	
+	<definition name="mostrar.sujeto.obligado" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/rp/detalleSujetoObligado.jsp"/>
+	</definition>
+	
+	<definition name="mostrar.so.afiliacion" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/afiliacion/detalleSujetoObligadoAfiliacion.jsp"/>
+	</definition>
+		
+	<!-- Detalle de Registro Patronal con Tabs-->
+	
+	<definition name="detalle.regpatron.tab" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/afiliacion/detalleSujetoObligadoTabs.jsp"/>
+	</definition>
+	
+	<!-- Detalle de Registro Patronal -->
+	
+	<definition name="detalle.registro.patronal" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/rp/detalleRP.jsp"/>
+	</definition>
+	
+	<!-- Detalle de Registro Patronal para afiliacion-->
+	
+	<definition name="detalle.rp.afiliacion" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/rp/detalleRPAfiliacion.jsp"/>
+	</definition>
+	
+	<!-- Datos generales del patron SO -->
+	<definition name="datos.generales.patron" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/rp/datosGeneralesPatron.jsp"/>
+	</definition>
+	
+	<definition name="datos.generales.patron" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/rp/datosGeneralesPatron.jsp"/>
+	</definition>
+	
+	<definition name="tramite.denominacion.social" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/rp/tramiteDatosGenerales.jsp"/>
+	</definition>
+	
+	<!-- Actualizacion de datos de escritura constitutiva -->
+	<definition name="actualizar.escritura.const" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/patron/rp/actualizarEscrituraConstitutiva.jsp"/>
+	</definition>
+	
+	<definition name="detalle.registro.patronal.afiliacion" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/afiliacion/registro_patronal/detalleRegistroPatronal.jsp"/>
+	</definition>
+	
+	<definition name="vista.tramite" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/afiliacion/tramiteAfiliacion.jsp"/>
+	</definition>
+	
+	<definition name="nueva.solicitud" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/afiliacion/nuevaSolicitud.jsp"/>
+	</definition>
+		
+	<!-- Centro Trabajo -->		
+	<definition name="centro.trabajo" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/afiliacion/registro_patronal/tramiteCentroTrabajo.jsp"/>
+	</definition>	
+	
+	<!-- CU CONSULTAR SOLICITUDES -->
+	<definition name="filtro.solicitud" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/solicitud/filtroSolicitud.jsp"/>
+	</definition>
+	
+	<definition name="solicitud.detalle" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/solicitud/detalleSolicitud.jsp"/>
+	</definition>
+	
+	
+	<!-- NUEVOS MOVIMIENTOS -->
+	<definition name="vista.baja" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/afiliacion/baja/baja.jsp"/>
+	</definition>
+	
+	<definition name="vista.alta" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/afiliacion/alta/altaPatronal.jsp"/>
+	</definition>
+	
+	<definition name="vista.altanrp" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/afiliacion/alta/altaRegistroPatronal.jsp"/>
+	</definition>
+	
+	<!-- WIZARD REGISTRO SOCIOS -->
+	<definition name="wizardInicioRegistroSocio" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/socios/alta/inicial.jsp" />			
+	</definition>
+	<definition name="wizardFiltrosRegistroSocio" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/socios/alta/filtrosBusqueda.jsp" />			
+	</definition>
+	<definition name="wizardContenidoRegistroSocio" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/socios/alta/contenido.jsp" />			
+	</definition>
+	<!-- WIZARD BAJA SOCIOS -->
+	<definition name="wizardInicioBajaSocio" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/socios/baja/inicial.jsp" />			
+	</definition>
+	<definition name="wizardContenidoBajaSocio" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/socios/baja/contenido.jsp" />			
+	</definition>		
+	
+	<!-- Wizard Registro Representado -->		
+	<definition name="wizardRegistroRepresentadoLegalInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/representanteLegal/representado/registro/inicial.jsp"/>
+	</definition>	
+	<definition name="wizardRegistroRepresentadoLegalContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/representanteLegal/representado/registro/contenido.jsp"/>
+	</definition>
+	<!-- Wizard Baja Representado -->
+		<definition name="wizardBajaRepresentadoLegalInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/representanteLegal/representado/baja/inicial.jsp"/>
+	</definition>	
+	<definition name="wizardBajaRepresentadoLegalContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/representanteLegal/representado/baja/contenido.jsp"/>
+	</definition>
+	<!-- Wizard Baja Representante Legal -->
+	<definition name="wizardBajaRepresentanteLegalInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/representanteLegal/representante/baja/inicial.jsp"/>
+	</definition>	
+	<definition name="wizardBajaRepresentanteLegalContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/representanteLegal/representante/baja/contenido.jsp"/>
+	</definition>
+	<!-- Wizard Registro PA -->
+	<definition name="wizardRegistroPersonaAutorizadaInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/personaAutorizada/registro/inicial.jsp"/>
+	</definition>	
+	<definition name="wizardRegistroPersonaAutorizadaContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/personaAutorizada/registro/contenido.jsp"/>
+	</definition>
+	<!-- Wizard Baja PA -->
+	<definition name="wizardBajaPersonaAutorizadaInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/personaAutorizada/baja/inicial.jsp"/>
+	</definition>	
+	<definition name="wizardBajaPersonaAutorizadaContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/personaAutorizada/baja/contenido.jsp"/>
+	</definition>
+	
+		<!-- Localizar RL -->
+	<definition name="viewAgregarRL" extends="wizard.base.definition">
+		<put-attribute name="contenido" 
+			value="/WEB-INF/views/wizard/representanteLegal/agregarRepresentanteLegal/agregarRL.jsp"/>				
+	</definition>
+	
+	<definition name="viewRepresentantesLegales" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/representanteLegal/commonRepresentantes/viewRepresentantesLegales.jsp"/>
+	</definition>
+	
+	<!-- Pantallas del portal -->
+	
+	
+	<definition name="cambioDatosFiscales" extends="portal.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/portal/cambioDatosFiscales.jsp "/>
+	</definition>
+	
+	<definition name="listaTramitesSRT" extends="portal.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/portal/listaTramitesModificacionSRT.jsp "/>
+	</definition>
+	
+	
+	<definition name="modificacionSRT" extends="portal.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/portal/modificacionSRT.jsp "/>
+	</definition>
+	
+	<definition name="opcionesSolicitud" extends="portal.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/portal/opcionesSolicitud.jsp "/>
+	</definition>
+	
+	<!-- Login alta patronal Moral UX -->
+	<definition name="viewLoginAltaMoral" extends="base.definition.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/altaPatronUX/loginFirma.jsp"/>
+	</definition>
+	
+	<!-- Vista donde se muestran los pasos para el alta patronal persona moral -->
+	<definition name="viewPasosMoral" extends="base.definition.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/altaPatronUX/altaMoral/pasosTramite.jsp"/>
+	</definition>
+	
+	<definition name="viewPersonasAutorizadas" extends="base.definition.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/altaPatronUX/altaMoral/personasAutorizadas.jsp"/>
+	</definition>
+	
+	<definition name="viewDomicilioCentroTrabajo" extends="base.definition.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/altaPatronUX/altaMoral/domicilioCentroTrabajo.jsp"/>
+	</definition>
+	
+	<definition name="viewConfirmacionDatos" extends="base.definition.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/altaPatronUX/altaMoral/revisarDatos.jsp"/>
+	</definition>
+	
+	<definition name="viewPrincipal" extends="base.definition.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/altaPatronUX/altaMoral/principal.jsp"/>
+	</definition>
+	
+	<definition name="viewError" extends="base.definition.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/altaPatronUX/altaMoral/viewError.jsp"/>
+	</definition>
+	
+	<definition name="tramiteInvalido" extends="base.definition.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/altaPatronUX/altaMoral/tramiteInvalidoError.jsp"/>
+	</definition>
+	
+	<definition name="viewAltaRepLegal" extends="base.definition.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/altaPatronUX/altaRepLegal/registraRepLegal.jsp"/>
+	</definition>
+	<!-- Finalizan pantallas del portal -->
+	
+	
+	<!-- Inicia Pantalla Tramite-->	
+
+	<definition name="viewMenu" extends="base.definition.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/altaPatronUX/altaMoral/menuTramite.jsp"/>
+	</definition>		
+	
+	<definition name="viewLoginAltaPatronal" extends="base.definition.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/altaPatronUX/altaMoral/loginFirma.jsp"/>
+	</definition>	
+	
+	<definition name="viewCartaTerminos" extends="base.definition.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/altaPatronUX/altaRepLegal/leyendaTerminosCondiciones.jsp"/>
+	</definition>	
+	
+	<definition name="pruebaComponentePatrones" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/componenteBusquedaRP/pruebaComponentePatrones.jsp"/>
+	</definition>
+
+	<!-- Pantalla Home Ventanilla -->
+
+	<definition name="base.definition.ventanilla.gobMX" template="/WEB-INF/views/layout/main-ventanilla-GOBMX.jsp">
+		<put-attribute name="title" value="Gestión patronal" />
+		<put-attribute name="header" value="/WEB-INF/views/movPat/ventanilla/header.jsp" />
+		<put-attribute name="contenido" value="" />
+	</definition>
+
+	<definition name="viewHomeVentanilla" extends="base.definition.ventanilla.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/movPat/ventanilla/home.jsp" />
+	</definition>
+	
+	<definition name="viewLoginInternet" extends="base.definition.ventanilla.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/movPat/internet/common/login.jsp" />
+		<put-attribute name="header" value="" />
+	</definition>
+	
+
+	<!-- Inicia Pantallas Registrar Tramite Ventanilla -->	
+	<definition name="registrar.tramite.ventanilla" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/movPat/registrar/tramiteVentanilla.jsp"/>
+	</definition>
+	
+	<definition name="wizardModifPatronClasificacionInitVentanilla" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/movPat/wizard/modificacion/patron/clasificacion/inicial.jsp"/>
+		<put-attribute name="nameComScore" value=".clasificacion.inicio" />
+	</definition>
+	
+	<definition name="wizardModifPatronClasificacionContenidoVentanilla" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/movPat/wizard/modificacion/patron/clasificacion/contenido.jsp"/>
+		<put-attribute name="nameComScore" value=".clasificacion.contenido" />
+	</definition>
+	
+	<!-- Finaliza Pantallas Registrar Tramite Ventanilla -->
+	
+	<definition name="movPat.modificacion.acuse" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/movPat/wizard/modificacion/patron/clasificacion/avisoClasificacionFinalizada.jsp "/>
+	</definition>
+		
+	<definition name="movPat.modificacion.aviso" extends="base.definition">
+		<!-- <put-attribute name="contenido" value="/WEB-INF/views/movPat/wizard/modificacion/patron/clasificacion/avisoClasificacionFinalizada.jsp "/>-->
+		<put-attribute name="contenido" value="/WEB-INF/views/movPat/wizard/modificacion/patron/clasificacion/avisoClasificacionConcluida.jsp "/> 
+	</definition>
+	
+		<!-- Pantalla Home Internet -->
+
+	<definition name="base.definition.internet.gobMX" template="/WEB-INF/views/layout/main-ventanilla-GOBMX.jsp">
+		<put-attribute name="title" value="Gestión patronal" />
+		<put-attribute name="header" value="/WEB-INF/views/movPat/internet/headerInternet.jsp" />
+		<put-attribute name="contenido" value="" />
+	</definition>
+
+	<definition name="viewHomeInternet" extends="base.definition.internet.gobMX">
+		<put-attribute name="contenido" value="/WEB-INF/views/movPat/internet/homeInternet.jsp" />
+	</definition>
+	
+	<definition name="viewInfoCitaTramiteInternet" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/movPat/internet/wizard/informacionCitaTramite.jsp"/>
+		<put-attribute name="nameComScore" value=".clasificacion.inicio" />
+	</definition>
+	
+</tiles-definitions>

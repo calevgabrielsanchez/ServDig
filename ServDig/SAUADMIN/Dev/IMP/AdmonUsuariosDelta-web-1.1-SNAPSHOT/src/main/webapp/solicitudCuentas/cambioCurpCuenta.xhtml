@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c ="http://java.sun.com/jsp/jstl/core">
+    
+    <ui:composition template="../plantillas/plantilla.xhtml">
+    <ui:define name="body">
+        <div align="center" id="generalTitulo">
+             <h3>Cambio de CURP de Cuenta Interna</h3>
+        </div>
+           <h:form>
+         	<fieldset style="border: 1px solid silver; margin: 0; padding: 10px;">
+         	<div align="left" id="general">
+				 <h3>Datos Generales</h3>
+				<h:outputLabel value="#{solicitudCuentaBean.errorGeneralDatos}" id="lbALLOBLIGATORIO" style="color: red"/>
+				    <h:panelGrid id="pnRegSolicitudCuentaCrPre" columns="5">
+				        <h:outputLabel value="* CURP:" id="lbCURP"/>
+				        <h:graphicImage value="../imagenes/blanco2.png" />
+				        <h:graphicImage value="../imagenes/blanco2.png" />
+				        <h:graphicImage value="../imagenes/blanco2.png" />
+				        <h:graphicImage value="../imagenes/blanco2.png" />
+				    </h:panelGrid>
+                                        
+                    <h:panelGrid id="pnRegSolicitudCuentaS" columns="8">	
+                      <h:inputText value="${solicitudCuentaBean.usuarioSolicitud.curp}" id="txCurp" size="18" disabled="#{solicitudCuentaBean.flagFirstSlide}"
+                      maxlength="18"  style="text-transform: uppercase"/>
+					<h:outputLabel value="#{solicitudCuentaBean.errorCurp}" id="resultErrorCurp" style="color: red"/>
+                     
+                     <h:commandButton action="${solicitudCuentaBean.validaryCargarDatosCambioCurp}"  value= "Consultar" styleClass="mboton"/> 
+                     
+                    <h:outputLabel value="#{solicitudCuentaBean.resultCurp}" id="result" style="color: red"/>
+					<h:outputLabel value="#{solicitudCuentaBean.resultRenapo}" id="resultRenapo" style="color: blue"/>
+					<h:outputLabel value="#{solicitudCuentaBean.resultIMSS}" id="resultIMSS" style="color: black"/>
+                     
+                     <h:outputLabel value="#{solicitudCuentaBean.resultAgregar}" id="resultAgregar" style="color: red"/>
+                     <h:graphicImage value="../imagenes/blanco2.png" />
+                    </h:panelGrid>
+                    
+                    <h:panelGrid id="pnRegSolicitudCuentaCrPreCambio" columns="5">
+				        <h:outputLabel value="* Nueva CURP:" id="lbCURPNueva"/>
+				        <h:graphicImage value="../imagenes/blanco2.png" />
+				        <h:graphicImage value="../imagenes/blanco2.png" />
+				        <h:graphicImage value="../imagenes/blanco2.png" />
+				        <h:graphicImage value="../imagenes/blanco2.png" />
+				    </h:panelGrid>
+                    
+                     <h:panelGrid id="pnRegSolicitudCuentaSCambio" columns="8">	
+                      <h:inputText value="${solicitudCuentaBean.curpNueva}" id="txCurpNueva" size="18"
+                               maxlength="18"  style="text-transform: uppercase" disabled="#{solicitudCuentaBean.flagCambiaCurp}"/>
+				      	<h:graphicImage value="../imagenes/blanco2.png" />
+					    <h:graphicImage value="../imagenes/blanco2.png" />
+					    <h:graphicImage value="../imagenes/blanco2.png" />
+					    <h:graphicImage value="../imagenes/blanco2.png" />
+					    <h:graphicImage value="../imagenes/blanco2.png" />
+					    <h:graphicImage value="../imagenes/blanco2.png" />
+					    <h:graphicImage value="../imagenes/blanco2.png" />
+                    </h:panelGrid>
+				
+				    <h:panelGrid id="pnRegSolicitudCuentaCrPre1" columns="6">
+				        <h:outputLabel value="* Nombre:" id="lbNombreRegSolicitudCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco2.png" style="width: 196px; "/>
+				        <h:outputLabel value="* Apellido Paterno:" id="lbApPatRegSolicituCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco1.png" style="width: 138px; "/>
+				        <h:outputLabel value="* Apellido Materno:" id="lbApMatRegSolicituCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco2.png" />
+				    </h:panelGrid>
+				
+					<h:panelGrid id="pnRegSolicitudCuentaP" columns="9">
+					<h:inputText value="#{solicitudCuentaBean.usuarioSolicitud.nombres}" id="txRegSolicitudCuenta" required="true" requiredMessage="EL NOMBRE ES REQUERIDO"
+					disabled="true"></h:inputText>
+					<h:message for="txRegSolicitudCuenta" errorClass="error"/>
+					
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+					
+					<h:inputText value="#{solicitudCuentaBean.usuarioSolicitud.apellidoPaterno}" id="txApPatRegSolicitudCuenta" required="true" requiredMessage="EL APELLIDO PATERNO ES REQUERIDO"
+					disabled="true"></h:inputText>
+					<h:message for="txApPatRegSolicitudCuenta" errorClass="error"/>
+					
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+					
+					<h:inputText value="#{solicitudCuentaBean.usuarioSolicitud.apellidoMaterno}" id="txApMatRegSolicitudCuenta" required="true" requiredMessage="EL APELLIDO MATERNO ES REQUERIDO"
+					disabled="true"></h:inputText>
+					<h:message for="txApMatRegSolicitudCuenta" errorClass="error"/>	
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+					</h:panelGrid>
+					
+					<h:panelGrid id="pnRegSolicitudCuentaCrPre2" columns="6">
+				        <h:outputLabel value="* Matricula:" id="lbMatRegSolicituCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco2.png" style="width: 155px; "/>
+				        <h:outputLabel value="* Correo Electronico: (usuario@imss.gob.mx)" id="lbMailRegSolicituCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco2.png" style="width: 31px; "/>
+				        <h:outputLabel value="Tel. Oficina: (5543667786)" id="lbTelOficinaRegSolicituCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco2.png" />
+				    </h:panelGrid>
+					
+				    <h:panelGrid id="pnRegSolicitudCuentaCr" columns="9">
+                        <h:inputText value="#{solicitudCuentaBean.usuarioSolicitud.matricula}" id="txMatSolicitudCuenta"  maxlength="12" 
+                        disabled="true"></h:inputText>
+                        <h:outputLabel value="#{solicitudCuentaBean.errorMatricula}" id="resultErrorMatricula" style="color: red"/>		
+					
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+					
+					<h:inputText value="#{solicitudCuentaBean.usuarioSolicitud.correoElectronico}" id="txMailRegSolicitudCuenta"
+					disabled="true"></h:inputText>
+					<h:outputLabel value="#{solicitudCuentaBean.errorEmail}" id="resultErrorEmail" style="color: red"/>
+																																
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+					
+					<h:inputText value="#{solicitudCuentaBean.usuarioSolicitud.telefono}" id="txTelOficinaSolicitudCuenta"
+					disabled="true"></h:inputText>
+					<h:outputLabel value="#{solicitudCuentaBean.errorTelefono}" id="resultErrorTelefono" style="color: red"/>	
+					
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+					
+					</h:panelGrid>
+					
+					<h:panelGrid id="pnRegSolicitudCuentaCrPre3" columns="6">
+				        <h:outputLabel value="* Area Normativa:" id="lbAreaNormRegSolicitudCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco1.png" style="width: 144px; "/>
+				        <h:outputLabel value="* Departamento:" id="lbDepRegSolicitudCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco1.png" style="width: 154px; "/>
+				        <h:outputLabel value="* Puesto:" id="lbPuestoRegSolicitudCuenta"/>	
+				        <h:graphicImage value="../imagenes/blanco1.png" />
+				    </h:panelGrid>
+					
+					<h:panelGrid id="pnRegSolicitudCuentaC" columns="9">				
+                	<h:selectOneMenu id="slAreaNormRegSolicitudCuenta" required="true" requiredMessage="SELECCIONE EL AREA NORMATIVA"
+                	disabled="true" value="#{usuarioBean.claveAreNormativa}" 
+                	valueChangeListener="#{usuarioBean.listenerDepartamento}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+				        <f:selectItems value="${usuarioBean.lstAreaNormativa}" />	
+				        <f:ajax event="change" render="slDepRegSolicitudCuenta slDelRegSolicitudCuenta slSubRegSolicitudCuenta slUMFRegSolicitudCuenta slAreaNormRegSolicitudCuentaC1 slAreaNormRegSolicitudCuentaC2" />											
+					</h:selectOneMenu>
+					<h:message for="slAreaNormRegSolicitudCuenta" id="msgAreaNormRegSolicitudCuenta"  errorClass="error"/>							
+										
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+													
+                	<h:selectOneMenu id="slDepRegSolicitudCuenta" required="true" requiredMessage="SELECCIONE EL DEPARTAMENTO"
+                	disabled="true" value="#{usuarioBean.claveDepartamento}"
+                	valueChangeListener="#{usuarioBean.listenerPuesto}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+						<f:selectItems value="${usuarioBean.lstDepartamento}" />
+						<f:ajax event="change" render="slPuestoRegSolicitudCuenta" />					
+					</h:selectOneMenu>
+					<h:message for="slDepRegSolicitudCuenta" id="msgDepRegSolicitudCuenta"  errorClass="error"/>
+					
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+					
+                	<h:selectOneMenu id="slPuestoRegSolicitudCuenta" required="true" requiredMessage="SELECCIONE EL PUESTO"
+                	disabled="true" value="#{usuarioBean.clavePuesto}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+						<f:selectItems value="${usuarioBean.lstPuesto}" />
+					</h:selectOneMenu>
+					<h:message for="slPuestoRegSolicitudCuenta" errorClass="error"/>										
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>		
+					</h:panelGrid>
+					
+					<h:panelGrid id="pnRegSolicitudCuentaCrPre4" columns="6">
+				        <h:outputLabel value="Delegacion" id="lbDelRegSolicitudCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco2.png" style="width: 184px; "/>
+				        <h:outputLabel value="SubDelegacion" id="lbSubRegSolicitudCuenta"/>	
+				        <h:graphicImage value="../imagenes/blanco2.png" style="width: 156px; "/>
+				        <h:outputLabel value="UMF: " id="lbUMFRegSolicitudCuenta"/>		
+				        <h:graphicImage value="../imagenes/blanco2.png" />
+				    </h:panelGrid>
+					
+					<h:panelGrid id="pnRegSolicitudCuentaQ" columns="9">
+					    <h:selectOneMenu id="slDelRegSolicitudCuenta" required="true" requiredMessage="SELECCIONE LA DELEGACION"
+					    disabled="true" value="#{solicitudCuentaBean.usuarioSolicitud.claveDelegacion}"
+					    valueChangeListener="#{solicitudCuentaBean.listenerSubDelegaciones}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+						<f:selectItems value="${usuarioBean.lstDelegacion}" />
+						<f:ajax event="change" render="slSubRegSolicitudCuenta" />						
+						</h:selectOneMenu>
+					    <h:message for="slDelRegSolicitudCuenta" id="msgDelRegSolicitudCuenta"  errorClass="error"/>
+					
+					    <h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/> 
+					
+					    <h:selectOneMenu id="slSubRegSolicitudCuenta" required="true" requiredMessage="SELECCIONE LA SUBDELEGACION"
+					    disabled="true" value="#{solicitudCuentaBean.usuarioSolicitud.claveSubDelegacion}"
+					    valueChangeListener="#{solicitudCuentaBean.listenerUMF}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+                         <f:selectItems value="${solicitudCuentaBean.lstSubDelegacion}" var="s"
+							itemValue="${s.SubdelegacionTO.cveSubelegacion}"
+							itemLabel="${s.SubdelegacionTO.nombreSubelegacion}" />
+						<f:ajax listener="#{solicitudCuentaBean.listenerUnidadMedica}" render="slUMFRegSolicitudCuenta"/>					
+						</h:selectOneMenu>
+					    <h:message for="slSubRegSolicitudCuenta" errorClass="error"/>
+													
+						<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>							
+													
+					    <h:selectOneMenu  id="slUMFRegSolicitudCuenta" disabled="true" value="#{solicitudCuentaBean.usuarioSolicitud.claveUMF}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+				         <f:selectItems value="${solicitudCuentaBean.lstUMF}" var="v"
+							itemValue="${v.UnidadMedicaTO.cveUmf}"
+							itemLabel="${v.UnidadMedicaTO.nombreUmf}" />						
+						</h:selectOneMenu>	
+						<h:message for="slUMFRegSolicitudCuenta" errorClass="error"></h:message>											    			    								
+					    <h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+					
+					</h:panelGrid>
+					
+					<h:panelGrid id="pnRegSolicitudCuentaSx" columns="6">
+					<h:graphicImage value="../imagenes/blanco1.png" />
+					<h:graphicImage value="../imagenes/blanco1.png" />
+					<h:graphicImage value="../imagenes/blanco1.png" />
+					<h:graphicImage value="../imagenes/blanco1.png" />
+					<h:graphicImage value="../imagenes/blanco1.png" />
+					<h:graphicImage value="../imagenes/blanco1.png" />
+					</h:panelGrid>
+					</div>
+				</fieldset> 								
+             <br/>   
+        
+         <div id ="titulo" align="center">
+            <h3>Adicionar Roles</h3>
+         </div>   
+            
+          <div id ="controles1" align="left">
+              <h:panelGrid id="pnRegSolicitudCuentaCrPre5" columns="6">
+				  <h:outputLabel value="Area Normativa:" id="lbAreaNormRegSolicitudCuentaC1"/>
+				  <h:graphicImage value="../imagenes/blanco1.png" style="width: 143px; "/>
+				  <h:outputLabel value="Departamento:" id="lbDepRegSolicitudCuentaC1"/>	
+				  <h:graphicImage value="../imagenes/blanco1.png" style="width: 158px; "/>
+				  <h:outputLabel value="Puesto:" id="lbPuestoRegSolicitudCuentaC1"/>			
+				  <h:graphicImage value="../imagenes/blanco1.png" />
+		     </h:panelGrid>
+          
+                <h:panelGrid id="pnRegSolicitudCuentaCtrl1" columns="9">
+                <h:selectOneMenu id="slAreaNormRegSolicitudCuentaC1" required="true" requiredMessage="SELECCIONE EL AREA NORMATIVA"
+                       value="#{usuarioBean.claveAreaNormativaSub}" 
+                       disabled="#{solicitudCuentaBean.flagSecondSlide}"
+                       valueChangeListener="#{usuarioBean.listenerDepartamento}">
+	                   <f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />	
+	                   	<f:selectItems value="${usuarioBean.lstAreaNormativa}" />
+	                   	<f:ajax event="change" render="slDepRegSolicitudCuentaC1" />						
+                </h:selectOneMenu>
+                <h:message for="slAreaNormRegSolicitudCuentaC1" id="msgAreaNormRegSolicitudCuentaC1"  errorClass="error"/>	
+                
+                <h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+                
+                <h:selectOneMenu id="slDepRegSolicitudCuentaC1" required="true" requiredMessage="SELECCIONE EL DEPARTAMENTO"
+                       value="#{usuarioBean.claveDepartamento}"
+                       valueChangeListener="#{usuarioBean.listenerPuesto}"
+                       disabled="#{solicitudCuentaBean.flagSecondSlide}">
+                       <f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+                       	<f:selectItems value="${usuarioBean.lstDepartamento}" />
+                       	<f:ajax event="change" render="slPuestoRegSolicitudCuentaC1 slDepRegSolicitudCuenta slDepRegSolicitudCuentaC2" />							
+                </h:selectOneMenu>
+                <h:message for="slDepRegSolicitudCuentaC1" errorClass="error"/>
+                			
+                <h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>			
+                			
+                <h:selectOneMenu id="slPuestoRegSolicitudCuentaC1" required="true" requiredMessage="SELECCIONE EL PUESTO"
+                       value="#{usuarioBean.clavePuesto}"
+                        disabled="#{solicitudCuentaBean.flagSecondSlide}">
+                       <f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+                       	<f:selectItems value="${usuarioBean.lstPuesto}" />		
+                </h:selectOneMenu>
+                <h:message for="slPuestoRegSolicitudCuentaC1" errorClass="error"/>
+                
+                <h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+                </h:panelGrid>
+          </div>
+         
+           <style type="text/css">
+             /* Important required because row */
+             .ui-datatable-odd {
+               background-color:lightgray !important;
+               background-position-y: -1400px; /* IE7 hack */
+               }
+           </style>
+         
+            <ace:dataTable value="${solicitudCuentaBean.usuarioSolicitud.rolesData}" 
+            		var="rol" id="roles" 
+            		selectionMode="single"
+            		stateMap="${usuarioBean.stateMapFromTableOne}" 
+            		rowSelectListener="#{usuarioBean.handleSelectUsuarioFromTableOne}">
+            		<ace:ajax event="select" render="@this selectForm:datosFromTableOne" execute="@this" />
+                
+                <ace:column>
+                    <f:facet name="header">
+                        Area
+                    </f:facet>
+                    ${rol.desArea}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Departamento
+                    </f:facet>
+                    ${rol.desDepartamento}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Puestos
+                    </f:facet>
+                    ${rol.desPuesto}
+                </ace:column>
+           
+            </ace:dataTable>
+            <br/>
+
+           <div id ="activar" align="center">					
+   			<h:graphicImage value="../imagenes/blanco2.png" />	
+             <h:graphicImage value="../imagenes/blanco.png" /> 
+             <h:graphicImage value="../imagenes/blanco2.png" />	
+             <h:graphicImage value="../imagenes/blanco.png" />	
+             </div>
+           
+           <br/>
+           <br/>
+           
+            <div id ="titulod" align="center">
+            <h3>Acceso a Modulos</h3>
+            </div> 
+                <div id ="controles2" align="left">
+                <h:panelGrid id="pnRegSolicitudCuentaCrPre6" columns="6">
+				   <h:outputLabel value="Area Normativa:" id="lbAreaNormRegSolicitudCuentaC2"/>
+				  <h:graphicImage value="../imagenes/blanco1.png" style="width: 141px; "/>
+				  <h:outputLabel value="Departamento:" id="lbDepRegSolicitudCuentaC2"/>
+				  <h:graphicImage value="../imagenes/blanco1.png" style="width: 162px; "/>
+				  <h:outputLabel value="Modulo:" id="lbModRegSolicitudCuentaC2"/>			
+				  <h:graphicImage value="../imagenes/blanco1.png" />
+     		     </h:panelGrid>
+     		     
+				<h:panelGrid id="pnRegSolicitudCuentaCtrl2" columns="9">
+                
+                <h:selectOneMenu id="slAreaNormRegSolicitudCuentaC2" required="true" requiredMessage="SELECCIONE EL AREA NORMATIVA"
+                       value="#{usuarioBean.claveAreaNormativaSub}"
+                       disabled="#{solicitudCuentaBean.flagSecondSlide}"
+                       valueChangeListener="#{usuarioBean.listenerDepartamento}">
+	                   <f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+	                   	<f:selectItems value="${usuarioBean.lstAreaNormativa}" />	
+	                   	<f:ajax event="change" render="slDepRegSolicitudCuentaC2" />					
+                </h:selectOneMenu>
+                <h:message for="slAreaNormRegSolicitudCuentaC2" id="msgAreaNormRegSolicitudCuentaC2"  errorClass="error"/>	
+
+                <h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/> 
+
+                <h:selectOneMenu id="slDepRegSolicitudCuentaC2" required="true" requiredMessage="SELECCIONE EL DEPARTAMENTO"
+                       value="#{usuarioBean.claveDepartamento}"
+                       valueChangeListener="#{usuarioBean.listenerModulo}"
+                        disabled="#{solicitudCuentaBean.flagSecondSlide}">
+                       <f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+                       <f:selectItems value="${usuarioBean.lstDepartamento}" />
+                       <f:ajax event="change" render="slModRegSolicitudCuentaC2  slDepRegSolicitudCuenta slDepRegSolicitudCuentaC1" />							
+                </h:selectOneMenu>      
+                <h:message for="slDepRegSolicitudCuentaC2" id="msgAreaNormRegSolicitudCuentaC6" errorClass="error"/>    
+			    
+			    <h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+			    
+                <h:selectOneMenu id="slModRegSolicitudCuentaC2" required="true" requiredMessage="SELECCIONE EL MODULO"
+                       value="#{usuarioBean.claveModulo}" disabled="true">
+                       <f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+                       	<f:selectItems value="${usuarioBean.lstModulo}" />						
+                </h:selectOneMenu>
+                <h:message for="slModRegSolicitudCuentaC2" id="msgAreaNormRegSolicitudCuentaC7" errorClass="error"/> 
+                
+                <h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+                
+                </h:panelGrid>
+			   </div>  
+            <ace:dataTable value="${solicitudCuentaBean.usuarioSolicitud.modulosData}" 
+            		var="modulo" id="modulos"
+            		selectionMode="single"
+            		stateMap="${usuarioBean.stateMapFromTableTwo}" 
+            		rowSelectListener="#{usuarioBean.handleSelectUsuarioFromTableTwo}">
+                <ace:ajax event="select" render="@this selectForm:datosFromTableOne" execute="@this" />
+                
+                <ace:column>
+                    <f:facet name="header">
+                        Area
+                    </f:facet>
+                    ${modulo.desArea}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Departamento
+                    </f:facet>
+                    ${modulo.desDepartamento}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Modulos
+                    </f:facet>
+                    ${modulo.desModulo}
+                </ace:column>
+           
+            </ace:dataTable>
+            <br/>
+
+           <div id ="activar" align="center">
+   			  <h:graphicImage value="../imagenes/blanco2.png" />	
+              <h:graphicImage value="../imagenes/blanco.png" />
+             <h:graphicImage value="../imagenes/blanco2.png" />	
+           </div>
+           <br/>
+           <br/>
+           <br/>
+           <div id="crear" align="center">
+              <h:commandButton action="#{usuarioBean.cambioCurpNVer}"  value= "Cambiar CURP" styleClass="mboton"/>    
+           </div>     
+           
+           <h:panelGrid id="datosFromTableOne" columns="3">
+                    <ui:repeat id="multiRowOutFTO1" value="#{usuarioBean.multiRow}" var="selRolBean">
+                    <h:inputHidden value="#{selRolBean.hiddenSubdelegacion}" id="hiddenIdAreaNormativa"/>
+                    </ui:repeat>
+                    <ui:repeat id="multiRowOutFTO2" value="#{usuarioBean.multiRow}" var="selRolBean">
+                    <h:inputHidden value="#{selRolBean.hiddenSubdelegacion}" id="hiddenIdDepartamento"/>
+                    </ui:repeat>
+                    <ui:repeat id="multiRowOutFTO3" value="#{usuarioBean.multiRow}" var="selRolBean">
+                    <h:inputHidden value="#{selRolBean.hiddenSubdelegacion}" id="hiddenIdPuesto"/>
+                    </ui:repeat>
+                    <ui:repeat id="multiRowOutFTO4" value="#{usuarioBean.multiRow}" var="selRolBean">
+                    <h:inputHidden value="#{selRolBean.hiddenSubdelegacion}" id="hiddenIdModulo"/>
+                    </ui:repeat>                    
+           </h:panelGrid> 
+       </h:form>
+ </ui:define>
+ </ui:composition>
+ </html>        

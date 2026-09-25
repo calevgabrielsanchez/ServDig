@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<div id="pageResumenDatosCancelacion" th:fragment="pageDatosCancelacion">
+	<div id="pnlIncCancelacion" class="panel panel-default">
+		<div class="panel-heading small">
+			<label th:text="#{registro.incidencia.anuncio}"/> 
+			<label th:text="${accion}" /> 
+			<label th:text="#{registro.incidencia.anuncio.obra}"/>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="panel col-sm-12 text-left">
+				<label id="ultimaSuspencion" class="hidden" th:text="@{${ultimaSuspencion} != null ? ${ultimaSuspencion} : 0 } "></label>
+					<label class="control-label col-sm-5 small" for="fecCancelacion" th:text="#{reg.incidencia.fecha.cancelacion}" />
+					<div class="col-sm-6">
+						<div class="form-group datepicker-group">
+							<input class="form-control input-sm" id="fecCancelacion" type="text"  readonly="readonly" style="background: white; cursor: default !important;">
+								<span class="glyphicon glyphicon-calendar" aria-hidden="true" /> 
+							</input>
+						</div>
+					</div>
+					<div class="col-sm-12 text-left">
+						<p id="msgefecCancelacion" class="col-sm-12 red small" />
+					</div>
+				</div>
+			</div>
+			<div class="alert alert-info small" th:text="#{info.cantidadesobrasuperficie}">
+			</div>
+			<div class="row">
+				<div class="panel col-sm-12 text-left">
+					<label class="control-label col-sm-5 small" for="txtMontoEjercido" th:text="#{reg.incidencia.monto.ejercido}" />
+					<div class="col-sm-6">
+						<div id="divMonto" class="input-group">
+							<span class="input-group-addon small" th:text="#{reg.obra.currency}"/> 
+							<input id="txtMontoEjercido" type="text" class="form-control input-sm" aria-label="Amount (to the nearest dollar)" placeholder="Monto ejercido a la fecha" maxlength="15"/> 
+							<span class="input-group-addon small" th:text="#{reg.obra.mxn}"> </span>
+						</div>
+						<span id="msgMontoEjercido" class="col-sm-12 red hidden small" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div id="pnlMotivoCancelacion" class="form-group col-sm-12 text-left">
+					<label class="control-label col-sm-5 small" for="motivoCancela" th:text="#{reg.incidencia.motivo.cancelacion}" />
+					<div class="col-sm-6">
+						<select id="motivo" class="form-control small input-sm">
+							<option value="0" th:text="#{reg.obra.default.select}"></option>
+							<option th:each="motivo : ${motivos}" th:value="${motivo.cveMotivo}" th:text="${motivo.desMotivo}"></option>
+						</select>
+					</div>
+					<div class="col-md-12 text-left small">
+						<p id="msgeMotivoCancela" class="col-sm-12 red" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer" />
+	</div>
+</div>
+
+</html>

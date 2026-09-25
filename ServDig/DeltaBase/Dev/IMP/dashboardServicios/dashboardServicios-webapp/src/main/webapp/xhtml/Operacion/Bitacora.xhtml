@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/templeates/layoutMenu.xhtml">
+	<ui:define name="content">
+		<h:form id="form">
+			<!-- PANEL DE FILTRO DE BUSQUEDA -->
+			<p:fieldset legend="Filtro de búsqueda">
+				<h:panelGrid columns="5">
+					<h:outputLabel for="fechaIni" value="Fecha inicio:&nbsp;&nbsp;"
+						title="Fecha de inicio" escape="false" />
+					<p:calendar readOnlyInputText="true" id="fechaIni" required="false"
+						title="Fecha de inicio."
+						requiredMessage="El campo desde es obligatorio." locale="es"
+						pattern="dd/MM/yyyy HH:mm" showButtonPanel="true" navigator="true"
+						value="#{bitacora.filtroBitacoraDTO.fechaInico}" showOn="button" />
+					<h:outputLabel value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+						escape="false" />
+					<h:outputLabel for="fechaFin" value="   Fecha final: "
+						title="Fecha de fin." />
+					<p:calendar readOnlyInputText="true" id="fechaFin" required="false"
+						title="Fecha de fin."
+						requiredMessage="El campo desde es obligatorio." locale="es"
+						pattern="dd/MM/yyyy HH:mm" showButtonPanel="true" navigator="true"
+						value="#{bitacora.filtroBitacoraDTO.fechaFin}" showOn="button" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="2">
+					<h:outputLabel for="lstApp" value="Sistemas:" title="Sistemas" />
+					<p:selectOneMenu id="lstApp"
+						value="#{bitacora.filtroBitacoraDTO.cveSistema}" effect="fade">
+						<f:selectItem itemLabel="Seleccione" itemValue="" />
+						<f:selectItems
+							value="#{bitacora.filtroBitacoraDTO.lstAplicaciones}" var="app"
+							itemLabel="#{app.cveSistema} - #{app.desSistema}"
+							itemValue="#{app.cveSistema}" />
+						<f:ajax listener="#{bitacora.seleccionaServicios}"
+							render="lstServicios lstOperaciones " />
+					</p:selectOneMenu>
+
+					<h:outputLabel for="lstServicios" value="Servicios:"
+						title="Servicios" />
+					<p:selectOneMenu id="lstServicios"
+						value="#{bitacora.filtroBitacoraDTO.cveServicio}" effect="fade">
+						<f:selectItem itemLabel="Seleccione" itemValue="" />
+						<f:selectItems value="#{bitacora.filtroBitacoraDTO.lstServicios}"
+							var="app" itemLabel="#{app.desServicio}"
+							itemValue="#{app.cveServicio}" />
+						<f:ajax listener="#{bitacora.seleccionaOperaciones}"
+							render="lstOperaciones" />
+					</p:selectOneMenu>
+
+					<h:outputLabel for="lstOperaciones" value="Operaciones:"
+						title="Operaciones" />
+					<p:selectOneMenu id="lstOperaciones"
+						value="#{bitacora.filtroBitacoraDTO.cveOperacion}" effect="fade">
+						<f:selectItem itemLabel="Seleccione" itemValue="" />
+						<f:selectItems
+							value="#{bitacora.filtroBitacoraDTO.lstOperaciones}" var="app"
+							itemLabel="#{app.cveOperacion} - #{app.desOperacion}"
+							itemValue="#{app.cveOperacion}" />
+					</p:selectOneMenu>
+				</h:panelGrid>
+			</p:fieldset>
+			<div style="text-align: right">
+				<p:commandButton value="Buscar"
+					actionListener="#{bitacora.buscaBitacoras}"
+					update="resultados,graficaPanel, msgError" />
+			</div>
+			<br></br>
+
+			<!-- PANEL DE TABLA DE RESULTADOS -->
+			<p:outputPanel id="resultados">
+				<p:fieldset legend="Resultados"
+					rendered="#{bitacora.muestraResultado}">
+					<p:dataTable var="bitacoraRes"
+						value="#{bitacora.filtroBitacoraDTO.lstBitacora}"
+						sortBy="#{bitacoraRes.idBitacora}" sortOrder="#{bitacoraRes.idBitacora}" 
+						paginator="true"
+						scrollable="true" scrollWidth="850" resizableColumns="true"
+						emptyMessage="No se ha localizado información con los filtros proporcionados"
+						paginatorPosition="bottom" rows="25"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="25,50,100">
+
+						<p:column sortBy="#{bitacoraRes.idBitacora}" style="width:300px">
+							<f:facet name="header">
+								<br></br>Id 
+									</f:facet>
+									#{bitacoraRes.idBitacora}
+					 			</p:column>
+						<p:column headerText="Sistema" style="width:300px">
+									#{bitacoraRes.cveSistema}
+					 			</p:column>
+						<p:column headerText="Servicio" style="width:300px">
+									#{bitacoraRes.cveServicio}
+					 			</p:column>
+						<p:column headerText="Operación" style="width:300px">
+									#{bitacoraRes.cveOperacion}
+					 			</p:column>
+						<p:column headerText="Inicio" style="width:300px">
+							<h:outputText value="#{bitacoraRes.fhInicio}">
+								<f:converter converterId="ConverterGregorianToDate" />
+							</h:outputText>
+						</p:column>
+						<p:column headerText="Fin" style="width:300px">
+							<h:outputText value="#{bitacoraRes.fhFinal}">
+								<f:converter converterId="ConverterGregorianToDate" />
+							</h:outputText>
+						</p:column>
+						<p:column headerText="ms" style="width:50px">
+									#{bitacoraRes.tiempoMilisegundos}
+								</p:column>
+						<p:column headerText="seg" style="width:50px">
+									#{bitacoraRes.tiempoSegundos}
+					 			</p:column>
+						<p:column headerText="Entradas" style="width:80px">
+							<p:commandButton icon="ui-icon-search" iconPos="center"
+								update=":form:detEntrada" oncomplete="dlg.show()">
+								<f:setPropertyActionListener value="#{bitacoraRes}"
+									target="#{bitacora.detalleSeleccionadoLogEntrada}" />
+							</p:commandButton>
+						</p:column>
+						<p:column headerText="Salidas" style="width:80px">
+							<p:commandButton icon="ui-icon-search" iconPos="center"
+								update=":form:detSalida" oncomplete="dlgSalida.show()">
+								<f:setPropertyActionListener value="#{bitacoraRes}"
+									target="#{bitacora.detalleSeleccionadoLogSalida}" />
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</p:fieldset>
+			</p:outputPanel>
+			<br></br>
+
+			<!-- PANEL DE GRAFICA DE OPERACION -->
+			<p:outputPanel id="graficaPanel">
+				<p:fieldset legend="Gráfica de operación del servicio"
+					rendered="#{bitacora.muestraGrafica}">
+					<p:lineChart value="#{bitacora.linearModel}" legendPosition="ne"
+						title="Servicio" minY="0" style="height:500px" />
+				</p:fieldset>
+			</p:outputPanel>
+			<!-- VENTANA DE DIALOGO PARA LOG DE ENTRADA -->
+			<p:dialog header="Parámetros de Entrada" widgetVar="dlg"
+				position="center" width="1100" height="700" resizable="TRUE"
+				showEffect="fade" hideEffect="fade">
+				<h:panelGrid columns="1" id="detEntrada">
+					<h:outputText
+						value="#{bitacora.detalleSeleccionadoLogEntrada.entrada}"
+						escape="false" />
+				</h:panelGrid>
+			</p:dialog>
+
+			<!-- VENTANA DE DIALOGO PARA LOG DE SALIDA -->
+			<p:dialog header="Resultado del Servicio" widgetVar="dlgSalida"
+				position="center" width="1100" height="700" resizable="TRUE"
+				showEffect="fade" hideEffect="fade">
+				<h:panelGrid columns="1" id="detSalida">
+					<h:outputText
+						value="#{bitacora.detalleSeleccionadoLogSalida.salida}"
+						escape="false" />
+				</h:panelGrid>
+			</p:dialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
+

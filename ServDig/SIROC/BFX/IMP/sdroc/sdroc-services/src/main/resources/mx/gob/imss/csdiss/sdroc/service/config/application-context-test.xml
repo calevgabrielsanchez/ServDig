@@ -1,0 +1,50 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.1.xsd"
+       profile="testing">
+     
+    <!-- con esto indicamos a Spring que tome en cuenta todas las anotaciones  @Required,
+	@Autowired, @PostConstruct, @PreDestroy and @Resource que coloquemos en nuestros beans de servicios. -->  
+	<context:annotation-config />
+	<!-- Se buscan todos los archivos de configuracion de beans de servicios. Si el modulo maven de los servicios es
+			demasiado grande o se desea dividir por razones de control, los beans de servicio seran tomados automaticamente
+			siempre y cuando vivan dentro del paquete base mx.grupocp.wimse.service-->
+	<import resource="classpath*:mx/gob/imss/csdiss/sdroc/service/**/*-config.xml" />
+
+
+	<!-- Usamos el mismo truco para obtener los archivos de configuración de beans de obtención de datos (típicamente Daos) -->
+	<import resource="classpath*:mx/gob/imss/csdiss/sdroc/data/**/*-config.xml" />
+
+
+
+	<!-- Creamos un "advice" para indicar como se comportara la transaccion segun los metodos que se llamen.
+		Igualmente, por default, si estos metodos lanzan un RuntimeException o un Error se hara rollback a la transaccion. 
+		Si para cierto tipo de excepciones NO se desea hacer rollback se debe especificar en no-rollback-for -->       
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	    <tx:attributes>
+	        <!-- Los metodos de consulta crea transacciones de solo lectura. -->
+	        <tx:method name="busca*" read-only="true"/>            
+	        <tx:method name="consulta*" read-only="true"/>
+	        <!-- todo lo demas tiene configuracion default -->
+	        <tx:method name="*" />	        
+	    </tx:attributes>
+	</tx:advice>
+	
+	<!-- Por ultimo indicamos cuando debe entrar en accion nuestro advice. En este caso sera al ejecutar
+		cualquier metodo dentro de cualquier clase que en su linea de paquetes incluya uno que se llame "service" -->
+	<aop:config>
+	    <aop:pointcut id="pointcutServicios" expression="execution(* mx..*service..*.*(..))"/>
+	    <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcutServicios" order="1"/>
+	</aop:config>       
+</beans>	

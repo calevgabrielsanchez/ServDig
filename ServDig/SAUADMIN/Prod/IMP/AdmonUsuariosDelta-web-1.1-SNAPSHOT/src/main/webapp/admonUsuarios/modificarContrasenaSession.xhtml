@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Portal de Servicios IMSS Digital</title>
+	<link rel="icon" href="http://serviciosdigitales.imss.gob.mx/delta/resources/iconos/favicon.ico" />
+	<!-- Bootstrap -->
+	<link type="text/css"
+		href="http://serviciosdigitales.imss.gob.mx/delta/resources/estilos/bootstrap/bootstrap.min.css"
+		rel="stylesheet" />
+	<!-- IMSS -->
+	<link type="text/css"
+		href="http://serviciosdigitales.imss.gob.mx/delta/resources/estilos/imss/reset.css"
+		rel="stylesheet" />
+	<link type="text/css"
+		href="http://serviciosdigitales.imss.gob.mx/delta/resources/estilos/imss/style.css"
+		rel="stylesheet" />
+	<meta http-equiv="refresh"
+		content="${pageContext.session.maxInactiveInterval};url=index.jsp"></meta>
+
+
+
+	<script language="javascript">
+		function desbloquear() {
+			wait.hide();
+		}
+
+		function bloquea() {
+			wait.show();
+		}
+	</script>
+
+</h:head>
+
+<h:body>
+	<div class="site_position_center_fixed">
+		<div id="cuerpo_principal">
+
+			<ui:insert name="encabezado">
+				<ui:include src="../plantillas/encabezado.xhtml" />
+			</ui:insert>
+			<h:form>
+				<ace:dialog id="wait" header="Mensaje del sistema" widgetVar="wait"
+					closable="false" modal="true" draggable="false" showEffect="clip"
+					hideEffect="fade" width="300" visible="false" resizable="false">
+
+					<h:form id="inputFormWait">
+						<h:panelGrid columns="1" width="100%">
+							<h:outputLabel id="lbWait"
+								value="Su petición se está procesando... Espere un momento" />
+						</h:panelGrid>
+					</h:form>
+
+				</ace:dialog>
+
+			</h:form>
+			<div id="cuerpo">
+				<div id="portal" class="contenedor">
+					<div class="row" style="width: 100% !important">
+						<div align="center" id="generalTitulo">
+							<h3>Recuperación de Contraseña</h3>
+						</div>
+						<h:form id="formaCredenciales">
+							<fieldset style="padding: 10px; font-size: 10px;">
+				            <ace:panel header="Datos a consultar">
+				
+									<div align="center" id="general">
+				
+										<h:panelGrid id="pnDatosCredenciales" columns="3" width="100%">
+											<h:outputLabel value="CURP:" id="lbCURP" />
+											<h:inputText 
+												value="#{recuperacionConstrasena.curp}"
+												id="txCurp" size="18"
+												maxlength="18"
+												style="text-transform: uppercase" 
+												onchange="document.getElementById('formaRegistroSolicitudCuenta:txRegSolicitudCuenta').value='';document.getElementById('formaRegistroSolicitudCuenta:txApPatRegSolicitudCuenta').value='';document.getElementById('formaRegistroSolicitudCuenta:txApMatRegSolicitudCuenta').value='';"/>
+												<h:outputLabel value="" id="lbComplemeto1" />
+				
+											<h:outputLabel value="Correo Electrónico:"	id="lbMail" />
+											<h:inputText
+												value="#{recuperacionConstrasena.correo}"
+												id="txMailRegSolicitudCuenta" maxlength="49"
+												style="text-transform: lowercase"></h:inputText>
+											<h:outputLabel value="@imss.gob.mx" id="lbComplemetoCorreo" />
+				
+											<h:outputLabel value="Codigo Seguridad:" id="lbCaptcha" />
+											<h:inputText value="#{recuperacionConstrasena.patron}" id="txPatron" maxlength="49"></h:inputText>
+											<h:outputLabel value="" id="lbComplemeto2" />
+										</h:panelGrid>
+									</div>
+									<div align="center" id="general"  oncopy="return false;" onpaste="return false;">
+										<img src="#{request.contextPath}/jcaptcha.jpg" />
+									</div>
+									<div align="center" id="general2" oncopy="return false;" onpaste="return false;">
+										<h:panelGrid id="pnBtnCredeiciales" columns="1" width="40%">
+											<h:commandButton id="bValida"
+												action="#{recuperacionConstrasena.recuperaContrasena}" onclick="bloquea();" 
+												value="Recuperar contraseña" styleClass="mboton" >
+											</h:commandButton>
+										</h:panelGrid>
+									</div>
+								</ace:panel>
+							</fieldset>
+						</h:form>
+				
+				        <ace:dialog id="msg"
+				                           header="Alerta"
+				                           widgetVar="sampleDialog"
+				                           closable="false"
+				                           modal="true"
+				                           draggable="false"
+				                           showEffect="clip"
+				                           hideEffect="fade"
+				                           width="400"
+				                           visible="#{recuperacionConstrasena.msg}">
+				            
+				            <h:form id="inputForm">
+				                <h:panelGrid columns="2" width="100%">
+				                    <h:outputLabel id="msg" value="#{recuperacionConstrasena.msgDesc}"/>
+				                </h:panelGrid>
+				
+				                <h:panelGrid width="100%" style="text-align: center;">
+				                    <h:commandButton id="submit" value="Aceptar" onclick="sampleDialog.hide();desbloquear();" actionListener="#{recuperacionConstrasena.hide}"/>
+				                </h:panelGrid>
+				            </h:form>
+				            
+				        </ace:dialog>			
+					</div>
+				</div>
+			</div>
+
+			<ui:insert name="footer">
+				<ui:include src="../plantillas/pie.xhtml" />
+			</ui:insert>
+		</div>
+	</div>
+</h:body>
+</html>
+
+
+
+
+
+
+

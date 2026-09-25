@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:request type="XML">
+        <con4:schema ref="Movimiento06SINDOProject/schemas/Movimiento_riss" element="MovimientoRiss" xmlns:con4="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:request>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>jms</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>jms://172.24.116.37:15051,172.24.116.37:15052/jms.GeneralConnectionFactory/jms.MovimientoRissDistributedQueue</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific xsi:type="jms:JmsEndPointConfiguration">
+      <jms:is-queue>true</jms:is-queue>
+      <jms:is-secure>false</jms:is-secure>
+      <jms:inbound-properties>
+        <jms:response-required>false</jms:response-required>
+        <jms:XA-required>false</jms:XA-required>
+        <jms:transaction-timeout>600</jms:transaction-timeout>
+      </jms:inbound-properties>
+      <jms:jms-service-account ref="Movimiento06SINDOProject/DeltaSindoAccount"/>
+      <jms:request-encoding>UTF-8</jms:request-encoding>
+      <jms:jndi-timeout>0</jms:jndi-timeout>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con:pipeline type="request" name="PipelinePairNode1_request" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:stage name="stage1">
+        <con:context>
+          <con1:varNsDecl namespace="http://www.mx.gob.imss.ctirss.delta/movimientoRiss" prefix="mov"/>
+        </con:context>
+        <con:actions>
+          <con1:log xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-9064864947420761707--28d2c4e8.145f16906d0.-7fd0</con2:id>
+            <con1:logLevel>error</con1:logLevel>
+            <con1:expr>
+              <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$body</con2:xqueryText>
+            </con1:expr>
+            <con1:message>BODY RECIBIDO</con1:message>
+          </con1:log>
+          <con1:assign varName="xmlMovimiento" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-9064864947420761707--28d2c4e8.145f16906d0.-7f9a</con2:id>
+            <con1:expr>
+              <con4:xqueryTransform xmlns:con4="http://www.bea.com/wli/sb/stages/config">
+                <con4:resource ref="Movimiento06SINDOProject/xquery/MovimientoRissXML_mfl"/>
+                <con4:param name="movimientoRiss1">
+                  <con4:path>$body/mov:MovimientoRiss</con4:path>
+                </con4:param>
+              </con4:xqueryTransform>
+            </con1:expr>
+          </con1:assign>
+          <con2:log>
+            <con1:id>_ActionId-9064864947420761707--28d2c4e8.145f16906d0.-7f6b</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con1:xqueryText>$xmlMovimiento</con1:xqueryText>
+            </con2:expr>
+            <con2:message>XML TRANSFORMADO</con2:message>
+          </con2:log>
+          <con3:replace varName="body" contents-only="true">
+            <con1:id>_ActionId-9064864947420761707--28d2c4e8.145f16906d0.-7f38</con1:id>
+            <con3:location>
+              <con1:xpathText>.</con1:xpathText>
+            </con3:location>
+            <con3:expr>
+              <con1:xqueryText>$xmlMovimiento</con1:xqueryText>
+            </con3:expr>
+          </con3:replace>
+          <con3:mflTransform>
+            <con1:id>_ActionId-9064864947420761707--28d2c4e8.145f16906d0.-7f0c</con1:id>
+            <con3:type>XML-To-nonXML</con3:type>
+            <con3:sourceExpr>
+              <con1:xqueryText>$body/Riss</con1:xqueryText>
+            </con3:sourceExpr>
+            <con3:mfl-resource ref="Movimiento06SINDOProject/mfl/Movimiento_riss"/>
+            <con3:assign-variable>trama</con3:assign-variable>
+          </con3:mflTransform>
+          <con3:javaCallout varName="resultadoTransform">
+            <con1:id>_ActionId-9064864947420761707--28d2c4e8.145f16906d0.-7ee1</con1:id>
+            <con3:archive ref="Movimiento06SINDOProject/jar/layout-callout"/>
+            <con3:className>mx.gob.imss.ctirss.delta.gestion.clasificacion.callouts.LayoutCallOut</con3:className>
+            <con3:method>public static java.lang.String generateLayout(java.lang.String, [B)</con3:method>
+            <con3:expr>
+              <con1:xqueryText>'/ctirss/w/servicios4/srvs04/domains/d_osb/delta/riss/movimientosRiss.txt'</con1:xqueryText>
+            </con3:expr>
+            <con3:expr>
+              <con1:xqueryText>$trama</con1:xqueryText>
+            </con3:expr>
+          </con3:javaCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="response" name="PipelinePairNode1_response" xmlns:con="http://www.bea.com/wli/sb/pipeline/config"/>
+    <con:flow xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:pipeline-node name="PipelinePairNode1">
+        <con:request>PipelinePairNode1_request</con:request>
+        <con:response>PipelinePairNode1_response</con:response>
+      </con:pipeline-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>

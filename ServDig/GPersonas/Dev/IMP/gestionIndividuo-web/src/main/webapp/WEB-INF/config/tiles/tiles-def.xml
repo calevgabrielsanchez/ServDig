@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	
+	<definition name="GestionPersonas" template="/WEB-INF/views/persona/principal.jsp">
+		<put-attribute name="title" value=" M&#x00f3;dulo Gesti&#x00f3;n de personas - Portal DELTA  " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/persona/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/persona/sub-encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/persona/pie.jsp" />
+	</definition>
+		
+	<definition name="registroPersonaFisica" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/registroPersonaFisica.jsp "/>
+	</definition>
+	
+	<definition name="registroPersonaFisicaCaptura" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/registroPersonaFisicaCaptura.jsp "/>
+	</definition>
+	
+	<definition name="registroPersonaMoralCaptura" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/registroPersonaMoralCaptura.jsp "/>
+	</definition>
+	
+	<definition name="registroPersonaMoral" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/registroPersonaMoral.jsp "/>
+	</definition>
+	
+	<definition name="busquedaPersonaFisica" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/busquedaPersonaFisica.jsp "/>
+	</definition>
+		<definition name="busquedaEmbebidaPersonaFisica" extends="GestionPersonas">
+			<put-attribute name="contenido" value="/WEB-INF/views/persona/busquedaEmbebidaPersonaFisica.jsp "/>
+		</definition>
+		
+	<definition name="busquedaPersonaMoral" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/busquedaPersonaMoral.jsp "/>
+	</definition>
+		<definition name="busquedaEmbebidaPersonaMoral" extends="GestionPersonas">
+			<put-attribute name="contenido" value="/WEB-INF/views/persona/busquedaEmbebidaPersonaMoral.jsp "/>
+		</definition>
+	
+	<definition name="registroPersonaFisicaIMSSResultado" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/registroPersonaFisicaIMSSResultado.jsp "/>
+	</definition>
+	
+	<definition name="confirmacionRegistroPersona" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/confirmacionRegistroPersona.jsp "/>
+	</definition>
+	
+	<definition name="registroPersonaMoralIMSSResultado" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/registroPersonaMoralIMSSResultado.jsp "/>
+	</definition>
+
+	<definition name="busquedaSolicitud" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/busquedaSolicitud.jsp" />
+	</definition>
+
+	<definition name="resultadoBusquedaSolicitud" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/resultadoBusquedaSolicitud.jsp" />
+	</definition>
+
+	<definition name="CargaMasivaFisica" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/CargaMasivaFisica.jsp" />
+	</definition>
+	
+	<definition name="CargaMasivaMoral" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/CargaMasivaMoral.jsp" />
+	</definition>
+	
+	<definition name="bienvenido" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/bienvenido.jsp" />
+	</definition>
+	
+	<definition name="orquestador" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/orquestador.jsp" />
+	</definition>
+
+	<definition name="modificacionPersonaFisica" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/modificacionPersonaFisica.jsp" />
+	</definition>
+
+	<definition name="PaginaInicialPersonas" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/PaginaInicialPersonas.jsp" />
+	</definition>
+
+	<definition name="mensajes" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/mensajes.jsp "/>
+	</definition>
+
+	<definition name="busquedaComprobanteSolicitud" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/busquedaComprobanteSolicitud.jsp "/>
+	</definition>
+	
+ 	<definition name="busquedaDatosComplementariosPersonaFisica" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/busquedaDatosComplementariosPersonaFisica.jsp "/>
+	</definition>
+	
+ 	<definition name="busquedaDatosComplementariosPersonaMoral" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/busquedaDatosComplementariosPersonaMoral.jsp "/>
+	</definition>
+	
+	
+	<!-- Componente -->
+		
+	<definition name="componente.base.definition" template="/WEB-INF/views/layout/main-embebed.jsp">
+	</definition>
+	
+	<definition name="simple.base.definition" template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title" value=" M&#x00f3;dulo Gesti&#x00f3;n de personas - Portal DELTA " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	
+	<definition name="detalleIndividuo" extends="componente.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/individuo/DetalleIndividuo.jsp "/>
+	</definition>
+	
+	<definition name="detalleIndividuoMoral" extends="componente.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/individuo/DetalleIndividuoMoral.jsp "/>
+	</definition>
+	
+	<definition name="individuoTest" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/individuo/test/IndividuoTest.jsp "/>
+	</definition>
+	
+		
+		
+		
+		<!-- Definiciones de las vistas de errores generales -->
+	
+	<definition name="error" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="databaseError" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="internalError" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="500" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="404" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+		
+</tiles-definitions>

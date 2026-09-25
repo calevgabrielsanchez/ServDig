@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Administración de Usuarios - Activación / Desactivación</title>
+        <link href="styles/style.css" type="text/css" rel="stylesheet" />
+    </h:head>
+    <ui:composition template="../plantillas/plantilla.xhtml">
+    <ui:define name="body">
+        <h:form id="selectForm">
+          <div id ="titulo" align="center">
+            <h3>Administración de Usuarios - Activación / Desactivación</h3>
+           </div> 
+           <style type="text/css">
+             /* Important required because row */
+             .ui-datatable-odd {
+               background-color:lightgray !important;
+               background-position-y: -1400px; /* IE7 hack */
+               }
+           </style>
+            <ace:dataTable value="${usuarioBean.usuarios}" 
+            		var="usuario" id="usuarios"
+            		stateMap="${usuarioBean.stateMap}" 
+            		selectionMode="single"
+            		doubleClickSelect="#{usuarioBean.dblClick}"
+            		rendered="#{usuarioBean.selectionMode eq 'single' and usuarioBean.instantUpdate}">
+                <ace:ajax event="select" render="@this selectForm:status" execute="@this" />
+
+                
+                <ace:column>
+                    <f:facet name="header">
+                        ID
+                    </f:facet>
+                    ${usuario.uid}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Nombre
+                    </f:facet>
+                    ${usuario.nombres}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Apellido Paterno
+                    </f:facet>
+                    ${usuario.apellidoPaterno}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Apellido Materno
+                    </f:facet>
+                    ${usuario.apellidoMaterno}
+                </ace:column>
+                <ace:column>
+                	<f:facet name="header">
+                		Area
+                	</f:facet>
+                	${usuario.perfil.descripcion}
+                </ace:column>
+                <ace:column>
+                	<f:facet name="header">CURP</f:facet>
+                ${usuario.curp}
+                </ace:column>
+                    <ace:column>
+                	<f:facet name="header">Delegación</f:facet>
+                ${usuario.claveDelegacion}
+                </ace:column>
+                    <ace:column>
+                	<f:facet name="header">SubDelegación</f:facet>
+                ${usuario.claveSubDelegacion}
+                </ace:column>
+                    <ace:column>
+                	<f:facet name="header">UMF</f:facet>
+                ${usuario.claveUMF}
+                </ace:column>
+                <ace:column>
+                	<f:facet name="header">Estatus</f:facet>
+                ${usuario.activo==true?"Activo":"Inactivo"}
+                </ace:column>
+              
+            </ace:dataTable>
+            <br/>
+            
+         <h:panelGrid id="status" columns="4">           			
+           </h:panelGrid>
+            <br/>
+            <div id ="actualizar" align="center">
+            <h:commandLink action="${usuarioBean.actualizarTabla}">
+                 <h:graphicImage value="../imagenes/recargar.jpg" style="height: 41px; width: 43px; "></h:graphicImage>
+              </h:commandLink>
+            </div>  
+            <div id ="separator" align="center">
+            <h:graphicImage value="../imagenes/blanco1.png" style="width: 138px; "/>
+            </div>
+           <div id ="activar" align="center">
+                <h:commandButton action="${usuarioBean.desactivarUsuario}"  value= "Activar/Desactivar" styleClass="mboton"/>                                    
+   			</div>   
+       </h:form>
+  </ui:define>
+  
+  </ui:composition>
+ </html>           

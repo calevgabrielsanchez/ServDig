@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. --><xs:schema xmlns:tns="http://inactividad.service.imss.gob.mx/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://inactividad.service.imss.gob.mx/">
+
+<xs:element name="certificacionInactividad" type="tns:certificacionInactividad"/>
+
+<xs:element name="certificacionInactividadResponse" type="tns:certificacionInactividadResponse"/>
+
+<xs:complexType name="certificacionInactividad">
+<xs:sequence>
+<xs:element name="Mensaje" type="tns:messageWSInactividad" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="messageWSInactividad" final="extension restriction">
+<xs:sequence>
+<xs:element name="nss" type="xs:string"/>
+<xs:element name="curp" type="xs:string" nillable="true" minOccurs="0"/>
+<xs:element name="prestacionSolicitada" type="xs:string"/>
+<xs:element name="numeroResolucion" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="certificacionInactividadResponse">
+<xs:sequence>
+<xs:element name="Respuesta" type="tns:respuestaWSInactividad" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="respuestaWSInactividad">
+<xs:complexContent>
+<xs:extension base="tns:respuestaWS">
+<xs:sequence>
+<xs:element name="infoInactividad" type="tns:InfoInactividad" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="respuestaWS">
+<xs:sequence>
+<xs:element name="codigoError" type="xs:int" minOccurs="0"/>
+<xs:element name="mensajeError" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="InfoInactividad" final="extension restriction">
+<xs:sequence>
+<xs:element name="nss" type="xs:string"/>
+<xs:element name="curp" type="xs:string" minOccurs="0"/>
+<xs:element name="prestacionSolicitada" type="xs:string"/>
+<xs:element name="fechaSolicitud" type="xs:string"/>
+<xs:element name="numeroResolucion" type="xs:int"/>
+<xs:element name="fechaSituacion" type="xs:string" minOccurs="0"/>
+<xs:element name="claveResolucion" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

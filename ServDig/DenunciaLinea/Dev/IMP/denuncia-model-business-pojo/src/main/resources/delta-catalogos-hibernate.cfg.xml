@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+  <property name="hibernate.connection.datasource">ds_ora_denuncia_view</property>
+  <property name="hibernate.show_sql">true</property>
+  <property name="hibernate.format_sql">true</property>
+  <property name="hibernate.archive.autodetection">class, hbm</property>
+  <mapping class="mx.gob.imss.ctirss.correccion.model.Clase"/>
+  <mapping class="mx.imss.ctirss.menu.model.Menu" />
+  <mapping class="mx.imss.ctirss.model.DltDatospatron"/>
+	<mapping class="mx.imss.ctirss.model.DltDenuncia"/>
+	<mapping class="mx.imss.ctirss.model.DltFormapago"/>
+	<mapping class="mx.imss.ctirss.model.DltInfotrabajo"/>
+	<mapping class="mx.imss.ctirss.model.DltMotivodenuncia"/>
+	<mapping class="mx.imss.ctirss.model.DltPersona"/>
+	<mapping class="mx.imss.ctirss.model.DltUsuarioden"/>
+	<mapping class="mx.imss.ctirss.model.DltNroFolio"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcActEconomica"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcDelegacion"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcDivision"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcGrupo"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcMenu"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcMenusistema"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcMotivodenuncia"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcPerfilUsuario"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcPregunta"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcRol"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcSistema"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcStatus"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcSubdelegacion"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcTipoconcepto"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcTipodenunciante"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcTipodocumento"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcTiposformapago"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcUsuario"/>
+	<mapping class="mx.imss.ctirss.catalogos.model.DlcUsuarioFuncionario"/>
+	
+	<mapping class="mx.gob.imss.ctirss.domiciliosInegi.model.DomicilioGeografico"/>
+		
+<!-- 
+
+  <property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+  <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</property>
+  <property name="hibernate.current_session_context_class">jta</property>
+ -->    
+ </session-factory>
+</hibernate-configuration>

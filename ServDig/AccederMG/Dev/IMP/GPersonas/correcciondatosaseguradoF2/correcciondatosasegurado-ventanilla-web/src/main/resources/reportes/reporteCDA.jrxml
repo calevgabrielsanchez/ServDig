@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteCDA" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ae0a47e1-9fac-4e34-bb58-751e9bdc499d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<title>
+		<band height="595" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="50" height="50" backcolor="#333333" uuid="efcc4f50-b489-40b9-b003-cd9300d56e56"/>
+				<text><![CDATA[.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="545" width="50" height="50" backcolor="#333333" uuid="52666650-4bd2-4577-99d5-fef270da6fe4"/>
+				<text><![CDATA[.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="792" y="0" width="50" height="50" backcolor="#333333" uuid="7c5a7fe5-4322-4964-9412-92b331a60849"/>
+				<text><![CDATA[.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="792" y="545" width="50" height="50" backcolor="#333333" uuid="5c422b57-fd1b-4647-8e74-e4a7bc9f3cff"/>
+				<text><![CDATA[.]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="100" y="0" width="200" height="595" uuid="1d58c248-16ad-4935-9db9-692d5b23d4fa"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="100" width="842" height="200" uuid="713968ce-97ad-4c87-81da-d999325cbe0d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="100" y="100" width="150" height="30" uuid="06a705c4-9496-46d0-96f1-a8b54f8a0ec7"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[LANDSCAPE]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>

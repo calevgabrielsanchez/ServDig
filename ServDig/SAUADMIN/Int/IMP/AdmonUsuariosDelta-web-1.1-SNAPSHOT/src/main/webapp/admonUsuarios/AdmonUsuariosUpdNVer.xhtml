@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Administracion Usuarios - Actualizacion</title>
+        <link href="styles/style.css" type="text/css" rel="stylesheet" />
+    </h:head>
+    <ui:composition template="../plantillas/plantilla.xhtml">
+    <ui:define name="body">
+        <h:form id="selectForm">
+        <div id ="titulo" align="center">
+            <h3>Administracion Usuarios - Actualizacion</h3>
+         </div>
+            <style type="text/css">
+                /* Important required because row */
+               .ui-datatable-odd {
+                 background-color:lightgray !important;
+                 background-position-y: -1400px; /* IE7 hack */
+               }
+            </style>   
+            <ace:dataTable value="${usuarioBean.usuarios}" 
+            		var="usuario" id="usuarios"
+            		stateMap="${usuarioBean.stateMap}" 
+            		selectionMode="single"
+            		doubleClickSelect="#{usuarioBean.dblClick}"
+            		rowSelectListener="#{usuarioBean.handleSelectUsuario}"
+            		rendered="#{usuarioBean.selectionMode eq 'single' and usuarioBean.instantUpdate}">
+                <ace:ajax event="select" render="@this selectForm:status" execute="@this" />
+                
+                <ace:column>
+                    <f:facet name="header">
+                        ID
+                    </f:facet>
+                    ${usuario.uid}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Nombre
+                    </f:facet>
+                    ${usuario.nombres}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Apellido Paterno
+                    </f:facet>
+                    ${usuario.apellidoPaterno}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Apellido Materno
+                    </f:facet>
+                    ${usuario.apellidoMaterno}
+                </ace:column>
+                <ace:column>
+                	<f:facet name="header">
+                		Area
+                	</f:facet>
+                	  ${usuario.perfil.descripcion}                	                  
+                </ace:column>
+                <ace:column>
+                	<f:facet name="header">Correo Electronico</f:facet>
+                ${usuario.correoElectronico}
+                </ace:column>
+                <ace:column>
+                	<f:facet name="header">CURP</f:facet>
+                ${usuario.curp}
+                </ace:column>
+                    <ace:column>
+                	<f:facet name="header">Delegacion:
+                	</f:facet>
+                ${usuario.claveDelegacion}
+                </ace:column>
+                    <ace:column>
+                	<f:facet name="header">SubDelegacion
+                    </f:facet>
+                ${usuario.claveSubDelegacion}
+                </ace:column>
+                    <ace:column>
+                	<f:facet name="header">UMF</f:facet>
+                ${usuario.claveUMF}
+                </ace:column>  
+            </ace:dataTable>
+            <br/>
+                <div id ="activar" align="center">
+                   <!--  <h:commandButton actionListener="${usuarioBean.actualizarTabla}" value="Refrescar" styleClass="mboton"/>  -->
+                   <h:commandLink action="${usuarioBean.actualizarTabla}">
+                         <h:graphicImage value="../imagenes/recargar.jpg" style="height: 41px; width: 43px; "></h:graphicImage>
+                     </h:commandLink>
+                 </div>      
+         <br/>     
+         <br/>
+                <h:panelGrid id="status" columns="9">
+            	<h:outputLabel value=" " id="blancoUno"/>
+                <h:outputLabel for="multiRowOut" value="Matricula:"/>
+                <ui:repeat id="multiRowOut" value="#{usuarioBean.multiRow}" var="selUsr">
+                <h:inputText id="input4" value="#{selUsr.uid}" disabled="true" />                   
+                </ui:repeat>
+                
+                <h:outputLabel value=" " id="blancoDos"/>            
+                <h:outputLabel for="multiRowOut2" value="Nombre:"/>
+               	<ui:repeat id="multiRowOut2" value="#{usuarioBean.multiRow}" var="selUsr">
+				<h:inputText id="input4" value="#{selUsr.nombres}" required="true" />
+				</ui:repeat>
+			  	
+			  	<h:outputLabel value=" " id="blancoTres"/>				
+                <h:outputLabel for="multiRowOut3" value="Ap. Paterno"/>
+               	 <ui:repeat id="multiRowOut3" value="#{usuarioBean.multiRow}" var="selUsr">
+					<h:inputText id="input3" value="#{selUsr.apellidoPaterno}" required="true" />
+				</ui:repeat>
+				
+				 <h:outputLabel value=" " id="blancoCuatro"/>			
+                 <h:outputLabel for="multiRowOut4" value="Ap. Materno"/>
+               	 <ui:repeat id="multiRowOut4" value="#{usuarioBean.multiRow}" var="selUsr">
+				 <h:inputText id="input2" value="#{selUsr.apellidoMaterno}" required="true" />
+				 </ui:repeat>
+                
+                 <h:outputLabel value=" " id="blancoSeis"/>
+         		 <h:outputLabel for="multiRowOut7" value="CURP:"/>
+               	 <ui:repeat id="multiRowOut7" value="#{usuarioBean.multiRow}" var="selUsr">
+				 <h:inputText id="input7" value="#{selUsr.curp}" required="true" />
+				 </ui:repeat>	
+                
+             	 <h:outputLabel value=" " id="blancoCinco"/>
+             	 <h:outputLabel for="multiRowOut5" value="Correo Electronico:"/>
+               	 <ui:repeat id="multiRowOut5" value="#{usuarioBean.multiRow}" var="selUsr">
+				 <h:inputText id="input1" value="#{selUsr.correoElectronico}" required="true" />
+				 </ui:repeat>			
+				
+				 <h:outputLabel value=" " id="blancoOcho"/>				
+				 <h:outputLabel id="multiRowOut8" value="Delegacion"/>
+         		 <h:selectOneMenu id="delegacion" value="#{usuarioBean.selectDelegacion}" valueChangeListener="${usuarioBean.listenerDelegacion}" >
+                 <f:selectItem itemValue="-99" itemLabel="Sin asignar"/>
+                 <f:selectItems value="${usuarioBean.lstDelegacion}" />
+                 <f:ajax event="change" render="subdelegacion"/>
+                 </h:selectOneMenu>
+                              
+                 <h:outputLabel value=" " id="blancoNuevo"/>              
+                 <h:outputLabel id="multiRowOut9" value="Subdelegacion"/>
+         		 <h:selectOneMenu id="subdelegacion" value="#{usuarioBean.selectSubDelegacion}"
+         		   valueChangeListener="${usuarioBean.listenerSubDelegacion}">
+                	<f:selectItem itemValue="-99" itemLabel="Sin asignar"/>
+                	<f:selectItems value="${usuarioBean.lstSubDelegacion}"/>
+                	<f:ajax event="change" render="umf"/>
+                 </h:selectOneMenu>
+                
+                 <h:outputLabel value=" " id="blancoDiez"/>               
+                 <h:outputLabel id="multiRowOut10" value="UMF"/>
+         		 <h:selectOneMenu id="umf" value="#{usuarioBean.selectUMF}">
+                	<f:selectItem itemValue="-99" itemLabel="Sin asignar"/>
+                	<f:selectItems value="${usuarioBean.lstUMF}"/>                	
+                 </h:selectOneMenu>
+             								
+                 </h:panelGrid>
+                 <br/>
+                 <div id ="activar" align="center">
+                     <h:commandButton action="${usuarioBean.actualizarUsuario}"  value= "Actualizar" styleClass="mboton"/>                
+   					 <h:message for="actualizar" errorClass="error"/>
+                </div>              
+       </h:form>
+ </ui:define>
+ </ui:composition>
+ </html>        

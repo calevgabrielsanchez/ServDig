@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+    <artifactId>gestionSeguroVoluntario</artifactId>
+    <groupId>mx.gob.imss.ctirss.delta.gestion.seguroVoluntario</groupId>
+    <version>1.0</version>
+  </parent>
+
+	<groupId>mx.gob.imss.distss.gestion.cuestionario</groupId>
+	<artifactId>gestionCuestionario</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0</version>
+	<name>Modulo  Delta  IMSS</name>
+	<url>http://www.imss.gob.mx/instituto/Directorio/ctirss.htm</url>
+
+	<properties>
+		<delta.framework.version>2.6</delta.framework.version>
+		<delta.framework.comboSelect>2.0</delta.framework.comboSelect>
+		<delta.domicilios>2.4</delta.domicilios>
+		<delta.documentos.probatorios>2.4</delta.documentos.probatorios>
+		<delta.medioscontacto>2.3</delta.medioscontacto>
+		<delta.solicitud>2.2</delta.solicitud>
+		<delta.patronal>2.4</delta.patronal>
+		<delta.patronal.sapi>2.0</delta.patronal.sapi>
+		<delta.personas>2.4</delta.personas>
+		<delta.clientews>2.2</delta.clientews>
+		<delta.clientews.calculonrp>2.0</delta.clientews.calculonrp>
+		<delta.clasificacion.empr>2.4</delta.clasificacion.empr>
+		<delta.cobranza>2.1</delta.cobranza>
+	</properties>
+
+	<build>
+		<!-- To define the plugin version in your parent POM -->
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<skipTests>true</skipTests>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<!-- for use JVM 1.6 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<!-- Relase Plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<tagBase>http://11.254.16.21/svn/base_arquitectura_delta/codigo/tags/</tagBase>
+					<tag>${project.artifactId}-${project.version}</tag>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<!--Extension necesaria para el deploy (instalacion) de los componentes 
+			en el repositorio central -->
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+			</extension>
+		</extensions>
+
+	</build>
+
+	<repositories>
+		<repository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<layout>default</layout>
+			<url>http://172.16.5.134:8080/repository/repo/</url>
+			<snapshots>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<url>http://172.16.5.134:8080/repository/repo/</url>
+			<layout>default</layout>
+			<snapshots>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<distributionManagement>
+		<!-- use the following if you're not using a snapshot version. -->
+		<repository>
+			<id>ctirss-archiva</id>
+			<name>CTIRSS Repository Name</name>
+			<url>dav:http://172.16.5.134:8080/repository/repo/</url>
+		</repository>
+		<snapshotRepository>
+			<id>ctirss-archiva</id>
+			<name>CTIRSS Repository Name</name>
+			<url>dav:http://172.16.5.134:8080/repository/repo/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<scm>
+		<connection>scm:svn:http://11.254.16.21/svn/base_arquitectura_delta/codigo/trunk/gestion_domicilios/</connection>
+		<developerConnection>scm:svn:http://11.254.16.21/svn/base_arquitectura_delta/codigo/trunk/gestion_domicilios/</developerConnection>
+		<url>http://11.254.16.21/svn/base_arquitectura_delta/codigo/trunk/gestion_domicilios/</url>
+	</scm>
+
+	<profiles>
+		<!--Perfil para el despliegue en DESARROLLO de las capas de servicio y 
+			vista -->
+		<profile>
+			<id>dev-deploy-all</id>
+			<activation>
+				<property>
+					<name>dev-deploy-all</name>
+				</property>
+			</activation>
+			<modules>
+				<module>gestionExpediente-packing</module>
+				<module>gestionExpediente-packing-web</module>
+			</modules>
+		</profile>
+
+		<!--Perfil para el BORRADO en DESARROLLO de los despliegues -->
+		<profile>
+			<id>dev-deploy-remove</id>
+			<activation>
+				<property>
+					<name>dev-remove-all</name>
+
+				</property>
+			</activation>
+			<modules>
+				<module>gestionExpediente-packing</module>
+				<module>gestionExpediente-packing-web</module>
+			</modules>
+		</profile>
+	</profiles>
+  <modules>
+    <module>gestionCuestionario-interfaces-negocio</module>
+    <module>gestionCuestionario-servicios-negocio-ejb</module>
+    <module>gestionCuestionario-web-externo</module>
+    <module>gestionCuestionario-packing</module>
+  </modules>
+</project>

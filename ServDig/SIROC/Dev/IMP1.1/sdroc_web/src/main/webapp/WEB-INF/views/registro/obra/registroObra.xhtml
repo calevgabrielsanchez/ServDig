@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="header :: head">
+<meta name="tipo_contenido" content="text/html;"
+	http-equiv="content-type" charset="utf-8"></meta>
+</head>
+<body>      
+      <noscript>
+      	<p>
+      		<img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=17183199&amp;ns_site=gobmx&amp;name=imss.patrones.siroc.registro.obra.inicio" height="1" width="1" alt="*"></img>
+      	</p>
+      </noscript>
+      
+	<div class="container">
+	<div th:substituteby="header :: pageHeader"></div>
+	<!-- 		<input th:value="${type}"></input> -->
+	<input id="idRs" type="hidden" th:value="${session.rs}" />
+	<input id="idRp" type="hidden" th:value="${session.rp}" />
+	<input id="idRfc" type="hidden" th:value="${session.rfc}" />
+	<input id="idCveTipoPersona" type="hidden" th:value="${session.cveTipoPersona}" />
+	<input id="idCurp" type="hidden" th:value="${session.cveCurp}" />
+	<input id="idNombre " type="hidden" th:value="${session.refNombre}" />
+	<input id="idApellidoPaterno" type="hidden" th:value="${session.refApellidoPaterno}" />
+	<input id="idApellidoMaterno " type="hidden" th:value="${session.refApellidoMaterno }" />
+		
+	<input id="idCveSubDelegacion" type="hidden" th:value="${session.cveSubDelegacion}" />
+	<input id="idCveDelegacion" type="hidden" th:value="${session.cveDelegacion}" />
+	<input id="idDesSubDelegacion" type="hidden" th:value="${session.desSubDelegacion}" />
+	<input id="idDesDelegacion" type="hidden" th:value="${session.desDelegacion}" />
+	
+	
+		<div id="pnlDatosResumen" class="panel panel-default">
+			<div class="panel-heading">
+				<div class="row" >
+					<div class="col-sm-6 text-left">
+						<small th:text="#{escritorio.titulo}" />
+						<!-- <small id="lblTituloHeader">Registro de obra</small> -->
+					</div>
+					<div class="col-sm-6 text-right">	
+						<a class="accordion-toggle text-right" data-toggle="collapse"
+							data-parent="#accordion" href="#collapseOne"> 
+							<img id="imgCollapsable"
+								src="/sdroc_web/static/images/panel-collapsed.png"
+								style="width: 25px">
+							</img>
+						</a>
+					</div>
+				</div>
+			</div>	
+<!-- 			<div class="col-sm-6 text-right">
+				<a class="accordion-toggle" data-toggle="collapse"
+					data-parent="#accordion" href="#collapseOne"> <img
+					id="imgCollapsable"
+					src="/sdroc_web/static/images/panel-collapsed.png"
+					style="width: 25px"></img>
+				</a>
+			</div> -->
+			<div id="collapseOne" class="panel-collapse collapse in">
+				<div class="panel-body text-center">
+					<div th:substituteby="registro/obra/datosPatron :: pageDatosPatron"></div>
+				</div>
+			</div>	
+		</div>
+
+		<div>
+			<h6 id="lblIndicacionHeader">Complete los pasos para realizar el registro de una obra de la construcci&oacute;n.</h6>
+		</div>
+
+		<div class="text-center, hidden">
+			<ul class="wizard-steps-extensive">
+				<li id="step-10">
+					<h5 style="color: black;">1</h5> <a href="#step-1" style="border: none;"> <span>Clase de Obra</span>
+				</a>
+				</li>
+				<li id="step-20">
+					<h5 style="color: black;">2</h5> <a href="#step-2"
+					style="border: none;" disabled="disabled"> <span>Tipo de
+							Patr&oacute;n</span>
+				</a>
+				</li>
+				<li id="step-30">
+					<h5 style="color: black;">3</h5> <a href="#step-3"
+					style="border: none;" disabled="disabled"> <span>Ubicaci&oacute;n</span>
+				</a>
+				</li>
+				<li id="step-40">
+					<h5 style="color: black;">4</h5> <a href="#step-4"
+					style="border: none;" disabled="disabled"> <span>Datos
+							Obra</span>
+				</a>
+				</li>
+				<li id="step-50">
+					<h5 style="color: black;">5</h5> <a href="#step-5" class="not-active"
+					style="border: none;" disabled="disabled"> <span>Acuse</span>
+				</a>
+				</li>
+			</ul>
+		</div>
+
+		<form role="form">
+			<div class="row setup-content-default" id="step-1">
+				<div class="col-xs-12">
+					<div th:substituteby="registro/obra/datosTipoObra :: pageTipoObra"></div>
+				</div>
+			</div>
+			<div class="row setup-content" id="step-2">
+				<div class="col-xs-12">
+					<div
+						th:substituteby="registro/obra/datosTipoPatron :: pageTipoPatron"></div>
+				</div>
+			</div>
+			<div class="row setup-content" id="step-3">
+				<div class="col-xs-12">
+					<div
+						th:substituteby="registro/obra/datosUbicacionN :: pageComponenteUbicacion"></div>
+				</div>
+			</div>
+			<div class="row setup-content" id="step-4">
+				<div class="col-xs-12">
+					<div
+						th:substituteby="registro/obra/datosGeneralesObra :: pageDatosGeneralesObra"></div>
+				</div>
+			</div>
+			<div class="row setup-content" id="step-5">
+				<div class="col-xs-12">
+					<div
+						th:substituteby="registro/obra/acuseRegistro :: pageAcuseRegistro"></div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<script language="JavaScript1.2" src="/js/comscore/Form.js"></script>
+</body>
+</html>

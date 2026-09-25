@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteAcuseRetiro" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="401"/>
+	<parameter name="tramite" class="java.lang.String"/>
+	<parameter name="fechaActual" class="java.lang.String"/>
+	<parameter name="nombreUsuario" class="java.lang.String"/>
+	<parameter name="cargoUsuario" class="java.lang.String"/>
+	<parameter name="desDelegacion" class="java.lang.String"/>
+	<parameter name="desSubdelegacion" class="java.lang.String"/>
+	<parameter name="fecPublicacion" class="java.lang.String"/>
+	<parameter name="fecRetiroPublicacion" class="java.lang.String"/>
+	<parameter name="areaRespNotif" class="java.lang.String"/>
+	<parameter name="razonSocial" class="java.lang.String"/>
+	<parameter name="registroPatronal" class="java.lang.String"/>
+	<parameter name="tipoDocumento" class="java.lang.String"/>
+	<parameter name="numOficioAcuerdo" class="java.lang.String"/>
+	<parameter name="numOficioDocumento" class="java.lang.String"/>
+	<parameter name="fecInicioPublicacion" class="java.lang.String"/>
+	<parameter name="fecFinPublicacion" class="java.lang.String"/>
+	<parameter name="rutaImagenGob" class="java.lang.String"/>
+	<parameter name="rutaImagenIMSS" class="java.lang.String"/>
+	<parameter name="rutaImagenQR" class="java.lang.String"/>
+	<parameter name="sello" class="java.lang.String"/>
+	<parameter name="cadenaOriginalAcuse" class="java.lang.String"/>
+	<parameter name="areaNormativa" class="java.lang.String"/>
+	<parameter name="etiquetaAreaRespNotif" class="java.lang.String"/>
+	<parameter name="etiquetaRazonSocial" class="java.lang.String"/>
+	<parameter name="codigoQR" class="java.lang.Object" isForPrompting="false"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<image>
+				<reportElement x="2" y="17" width="230" height="70"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{rutaImagenGob}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="495" y="17" width="75" height="70"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{rutaImagenIMSS}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="548" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="146" width="572" height="17"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RETIRO DE PUBLICACIÓN VÍA ESTRADO ELECTRÓNICO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="280" width="160" height="17"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datos del sujeto a notificar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="341" width="185" height="17"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datos del documento a notificar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="419" width="160" height="17"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fechas para la publicación]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement x="0" y="35" width="294" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["C. "+$P{nombreUsuario}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="0" y="52" width="572" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{cargoUsuario}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="0" y="170" width="572" height="51"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Mediante el presente se hace constar el retiro de la publicación vía estrado electrónico, la cual fue publicada en la página de este Instituto www.imss.gob.mx el día "+$P{fecPublicacion}+" y fue retirada el día de hoy "+$P{fecRetiroPublicacion}+", correspondiente a:"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="205" y="253" width="367" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{areaRespNotif}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="225" y="297" width="347" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{razonSocial}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="22" y="314" width="550" height="17" isRemoveLineWhenBlank="true"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{registroPatronal}.equals("") ? "" : "Registro patronal/Número de registro IMSS:   "+$P{registroPatronal}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement x="232" y="392" width="340" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{tipoDocumento}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="232" y="358" width="340" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{numOficioAcuerdo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="232" y="375" width="340" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{numOficioDocumento}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="178" y="436" width="394" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{fecPublicacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="178" y="453" width="394" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{fecInicioPublicacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="178" y="470" width="394" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{fecFinPublicacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="178" y="487" width="394" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{fecRetiroPublicacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="273" y="0" width="299" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Folio: "+$P{tramite}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="273" y="17" width="299" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Fecha de expedición: "+$P{fechaActual}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="128" width="572" height="17"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACUSE DE RETIRO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="226" width="300" height="17"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resumen de la solicitud de notificación por estrados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="487" width="156" height="17"/>
+				<textElement/>
+				<text><![CDATA[Fecha de retiro: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="470" width="156" height="17"/>
+				<textElement/>
+				<text><![CDATA[Fecha de fin de la publicación: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="453" width="156" height="17"/>
+				<textElement/>
+				<text><![CDATA[Fecha de inicio de publicación: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="436" width="156" height="17"/>
+				<textElement/>
+				<text><![CDATA[Fecha de publicación: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="358" width="210" height="17"/>
+				<textElement/>
+				<text><![CDATA[Número de oficio de acuerdo: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="375" width="210" height="17"/>
+				<textElement/>
+				<text><![CDATA[Número de oficio o documento a notificar: ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="69" width="572" height="17" isRemoveLineWhenBlank="true"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{desDelegacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="86" width="572" height="17" isRemoveLineWhenBlank="true"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{desSubdelegacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="392" width="210" height="17"/>
+				<textElement/>
+				<text><![CDATA[Tipo de documento: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="514" width="572" height="34"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[El presente acuse deberá imprimirse e integrarse en el expediente respectivo conjuntamente con las constancias que se integren para dar cumplimiento a lo establecido en el artículo 139 del Código Fiscal de la Federación.]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="103" width="572" height="17" isRemoveLineWhenBlank="true"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{areaNormativa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="253" width="205" height="17"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{etiquetaAreaRespNotif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="22" y="297" width="203" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{etiquetaRazonSocial}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="107" y="0" width="465" height="20"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello Digital del Acuse]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement x="107" y="20" width="465" height="15" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{sello}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="107" y="45" width="465" height="20"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena Original del Acuse]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement x="107" y="65" width="465" height="15"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{cadenaOriginalAcuse}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="2" y="0" width="100" height="82"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{codigoQR}]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>

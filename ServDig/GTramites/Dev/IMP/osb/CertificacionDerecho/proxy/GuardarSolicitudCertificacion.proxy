@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false" xmlns:ser="http://www.bea.com/wli/sb/services">
+    <ser:description>Proxy que orquesta el guardado de la solicitud ya sea para la certificación del retiro por desempleo o la inactividad para el pago en parcialidades, en el estado correspondiente, checa si debe agregar los datos de firma digital y, también, guarda la relación entre la solicitud generada y el número de resolución de la certificación</ser:description>
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:request type="XML">
+        <con1:schema ref="CertificacionDerecho/schema/guardarSolicitudCertifDerechos" element="guardarSolicCertificacion" xmlns:con1="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:request>
+      <con:response type="XML">
+        <con1:schema ref="CertificacionDerecho/schema/guardarSolicitudCertifDerechos" element="guardarSolicCertificacionResponse" xmlns:con1="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:response>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:largeMessageSupport isEnabled="true">
+      <ser:persistToFile>false</ser:persistToFile>
+      <ser:enableCompression>true</ser:enableCompression>
+    </ser:largeMessageSupport>
+    <ser:pageAttachments isEnabled="false"/>
+    <ser:transactions isRequired="true" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig xmlns:ser="http://www.bea.com/wli/sb/services">
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/CertificacionDerecho/GuardarSolicitudCertificacion</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific>
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router xmlns:ser="http://www.bea.com/wli/sb/services">
+    <con:pipeline name="PipelinePairNode1_request" type="request" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:stage name="stage1">
+        <con:context>
+          <con1:userNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:userNsDecl prefix="m" namespace="http://servicios.imss.gob.mx/certificacion/derecho/desempleo" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:userNsDecl prefix="del" namespace="http://delta.global.services/" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:userNsDecl prefix="java1" namespace="java:mx.gob.imss.ctirss.delta.global.model" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:userNsDecl prefix="java5" namespace="java:mx.gob.imss.ctirss.delta.model.gestion.patronal" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:userNsDecl prefix="con" namespace="http://www.bea.com/wli/sb/context" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:userNsDecl prefix="open" namespace="http://www.openuri.org/" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+          <con1:varNsDecl prefix="cer" namespace="http://www.serviciosdigitales.imss.gob.mx/certificacionDerechoRetiroDesempleo" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+        </con:context>
+        <con:actions>
+          <con1:log xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b37</con2:id>
+            <con1:logLevel>error</con1:logLevel>
+            <con1:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+            </con1:expr>
+            <con1:message>ENTRADA PARA GUARDAR LA SOLICITUD DE CERTIFICACION ::::::::::</con1:message>
+          </con1:log>
+          <con1:assign varName="idTipoSolicitud" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b25</con2:id>
+            <con1:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/cer:guardarSolicCertificacion/cer:tipoSolicitud/text()</con:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con1:assign varName="idTipoTramite" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fe7</con2:id>
+            <con1:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/cer:guardarSolicCertificacion/cer:tipoTramite/text()</con:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con1:assign varName="exito" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fe6</con2:id>
+            <con1:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/cer:guardarSolicCertificacion/cer:exito/text()</con:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con:assign varName="descripcionError" xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id xmlns:con1="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b24</con1:id>
+            <con:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/cer:guardarSolicCertificacion/cer:descripcion/text()</con:xqueryText>
+            </con:expr>
+          </con:assign>
+          <con:assign varName="numeroResolucion" xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id xmlns:con1="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b23</con1:id>
+            <con:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/cer:guardarSolicCertificacion/cer:numeroResolucion/text()</con:xqueryText>
+            </con:expr>
+          </con:assign>
+          <con:assign varName="firmarXmlResponse" xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id xmlns:con1="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b10</con1:id>
+            <con:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/cer:guardarSolicCertificacion/m:firmarXMLResponse</con:xqueryText>
+            </con:expr>
+          </con:assign>
+          <con1:log xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b22</con2:id>
+            <con1:logLevel>error</con1:logLevel>
+            <con1:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat('EXITO -> ', $exito, ' | DESC_ERROR -> ' , $descripcionError, ' | NUM_RESOLUCION -> ', $numeroResolucion)</con:xqueryText>
+            </con1:expr>
+            <con1:message>DATOS ENTRADA:::::::::::::::</con1:message>
+          </con1:log>
+          <con1:log xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7afc</con2:id>
+            <con1:logLevel>error</con1:logLevel>
+            <con1:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$firmarXmlResponse</con:xqueryText>
+            </con1:expr>
+            <con1:message>DATOS FIRMA XML:::::::::::::::</con1:message>
+          </con1:log>
+          <con3:wsCallout xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+            <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b21</con5:id>
+            <con3:service ref="GestionSolicitudes/businessService/SolicitudServiciosExpuestos" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con3:operation>crearSolicitud</con3:operation>
+            <con3:request>
+              <con3:body wrapped="false">$crearSolicitudRequest</con3:body>
+              <con3:header/>
+            </con3:request>
+            <con3:response>
+              <con3:body wrapped="false">crearSolicitudResponse</con3:body>
+              <con3:header/>
+            </con3:response>
+            <con3:requestTransform>
+              <con3:ifThenElse>
+                <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b20</con5:id>
+                <con3:case>
+                  <con3:condition>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$exito = "0"</con:xqueryText>
+                  </con3:condition>
+                  <con3:actions>
+                    <con2:log>
+                      <con1:id>_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b1f</con1:id>
+                      <con2:logLevel>error</con2:logLevel>
+                      <con2:message>SE VA A CREAR LA SOLICITUD CON ESTADO ATENDIDA ::::::::</con2:message>
+                    </con2:log>
+                    <con3:assign varName="estadoSolicitud">
+                      <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b1e</con5:id>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'2'</con:xqueryText>
+                      </con3:expr>
+                    </con3:assign>
+                    <con3:assign varName="estadoTramite">
+                      <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b1d</con5:id>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'2'</con:xqueryText>
+                      </con3:expr>
+                    </con3:assign>
+                    <con3:assign varName="observacion">
+                      <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7afa</con5:id>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'CERTIFICACION DERECHO RETIRO DESEMPLEO EXITOSA'</con:xqueryText>
+                      </con3:expr>
+                    </con3:assign>
+                  </con3:actions>
+                </con3:case>
+                <con3:default>
+                  <con2:log>
+                    <con1:id>_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b1c</con1:id>
+                    <con2:logLevel>error</con2:logLevel>
+                    <con2:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$descripcionError</con:xqueryText>
+                    </con2:expr>
+                    <con2:message>SE VA A CREAR LA SOLICITUD CON ESTADO CANCELADA DEBIDO A UN ERROR ::::::::</con2:message>
+                  </con2:log>
+                  <con3:assign varName="estadoSolicitud">
+                    <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b1b</con5:id>
+                    <con3:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'3'</con:xqueryText>
+                    </con3:expr>
+                  </con3:assign>
+                  <con3:assign varName="estadoTramite">
+                    <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b1a</con5:id>
+                    <con3:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'7'</con:xqueryText>
+                    </con3:expr>
+                  </con3:assign>
+                  <con3:assign varName="observacion">
+                    <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b19</con5:id>
+                    <con3:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$descripcionError</con:xqueryText>
+                    </con3:expr>
+                  </con3:assign>
+                </con3:default>
+              </con3:ifThenElse>
+              <con3:assign varName="crearSolicitudRequest">
+                <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b18</con5:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<del:crearSolicitud xmlns:del="http://delta.global.services/">
+	<del:solicitud xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model"
+		xmlns:java1="java:mx.gob.imss.ctirss.delta.global.model" xmlns:java2="java:mx.gob.imss.ctirss.delta.model.gestion.solicitud"
+		xmlns:tns="http://schemas.xmlsoap.org/soap/encoding/" xmlns:java3="java:mx.gob.imss.ctirss.delta.model.gestion.individuo"
+		xmlns:java4="java:mx.gob.imss.ctirss.delta.model.domicilio"
+		xmlns:java5="java:mx.gob.imss.ctirss.delta.model.gestion.patronal"
+		xmlns:java6="java:mx.gob.imss.ctirss.delta.model.gestion.tramite">
+		<java1:UsuarioResponsable>CERTIF_DESEMPLEO</java1:UsuarioResponsable>
+		<java1:Observacion>{$observacion}</java1:Observacion>
+		<java1:EstadoSolicitud>
+			<java2:IdEstadoSolicitud>{$estadoSolicitud}</java2:IdEstadoSolicitud>
+		</java1:EstadoSolicitud>
+		<java1:TipoSolicitud>
+			<java2:IdTipoSolicitud>{$idTipoSolicitud}</java2:IdTipoSolicitud>
+		</java1:TipoSolicitud>
+		<java1:OrigenSolicitud>
+			<java2:IdTipoSolicitud>2</java2:IdTipoSolicitud>
+		</java1:OrigenSolicitud>
+		<!--Zero or more repetitions: -->
+		<java1:TramitesAux>
+			<java1:TipoTramite>
+				<java1:IdTipoTramite>{$idTipoTramite}</java1:IdTipoTramite>
+			</java1:TipoTramite>
+			<java1:EstadoTramite>
+				<java6:IdEstadoTramitePersona>{$estadoTramite}</java6:IdEstadoTramitePersona>
+			</java1:EstadoTramite>
+		</java1:TramitesAux>
+	</del:solicitud>
+</del:crearSolicitud>]]></con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:ifThenElse>
+                <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b17</con5:id>
+                <con3:case>
+                  <con3:condition>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$exito = "0"</con:xqueryText>
+                  </con3:condition>
+                  <con3:actions>
+                    <con3:assign varName="firmaDigital">
+                      <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b16</con5:id>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<firmaDigital>
+	<java1:FirmadaDigitalmente>true</java1:FirmadaDigitalmente>
+	<java1:SecuenciaDeNotaria>{$firmarXmlResponse/m:response/*:Tramite/text()}</java1:SecuenciaDeNotaria>
+	<java1:NumeroSerieCertificado>{$firmarXmlResponse/m:response/*:NumSerie/text()}</java1:NumeroSerieCertificado>
+	<java1:FirmaElectronica>
+		<java5:ReciboNotarial>{$firmarXmlResponse/m:response/*:Tramite/text()}</java5:ReciboNotarial>
+		<java5:SecuenciaNotaria>{$firmarXmlResponse/m:response/*:Tramite/text()}</java5:SecuenciaNotaria>
+		<java5:SerialCertificado>{$firmarXmlResponse/m:response/*:NumSerie/text()}</java5:SerialCertificado>
+		<java5:Recibo>{$firmarXmlResponse/m:response/*:Sello/text()}</java5:Recibo>
+	</java1:FirmaElectronica>
+</firmaDigital>]]></con:xqueryText>
+                      </con3:expr>
+                    </con3:assign>
+                    <con5:log xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config">
+                      <con6:id xmlns:con6="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b15</con6:id>
+                      <con5:logLevel>error</con5:logLevel>
+                      <con5:message>SE VA A AGREGAR CONTENIDO DE LA FIRMA DIGITAL::::::::::::</con5:message>
+                    </con5:log>
+                    <con3:insert varName="crearSolicitudRequest">
+                      <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b14</con5:id>
+                      <con3:location>
+                        <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">./del:solicitud/*:TramitesAux</con:xpathText>
+                      </con3:location>
+                      <con3:where>after</con3:where>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$firmaDigital/*</con:xqueryText>
+                      </con3:expr>
+                    </con3:insert>
+                  </con3:actions>
+                </con3:case>
+              </con3:ifThenElse>
+              <con5:log xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config">
+                <con6:id xmlns:con6="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b13</con6:id>
+                <con5:logLevel>error</con5:logLevel>
+                <con5:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$crearSolicitudRequest</con:xqueryText>
+                </con5:expr>
+                <con5:message>DATOS DE ENTRADA PARA EL GUARDADO DE LA SOLICITUD :::::::::</con5:message>
+              </con5:log>
+            </con3:requestTransform>
+            <con3:responseTransform>
+              <con3:assign varName="folioSolicitud">
+                <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b12</con5:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$crearSolicitudResponse/*:solicitud/*:NoFolioSolicitud/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:assign varName="idSolicitud">
+                <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fea</con5:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$crearSolicitudResponse/*:solicitud/*:SolicitudId/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con5:log xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config">
+                <con6:id xmlns:con6="http://www.bea.com/wli/sb/stages/config">_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b11</con6:id>
+                <con5:logLevel>error</con5:logLevel>
+                <con5:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$folioSolicitud</con:xqueryText>
+                </con5:expr>
+                <con5:message>FOLIO DE SOLICITUD DE CERTIFICACION DE DERECHO POR DESEMPLEO :::::::</con5:message>
+              </con5:log>
+              <con3:wsCallout>
+                <con1:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fee</con1:id>
+                <con3:service ref="CertificacionDerecho/businessService/GenerarFolioCertificacion" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                <con3:operation>guardarRelacionSolicitudFolioCertificacion</con3:operation>
+                <con3:request>
+                  <con3:body wrapped="false">$guardarRelacionRequest</con3:body>
+                  <con3:header/>
+                </con3:request>
+                <con3:response>
+                  <con3:body wrapped="false">guardarRelacionResponse</con3:body>
+                  <con3:header/>
+                </con3:response>
+                <con3:requestTransform>
+                  <con3:assign varName="guardarRelacionRequest">
+                    <con1:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fed</con1:id>
+                    <con3:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<del:guardarRelacionSolicitudFolioCertificacion xmlns:del="http://delta.global.services/">
+    <!--Optional:-->
+    <del:idSolicitud>{$idSolicitud}</del:idSolicitud>
+    <del:numResolucion>{$numeroResolucion}</del:numResolucion>
+</del:guardarRelacionSolicitudFolioCertificacion>]]></con:xqueryText>
+                    </con3:expr>
+                  </con3:assign>
+                  <con2:log>
+                    <con1:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7fec</con1:id>
+                    <con2:logLevel>error</con2:logLevel>
+                    <con2:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$guardarRelacionRequest</con:xqueryText>
+                    </con2:expr>
+                    <con2:message>ENTRADA PARA GUARDAR LA RELACION ENTRE LA SOLICITUD Y EL FOLIO DE CERTIFICACION :::::::</con2:message>
+                  </con2:log>
+                </con3:requestTransform>
+                <con3:responseTransform>
+                  <con2:log>
+                    <con1:id>_ActionId-82836437736336382--6dec06bc.14d9aae67b7.-7feb</con1:id>
+                    <con2:logLevel>error</con2:logLevel>
+                    <con2:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat('SE GUARDO LA RELACION ENTRE LA SOLICITUD ', $idSolicitud, ' Y EL FOLIO DE CERTIFICACION ', $numeroResolucion, ':::::::::::')</con:xqueryText>
+                    </con2:expr>
+                    <con2:message/>
+                  </con2:log>
+                </con3:responseTransform>
+              </con3:wsCallout>
+              <con3:replace varName="body" contents-only="true">
+                <con1:id>_ActionId-711462094402322794-3a8d3c0a.1467c7bdbc1.-7b0f</con1:id>
+                <con3:location>
+                  <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                </con3:location>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$crearSolicitudResponse</con:xqueryText>
+                </con3:expr>
+              </con3:replace>
+            </con3:responseTransform>
+          </con3:wsCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode1_response" type="response" xmlns:con="http://www.bea.com/wli/sb/pipeline/config"/>
+    <con:flow xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:pipeline-node name="PipelinePairNode1">
+        <con:request>PipelinePairNode1_request</con:request>
+        <con:response>PipelinePairNode1_response</con:response>
+      </con:pipeline-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>

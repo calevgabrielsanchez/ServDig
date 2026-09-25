@@ -1,0 +1,46 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="gblModel:mx.gob.imss.ctirss.delta.global.model" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://mx.gob.imss.delta.global.service/" xmlns:WL5G3N2="java:mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="tramite:mx.gob.imss.ctirss.delta.model.gestion.tramite" schemaLocation="tramite.xsd"/>
+  <xs:import namespace="fwbm:mx.gob.imss.ctirss.delta.framework.base.model" schemaLocation="fwbm.xsd"/>
+  <xs:import namespace="javaUtil:java.util" schemaLocation="javaUtil.xsd"/>
+  <xs:import namespace="solicitud:mx.gob.imss.ctirss.delta.model.gestion.solicitud" schemaLocation="solicitud.xsd"/>
+  <xs:complexType name="TramiteTO">
+    <xs:complexContent>
+      <xs:extension base="fwbm:AbstractModel" xmlns:fwbm="fwbm:mx.gob.imss.ctirss.delta.framework.base.model">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="TramiteId" nillable="true" type="xs:long"/>
+          <xs:element minOccurs="1" name="TipoTramite" nillable="true" type="gblModel:TipoTramiteTO" xmlns:gblModel="gblModel:mx.gob.imss.ctirss.delta.global.model"/>
+          <xs:element minOccurs="1" name="EstadoTramite" nillable="true" type="tramite:EstadoTramite" xmlns:tramite="tramite:mx.gob.imss.ctirss.delta.model.gestion.tramite"/>
+          <xs:element minOccurs="1" name="RazonResultado" nillable="true" type="tramite:RazonResultado" xmlns:tramite="tramite:mx.gob.imss.ctirss.delta.model.gestion.tramite"/>
+          <xs:element minOccurs="1" name="FechaTramite" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="1" name="cveModalidad" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="cveMunicipioImss" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TipoTramiteTO">
+    <xs:complexContent>
+      <xs:extension base="fwbm:AbstractModel" xmlns:fwbm="fwbm:mx.gob.imss.ctirss.delta.framework.base.model">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="IdTipoTramite" nillable="true" type="xs:int"/>
+          <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SolicitudTO">
+    <xs:complexContent>
+      <xs:extension base="fwbm:AbstractModel" xmlns:fwbm="fwbm:mx.gob.imss.ctirss.delta.framework.base.model">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="SolicitudId" nillable="true" type="xs:long"/>
+          <xs:element minOccurs="1" name="FechaSolicitud" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="1" name="NoFolioSolicitud" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Certificado" nillable="true" type="solicitud:Certificado" xmlns:solicitud="solicitud:mx.gob.imss.ctirss.delta.model.gestion.solicitud"/>
+          <xs:element minOccurs="1" name="EstadoSolicitud" nillable="true" type="solicitud:EstadoSolicitud" xmlns:solicitud="solicitud:mx.gob.imss.ctirss.delta.model.gestion.solicitud"/>
+          <xs:element minOccurs="1" name="TipoSolicitud" nillable="true" type="solicitud:TipoSolicitud" xmlns:solicitud="solicitud:mx.gob.imss.ctirss.delta.model.gestion.solicitud"/>
+          <xs:element minOccurs="1" name="Tramites" nillable="true" type="javaUtil:List" xmlns:javaUtil="javaUtil:java.util"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

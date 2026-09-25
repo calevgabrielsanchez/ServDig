@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:domicilio="http://mx.gob.imss.digital.modelo.domicilio" targetNamespace="http://mx.gob.imss.digital.modelo.domicilio" version="1.0">
+
+  <xs:element name="asentamiento" type="domicilio:asentamiento"/>
+
+  <xs:element name="camino" type="domicilio:camino"/>
+
+  <xs:element name="carretera" type="domicilio:carretera"/>
+
+  <xs:element name="delegacion" type="domicilio:delegacion"/>
+
+  <xs:element name="domicilio" type="domicilio:domicilio"/>
+
+  <xs:element name="entidadFederativa" type="domicilio:entidadFederativa"/>
+
+  <xs:element name="localidad" type="domicilio:localidad"/>
+
+  <xs:element name="municipio" type="domicilio:municipio"/>
+
+  <xs:element name="municipioIMSS" type="domicilio:municipioIMSS"/>
+
+  <xs:element name="pais" type="domicilio:pais"/>
+
+  <xs:element name="subdelegacion" type="domicilio:subdelegacion"/>
+
+  <xs:element name="tipoAdministracion" type="domicilio:tipoAdministracion"/>
+
+  <xs:element name="tipoAmbito" type="domicilio:tipoAmbito"/>
+
+  <xs:element name="tipoAsentamiento" type="domicilio:tipoAsentamiento"/>
+
+  <xs:element name="tipoDerechoTransito" type="domicilio:tipoDerechoTransito"/>
+
+  <xs:element name="tipoDomicilio" type="domicilio:tipoDomicilio"/>
+
+  <xs:element name="tipoMargen" type="domicilio:tipoMargen"/>
+
+  <xs:element name="tipoTerminoGeneral" type="domicilio:tipoTerminoGeneral"/>
+
+  <xs:element name="tipoVialidad" type="domicilio:tipoVialidad"/>
+
+  <xs:element name="vialidad" type="domicilio:vialidad"/>
+
+  <xs:complexType name="camino">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="terminoGeneral" type="domicilio:tipoTerminoGeneral"/>
+      <xs:element minOccurs="0" name="margen" type="domicilio:tipoMargen"/>
+      <xs:element minOccurs="0" name="origen" type="xs:string"/>
+      <xs:element minOccurs="0" name="destino" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreVialidad" type="xs:string"/>
+      <xs:element minOccurs="0" name="cadenamiento" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoTerminoGeneral">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clave" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoMargen">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clave" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="domicilio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idDomicilio" type="xs:long"/>
+      <xs:element minOccurs="0" name="calle" type="xs:string"/>
+      <xs:element minOccurs="0" name="colonia" type="xs:string"/>
+      <xs:element minOccurs="0" name="numExterior1" type="xs:int"/>
+      <xs:element minOccurs="0" name="numExteriorAlf" type="xs:string"/>
+      <xs:element minOccurs="0" name="numExterior2" type="xs:int"/>
+      <xs:element minOccurs="0" name="numInterior" type="xs:int"/>
+      <xs:element minOccurs="0" name="numInteriorAlf" type="xs:string"/>
+      <xs:element minOccurs="0" name="latitud" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="longitud" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="codigoPostal" type="xs:string"/>
+      <xs:element minOccurs="0" ref="domicilio:localidad"/>
+      <xs:element minOccurs="0" ref="domicilio:asentamiento"/>
+      <xs:element minOccurs="0" ref="domicilio:tipoDomicilio"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+      <xs:element minOccurs="0" ref="domicilio:camino"/>
+      <xs:element minOccurs="0" ref="domicilio:carretera"/>
+      <xs:element minOccurs="0" name="vialidadPrimaria" type="domicilio:vialidad"/>
+      <xs:element minOccurs="0" name="vialidadReferenciaPrimaria" type="domicilio:vialidad"/>
+      <xs:element minOccurs="0" name="vialidadReferenciaSecundaria" type="domicilio:vialidad"/>
+      <xs:element minOccurs="0" name="vialidadReferenciaPosterior" type="domicilio:vialidad"/>
+      <xs:element minOccurs="0" name="ambito" type="domicilio:tipoAmbito"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="localidad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clave" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombre" type="xs:string"/>
+      <xs:element minOccurs="0" ref="domicilio:municipio"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="municipio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clave" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombre" type="xs:string"/>
+      <xs:element minOccurs="0" ref="domicilio:entidadFederativa"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="entidadFederativa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clave" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombre" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="asentamiento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clave" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombre" type="xs:string"/>
+      <xs:element minOccurs="0" ref="domicilio:localidad"/>
+      <xs:element minOccurs="0" ref="domicilio:municipio"/>
+      <xs:element minOccurs="0" name="codigoPostal" type="xs:string"/>
+      <xs:element minOccurs="0" ref="domicilio:tipoAsentamiento"/>
+      <xs:element name="periodo" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoAsentamiento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clave" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoDomicilio">
+    <xs:sequence>
+      <xs:element name="idTipoDomicilio" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="carretera">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="terminoGeneral" type="domicilio:tipoTerminoGeneral"/>
+      <xs:element minOccurs="0" name="derechoTransito" type="domicilio:tipoDerechoTransito"/>
+      <xs:element minOccurs="0" name="administracion" type="domicilio:tipoAdministracion"/>
+      <xs:element minOccurs="0" name="origen" type="xs:string"/>
+      <xs:element minOccurs="0" name="destino" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreVialidad" type="xs:string"/>
+      <xs:element minOccurs="0" name="cadenamiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="codigoCarretera" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoDerechoTransito">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clave" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoAdministracion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clave" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vialidad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clave" type="xs:int"/>
+      <xs:element minOccurs="0" name="nombre" type="xs:string"/>
+      <xs:element minOccurs="0" ref="domicilio:tipoVialidad"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoVialidad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clave" type="xs:int"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoAmbito">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clave" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="municipioIMSS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idMunicipio" type="xs:string"/>
+      <xs:element minOccurs="0" name="cvecMunicipioSINDO" type="xs:string"/>
+      <xs:element minOccurs="0" name="descMunicipio" type="xs:string"/>
+      <xs:element minOccurs="0" ref="domicilio:subdelegacion"/>
+      <xs:element minOccurs="0" ref="domicilio:tipoAmbito"/>
+      <xs:element minOccurs="0" name="fechaInicioOperacionesServiciosUrbanos" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaInicioOperacionesServiciosCampo" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="identificadorConvenio" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="subdelegacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+      <xs:element minOccurs="0" name="clave" type="xs:string"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+      <xs:element minOccurs="0" ref="domicilio:delegacion"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="delegacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+      <xs:element minOccurs="0" name="clave" type="xs:string"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+      <xs:element minOccurs="0" name="ciz" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pais">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idPais" type="xs:int"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+      <xs:element minOccurs="0" name="nacionalidad" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

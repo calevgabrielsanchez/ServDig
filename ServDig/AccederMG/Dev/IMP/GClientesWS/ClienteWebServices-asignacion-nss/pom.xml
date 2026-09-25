@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>ClientesWebservices</artifactId>
+    <groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+    <version>2.2-SNAPSHOT</version>
+  </parent>
+  <groupId>mx.gob.imss.ctirss.ws.asignacion</groupId>
+  <artifactId>ClienteWebServices-asignacion-nss</artifactId>
+  <version>2.0-SNAPSHOT</version>
+  <name>ClienteWebServices-asignacion-nss</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+      </dependency>
+      
+      <dependency>
+         <groupId>com.sun.xml.ws</groupId>
+         <artifactId>jaxws-rt</artifactId>
+         <version>2.2.6</version>
+         <scope>provided</scope>
+      </dependency>
+      
+      
+      
+    
+  </dependencies>
+  
+  <build>
+		<plugins>
+			
+			
+				<!-- Habilita los facets y natures para que el eclipse
+			     reconoza el proyecto como de tipo de Dynamic Web.
+			 -->
+			
+			      <plugin>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <configuration>
+                    <additionalBuildcommands>
+                        <buildCommand>
+                            <name>org.eclipse.jdt.core.javabuilder</name>
+                        </buildCommand>
+                        <buildCommand>
+                            <name>org.eclipse.wst.common.project.facet.core.builder</name>
+                        </buildCommand>
+                        <buildCommand>
+                            <name>org.eclipse.wst.validation.validationbuilder</name>
+                        </buildCommand>
+                        
+                    </additionalBuildcommands>
+                    <additionalProjectnatures>
+                        <projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+                        <projectnature>org.eclipse.jdt.core.javanature</projectnature>
+                        <projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+                        <projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+		                <projectnature>org.eclipse.wst.jsdt.core.jsNature</projectnature>
+                        
+                    </additionalProjectnatures>
+                    <additionalConfig>
+                        <file>
+                            <name>.settings/org.eclipse.wst.common.project.facet.core.xml</name>
+                            <content>
+                                <![CDATA[<faceted-project>
+  <runtime name="Weblogic Runtime"/>
+  <fixed facet="wls.web"/>
+  <fixed facet="oracle.weblogic.webservice.clients"/>
+  <fixed facet="jst.web"/>
+  <fixed facet="oracle.weblogic.webservices"/>
+  <fixed facet="java.apt"/>
+  <fixed facet="wst.jsdt.web"/>
+  <fixed facet="java"/>
+  <installed facet="java" version="1.6"/>
+  <installed facet="java.apt" version="5.0"/>
+  <installed facet="jst.web" version="2.5"/>
+  <installed facet="oracle.weblogic.webservice.clients" version="2.1"/>
+  <installed facet="wls.web" version="10.3.4"/>
+  <installed facet="oracle.weblogic.webservices" version="2.1"/>
+  <installed facet="wst.jsdt.web" version="1.0"/>
+  
+</faceted-project>]]>
+
+
+	
+
+                            </content>
+                        </file>
+                        <file>
+                            <name>.settings/org.eclipse.wst.common.component</name>
+                            <content>
+                                <![CDATA[
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="dynamic">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/" source-path="/src/main/java" />
+        <wb-resource deploy-path="/" source-path="/src/main/resources" />
+        <property name="context-root" value="${project.artifactId}"/>
+       	<property name="java-output-path" value="target/classes" />
+    </wb-module>
+</project-modules>]]>
+                            </content>
+                        </file>
+                        
+                        
+                    </additionalConfig>
+                </configuration>
+            </plugin>
+         <!--    
+            <plugin>
+          	  <groupId>org.apache.maven.plugins</groupId>
+          	  <artifactId>maven-compiler-plugin</artifactId>
+          	  <configuration>
+          	     <source>1.6</source>
+          	     <target>1.6</target>
+         	   </configuration>
+     	    </plugin>
+     	    
+     	    <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>jaxws-maven-plugin</artifactId>
+            <executions>
+               <execution>
+                  <goals>
+                     <goal>wsimport</goal>
+                  </goals>
+               </execution>
+            </executions>
+            <configuration>
+               <sourceDestDir>src/main/java</sourceDestDir>	
+               <keep>true</keep>
+               <packageName>mx.gob.imss.ctirss.ws.asignacion.externo</packageName>
+               <wsdlDirectory>src/main/resources/</wsdlDirectory>
+               <wsdlFiles>
+                   <wsdlFile>WSNssPasoaCambio.wsdl</wsdlFile>
+               </wsdlFiles>
+               <verbose>true</verbose>
+              
+             </configuration>
+         </plugin>
+		 -->            
+		</plugins>
+	</build>
+  
+</project>

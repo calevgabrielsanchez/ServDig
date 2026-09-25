@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://mx.gob.imss.delta.global.service/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://mx.gob.imss.delta.global.service/"
+	name="ValidarAportacionesImssService">
+	<types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="http://mx.gob.imss.delta.global.service/">
+			<xsd:element name="validarAportacionesImssRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="rfc" minOccurs="0" type="xsd:string" />
+                        <xsd:element name="nss" minOccurs="1" >
+                        	<xsd:simpleType>
+                        		<xsd:restriction base="xsd:long">
+                        			<xsd:pattern value="[0-9]{11}"></xsd:pattern>
+                        		</xsd:restriction>
+                        	</xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="curp" minOccurs="0" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="validarAportacionesImssResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="indicadorNSSValido" type="xsd:boolean" minOccurs="1" />
+						<xsd:element name="indicadorDerechoBeneficio" type="xsd:boolean" minOccurs="1" />
+						<xsd:element name="exito" type="xsd:int" minOccurs="1" />
+						<xsd:element name="claveError" type="xsd:int" />
+						<xsd:element name="descripcion" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</types>
+	<message name="request">
+		<part name="validarAportacionesImssRequest" element="tns:validarAportacionesImssRequest" />
+	</message>
+	<message name="response">
+		<part name="validarAportacionesImssResponse" element="tns:validarAportacionesImssResponse" />
+	</message>
+	<portType name="ValidarAportacionesImssService">
+		<operation name="validar">
+			<input message="tns:request" />
+			<output message="tns:response" />
+		</operation>
+	</portType>
+	<binding name="ValidarAportacionesImssServicePortBinding" type="tns:ValidarAportacionesImssService">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="document" />
+		<operation name="validar">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+	<service name="ValidarAportacionesImssService">
+		<port name="ValidarAportacionesImssServicePort" binding="tns:ValidarAportacionesImssServicePortBinding">
+			<soap:address
+				location="http://localhost:7002/ValidarAportacionesImssService/ValidarAportacionesImssService" />
+		</port>
+	</service>
+</definitions>

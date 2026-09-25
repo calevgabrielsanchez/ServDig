@@ -1,0 +1,96 @@
+<definitions targetNamespace="http://mx.gob.imss.ctirss.delta.gestion.asegurado.serie.service/" name="asignacionSerieService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://mx.gob.imss.ctirss.delta.gestion.asegurado.serie.service/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<types>
+		<xsd:schema>
+			<xsd:import namespace="http://mx.gob.imss.ctirss.delta.model.asegurado" schemaLocation="asignacionSerieService2.xsd"/>
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import namespace="http://mx.gob.imss.ctirss.delta.gestion.asegurado.serie.service/" schemaLocation="asignacionSerieService1.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="publicarFinProcesamiento">
+		<part name="parameters" element="tns:publicarFinProcesamiento"/>
+	</message>
+	<message name="publicarFinProcesamientoResponse">
+		<part name="parameters" element="tns:publicarFinProcesamientoResponse"/>
+	</message>
+	<message name="generarAsegurado">
+		<part name="parameters" element="tns:generarAsegurado"/>
+	</message>
+	<message name="generarAseguradoResponse">
+		<part name="parameters" element="tns:generarAseguradoResponse"/>
+	</message>
+	<message name="publicarResultadoAsignacion">
+		<part name="parameters" element="tns:publicarResultadoAsignacion"/>
+	</message>
+	<message name="publicarResultadoAsignacionResponse">
+		<part name="parameters" element="tns:publicarResultadoAsignacionResponse"/>
+	</message>
+	<message name="publicarDetalleResultadoAsignacion">
+		<part name="parameters" element="tns:publicarDetalleResultadoAsignacion"/>
+	</message>
+	<message name="publicarDetalleResultadoAsignacionResponse">
+		<part name="parameters" element="tns:publicarDetalleResultadoAsignacionResponse"/>
+	</message>
+	<portType name="asignacionSerieService">
+		<operation name="publicarFinProcesamiento">
+			<input message="tns:publicarFinProcesamiento"/>
+			<output message="tns:publicarFinProcesamientoResponse"/>
+		</operation>
+		<operation name="generarAsegurado">
+			<input message="tns:generarAsegurado"/>
+			<output message="tns:generarAseguradoResponse"/>
+		</operation>
+		<operation name="publicarResultadoAsignacion">
+			<input message="tns:publicarResultadoAsignacion"/>
+			<output message="tns:publicarResultadoAsignacionResponse"/>
+		</operation>
+		<operation name="publicarDetalleResultadoAsignacion">
+			<input message="tns:publicarDetalleResultadoAsignacion"/>
+			<output message="tns:publicarDetalleResultadoAsignacionResponse"/>
+		</operation>
+	</portType>
+	<binding name="asignacionSeriePortBinding" type="tns:asignacionSerieService">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		<operation name="publicarFinProcesamiento">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="generarAsegurado">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="publicarResultadoAsignacion">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="publicarDetalleResultadoAsignacion">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="asignacionSerieService">
+		<port name="asignacionSeriePort" binding="tns:asignacionSeriePortBinding">
+			<soap:address location="http://deltaqa.imss.gob.mx/SerieServiceWS/asignacionSerieService"/>
+		</port>
+	</service>
+</definitions>

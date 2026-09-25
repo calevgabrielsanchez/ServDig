@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SAV004" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="105" y="0" width="326" height="30"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Dirección de Incorporación y Recaudación
+Servicios de Afiliación y Vigencia de Derechos
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="59" width="326" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[SOLICITUD DE INSCRIPCIÓN DE CONCUBINA O CONCUBINARIO
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="10" y="4" width="66" height="66"/>
+				<imageExpression><![CDATA["C:\\Guillermo\\DocumentosProyecto\\codigo\\trunk\\prototipo\\derechohabientes-service-business-ejb\\src\\main\\resources\\reportes\\logos\\imssColor.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="509" y="2" width="46" height="20"/>
+				<textElement/>
+				<text><![CDATA[SAV 004
+]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="706" splitType="Stretch">
+			<rectangle>
+				<reportElement x="9" y="0" width="545" height="704"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="9" y="42" width="545" height="17" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="9" y="409" width="545" height="17" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="9" y="331" width="545" height="17" backcolor="#CCCCCC"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="9" y="296" width="545" height="17" backcolor="#CCCCCC"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="9" y="2" width="545" height="18"/>
+				<textElement/>
+				<text><![CDATA[Deberá ser requisitada por el Asegurado (a) Pensionado (a) que registra Beneficiario Concubina (rio)
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="16" width="545" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="18" width="100" height="13"/>
+				<textElement/>
+				<text><![CDATA[U.M.F.:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="29" width="545" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="9" y="31" width="100" height="14"/>
+				<textElement/>
+				<text><![CDATA[Fecha y lugar:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="45" width="153" height="16" backcolor="#FF0033"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[Datos generales del solicitante
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="93" width="133" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="94" width="133" height="14"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Apellido Paterno
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="210" y="93" width="133" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="210" y="94" width="133" height="14"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Apellido Materno
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="390" y="93" width="133" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="390" y="94" width="133" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[Nombre (s)
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="130" width="545" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="11" y="131" width="100" height="14"/>
+				<textElement/>
+				<text><![CDATA[CURP
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="143" width="545" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="290" y="131" width="100" height="13"/>
+				<textElement/>
+				<text><![CDATA[NSS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="152" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Fecha de nacimiento
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="170" width="20" height="20"/>
+				<textElement/>
+				<text><![CDATA[Día
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="170" width="24" height="20"/>
+				<textElement/>
+				<text><![CDATA[Mes
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="364" y="170" width="24" height="20"/>
+				<textElement/>
+				<text><![CDATA[AÑO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="224" y="166" width="31" height="1"/>
+			</line>
+			<line>
+				<reportElement x="290" y="166" width="31" height="1"/>
+			</line>
+			<line>
+				<reportElement x="358" y="166" width="31" height="1"/>
+			</line>
+			<line>
+				<reportElement x="10" y="185" width="545" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="185" width="100" height="14"/>
+				<textElement/>
+				<text><![CDATA[Lugar de nacimiento:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="198" width="545" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="199" width="100" height="14"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado Civil:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="199" width="45" height="15"/>
+				<textElement/>
+				<text><![CDATA[Casado (
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="199" width="62" height="14"/>
+				<textElement/>
+				<text><![CDATA[Divorciado (
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="199" width="34" height="14"/>
+				<textElement/>
+				<text><![CDATA[Viudo (
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="199" width="58" height="14"/>
+				<textElement/>
+				<text><![CDATA[Unión Libre (
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="193" y="199" width="38" height="14"/>
+				<textElement/>
+				<text><![CDATA[Soltero (
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="225" width="134" height="14"/>
+				<textElement/>
+				<text><![CDATA[Fecha de inicio del estatus:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="281" y="238" width="31" height="1"/>
+			</line>
+			<line>
+				<reportElement x="381" y="238" width="31" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="281" y="239" width="31" height="14"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Mes
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="381" y="239" width="31" height="14"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Año
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="251" width="545" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="253" width="100" height="13"/>
+				<textElement/>
+				<text><![CDATA[Domicilio:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="281" width="545" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="50" y="282" width="26" height="13"/>
+				<textElement/>
+				<text><![CDATA[Calle
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="282" width="37" height="14"/>
+				<textElement/>
+				<text><![CDATA[Número
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="282" width="40" height="14"/>
+				<textElement/>
+				<text><![CDATA[Colonia
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="281" width="23" height="13"/>
+				<textElement/>
+				<text><![CDATA[C.P.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="415" y="283" width="104" height="13"/>
+				<textElement/>
+				<text><![CDATA[Delegación o Municipio
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="297" width="133" height="14"/>
+				<textElement/>
+				<text><![CDATA[Documentos para comprobar domicilio del solicitante
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="313" width="64" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Recibos de:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="313" width="33" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Renta (
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="313" width="38" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Agua (
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="204" y="312" width="31" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Luz (
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="261" y="313" width="28" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Gas (
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="313" width="48" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Teléfono (
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="331" width="238" height="16"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Documentos para comprobar identidad del solicitante
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="494" y="314" width="35" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Otro (
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="382" y="313" width="84" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Impuesto Predial (
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="348" width="100" height="14"/>
+				<textElement/>
+				<text><![CDATA[Credencial de elector]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="348" width="100" height="14"/>
+				<textElement/>
+				<text><![CDATA[Número de folio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="391" y="348" width="69" height="14"/>
+				<textElement/>
+				<text><![CDATA[Año de registro
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="409" width="198" height="17"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Documentos para comprobar hijos comunes
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="289" y="361" width="71" height="1"/>
+			</line>
+			<line>
+				<reportElement x="467" y="361" width="71" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="29" y="349" width="12" height="13"/>
+				<textElement/>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="349" width="14" height="13"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="363" width="12" height="13"/>
+				<textElement/>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="363" width="14" height="13"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="377" width="14" height="13"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="377" width="12" height="13"/>
+				<textElement/>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="391" width="12" height="13"/>
+				<textElement/>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="391" width="14" height="13"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="363" width="113" height="13"/>
+				<textElement/>
+				<text><![CDATA[Cédula Profesional No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="379" y="363" width="12" height="13"/>
+				<textElement/>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="393" y="363" width="74" height="13"/>
+				<textElement/>
+				<text><![CDATA[) Pasaporte No.:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="467" y="375" width="71" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="72" y="377" width="100" height="14"/>
+				<textElement/>
+				<text><![CDATA[Cartilla S.M.N. No.:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="390" width="229" height="14"/>
+				<textElement/>
+				<text><![CDATA[Otra identificación oficial con fotografía y firma No.:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="302" y="403" width="77" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="391" y="391" width="76" height="13"/>
+				<textElement/>
+				<text><![CDATA[Expedida por:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="466" y="404" width="71" height="1"/>
+			</line>
+			<line>
+				<reportElement x="220" y="452" width="133" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="20" y="453" width="133" height="14"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Apellido Paterno
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="453" width="133" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[Nombre (s)
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="20" y="452" width="133" height="1"/>
+			</line>
+			<line>
+				<reportElement x="400" y="452" width="133" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="220" y="453" width="133" height="14"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Apellido Materno
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="426" width="150" height="14"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre del hijo primogénito:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="480" width="9" height="13"/>
+				<textElement/>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="35" y="480" width="100" height="13"/>
+				<textElement/>
+				<text><![CDATA[) Acta de nacimiento:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="501" width="28" height="14"/>
+				<textElement/>
+				<text><![CDATA[Libro:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="502" width="32" height="13"/>
+				<textElement/>
+				<text><![CDATA[Folio:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="412" y="502" width="27" height="14"/>
+				<textElement/>
+				<text><![CDATA[Foja:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="53" y="514" width="58" height="1"/>
+			</line>
+			<line>
+				<reportElement x="264" y="514" width="58" height="1"/>
+			</line>
+			<line>
+				<reportElement x="443" y="516" width="58" height="1"/>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="517" width="100" height="21" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Fecha de Registro:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="264" y="518" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Lugar de Expedición:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="123" y="534" width="100" height="1"/>
+			</line>
+			<line>
+				<reportElement x="369" y="534" width="100" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="33" y="542" width="100" height="16"/>
+				<textElement/>
+				<text><![CDATA[)Fecha de Registro
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="453" y="570" width="58" height="1"/>
+			</line>
+			<line>
+				<reportElement x="63" y="568" width="58" height="1"/>
+			</line>
+			<line>
+				<reportElement x="274" y="568" width="58" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="412" y="556" width="27" height="14"/>
+				<textElement/>
+				<text><![CDATA[Foja:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="556" width="32" height="13"/>
+				<textElement/>
+				<text><![CDATA[Folio:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="615" width="28" height="14"/>
+				<textElement/>
+				<text><![CDATA[Libro:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="123" y="588" width="100" height="1"/>
+			</line>
+			<line>
+				<reportElement x="379" y="588" width="100" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="264" y="572" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Lugar de Expedición:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="571" width="100" height="21" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Fecha de Registro:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="542" width="9" height="13"/>
+				<textElement/>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="598" width="100" height="14"/>
+				<textElement/>
+				<text><![CDATA[)Otra acta civil:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="598" width="9" height="13"/>
+				<textElement/>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<line>
+				<reportElement x="453" y="627" width="58" height="1"/>
+			</line>
+			<line>
+				<reportElement x="274" y="625" width="58" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="30" y="558" width="28" height="14"/>
+				<textElement/>
+				<text><![CDATA[Libro:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="55" y="625" width="58" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="412" y="613" width="27" height="14"/>
+				<textElement/>
+				<text><![CDATA[Foja:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="613" width="32" height="13"/>
+				<textElement/>
+				<text><![CDATA[Folio:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="379" y="645" width="100" height="1"/>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="22" y="628" width="100" height="21" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					
+				</textElement>
+				<text><![CDATA[Fecha de Registro:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="123" y="645" width="100" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="264" y="629" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Lugar de Expedición:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="689" width="190" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nombre y Firma del Solicitante
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="182" y="688" width="191" height="2"/>
+			</line>
+			<staticText>
+				<reportElement x="157" y="199" width="16" height="14"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="199" width="16" height="14"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="199" width="16" height="14"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="199" width="16" height="14"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="498" y="199" width="16" height="14"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="317" width="16" height="14"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="317" width="16" height="14"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="316" width="16" height="14"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="317" width="16" height="14"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="364" y="317" width="16" height="14"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="469" y="317" width="16" height="14"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="527" y="317" width="16" height="14"/>
+				<textElement/>
+				<text><![CDATA[)]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

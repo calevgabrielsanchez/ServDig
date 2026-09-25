@@ -1,0 +1,45 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package mx.gob.imss.cit.cda.web.cuentaindividual.helper;
+
+import mx.gob.imss.cit.cda.core.events.UpdateEvent;
+import mx.gob.imss.cit.cda.core.events.UpdatedEvent;
+import mx.gob.imss.cit.cda.core.helper.UpdateHelper;
+import mx.gob.imss.cit.cda.service.interfaces.CuentaIndividualRemote;
+import mx.gob.imss.cit.cda.web.app.constants.BeansConstants;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component(BeansConstants.BORRAR_CUENTA_INDIVIDUAL_HELPER)
+public class DeleteCuentaIndividualHelper implements UpdateHelper<Long, Long> {
+
+	@Autowired
+	private CuentaIndividualRemote cuentaIndividualBussines;
+
+	private static final Logger logger = LoggerFactory
+			.getLogger(DeleteCuentaIndividualHelper.class);
+
+	public CuentaIndividualRemote getCuentaIndividualBussines() {
+		return cuentaIndividualBussines;
+	}
+
+	@Override
+	public UpdatedEvent<Long> requestEvent(UpdateEvent<Long> requestUpdateEvent) {
+		logger.debug(
+				"Inicia Guardado de Modificaciones de Cuenta Individual: {}",
+				requestUpdateEvent.getData());
+		boolean eliminado = getCuentaIndividualBussines()
+				.eliminarMovimientosCuentaIndividual(
+						requestUpdateEvent.getData());
+
+		return new UpdatedEvent<Long>(requestUpdateEvent.getKey(),
+				(eliminado ? 0L : 1L));
+	}
+
+}

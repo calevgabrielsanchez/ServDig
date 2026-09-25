@@ -1,0 +1,301 @@
+version: 1
+DN: dc=imss,dc=gob,dc=mx
+objectClass: domain
+objectClass: top
+dc: imss
+
+DN: o=IMSS,dc=imss,dc=gob,dc=mx
+objectClass: top
+objectClass: organization
+description: Instituto Mexicano del Seguro Social
+o: IMSS
+
+DN: ou=people,dc=imss,dc=gob,dc=mx
+objectClass: organizationalUnit
+objectClass: top
+ou: people
+
+DN: uid=horferro,ou=people,dc=imss,dc=gob,dc=mx
+objectClass: iplanet-am-auth-configuration-service
+objectClass: sunIdentityServerLibertyPPService
+objectClass: sunAMAuthAccountLockout
+objectClass: sunFederationManagerDataStore
+objectClass: iplanet-am-managed-person
+objectClass: iPlanetPreferences
+objectClass: sunFMSAML2NameIdentifier
+objectClass: person
+objectClass: inetorgperson
+objectClass: organizationalperson
+objectClass: inetuser
+objectClass: iplanet-am-user-service
+objectClass: top
+cn: Horacio Ferro
+givenName: Horacio
+inetUserStatus: Active
+sn: Ferro
+uid: horferro
+userPassword:: e1NTSEF9S3Z5MmFNYUg3ZmovOTFwOFM5cDZaN0QrWXJRSUpnclNwVjEzRGc9P
+ Q==
+
+DN: uid=andy,ou=people,dc=imss,dc=gob,dc=mx
+objectClass: iplanet-am-auth-configuration-service
+objectClass: sunIdentityServerLibertyPPService
+objectClass: sunAMAuthAccountLockout
+objectClass: sunFederationManagerDataStore
+objectClass: iplanet-am-managed-person
+objectClass: iPlanetPreferences
+objectClass: sunFMSAML2NameIdentifier
+objectClass: person
+objectClass: inetorgperson
+objectClass: organizationalperson
+objectClass: inetuser
+objectClass: iplanet-am-user-service
+objectClass: top
+cn: andy
+givenName: andy
+inetUserStatus: Active
+sn: andy
+uid: andy
+userPassword:: e1NTSEF9QlprQzZ1dGNNMFpQVlNCdHVrS2pqZlFndGErUGI2YXd2TWZlL1E9P
+ Q==
+
+DN: uid=bob,ou=people,dc=imss,dc=gob,dc=mx
+objectClass: iplanet-am-auth-configuration-service
+objectClass: sunIdentityServerLibertyPPService
+objectClass: sunAMAuthAccountLockout
+objectClass: sunFederationManagerDataStore
+objectClass: iplanet-am-managed-person
+objectClass: iPlanetPreferences
+objectClass: sunFMSAML2NameIdentifier
+objectClass: person
+objectClass: inetorgperson
+objectClass: organizationalperson
+objectClass: inetuser
+objectClass: iplanet-am-user-service
+objectClass: top
+cn: bob
+givenName: bob
+inetUserStatus: Active
+sn: bob
+uid: bob
+userPassword:: e1NTSEF9SGR4OWZzdWVtNCtLd2s3MS9oa1ZQNnoraklRVE54Q2xzdHd0dHc9P
+ Q==
+
+DN: uid=chris,ou=people,dc=imss,dc=gob,dc=mx
+objectClass: iplanet-am-auth-configuration-service
+objectClass: sunIdentityServerLibertyPPService
+objectClass: sunAMAuthAccountLockout
+objectClass: sunFederationManagerDataStore
+objectClass: iplanet-am-managed-person
+objectClass: iPlanetPreferences
+objectClass: sunFMSAML2NameIdentifier
+objectClass: person
+objectClass: inetorgperson
+objectClass: organizationalperson
+objectClass: inetuser
+objectClass: iplanet-am-user-service
+objectClass: top
+cn: chris
+givenName: chris
+inetUserStatus: Active
+sn: chris
+uid: chris
+userPassword:: e1NTSEF9ZEpiZ3BZQmw1c1NSSjNZS0JQTVlxOG82QmRycFhWS3BUcVB0cFE9P
+ Q==
+
+DN: uid=dave,ou=people,dc=imss,dc=gob,dc=mx
+objectClass: iplanet-am-auth-configuration-service
+objectClass: sunIdentityServerLibertyPPService
+objectClass: sunAMAuthAccountLockout
+objectClass: sunFederationManagerDataStore
+objectClass: iplanet-am-managed-person
+objectClass: iPlanetPreferences
+objectClass: sunFMSAML2NameIdentifier
+objectClass: person
+objectClass: inetorgperson
+objectClass: organizationalperson
+objectClass: inetuser
+objectClass: iplanet-am-user-service
+objectClass: top
+cn: dave
+givenName: dave
+inetUserStatus: Active
+sn: dave
+uid: dave
+userPassword:: e1NTSEF9ZnNSdEpyMTloY1JtSWIvcEVROG1WTHFhY29Hb25yWFN2K0g5QXc9P
+ Q==
+
+DN: uid=ellen,ou=people,dc=imss,dc=gob,dc=mx
+objectClass: iplanet-am-auth-configuration-service
+objectClass: sunIdentityServerLibertyPPService
+objectClass: sunAMAuthAccountLockout
+objectClass: sunFederationManagerDataStore
+objectClass: iplanet-am-managed-person
+objectClass: iPlanetPreferences
+objectClass: sunFMSAML2NameIdentifier
+objectClass: person
+objectClass: inetorgperson
+objectClass: organizationalperson
+objectClass: inetuser
+objectClass: iplanet-am-user-service
+objectClass: top
+cn: ellen
+givenName: ellen
+inetUserStatus: Active
+iplanet-am-user-auth-config: ldapService
+sn: ellen
+uid: ellen
+userPassword:: e1NTSEF9NEtydjk4clAvdUYvT1BBdjgvUUk0eUl0NEdqM1prdTR3dUwwNmc9P
+ Q==
+
+DN: uid=frank,ou=people,dc=imss,dc=gob,dc=mx
+objectClass: iplanet-am-auth-configuration-service
+objectClass: sunIdentityServerLibertyPPService
+objectClass: sunAMAuthAccountLockout
+objectClass: sunFederationManagerDataStore
+objectClass: iplanet-am-managed-person
+objectClass: iPlanetPreferences
+objectClass: sunFMSAML2NameIdentifier
+objectClass: person
+objectClass: inetorgperson
+objectClass: organizationalperson
+objectClass: inetuser
+objectClass: iplanet-am-user-service
+objectClass: top
+cn: frank
+givenName: frank
+inetUserStatus: Active
+sn: frank
+uid: frank
+userPassword:: e1NTSEF9ZnZxUjFnaXRKYXQ0aFhubWtNckpjVkVJbWhkbG9ZYURFRzNtbHc9P
+ Q==
+
+DN: uid=gina,ou=people,dc=imss,dc=gob,dc=mx
+objectClass: iplanet-am-auth-configuration-service
+objectClass: sunIdentityServerLibertyPPService
+objectClass: sunAMAuthAccountLockout
+objectClass: sunFederationManagerDataStore
+objectClass: iplanet-am-managed-person
+objectClass: iPlanetPreferences
+objectClass: sunFMSAML2NameIdentifier
+objectClass: person
+objectClass: inetorgperson
+objectClass: organizationalperson
+objectClass: inetuser
+objectClass: iplanet-am-user-service
+objectClass: top
+cn: gina
+givenName: gina
+inetUserStatus: Active
+sn: gina
+uid: gina
+userPassword:: e1NTSEF9bTNhMDhYdDV1K05td2kzSGFEQkhCOWdsaHV6cS8rUnN0VmlWcnc9P
+ Q==
+
+DN: ou=groups,dc=imss,dc=gob,dc=mx
+objectClass: organizationalUnit
+objectClass: top
+ou: groups
+
+DN: cn=Administrators,ou=groups,dc=imss,dc=gob,dc=mx
+objectClass: groupofuniquenames
+objectClass: top
+cn: Administrators
+
+DN: cn=Usuarios,ou=groups,dc=imss,dc=gob,dc=mx
+objectClass: groupofuniquenames
+objectClass: top
+cn: Usuarios
+
+DN: cn=employee,ou=groups,dc=imss,dc=gob,dc=mx
+objectClass: groupofuniquenames
+objectClass: top
+cn: employee
+uniqueMember: uid=ellen,ou=people,dc=imss,dc=gob,dc=mx
+uniqueMember: uid=chris,ou=people,dc=imss,dc=gob,dc=mx
+uniqueMember: uid=andy,ou=people,dc=imss,dc=gob,dc=mx
+uniqueMember: uid=frank,ou=people,dc=imss,dc=gob,dc=mx
+uniqueMember: uid=dave,ou=people,dc=imss,dc=gob,dc=mx
+uniqueMember: uid=bob,ou=people,dc=imss,dc=gob,dc=mx
+
+DN: cn=manager,ou=groups,dc=imss,dc=gob,dc=mx
+objectClass: groupofuniquenames
+objectClass: top
+cn: manager
+uniqueMember: uid=chris,ou=people,dc=imss,dc=gob,dc=mx
+uniqueMember: uid=bob,ou=people,dc=imss,dc=gob,dc=mx
+
+DN: cn=everyone,ou=groups,dc=imss,dc=gob,dc=mx
+objectClass: groupofuniquenames
+objectClass: top
+cn: everyone
+uniqueMember: uid=ellen,ou=people,dc=imss,dc=gob,dc=mx
+uniqueMember: uid=chris,ou=people,dc=imss,dc=gob,dc=mx
+uniqueMember: uid=andy,ou=people,dc=imss,dc=gob,dc=mx
+uniqueMember: uid=frank,ou=people,dc=imss,dc=gob,dc=mx
+uniqueMember: uid=dave,ou=people,dc=imss,dc=gob,dc=mx
+uniqueMember: uid=gina,ou=people,dc=imss,dc=gob,dc=mx
+uniqueMember: uid=bob,ou=people,dc=imss,dc=gob,dc=mx
+
+DN: cn=customer,ou=groups,dc=imss,dc=gob,dc=mx
+objectClass: groupofuniquenames
+objectClass: top
+cn: customer
+uniqueMember: uid=ellen,ou=people,dc=imss,dc=gob,dc=mx
+uniqueMember: uid=chris,ou=people,dc=imss,dc=gob,dc=mx
+
+DN: cn=staff,ou=groups,dc=imss,dc=gob,dc=mx
+objectClass: groupofuniquenames
+objectClass: top
+cn: staff
+uniqueMember: uid=chris,ou=people,dc=imss,dc=gob,dc=mx
+
+DN: cn=admins,ou=groups,dc=imss,dc=gob,dc=mx
+objectClass: groupofuniquenames
+objectClass: top
+cn: admins
+uniqueMember: uid=gina,ou=people,dc=imss,dc=gob,dc=mx
+
+DN: ou=opensso adminusers,dc=imss,dc=gob,dc=mx
+objectClass: organizationalUnit
+objectClass: top
+ou: opensso adminusers
+
+DN: cn=openssouser,ou=opensso adminusers,dc=imss,dc=gob,dc=mx
+objectClass: person
+objectClass: organizationalperson
+objectClass: inetuser
+objectClass: top
+cn: openssouser
+sn: openssouser
+userPassword:: e1NTSEF9ZzNidTdGWlBXVU5Hek9RbVRKRVpPTVhYUGpacmlSVEtSTkd4bkE9P
+ Q==
+
+DN: cn=ldapuser,ou=opensso adminusers,dc=imss,dc=gob,dc=mx
+objectClass: person
+objectClass: organizationalperson
+objectClass: inetuser
+objectClass: top
+cn: ldapuser
+sn: ldapuser
+userPassword:: e1NTSEF9aUozanNCTHFIdm1mN2Y1aVR4TUR0MjRIeDJZQ2FFVm1TV0xrbkE9P
+ Q==
+
+DN: ou=profiles,dc=imss,dc=gob,dc=mx
+objectClass: organizationalUnit
+objectClass: top
+ou: profiles
+
+DN: cn=Patrones,ou=profiles,dc=imss,dc=gob,dc=mx
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Patrones
+uniqueMember: cn=admins,ou=groups,dc=imss,dc=gob,dc=mx
+
+DN: cn=Perfil de Prueba,ou=profiles,dc=imss,dc=gob,dc=mx
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Perfil de Prueba
+uniqueMember: cn=Usuarios,ou=groups,dc=imss,dc=gob,dc=mx
+uniqueMember: cn=Administrators,ou=groups,dc=imss,dc=gob,dc=mx
+

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ComprobanteRechazoSolicitud" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.4615378250000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="365"/>
+	<parameter name="LOGO" class="java.lang.String"/>
+	<parameter name="TITULO" class="java.lang.String"/>
+	<field name="nss" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="tipoRechazo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="67" y="18" width="445" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[INSTITUTO MEXICANO DEL SEGURO SOCIAL
+
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="3" y="3" width="64" height="55"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{LOGO}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="67" y="31" width="445" height="13"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{TITULO}+ " DE DERECHOHABIENTES"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="622" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="3" y="3" width="552" height="619"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="21" y="153" width="511" height="448"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="21" y="23" width="511" height="84"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="33" y="23" width="499" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DATOS DEL ASEGURADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="48" width="198" height="20"/>
+				<textElement/>
+				<text><![CDATA[NÚMERO DE SEGURDIAD SOCIAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="75" width="71" height="20"/>
+				<textElement/>
+				<text><![CDATA[NOMBRE: ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="230" y="61" width="187" height="1"/>
+			</line>
+			<line>
+				<reportElement x="103" y="87" width="314" height="1"/>
+			</line>
+			<line>
+				<reportElement x="21" y="43" width="511" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="32" y="153" width="500" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[INFORMACIÓN GENERAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="190" width="480" height="68">
+					<printWhenExpression><![CDATA[$F{tipoRechazo}.equals( "otro" )]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[Cuando el asegurado manifieste en forma directa que sus beneficiarios padres no cumplan con el requisito de convivencia o bien se determine lo anterior como resultado de la evaluación del cuestionario, se le orientará para que elabore un escrito libre dirigido al H. Consejo Consultivo Delegacional solicitando la autorización para que éstos reciban las prestaciones en especie que marca el Artículo 84 de la Ley del Seguro Social.
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="230" y="48" width="187" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nss} != null  ? $F{nss}.format("%s - %s", $F{nss}.substring(0, $F{nss}.length()-1), $F{nss}.charAt($F{nss}.length()-1)) : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="105" y="73" width="312" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="190" width="479" height="73">
+					<printWhenExpression><![CDATA[$F{tipoRechazo}.equals( "registro_padres" )]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[Señor(a) derechohabiente los registros no fueron aceptados no pasaron el  cuestionario de requerirse deberá ser solicitado ante el H. Consejo Consultivo Delegacional. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="190" width="479" height="80">
+					<printWhenExpression><![CDATA[$F{tipoRechazo}.equals( "registro_concubina" )]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[Señor(a) derechohabiente el registro no fue aceptado por no reunir lo que establece el artículo 84 fracción III de la LSS]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

@@ -1,0 +1,501 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+ <parent>
+    <groupId>mx.gob.imss.ctirss.correccion</groupId>  
+	<artifactId>correccion</artifactId>
+    <version>1.0</version>
+  </parent>
+  
+  <groupId>mx.gob.imss.ctirss.correccion.web</groupId>
+  <artifactId>correccionVentanilla-web</artifactId>
+  <version>1.0</version>
+  <packaging>war</packaging>
+
+  <name>correccion-web</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+     <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <project.build.sourceEncoding>8859_1</project.build.sourceEncoding>
+        <org.springframework.version>3.0.5.RELEASE</org.springframework.version> 
+		<org.slf4j.version>1.6.1</org.slf4j.version>
+		<org.aspectj.version>1.6.11</org.aspectj.version>
+		<org.antlr.version>3.4</org.antlr.version>
+		<org.jstl.version>1.2</org.jstl.version>
+		<org.apache.karaf.assemblies.features.version>2.2.4</org.apache.karaf.assemblies.features.version>
+		<org.apache.tiles.version>2.2.2</org.apache.tiles.version>
+		<spring.security.version>2.0.4</spring.security.version>
+		
+		<!--MavenAmbientes-->
+<!-- Produccion -->
+<!--  		<mx.gob.imss.ctirss.delta.gestion.solicitud.gestionSolicitud-interfaces-negocio>1.2-RELEASE</mx.gob.imss.ctirss.delta.gestion.solicitud.gestionSolicitud-interfaces-negocio> -->
+<!--  		<mx.gob.imss.ctirss.delta.gestion.patronal.delta-gestionPatronal-interfaces-negocio>1.4-RELEASE</mx.gob.imss.ctirss.delta.gestion.patronal.delta-gestionPatronal-interfaces-negocio> -->
+<!--  		<mx.gob.imss.ctirss.delta.gestion.domicilio.gestionDomicilios-interfaces-negocio>1.4-RELEASE</mx.gob.imss.ctirss.delta.gestion.domicilio.gestionDomicilios-interfaces-negocio> -->
+<!--  		<mx.gob.imss.ctirss.delta.delta-modelo-negocio>1.6-RELEASE</mx.gob.imss.ctirss.delta.delta-modelo-negocio> -->
+<!--  		<mx.gob.imss.ctirss.delta.delta-framework-base>1.6-RELEASE</mx.gob.imss.ctirss.delta.delta-framework-base>  -->
+ 		
+ 		<!-- Stage -->
+ 		<mx.gob.imss.ctirss.delta.gestion.solicitud.gestionSolicitud-interfaces-negocio>2.2</mx.gob.imss.ctirss.delta.gestion.solicitud.gestionSolicitud-interfaces-negocio>
+ 		<mx.gob.imss.ctirss.delta.gestion.patronal.delta-gestionPatronal-interfaces-negocio>2.4</mx.gob.imss.ctirss.delta.gestion.patronal.delta-gestionPatronal-interfaces-negocio>
+ 		<mx.gob.imss.ctirss.delta.gestion.domicilio.gestionDomicilios-interfaces-negocio>2.4</mx.gob.imss.ctirss.delta.gestion.domicilio.gestionDomicilios-interfaces-negocio>
+ 		<mx.gob.imss.ctirss.delta.delta-modelo-negocio>2.6</mx.gob.imss.ctirss.delta.delta-modelo-negocio>
+ 		<mx.gob.imss.ctirss.delta.delta-framework-base>2.6</mx.gob.imss.ctirss.delta.delta-framework-base> 
+ 	
+ 		
+ 		<!-- Desarrollo -->
+<!--   		<mx.gob.imss.ctirss.delta.gestion.solicitud.gestionSolicitud-interfaces-negocio>2.2</mx.gob.imss.ctirss.delta.gestion.solicitud.gestionSolicitud-interfaces-negocio> -->
+<!--  		<mx.gob.imss.ctirss.delta.gestion.patronal.delta-gestionPatronal-interfaces-negocio>2.4</mx.gob.imss.ctirss.delta.gestion.patronal.delta-gestionPatronal-interfaces-negocio> -->
+<!--  		<mx.gob.imss.ctirss.delta.gestion.domicilio.gestionDomicilios-interfaces-negocio>2.4</mx.gob.imss.ctirss.delta.gestion.domicilio.gestionDomicilios-interfaces-negocio> -->
+<!--  		<mx.gob.imss.ctirss.delta.delta-modelo-negocio>2.6</mx.gob.imss.ctirss.delta.delta-modelo-negocio> -->
+<!--  		<mx.gob.imss.ctirss.delta.delta-framework-base>2.6</mx.gob.imss.ctirss.delta.delta-framework-base>   -->
+  </properties>
+	 
+
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+             <groupId>mx.gob.imss.ctirss.dictamen</groupId>
+             <artifactId>dictamenReaderAnexo</artifactId>
+             <version>0.0.1-SNAPSHOT</version>
+         </dependency>
+        
+        
+    <dependency>
+		<groupId>mx.gob.imss.ctirss.correccion.interface</groupId>
+		<artifactId>correccion-service-business-interface</artifactId>
+		<version>1.0</version>
+	</dependency>
+    
+    <dependency>
+     <groupId>mx.gob.imss.ctirss.correccion.pojo</groupId>
+  	 <artifactId>correccion-model-business-pojo</artifactId>
+     <version>1.0</version>
+    </dependency>
+    
+    
+    <!-- Dependencia del Framework del IMSS -->
+    <dependency>
+    	<groupId>mx.gob.imss.ctirss.correccion.framework</groupId>
+  		<artifactId>correccion-framework-base</artifactId>
+  		<version>1.0</version>
+    </dependency>
+    
+    
+    <!--  Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework.version}</version>
+			<exclusions>
+				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				 </exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>    <groupId>org.springframework</groupId>    <artifactId>spring-aop</artifactId>    <version>3.0.5.RELEASE</version></dependency>
+		<dependency>    <groupId>javax.enterprise</groupId>    <artifactId>cdi-api</artifactId>    <version>1.0</version></dependency>
+		<dependency>    <groupId>org.jboss.spec.javax.interceptor</groupId>    <artifactId>jboss-interceptors-api_1.1_spec</artifactId>    <version>1.0.0.Final</version></dependency>
+		<dependency>    <groupId>cglib</groupId>    <artifactId>cglib</artifactId>    <version>2.2.2</version></dependency>
+		
+				<!-- Integracion con Open AM - Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.security.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-dao</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+
+				<dependency>
+			<groupId>com.sun.identity.provider</groupId>
+			<artifactId>opensso-springsecurity</artifactId>
+			<version>0.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.forgerock.openam</groupId> 
+			<artifactId>clientsdk</artifactId>
+			<version>10.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.commons.utils</groupId>
+			<artifactId>jxl</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<!--dependency>
+			<groupId>mx.gob.imss.commons.utils</groupId>
+			<artifactId>ReadAndExportXLS</artifactId>
+			<version>1.0</version>
+		</dependency-->
+		
+		<!-- dependency>
+			<groupId>mx.gob.imss.commons.utils</groupId>
+			<artifactId>ReadAndExportXLS</artifactId>
+			<version>2.0</version>
+		</dependency-->
+		<dependency>
+			<groupId>mx.gob.imss.commons.utils</groupId>
+			<artifactId>ReadAndExportXLS</artifactId>
+			<version>3.0</version>
+		</dependency>
+		
+		<!-- Tiles -->
+
+		<dependency>    
+			<groupId>org.antlr</groupId>    
+			<artifactId>antlr-runtime</artifactId>    
+			<version>${org.antlr.version}</version>
+		</dependency>
+		<dependency>
+    		<groupId>jstl</groupId>
+    		<artifactId>jstl</artifactId>
+    		<version>${org.jstl.version}</version>
+		</dependency>
+		<dependency>    
+			<groupId>org.apache.karaf.assemblies.features</groupId>    
+			<artifactId>standard</artifactId>    
+			<version>${org.apache.karaf.assemblies.features.version}</version>
+		</dependency>
+		<dependency>    
+			<groupId>org.apache.tiles</groupId>    
+			<artifactId>tiles-api</artifactId>    
+			<version>${org.apache.tiles.version}</version>
+		</dependency>
+		<dependency>   
+			 <groupId>org.apache.tiles</groupId>    
+			 <artifactId>tiles-core</artifactId>    
+			 <version>${org.apache.tiles.version}</version>
+		</dependency>
+		<dependency>    
+			<groupId>org.apache.tiles</groupId>    
+			<artifactId>tiles-jsp</artifactId>    
+			<version>${org.apache.tiles.version}</version>
+		</dependency>
+		<dependency>    
+			<groupId>commons-digester</groupId>    
+			<artifactId>commons-digester</artifactId>    
+			<version>2.1</version>
+		</dependency>
+		<dependency>    
+			<groupId>org.apache.tiles</groupId>    
+			<artifactId>tiles-servlet</artifactId>    
+			<version>${org.apache.tiles.version}</version>
+		</dependency>
+		<dependency>    
+			<groupId>org.apache.tiles</groupId>    
+			<artifactId>tiles-template</artifactId>    
+			<version>${org.apache.tiles.version}</version>
+		</dependency>
+		<dependency>
+		   <groupId>org.springframework.webflow</groupId>
+		   <artifactId>org.springframework.js</artifactId>
+		   <version>2.0.4.RELEASE</version>
+		</dependency>
+		<!--  JSR 303 with Hibernate Validator -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.0.0.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.1.0.Final</version>
+		</dependency>
+
+		<!-- Control de Archivos  -->
+		
+		<dependency> 
+		   <groupId>commons-fileupload</groupId>
+		   <artifactId>commons-fileupload</artifactId>
+		   <version>1.2.2</version>
+		 </dependency>
+		 
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>3.3</version>
+		</dependency>
+            
+		 
+		<!--  Joda Time -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>1.6.2</version>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<!-- Jackson JSON Mapper -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+		
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- Test -->
+		<!-- dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework.version}</version>
+			<scope>test</scope>
+		</dependency>
+    
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjtools</artifactId>
+            <version>${org.aspectj.version}</version>
+        </dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.fiscalizacion.dictamen</groupId>
+			<artifactId>iText</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.fiscalizacion.dictamen</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>3.7.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.fiscalizacion.dictamen</groupId>
+			<artifactId>jasperreports-chart-themes</artifactId>
+			<version>3.7.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.fiscalizacion.dictamen</groupId>
+			<artifactId>jasperreports-extensions</artifactId>
+			<version>3.5.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.fiscalizacion.dictamen</groupId>
+			<artifactId>jasperreports-fonts</artifactId>
+			<version>3.7.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.fiscalizacion.dictamen</groupId>
+			<artifactId>soap</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>quartz</groupId>
+			<artifactId>quartz</artifactId>
+			<version>1.5.2</version>
+		</dependency>
+		<dependency>
+			<groupId>groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>1.1-rc-1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.9</version>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.dictamen</groupId>
+			<artifactId>readerXLS</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>1.0.b2</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.domicilio</groupId>
+			<artifactId>gestionDomicilios-interfaces-negocio</artifactId>
+			<version>${mx.gob.imss.ctirss.delta.gestion.domicilio.gestionDomicilios-interfaces-negocio}</version> 
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-modelo-negocio</artifactId>
+			<version>${mx.gob.imss.ctirss.delta.delta-modelo-negocio}</version> 
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-framework-base</artifactId>
+			<version>${mx.gob.imss.ctirss.delta.delta-framework-base}</version>
+		</dependency>
+		
+		<!-- Dependencias para la estadistica de tramites -->
+ 		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.solicitud</groupId>
+			<artifactId>gestionSolicitud-interfaces-negocio</artifactId>
+			<version>${mx.gob.imss.ctirss.delta.gestion.solicitud.gestionSolicitud-interfaces-negocio}</version>
+		</dependency> 
+		
+ 		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.patronal</groupId>
+			<artifactId>delta-gestionPatronal-interfaces-negocio</artifactId>
+			<version>${mx.gob.imss.ctirss.delta.gestion.patronal.delta-gestionPatronal-interfaces-negocio}</version>
+		</dependency> 
+		
+		
+		
+		
+		
+	<!-- Dependencias para la estadistica de tramites -->
+    </dependencies>
+
+<repositories>
+		<!-- For Hibernate Validator -->
+		<repository>
+			<id>org.jboss.repository.release</id>
+			<name>JBoss Maven Release Repository</name>			
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+			<snapshots><enabled>false</enabled></snapshots>			
+		</repository>		
+	</repositories>
+
+
+
+    <build>
+    <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <compilerArguments>
+                        <endorseddirs>${endorsed.dir}</endorseddirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+            <!-- plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin   -->
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        
+                            <outputDirectory>${endorsed.dir}</outputDirectory>
+                            <silent>true</silent>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>javax</groupId>
+                                    <artifactId>javaee-endorsed-api</artifactId>
+                                    <version>6.0</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                            </artifactItems>
+                        
+                    </execution>
+                </executions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:doc="http://mx.gob.imss.digital.modelo.documento.probatorio" xmlns:persona="http://mx.gob.imss.digital.modelo.persona" xmlns:solicitud="http://mx.gob.imss.digital.modelo.solicitud" xmlns:tramite="http://mx.gob.imss.digital.modelo.tramite" targetNamespace="http://mx.gob.imss.digital.modelo.solicitud" version="1.0">
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.tramite" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/tramite.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.documento.probatorio" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/documento-probatorio.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.persona" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/persona.xsd"/>
+
+  <xs:element name="estadoSolicitud" type="solicitud:estadoSolicitud"/>
+
+  <xs:element name="firmaElectronica" type="solicitud:firmaElectronica"/>
+
+  <xs:element name="origenSolicitud" type="solicitud:origenSolicitud"/>
+
+  <xs:element name="solicitud" type="solicitud:solicitud"/>
+
+  <xs:element name="tipoSolicitud" type="solicitud:tipoSolicitud"/>
+
+  <xs:complexType name="tipoSolicitud">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idTipoSolicitud" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+      <xs:element minOccurs="0" name="siglas" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="firmaElectronica">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idSolicitud" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="sPKCS7" type="xs:string"/>
+      <xs:element minOccurs="0" name="cadenaOriginal" type="xs:string"/>
+      <xs:element minOccurs="0" name="recibo" type="xs:string"/>
+      <xs:element minOccurs="0" name="rfc" type="xs:string"/>
+      <xs:element minOccurs="0" name="registroPatronal" type="xs:string"/>
+      <xs:element minOccurs="0" name="curp" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreCompleto" type="xs:string"/>
+      <xs:element minOccurs="0" name="serialCertificado" type="xs:string"/>
+      <xs:element minOccurs="0" name="iniciaVigenciaCertificado" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="finVigenciaCertificado" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="strIniciaVigenciaCertificado" type="xs:string"/>
+      <xs:element minOccurs="0" name="strFinVigenciaCertificado" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoCertificado" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaElectronica" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaElectronicaFormateada" type="xs:string"/>
+      <xs:element minOccurs="0" name="urlAcuseFirma" type="xs:string"/>
+      <xs:element minOccurs="0" name="reciboNotarial" type="xs:string"/>
+      <xs:element minOccurs="0" name="secuenciaNotaria" type="xs:string"/>
+      <xs:element minOccurs="0" name="msgRespuesta" type="xs:string"/>
+      <xs:element minOccurs="0" name="codRespuesta" type="xs:string"/>
+      <xs:element name="firmarArchivo" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="fileNameToSign" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="solicitud">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="tramite" nillable="true" type="tramite:tramite"/>
+      <xs:element minOccurs="0" name="idSolicitud" type="xs:long"/>
+      <xs:element minOccurs="0" name="numSolicitud" type="xs:string"/>
+      <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaRegistro" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaRegistroFormateada" type="xs:string"/>
+      <xs:element minOccurs="0" ref="solicitud:estadoSolicitud"/>
+      <xs:element minOccurs="0" ref="solicitud:firmaElectronica"/>
+      <xs:element minOccurs="0" ref="solicitud:tipoSolicitud"/>
+      <xs:element minOccurs="0" ref="solicitud:origenSolicitud"/>
+      <xs:element minOccurs="0" name="usuarioResponsable" type="xs:string"/>
+      <xs:element name="firmadaDigitalmente" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="cadenaOriginal" type="xs:string"/>
+      <xs:element minOccurs="0" name="selloDigital" type="xs:string"/>
+      <xs:element minOccurs="0" name="secuenciaDeNotaria" type="xs:string"/>
+      <xs:element minOccurs="0" name="numeroSerieCertificado" type="xs:string"/>
+      <xs:element minOccurs="0" name="errorFormGeneral" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="estadoSolicitud">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idEstadoSolicitud" type="xs:int"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="origenSolicitud">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idOrigenSolicitud" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

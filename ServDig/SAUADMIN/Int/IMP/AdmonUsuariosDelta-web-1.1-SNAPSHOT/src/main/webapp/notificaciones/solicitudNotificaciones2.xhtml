@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+
+<div>
+	<div class="contenedor">
+		<div class="wp-caption-text">
+			<h:form id="formSolNotificaciones">
+				<ace:dataTable id="notifRow" style="font-size:9px"
+					value="#{notificarSolicitudMB.lista}" var="notificacion" rows="10"
+					paginator="true" paginatorPosition="top" selectionMode="single"
+					rowSelectListener="#{notificarSolicitudMB.selectListenerDetalle}">
+					<ace:ajax event="select" execute="@all" render="@all"
+						onComplete="dialogDetailNotif.show();" />
+
+					<ace:column id="curp" headerText="CURP">
+						<h:outputText id="curpCell"
+							value=" #{notificacion.solicitud.desUsrCurp}" />
+					</ace:column>
+					<ace:column id="nombre" headerText="Nombre">
+						<h:outputText id="nombreCell"
+							value=" #{notificacion.solicitud.nombreCompleto}" />
+					</ace:column>
+					<ace:column id="estatus" headerText="Estatus">
+						<h:outputText id="estatusCell"
+							value="#{notificacion.solicitud.estatusDTO.desEstatus}" />
+					</ace:column>
+					<ace:column id="area" headerText="Área Normativa">
+						<h:outputText id="areaCell"
+							value="#{notificacion.solicitud.areaNorm.desAreanorma}" />
+					</ace:column>
+					<ace:column id="del" headerText="Delegación">
+						<h:outputText id="delCell"
+							value="#{notificacion.solicitud.delDTO.nombreDelegacion}" />
+					</ace:column>
+					<ace:column id="sub" headerText="Subdelegación">
+						<h:outputText id="subCell"
+							value="#{notificacion.solicitud.subdelDTO.nombreSubelegacion}" />
+					</ace:column>
+					<ace:column id="dep" headerText="Departamento">
+						<h:outputText id="depCell"
+							value="#{notificacion.solicitud.dptoDTO.desDepartamento}" />
+					</ace:column>
+					<ace:column id="puesto" headerText="Puesto">
+						<h:outputText id="puestoCell"
+							value="#{notificacion.solicitud.puestoDTO.nombrePuesto}" />
+					</ace:column>
+					<ace:column id="vigencia" headerText="Vigencia Notif.">
+						<h:outputText id="vigeCell" value="#{notificacion.estatusN}" />
+					</ace:column>
+				</ace:dataTable>
+			</h:form>
+		</div>
+	</div>
+</div>
+</html>

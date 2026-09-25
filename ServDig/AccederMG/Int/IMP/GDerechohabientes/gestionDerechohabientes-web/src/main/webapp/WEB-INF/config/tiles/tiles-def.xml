@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="simple.base.definition"
+		template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title" value=" ACCEDER UNIFICADO " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<definition name="simple.base.definition.derechohabientes"
+		template="/WEB-INF/views/layout/main-delta.jsp">
+		<put-attribute name="title" value=" ACCEDER UNIFICADO " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>	
+
+	
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title" value=" ACCEDER UNIFICADO " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+
+	
+	<definition name="base.definition2"
+		template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title" value=" ACCEDER UNIFICADO " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menuSinAsegurado.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<definition name="tramitador.definition"
+		template="/WEB-INF/views/layout/mainTramitador.jsp">
+		<put-attribute name="title" value=" ACCEDER UNIFICADO " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menuTramitador" value="/WEB-INF/views/layout/menuTramitador.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<definition name="base.definition.embebed"
+		template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title" value=" ACCEDER UNIFICADO " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<definition name="base.definition.Autoriza.pendientes"
+		template="/WEB-INF/views/layout/mainAutorizaPendientes.jsp">
+		<put-attribute name="title" value=" ACCEDER UNIFICADO " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menuTramitador" value="/WEB-INF/views/layout/menuPendientesAut.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<definition name="base.definition.Autoriza.atendidas"
+		template="/WEB-INF/views/layout/mainAutorizaAtendidas.jsp">
+		<put-attribute name="title" value=" ACCEDER UNIFICADO " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menuTramitador" value="/WEB-INF/views/layout/menuAtendidas.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+<!-- Definicion de la pantalla del gestionDerechohabientes -->
+	<definition name="gestionDerechohabientes" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/gestionDerechohabientes/gestionDerechohabientes.jsp "/>
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de logeo -->
+	<definition name="login" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/login.jsp "/>
+	</definition>
+	
+		<!-- Definicion de la pantalla de bienvenida de la aplicacion -->
+	<definition name="welcome" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/welcome.jsp "/>
+	</definition>
+	
+	<definition name="comprobantes" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/derechohabientes/comprobantes.jsp "/>
+	</definition>
+	
+	<definition name="comprobantesAut" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/derechohabientes/comprobantesAut.jsp "/>
+	</definition>
+	
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="home" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/home.jsp "/>
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-home.jsp" />
+	</definition>
+	
+	<definition name="homeNormativoCE" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/general/homeNormativoCE.jsp"/>
+	</definition>
+
+	<definition name="homeNormativoJefe" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/general/homeNormativoJefe.jsp"/>
+	</definition>
+
+	<definition name="homeNormativoCEReportes" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/general/homeNormativoCEReportes.jsp"/>
+	</definition>
+		
+	<definition name="homeJefeDeptoSuper" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/general/homeJefeDeptoSuper.jsp"/>
+	</definition>
+	
+	<definition name="registroConyugeConcubinario" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/derechohabientes/registroConyugeConcubinario.jsp"/>
+	</definition>
+
+	<!-- Definicion de la pantalla de Inicio de tramite-->
+	<definition name="tramiteinicio" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/tramite/inicio.jsp "/>
+	</definition>
+	
+	<!-- definiciones de gestion derechohabientes -->
+	
+	<definition name="grupoFamiliar" extends="base.definition">		
+		<put-attribute name="contenido" value="/WEB-INF/views/derechohabientes/grupoFamiliar.jsp"/>
+	</definition>
+
+	<definition name="grupoFamiliar2" extends="base.definition2">		
+		<put-attribute name="contenido" value="/WEB-INF/views/derechohabientes/grupoFamiliar.jsp"/>
+	</definition>
+	
+	<definition name="citaProgramada" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="contenido" value="/WEB-INF/views/derechohabientes/citaProgramada.jsp"/>
+	</definition>
+	
+	<definition name="registro" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="contenido" value="/WEB-INF/views/derechohabientes/registroDerechohabientes.jsp"/>
+	</definition>
+	
+	<definition name="validar" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="contenido" value="/WEB-INF/views/derechohabientes/validaRegistroDerechohabientes.jsp"/>
+	</definition>
+	
+	<definition name="inicial" template="/WEB-INF/views/layout/mainTramitador.jsp">
+		<put-attribute name="title" value=" ACCEDER UNIFICADO " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menuTramitador" value="" />
+		<put-attribute name="submenu" value="" />		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+		<put-attribute name="contenido" value="/WEB-INF/views/general/welcome.jsp"/>
+	</definition>
+	
+	<!--<definition name="busquedaPrincipal" extends="simple.base.definition.derechohabientes">-->
+		<definition name="busquedaPrincipal" template="/WEB-INF/views/layout/mainTramitador.jsp">
+		<put-attribute name="title" value=" ACCEDER UNIFICADO " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menuTramitador" value="/WEB-INF/views/layout/menuTramitador.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+		<put-attribute name="contenido" value="/WEB-INF/views/general/busquedaPrincipal.jsp"/>
+	</definition>
+	
+	
+	<definition name="confirmacion" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/derechohabientes/confirmacionRegistroDerechohabientes.jsp"/>
+	</definition>
+	
+	<definition name="buscarAsentamiento" extends="base.definition">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/busqueda/busquedaAsentamiento.jsp"/>
+	</definition>
+	<definition name="prorrogaEstudios" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/prorrogas/ConsultaDerechohabientesHijos.jsp"/>
+	</definition>
+	<definition name="autorizacionCorreccion" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/correccion/autorizarCorreccionDatos.jsp"/>
+	</definition>
+	<definition name="asignarMedico" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/correccion/asignarConsultorioMedicoTurno.jsp"/>
+	</definition>
+	<definition name="prorrogasPermanente" extends="simple.base.definition.derechohabientes">
+	<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/prorrogas/ConsultaDerechohabientesPorVigenciaPermanente.jsp"/>
+	</definition>
+	<definition name="prorrogasTemporal" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/prorrogas/RegistroProrrogaPorVigenciaTemporal.jsp"/>
+	</definition>
+	<definition name="registroPermanente" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/prorrogas/RegistroProrrogaPorVigenciaPermanente.jsp"/>
+	</definition>
+	<definition name="registroProrrogaEstudios" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/prorrogas/RegistroProrrogaPorEstudios.jsp"/>
+	</definition>
+	<definition name="registroEnfermedad" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/prorrogas/RegistroProrrogaPorEnfermedad.jsp"/>
+	</definition>
+	<definition name="registroProrrogaLaudo" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/prorrogas/RegistroProrrogaPorLaudo.jsp"/>
+	</definition>
+	<definition name="registroProrrogas" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/prorrogas/registroProrrogas.jsp"/>
+	</definition>
+	
+	<definition name="prorrogasEnfermedad" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/prorrogas/ConsultaDerechohabientesPorEnfermedad.jsp"/>
+	</definition>
+	<definition name="prorrogasObstetricos" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/prorrogas/RegistroProrrogaPorServiciosObstetricos.jsp"/>
+	</definition>
+
+	<definition name="consultaProrrogas" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/prorrogas/consultaDerechohabientesProrrogas.jsp"/>
+	</definition>
+	<definition name="prorrogasLaudo" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/prorrogas/ConsultaDerechohabientesPorLaudo.jsp"/>
+	</definition>
+	<definition name="resultadoProrroga" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/prorrogas/resultadoProrroga.jsp"/>
+	</definition>
+
+
+
+	<definition name="test" template="/WEB-INF/views/general/cargadorDocumentos.jsp">
+	</definition>
+	
+	
+	<definition name="listaBajaDefuncion" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/baja/consultaListaBajaDefuncion.jsp"/>
+	</definition>
+	
+	<definition name="listaBajaAdministrativa" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/baja/consultaListaBajaAdministrativa.jsp"/>
+	</definition>
+	
+	<definition name="listaBajaDivorcio" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/baja/consultaListaBajaDivorcio.jsp"/>
+	</definition>
+	
+	<definition name="inicioBajaConcubinato" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/baja/bajaConcubinato.jsp"/>
+	</definition>
+	
+	<definition name="inicioBajaDivorcio" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/baja/bajaDivorcio.jsp"/>
+	</definition>
+	
+	<definition name="listaBajaConcubinato" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/baja/consultaListaBajaConcubinato.jsp"/>
+	</definition>
+	
+	<definition name="listaBajaConvivencia" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/baja/consultaListaBajaConvivencia.jsp"/>
+	</definition>
+	
+	<definition name="validarBaja" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/baja/validarBajaDerechohabiente.jsp"/>
+	</definition>
+	
+	<definition name="autorizarBaja" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/baja/autorizarBajaDerechohabiente.jsp"/>
+	</definition>
+	
+	<definition name="candidatosCorreccionDerechohabiente" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/correccion/correccion.jsp"/>
+	</definition>
+	
+	<definition name="cambioClinicaHome" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/cambioClinica/cambioClinicaHome.jsp"/>
+	</definition>
+	
+	<definition name="datosCorreccionDerechohabiente" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/correccion/datosCorreccionDerechohabiente.jsp"/>
+	</definition>
+	
+	<definition name="datosCorreccionDerechohabienteView" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/correccion/correccionDatos/correccionDatosDerechohabiente.jsp"/>
+	</definition>
+	
+	<!-- Platilla para la asignacion de direccion -->
+	<definition name="asignacionDomicilioDerechohabiente" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/correccion/asignacionDomicilioDerechohabiente.jsp"/>
+	</definition>
+	
+	<!-- Platilla para la pantalla final asignacion de direccion -->
+	<definition name="finalizaAsignacionDomicilio" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/correccion/finalizaAsignacionDomicilio.jsp"/>
+	</definition>
+	
+	<definition name="correccionMedicoEnTurno" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/correccion/cambioMedico.jsp"/>
+	</definition>
+	
+	<definition name="correccionUMF" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/cambioClinica/cambioUmf.jsp"/>
+	</definition>
+	
+	<definition name="cambioClinicaMultiple" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="Cambio de Unidad Medica Familiar" />
+		<put-attribute name="contenido" value="/WEB-INF/views/cambioClinica/cambioClinicaMultiple.jsp"/>
+	</definition>
+	
+	<definition name="correccionCircunscripcion" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/correccion/circunscripcionForanea.jsp"/>
+	</definition>
+	
+	<definition name="datosSuspensionCircunscripcion" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/correccion/suspencionCircunscripcion.jsp"/>
+	</definition>
+	
+	<definition name="finalizacionCorreccion" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/correccion/finalizacionCorreccion.jsp"/>
+	</definition>
+	
+	<definition name="finalizacionTramite" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/tramite/finalizacionTramite.jsp"/>
+	</definition>
+	
+	<definition name="citaSolicitudGeneral" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/solicitud/citaSolicitud.jsp"/>
+	</definition>
+	
+	<definition name="muestraSolicitudesPenAut"  extends="base.definition.Autoriza.atendidas">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/solicitud/muestraSolicitudesPenAut.jsp"/>
+	</definition>
+	
+	<definition name="muestraSolicitudesAtendidas"  extends="base.definition.Autoriza.pendientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/solicitud/muestraSolicitudesAtendidas.jsp"/>
+	</definition>
+	
+	<definition name="menuTramitador"  extends="tramitador.definition">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/general/tramitador.jsp"/>
+	</definition>
+
+	
+	<definition name="detalleSolicitud" template="/WEB-INF/views/solicitud/detalleSolicitud.jsp"/>
+	<definition name="citaSolicitud" template="/WEB-INF/views/solicitud/cita.jsp"/>
+	<definition name="rechazoSolicitud" template="/WEB-INF/views/solicitud/razonRechazoSolicitud.jsp"/>
+	<definition name="detalleRegistro" template="/WEB-INF/views/tramite/detalleTramiteRegistro.jsp"/>
+	<definition name="detalleCorreccion" template="/WEB-INF/views/tramite/detalleTramiteCorrecion.jsp"/>
+	<definition name="detalleCircunscripcion" template="/WEB-INF/views/tramite/detalleTramiteCircunscripcion.jsp"/>
+	<definition name="detalleCambioMedico" template="/WEB-INF/views/tramite/detalleTramiteCambioTurno.jsp"/>
+	<definition name="detalleCambioUmf" template="/WEB-INF/views/tramite/detalleTramiteCambioClinica.jsp"/>
+	<definition name="detalleAsignacionMedico" template="/WEB-INF/views/tramite/detalleTramiteAdscripcion.jsp"/>
+	<definition name="detalleTramiteDerechohabiente" template="/WEB-INF/views/tramite/detalleTramiteDerechohabiente.jsp"/>
+	<definition name="detalleProrroga" template="/WEB-INF/views/tramite/detalleTramiteProrroga.jsp"/>
+	<definition name="tramitarValidarBaja" template="/WEB-INF/views/baja/tramiteValidacionBajaTramitador.jsp"/>
+	
+	<definition name="detalleSolicitudReg" template="/WEB-INF/views/solicitud/detalleSolicitudReg.jsp"/>
+	
+	
+	<definition name="detalleDerechohabiente" template="/WEB-INF/views/derechohabientes/detalleDerechohabiente.jsp"/>
+	
+	<definition name="cuestionario" template="/WEB-INF/views/cuestionario/RegistroCuestionario.jsp">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/cuestionario/RegistroCuestionario.jsp"/>
+	</definition>
+	<definition name="principal" extends="base.definition">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/cuestionario/principal.jsp"/>
+	</definition>
+	
+	<definition name="corroborarResultado" template="/WEB-INF/views/cuestionario/corroborarResultado.jsp">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/cuestionario/corroborarResultado.jsp"/>
+	</definition>
+	
+	<!--termina  definiciones de gestion derechohabientes -->
+	
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<!--  error que se tenia anteriormente
+	<definition name="error"  extends="simple.base.delta">
+		<put-attribute name="title" type="string" value="DELTA" />
+		<put-attribute name="contenido" value="/WEB-INF/views/general/error.jsp"/>
+	</definition>
+	 -->
+	<definition name="databaseError" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="internalError" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="internalError" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="500" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="404" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+	<!-- Inicio -->
+	<definition name="inicio" template="/WEB-INF/views/welcome.jsp"/>
+	
+	<!-- Documentos -->
+	<definition name="cedulaProfesional"        template="/WEB-INF/views/documentos/cedulaProfesional.jsp"/>
+	<definition name="cartillaMilitar"          template="/WEB-INF/views/documentos/cartillaMilitar.jsp"/>
+	<definition name="constanciaEstudios"       template="/WEB-INF/views/documentos/constanciaEstudios.jsp"/>
+	<definition name="certificadoNacimiento"    template="/WEB-INF/views/documentos/certificadoNacimiento.jsp"/>
+	<definition name="pasaporte"                template="/WEB-INF/views/documentos/pasaporte.jsp"/>
+	
+	<definition name="actaComun"            template="/WEB-INF/views/documentos/actaComun.jsp"/>
+	<definition name="actaNacimiento"            template="/WEB-INF/views/documentos/actaNacimiento.jsp"/>
+	<definition name="curp"                      template="/WEB-INF/views/documentos/curp.jsp"/>
+	
+	<definition name="credencialElector"         template="/WEB-INF/views/documentos/credencialElector.jsp"/>
+	
+	<definition name="dictamenIncapacitado"                template="/WEB-INF/views/documentos/dictamenIncapacitado.jsp"/>
+	<definition name="obstetrico"                template="/WEB-INF/views/documentos/obstetrico.jsp"/>
+	<definition name="certificadoSitCritica"                template="/WEB-INF/views/documentos/certificadoSituacionCritica.jsp"/>
+	<definition name="acuerdo"                template="/WEB-INF/views/documentos/acuerdo.jsp"/>
+	<definition name="vigenciaTemporal"                template="/WEB-INF/views/documentos/vigenciaTemporal.jsp"/>
+	<definition name="compDom"                template="/WEB-INF/views/documentos/compDom.jsp"/>
+	<definition name="adimss"                template="/WEB-INF/views/documentos/adimss.jsp"/>
+	<definition name="actaPactoCivil"                template="/WEB-INF/views/documentos/actaPactoCivil.jsp"/>
+	<!-- Documentos muestra-->
+	
+	<definition name="muestraDocTram"        template="/WEB-INF/views/general/fileRead/fileRead.jsp"/>
+	<definition name="cedulaProfesionalMuestra"        template="/WEB-INF/views/documentos/muestra/cedulaProfesionalMuestra.jsp"/>
+	<definition name="cartillaMilitarMuestra"          template="/WEB-INF/views/documentos/muestra/cartillaMilitarMuestra.jsp"/>
+	<definition name="constanciaEstudiosMuestra"       template="/WEB-INF/views/documentos/muestra/constanciaEstudiosMuestra.jsp"/>
+	<definition name="certificadoNacimientoMuestra"    template="/WEB-INF/views/documentos/muestra/certificadoNacimientoMuestra.jsp"/>
+	<definition name="pasaporteMuestra"                template="/WEB-INF/views/documentos/muestra/pasaporteMuestra.jsp"/>
+	
+	<definition name="actaComunMuestra"            		template="/WEB-INF/views/documentos/muestra/actaComunMuestra.jsp"/>
+	<definition name="actaNacimientoMuestra"            template="/WEB-INF/views/documentos/muestra/actaNacimientoMuestra.jsp"/>
+	<definition name="curpMuestra"                      template="/WEB-INF/views/documentos/muestra/curpMuestra.jsp"/>
+	<definition name="credencialElectorMuestra"         template="/WEB-INF/views/documentos/muestra/credencialElectorMuestra.jsp"/>
+	
+	<definition name="dictamenIncapacitadoMuestra"                template="/WEB-INF/views/documentos/muestra/dictamenIncapacitadoMuestra.jsp"/>
+	<definition name="obstetricoMuestra"                template="/WEB-INF/views/documentos/muestra/obstetricoMuestra.jsp"/>
+	<definition name="certificadoSitCriticaMuestra"                template="/WEB-INF/views/documentos/muestra/certificadoSituacionCriticaMuestra.jsp"/>
+	<definition name="acuerdoMuestra"                template="/WEB-INF/views/documentos/muestra/acuerdoMuestra.jsp"/>
+	<definition name="vigenciaTemporalMuestra"                template="/WEB-INF/views/documentos/muestra/vigenciaTemporalMuestra.jsp"/>
+	<definition name="compDomMuestra"                template="/WEB-INF/views/documentos/muestra/compDomMuestra.jsp"/>
+	<definition name="adimssMuestra"                template="/WEB-INF/views/documentos/muestra/adimssMuestra.jsp"/>
+	<definition name="actaPactoCivilMuestra"                template="/WEB-INF/views/documentos/actaPactoCivil.jsp"/>
+	<!-- Cambio Clinica Masivo -->
+	<definition name="cambioClinicaMasCol"   extends="tramitador.definition" >
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/cambioClinicaMas/cambioClinicaMasCol.jsp" />
+	</definition>
+
+  <!-- Documentos Reportes -->
+ <definition name="cartillaNacionalSalud" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/documentosReportes/cartillaNacionalSalud.jsp"/>
+	</definition>
+ 
+<definition name="documentoSAV007" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/documentosReportes/documentoSav007.jsp"/>
+	</definition>
+	
+	<definition name="documentoSAV017A" extends="simple.base.definition.derechohabientes">
+			<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+			<put-attribute name="contenido" value="/WEB-INF/views/documentosReportes/documentoSav017.jsp"/>
+	</definition>	
+	<definition name="documentoSAV017S" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/documentosReportes/documentoSav017.jsp"/>
+	</definition>
+	
+	<definition name="documentoSAV005" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/documentosReportes/documentoSav005.jsp"/>
+	</definition>
+	
+	<definition name="mostrarDetalleTramite" extends="simple.base.definition.derechohabientes">
+	<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+	<put-attribute name="contenido" value="/WEB-INF/views/tramite/detalleTramite.jsp"/>
+	</definition>
+	
+	<definition name="mostrarDetalleSolicitud" extends="simple.base.definition.derechohabientes">
+	<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+	<put-attribute name="contenido" value="/WEB-INF/views/solicitud/muestraDetalleSolicitud.jsp"/>
+	</definition>
+
+	<definition name="logOut" template="/WEB-INF/views/general/logOut.jsp">
+	</definition>
+
+
+	<definition name="inicioRegistroDerechohabiente" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/registro/inicioRegistroDerechohabiente.jsp"/>
+	</definition>
+	
+	<definition name="confirmacionRegistro" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/registro/confirmacionRegistroDerechohabiente.jsp"/>
+	</definition>
+	
+	<definition name="finalizacionRegistro" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/registro/finalizacionRegistroDerechohabiente.jsp"/>
+	</definition>
+	
+	<definition name="asignacionDomicilioEstudiante" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/estudiante/asignacionCambioEstudiante.jsp"/>
+	</definition>
+
+	<definition name="grupoFamiliarEstudiantes" extends="base.definition">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menuEstudiante.jsp" />		
+		<put-attribute name="contenido" value="/WEB-INF/views/derechohabientes/grupoFamiliarEstudiantes.jsp"/>
+	</definition>
+
+	<definition name="grupoFamiliarInconsistentes" extends="base.definition">
+	<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menuInconsistentes.jsp" />		
+		<put-attribute name="contenido" value="/WEB-INF/views/derechohabientes/grupoFamiliarInconsistentes.jsp"/>
+	</definition>
+	
+	<definition name="candidatosTramitesAdministrativos" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/tramitesAdministrativos/candidatos.jsp"/>
+	</definition>
+	
+	<definition name="capturaDatosAdministrativos" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/tramitesAdministrativos/capturaDatos.jsp"/>
+	</definition>
+	
+	<definition name="candidatosAcuerdoPadres" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/acuerdo/candidatos.jsp"/>
+	</definition>
+	
+	<definition name="capturaAcuerdo" extends="simple.base.definition.derechohabientes">
+		<put-attribute name="title" type="string" value="ACCEDER UNIFICADO" />
+		<put-attribute name="contenido" value="/WEB-INF/views/acuerdo/capturaDatos.jsp"/>
+	</definition>
+	
+</tiles-definitions>

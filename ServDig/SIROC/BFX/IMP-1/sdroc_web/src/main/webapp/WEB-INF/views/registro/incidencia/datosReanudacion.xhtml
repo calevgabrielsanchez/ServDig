@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<div id="pageResumenDatosReanudacion" th:fragment="pageDatosReanudacion">
+	<div id="pnlIncReanudacion" class="panel panel-default">
+		<div class="panel-heading">
+			<label class="small" th:text="#{registro.incidencia.anuncio}"/> 
+			<label class="small" th:text="${accion}" /> 
+			<label class="small" th:text="#{registro.incidencia.anuncio.obra}"/>
+			
+			<input id="fecSuspension" type="hidden" th:value="${fecSuspension}" />
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="panel col-sm-12 text-left">
+					<label class="control-label col-sm-4 small" for="fecReanudacion">Fecha de reanudaci&oacute;n de la obra*</label>
+					<div class="col-sm-6">
+						<div class="form-group datepicker-group">
+							<input readonly="readonly" class="form-control input-sm" id="fecReanudacion" style="background: white; cursor: default !important;" type="text">
+								<span class="glyphicon glyphicon-calendar"/>
+							</input>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 text-left">
+					<p id="msgeFecReanudacion" class="red small" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel col-sm-12 text-left">
+					<label class="control-label col-sm-4 small" for="fecTerminoReanuda">Fecha de t&eacute;rmino</label>
+					<div class="col-sm-6">
+						<div class="form-group datepicker-group">
+							<input readonly="readonly" class="form-control input-sm" id="fecTerminoReanuda" style="background-color: white; cursor: default !important;" disabled="disabled"    type="text">
+								<span class="glyphicon glyphicon-calendar" aria-hidden="true"/>
+							</input>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 text-left">
+					<p id="msgeFecTermino" class="red small"/>
+				</div>
+			</div>
+			<div class="alert alert-info small" th:text="#{info.cantidadesobrasuperficie}">
+			</div>
+			<div class="row">
+				<div class="panel col-sm-12 text-left">
+					<label
+						th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron == 4}"
+						class="small control-label col-sm-4" for="txtMontoEjercido"
+						th:text="#{reg.incidencia.resumen.monto.contrato}"></label> 
+					<label
+						th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron != 4}"
+						class="control-label col-sm-4 small" for="txtMontoEjercido"
+						th:text="#{consulta.obra.monto}"></label>
+					<div class="col-sm-6">
+						<div id="divMonto" class="input-group">
+							<span class="input-group-addon small"><small>$</small></span> 
+							<input id="txtMonto" th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron == 4}"
+								type="text" class="form-control input-sm"
+								aria-label="Amount (to the nearest dollar)"
+								th:placeholder="#{reg.incidencia.resumen.monto.contrato}" maxlength="15"> </input> 
+							<input id="txtMonto" th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron != 4}"
+								type="text" class="form-control input-sm"
+								aria-label="Amount (to the nearest dollar)"
+								th:placeholder="#{consulta.obra.monto}" maxlength="15"> </input><span
+								class="input-group-addon small"><small> MXN</small></span> <span id="errmsg"></span>
+						</div>
+						<span id="msgeMonto" class="small red"></span>
+					</div>
+				</div>
+			</div>
+
+			<div th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron != 4}" class="row">
+				<div id="pnlSuperficie" class="panel col-sm-12 text-left">
+						<label class="control-label col-sm-4 text-left small" for="superficie" th:text="#{reg.obra.superficie}" />
+					<div class="col-sm-6">
+						<div class="input-group">
+							<input id="txtSuperficie" type="text" class="form-control input-sm" aria-label="Amount (to the nearest dollar)" placeholder="Superficie de construcci&oacute;n" maxlength="13"/>
+							<span class="input-group-addon small"><small>m2</small></span>
+						</div>
+					</div>
+					
+				</div>
+				<div class="col-sm-12 text-left">
+					<p id="msgeSuperficie" class="small red"></p>
+				</div>
+			</div>
+			
+			
+<!-- 			<div class="row"> -->
+<!-- 				<div id="pnlObjetoContrato" class="form-group col-md-12 text-left"> -->
+<!-- 					<label class="control-label col-sm-4" for="motivo">Motivo -->
+<!-- 						de actualizaci&oacute;n*</label> -->
+<!-- 					<div class="col-sm-4"> -->
+<!-- 						<select id="motivo" class="form-control" disabled="disabled"> -->
+<!-- 							<option value="0" th:text="#{reg.obra.default.select}"></option> -->
+<!-- 							<option th:each="motivo : ${motivos}" -->
+<!-- 								th:value="${motivo.cveMotivo}" th:text="${motivo.desMotivo}"></option> -->
+<!-- 						</select> -->
+<!-- 					</div> -->
+<!-- 					<div class="col-md-4 text-left"> -->
+<!-- 						<p id="msgeMotivoReanudacion" class="col-sm-12 red"></p> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+
+			<div  class="row">
+				<div id="pnlObjetoContrato" class="panel col-sm-12 text-left" >
+						<label class="control-label col-sm-4 small" for="motivo">Motivo de actualizaci&oacute;n*</label>
+					<div class="col-sm-6">
+						<select id="motivo" class="form-control input-sm" disabled="disabled" style="font-size: 14px;">
+							<option value="0" th:text="#{reg.obra.default.select}"/>
+							<option th:each="motivo : ${motivos}" th:value="${motivo.cveMotivo}" th:text="${motivo.desMotivo}"/>
+						</select>
+					</div>
+					
+				</div>
+				<div class="col-sm-12 text-left">
+					<p id="msgeMotivoReanudacion" class="small red"></p>
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer"></div>
+
+	</div>
+
+</div>
+
+</html>

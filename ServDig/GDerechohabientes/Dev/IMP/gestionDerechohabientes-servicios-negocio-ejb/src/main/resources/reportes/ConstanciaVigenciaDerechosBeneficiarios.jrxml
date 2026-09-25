@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BeneficiariosVigenciaDerechos" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.866029520838965"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="nombreBen" class="java.lang.String"/>
+	<field name="primerApellidoBen" class="java.lang.String"/>
+	<field name="curpBen" class="java.lang.String"/>
+	<field name="parentescoBen" class="java.lang.String"/>
+	<field name="fechaNacimientoBen" class="java.util.Date"/>
+	<field name="edadBen" class="java.lang.Long"/>
+	<field name="sexoBen" class="java.lang.String"/>
+	<field name="delegacionBen" class="java.lang.String"/>
+	<field name="umfBen" class="java.lang.String"/>
+	<field name="situacionBen" class="java.lang.String"/>
+	<field name="segundoApellidoBen" class="java.lang.String"/>
+	<field name="detalleSituacionBen" class="java.lang.String"/>
+	<field name="vencimientoVigenciaBen" class="java.util.Date"/>
+	<field name="turno" class="java.lang.String"/>
+	<field name="consultorio" class="java.lang.String"/>
+	<field name="agregadoMedico" class="java.lang.String"/>
+	<field name="servicioMedico" class="java.lang.String"/>
+	<field name="lugarNacimientoAsegurado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<rectangle>
+				<reportElement x="2" y="2" width="551" height="25" forecolor="#CCCCCC" backcolor="#CCCCCC"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="282" y="2" width="30" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="2" width="62" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="2" width="30" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Calidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="2" width="53" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Delegación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="2" width="45" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[UMF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="453" y="0" width="28" height="28"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Turno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="2" width="39" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Consultorio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="482" y="2" width="35" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Con derecho
+al servicio
+médico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="519" y="2" width="34" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Agregado
+médico]]></text>
+			</staticText>
+			<line>
+				<reportElement x="33" y="2" width="1" height="26" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<staticText>
+				<reportElement x="97" y="1" width="69" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Apellido Paterno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="2" width="40" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Fecha de Nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="2" width="71" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Apellido Materno]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="1" width="553" height="1"/>
+			</line>
+			<line>
+				<reportElement x="96" y="2" width="1" height="26" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="167" y="2" width="1" height="26" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="239" y="2" width="1" height="26" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="280" y="2" width="1" height="26" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="312" y="2" width="1" height="26" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="366" y="2" width="1" height="26" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="412" y="2" width="1" height="26" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="452" y="2" width="1" height="26" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="481" y="2" width="1" height="26" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="517" y="2" width="1" height="26" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="552" y="2" width="1" height="26" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="0" y="2" width="1" height="26" forecolor="#000000" backcolor="#999999"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="553" height="1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="313" y="1" width="53" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{delegacionBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="367" y="1" width="45" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{umfBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="1" width="32" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{parentescoBen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="240" y="1" width="40" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaNacimientoBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="281" y="1" width="31" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sexoBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="453" y="1" width="28" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{turno}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="413" y="1" width="39" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{consultorio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="518" y="1" width="35" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{agregadoMedico}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="482" y="1" width="35" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{servicioMedico}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="34" y="1" width="62" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombreBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="97" y="1" width="70" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{primerApellidoBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="168" y="1" width="71" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{segundoApellidoBen}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="33" y="0" width="1" height="23" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="96" y="1" width="1" height="22" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="167" y="1" width="1" height="22" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="239" y="1" width="1" height="22" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="280" y="1" width="1" height="22" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="312" y="1" width="1" height="22" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="366" y="1" width="1" height="22" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="412" y="1" width="1" height="22" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="452" y="1" width="1" height="22" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="481" y="1" width="1" height="22" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="517" y="1" width="1" height="22" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="552" y="1" width="1" height="22" forecolor="#000000" backcolor="#999999"/>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="1" height="22" forecolor="#000000" backcolor="#999999"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

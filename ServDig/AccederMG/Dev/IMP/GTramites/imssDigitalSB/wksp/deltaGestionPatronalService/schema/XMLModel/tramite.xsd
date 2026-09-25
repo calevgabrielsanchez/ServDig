@@ -1,0 +1,23 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="tramite:mx.gob.imss.ctirss.delta.model.gestion.tramite" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="fwbm:mx.gob.imss.ctirss.delta.framework.base.model" schemaLocation="fwbm.xsd"/>
+  <xs:complexType name="EstadoTramite">
+    <xs:complexContent>
+      <xs:extension base="fwbm:AbstractModel" xmlns:fwbm="fwbm:mx.gob.imss.ctirss.delta.framework.base.model">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="IdEstadoTramitePersona" nillable="true" type="xs:int"/>
+          <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RazonResultado">
+    <xs:complexContent>
+      <xs:extension base="fwbm:AbstractModel" xmlns:fwbm="fwbm:mx.gob.imss.ctirss.delta.framework.base.model">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="IdRazonResultado" nillable="true" type="xs:long"/>
+          <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

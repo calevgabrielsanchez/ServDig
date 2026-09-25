@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<sua:datosCalculoCuota xmlns:sua="http://mx.gob.imss.digital.modelo.cobranza">
+  <fechaInicioCalculo>2014-12-01T12:27:14-06:00</fechaInicioCalculo>
+  <fechaFinCalculo>2015-11-31T12:27:14-06:00</fechaFinCalculo>
+  <numeroRegistroPatronal>Y5846422102</numeroRegistroPatronal>
+  <modalidad>22</modalidad>
+  <zonaSalarial>A</zonaSalarial>
+  <empleados>
+    <numeroSeguridadSocial>01004200216</numeroSeguridadSocial>
+    <salario>250.29</salario>
+    <movimientos>
+      <tipoMovimiento>1</tipoMovimiento>
+      <fecha>2014-09-28T20:49:45</fecha>
+      <dias>1</dias>
+      <folio>
+      </folio>
+      <salario>100.00</salario>
+    </movimientos>
+  </empleados>
+</sua:datosCalculoCuota>

@@ -1,0 +1,230 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+		<artifactId>ClientesWebservices</artifactId>
+		<version>2.2-SNAPSHOT</version>
+	</parent>
+	
+  <groupId>mx.gob.imss.cit.clienteswebservices.boveda</groupId>
+	<artifactId>WsBovedaIMSS-IPICYT</artifactId>
+	<name>WsBovedaIMSS-IPICYT</name>
+  <version>${revision}</version>
+  <packaging>jar</packaging>
+  <url>http://maven.apache.org</url>
+
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+        <skipTests>true</skipTests>
+        <junit.version>4.8.2</junit.version>
+	<org.log4j.version>1.2.16</org.log4j.version>
+	<org.slf4j.version>1.6.1</org.slf4j.version>
+	<revision>${mvn.ws.client.version}</revision>
+  </properties>
+  
+  
+ 
+
+  <dependencies>
+    
+   		 <dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		   <groupId>com.sun.xml.ws</groupId>
+		   <artifactId>jaxws-rt</artifactId>
+		   <version>2.2.6</version><!-- <version>2.1.3</version> -->
+		   <scope>provided</scope>		
+		</dependency>
+   
+		    <dependency>
+		      <groupId>org.codehaus.mojo</groupId>
+		       <artifactId>jaxws-maven-plugin</artifactId>
+		      <version>2.4.1</version>
+		    </dependency>
+		    
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${org.log4j.version}</version>
+		</dependency>
+		
+	    
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.18.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>1.18.6</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.6</version>
+		</dependency>
+		    
+  </dependencies>
+  
+    <build>
+	<plugins>
+	<!-- 
+		<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>jaxws-maven-plugin</artifactId>
+			<version>1.9</version>
+			<executions>
+				<execution>
+					<goals>
+						<goal>wsimport</goal>
+					</goals>
+					<phase>generate-sources</phase>
+				</execution>
+			</executions>
+			<configuration>
+				 <keep>true</keep> 
+				<packageName>mx.gob.imss.cit.clienteswebservices.boveda</packageName>
+				<sourceDestDir>src/main/java</sourceDestDir>
+				<wsdlUrls>
+                        	<wsdlUrl>
+                            		http://msbhimss-alfrescofacade.apps.qaocp.imss.gob.mx/alfresco-ws-1.0/servicios/gdocumental.wsdl
+                        	</wsdlUrl>
+                    </wsdlUrls>
+			</configuration>
+		</plugin>
+	-->
+		<plugin>
+			<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+		</plugin>
+	</plugins>
+ </build>
+ 
+ <repositories>
+
+	<repository>
+		      <id>ctirss</id>
+		      <name>CTIRSS repository</name>
+		      <layout>default</layout>
+		      <url>http://172.16.5.134:8080/repository/repo/</url>
+		      <snapshots>
+		        <enabled>true</enabled>
+		      </snapshots>
+	</repository>
+	
+	<repository>
+		<id>maven2-repository.dev.java.net</id>
+		<name>Java.net Repository for Maven</name>
+		<url>http://download.java.net/maven/2</url>
+	</repository>
+</repositories>
+
+<pluginRepositories>
+  	  <pluginRepository>
+    	  <id>ctirss</id>
+    	  <name>CTIRSS repository</name>
+    	  <url>http://172.16.5.134:8080/repository/repo/</url>
+    	  <layout>default</layout>
+    	  <snapshots> </snapshots>
+    	  <releases>
+    	    <updatePolicy>never</updatePolicy>
+    	  </releases>
+   	 </pluginRepository>
+</pluginRepositories>
+
+	<profiles>
+		<profile>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<id>compile-qa</id>
+			<properties>
+				<mvn.ws.client.version>1.0-QA</mvn.ws.client.version>
+				<mvn.servicios.externos.rest.timeOut.connection>5000</mvn.servicios.externos.rest.timeOut.connection>
+				<mvn.servicios.externos.rest.timeOut.response>30000</mvn.servicios.externos.rest.timeOut.response>
+				<mvn.servicios.externos.rest.url.consulta.boveda>http://msbhimss-alfrescofacade.apps.qaocp.imss.gob.mx/alfresco-ws-1.0/consultaEstatusDoc</mvn.servicios.externos.rest.url.consulta.boveda>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.url.ws}" value="http://msbhimss-alfrescofacade.apps.qaocp.imss.gob.mx" dir="target/classes">
+											<include name="**/*.wsdl" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>compile-prod</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<mvn.ws.client.version>1.0</mvn.ws.client.version>
+				<mvn.servicios.externos.rest.timeOut.connection>5000</mvn.servicios.externos.rest.timeOut.connection>
+				<mvn.servicios.externos.rest.timeOut.response>30000</mvn.servicios.externos.rest.timeOut.response>
+				<mvn.servicios.externos.rest.url.consulta.boveda>http://msbhimss-alfrescofacade.apps.ocp.imss.gob.mx/alfresco-ws-1.0/consultaEstatusDoc</mvn.servicios.externos.rest.url.consulta.boveda>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.url.ws}" value="http://msbhimss-alfrescofacade.apps.ocp.imss.gob.mx" dir="target/classes">
+											<include name="**/*.wsdl" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

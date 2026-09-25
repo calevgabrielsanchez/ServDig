@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="sync" default="sync">
+    <property name="destination">C:\home\r\svn\projectsroot\Movimiento06SINDOProject</property>
+    <target name="sync">
+        <copy todir="${destination}" overwrite="true">
+            <fileset dir="${basedir}">
+                <include name="**/*.proxy"/>
+                <include name="**/*.mfl"/>
+                <include name="**/*.xq"/>
+                <include name="**/*.xsd"/>
+            </fileset>
+        </copy>
+    </target>
+</project>

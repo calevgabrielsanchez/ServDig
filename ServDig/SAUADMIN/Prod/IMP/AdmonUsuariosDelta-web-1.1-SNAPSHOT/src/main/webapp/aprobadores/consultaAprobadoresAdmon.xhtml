@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="../plantillas/plantilla.xhtml">
+	<ui:define name="body">
+        <div class="wp-caption-text">
+  	  		<h3>Aprobación de Cuenta de Usuario</h3>
+	   	</div>
+		<h:form>
+			<fieldset style="margin: 0; padding: 10px; font-size: 10px;">
+				<div class="wp-caption-text">
+
+					<ace:panel header="Datos Generales">
+
+						<h:panelGrid id="pnRegSolicitudCuentaCrPre3" columns="6" width="100%">
+						
+							<h:outputLabel value="Área Normativa:" id="lbAreaNormRegSolicitudCuenta" />
+							<h:selectOneMenu id="slAreaNormRegSolicitudCuenta"
+								required="false" requiredMessage="SELECCIONE EL AREA NORMATIVA"
+								valueChangeListener="#{consultaGenericaAdmon.listenerArea}"
+								value="#{consultaGenericaAdmon.claveAreaNormativa}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${consultaGenericaAdmon.lstAreaNormativa}" />
+								<f:ajax event="change" render="slDepRegSolicitudCuenta slPuestoRegSolicitudCuenta slDelRegSolicitudCuenta slSubRegSolicitudCuenta slUMFRegSolicitudCuenta" />
+							</h:selectOneMenu>
+
+							<h:outputLabel value="Departamento:" id="lbDepRegSolicitudCuenta" />
+							<h:selectOneMenu id="slDepRegSolicitudCuenta" required="false"
+								requiredMessage="SELECCIONE EL DEPARTAMENTO"
+								value="#{consultaGenericaAdmon.claveDepartamento}"
+								valueChangeListener="#{consultaGenericaAdmon.listenerPuesto}"
+								disabled="!#{consultaGenericaAdmon.fgSubdele}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${consultaGenericaAdmon.lstDepartamento}" />
+								<f:ajax event="change" render="slPuestoRegSolicitudCuenta" />	
+							</h:selectOneMenu>
+
+							<h:outputLabel value="Puesto:" id="lbPuestoRegSolicitudCuenta" />
+							<h:selectOneMenu id="slPuestoRegSolicitudCuenta" required="false"
+								requiredMessage="SELECCIONE EL PUESTO"
+								value="#{consultaGenericaAdmon.clavePuesto}"
+								valueChangeListener="#{consultaGenericaAdmon.listenerPuestoSel}"
+								disabled="true" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${consultaGenericaAdmon.lstPuesto}" />
+								<f:ajax event="change" render="slPuestoRegSolicitudCuenta" />
+							</h:selectOneMenu>
+
+							<h:outputLabel value="Delegación:   " id="lbDelRegSolicitudCuenta" />
+							<h:selectOneMenu id="slDelRegSolicitudCuenta" required="false"
+								requiredMessage="SELECCIONE LA DELEGACION"
+								disabled="#{consultaGenericaAdmon.fgDeleg}"
+								value="#{consultaGenericaAdmon.claveDelegacion}"
+								valueChangeListener="#{consultaGenericaAdmon.listenerDelegacion}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${consultaGenericaAdmon.lstDelegacion}" />
+								<f:ajax event="change" render="slDelRegSolicitudCuenta slSubRegSolicitudCuenta slUMFRegSolicitudCuenta" />
+							</h:selectOneMenu>
+							
+							<h:outputLabel value="SubDelegación:" id="lbSubRegSolicitudCuenta" />
+							<h:selectOneMenu id="slSubRegSolicitudCuenta" required="false"
+								requiredMessage="SELECCIONE LA SUBDELEGACION"
+								disabled="#{consultaGenericaAdmon.fgSubdele}"
+								value="#{consultaGenericaAdmon.claveSubdelegacion}"
+								valueChangeListener="#{consultaGenericaAdmon.listenerSubdelegacion}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${consultaGenericaAdmon.lstSubDelegacion}"/>
+								<f:ajax event="change" render="slSubRegSolicitudCuenta slUMFRegSolicitudCuenta" />
+							</h:selectOneMenu>
+							
+							<h:outputLabel value="UMF: " id="lbUMFRegSolicitudCuenta" />
+							<h:selectOneMenu id="slUMFRegSolicitudCuenta"
+								disabled="#{consultaGenericaAdmon.fgUmf}"
+								value="#{consultaGenericaAdmon.claveUMF}"
+								valueChangeListener="#{consultaGenericaAdmon.listenerUmf}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${consultaGenericaAdmon.lstUMF}"/>
+								<f:ajax event="change" render="slUMFRegSolicitudCuenta" />
+							</h:selectOneMenu>
+						</h:panelGrid>
+
+						<h:panelGrid id="pnRegSolicitudCuentaC" columns="1" width="100%">
+							<h:message for="slAreaNormRegSolicitudCuenta" id="msgAreaNormRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slDepRegSolicitudCuenta" id="msgDepRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slPuestoRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slDelRegSolicitudCuenta" id="msgDelRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slSubRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slUMFRegSolicitudCuenta" errorClass="error"></h:message>
+						</h:panelGrid>
+			            <h:panelGrid id="pnRegSolicitudCuentaS" columns="1" width="100%" styleClass="centeredPanelGrid" border="1">
+							<h:commandButton value="Consultar cuentas usuarios" action="#{solicitudAdmonMB.obtenerSolByFiltroS}" onclick="bloquea();">
+							</h:commandButton>
+							<!--  
+							<h:commandButton value="Consultar por Modulo" actionListener="#{solicitudMB.obtenerSolExtByDepto}"  styleClass="mboton"/>
+							-->
+						</h:panelGrid>
+						
+					</ace:panel>
+					
+					<BR />
+				</div>
+					
+				<div >					
+					<ace:panel header="Resultados">
+			            <style type="text/css">
+			                /* Important required because row */
+			                .ui-datatable-odd {
+			                    background-color:lightgray !important;
+			                    background-position-y: -1400px; /* IE7 hack */
+			                }
+			            </style>
+
+			    	<c:if test="#{sessionScope.pagina eq 1}">
+						<ui:include src="solicitudAprobadoresAdmon.xhtml" />
+					</c:if>
+					<c:if test="#{sessionScope.pagina eq 2}">
+							<ui:include src="modificarPerfiles.xhtml"/>
+					</c:if>
+					</ace:panel>
+				
+				
+				</div>
+			</fieldset>
+		    
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
+</html>

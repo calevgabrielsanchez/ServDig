@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>mx.gob.imss.ctirss.delta.portal</groupId>
+	<artifactId>portal-packing-web</artifactId>
+	<version>2.2</version>
+	<name>Modulo Empaquetador de Aplicaciones Web DELTA</name>
+	<url>http://maven.apache.org</url>
+	<packaging>ear</packaging>
+
+	<parent>
+		<artifactId>portal</artifactId>
+		<groupId>mx.gob.imss.ctirss.delta.portal</groupId>
+		<version>2.2</version>
+	</parent>
+
+	<dependencies>
+		<!-- INICIO DE LAS DEPENDENCIAS DE LAS APLICACIONES WEB DELTA -->
+
+		<!-- Modulo WEB de portal -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.portal</groupId>
+			<artifactId>portal-web</artifactId>
+			<type>war</type>
+			<version>${delta.portal}</version>
+		</dependency>
+
+		<!-- Modulo WEB de individuos -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.individuo.web</groupId>
+			<artifactId>gestionIndividuo-web</artifactId>
+			<type>war</type>
+			<version>${delta.personas}</version>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.individuo.web</groupId>
+			<artifactId>gestionIndividuo-consulta-web</artifactId>
+			<type>war</type>
+			<version>${delta.personas}</version>
+		</dependency>
+
+		<!-- Modulo WEB de domicilios -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.domicilio</groupId>
+			<artifactId>gestionDomicilios-web</artifactId>
+			<type>war</type>
+			<version>${delta.domicilios}</version>
+		</dependency>
+
+		<!-- Modulo WEB de Medios de contacto -->
+		<dependency>
+			<artifactId>gestionMediosContacto-web</artifactId>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.medio.contacto</groupId>
+			<type>war</type>
+			<version>${delta.medioscontacto}</version>
+		</dependency>
+
+		<!-- War de Docprobatorios -->
+		<dependency>
+			<artifactId>gestionDocumentoProbatorio-web</artifactId>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.documento.probatorio</groupId>
+			<type>war</type>
+			<version>${delta.documentos.probatorios}</version>
+		</dependency>
+
+		<!-- Modulo WEB de gestion de la asignacion de NSS -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.asegurado</groupId>
+			<artifactId>gestionAsegurados-web</artifactId>
+			<version>${delta.asegurados}</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.asegurado</groupId>
+			<artifactId>gestionAsegurados-web-externo</artifactId>
+			<version>${delta.asegurados}</version>
+			<type>war</type>
+		</dependency>
+
+		<!-- WAR DE GESTION SOLICITUD -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.solicitud</groupId>
+			<artifactId>gestionSolicitud-web</artifactId>
+			<version>${gestion.solicitud.version}</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.solicitud</groupId>
+			<artifactId>gestionSolicitud-visor-web</artifactId>
+			<version>${gestion.solicitud.visor}</version>
+			<type>war</type>
+		</dependency>
+
+		<!-- War de Patrones -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.patronal</groupId>
+			<artifactId>delta-gestionPatronal-web</artifactId>
+			<version>${gestion.patronal.version}</version>
+			<type>war</type>
+		</dependency>
+
+		<!-- War de Clasificacion de Empresas -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.clasificacion</groupId>
+			<artifactId>gestionClasificacion-web</artifactId>
+			<version>${delta.clasificacion.empr}</version>
+			<type>war</type>
+		</dependency>
+
+		<!-- War de Cobranza -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.cobranza</groupId>
+			<artifactId>gestionCobranza-web</artifactId>
+			<version>${delta.cobranza}</version>
+			<type>war</type>
+		</dependency>
+
+		<!-- War de Beneficios RISS -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.beneficio</groupId>
+			<artifactId>gestionBeneficio-web</artifactId>
+			<version>${delta.beneficios}</version>
+			<type>war</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.beneficio</groupId>
+			<artifactId>gestionBeneficio-web-publico</artifactId>
+			<version>${gestion.beneficio.web.publico}</version>
+			<type>war</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.beneficio</groupId>
+			<artifactId>gestionBeneficio-web-ventanilla</artifactId>
+			<version>${delta.beneficios}</version>
+			<type>war</type>
+		</dependency>
+		
+		<!-- War de Derechohabientes -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.derechohabientes</groupId>
+			<artifactId>gestionDerechohabientes-web</artifactId>
+			<version>${delta.derechohabientes.version}</version>
+			<type>war</type>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.derechohabientes</groupId>
+			<artifactId>gestionDerechohabientes-web-admon</artifactId>
+			<version>${delta.derechohabientes.version}</version>
+			<type>war</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.portal.derechohabiente</groupId>
+			<artifactId>portalDerechohabiente-web</artifactId>
+			<version>${delta.portal.dhabiente}</version>
+			<type>war</type>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.distss.portal.vigencia.grupo</groupId>
+			<artifactId>gestionVigenciaGpoFamiliar-web-externo</artifactId>
+			<version>${delta.portal.grupoFamiliar}</version>
+			<type>war</type>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.cdsss.delta.portal</groupId>
+			<artifactId>portal-ciudadano-web-externo</artifactId>
+			<version>${delta.portal.ciudadano}</version>
+			<type>war</type>
+		</dependency>
+		
+		<!-- War de Cuestionarios -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.seguroVoluntario</groupId>
+			<artifactId>gestionSeguroVoluntario-web</artifactId>
+			<version>${delta.seguroVoluntario}</version>
+			<type>war</type>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.distss.gestion.cuestionario</groupId>
+			<artifactId>gestionCuestionario-web-externo</artifactId>
+			<version>${delta.cuestionario}</version>
+			<type>war</type>
+		</dependency>
+		
+		<!-- War de Wizard-web -->
+		<dependency>
+			<groupId>mx.gob.imss.distss.escritorio.virtual</groupId>
+			<artifactId>wizard-web</artifactId>
+			<version>${delta.wizard.web}</version>
+			<type>war</type>
+		</dependency>
+		
+
+		<!-- War de Ventanilla -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.portal</groupId>
+			<artifactId>portal-ventanilla-web</artifactId>
+			<version>${delta.portal.ventanilla}</version>
+			<type>war</type>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.individuo.web</groupId>
+			<artifactId>gestionIndividuo-consulta-web-ventanilla</artifactId>
+			<type>war</type>
+			<version>${delta.personas}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.domicilio</groupId>
+			<artifactId>gestionDomicilios-web-ventanilla</artifactId>
+			<type>war</type>
+			<version>${delta.domicilios}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.patronal</groupId>
+			<artifactId>delta-gestionPatronal-web-ventanilla</artifactId>
+			<version>${gestion.patronal.version}</version>
+			<type>war</type>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.seguroVoluntario</groupId>
+			<artifactId>gestionSeguroVoluntario-web-ventanilla</artifactId>
+			<version>${delta.seguroVoluntario}</version>
+			<type>war</type>
+		</dependency>
+			
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.cobranza</groupId>
+			<artifactId>gestionCobranza-web-ventanilla</artifactId>
+			<version>${delta.cobranza}</version>
+			<type>war</type>
+		</dependency>
+	
+		<dependency>
+			<groupId>mx.gob.imss.distss.gestion.cuestionario</groupId>
+			<artifactId>gestionCuestionario-web-externo-ventanilla</artifactId>
+			<version>${delta.cuestionario}</version>
+			<type>war</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.portal.derechohabiente</groupId>
+			<artifactId>portalDerechohabiente-ventanilla</artifactId>
+			<version>${delta.portal.dhabiente}</version>
+			<type>war</type>
+		</dependency>
+
+		
+	<!-- War de Ciudadano -->
+	
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.individuo.web</groupId>
+			<artifactId>gestionIndividuo-consulta-web-ciudadano</artifactId>
+			<version>${delta.personas}</version>
+			<type>war</type>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.seguroVoluntario</groupId>
+			<artifactId>gestionSeguroVoluntario-web-ciudadano</artifactId>
+			<version>${delta.seguroVoluntario}</version>
+			<type>war</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.domicilio</groupId>
+			<artifactId>gestionDomicilios-web-ciudadano</artifactId>
+			<type>war</type>
+			<version>${delta.domicilios}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.beneficio</groupId>
+			<artifactId>gestionBeneficio-web-ciudadano</artifactId>
+			<version>${delta.beneficios}</version>
+			<type>war</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.distss.gestion.cuestionario</groupId>
+			<artifactId>gestionCuestionario-web-externo-ciudadano</artifactId>
+			<version>${delta.cuestionario}</version>
+			<type>war</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.patronal</groupId>
+			<artifactId>delta-gestionPatronal-web-ciudadano</artifactId>
+			<version>${gestion.patronal.version}</version>
+			<type>war</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.portal.derechohabiente</groupId>
+			<artifactId>portalDerechohabiente-ciudadano</artifactId>
+			<version>${delta.portal.dhabiente}</version>
+			<type>war</type>
+		</dependency>
+
+		<!-- War de Seguros Vountarios Ciudadano -->
+        <dependency>
+            <groupId>mx.gob.imss.cit.cda</groupId>
+            <artifactId>correcciondatosasegurado-web-ciudadano</artifactId>
+            <version>${delta.correcciondatosasegurado}</version>
+            <type>war</type>
+        </dependency>
+		  
+		<dependency>
+            <groupId>mx.gob.imss.cit.cda</groupId>
+            <artifactId>correccionDatosAsegurado-web-autorizador</artifactId>
+            <version>${delta.correcciondatosasegurado}</version>
+            <type>war</type>
+        </dependency>
+
+		<dependency>
+            <groupId>mx.gob.imss.cit.cda</groupId>
+            <artifactId>correccionDatosAsegurado-web-ventanilla</artifactId>
+            <version>${delta.correcciondatosasegurado}</version>
+            <type>war</type>
+        </dependency>
+		
+		<dependency>
+            <groupId>mx.gob.imss.cit.cda</groupId>
+            <artifactId>correccionDatosAsegurado-web-normativo</artifactId>
+            <version>${delta.correcciondatosasegurado}</version>
+            <type>war</type>
+        </dependency>
+		
+		<!-- FIN DE LAS DEPENDENCIAS DE LAS APLICACIONES WEB DELTA -->
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<version>5</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0-alpha-1</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>read-project-properties</goal>
+						</goals>
+						<configuration>
+							<files>
+								<file>configuracion-local.properties</file>
+							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Habilita los facets y natures para que el eclipse reconoza el proyecto 
+				como de tipo de EAR. -->
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<additionalBuildcommands>
+						<buildCommand>
+							<name>org.eclipse.jdt.core.javabuilder</name>
+						</buildCommand>
+						<buildCommand>
+							<name>org.eclipse.wst.common.project.facet.core.builder</name>
+						</buildCommand>
+						<buildCommand>
+							<name>org.eclipse.wst.validation.validationbuilder</name>
+						</buildCommand>
+
+					</additionalBuildcommands>
+					<additionalProjectnatures>
+						<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
+						<projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+						<projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+					</additionalProjectnatures>
+					<additionalConfig>
+						<file>
+							<name>.settings/org.eclipse.wst.common.project.facet.core.xml</name>
+							<content>
+							<![CDATA[
+								<faceted-project>
+									<runtime name="Weblogic Runtime" />
+									<fixed facet="jst.ear" />
+									<fixed facet="jst.java" />
+									<installed facet="jst.java" version="6.0" />
+									<installed facet="jst.ear" version="5.0" />
+									<installed facet="wls.ear" version="10.3.4" />
+								</faceted-project>
+							]]>
+							</content>
+						</file>
+						<file>
+							<name>.settings/org.eclipse.wst.common.component</name>
+							<content>
+							<![CDATA[
+								<project-modules id="moduleCoreId" project-version="1.5.0">
+									<wb-module deploy-name="${project.artifactId}">
+										<wb-resource deploy-path="/" source-path="/src/main/java" />
+										<wb-resource deploy-path="/" source-path="/src/main/resources" />
+										<property name="java-output-path" value="target/classes" />
+									</wb-module>
+								</project-modules>
+							]]>
+							</content>
+						</file>
+					</additionalConfig>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

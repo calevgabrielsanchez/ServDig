@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="4305A" pageWidth="612" pageHeight="792" columnWidth="587" leftMargin="15" rightMargin="10" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\tfs\\workspace\\Dev\\01DST\\04IMP\\gestionDerechohabientes-servicios-negocio-ejb\\src\\main\\resources\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORTE_BENEFICIARIOS" class="net.sf.jasperreports.engine.JasperReport"/>
+	<field name="apellidoPaternoAsegurado" class="java.lang.String"/>
+	<field name="apellidoMaternoAsegurado" class="java.lang.String"/>
+	<field name="nombreAsegurado" class="java.lang.String"/>
+	<field name="nss" class="java.lang.String"/>
+	<field name="consultorioTurno" class="java.lang.String"/>
+	<field name="curpAsegurado" class="java.lang.String"/>
+	<field name="beneficiarios" class="java.util.List"/>
+	<field name="fechaExpedicion" class="java.util.Date"/>
+	<field name="domicilio" class="java.lang.String"/>
+	<field name="cadenaOriginal" class="java.lang.String"/>
+	<field name="selloDigital" class="java.lang.String"/>
+	<field name="secuenciaNotarial" class="java.lang.String"/>
+	<field name="numeroSerie" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="126" splitType="Stretch">
+			<rectangle>
+				<reportElement key="rectangle" x="1" y="93" width="538" height="31"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="306" y="50" width="233" height="33"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle" x="1" y="50" width="261" height="33"/>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText" x="116" y="0" width="322" height="13"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[TARJETA DE ADSCRIPCIÓN A MÉDICO FAMILIAR O CONSULTORIO ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="6" y="30" width="65" height="12"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ASEGURADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="77" y="30" width="101" height="12"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[APELLIDO PATERNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="209" y="30" width="53" height="12"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[MATERNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="306" y="29" width="67" height="13"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NOMBRE (S)]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line" x="0" y="29" width="538" height="1"/>
+			</line>
+			<line>
+				<reportElement key="line" x="0" y="41" width="539" height="1"/>
+			</line>
+			<line>
+				<reportElement key="line" x="380" y="14" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement key="line" x="0" y="14" width="538" height="1"/>
+			</line>
+			<line>
+				<reportElement key="line" x="538" y="14" width="1" height="27"/>
+			</line>
+			<line>
+				<reportElement key="line" x="0" y="14" width="1" height="27"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText" x="382" y="29" width="156" height="11"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NÚMERO DE SEGURIDAD SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="22" y="68" width="211" height="15"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONSULTORIO Y TURNO DE ADSCRIPCIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="306" y="70" width="231" height="15"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[C.U.R.P.]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line" x="1" y="69" width="261" height="1"/>
+			</line>
+			<line>
+				<reportElement key="line" x="306" y="69" width="233" height="1"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText" x="5" y="97" width="54" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[DOMICILIO]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line" x="62" y="93" width="1" height="31"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText" x="2" y="0" width="57" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[IMSS/DPM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="450" y="0" width="89" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[4-30-5A/2003]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="14" width="107" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{apellidoPaternoAsegurado}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="14" width="95" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{apellidoMaternoAsegurado}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="273" y="13" width="106" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombreAsegurado}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="382" y="15" width="155" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nss} != null  ? $F{nss}.format("%s - %s", $F{nss}.substring(0, $F{nss}.length()-1), $F{nss}.charAt($F{nss}.length()-1)) : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="50" width="259" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{consultorioTurno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="306" y="50" width="231" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{curpAsegurado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="65" y="93" width="472" height="31"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{domicilio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="4" splitType="Stretch">
+			<subreport>
+				<reportElement x="-19" y="4" width="200" height="0"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{beneficiarios})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUBREPORTE_BENEFICIARIOS}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="217" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText" x="275" y="0" width="136" height="13"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[FECHA DE ELABORACIÓN:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="426" y="0" width="100" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaExpedicion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="93" y="184" width="480" height="20"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numeroSerie}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="6" y="99" width="80" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena original:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="6" y="184" width="80" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número de serie:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="93" y="133" width="480" height="20"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{selloDigital}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="6" y="133" width="80" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello digital:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="93" y="99" width="480" height="32"/>
+				<textElement textAlignment="Justified">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cadenaOriginal}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="93" y="158" width="480" height="20"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{secuenciaNotarial}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="6" y="158" width="80" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Secuencia notarial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="25" width="568" height="70"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Declaro y manifiesto bajo protesta de decir verdad que lo datos asentados en cada requisito son correctos y corresponden a la verdad, apercibido que de conformidad con el artículo 314 de la Ley del Seguro Social, se me reputará como fraude y se me sancionará como tal, en los términos del Código Penal Federal, el obtener, así como el propiciar la obtención, de los seguros, prestaciones y servicios que esta Ley establece, sin tener el carácter de derechohabiente, mediante cualquier engaño o aprovechamiento de error, ya sea en virtud de simulación, sustitución de personas o cualquier otro acto, lo cual podrá ser verificado por el Instituto en cualquier momento, en uso de sus facultades de comprobación como organismo fiscal autónomo.]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

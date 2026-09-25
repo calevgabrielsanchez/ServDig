@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+    <artifactId>ClientesWebservices</artifactId>
+    <groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+    <version>2.2-SNAPSHOT</version>
+  </parent>
+
+    <groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+    <artifactId>WebService-CalculoNRP</artifactId>
+    <version>2.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>WebService-CalculoNRP</name>
+
+    <properties>
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <org.hibernate.version>3.6.9.Final</org.hibernate.version>        
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+        
+		<!-- HIBERNATE CORE -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-commons-annotations</artifactId>
+			<version>3.2.0.Final</version>
+		</dependency>
+
+		<!-- HIBERNATE DEPENDECIES -->
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.1</version>
+		</dependency>        
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <compilerArguments>
+                        <endorseddirs>${endorsed.dir}</endorseddirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <ejbVersion>3.1</ejbVersion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${endorsed.dir}</outputDirectory>
+                            <silent>true</silent>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>javax</groupId>
+                                    <artifactId>javaee-endorsed-api</artifactId>
+                                    <version>6.0</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <repositories>
+		<repository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<layout>default</layout>
+			<url>http://172.16.5.134:8080/repository/repo/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<url>http://172.16.5.134:8080/repository/repo/</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+    
+    
+    <profiles>
+		<!-- Perfil para el deployment de los servicios REMOTO -->
+		<profile>
+			<id>dev-deploy-all</id>
+			<activation>
+				<property>
+					<name>dev-deploy-all</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- Weblogic Deployment Plug-In -->
+					<plugin>
+						<groupId>com.oracle.weblogic</groupId>
+						<artifactId>weblogic-maven-plugin</artifactId>
+						<version>10.3.4</version>
+						<configuration>
+							<adminurl>t3://172.24.116.38:11000</adminurl>
+							<user>admin_wldldev</user>
+							<password>wldldev_admin</password>
+							<upload>true</upload>
+							<action>deploy</action>
+							<remote>true</remote>
+							<verbose>true</verbose>
+							<source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
+							<name>${project.build.finalName}</name>
+							<targets>s_dlweb_07</targets>
+							<nostage>true</nostage>
+						</configuration>
+
+						<executions>
+							<execution>
+								<phase>install</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Perfil para Remover los deploys en el ambiente de Desarrollo IMSS -->
+		<profile>
+			<id>dev-remove-all</id>
+			<activation>
+				<property>
+					<name>dev-remove-all</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- Weblogic Deployment Plug-In -->
+					<plugin>
+						<groupId>com.oracle.weblogic</groupId>
+						<artifactId>weblogic-maven-plugin</artifactId>
+						<version>10.3.4</version>
+						<configuration>
+							<adminurl>t3://172.24.116.38:11000</adminurl>
+							<user>admin_wldldev</user>
+							<password>wldldev_admin</password>
+							<name>${project.build.finalName}</name>
+							<targets>s_dlweb_07</targets>
+						</configuration>
+
+						<executions>
+							<execution>
+								<phase>install</phase>
+								<goals>
+									<goal>undeploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>

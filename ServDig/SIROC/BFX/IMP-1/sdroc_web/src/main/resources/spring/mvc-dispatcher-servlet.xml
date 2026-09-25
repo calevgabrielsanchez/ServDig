@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+
+	<context:component-scan base-package="mx.gob.imss.csdiss.sdroc" />
+	
+	
+	
+
+	<mvc:resources mapping="/favicon.ico" location="/favicon.ico" order="0" />
+	<mvc:resources mapping="/robots.txt" location="/robots.txt" order="0" />
+	<mvc:resources mapping="/webjars/**" location="/webjars/" order="0" />
+	<mvc:resources mapping="/static/**" location="/static/" cache-period="31556926" />
+
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	<!-- <mvc:resources mapping="/resources/**" location="/static/js/" cache-period="31556926"/> -->
+	<mvc:resources mapping="/resources/**" location="/resources/registro/" cache-period="31556926" />
+	
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+ 			<list>
+      			<value>classpath:AMConfig.properties</value>
+      			<value>classpath:sdrocweb.properties</value>
+    		</list>		    		
+    	</property>
+	</bean>
+	
+	<bean id="templateResolver"
+		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".xhtml" />
+		<property name="templateMode" value="HTML5" />
+		<property name="cacheable" value="true" />
+	</bean>
+
+
+	<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
+		<property name="templateResolver" ref="templateResolver" />
+	</bean>
+
+	<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+		<property name="templateEngine" ref="templateEngine" />
+		<property name="order" value="1" />
+		<property name="viewNames" value="*" />
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	</bean>
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en" />
+	</bean>
+
+	<!-- Configuring messages.properties file -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource"
+		p:basename="messages" />		
+
+	<util:properties id="messages" location="classpath:messages.properties" />
+	
+	
+</beans>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://rpnp.ws.idse.imss.gob.mx/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://rpnp.ws.idse.imss.gob.mx/" xmlns:intf="http://rpnp.ws.idse.imss.gob.mx/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="http://rpnp.ws.idse.imss.gob.mx/" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Pkcs7IETCBean">
+    <sequence>
+     <element name="claveSerial" type="xsd:string"/>
+     <element name="nombreCompleto" type="xsd:string"/>
+     <element name="estatusFiel" type="xsd:string"/>
+     <element name="correoElectronico" type="xsd:string"/>
+     <element name="curpFiel" type="xsd:string"/>
+     <element name="nombreUsuario" type="xsd:string"/>
+     <element name="rfcAsociado" type="xsd:string"/>
+     <element name="fechaValidaInicio" type="xsd:date"/>
+     <element name="fechaValidaFin" type="xsd:date"/>
+     <element name="telefono" type="xsd:string"/>
+     <element name="idRol" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="RegistroPatronalIETCBean">
+    <sequence>
+     <element name="registroPatronal" type="xsd:string"/>
+     <element name="fechaRecepcion" type="xsd:date"/>
+     <element name="fechaActivacion" type="xsd:date"/>
+     <element name="razonSocial" type="xsd:string"/>
+     <element name="rfcRegistroPatronal" type="xsd:string"/>
+     <element name="tipoPersona" type="xsd:int"/>
+     <element name="estatusRP" type="xsd:int"/>
+     <element name="usuarioSubDel" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="RequerimientoIETCBean">
+    <sequence>
+     <element name="pkcs7Bean" type="impl:Pkcs7IETCBean"/>
+     <element name="regPatronBean" type="impl:RegistroPatronalIETCBean"/>
+    </sequence>
+   </complexType>
+   <element name="parameters" type="impl:RequerimientoIETCBean"/>
+   <complexType name="RespuestaIETCBean">
+    <sequence>
+     <element name="codigoRespuesta" type="xsd:int"/>
+     <element name="descripcionRespuesta" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="parameters1" type="impl:RespuestaIETCBean"/>
+   <complexType name="RequerimientoIDSEBean">
+    <sequence>
+     <element name="cveDel" type="xsd:int"/>
+     <element name="cveSub" type="xsd:int"/>
+     <element name="regPatron" type="xsd:string"/>
+     <element name="regPatronDig" type="xsd:int"/>
+     <element name="razonSocial" type="xsd:string"/>
+     <element name="municipio" type="xsd:string"/>
+     <element name="sector" type="xsd:int"/>
+     <element name="rfc" type="xsd:string"/>
+     <element name="domicilio" type="xsd:string"/>
+     <element name="localidad" type="xsd:string"/>
+     <element name="actividad" type="xsd:string"/>
+     <element name="fraccion" type="xsd:int"/>
+     <element name="claseRt" type="xsd:int"/>
+     <element name="email" type="xsd:string"/>
+     <element name="repLegal" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="parametersIdse" type="impl:RequerimientoIDSEBean"/>
+   <element name="parameters2" type="impl:RespuestaIETCBean"/>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="registraOperacionIETCRequest">
+
+      <wsdl:part element="impl:parameters" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="registraOperacionIDSERequest">
+
+      <wsdl:part element="impl:parametersIdse" name="parametersIdse">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="registraOperacionIDSEResponse">
+
+      <wsdl:part element="impl:parameters2" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="registraOperacionIETCResponse">
+
+      <wsdl:part element="impl:parameters1" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="IWSRegistroPatronalNoPresencial">
+
+      <wsdl:operation name="registraOperacionIETC" parameterOrder="parameters">
+
+         <wsdl:input message="impl:registraOperacionIETCRequest" name="registraOperacionIETCRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:registraOperacionIETCResponse" name="registraOperacionIETCResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="registraOperacionIDSE" parameterOrder="parametersIdse">
+
+         <wsdl:input message="impl:registraOperacionIDSERequest" name="registraOperacionIDSERequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:registraOperacionIDSEResponse" name="registraOperacionIDSEResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WSRegistroPatronalNoPresencialSOAPSoapBinding" type="impl:IWSRegistroPatronalNoPresencial">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="registraOperacionIETC">
+
+         <wsdlsoap:operation soapAction="http://rpnp.ws.idse.imss.gob.mx/registraOperacionIETC"/>
+
+         <wsdl:input name="registraOperacionIETCRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="registraOperacionIETCResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="registraOperacionIDSE">
+
+         <wsdlsoap:operation soapAction="http://rpnp.ws.idse.imss.gob.mx/registraOperacionIDSE"/>
+
+         <wsdl:input name="registraOperacionIDSERequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="registraOperacionIDSEResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WSRegistroPatronalNoPresencial">
+
+      <wsdl:port binding="impl:WSRegistroPatronalNoPresencialSOAPSoapBinding" name="WSRegistroPatronalNoPresencialSOAP">
+
+         <wsdlsoap:address location="http://172.24.116.23:10010/WebServicesIdse/services/WSRegistroPatronalNoPresencialSOAP"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

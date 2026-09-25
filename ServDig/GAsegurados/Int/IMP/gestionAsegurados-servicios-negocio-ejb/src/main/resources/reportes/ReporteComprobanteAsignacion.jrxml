@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteComprobanteAsignacion" pageWidth="612" pageHeight="792" columnWidth="532" leftMargin="40" rightMargin="40" topMargin="40" bottomMargin="40" isSummaryNewPage="true" isSummaryWithPageHeaderAndFooter="true">
+	<property name="ireport.zoom" value="1.500000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="39"/>
+	<parameter name="FECHA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["NOW"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="HORA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["12:00"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FOLIO_OPER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FORMATEADOR_REPORTE" class="mx.gob.imss.ctirss.delta.gestion.asegurado.service.utility.ReporteFormatter" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new mx.gob.imss.ctirss.delta.gestion.asegurado.service.utility.ReporteFormatter()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMSS_HEADER_PARAM" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CADENA_ORIGINAL" class="java.lang.String"/>
+	<parameter name="SELLO_DIGITAL" class="java.lang.String"/>
+	<parameter name="SECUENCIA_NOTARIA" class="java.lang.String"/>
+	<parameter name="NO_SERIE" class="java.lang.String"/>
+	<parameter name="IS_RECUPERADO" class="java.lang.Boolean" isForPrompting="false"/>
+	<parameter name="FECHA_FORMATEADA" class="java.lang.String"/>
+	<field name="tramiteId" class="java.lang.Long"/>
+	<field name="fechaTramite" class="java.util.Date"/>
+	<field name="observacion" class="java.lang.String"/>
+	<field name="fisica" class="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+	<pageHeader>
+		<band height="68" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="8" width="478" height="60"/>
+				<imageExpression class="java.io.InputStream"><![CDATA[$P{IMSS_HEADER_PARAM}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="17">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="532" height="17" forecolor="#FFFF99" backcolor="#333333"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Asignación de Número de Seguridad Social]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="516">
+			<textField isBlankWhenNull="true">
+				<reportElement x="266" y="96" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fisica} != null ?
+    $F{fisica}.getNombre() :
+    ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="266" y="56" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fisica} != null ?
+    $F{fisica}.getPrimerApellido() :
+    ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="266" y="76" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fisica} != null ?
+    $F{fisica}.getSegundoApellido() :
+    ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="266" y="116" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fisica} != null && $F{fisica}.getSexo() != null ? $F{fisica}.getSexo().getDescripcion() : ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="266" y="136" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fisica} != null ?
+$P{FORMATEADOR_REPORTE}.getFechaOMes($F{fisica}.getFechaNacimiento(),$F{fisica}.getMesRegistroNac(),$F{fisica}.getAnioRegistroNac())
+:
+""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="266" y="176" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fisica}.getLugarNacimiento().getNombre()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Transparent" x="266" y="196" width="266" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[(  $F{fisica} != null
+&& $F{fisica}.getCurp() != null ?
+    $F{fisica}.getCurp() : ""
+)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="96" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<text><![CDATA[Nombre(s)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="76" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<text><![CDATA[Segundo Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="116" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="176" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<text><![CDATA[Lugar de Nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="196" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<text><![CDATA[C.U.R.P.]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="266" y="36" width="266" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fisica} instanceof mx.gob.imss.ctirss.delta.model.asegurado.AsignacionNSS ?
+((mx.gob.imss.ctirss.delta.model.asegurado.AsignacionNSS) $F{fisica}).getNss()
+: ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="36" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<text><![CDATA[Número de Seguridad Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="228" width="532" height="75" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box leftPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" rotation="None" markup="html">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Este Número de Seguridad Social es único, permanente e intransferible y se asigna para el control del registro de los trabajadores o sujetos de aseguramiento y sus beneficiarios; las prestaciones en especie y en dinero se otorgarán cuando hayan cumplido con los requisitos previstos en la Ley del Seguro Social y sus Reglamentos; la individualización de los recursos en las Administradoras de Fondos para el Retiro (AFORE) y el Instituto del Fondo Nacional de la Vivienda de los Trabajadores (INFONAVIT) se efectuará durante el período en que se encuentre inscrito con un patrón.<br><br>El trabajador se registrará en la U.M.F. asignada, de acuerdo a su domicilio cuando un patrón lo inscriba en el Instituto.]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement positionType="Float" mode="Transparent" x="38" y="502" width="494" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{FOLIO_OPER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="56" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<text><![CDATA[Primer Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="502" width="37" height="12" forecolor="#333300"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Folio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="315" width="531" height="104"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font size="8" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Los datos personales recabados serán protegidos, tratados e incorporados en el sistema de datos personales denominado Catálogo Nacional de Asegurados (CANASE) con fundamento en los artículos 22 de la Ley del Seguro Social, 13 fracciones IV y V, 18,19,20 y 21 de la Ley Federal de Transparencia y Acceso a la Información Pública Gubernamental, cuya finalidad es proteger, contener, ordenar y clasificar los datos de los patrones y asegurados. El CANASE está registrado en el Listado de Sistemas de Datos Personales ante el Instituto Federal de Acceso a la Información Pública (www.ifai.org.mx), y será transmitido al INFONAVIT y a la CONSAR con la finalidad de que el asegurado haga valer su derecho de ejercicio de crédito de vivienda y disposición del Seguro de Retiro, además de otras prestaciones previstas en la Ley. La Unidad Administrativa responsable del Sistema de Datos Personales, es la Dirección de Incorporación y Recaudación en coordinación con la Dirección de Innovación y Desarrollo Tecnológico, ambas dependientes del IMSS; en su caso el interesado podrá ejercer los derechos de acceso y corrección en la Subdelegación de control que corresponde al domicilio del patrón o del asegurado. Lo anterior se informa en cumplimiento del decimoséptimo de los Lineamientos de Protección de Datos Personales, publicados en el Diario Oficial de la Federación el 30 de septiembre de 2005.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="1" width="532" height="35" forecolor="#333300"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["El Instituto Mexicano del Seguro Social hace constar que se " +
+(new Boolean($P{IS_RECUPERADO}.booleanValue() == false ) ? "asignó" : "recuperó")
++ " el siguiente:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="1" y="479" width="505" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Se extiende la presente al día " + $P{FECHA_FORMATEADA} + "."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="435" width="531" height="32"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font size="8" pdfFontName="Helvetica" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Ahora que cuentas con tu número de seguridad social, no olvides acudir a la AFORE de tu preferencia a registrar tu cuenta individual donde se depositarán tus aportaciones de Ahorro para el Retiro. También puedes hacerlo vía electrónica en: <u>www.consar.gob.mx</u> en la sección "SAR en línea". Recuerda que es un dato que solicitará tu patrón o empresa al momento de contratarte. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="424" width="531" height="11"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Aviso Importante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="304" width="531" height="11"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Aviso de privacidad]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="266" y="156" width="266" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{fisica} != null && ($F{fisica}.getAnioRegistroNac() != null &&
+    $F{fisica}.getAnioRegistroNac().intValue() != 0 && $F{fisica}.getFechaNacimiento() == null)]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[($F{fisica} != null && ($F{fisica}.getAnioRegistroNac() != null &&
+    $F{fisica}.getAnioRegistroNac() != 0) ) ? $F{fisica}.getAnioRegistroNac() : null]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="0" y="136" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fisica} != null ? $P{FORMATEADOR_REPORTE}.getTituloFecha($F{fisica}.getFechaNacimiento(),$F{fisica}.getMesRegistroNac(),$F{fisica}.getAnioRegistroNac()) : "Fecha de nacimiento"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Transparent" x="0" y="156" width="266" height="20" isRemoveLineWhenBlank="true"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{fisica} != null && ($F{fisica}.getAnioRegistroNac() != null &&
+    $F{fisica}.getAnioRegistroNac() != 0 && $F{fisica}.getFechaNacimiento() == null) ) ? "Año de nacimiento" : null]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="111">
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="22" width="67" height="20" forecolor="#333300"/>
+				<textElement verticalAlignment="Top" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Cadena original:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="83" y="22" width="450" height="31"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{CADENA_ORIGINAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="53" width="67" height="18" forecolor="#333300"/>
+				<textElement verticalAlignment="Top" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Sello Digital:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="83" y="53" width="450" height="27"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{SELLO_DIGITAL}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="83" y="82" width="450" height="10"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{SECUENCIA_NOTARIA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="83" y="96" width="450" height="13"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{NO_SERIE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="80" width="82" height="12" forecolor="#333300"/>
+				<textElement verticalAlignment="Top" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Secuencia Notarial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="95" width="82" height="12" forecolor="#333300"/>
+				<textElement verticalAlignment="Top" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Número de Serie:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="2" width="96" height="20" forecolor="#333300"/>
+				<textElement verticalAlignment="Top" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Mensaje de RENAPO:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

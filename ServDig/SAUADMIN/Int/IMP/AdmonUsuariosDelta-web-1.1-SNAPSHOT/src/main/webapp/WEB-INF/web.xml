@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<mime-mapping>
+    	<extension>xml</extension>
+        <mime-type>text/xml</mime-type>
+	</mime-mapping>
+    <mime-mapping>
+    	<extension>png</extension>
+        <mime-type>image/png</mime-type>
+    </mime-mapping>
+    <display-name>Administracion de Usuarios Delta SSO</display-name>
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Production</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>server</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+            /WEB-INF/config/spring/general-context.xml
+		</param-value>
+	</context-param>
+	
+	<!-- INICIA TEMPORAL PARA QUITAR OPEN AM -->
+	
+	${mvn.web.app.security.start}
+
+    <filter id="Filter_PolicyAgent">
+        <display-name>Agent</display-name>
+        <filter-name>Agent</filter-name>
+        <filter-class>
+            com.sun.identity.agents.filter.AmAgentFilter
+        </filter-class>
+    </filter>
+     <filter-mapping id="FilterMapping_PolicyAgent">
+        <filter-name>Agent</filter-name>
+		
+ 		<url-pattern>/solicitudCuentas/*</url-pattern>
+		<url-pattern>/plantillas/*</url-pattern>
+		<url-pattern>/aprobadores/*</url-pattern>
+		<url-pattern>/admonUsuarios/recuperacionCredenciales.xhtml</url-pattern>
+		<url-pattern>/admonUsuarios/BajaDefinitivaUsuario.xhtml</url-pattern>
+		<url-pattern>/Sauimssdigital/plantillas/login.xhtml</url-pattern>
+		<url-pattern>/plantillas/login.xhtml</url-pattern>
+		 
+    </filter-mapping>
+    
+    ${mvn.web.app.security.end}
+
+	<!-- TERMINA TEMPORAL PARA QUITAR OPEN AM -->
+    
+<!-- Reads request input using UTF-8 encoding -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	
+<!-- INICIA TEMPORAL PARA QUITAR OPEN AM -->
+
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+<!-- TERMINA TEMPORAL PARA QUITAR OPEN AM -->
+    
+    <listener> 
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener> 
+    <!--     Se agrega para el logout de spring-->
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+        <url-pattern>/icefaces/*</url-pattern>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>jcaptcha</servlet-name>
+        <servlet-class>com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>jcaptcha</servlet-name>
+        <url-pattern>/jcaptcha.jpg</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>activaCuenta</servlet-name>
+        <servlet-class>mx.gob.imss.ctirss.sso.util.ActivaCuentaServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>activaCuenta</servlet-name>
+        <url-pattern>/servlet/activaCuenta</url-pattern>
+    </servlet-mapping>
+	
+    <session-config>
+        <session-timeout>
+            50
+        </session-timeout>
+    </session-config>
+    <context-param>
+         <param-name>org.icefaces.ace.theme</param-name>
+         <param-value>sam</param-value>
+    </context-param>
+	<context-param>
+		<param-name>com.icesoft.faces.connectionLostRedirectURI</param-name>
+		<param-value>index.jsp</param-value>
+	</context-param>
+	<context-param>
+    	<param-name>org.icefaces.disableDefaultErrorPopups</param-name>
+    	<param-value>true</param-value>
+  	</context-param>
+    <welcome-file-list>
+       	<welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+	
+	<error-page>
+        <error-code>403</error-code>
+        <location>/security/accesoDenegado.xhtml</location>
+    </error-page>
+
+</web-app>

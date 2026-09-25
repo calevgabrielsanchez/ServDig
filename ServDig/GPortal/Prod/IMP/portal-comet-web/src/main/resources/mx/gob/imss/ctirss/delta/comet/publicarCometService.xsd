@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. 
+	RI's version is Oracle JAX-WS 2.1.5. -->
+<xs:schema xmlns:tns="http://www.serviciosdigitales.imss.gob.mx/comet"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0"
+	targetNamespace="http://www.serviciosdigitales.imss.gob.mx/comet">
+
+	<xs:element name="finalizaProcesamiento" type="tns:finalizaProcesamiento" />
+
+	<xs:element name="finalizaProcesamientoResponse" type="tns:finalizaProcesamientoResponse" />
+
+	<xs:element name="iniciaProcesamiento" type="tns:iniciaProcesamiento" />
+
+	<xs:element name="iniciaProcesamientoResponse" type="tns:iniciaProcesamientoResponse" />
+
+	<xs:element name="notificarFinSesion" type="tns:notificarFinSesion" />
+
+	<xs:element name="notificarFinSesionResponse" type="tns:notificarFinSesionResponse" />
+
+	<xs:element name="refrescar" type="tns:refrescar" />
+
+	<xs:element name="refrescarResponse" type="tns:refrescarResponse" />
+
+	<xs:complexType name="refrescar">
+		<xs:sequence>
+			<xs:element name="arg0" type="tns:refrescarCometData"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="refrescarCometData">
+		<xs:sequence>
+			<xs:element name="idPersona" type="xs:long" />
+			<xs:element name="idTipoPersona" type="xs:long" />
+			<xs:element name="idTipoTramite" type="xs:int" />
+			<xs:element name="regPatronal" type="xs:string" minOccurs="0" />
+			<xs:element name="modalidad" type="xs:long" minOccurs="0" />
+			<xs:element name="exito" type="xs:boolean" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="refrescarResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="notificarFinSesion">
+		<xs:sequence>
+			<xs:element name="arg0" type="tns:notificacionFinSesionCometData"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="notificacionFinSesionCometData">
+		<xs:sequence>
+			<xs:element name="usuario" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="notificarFinSesionResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="finalizaProcesamiento">
+		<xs:sequence>
+			<xs:element name="arg0" type="tns:procesamientoSolicitudCometData"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="procesamientoSolicitudCometData">
+		<xs:sequence>
+			<xs:element name="folio" type="xs:string" />
+			<xs:element name="exito" type="xs:boolean" />
+			<xs:element name="mensajeError" type="xs:string"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="finalizaProcesamientoResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="iniciaProcesamiento">
+		<xs:sequence>
+			<xs:element name="arg0" type="tns:procesamientoSolicitudCometData"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="iniciaProcesamientoResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

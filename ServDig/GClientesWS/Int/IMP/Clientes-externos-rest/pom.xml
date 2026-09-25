@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  
+  
+  <groupId>mx.gob.imss.cit.dacvass.servicios.externos</groupId>
+  <artifactId>clientes-externos-rest</artifactId>
+  <version>${mvn.project.version}</version>
+  <name>clientes-externos-rest</name>
+  <url>http://maven.apache.org</url>
+  <packaging>jar</packaging>
+  
+  <parent>
+	<groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+	<artifactId>ClientesWebservices</artifactId>
+	<version>2.2-SNAPSHOT</version>
+   </parent>
+  
+  
+  
+  <properties>
+    <project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+    <org.slf4j.version>1.6.1</org.slf4j.version>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    
+    	<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${org.log4j.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-core</artifactId>
+			<version>1.18.6</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.18.6</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>1.18.6</version>
+		</dependency>
+				
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.6</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.1.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.extras</groupId>
+			<artifactId>glassfish-embedded-all</artifactId>
+			<version>3.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		
+  </dependencies>
+  
+  
+  <build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		 </plugins>
+		 <resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+  
+  <repositories>
+		<repository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<layout>default</layout>
+			<url>http://172.16.5.134:8080/repository/repo/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<url>http://172.16.5.134:8080/repository/repo/</url>
+			<layout>default</layout>
+			<snapshots>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+  
+  <distributionManagement>
+		<!-- use the following if you're not using a snapshot version. -->
+		<repository>
+			<id>ctirss-archiva</id>
+			<name>CTIRSS Repository Name</name>
+			<url>dav:http://172.16.5.134:8080/repository/repo/</url>
+		</repository>
+		<snapshotRepository>
+			<id>ctirss-archiva</id>
+			<name>CTIRSS Repository Name</name>
+			<url>dav:http://172.16.5.134:8080/repository/repo/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<profiles>
+		<profile>
+			<id>compile-desa</id>
+			<activation>
+        		<activeByDefault>true</activeByDefault>
+    		</activation>
+			<properties>
+				<mvn.project.version>1.0-SNAPSHOT</mvn.project.version>
+				<mvn.servicios.externos.rest.url.token.convenios>http://cyg-token-qa-http.apps.qaocp.imss.gob.mx/convenios-token-api/token</mvn.servicios.externos.rest.url.token.convenios>
+				<mvn.servicios.externos.rest.timeOut.connection>3000</mvn.servicios.externos.rest.timeOut.connection>
+				<mvn.servicios.externos.rest.timeOut.response>10000</mvn.servicios.externos.rest.timeOut.response>
+				<mvn.servicios.externos.rest.url.token.sist>http://10.250.12.74:15203/sist/api/patevst/v1/generarToken</mvn.servicios.externos.rest.url.token.sist>			
+			</properties>
+		</profile>
+			<profile>
+			<id>compile-stage</id>
+			<activation>
+        		<activeByDefault>false</activeByDefault>
+    		</activation>
+			<properties>
+				<mvn.project.version>1.0-SNAPSHOT</mvn.project.version>
+				<mvn.servicios.externos.rest.url.token.convenios>http://cyg-token-qa-http.apps.qaocp.imss.gob.mx/convenios-token-api/token</mvn.servicios.externos.rest.url.token.convenios>
+				<mvn.servicios.externos.rest.timeOut.connection>3000</mvn.servicios.externos.rest.timeOut.connection>
+				<mvn.servicios.externos.rest.timeOut.response>10000</mvn.servicios.externos.rest.timeOut.response>
+				<mvn.servicios.externos.rest.url.token.sist>http://10.250.12.74:15203/sist/api/patevst/v1/generarToken</mvn.servicios.externos.rest.url.token.sist>
+			</properties>
+		</profile>
+		<profile>
+			<id>compile-prod</id>
+			<activation>
+        		<activeByDefault>false</activeByDefault>
+    		</activation>
+			<properties>
+				<mvn.project.version>1.0</mvn.project.version>
+				<mvn.servicios.externos.rest.url.token.convenios>http://cyg-token-http.apps.ocp.imss.gob.mx/convenios-token-api/token</mvn.servicios.externos.rest.url.token.convenios>
+				<mvn.servicios.externos.rest.timeOut.connection>3000</mvn.servicios.externos.rest.timeOut.connection>
+				<mvn.servicios.externos.rest.timeOut.response>10000</mvn.servicios.externos.rest.timeOut.response>
+				<mvn.servicios.externos.rest.url.token.sist>http://sist.imss.gob.mx/sist/api/patevst/v1/generarToken</mvn.servicios.externos.rest.url.token.sist>
+			</properties>
+		</profile>
+	</profiles>
+  
+</project>

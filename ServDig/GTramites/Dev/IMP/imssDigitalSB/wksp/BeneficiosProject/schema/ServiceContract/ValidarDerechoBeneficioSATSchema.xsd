@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://sat.gob.mx/ws/ValidarDerechoBeneficioRif" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://sat.gob.mx/ws/ValidarDerechoBeneficioRif" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+			<xsd:element name="validarDerechoBeneficioRifRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="1" name="rfc" nillable="false" type="tns:Rfc"/>
+						<xsd:element maxOccurs="1" minOccurs="1" name="indicadorInstitucionConsulta" nillable="false" type="xsd:int"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="validarDerechoBeneficioRifResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element maxOccurs="1" minOccurs="1" name="contribuyente" nillable="false" type="tns:Contribuyente"/>
+						<xsd:element maxOccurs="1" minOccurs="1" name="mensaje" nillable="false" type="tns:Mensaje"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:complexType name="Contribuyente">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="rfcVigente" nillable="false" type="tns:RfcVigente"/>
+					<xsd:element maxOccurs="1" minOccurs="1" name="indicadorDerechoBeneficio" nillable="false" type="xsd:boolean"/>
+					<xsd:element maxOccurs="1" minOccurs="1" name="indicadorApartadoC" nillable="false" type="xsd:boolean"/>
+					<xsd:element maxOccurs="1" minOccurs="1" name="curp" nillable="false" type="tns:Curp"/>
+					<xsd:element maxOccurs="1" minOccurs="1" name="fechaInicioRIF" nillable="false" type="tns:Fecha"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="Mensaje">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="exito" nillable="false" type="tns:Entero_2"/>
+					<xsd:element maxOccurs="1" minOccurs="1" name="claveError" nillable="true" type="tns:Entero_2"/>
+					<xsd:element maxOccurs="1" minOccurs="1" name="descripcion" nillable="true" type="tns:Descripcion"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<!-- Restricciones alfanuméricas -->
+			<xsd:simpleType name="Rfc">
+				<xsd:annotation>
+					<xsd:documentation>Restricción del RFC (Limitación a 13 caracteres
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="1"/>
+					<xsd:maxLength value="13"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="Curp">
+				<xsd:annotation>
+					<xsd:documentation>Restricción del CURP (Limitación a 18
+						caracteres)
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="1"/>
+					<xsd:maxLength value="18"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="Fecha">
+				<xsd:annotation>
+					<xsd:documentation>Restricción de la Fecha (Limitación a 10
+						caracteres)
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="1"/>
+					<xsd:maxLength value="10"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="Descripcion">
+				<xsd:annotation>
+					<xsd:documentation>Restricción de la Descripción del mensaje
+						(Limitación a 50 caracteres)
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="1"/>
+					<xsd:maxLength value="50"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<xsd:simpleType name="RfcVigente">
+				<xsd:annotation>
+					<xsd:documentation>Restricción del RFC vigente (Limitación a 13
+						caracteres)
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="1"/>
+					<xsd:maxLength value="13"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+			<!-- Restricciones Numéricas -->
+			<xsd:simpleType name="Entero_2">
+				<xsd:annotation>
+					<xsd:documentation>Restricción para Éxito y Clave de error del
+						mensaje (Limitación de valores de 0 a 99)
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:restriction base="xsd:int">
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="99"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:schema>

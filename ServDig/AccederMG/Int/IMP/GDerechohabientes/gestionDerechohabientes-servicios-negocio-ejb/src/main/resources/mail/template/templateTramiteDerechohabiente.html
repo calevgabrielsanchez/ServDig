@@ -1,0 +1,266 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Tramite de Derechohabientes</title>
+<style type="text/css">
+<![CDATA[
+
+a:hover {
+	color: #7b9cf0;
+}
+
+.header span {
+	color: #ffffff;
+	font: normal 16px Helvetica, Arial;
+	margin: 0px;
+	padding: 0px;
+	line-height: 16px;
+	margin: 0px;
+	padding: 0px;
+	padding: 0px;
+}
+
+.content h4 {
+	color: #5A5A5A;
+	margin: 0px;
+	padding: 0px;
+	line-height: 30px;
+	font-size: 24px;
+	font-family: Helvetica, Arial;
+}
+
+.content p {
+	color: #5A5A5A;
+	font-weight: normal;
+	margin: 0px;
+	padding: 0px;
+	line-height: 23px;
+	font-size: 16px;
+	font-family: Helvetica, Arial;
+}
+
+.content .note p {
+	color: #5A5A5A;
+	font-weight: normal;
+	margin: 0px;
+	padding: 0px;
+	font-style: italic;
+	line-height: 20px;
+	font-size: 12px;
+	font-family: Helvetica, Arial;
+}
+
+.footer a {
+	color: #12c;
+}
+
+.footer p {
+	padding: 0px;
+	font-size: 13px;
+	color: #5A5A5A;
+	margin: 0px;
+	font-family: Helvetica, Arial;
+	text-transform: uppercase;
+	color: #5A5A5A;
+}
+]]>
+</style>
+</head>
+<body style="margin: 0; padding: 0; background: #F3F3F3;">
+	<table cellpadding="0" cellspacing="0" border="0" align="center"
+		width="100%">
+		<tr>
+			<td align="center"
+				style="margin: 0; padding: 0; background: #F3F3F3; padding: 27px 0px">
+				<table cellpadding="0" cellspacing="0" border="0" align="center"
+					width="560px"
+					style="font-family: Helvetica, Arial; font-size: 16px; color: #ffffff; background: #393C3E"
+					class="header">
+					<tr>
+						<td height="76px" valign="middle" style="padding-left: 27px;">
+							<a href="//www.gob.mx/" style="vertical-align: middle;"> <img
+								width="126" height="39" alt="gob.mx"
+								src="http://serviciosdigitales-stage.imss.gob.mx/delta/resources/imagenes/gobmx/logos/gobmxlogo.png" />
+						</a>
+						</td>
+						<td height="76px" valign="middle" align="right"
+							style="padding-right: 27px;"><span
+							style="color: #ffffff; font: normal 16px Helvetica, Arial; margin: 0px; padding: 0px; line-height: 16px;">IMSS
+								- PORTAL CIUDADANO</span></td>
+					</tr>
+				</table>
+				<table cellpadding="0" cellspacing="0" border="0" align="center"
+					width="560px"
+					style="font-family: Helvetica, Arial; background: #ffffff;"
+					bgcolor="#ffffff">
+					<tr>
+						<td width="560px;" valign="top" align="left" bgcolor="#ffffff"
+							style="font-family: Helvetica, Arial; font-size: 16px; color: #5A5A5A; background: #fff; padding: 38px 27px 76px;">
+							<table cellpadding="0" cellspacing="0" border="0"
+								style="color: #717171; font: normal 16px Helvetica, Arial; margin: 0px; padding: 0;"
+								width="100%" class="content">
+								<tr>
+									<td align="center" style="padding: 15px 0px;">
+										<h4
+											style="color: #5A5A5A; margin: 0px; padding: 0px; line-height: 30px; font-size: 24px; font-family: Helvetica, Arial;">${descripcionTipoTramite}</h4>
+									</td>
+								</tr>
+								<tr>
+									<td style="padding: 15px 0px; text-align: center;" valign="top"><p
+											style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 0px; line-height: 23px; font-size: 16px; font-family: Helvetica, Arial;">A
+											${fechaOperacion}</p> <br />
+										<p
+											style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 0px; line-height: 23px; font-size: 16px; font-family: Helvetica, Arial;">
+											Folio de Solicitud: <strong>${folio}</strong>
+										</p></td>
+								</tr>
+								<tr>
+									<td align="justify"
+										style="padding: 15px 0px; text-align: justify;" valign="top">
+										<p
+											style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 0px; line-height: 23px; font-size: 16px; font-family: Helvetica, Arial;">
+											Estimado(a): <strong>${nombreCompleto}</strong>
+										</p> <br />
+										<p
+											style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 0px; line-height: 23px; font-size: 16px; font-family: Helvetica, Arial;">
+											En atención a la solicitud de <em>${descripcionTipoTramite}</em>
+											que llevaste a cabo mediante tu portal IMSS Digital, te
+											informamos que tu solicitud ha sido atendida. A continuación
+											encontrarás los detalles de tu solicitud.
+										</p> <br />
+									</td>
+								</tr>
+								<tr>
+									<td align="center"><table class="nssDataWrapper"
+											style="clear: both; font-size: 12px !important; margin-bottom: 6px !important; max-width: none !important;">
+											<tbody>
+												<tr>
+													<td align="center">
+														<table cellpadding="0" cellspacing="0" border="0">
+															<tbody>
+																<tr>
+																	<td align="left"
+																		style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 3px 0px; line-height: 20px; font-size: 12px; font-family: Helvetica, Arial; font-weight: 700">Fecha
+																		y hora</td>
+																	<td width="20px" />
+																	<td align="left"
+																		style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 3px 0px; line-height: 20px; font-size: 12px; font-family: Helvetica, Arial;">${fechaSolicitud}</td>
+																</tr>
+																<tr>
+																	<td align="left"
+																		style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 3px 0px; line-height: 20px; font-size: 12px; font-family: Helvetica, Arial; font-weight: 700">Clínica
+																		asignada</td>
+																	<td width="20px" />
+																	<td align="left"
+																		style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 3px 0px; line-height: 20px; font-size: 12px; font-family: Helvetica, Arial;">${clinicaAsignada}</td>
+																</tr>
+																<tr>
+																	<td align="left"
+																		style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 3px 0px; line-height: 20px; font-size: 12px; font-family: Helvetica, Arial; font-weight: 700">Dirección
+																		de la Clínica o UMF</td>
+																	<td width="20px" />
+																	<td align="left"
+																		style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 3px 0px; lline-height: 20px; font-size: 12px; font-family: Helvetica, Arial;">${direccionClinica}</td>
+																</tr>
+																<tr>
+																	<td align="left"
+																		style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 3px 0px; line-height: 20px; font-size: 12px; font-family: Helvetica, Arial; font-weight: 700">Turno</td>
+																	<td width="20px" />
+																	<td align="left"
+																		style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 3px 0px; line-height: 20px; font-size: 12px; font-family: Helvetica, Arial;">${turno}</td>
+																</tr>
+																<tr>
+																	<td align="left"
+																		style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 3px 0px; line-height: 20px; font-size: 12px; font-family: Helvetica, Arial; font-weight: 700">Consultorio</td>
+																	<td width="20px" />
+																	<td align="left"
+																		style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 3px 0px; line-height: 20px; font-size: 12px; font-family: Helvetica, Arial;">${consultorio}</td>
+																</tr>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+											</tbody>
+										</table></td>
+								</tr>
+								<tr>
+									<td align="justify"
+										style="padding: 15px 0 15px; text-align: justify;"
+										valign="top">
+										<p
+											style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 0px; line-height: 23px; font-size: 16px; font-family: Helvetica, Arial;">
+											Gracias por hacer uso de los servicios digitales que el
+											Instituto Mexicano del Seguro Social pone a tu disposición.</p>
+									</td>
+								</tr>
+								<tr>
+									<td align="justify"
+										style="padding: 15px 0px; text-align: justify;" class="note"><p
+											style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 0px; font-style: italic; line-height: 20px; font-size: 12px; font-family: Helvetica, Arial;">Esta
+											dirección de correo electrónico no puede recibir respuestas</p></td>
+								</tr>
+								<tr>
+									<td align="justify"
+										style="padding: 15px 0px; text-align: justify;" class="note"><p
+											style="color: #5A5A5A; font-weight: normal; margin: 0px; padding: 0px; font-style: italic; line-height: 20px; font-size: 12px; font-family: Helvetica, Arial;">
+											<strong>AVISO IMPORTANTE:</strong> Este correo electrónico
+											y/o el material adjunto es para uso exclusivo de la persona o
+											la entidad a la que expresamente se le ha enviado, el cual
+											contiene información confidencial. Si no es el destinatario
+											legítimo del mismo, por favor repórtelo inmediatamente a la
+											cuenta del remitente y elimínelo. Cualquier revisión,
+											almacenamiento, retransmisión, difusión o cualquier otro uso
+											de este correo, por personas o entidades distintas a las del
+											destinatario legítimo, queda expresamente prohibida. Este
+											correo electrónico no pretende ni debe ser considerado como
+											constitutivo de ninguna relación legal, contractual o de otra
+											índole similar.
+										</p></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+				<table cellpadding="0" cellspacing="0" border="0" align="center"
+					width="560px"
+					style="font-family: Helvetica, Arial; font-size: 16px; color: #ffffff; background: #393C3E"
+					class="mainFooter">
+					<tr>
+						<td align="left" height="76px" valign="middle"
+							style="padding-left: 27px;"><img width="63" height="19"
+							alt="gob.mx"
+							src="http://serviciosdigitales-stage.imss.gob.mx/delta/resources/imagenes/gobmx/logos/gobmxlogo.png" />
+						</td>
+						<td height="76px" valign="middle" align="right"
+							style="padding-right: 27px;"><img width="86" height="35"
+							alt="gob.mx"
+							src="http://serviciosdigitales-stage.imss.gob.mx/delta/resources/imagenes/gobmx/logos/logo_mexico.png" /></td>
+					</tr>
+				</table>
+				<table cellpadding="0" cellspacing="0" border="0" align="center"
+					width="560px"
+					style="font-family: Helvetica, Arial; line-height: 10px;"
+					bgcolor="#F3F3F3" class="footer">
+					<tr>
+						<td bgcolor="#F3F3F3" align="center"
+							style="padding: 15px 0 10px; font-size: 13px; color: #5A5A5A; margin: 0px; line-height: 1.2; font-family: Helvetica, Arial;"
+							valign="top">
+							<p
+								style="padding: 0px; font-size: 13px; color: #5A5A5A; margin: 0px; font-family: Helvetica, Arial; text-transform: uppercase; color: #5A5A5A;">IMSS,
+								México - Algunos derechos reservados 2015</p>
+							<p
+								style="padding: 0px; font-size: 13px; color: #5A5A5A; margin: 0px 0px 8px 0px; font-family: Helvetica, Arial; text-transform: uppercase; color: #5A5A5A;">
+								<a href="http://www.imss.gob.mx/pages/privacidad.aspx"
+									style="color: #12c;">POLÍTICA DE PRIVACIDAD Y MANEJO DE
+									DATOS PERSONALES </a> - <a target="_parent"
+									href="http://www.imss.gob.mx/Pages/avisolegal.aspx"
+									style="color: #12c;">Aviso LEGAL</a>
+							</p>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

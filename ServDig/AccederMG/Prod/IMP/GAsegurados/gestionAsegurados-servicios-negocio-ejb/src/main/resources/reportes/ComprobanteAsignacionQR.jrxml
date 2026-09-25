@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteComprobanteAsignacion" pageWidth="612" pageHeight="842" columnWidth="524" leftMargin="42" rightMargin="46" topMargin="42" bottomMargin="10" isSummaryNewPage="true" isSummaryWithPageHeaderAndFooter="true">
+	<property name="ireport.zoom" value="0.9313819845887463"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="49"/>
+	<parameter name="FECHA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["NOW"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="HORA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["12:00"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FOLIO_OPER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FORMATEADOR_REPORTE" class="mx.gob.imss.ctirss.delta.gestion.asegurado.service.utility.ReporteFormatter" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new mx.gob.imss.ctirss.delta.gestion.asegurado.service.utility.ReporteFormatter()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMSS_HEADER_PARAM" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CADENA_ORIGINAL" class="java.lang.String"/>
+	<parameter name="SELLO_DIGITAL" class="java.lang.String"/>
+	<parameter name="SECUENCIA_NOTARIA" class="java.lang.String"/>
+	<parameter name="NO_SERIE" class="java.lang.String"/>
+	<parameter name="IS_RECUPERADO" class="java.lang.Boolean" isForPrompting="false"/>
+	<parameter name="FECHA_FORMATEADA" class="java.lang.String"/>
+	<parameter name="LOGO" class="java.lang.String"/>
+	<parameter name="imagenQR" class="java.lang.Object"/>
+	<parameter name="logoIMSS" class="java.lang.String"/>
+	<parameter name="imgRecorte" class="java.lang.String"/>
+	<parameter name="SUBREPORTE_CREDENCIAL" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="PIE" class="java.lang.String"/>
+	<field name="tramiteId" class="java.lang.Long"/>
+	<field name="fechaTramite" class="java.util.Date"/>
+	<field name="observacion" class="java.lang.String"/>
+	<field name="fisica" class="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+	<pageHeader>
+		<band height="84" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="524" height="84" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="42" width="524" height="42" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10"/>
+				</textElement>
+				<text><![CDATA[Instituto Mexicano del Seguro Social]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="0" width="524" height="42" forecolor="#AFB1B1" backcolor="#221E1E"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<image>
+				<reportElement mode="Transparent" x="15" y="11" width="58" height="22"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{LOGO}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="547">
+			<staticText>
+				<reportElement x="0" y="0" width="524" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Asignación o Localización de Número de Seguridad Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="303" width="523" height="51"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Este Número de Seguridad Social es único, permanente e intransferible y se asigna para el control del registro de los trabajadores o sujetos de aseguramiento y sus beneficiarios; las prestaciones en especie y en dinero se otorgarán cuando hayan cumplido con los requisitos previstos en la Ley del Seguro Social y sus Reglamentos; la individualización de los recursos en las Administradoras de Fondos para el Retiro (AFORE) y el Instituto del Fondo Nacional de la Vivienda de los Trabajadores (INFONAVIT) se efectuará durante el periodo en que se encuentren inscritos con un patrón.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="357" width="523" height="44"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Ahora que cuentas con tu Número de Seguridad Social, no olvides acudir a la AFORE de tu preferencia a registrar tu cuenta individual donde se depositarán tus aportaciones de Ahorro para el Retiro. También puedes hacerlo vía electrónica en: www.consar.gob.mx en la sección "SAR en línea". Recuerda que es un dato que solicitará tu patrón o empresa al momento de contratarte.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="51" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="101" y="51" width="285" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{FECHA_FORMATEADA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="71" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light"/>
+				</textElement>
+				<text><![CDATA[Folio de la solicitud:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="101" y="71" width="285" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{FOLIO_OPER}]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="true">
+				<reportElement x="107" y="99" width="292" height="192"/>
+				<subreportParameter name="imagenQR">
+					<subreportParameterExpression><![CDATA[$P{imagenQR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logoIMSS">
+					<subreportParameterExpression><![CDATA[$P{logoIMSS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="imgRecorte">
+					<subreportParameterExpression><![CDATA[$P{imgRecorte}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource(java.util.Arrays.asList($F{fisica}))]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUBREPORTE_CREDENCIAL}]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="0" y="442" width="82" height="33" forecolor="#000000"/>
+				<textElement verticalAlignment="Top" markup="none">
+					<font fontName="Soberana Sans Light" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Cadena original:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="82" y="442" width="441" height="46" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{CADENA_ORIGINAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="489" width="82" height="18" forecolor="#000000"/>
+				<textElement verticalAlignment="Top" markup="none">
+					<font fontName="Soberana Sans Light" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Sello Digital:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="82" y="488" width="441" height="27" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{SELLO_DIGITAL}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="82" y="515" width="441" height="12" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{SECUENCIA_NOTARIA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="82" y="530" width="440" height="14" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{NO_SERIE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="515" width="82" height="12" forecolor="#000000"/>
+				<textElement verticalAlignment="Top" markup="none">
+					<font fontName="Soberana Sans Light" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Secuencia Notarial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="530" width="82" height="12" forecolor="#000000"/>
+				<textElement verticalAlignment="Top" markup="none">
+					<font fontName="Soberana Sans Light" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Número de Serie:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="20" width="524" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tarjeta de Número de Seguridad Social]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="66">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="3" width="524" height="50" forecolor="#AFB1B1" backcolor="#E7E8E7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="423" y="14" width="87" height="32"/>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="5"/>
+				</textElement>
+				<text><![CDATA[Paseo de la Reforma 476, P.B.
+Col. Juárez, Delegación
+Cuauhtémoc C.P. 06600 México, D.F.
+Tel. 01 800 623 23 23
+http://atencion.contactoimss.com.mx]]></text>
+			</staticText>
+			<image>
+				<reportElement positionType="Float" mode="Transparent" x="14" y="13" width="165" height="33"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{PIE}]]></imageExpression>
+			</image>
+			<textField evaluationTime="Report">
+				<reportElement x="502" y="54" width="24" height="10"/>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="423" y="3" width="28" height="8"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contacto:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="2" width="524" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="422" y="54" width="80" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Hoja "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

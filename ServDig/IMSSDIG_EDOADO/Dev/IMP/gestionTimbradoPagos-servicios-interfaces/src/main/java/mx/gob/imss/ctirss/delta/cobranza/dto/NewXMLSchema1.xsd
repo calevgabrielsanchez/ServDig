@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="comprobante" type="comprobanteDTO"/>
+
+  <xs:element name="emisor" type="emisorDTO"/>
+
+  <xs:element name="regimen" type="regimenDTO"/>
+
+  <xs:complexType name="complementoDTO">
+    <xs:sequence>
+      <xs:element name="complementos" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="receptorDTO">
+    <xs:sequence>
+      <xs:element name="domicilio" type="ubicacionFiscalDTO" minOccurs="0"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="rfc" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ubicacionFiscalDTO">
+    <xs:sequence>
+      <xs:element name="calle" type="xs:string" minOccurs="0"/>
+      <xs:element name="codigoPostal" type="xs:string" minOccurs="0"/>
+      <xs:element name="colonia" type="xs:string" minOccurs="0"/>
+      <xs:element name="estado" type="xs:string" minOccurs="0"/>
+      <xs:element name="localidad" type="xs:string" minOccurs="0"/>
+      <xs:element name="municipio" type="xs:string" minOccurs="0"/>
+      <xs:element name="noExterior" type="xs:string" minOccurs="0"/>
+      <xs:element name="noInterior" type="xs:string" minOccurs="0"/>
+      <xs:element name="pais" type="xs:string" minOccurs="0"/>
+      <xs:element name="referencia" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="retencionesDTO">
+    <xs:sequence>
+      <xs:element name="retenciones" type="retencionDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="retencionDTO">
+    <xs:sequence>
+      <xs:element name="importe" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="impuesto" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="trasladosDTO">
+    <xs:sequence>
+      <xs:element name="traslados" type="trasladoDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="trasladoDTO">
+    <xs:sequence>
+      <xs:element name="importe" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="impuesto" type="xs:string" minOccurs="0"/>
+      <xs:element name="tasa" type="xs:decimal" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="percepcionesDTO">
+    <xs:sequence>
+      <xs:element name="percepcion" type="percepcionDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="totalExento" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="totalGravado" type="xs:decimal" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="percepcionDTO">
+    <xs:sequence>
+      <xs:element name="clave" type="xs:string" minOccurs="0"/>
+      <xs:element name="concepto" type="xs:string" minOccurs="0"/>
+      <xs:element name="importeExento" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="importeGravado" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="tipoPercepcion" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deduccionesDTO">
+    <xs:sequence>
+      <xs:element name="deduccion" type="deduccionDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="totalExento" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="totalGravado" type="xs:decimal" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deduccionDTO">
+    <xs:sequence>
+      <xs:element name="clave" type="xs:string" minOccurs="0"/>
+      <xs:element name="concepto" type="xs:string" minOccurs="0"/>
+      <xs:element name="importeExento" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="importeGravado" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="tipoDeduccion" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="regimenDTO">
+    <xs:sequence>
+      <xs:element name="regimen" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="comprobanteDTO">
+    <xs:sequence>
+      <xs:element ref="emisor" minOccurs="0"/>
+      <xs:element name="receptor" type="receptorDTO" minOccurs="0"/>
+      <xs:element name="conceptos" type="conceptosDTO" minOccurs="0"/>
+      <xs:element name="impuestos" type="impuestosDTO" minOccurs="0"/>
+      <xs:element name="complemento" type="complementoDTO" minOccurs="0"/>
+      <xs:element name="addenda" type="addendasDTO" minOccurs="0"/>
+      <xs:element name="version" type="xs:string" minOccurs="0"/>
+      <xs:element name="serie" type="xs:string" minOccurs="0"/>
+      <xs:element name="folio" type="xs:string" minOccurs="0"/>
+      <xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="sello" type="xs:string" minOccurs="0"/>
+      <xs:element name="formaDePago" type="xs:string" minOccurs="0"/>
+      <xs:element name="noCertificado" type="xs:string" minOccurs="0"/>
+      <xs:element name="certificado" type="xs:string" minOccurs="0"/>
+      <xs:element name="condicionesDePago" type="xs:string" minOccurs="0"/>
+      <xs:element name="subTotal" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="descuento" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="motivoDescuento" type="xs:string" minOccurs="0"/>
+      <xs:element name="tipoCambio" type="xs:string" minOccurs="0"/>
+      <xs:element name="moneda" type="xs:string" minOccurs="0"/>
+      <xs:element name="total" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="tipoDeComprobante" type="xs:string" minOccurs="0"/>
+      <xs:element name="metodoDePago" type="xs:string" minOccurs="0"/>
+      <xs:element name="lugarExpedicion" type="xs:string" minOccurs="0"/>
+      <xs:element name="numCtaPago" type="xs:string" minOccurs="0"/>
+      <xs:element name="folioFiscalOrig" type="xs:string" minOccurs="0"/>
+      <xs:element name="serieFolioFiscalOrig" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaFolioFiscalOrig" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="montoFolioFiscalOrig" type="xs:decimal" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="emisorDTO">
+    <xs:sequence>
+      <xs:element name="domicilioFiscal" type="ubicacionFiscalDTO" minOccurs="0"/>
+      <xs:element name="expedidoEn" type="ubicacionFiscalDTO" minOccurs="0"/>
+      <xs:element name="regimenFiscal" type="regimenDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="rfc" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="conceptosDTO">
+    <xs:sequence>
+      <xs:element name="conceptos" type="conceptoDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="conceptoDTO">
+    <xs:sequence>
+      <xs:element name="cantidad" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+      <xs:element name="importe" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="noIdentificacion" type="xs:string" minOccurs="0"/>
+      <xs:element name="unidad" type="xs:string" minOccurs="0"/>
+      <xs:element name="valorUnitario" type="xs:decimal" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="impuestosDTO">
+    <xs:sequence>
+      <xs:element name="retenciones" type="retencionesDTO" minOccurs="0"/>
+      <xs:element name="totalImpuestosRetenidos" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="totalImpuestosTrasladados" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="traslados" type="trasladosDTO" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addendasDTO">
+    <xs:sequence>
+      <xs:element name="addendas" type="addendaDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addendaDTO">
+    <xs:sequence>
+      <xs:element name="entidadRecaudadora" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaPago" type="date" minOccurs="0"/>
+      <xs:element name="folSUA" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="periodo" type="xs:string" minOccurs="0"/>
+      <xs:element name="registroPatronal" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="date">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="incapacidadDTO">
+    <xs:sequence>
+      <xs:element name="descuento" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="diasIncapacidad" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="tipoIncapacidad" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pagoReferenciadoDTO">
+    <xs:sequence>
+      <xs:element name="actIMSS" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="actRCV" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="entidadRecaudadora" type="xs:string" minOccurs="0"/>
+      <xs:element name="estatusRegistro" type="xs:string" minOccurs="0"/>
+      <xs:element name="fecIngreso" type="xs:string" minOccurs="0"/>
+      <xs:element name="fecPago" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="folioSUA" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="periodo" type="xs:string" minOccurs="0"/>
+      <xs:element name="razonSocial" type="xs:string" minOccurs="0"/>
+      <xs:element name="recIMMS" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="recRCV" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="registroPatronal" type="xs:string" minOccurs="0"/>
+      <xs:element name="rfc" type="xs:string" minOccurs="0"/>
+      <xs:element name="subTotRCV" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="subTotalIMSS" type="xs:decimal" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="nominaDTO">
+    <xs:sequence>
+      <xs:element name="antiguedad" type="xs:int" minOccurs="0"/>
+      <xs:element name="banco" type="xs:int" minOccurs="0"/>
+      <xs:element name="clabe" type="xs:integer" minOccurs="0"/>
+      <xs:element name="curp" type="xs:string" minOccurs="0"/>
+      <xs:element name="deducciones" type="deduccionesDTO" minOccurs="0"/>
+      <xs:element name="departamento" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaFinalPago" type="xs:anySimpleType" minOccurs="0"/>
+      <xs:element name="fechaInicialPago" type="xs:anySimpleType" minOccurs="0"/>
+      <xs:element name="fechaInicioRelLaboral" type="xs:anySimpleType" minOccurs="0"/>
+      <xs:element name="fechaPago" type="xs:anySimpleType" minOccurs="0"/>
+      <xs:element name="horasExtras" type="horasExtrasDTO" minOccurs="0"/>
+      <xs:element name="incapacidades" type="incapacidadesDTO" minOccurs="0"/>
+      <xs:element name="numDiasPagados" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="numEmpleado" type="xs:string" minOccurs="0"/>
+      <xs:element name="numSeguridadSocial" type="xs:string" minOccurs="0"/>
+      <xs:element name="percepciones" type="percepcionesDTO" minOccurs="0"/>
+      <xs:element name="periodicidadPago" type="xs:string" minOccurs="0"/>
+      <xs:element name="puesto" type="xs:string" minOccurs="0"/>
+      <xs:element name="registroPatronal" type="xs:string" minOccurs="0"/>
+      <xs:element name="riesgoPuesto" type="xs:int" minOccurs="0"/>
+      <xs:element name="salarioBaseCotApor" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="salarioDiarioIntegrado" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="tipoContrato" type="xs:string" minOccurs="0"/>
+      <xs:element name="tipoJornada" type="xs:string" minOccurs="0"/>
+      <xs:element name="tipoRegimen" type="xs:int"/>
+      <xs:element name="version" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="horasExtrasDTO">
+    <xs:sequence>
+      <xs:element name="horasExtras" type="horasExtraDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="horasExtraDTO">
+    <xs:sequence>
+      <xs:element name="dias" type="xs:int"/>
+      <xs:element name="horasExtra" type="xs:int"/>
+      <xs:element name="importePagado" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="tipoHoras" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="incapacidadesDTO">
+    <xs:sequence>
+      <xs:element name="incapacidad" type="incapacidadDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

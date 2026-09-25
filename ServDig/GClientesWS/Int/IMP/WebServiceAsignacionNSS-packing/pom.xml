@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>ClientesWebservices</artifactId>
+    <groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+    <version>2.2</version>
+  </parent>
+  <groupId>mx.gob.imss.ctirss.ws.asignacion</groupId>
+  <artifactId>WebServiceAsignacionNSS-packing</artifactId>
+  <version>2.0</version>
+  <packaging>ear</packaging>
+  <name>WebServiceAsignacionNSS-packing</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+      
+      
+      
+      
+    <!-- EJB del Ws de Asignacion -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.ws.asignacion</groupId>
+  <artifactId>WebServiceAsignacionNSS</artifactId>
+  <version>${delta.clientews.wsasignacion}</version>
+			<type>ejb</type>
+		</dependency>
+  </dependencies>
+  
+  
+<build>
+    
+    
+    <plugins>
+        <!-- Maven EAR Plug-In -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<version>5</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+				</configuration>
+			</plugin>
+        
+    </plugins>
+</build>
+
+<repositories>
+		<repository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<layout>default</layout>
+			<url>http://172.16.5.134:8080/repository/repo/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<url>http://172.16.5.134:8080/repository/repo/</url>
+			<layout>default</layout>
+			<snapshots>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+	
+	<distributionManagement>
+		<!-- use the following if you're not using a snapshot version. -->
+		<repository>
+			<id>ctirss-archiva</id>
+			<name>CTIRSS Repository Name</name>
+			<url>dav:http://172.16.5.134:8080/repository/repo/</url>
+		</repository>
+		<snapshotRepository>
+			<id>ctirss-archiva</id>
+			<name>CTIRSS Repository Name</name>
+			<url>dav:http://172.16.5.134:8080/repository/repo/</url>
+		</snapshotRepository>
+	</distributionManagement>
+  
+</project>

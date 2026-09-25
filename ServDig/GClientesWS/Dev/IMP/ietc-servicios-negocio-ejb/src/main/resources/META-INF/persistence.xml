@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="IDSESindoPersistencia" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>jdbc/idsePatronesDS</jta-data-source> 
+		
+		<class>mx.gob.imss.ctirss.idse.persistencia.Patrones</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.PatronesIdse</class>
+		<properties>
+			<property name="hibernate.query.factory_class"
+				value="org.hibernate.hql.classic.ClassicQueryTranslatorFactory" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="true" />
+			<property name="hibernate.transaction.manager_lookup_class"
+				value="org.hibernate.transaction.WeblogicTransactionManagerLookup" />
+			<property name="hibernate.max_fetch_depth" value="1"/>
+		</properties>
+	</persistence-unit>
+	<persistence-unit name="IDSECertificacionPersistencia" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>jdbc/idseCertificacionDS</jta-data-source> 
+		
+		
+		<!-- NUEVAS TABLAS -->
+		
+		<class>mx.gob.imss.ctirss.idse.persistencia.IdcAccionMovimiento</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IdcEstatusFiel</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IdcEstatusRegPat</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IdcEstatusRelacion</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IdrBloqueRegistro</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IdrPersonasFisica</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IdrPersonasMorale</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IdtCartasEmpresa</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IdtDatosCertificado</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IdtDatosCertificadoPK</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IdtHistoricoMovimiento</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IdtRegistrosPatronale</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IdtRepresentado</class>
+		
+		
+		<!-- FIN NUEVAS TABLAS -->
+		
+		<class>mx.gob.imss.ctirss.idse.persistencia.IfrCartasIdseFiel</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IfrCartasIdseFielPK</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IfrCertificadoReq</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IfrCertificadoReqPK</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IftDatosCertificado</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IftRegistrosPatronale</class>
+		<class>mx.gob.imss.ctirss.idse.persistencia.IftRegistrosPatronalePK</class>
+		<properties>
+			<property name="hibernate.query.factory_class"
+				value="org.hibernate.hql.classic.ClassicQueryTranslatorFactory" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="true" />
+			<property name="hibernate.transaction.manager_lookup_class"
+				value="org.hibernate.transaction.WeblogicTransactionManagerLookup" />
+			<property name="hibernate.max_fetch_depth" value="1"/>
+		</properties>
+	</persistence-unit>
+	
+	
+</persistence>

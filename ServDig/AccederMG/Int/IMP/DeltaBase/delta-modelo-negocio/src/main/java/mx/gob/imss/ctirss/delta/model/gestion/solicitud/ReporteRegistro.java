@@ -1,0 +1,349 @@
+package mx.gob.imss.ctirss.delta.model.gestion.solicitud;
+
+import java.io.Serializable;
+
+
+import mx.gob.imss.ctirss.delta.framework.base.model.AbstractModel;
+
+public class ReporteRegistro extends AbstractModel implements Serializable {
+
+    private static final long serialVersionUID = 134506813664771L;
+
+    private String NUM_NSS;
+    private String NOMBRE_ASEGURADO;
+    private String APELLIDO_PATERNO_ASEGURADO;
+    private String APELLIDO_MATERNO_ASEGURADO;
+	private String CURP_ASEGURADO;
+	private String SEXO_ASEGURADO;
+	private String DOMICILIO_ASEGURADO_MOMENTO;
+	private String DOMICILIO_ASEGURADO_ACTUAL;
+	private String NOMBRE_BENEFICIARIO;
+	private String APELLIDO_PATERNO_BENEFICIARIO;
+	private String APELLIDO_MATERNO_BENEFICIARIO;
+	private String CURP_BENEFICIARIO;
+	private String SEXO_BENEFICIARIO;
+	private String DOMICILIO_BENEFICIARIO_MOMENTO;
+	private String DOMICILIO_BENEFICIARIO_ACTUAL;
+    private String FECHA_TRAMITE;
+    private String ID_TIPO_TRAMITE;
+	private String CLAVE_DEL_MOMENTO;
+    private String DES_DEL_MOMENTO;
+	private String CLAVE_DEL_ACTUAL;
+    private String DES_DEL_ACTUAL;
+	private String CLAVE_SUB_MOMENTO;
+	private String DES_SUB_MOMENTO;
+	private String CLAVE_SUB_ACTUAL;
+	private String DES_SUB_ACTUAL;
+	private String CVE_UMF_MOMENTO;
+	private String DES_UMF_MOMENTO;
+	private String CVE_UMF_ACTUAL;
+	private String DES_UMF_ACTUAL;
+	private String TIPO_TRAMITE;
+	private String VIGENCIA_ASEG_MOMENTO;
+	private String VIGENCIA_BENEF_MOMENTO;
+	private String IND_CONYUGE_MISMO_SEXO;
+	private String IND_CONCUBINARIO_MISMO_SEXO;
+	private String CUENTA_USUARIO;
+	private String ORIGEN_TRAMITE;
+	private String DOCUMENTOS_PROBATORIOS;
+
+	
+	public String getNUM_NSS() {
+		return NUM_NSS;
+	}
+
+	public void setNUM_NSS(String NUM_NSS) {
+		this.NUM_NSS = NUM_NSS;
+	}
+
+	public String getNOMBRE_ASEGURADO() {
+		return NOMBRE_ASEGURADO;
+	}
+
+	public void setNOMBRE_ASEGURADO(String NOMBRE_ASEGURADO) {
+		this.NOMBRE_ASEGURADO = NOMBRE_ASEGURADO;
+	}
+
+	public String getAPELLIDO_PATERNO_ASEGURADO() {
+		return APELLIDO_PATERNO_ASEGURADO;
+	}
+
+	public void setAPELLIDO_PATERNO_ASEGURADO(String APELLIDO_PATERNO_ASEGURADO) {
+		this.APELLIDO_PATERNO_ASEGURADO = APELLIDO_PATERNO_ASEGURADO;
+	}
+
+	public String getAPELLIDO_MATERNO_ASEGURADO() {
+		return APELLIDO_MATERNO_ASEGURADO;
+	}
+
+	public void setAPELLIDO_MATERNO_ASEGURADO(String APELLIDO_MATERNO_ASEGURADO) {
+		this.APELLIDO_MATERNO_ASEGURADO = APELLIDO_MATERNO_ASEGURADO;
+	}
+	
+
+    public String getCURP_ASEGURADO() {
+        return CURP_ASEGURADO;
+    }
+
+    public void setCURP_ASEGURADO(String CURP_ASEGURADO) {
+        this.CURP_ASEGURADO = CURP_ASEGURADO;
+    }
+
+    public String getSEXO_ASEGURADO() {
+        return SEXO_ASEGURADO;
+    }
+
+    public void setSEXO_ASEGURADO(String SEXO_ASEGURADO) {
+        this.SEXO_ASEGURADO = SEXO_ASEGURADO;
+    }
+
+
+	public String getDOMICILIO_ASEGURADO_MOMENTO() {
+		return DOMICILIO_ASEGURADO_MOMENTO;
+	}
+
+	public void setDOMICILIO_ASEGURADO_MOMENTO(String DOMICILIO_ASEGURADO_MOMENTO) {
+		this.DOMICILIO_ASEGURADO_MOMENTO = DOMICILIO_ASEGURADO_MOMENTO;
+	}
+
+	public String getDOMICILIO_ASEGURADO_ACTUAL() {
+		return DOMICILIO_ASEGURADO_ACTUAL;
+	}
+
+	public void setDOMICILIO_ASEGURADO_ACTUAL(String DOMICILIO_ASEGURADO_ACTUAL) {
+		this.DOMICILIO_ASEGURADO_ACTUAL = DOMICILIO_ASEGURADO_ACTUAL;
+	}
+
+	public String getNOMBRE_BENEFICIARIO() {
+		return NOMBRE_BENEFICIARIO;
+	}
+
+	public void setNOMBRE_BENEFICIARIO(String NOMBRE_BENEFICIARIO) {
+		this.NOMBRE_BENEFICIARIO = NOMBRE_BENEFICIARIO;
+	}
+
+	public String getAPELLIDO_PATERNO_BENEFICIARIO() {
+		return APELLIDO_PATERNO_BENEFICIARIO;
+	}
+
+	public void setAPELLIDO_PATERNO_BENEFICIARIO(String APELLIDO_PATERNO_BENEFICIARIO) {
+		this.APELLIDO_PATERNO_BENEFICIARIO = APELLIDO_PATERNO_BENEFICIARIO;
+	}
+
+	public String getAPELLIDO_MATERNO_BENEFICIARIO() {
+		return APELLIDO_MATERNO_BENEFICIARIO;
+	}
+
+	public void setAPELLIDO_MATERNO_BENEFICIARIO(String APELLIDO_MATERNO_BENEFICIARIO) {
+		this.APELLIDO_MATERNO_BENEFICIARIO = APELLIDO_MATERNO_BENEFICIARIO;
+	}
+
+	public String getCURP_BENEFICIARIO() {
+		return CURP_BENEFICIARIO;
+	}
+
+	public void setCURP_BENEFICIARIO(String CURP_BENEFICIARIO) {
+		this.CURP_BENEFICIARIO = CURP_BENEFICIARIO;
+	}
+
+	public String getSEXO_BENEFICIARIO() {
+		return SEXO_BENEFICIARIO;
+	}
+
+	public void setSEXO_BENEFICIARIO(String SEXO_BENEFICIARIO) {
+		this.SEXO_BENEFICIARIO = SEXO_BENEFICIARIO;
+	}
+	
+	public String getDOMICILIO_BENEFICIARIO_MOMENTO() {
+		return DOMICILIO_BENEFICIARIO_MOMENTO;
+	}
+
+	public void setDOMICILIO_BENEFICIARIO_MOMENTO(String DOMICILIO_BENEFICIARIO_MOMENTO) {
+		this.DOMICILIO_BENEFICIARIO_MOMENTO = DOMICILIO_BENEFICIARIO_MOMENTO;
+	}
+
+	public String getDOMICILIO_BENEFICIARIO_ACTUAL() {
+		return DOMICILIO_BENEFICIARIO_ACTUAL;
+	}
+
+	public void setDOMICILIO_BENEFICIARIO_ACTUAL(String DOMICILIO_BENEFICIARIO_ACTUAL) {
+		this.DOMICILIO_BENEFICIARIO_ACTUAL = DOMICILIO_BENEFICIARIO_ACTUAL;
+	}
+
+	public String getFECHA_TRAMITE() {
+		return FECHA_TRAMITE;
+	}
+
+	public void setFECHA_TRAMITE(String FECHA_TRAMITE) {
+		this.FECHA_TRAMITE = FECHA_TRAMITE;
+	}
+
+	public String getID_TIPO_TRAMITE() {
+		return ID_TIPO_TRAMITE;
+	}
+
+	public void setID_TIPO_TRAMITE(String ID_TIPO_TRAMITE) {
+		this.ID_TIPO_TRAMITE = ID_TIPO_TRAMITE;
+	}
+
+	public String getCLAVE_DEL_MOMENTO() {
+		return CLAVE_DEL_MOMENTO;
+	}
+
+	public void setCLAVE_DEL_MOMENTO(String CLAVE_DEL_MOMENTO) {
+		this.CLAVE_DEL_MOMENTO = CLAVE_DEL_MOMENTO;
+	}	
+
+	public String getDES_DEL_MOMENTO() {
+		return DES_DEL_MOMENTO;
+	}
+
+	public void setDES_DEL_MOMENTO(String DES_DEL_MOMENTO) {
+		this.DES_DEL_MOMENTO = DES_DEL_MOMENTO;
+	}
+
+	public String getCLAVE_DEL_ACTUAL() {
+		return CLAVE_DEL_ACTUAL;
+	}
+
+	public void setCLAVE_DEL_ACTUAL(String CLAVE_DEL_ACTUAL) {
+		this.CLAVE_DEL_ACTUAL = CLAVE_DEL_ACTUAL;
+	}
+
+	public String getDES_DEL_ACTUAL() {
+		return DES_DEL_ACTUAL;
+	}
+
+	public void setDES_DEL_ACTUAL(String DES_DEL_ACTUAL) {
+		this.DES_DEL_ACTUAL = DES_DEL_ACTUAL;
+	}
+
+	public String getCLAVE_SUB_MOMENTO() {
+		return CLAVE_SUB_MOMENTO;
+	}
+
+	public void setCLAVE_SUB_MOMENTO(String CLAVE_SUB_MOMENTO) {
+		this.CLAVE_SUB_MOMENTO = CLAVE_SUB_MOMENTO;
+	}	
+
+	public String getDES_SUB_MOMENTO() {
+		return DES_SUB_MOMENTO;
+	}
+
+	public void setDES_SUB_MOMENTO(String DES_SUB_MOMENTO) {
+		this.DES_SUB_MOMENTO = DES_SUB_MOMENTO;
+	}
+
+	public String getCLAVE_SUB_ACTUAL() {
+		return CLAVE_SUB_ACTUAL;
+	}
+
+	public void setCLAVE_SUB_ACTUAL(String CLAVE_SUB_ACTUAL) {
+		this.CLAVE_SUB_ACTUAL = CLAVE_SUB_ACTUAL;
+	}
+
+	public String getDES_SUB_ACTUAL() {
+		return DES_SUB_ACTUAL;
+	}
+
+	public void setDES_SUB_ACTUAL(String DES_SUB_ACTUAL) {
+		this.DES_SUB_ACTUAL = DES_SUB_ACTUAL;
+	}
+
+	public String getCVE_UMF_MOMENTO() {
+		return CVE_UMF_MOMENTO;
+	}
+
+	public void setCVE_UMF_MOMENTO(String CVE_UMF_MOMENTO) {
+		this.CVE_UMF_MOMENTO = CVE_UMF_MOMENTO;
+	}	
+
+	public String getDES_UMF_MOMENTO() {
+		return DES_UMF_MOMENTO;
+	}
+
+	public void setDES_UMF_MOMENTO(String DES_UMF_MOMENTO) {
+		this.DES_UMF_MOMENTO = DES_UMF_MOMENTO;
+	}
+
+	public String getCVE_UMF_ACTUAL() {
+		return CVE_UMF_ACTUAL;
+	}
+
+	public void setCVE_UMF_ACTUAL(String CVE_UMF_ACTUAL) {
+		this.CVE_UMF_ACTUAL = CVE_UMF_ACTUAL;
+	}
+
+	public String getDES_UMF_ACTUAL() {
+		return DES_UMF_ACTUAL;
+	}
+
+	public void setDES_UMF_ACTUAL(String DES_UMF_ACTUAL) {
+		this.DES_UMF_ACTUAL = DES_UMF_ACTUAL;
+	}
+
+	public String getTIPO_TRAMITE() {
+		return TIPO_TRAMITE;
+	}
+
+	public void setTIPO_TRAMITE(String TIPO_TRAMITE) {
+		this.TIPO_TRAMITE = TIPO_TRAMITE;
+	}	
+
+	public String getVIGENCIA_ASEG_MOMENTO() {
+		return VIGENCIA_ASEG_MOMENTO;
+	}
+
+	public void setVIGENCIA_ASEG_MOMENTO(String VIGENCIA_ASEG_MOMENTO) {
+		this.VIGENCIA_ASEG_MOMENTO = VIGENCIA_ASEG_MOMENTO;
+	}
+
+	public String getVIGENCIA_BENEF_MOMENTO() {
+		return VIGENCIA_BENEF_MOMENTO;
+	}
+
+	public void setVIGENCIA_BENEF_MOMENTO(String VIGENCIA_BENEF_MOMENTO) {
+		this.VIGENCIA_BENEF_MOMENTO = VIGENCIA_BENEF_MOMENTO;
+	}
+
+	public String getIND_CONYUGE_MISMO_SEXO() {
+		return IND_CONYUGE_MISMO_SEXO;
+	}
+
+	public void setIND_CONYUGE_MISMO_SEXO(String IND_CONYUGE_MISMO_SEXO) {
+		this.IND_CONYUGE_MISMO_SEXO = IND_CONYUGE_MISMO_SEXO;
+	}
+
+	public String getIND_CONCUBINARIO_MISMO_SEXO() {
+		return IND_CONCUBINARIO_MISMO_SEXO;
+	}
+
+	public void setIND_CONCUBINARIO_MISMO_SEXO(String IND_CONCUBINARIO_MISMO_SEXO) {
+		this.IND_CONCUBINARIO_MISMO_SEXO = IND_CONCUBINARIO_MISMO_SEXO;
+	}
+
+	public String getCUENTA_USUARIO() {
+		return CUENTA_USUARIO;
+	}
+
+	public void setCUENTA_USUARIO(String CUENTA_USUARIO) {
+		this.CUENTA_USUARIO = CUENTA_USUARIO;
+	}
+
+	public String getORIGEN_TRAMITE() {
+		return ORIGEN_TRAMITE;
+	}
+
+	public void setORIGEN_TRAMITE(String ORIGEN_TRAMITE) {
+		this.ORIGEN_TRAMITE = ORIGEN_TRAMITE;
+	}
+
+	public String getDOCUMENTOS_PROBATORIOS() {
+		return DOCUMENTOS_PROBATORIOS;
+	}
+
+	public void setDOCUMENTOS_PROBATORIOS(String DOCUMENTOS_PROBATORIOS) {
+		this.DOCUMENTOS_PROBATORIOS = DOCUMENTOS_PROBATORIOS;
+	}
+
+}

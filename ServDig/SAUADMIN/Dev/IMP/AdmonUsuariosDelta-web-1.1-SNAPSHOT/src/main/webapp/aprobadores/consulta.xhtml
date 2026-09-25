@@ -1,0 +1,127 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="../plantillas/plantillaSinMenu.xhtml">
+	<ui:define name="body">
+		<h:form id="SolicitudesPrincipal">
+			<h:commandButton value="+" id="hiddenBtnRefrresh" style="display:none">
+				<f:ajax listener="#{solicitudPrincipalMB.refresh}" render="@all" execute="@all" event="click" immediate="true" />
+			</h:commandButton>
+			
+			<div class="wp-caption-text">
+
+				<ace:panel header="Datos Generales">
+
+					<h:panelGrid id="pnFilter" columns="6" width="100%" style="margin: 0; padding: 10px; font-size: 10px;">
+						<h:outputLabel value="Área Normativa:" id="lbAreaNormRegSolicitudCuenta" style="padding:10px;" />
+						<h:selectOneMenu id="slAreaNormRegSolicitudCuenta"
+							required="false" requiredMessage="SELECCIONE EL AREA NORMATIVA"
+							disabled="#{consultaGenerica.flag}"
+							value="#{consultaGenerica.claveAreaNormativa}"
+							style="width:150px" styleClass="form-control">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenerica.lstAreaNormativa}" />
+						</h:selectOneMenu>
+
+						<h:outputLabel value="Departamento:" id="lbDepRegSolicitudCuenta" />
+						<h:selectOneMenu id="slDepRegSolicitudCuenta" required="false"
+							requiredMessage="SELECCIONE EL DEPARTAMENTO"
+							disabled="#{consultaGenerica.flag}"
+							value="#{consultaGenerica.claveDepartamento}" style="width:150px"
+							styleClass="form-control">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenerica.lstDepartamento}" />
+						</h:selectOneMenu>
+
+						<h:outputLabel value="Puesto:" id="lbPuestoRegSolicitudCuenta" />
+						<h:selectOneMenu id="slPuestoRegSolicitudCuenta" required="false"
+							requiredMessage="SELECCIONE EL PUESTO"
+							disabled="#{consultaGenerica.flag}"
+							value="#{consultaGenerica.clavePuesto}" style="width:150px"
+							styleClass="form-control">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenerica.lstPuesto}" />
+						</h:selectOneMenu>
+
+						<h:outputLabel value="Delegación:   " id="lbDelRegSolicitudCuenta" />
+						<h:selectOneMenu id="slDelRegSolicitudCuenta" required="false"
+							requiredMessage="SELECCIONE LA DELEGACION"
+							disabled="#{consultaGenerica.fgDeleg}"
+							value="#{consultaGenerica.claveDelegacion}"
+							valueChangeListener="#{consultaGenerica.listenerDelegacion}"
+							style="width:150px" styleClass="form-control">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenerica.lstDelegacion}" />
+							<f:ajax event="change" render="slDelRegSolicitudCuenta" />
+						</h:selectOneMenu>
+
+						<h:outputLabel value="SubDelegación:" id="lbSubRegSolicitudCuenta" />
+						<h:selectOneMenu id="slSubRegSolicitudCuenta" required="false"
+							requiredMessage="SELECCIONE LA SUBDELEGACION"
+							disabled="#{consultaGenerica.fgSubdele}"
+							value="#{consultaGenerica.claveSubdelegacion}"
+							valueChangeListener="#{consultaGenerica.listenerSubdelegacion}"
+							style="width:150px" styleClass="form-control">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenerica.lstSubDelegacion}" />
+							<f:ajax event="change" render="slSubRegSolicitudCuenta" />
+						</h:selectOneMenu>
+
+						<h:outputLabel value="UMF: " id="lbUMFRegSolicitudCuenta" />
+						<h:selectOneMenu id="slUMFRegSolicitudCuenta"
+							disabled="#{consultaGenerica.fgUmf}"
+							value="#{consultaGenerica.claveUMF}"
+							valueChangeListener="#{consultaGenerica.listenerUmf}"
+							style="width:150px" styleClass="form-control">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenerica.lstUMF}" />
+							<f:ajax event="change" render="slUMFRegSolicitudCuenta" />
+						</h:selectOneMenu>
+					</h:panelGrid>
+
+					
+					<h:panelGrid id="pnFilterDelegBtn" columns="1" width="100%" style="text-align:center;margin: 0; padding: 10px; font-size: 10px;">
+						<h:commandButton id="bValida"
+							action="#{solicitudPrincipalMB.obtenerSolicitudes}"
+							onclick="bloquea();" value="Consultar cuentas usuarios"
+							styleClass="btn btn-primary btn-sm" immediate="true"
+							style="margin:10px;">
+						</h:commandButton>
+					</h:panelGrid>
+
+
+				</ace:panel>
+
+				<BR />
+			</div>
+
+			<div>
+				<ace:panel header="Resultados">
+					<style type="text/css">
+/* Important required because row */
+.ui-datatable-odd {
+	background-color: red !important;
+	background-position-y: -1400px; /* IE7 hack */
+}
+</style>
+					<ui:include src="../aprobadores/resultados.xhtml" />
+				</ace:panel>
+			</div>
+			<div class="wp-caption-text">
+				<ui:include src="../aprobadores/acciones.xhtml" />
+			</div>
+		</h:form>
+
+
+		<div>
+			<ui:include src="../aprobadores/dialogos.xhtml" />
+		</div>
+
+
+	</ui:define>
+</ui:composition>
+</html>

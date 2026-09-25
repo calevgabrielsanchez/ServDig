@@ -1,0 +1,215 @@
+<script type="text/javascript">
+	var contextPath="${contextpath}";
+	var claveDocumentoNSS = "${documentoNSSClave}";
+	
+	$(document).ready(function() {
+	
+	var infoDocProbatorio = '<div style="font-size:11px"><p >Adjunte los documentos probatorios escaneados necesarios para el tr&aacute;mite.</p>';
+        infoDocProbatorio += '<ol>';
+        infoDocProbatorio += '<li>Documento expedido por el IMSS que contenga el N&uacute;mero de Seguridad Social, uno por cada n&uacute;mero involucrado:';
+        infoDocProbatorio +=  '<ol type="a">';
+        infoDocProbatorio +=  '<li>Avisos Afiliatorios (Forma 2-A, AFIL-02, AFIL-03, AFIL-04, IDSE-03, AFIL-06 y DST-002).</li>';
+        infoDocProbatorio +=  '<li>Tarjeta de afiliaci&oacute;n</li>';
+        infoDocProbatorio +=  '<li>Certificado de incapacidad</li>';
+        infoDocProbatorio +=  '<li>Cartilla de citas m&eacute;dicas</li>';
+        infoDocProbatorio +=  '<li>Credencial ADIMSS</li>';
+        infoDocProbatorio +=  '<li>Liquidaciones pagadas</li>';
+        infoDocProbatorio +=  '<li>Comprobantes de pago</li>';
+        infoDocProbatorio +=  '<li>Carta de renuncia o finiquito</li>';
+        infoDocProbatorio +=  '<li>Comprobantes SAR-03, SAR-04 o estado de cuenta de la AFORE</li>';
+        infoDocProbatorio +=  '<li>Otros</li>';
+        infoDocProbatorio +=  '</ol>'; 
+        infoDocProbatorio += '</li>';
+        infoDocProbatorio += '</ol>';
+	infoDocProbatorio +='</div>';
+	
+	$('#ayudaDocProbatorioListNss').popover({
+		animation : true,
+		html : true,
+		title : 'Ayuda',
+		content : infoDocProbatorio,
+		trigger : 'hover',
+		placement : 'top',
+		container : 'body'
+	});
+	
+	$('[data-toggle="tooltip"]').tooltip();
+	
+});
+</script>
+<div class="row col-md-12">
+                    
+                            <input id="isDocumentoProbatorioNSS" type="checkbox" name="isDocumentoProbatorioNSS" value="isDocumentoProbatorioNSS"> 
+                            <spring:message code="label.docsProbatorios.documentosNSS"/>
+                    
+</div>
+<div id="panelDocumentosNSS" class="form-group">
+		
+            <div class="row col-md-12">
+                <div class="row col-md-6">
+                    <label for="NSS" class="control-label" style="text-align: left;">
+                            <spring:message code="label.solicitud.placeholder.listadoNSSInvolucrados" /><span></span>
+                    </label>
+                </div>
+                <div class="row col-md-6">
+                    <label for="documentoProbatorio"
+                                class="control-label"
+                                style="text-align: left;"> <spring:message
+                                        code="label.solicitud.placeholder.documentoProbatorioNss" />
+                    </label>
+<!--                     <span id="ayudaDocProbatorioListNss" class="glyphicon glyphicon-question-sign"></span> -->
+                </div>
+            </div>
+            <div class="row col-md-12">
+
+                <div class="row col-md-6" style="margin-bottom:15px">
+                    <spring:message code="label.solicitud.placeholder.listadoNSSInvolucrados"
+                            var="placeHolderNSS" />
+                    <div>
+                        <div style="margin-right:20px;">
+                            <select id="nssAsociados" Class="form-control" >
+								<option value="-1" label="--Por favor seleccione--" disabled="true" selected="true">--Por favor seleccione--</option>
+								<c:forEach var="nss" varStatus="contadorNss" items="${informacionAdicional.asociadosNSS}" >
+									 <option value="${nss}" label="${nss}" id="${nss}">  ${nss}</option>
+								</c:forEach>
+                    		</select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-7 col-xs-12 text-left">
+                    <span style="font-size:18px" id="NSSError" class="error hiddenElement"></span>
+                            <form:errors path="nssvo.NSS" cssClass="error" />
+                    </div>
+                </div>
+                <div class="row col-md-6">
+                    <form:select multiple="single" path="documentoProbatorio.desDocumento" id="registroDocumProbNss" cssClass="form-control" >
+                            <form:option value="-1" label="--Por favor seleccione--" disabled="true" selected="true"/>
+                            <c:forEach var="documento" varStatus="contadorDocumento" items="${documProbNssVo}" >
+                                    <optgroup style="color: #101010; font-weight: 700;" label="${documento.key.descripcion} (Obligatorio)" value="${documento.key.idTipoDocumentoProbatorio}"/>
+                                    <c:forEach var="opcion" varStatus="contdocs" items="${documento.value}" >
+                                            <form:option value="${opcion.cveIdDocumento}" label="${opcion.desDocumento}" docportipo="${opcion.idDocumentoPorTipo}" />  
+                                    </c:forEach>
+                            </c:forEach>
+                    </form:select>
+                </div>
+            </div>
+            <div style="margin-top:15px" class="row col-md-12">
+                <div class="col-md-2" style="display: none;">
+                        <input id="fileDataDocNss" type="file" name="fileDataDocNss" class="mboton">
+                        <form:errors path="documentoProbatorio.nombre" cssClass="error" />
+                </div>
+            </div>
+                <div class="row col-md-12">
+                    <div class="col-md-5" style="margin-right:60px;"></div>
+                    
+                    <div class="row col-md-6" style="text-align-right">
+                        <label for="listadoDocumentosNSS" class="control-label"
+                                style="text-align: left;"> <spring:message
+                                        code="label.solicitud.placeholder.listadoDocumentos" />
+                        </label>
+                    </div>
+                </div>
+                <div class="row col-md-12">
+                    <div class="col-md-5" style="margin-right:60px;"></div>
+                    <div class="row col-md-6" style="text-align: left;">
+                        <table class="table" id='listadoDocumentosNSSGrid' style="">
+                            <tr></tr>	
+                            <c:forEach var="documentoProbatorioNSS" varStatus="contador"
+                                    items="${listaDocumentosNssTemp}">
+                                    <tr id="listadoDocumentosNSSGrid${contador.index +1}">
+                                            <td width="5%" nowrap><p style="font-size: 1.5em;">${contador.index +1}</p></td>
+                                            <td width="5%" nowrap><p style="font-size: 1.5em;">${documentoProbatorioNSS.desDocumento}</p></td>
+                                            <td hidden="hidden">${documentoProbatorioNSS.nombre}</td>
+                                            <td hidden="hidden">${documentoProbatorioNSS.cveIdDocumento}</td>
+                                            <td hidden="hidden">${documentoProbatorioNSS.idDocumentoPorTipo}</td>
+                                            <td hidden="hidden">${documentoProbatorioNSS.idDocBoveda}</td>
+                                            <td hidden="hidden">${documentoProbatorioNSS.tipoDocumento}</td>
+                                            <td align="right" width="90%" height="55"><p style="font-size: 1.5em;"><a href="#"
+                                                    onclick="return fnEliminarRow('listadoDocumentosNSSGrid${contador.index+1}', ${documentoProbatorioNSS.cveIdDocumento}, '${documentoProbatorioNSS.idDocBoveda}');">Eliminar</a></p>
+                                            </td>
+                                    </tr>
+                            </c:forEach>
+                        </table>
+                    </div>
+                </div>
+                <div class="row col-md-12">
+                    <div class="col-md-5" style="margin-right:60px;"></div>
+                    <div class="row col-md-6" style="text-align: left;">
+                        <span style="font-size:18px" id="listaDocumentosNssTempError" class="error hiddenElement"></span>
+                            <form:errors path="listaDocumentosNssTemp" cssClass="error" />
+                    </div>
+                </div>
+            <div class="row col-md-12">
+                
+                        <div class="pull-right" >
+				<button type="button" id="limpiarNSSDocumentos"
+					class="btn btn-primary">
+					<spring:message code="label.limpiar" />
+				</button>			
+			</div>
+			
+			<div class="pull-right" style="margin-right:10px;">
+				<button type="button" id="agregarNSSDocumentos"
+					class="btn btn-primary">
+					<spring:message code="label.solicitud.agregar" />
+				</button>			
+			</div>
+	   </div>
+           <div class="row col-md-12">
+               
+               <br/>
+            </div>
+            <div class="row col-md-12">			
+                <div class="row col-md-6">
+                    <label for="listadoNSSInvolucrados" class="control-label"
+                            style="text-align: left;"> <spring:message
+                                    code="label.solicitud.placeholder.listadoNSSInvolucrados" />
+                    </label>
+                </div>
+                <div class="col-md-6">
+                    <label for="listadoDocumentos" class="control-label"
+                            style="text-align: left;"> <spring:message
+                                    code="label.solicitud.placeholder.listadoDocumentos" />
+                    </label>
+                </div>
+            </div>
+            <div class="row col-md-12">
+                <table class="table" id='listadoNSSInvolucradosGrid' style="">
+                    <tr></tr>
+                    <c:forEach var="nss" varStatus="contadorNSS" items="${informacionAdicional.listNSS}">
+                        <tr id="listadoNSSInvolucradosGrid${contadorNSS.index +1}">
+                            <td width="5%" nowrap><p style="font-size: 1.5em;">${contadorNSS.index+1}</p></td>
+                            <td width="5%" nowrap><p style="font-size: 1.5em;">${nss.NSS}</p></td>
+                            <td align="right" width="30%" height="55"><p style="font-size: 1.5em;"><a href="#"
+                                onclick="return fnEliminarRowNss('${nss.NSS}','listadoNSSInvolucradosGrid${contadorNSS.index+1}');">Eliminar</a></p>
+                            </td>
+                            <td id="table-${nss.NSS}" align="right" style="padding-top: 0px">
+                                <div style="overflow-y: scroll; height: 100px;">
+                                    <table class="table" id="listadoDocumentosGrid-${nss.NSS}" style="">
+                                        <tr></tr>
+                                        <c:forEach var="documentoProbatorio" varStatus="contador" items="${nss.documentoProbatorioList}">
+                                                <tr id="listadoDocumentosGrid-${nss.NSS-contador.index +1}">
+                                                    <td width="5%" nowrap><p style="font-size: 1.5em;">${contador.index +1}</p></td>
+                                                    <td width="5%" nowrap><p style="font-size: 1.5em;">${documentoProbatorio.desDocumento}</p></td>
+                                                    <td hidden="hidden">${documentoProbatorio.nombre}</td>
+                                                    <td hidden="hidden">${documentoProbatorio.cveIdDocumento}</td>
+                                                    <td hidden="hidden">${documentoProbatorio.idDocumentoPorTipo}</td>
+                                                    <td hidden="hidden">${documentoProbatorio.idDocBoveda}</td>
+                                                </tr>
+                                        </c:forEach>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
+                <!--</div>-->
+                <div class="col-md-6 col-sm-7 col-xs-6">
+                <span style="font-size:18px" id="listNSSError" class="error hiddenElement"></span>
+                        <form:errors path="listNSS" cssClass="error" />
+                </div>
+            </div>
+            
+            <div class="row col-md-12">
+			<hr class="red" style="margin-bottom: 20px;">
+			</div>
+</div>

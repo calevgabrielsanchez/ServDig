@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CuestionarioConvivenciaDependencia" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="LOGO" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\tfs\\workspace\\Dev\\01DST\\04IMP\\gestionDerechohabientes-servicios-negocio-ejb\\src\\main\\resources\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORTE_CUESTIONARIO_1" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="SUBREPORTE_CUESTIONARIO_2" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="SUBREPORTE_CUESTIONARIO_3" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="SUBREPORTE_CUESTIONARIO_4" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="BENEFICIARIO" class="java.lang.String"/>
+	<field name="datosSav002" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="248" splitType="Stretch">
+			<subreport>
+				<reportElement x="-22" y="0" width="258" height="41"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_1">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_4">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_4}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LOGO">
+					<subreportParameterExpression><![CDATA[$P{LOGO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_2">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BENEFICIARIO">
+					<subreportParameterExpression><![CDATA[$P{BENEFICIARIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_3">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{datosSav002})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUBREPORTE_CUESTIONARIO_1}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="-22" y="60" width="258" height="41"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_1">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_4">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_4}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LOGO">
+					<subreportParameterExpression><![CDATA[$P{LOGO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_2">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_3">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BENEFICIARIO">
+					<subreportParameterExpression><![CDATA[$P{BENEFICIARIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{datosSav002})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUBREPORTE_CUESTIONARIO_2}]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement x="0" y="52" width="555" height="1"/>
+			</break>
+			<break>
+				<reportElement x="0" y="175" width="555" height="1"/>
+			</break>
+			<subreport>
+				<reportElement x="-22" y="123" width="258" height="41"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_1">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_4">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_4}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LOGO">
+					<subreportParameterExpression><![CDATA[$P{LOGO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_2">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BENEFICIARIO">
+					<subreportParameterExpression><![CDATA[$P{BENEFICIARIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_3">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{datosSav002})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUBREPORTE_CUESTIONARIO_3}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="-22" y="183" width="258" height="41"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_1">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_4">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_4}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LOGO">
+					<subreportParameterExpression><![CDATA[$P{LOGO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_2">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CUESTIONARIO_3">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CUESTIONARIO_3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BENEFICIARIO">
+					<subreportParameterExpression><![CDATA[$P{BENEFICIARIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{datosSav002})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUBREPORTE_CUESTIONARIO_4}]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement x="0" y="114" width="555" height="1"/>
+			</break>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

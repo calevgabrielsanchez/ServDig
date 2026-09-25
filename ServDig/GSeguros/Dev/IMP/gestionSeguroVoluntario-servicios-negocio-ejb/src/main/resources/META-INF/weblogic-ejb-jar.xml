@@ -1,0 +1,31 @@
+<wls:weblogic-ejb-jar xmlns:wls="http://xmlns.oracle.com/weblogic/weblogic-ejb-jar"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd
+                                          http://xmlns.oracle.com/weblogic/weblogic-ejb-jar http://xmlns.oracle.com/weblogic/weblogic-ejb-jar/1.2/weblogic-ejb-jar.xsd">
+
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>consultaSeguroIvroServiceBusiness</wls:ejb-name>
+        <wls:transaction-descriptor>
+            <wls:trans-timeout-seconds>2000</wls:trans-timeout-seconds>
+        </wls:transaction-descriptor>
+    </wls:weblogic-enterprise-bean>
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>solicitudSeguroIvroBusiness</wls:ejb-name>
+        <wls:transaction-descriptor>
+            <wls:trans-timeout-seconds>2000</wls:trans-timeout-seconds>
+        </wls:transaction-descriptor>
+    </wls:weblogic-enterprise-bean>
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>seguroIvroServiceBusiness</wls:ejb-name>
+        <wls:transaction-descriptor>
+            <wls:trans-timeout-seconds>2000</wls:trans-timeout-seconds>
+        </wls:transaction-descriptor>
+    </wls:weblogic-enterprise-bean>
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>datosCotizacionSeguroBusiness</wls:ejb-name>
+        <wls:transaction-descriptor>
+            <wls:trans-timeout-seconds>2000</wls:trans-timeout-seconds>
+        </wls:transaction-descriptor>
+        </wls:weblogic-enterprise-bean>
+
+</wls:weblogic-ejb-jar>

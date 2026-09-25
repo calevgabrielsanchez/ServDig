@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd
+		  http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- Localiza los archivos de propiedades de acuerdo a el patron -->
+	<context:property-placeholder location="classpath*:/*.properties" />
+
+	<context:component-scan base-package="mx.gob.imss.cit" />
+
+
+	<util:map id="jaxwsCustomProperties">
+		<entry key="com.sun.xml.ws.connect.timeout">
+			<value type="java.lang.Integer">5000</value>
+		</entry>
+		<entry key="com.sun.xml.ws.request.timeout">
+			<value type="java.lang.Integer">5000</value>
+		</entry>
+	</util:map>
+
+	<bean id="iCarpetaWSService"
+		class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+		<property name="serviceInterface"
+			value="mx.gob.imss.cit.clienteServiciosComunes.bovedaPersonal.ws.carpetaws.ICarpetaWSService" />
+		<property name="wsdlDocumentUrl"
+			value="http://172.16.162.6/BovedaPersonalEscritorio/Proxies/ServiceProxyCarpetaWS?wsdl" />
+		<property name="namespaceUri" value="http://carpetaws.ws.bp.cit.imss.gob.mx/" />
+		<property name="serviceName" value="CarpetaWSServiceImplService" />
+		<property name="portName" value="CarpetaWSServiceImplPort" />
+		<property name="lookupServiceOnStartup" value="false" />
+		<property name="customProperties" ref="jaxwsCustomProperties" />
+	</bean>
+
+
+	<bean id="iDocumentoWSService"
+		class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+		<property name="serviceInterface"
+			value="mx.gob.imss.cit.clienteServiciosComunes.bovedaPersonal.ws.documentows.IDocumentoWSService" />
+		<property name="wsdlDocumentUrl"
+			value="http://172.16.162.6/BovedaPersonalEscritorio/Proxies/ServiceProxyDocumentoWS?wsdl" />
+		<property name="namespaceUri" value="http://documentows.ws.bp.cit.imss.gob.mx/" />
+		<property name="serviceName" value="DocumentoWSServiceImplService" />
+		<property name="portName" value="DocumentoWSServiceImplPort" />
+		<property name="lookupServiceOnStartup" value="false" />
+		<property name="customProperties" ref="jaxwsCustomProperties" />
+	</bean>
+
+	<bean id="bovedaPersonalService"
+		class="mx.gob.imss.cit.clienteServiciosComunes.services.impl.BovedaPersonalServiceImpl">
+		<property name="iCarpetaWSService" ref="iCarpetaWSService" />
+		<property name="iDocumentoWSService" ref="iDocumentoWSService" />
+	</bean>
+
+</beans>

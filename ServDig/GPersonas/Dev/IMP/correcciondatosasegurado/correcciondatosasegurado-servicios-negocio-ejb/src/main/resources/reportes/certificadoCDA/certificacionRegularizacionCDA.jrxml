@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="certificacionRegularizacion" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="303"/>
+	<parameter name="IMAGENES_DIR" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CADENA_ORIGINAL" class="java.lang.String"/>
+	<parameter name="SELLO_DIGITAL" class="java.lang.String"/>
+	<parameter name="SECUENCIA_NOTARIAL" class="java.lang.String"/>
+	<parameter name="NUMERO_SERIE" class="java.lang.String"/>
+	<parameter name="FECHA_FORMATO_DOF" class="java.lang.String"/>
+	<parameter name="FOLIO" class="java.lang.String"/>
+	<parameter name="FECHA_EXPEDICION" class="java.lang.String"/>
+	<parameter name="NSS" class="java.lang.String"/>
+	<parameter name="CURP" class="java.lang.String"/>
+	<parameter name="NOMBRE" class="java.lang.String"/>
+	<parameter name="PRIMER_APELLIDO" class="java.lang.String"/>
+	<parameter name="SEGUNDO_APELLIDO" class="java.lang.String"/>
+	<parameter name="FECHA_NACIMIENTO" class="java.lang.String"/>
+	<parameter name="LUGAR_NACIMIENTO" class="java.lang.String"/>
+	<parameter name="TELEFONO_FIJO" class="java.lang.String"/>
+	<parameter name="MAIL" class="java.lang.String"/>
+	<parameter name="CLAVE_NSS" class="java.lang.String"/>
+	<parameter name="SEXO" class="java.lang.String"/>
+	<parameter name="RESPONSABLE" class="java.lang.String"/>
+	<parameter name="AUTORIZADOR" class="java.lang.String"/>
+	<parameter name="LISTA_DATOS_LABORALES" class="java.util.List"/>
+	<parameter name="MOTIVO_ACLARACION" class="java.lang.String"/>
+	<parameter name="ORIGEN" class="java.lang.String"/>
+	<parameter name="LISTA_TIPO_NSS" class="java.util.List"/>
+	<parameter name="LISTA_MOVIMIENTO_FINAL" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="111" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="55" width="554" height="47" forecolor="#000000" backcolor="#E7E8E7"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Instituto Mexicano del Seguro Social]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="1" y="0" width="554" height="55"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR}+"header.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="77" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="26" width="555" height="51"/>
+				<subreportParameter name="FECHA_FORMATO_DOF">
+					<subreportParameterExpression><![CDATA[$P{FECHA_FORMATO_DOF}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FECHA_EXPEDICION">
+					<subreportParameterExpression><![CDATA[$P{FECHA_EXPEDICION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FOLIO">
+					<subreportParameterExpression><![CDATA[$P{FOLIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "subReporteSeccionA.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Certificación de la Regularización y/o Corrección de Datos Personales del Asegurado]]></text>
+			</staticText>
+		</band>
+		<band height="93">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="33"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[En atención a su solicitud de regularización y/o corrección de datos personales del asegurado, se le informa a usted que fue regularizada su situación afiliatoria, por lo que se le certifican los datos que han quedado registrados en este Instituto.]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="1" y="33" width="554" height="60"/>
+				<subreportParameter name="NSS">
+					<subreportParameterExpression><![CDATA[$P{NSS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CURP">
+					<subreportParameterExpression><![CDATA[$P{CURP}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NOMBRE">
+					<subreportParameterExpression><![CDATA[$P{NOMBRE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="PRIMER_APELLIDO">
+					<subreportParameterExpression><![CDATA[$P{PRIMER_APELLIDO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SEGUNDO_APELLIDO">
+					<subreportParameterExpression><![CDATA[$P{SEGUNDO_APELLIDO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FECHA_NACIMIENTO">
+					<subreportParameterExpression><![CDATA[$P{FECHA_NACIMIENTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LUGAR_NACIMIENTO">
+					<subreportParameterExpression><![CDATA[$P{LUGAR_NACIMIENTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TELEFONO_FIJO">
+					<subreportParameterExpression><![CDATA[$P{TELEFONO_FIJO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MAIL">
+					<subreportParameterExpression><![CDATA[$P{MAIL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SEXO">
+					<subreportParameterExpression><![CDATA[$P{SEXO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MOTIVO_ACLARACION">
+					<subreportParameterExpression><![CDATA[$P{MOTIVO_ACLARACION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "subReporteSeccionB.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<elementGroup>
+				<subreport>
+					<reportElement x="0" y="0" width="555" height="50"/>
+					<subreportParameter name="LISTA_TIPO_NSS">
+						<subreportParameterExpression><![CDATA[$P{LISTA_TIPO_NSS}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="NSS">
+						<subreportParameterExpression><![CDATA[$P{NSS}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "subReporteSeccionC.jasper"]]></subreportExpression>
+				</subreport>
+			</elementGroup>
+		</band>
+		<band height="57">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="57"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{LISTA_DATOS_LABORALES})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "subReporteSeccionD.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="62">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="62"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{LISTA_MOVIMIENTO_FINAL})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "subReporteSeccionE.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="62">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="62"/>
+				<subreportParameter name="CADENA_ORIGINAL">
+					<subreportParameterExpression><![CDATA[$P{CADENA_ORIGINAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FECHA_EXPEDICION">
+					<subreportParameterExpression><![CDATA[$P{FECHA_EXPEDICION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CURP">
+					<subreportParameterExpression><![CDATA[$P{CURP}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MAIL">
+					<subreportParameterExpression><![CDATA[$P{MAIL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMAGENES_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMAGENES_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FECHA_FORMATO_DOF">
+					<subreportParameterExpression><![CDATA[$P{FECHA_FORMATO_DOF}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NSS">
+					<subreportParameterExpression><![CDATA[$P{NSS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MT_AC_BAJA"/>
+				<subreportParameter name="SELLO_DIGITAL">
+					<subreportParameterExpression><![CDATA[$P{SELLO_DIGITAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SEXO">
+					<subreportParameterExpression><![CDATA[$P{SEXO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TELEFONO_FIJO">
+					<subreportParameterExpression><![CDATA[$P{TELEFONO_FIJO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LUGAR_NACIMIENTO">
+					<subreportParameterExpression><![CDATA[$P{LUGAR_NACIMIENTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NOMBRE">
+					<subreportParameterExpression><![CDATA[$P{NOMBRE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MT_AC_MOD_SALARIO"/>
+				<subreportParameter name="FECHA_NACIMIENTO">
+					<subreportParameterExpression><![CDATA[$P{FECHA_NACIMIENTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FOLIO">
+					<subreportParameterExpression><![CDATA[$P{FOLIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NUMERO_SERIE">
+					<subreportParameterExpression><![CDATA[$P{NUMERO_SERIE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SEGUNDO_APELLIDO">
+					<subreportParameterExpression><![CDATA[$P{SEGUNDO_APELLIDO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MOTIVO_ACLARACION">
+					<subreportParameterExpression><![CDATA[$P{MOTIVO_ACLARACION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MT_AC_REINGRESO"/>
+				<subreportParameter name="LISTA_DATOS_LABORALES">
+					<subreportParameterExpression><![CDATA[$P{LISTA_DATOS_LABORALES}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="PRIMER_APELLIDO">
+					<subreportParameterExpression><![CDATA[$P{PRIMER_APELLIDO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SECUENCIA_NOTARIAL">
+					<subreportParameterExpression><![CDATA[$P{SECUENCIA_NOTARIAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="RESPONSABLE">
+					<subreportParameterExpression><![CDATA[$P{RESPONSABLE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CLAVE_NSS">
+					<subreportParameterExpression><![CDATA[$P{CLAVE_NSS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ORIGEN">
+					<subreportParameterExpression><![CDATA[$P{ORIGEN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="AUTORIZADOR">
+					<subreportParameterExpression><![CDATA[$P{AUTORIZADOR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "subReporteSeccionF.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="46">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="34"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena Original:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="100" y="0" width="455" height="34"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{CADENA_ORIGINAL}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="46">
+			<staticText>
+				<reportElement x="2" y="0" width="100" height="34"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello Digital:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="0" width="455" height="34"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{SELLO_DIGITAL}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="34">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="34"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Secuencia Notarial:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="0" width="455" height="34"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{SECUENCIA_NOTARIAL}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="33">
+			<staticText>
+				<reportElement x="2" y="0" width="100" height="33"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número de Serie:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="0" width="455" height="33"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{NUMERO_SERIE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="87" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="1" y="0" width="554" height="58"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR}+"footer.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="412" y="67" width="80" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="492" y="67" width="62" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

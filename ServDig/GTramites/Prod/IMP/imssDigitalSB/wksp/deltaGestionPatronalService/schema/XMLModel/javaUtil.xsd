@@ -1,0 +1,8 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="javaUtil:java.util" xmlns:xs="http://www.w3.org/2001/XMLSchema">  
+<xs:import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="soapEnconding.xsd"/>
+  <xs:complexType name="List">
+    <xs:complexContent>
+      <xs:restriction base="soapenc:Array" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

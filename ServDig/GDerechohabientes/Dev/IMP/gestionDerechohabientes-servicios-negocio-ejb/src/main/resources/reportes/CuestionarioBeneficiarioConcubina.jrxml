@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CuestionarioBeneficiarioConcubina" columnCount="9" printOrder="Horizontal" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="61" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5931540885517832"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\SistemaImss\\derechohabientes-service-business-ejb\\src\\main\\resources\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="preguntaTerceraPersona" class="java.lang.String"/>
+	<field name="respuesta" class="java.lang.String"/>
+	<field name="numPregunta" class="java.lang.String"/>
+	<group name="preguntas">
+		<groupExpression><![CDATA[$F{preguntaTerceraPersona}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<rectangle>
+					<reportElement x="0" y="6" width="548" height="24"/>
+				</rectangle>
+				<textField>
+					<reportElement x="33" y="6" width="408" height="20"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{preguntaTerceraPersona}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="4" y="6" width="29" height="20"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{numPregunta}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="266" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="98" width="555" height="90"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="502" y="0" width="53" height="20"/>
+				<textElement/>
+				<text><![CDATA[SAV003-1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="1" width="375" height="27"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE INCORPORACIÓN Y RECAUDACIÓN DEL SEGURO SOCIAL
+COORDINACIÓN DE AFILIACIÓN AL RÉGIMEN OBLIGATORIO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="48" width="467" height="16"/>
+				<textElement/>
+				<text><![CDATA[CUESTIONARIO BENEFICIARIO PADRE  O PADRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="79" width="236" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A requisitar por el personal del instituto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="99" width="393" height="13"/>
+				<textElement/>
+				<text><![CDATA[Nombre de la posible beneficiario concubina/concubinario]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="119" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="126" width="310" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nombre del asegurado(a) o pensionado(a) que solicite su registro]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="146" width="554" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="147" width="310" height="20"/>
+				<textElement/>
+				<text><![CDATA[NSS del asegurado(a) o pensionado(a)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="167" width="554" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="168" width="222" height="20"/>
+				<textElement/>
+				<text><![CDATA[CURP del asegurado(a) o pensionado(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="219" width="483" height="44"/>
+				<textElement/>
+				<text><![CDATA[Instrucciones: Lee con atención las preguntas:
+                       Marque el número de su respuesta en el cuadro o conteste donde corresponda.
+                       Conteste todas las preguntas.
+ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="201" width="259" height="18"/>
+				<textElement/>
+				<text><![CDATA[A requisitar por el posible beneficiario ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="14" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="60" height="22"/>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement x="2" y="0" width="58" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{respuesta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="448" y="14" width="107" height="20"/>
+				<textElement/>
+				<text><![CDATA[Clave: 9220-003-301]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

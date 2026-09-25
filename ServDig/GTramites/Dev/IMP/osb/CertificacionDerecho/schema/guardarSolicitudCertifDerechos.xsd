@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.serviciosdigitales.imss.gob.mx/certificacionDerechoRetiroDesempleo"
+	xmlns:tns="http://www.serviciosdigitales.imss.gob.mx/certificacionDerechoRetiroDesempleo"
+	elementFormDefault="qualified">
+
+	<xs:element name="guardarSolicCertificacion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tipoSolicitud" type="xs:unsignedShort"
+					maxOccurs="1" minOccurs="1" />
+				<xs:element name="tipoTramite" type="xs:unsignedShort"
+					maxOccurs="1" minOccurs="1" />
+				<xs:element name="exito" type="xs:unsignedShort"
+					maxOccurs="1" minOccurs="1" />
+				<xs:element name="descripcion">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="50" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="numeroResolucion" type="xs:string"
+					maxOccurs="1" minOccurs="1">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="guardarSolicCertificacionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="folioSolicitud" type="xs:string"
+					maxOccurs="1" minOccurs="1">
+				</xs:element>
+
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

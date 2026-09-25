@@ -1,0 +1,170 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+	
+  <groupId>mx.gob.imss.cit</groupId>
+  <artifactId>ClienteWSBovedaDocumentalConsultaObjectId-V3</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  
+  <parent>
+		<groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+		<artifactId>ClientesWebservices</artifactId>
+		<version>${mvn.cliente.boveda.wsdl.url.adress.location}</version>
+	</parent>
+
+
+  <name>clienteWSBovedaDocumental-V3-consulta</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+       <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+        <skipTests>true</skipTests>
+  </properties>
+
+
+  <dependencies>
+    		
+    	<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<!-- <version>3.8.1</version>-->
+			<scope>test</scope>
+		</dependency>
+		
+		
+		<dependency>
+		   <groupId>com.sun.xml.ws</groupId>
+		   <artifactId>jaxws-rt</artifactId>
+		   <version>2.2.6</version>
+		   <scope>provided</scope>		
+		</dependency>
+   
+
+    <dependency>
+      <groupId>org.codehaus.mojo</groupId>
+       <artifactId>jaxws-maven-plugin</artifactId>
+      <version>2.4.1</version>
+    </dependency>
+    
+    <dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-core</artifactId>
+	    <version>2.5.6</version>
+	</dependency>
+
+  </dependencies>
+  
+  <!--
+  <build>
+	<plugins>
+		<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>jaxws-maven-plugin</artifactId>
+			<version>2.4.1</version>
+			<executions>
+				<execution>
+					<id>wsdltoJava</id>
+					<goals>
+						<goal>wsimport</goal>
+					</goals>
+					<phase>generate-sources</phase>
+					<configuration>
+						 <keep>true</keep> 
+							<packageName>mx.gob.imss.cit.ws.externo.boveda.docuemntal.v3.consulta.schema</packageName>
+						<sourceDestDir>src/main/java</sourceDestDir>
+						<wsdlDirectory>src/main/resources/</wsdlDirectory>
+						<wsdlFiles>
+						   <wsdlFile>WSbovedaDocumentalV3Consulta.wsdl</wsdlFile>
+						</wsdlFiles>
+						<vmArgs>
+							<vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>  
+						</vmArgs>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+		<plugin>
+			<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+		</plugin>
+	</plugins>
+</build>
+-->
+
+<repositories>
+
+	<repository>
+		      <id>ctirss</id>
+		      <name>CTIRSS repository</name>
+		      <layout>default</layout>
+		      <url>http://172.16.5.134:8080/repository/repo/</url>
+		      <snapshots>
+		        <enabled>true</enabled>
+		      </snapshots>
+	</repository>
+	
+	<repository>
+		<id>maven2-repository.dev.java.net</id>
+		<name>Java.net Repository for Maven</name>
+		<url>http://download.java.net/maven/2</url>
+	</repository>
+</repositories>
+
+<pluginRepositories>
+  	  <pluginRepository>
+    	  <id>ctirss</id>
+    	  <name>CTIRSS repository</name>
+    	  <url>http://172.16.5.134:8080/repository/repo/</url>
+    	  <layout>default</layout>
+    	  <snapshots> </snapshots>
+    	  <releases>
+    	    <updatePolicy>never</updatePolicy>
+    	  </releases>
+   	 </pluginRepository>
+ 	 </pluginRepositories>
+ 	 
+ 	<profiles>
+		<profile>
+			<id>compile-desa</id>
+			<activation>
+        		<activeByDefault>true</activeByDefault>
+    		</activation>
+			<properties>
+				<mvn.cliente.boveda.wsdl.url.adress.location><![CDATA[http://172.16.168.49:8093/ws]]></mvn.cliente.boveda.wsdl.url.adress.location>
+				<mvn.serviciosDigitales.ws.parent.version>2.2-SNAPSHOT</mvn.serviciosDigitales.ws.parent.version>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>compile-qa</id>
+			<activation>
+        		<activeByDefault>false</activeByDefault>
+    		</activation>
+			<properties>
+				<mvn.cliente.boveda.wsdl.url.adress.location><![CDATA[http://172.16.168.49:8093/ws]]></mvn.cliente.boveda.wsdl.url.adress.location>
+				<mvn.serviciosDigitales.ws.parent.version>2.2-SNAPSHOT</mvn.serviciosDigitales.ws.parent.version>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>compile-prod</id>
+			<activation>
+        		<activeByDefault>false</activeByDefault>
+    		</activation>
+			<properties>
+				<mvn.cliente.boveda.wsdl.url.adress.location><![CDATA[http://172.16.168.50:8093/ws]]></mvn.cliente.boveda.wsdl.url.adress.location>			
+				<mvn.serviciosDigitales.ws.parent.version>2.2</mvn.serviciosDigitales.ws.parent.version>
+				</properties>
+		</profile>
+		
+		
+	</profiles>
+ 	 
+</project>

@@ -1,0 +1,4 @@
+\Q/target/\E.*
+\Q/configuracion-local.properties\E
+\Q/.settings/\E.*
+\Q/.project\E

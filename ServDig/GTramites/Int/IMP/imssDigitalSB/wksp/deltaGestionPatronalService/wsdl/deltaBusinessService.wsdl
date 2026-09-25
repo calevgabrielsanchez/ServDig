@@ -1,0 +1,275 @@
+<WL5G3N0:definitions name="JwsServiceDefinitions" targetNamespace="http://mx.gob.imss.delta/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://mx.gob.imss.delta/" xmlns:WL5G3N2="java:mx.gob.imss.ctirss.delta.framework.base.exception" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.model.domicilio" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:mx.gob.imss.ctirss.delta.framework.base.model"/>
+      <xs:import namespace="java:java.util"/>
+      <xs:complexType name="CodigoPostal">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="CodigoPostal" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TipoVialidad">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:int"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TipoDomicilio">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:int"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Vialidad">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:int"/>
+              <xs:element minOccurs="1" name="Nombre" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="TipoVialidad" nillable="true" type="java1:TipoVialidad" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Domicilio">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:int"/>
+              <xs:element minOccurs="1" name="NumExterior1" nillable="true" type="xs:int"/>
+              <xs:element minOccurs="1" name="NumExteriorAlf" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="NumExterior2" nillable="true" type="xs:int"/>
+              <xs:element minOccurs="1" name="NumInterior" nillable="true" type="xs:int"/>
+              <xs:element minOccurs="1" name="NumInteriorAlf" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Latitud" nillable="true" type="xs:decimal"/>
+              <xs:element minOccurs="1" name="Longitud" nillable="true" type="xs:decimal"/>
+              <xs:element minOccurs="1" name="CodigoPostal" nillable="true" type="java1:CodigoPostal" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+              <xs:element minOccurs="1" name="Asentamiento" nillable="true" type="java1:Asentamiento" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+              <xs:element minOccurs="1" name="Ambito" nillable="true" type="java1:TipoAmbito" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+              <xs:element minOccurs="1" name="VialidadPrimaria" nillable="true" type="java1:Vialidad" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+              <xs:element minOccurs="1" name="VialidadReferenciaPrimaria" nillable="true" type="java1:Vialidad" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+              <xs:element minOccurs="1" name="VialidadReferenciaSecundaria" nillable="true" type="java1:Vialidad" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+              <xs:element minOccurs="1" name="VialidadReferenciaPosterior" nillable="true" type="java1:Vialidad" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+              <xs:element minOccurs="1" name="TipoDomicilio" nillable="true" type="java1:TipoDomicilio" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+              <xs:element minOccurs="1" name="Calle" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Colonia" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Asentamiento">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Nombre" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Localidad" nillable="true" type="java1:Localidad" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+              <xs:element minOccurs="1" name="CodigoPostal" nillable="true" type="java1:CodigoPostal" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+              <xs:element minOccurs="1" name="TipoAsentamiento" nillable="true" type="java1:TipoAsentamiento" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+              <xs:element minOccurs="1" name="Periodo" nillable="false" type="xs:long"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Localidad">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Nombre" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Municipio" nillable="true" type="java1:Municipio" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+              <xs:element minOccurs="1" name="Asentamientos" nillable="true" type="java1:List" xmlns:java1="java:java.util"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Municipio">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Nombre" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="EntidadFederativa" nillable="true" type="java1:EntidadFederativa" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+              <xs:element minOccurs="1" name="Localidades" nillable="true" type="java1:List" xmlns:java1="java:java.util"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EntidadFederativa">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="IdRenapo" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="ClaveRenapo" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Nombre" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Municipios" nillable="true" type="java1:List" xmlns:java1="java:java.util"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TipoAsentamiento">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TipoAmbito">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Delegacion">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Ciz" nillable="true" type="xs:int"/>
+              <xs:element minOccurs="1" name="Id" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Subdelegacion">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Id" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Delegacion" nillable="true" type="java1:Delegacion" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://mx.gob.imss.delta/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+      <xs:element name="obtenerSubdelegacionPorDomicilio">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="arg0" type="java:Domicilio" xmlns:java="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="obtenerSubdelegacionPorDomicilioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="java:Subdelegacion" xmlns:java="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="obtenerSubdelegacion">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" nillable="true" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="obtenerSubdelegacionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="java:Subdelegacion" xmlns:java="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.framework.base.model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="AbstractModel">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="ErrorFormGeneral" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:java.util" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <xs:complexType name="List">
+        <xs:complexContent>
+          <xs:restriction base="soapenc:Array" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"/>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.framework.base.exception" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="GestionPatronalBusinessException">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AbstractException"/>
+      <xs:element name="GestionPatronalBusinessException" type="java:GestionPatronalBusinessException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+    </xs:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="obtenerSubdelegacionPorDomicilio">
+    <WL5G3N0:part element="WL5G3N1:obtenerSubdelegacionPorDomicilio" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="obtenerSubdelegacionPorDomicilioResponse">
+    <WL5G3N0:part element="WL5G3N1:obtenerSubdelegacionPorDomicilioResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GestionPatronalBusinessException">
+    <WL5G3N0:part element="WL5G3N2:GestionPatronalBusinessException" name="GestionPatronalBusinessException"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="obtenerSubdelegacion">
+    <WL5G3N0:part element="WL5G3N1:obtenerSubdelegacion" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="obtenerSubdelegacionResponse">
+    <WL5G3N0:part element="WL5G3N1:obtenerSubdelegacionResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="Jws">
+    <WL5G3N0:operation name="obtenerSubdelegacionPorDomicilio" parameterOrder="parameters">
+      <WL5G3N0:input message="WL5G3N1:obtenerSubdelegacionPorDomicilio"/>
+      <WL5G3N0:output message="WL5G3N1:obtenerSubdelegacionPorDomicilioResponse"/>
+      <WL5G3N0:fault message="WL5G3N1:GestionPatronalBusinessException" name="GestionPatronalBusinessException"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="obtenerSubdelegacion" parameterOrder="parameters">
+      <WL5G3N0:input message="WL5G3N1:obtenerSubdelegacion"/>
+      <WL5G3N0:output message="WL5G3N1:obtenerSubdelegacionResponse"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="JwsServiceSoapBinding" type="WL5G3N1:Jws">
+    <WL5G3N3:binding style="document" transport="http://www.bea.com/soap/transport/local"/>
+    <WL5G3N0:operation name="obtenerSubdelegacionPorDomicilio">
+      <WL5G3N3:operation soapAction="http://mx.gob.imss.delta/obtenerSubdelegacionPorDomicilio" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N3:body parts="parameters" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body parts="parameters" use="literal"/>
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="GestionPatronalBusinessException">
+        <WL5G3N3:fault name="GestionPatronalBusinessException" use="literal"/>
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="obtenerSubdelegacion">
+      <WL5G3N3:operation soapAction="http://mx.gob.imss.delta/obtenerSubdelegacion" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N3:body parts="parameters" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body parts="parameters" use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+</WL5G3N0:definitions>

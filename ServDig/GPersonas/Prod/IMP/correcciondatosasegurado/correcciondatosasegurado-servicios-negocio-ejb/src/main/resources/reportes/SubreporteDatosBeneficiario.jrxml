@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubreporteDatosBeneficiario" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="0.907500000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="BNF_CURP" class="java.lang.String"/>
+	<parameter name="BNF_RFC" class="java.lang.String"/>
+	<parameter name="BNF_NOMBRES" class="java.lang.String"/>
+	<parameter name="BNF_PRIMER_APELLIDO" class="java.lang.String"/>
+	<parameter name="BNF_SEGUNDO_APELLIDO" class="java.lang.String"/>
+	<parameter name="BNF_TELEFONO_FIJO" class="java.lang.String"/>
+	<parameter name="BNF_TELEFONO_MOVIL" class="java.lang.String"/>
+	<parameter name="BNF_CORREO_ELECTRONICO" class="java.lang.String"/>
+	<parameter name="BNF_CODIGO_POSTAL" class="java.lang.String"/>
+	<parameter name="BNF_CALLE" class="java.lang.String"/>
+	<parameter name="BNF_NUM_EXTERIOR" class="java.lang.String"/>
+	<parameter name="BNF_NUM_INTERIOR" class="java.lang.String"/>
+	<parameter name="BNF_COLONIA" class="java.lang.String"/>
+	<parameter name="BNF_LOCALIDAD" class="java.lang.String"/>
+	<parameter name="BNF_MUNICIPIO" class="java.lang.String"/>
+	<parameter name="BNF_ESTADO" class="java.lang.String"/>
+	<parameter name="BNF_SEXO" class="java.lang.String"/>
+	<parameter name="BNF_SOLICITANTE" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="417" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="81" width="255" height="27" forecolor="#000000" backcolor="#E7E8E7"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="11" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[IV.1 Datos generales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="273" y="81" width="282" height="27" forecolor="#000000" backcolor="#E7E8E7"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="11" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[IV.2 Domicilio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="108" width="255" height="20"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[39. CURP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="234" width="105" height="13"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Sin abreviaturas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="181" width="255" height="33"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[42. Primer apellido:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="247" width="255" height="20"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[44. Sexo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="168" width="105" height="13"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Sin abreviaturas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="128" width="255" height="20"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[40. *RFC :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="214" width="255" height="33"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[43. Segundo apellido:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="201" width="105" height="13"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Sin abreviaturas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="148" width="255" height="33"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[41. Nombre(s):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="267" width="255" height="20"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[45. Teléfono fijo (lada y número):	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="287" width="255" height="20"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[46. Teléfono móvil:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="307" width="255" height="20"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[47. Correo electrónico:	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="108" width="282" height="20"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[49. Código postal:	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="128" width="282" height="53"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[50. Calle:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="168" width="282" height="13"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[(Por ejemplo: Avenida Insurgentes Sur, Boulevard Ávila Camacho, Calzada, Corredor, etc.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="181" width="142" height="20"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[51. Número exterior:	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="415" y="181" width="140" height="20"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[52. Número interior:	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="201" width="282" height="53"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[53. Colonia:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="241" width="281" height="13"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[(Por ejemplo: Ampliación Juárez, Residencial Hidalgo, Fraccionamiento, Sección, etc.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="254" width="282" height="20"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[54. *Localidad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="274" width="282" height="20"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[55. Municipio o Delegación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="294" width="282" height="20"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[56. Estado o Distrito Federal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="345" width="46" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Esposa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="345" width="46" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Hijos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="154" y="345" width="101" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Representante Legal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="387" width="46" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Padres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="387" width="135" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Concubina / Concubinario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="247" width="56" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[1 HOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="247" width="50" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[2  MUJER]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement x="66" y="247" width="16" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{BNF_SEXO}.isEmpty()||$P{BNF_SEXO}==null) ? "[  ]" : (($P{BNF_SEXO}.contentEquals("HOMBRE"))? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="169" y="247" width="16" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{BNF_SEXO}.isEmpty() || $P{BNF_SEXO} == null) ? "[  ]" : (($P{BNF_SEXO}.contentEquals("MUJER"))? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="3" y="348" width="16" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{BNF_SOLICITANTE}.isEmpty()) ? "[  ]" : (($P{BNF_SOLICITANTE}.contentEquals("2"))? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="3" y="390" width="16" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{BNF_SOLICITANTE}.isEmpty()) ? "[  ]" : (($P{BNF_SOLICITANTE}.contentEquals("4"))? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="71" y="349" width="16" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{BNF_SOLICITANTE}.isEmpty()) ? "[  ]" : (($P{BNF_SOLICITANTE}.contentEquals("3"))? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="71" y="390" width="16" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{BNF_SOLICITANTE}.isEmpty()) ? "[  ]" : (($P{BNF_SOLICITANTE}.contentEquals("5"))? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="140" y="349" width="16" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{BNF_SOLICITANTE}.isEmpty()) ? "[  ]" : (($P{BNF_SOLICITANTE}.contentEquals("6"))? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="45" width="554" height="25" forecolor="#000000" backcolor="#E7E8E7"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[IV. Datos del solicitante (Beneficiario o representante legal del asegurado)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="22" width="555" height="17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[        Este apartado deberá requisitarse por el beneficiario o representante legal que se acredite, en caso de menor de edad, ausencia, enfermedad o fallecimiento del asegurado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="327" width="255" height="90"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[48. Beneficiario: ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="105" y="108" width="150" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_CURP}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="105" y="128" width="150" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_RFC}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="105" y="148" width="150" height="33"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_NOMBRES}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="105" y="181" width="150" height="33"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_PRIMER_APELLIDO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="105" y="214" width="150" height="33"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_SEGUNDO_APELLIDO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="150" y="267" width="105" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_TELEFONO_FIJO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="150" y="287" width="105" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_TELEFONO_MOVIL}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="115" y="307" width="140" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_CORREO_ELECTRONICO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="382" y="108" width="173" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_CODIGO_POSTAL}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="382" y="128" width="173" height="35"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_CALLE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="366" y="181" width="49" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_NUM_EXTERIOR}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="509" y="181" width="46" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_NUM_INTERIOR}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="382" y="201" width="173" height="33"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_COLONIA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="397" y="254" width="158" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_LOCALIDAD}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="397" y="274" width="158" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_MUNICIPIO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="404" y="294" width="151" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{BNF_ESTADO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

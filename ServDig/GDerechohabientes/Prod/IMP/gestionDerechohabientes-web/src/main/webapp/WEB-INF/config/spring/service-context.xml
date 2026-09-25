@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+	<context:annotation-config />
+ 
+    <bean id="serviceRepository" class="org.springframework.jndi.JndiTemplate">
+		<property name="environment">
+			<props>
+				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+				<prop key="java.naming.provider.url">${service.provider.url}</prop>
+				<prop key="java.naming.security.principal">${service.security.principal}</prop>
+				<prop key="java.naming.security.credentials">${service.security.credentials}</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!--<bean id="serviceRepositorySauAdmin" class="org.springframework.jndi.JndiTemplate">
+        <property name="environment">
+            <props>
+                <prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+                <prop key="java.naming.provider.url">${service.provider.url.sauadmin}</prop>
+                <prop key="java.naming.security.principal">${service.security.principal.sauadmin}</prop>
+                <prop key="java.naming.security.credentials">${service.security.credentials.sauadmin}</prop>
+            </props>
+        </property>
+    </bean>-->
+
+	<!-- SERVICIO INTERFAZ DOMICILIO -->
+	<bean id="domicilioServiceBusiness"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="domicilioServiceBusiness#mx.gob.imss.ctirss.delta.gestion.domicilio.service.interfaces.domicilio.DomicilioServiceBusinessRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.domicilio.service.interfaces.domicilio.DomicilioServiceBusinessRemote"/>
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	
+	<!-- 	FIN INTERFAZ DOMICILIO -->
+	
+	<!-- SERVICIO INTERFAZ MEDIOS CONTACTO -->
+	<bean id="mediosContactoServiceBusiness"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="mediosContactoServiceBusiness#mx.gob.imss.ctirss.delta.gestion.medio.contacto.service.interfaces.MediosContactoServiceBusinessRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.medio.contacto.service.interfaces.MediosContactoServiceBusinessRemote"/>
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	
+	<!-- 	FIN INTERFAZ MEDIOS CONTACTO -->
+	
+	<!-- SERVICIO INTERFAZ PERSONA -->
+	<bean id="serviciosPersonaBusiness"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="serviciosPersonaBusiness#mx.gob.imss.ctirss.gestionpersonas.servicios.publicos.ServiciosPersonaBusinessRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.gestionpersonas.servicios.publicos.ServiciosPersonaBusinessRemote"/>
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="personaBusiness"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="personaBusiness#mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusinessRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusinessRemote"/>
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	
+	
+	<bean id="personaServicesExternos"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="localizarPersonaFisicaEnEntidadesExternasServiceBusiness#mx.gob.imss.ctirss.delta.gestion.individuo.service.business.LocalizarPersonaFisicaEnEntidadesExternasServiceBusinessRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.individuo.service.business.LocalizarPersonaFisicaEnEntidadesExternasServiceBusinessRemote"/>
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<!-- 	FIN INTERFAZ PERSONA -->
+
+	<!-- SERVICIO PARA LA GENERACION DE COMPONENTES COMBO -->
+	<bean id="componentComboService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="componentComboService#mx.gob.imss.ctirss.delta.service.ejb.SelectServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.service.interfaces.ISelectService" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+
+	<bean id="solicitudService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="solicitudService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.SolicitudServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.SolicitudServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="registroDerechohabienteService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="registroDerechohabienteService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.RegistroDerechohabienteServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.RegistroDerechohabienteServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="usuarioService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="usuarioService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.UsuarioServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.UsuarioServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+
+	<bean id="derechohabienteService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="derechohabienteService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.DerechohabienteServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.DerechohabienteServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="bajaDerechohabienteService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="bajaDerechohabienteService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.BajaDerechohabienteServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.BajaDerechohabienteServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+<!-- 	<bean id="registroCorreccionDerechohabienteService" -->
+<!-- 		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean"> -->
+<!-- 		<property name="jndiName" -->
+<!-- 			value="registroCorreccionDerechohabienteService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.RegistroCorreccionDerechohabienteServiceRemote" /> -->
+<!-- 		<property name="businessInterface" -->
+<!-- 			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.RegistroCorreccionDerechohabienteServiceRemote" /> -->
+<!-- 	</bean> -->
+	
+	<bean id="correccionDerechohabienteService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="correccionDerechohabienteService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.CorreccionDerechohabienteServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.CorreccionDerechohabienteServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="cambioMasivoClinicaService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="cambioMasivoClinicaService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.CambioMasivoClinicaServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.CambioMasivoClinicaServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="grupoFamiliarService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="grupoFamiliarService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.GrupoFamiliarServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.GrupoFamiliarServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="patronService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="patronService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.PatronServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.PatronServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+
+	<bean id="registraSolicitudImp"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="registraSolicitudImp#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.RegistraSolicitudFachada" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.RegistraSolicitudFachada" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+
+	<bean id="gestionDocumentalService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="gestionDocumental#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.GestionDocumentalServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.GestionDocumentalServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+
+	<bean id="reportesService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="reportes#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.reportes.ReportesRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.reportes.ReportesRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+
+	<bean id="prorrogaService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="prorrogaService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.ProrrogaServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.ProrrogaServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="guiaTramiteService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="guiaTramiteService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.GuiaTramiteServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.GuiaTramiteServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="documentosService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="documentosService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.DocumentosServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.DocumentosServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="preguntaService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="preguntaService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.PreguntaServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.PreguntaServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="catalogosService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="catalogosService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.CatalogosServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.CatalogosServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="agendarCitaService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="agendarCitaService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.AgendarCitaServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.AgendarCitaServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="umfService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="umfService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.UmfServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.UmfServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="consultaVigenciaService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="consultaVigenciaService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.ConsultarVigenciaServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.ConsultarVigenciaServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="bitacoraTramiteService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="bitacoraTramiteService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.BitacoraTramiteServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.BitacoraTramiteServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="tramiteService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="tramiteService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.TramiteServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.TramiteServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="solicitudBusiness"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="solicitudBusiness#mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.SolicitudBusinessRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.SolicitudBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="solicitudTramiteBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="solicitudTramiteBusiness#mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.SolicitudTramiteBusinessRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.SolicitudTramiteBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="tramiteDocumentosService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="tramiteDocumentosService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.TramiteDocumentosServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.TramiteDocumentosServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="eMailService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="eMailService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.EmailServiceRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.EmailServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="documentoProbatorioServiceBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="documentoProbatorioServiceBusiness#mx.gob.imss.ctirss.delta.gestion.documento.probatorio.service.interfaces.DocumentoProbatorioServiceBusinessRemote" />
+		<property name="businessInterface"
+			value="mx.gob.imss.ctirss.delta.gestion.documento.probatorio.service.interfaces.DocumentoProbatorioServiceBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="finalizaBusiness"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="finalizaSolicitud#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.FinalizaSolicitudServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.FinalizaSolicitudServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="requisitosMinimosService"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="requisitosMinimosService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.RequisitosMinimosServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.RequisitosMinimosServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="asignacionDomicilioService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="asignacionDomicilioService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.AsignacionDomicilioServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.AsignacionDomicilioServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="cambioClinicaService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="cambioClinicaService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.CambioClinicaServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.CambioClinicaServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="cambioMedicoService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="cambioMedicoService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.CambioMedicoServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.CambioMedicoServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="estudiantesService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="estudiantesService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.EstudiantesServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.EstudiantesServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="autorizacionCircunscripcionService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="autorizacionCircunscripcionService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.AutorizacionCircunscripcionServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.AutorizacionCircunscripcionServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="consumidorServiciosMediosContacto" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="consumidorServiciosMediosContacto#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.ConsumidorServiciosMediosContactoRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.ConsumidorServiciosMediosContactoRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="firmaDigitalBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="firmaDigitalBusiness#mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.FirmaDigitalBusinessRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.FirmaDigitalBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	
+	<!-- WS Fotografia --> 
+		<!-- 
+		<bean id="marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		    <property name="contextPaths">
+		      <list>
+		        <value>mx.gob.imss.ctirss.delta.derechohabientes.web.bean.ws</value>
+		       </list>
+		    </property>
+		</bean>
+		-->
+		
+		<!-- Define the SOAP version used by the WSDL -->
+	    <bean id="soapMessageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory" />
+	    <bean id="webServiceImagenAdImss" class="org.springframework.ws.client.core.WebServiceTemplate">
+	    	<constructor-arg ref="soapMessageFactory"/>
+	        <property name="defaultUri" value="${service.ws.osb.url}/AccederUnificado/proxy/WSConsultaAdimssProxy?wsdl"/>
+	    </bean>
+		
+		<bean id="webServicePersonalSubdelegacion" class="org.springframework.ws.client.core.WebServiceTemplate">
+        	<constructor-arg ref="soapMessageFactory"/>
+        	<property name="defaultUri" value="${mvn.web.app.personal.subdelegacion.wsdl}"/>
+     	</bean>
+		
+	<bean id="tramitesAdministrativosService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="tramitesAdministrativosService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.TramitesAdministrativosServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.TramitesAdministrativosServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<!-- <bean id="conceptoService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean"> 
+		<property name="wsdlDocumentUrl" value="http://11.254.13.222:7001/ConceptoServiceBean/ConceptoServiceBean?WSDL"/> 
+		<property name="serviceName" value="ConceptoServiceBean"/> <property name="portName" 
+		value="ConceptoServiceBeanPort"/> <property name="serviceInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.interfaces.IConceptoServiceBean"/> 
+		<property name="namespaceUri" value="urn:ConceptoServiceBean"/> </bean> -->
+	<!-- SERVICIO PARA LA ADMINISTRACION DE CATALOGOS -->
+	<!-- <bean id="catalogoService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean"> 
+		<property name="jndiName" value="catalogoService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.CatalogoServiceRemote"/> 
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.ICatalogoService"/> 
+		<property name="jndiTemplate"> <ref bean="serviceRepository"/> </property> 
+		</bean> -->
+		
+	<bean id="acuerdoDerechohabienteService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="acuerdoDerechohabienteService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.AcuerdoDerechohabienteServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.AcuerdoDerechohabienteServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+
+	<!-- Servicios de Derechos ARCO -->
+	<bean id="derechosArcoService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="derechosArcoService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.DerechosArcoServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.DerechosArcoServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<!--  Validador de estado de usuario SAU ADMIN -->
+	<!--<bean id="usuarioServiceSauAdmin" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="usuarioService#mx.gob.imss.ctirss.sso.admonusuarios.services.UsuarioServiceRemote" />
+		<property name="businessInterface" value="mx.gob.imss.ctirss.sso.admonusuarios.services.UsuarioServiceRemote" />
+		<property name="jndiTemplate" ref="serviceRepositorySauAdmin" />
+	</bean>-->
+
+</beans>

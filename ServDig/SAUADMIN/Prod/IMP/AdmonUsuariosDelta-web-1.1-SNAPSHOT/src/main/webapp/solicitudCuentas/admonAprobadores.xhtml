@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="../plantillas/plantilla.xhtml">
+		<ui:define name="body">
+			 <div id ="titulo" align="center">
+  		  		<h3>Asignación de Aprobadores</h3>
+   	 		</div>					
+			<h:form id="formAdomAprobadores">
+				<fieldset style="border: 1px solid silver; margin: 0; padding: 10px;">
+					<h:panelGrid id="pnAdmonAprobadores" columns="4">
+					 <h:outputLabel value=" " id="blancoUno"/>					
+						<h:outputLabel value="Aprobador" id="lbAprobador"></h:outputLabel>
+						<h:selectOneMenu id="slAdmonAprobador" value="#{aprobadorBean.aprobador.idFuncionario}" disabled="true">
+							<f:selectItem itemValue="0" itemLabel="Seleccione..."></f:selectItem>
+							<f:selectItems value="#{aprobadorBean.listFuncionario}"></f:selectItems>
+						</h:selectOneMenu>
+						<h:message for="slAdmonAprobador" id="erSlAdmonAprobador"></h:message>
+						
+						<h:outputLabel value=" " id="blancoDos"/>
+						<h:outputLabel id="lbMatriculaAdmonAprobador" value="Matricula :"></h:outputLabel>
+						<h:inputText value="#{aprobadorBean.aprobador.matricula}" id="txMatriculaAdmonAprobador" required="true" requiredMessage="La matricula es requerida"></h:inputText>
+						<h:message for="txMatriculaAdmonAprobador" errorClass="error"></h:message>
+						
+						<h:outputLabel value=" " id="espacio"/>
+						<h:outputLabel value="Modulo :" id="lbModuloRegSolicitudCuenta"></h:outputLabel>
+						<h:selectOneMenu id="slModuloAdmonAprobador" value="#{aprobadorBean.aprobador.idModulo}">
+							<f:selectItem itemValue="0" itemLabel="Seleccione..."></f:selectItem>
+							<f:selectItems value="#{solicitudCuentaBean.listaSelectModulo}"></f:selectItems>
+						</h:selectOneMenu>
+						<h:message for="slModuloAdmonAprobador"></h:message>
+												
+						<h:outputLabel value="" id="blancoTres"/>
+						<h:outputLabel></h:outputLabel>
+						<h:commandButton value="Guardar" action="#{aprobadorBean.registrarFuncionario}" styleClass="mboton"></h:commandButton>
+									
+					</h:panelGrid>
+				</fieldset>							
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

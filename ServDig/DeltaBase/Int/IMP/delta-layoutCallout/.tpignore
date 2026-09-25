@@ -1,0 +1,3 @@
+\Q/target/\E.*
+\Q/.classpath\E
+\Q/.project\E

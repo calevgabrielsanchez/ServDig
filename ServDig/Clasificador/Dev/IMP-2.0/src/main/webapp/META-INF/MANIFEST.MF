@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Class-Path: antlr-2.7.7.jar aopalliance-1.0.jar aspectjrt-1.6.4.jar as
+ pectjweaver-1.6.4.jar commons-beanutils-1.7.0.jar commons-collections
+ -3.2.1.jar commons-logging-1.1.1.jar dom4j-1.6.1.jar hibernate-annota
+ tions-3.5.5-Final.jar hibernate-commons-annotations-3.2.0.Final.jar h
+ ibernate-core-3.5.5-Final.jar hibernate-jpa-2.0-api-1.0.0.Final.jar j
+ ackson-core-asl-1.6.4.jar jackson-mapper-asl-1.6.4.jar javassist-3.9.
+ 0.GA.jar jcl-over-slf4j-1.6.1.jar joda-time-1.6.2.jar jstl-1.2.jar jt
+ a-1.1.jar log4j-1.2.16.jar slf4j-api-1.6.1.jar slf4j-log4j12-1.6.1.ja
+ r spring-aop-3.0.5.RELEASE.jar spring-asm-3.0.5.RELEASE.jar spring-as
+ pects-3.0.5.RELEASE.jar spring-beans-3.0.5.RELEASE.jar spring-context
+ -3.0.5.RELEASE.jar spring-context-support-3.0.5.RELEASE.jar spring-co
+ re-3.0.5.RELEASE.jar spring-expression-3.0.5.RELEASE.jar spring-jdbc-
+ 3.0.5.RELEASE.jar spring-orm-3.0.5.RELEASE.jar spring-tx-3.0.5.RELEAS
+ E.jar spring-web-3.0.5.RELEASE.jar spring-webmvc-3.0.5.RELEASE.jar
+

@@ -1,0 +1,18 @@
+<ejb-jar xmlns="http://java.sun.com/xml/ns/javaee" version="3.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd">
+<!--
+    This file must exist in the WEB-INF/
+    directory of your WAR file. See EJB 3.1 spec 20.4 for more details.
+-->
+	<!-- 
+    <enterprise-beans>
+        <session>
+            <ejb-name>consultaInfoPersonaServiceExternal</ejb-name>
+            <business-local>mx.gob.imss.cit.dacvass.servicios.externos.service.business.IConsultaInfoPersonaServiceExternalLocal</business-local>
+            <ejb-class>mx.gob.imss.cit.dacvass.servicios.externos.service.business.ConsultaInfoPersonaServiceExternal</ejb-class>
+            <session-type>Stateless</session-type>
+        </session>
+    </enterprise-beans>
+     -->
+</ejb-jar>

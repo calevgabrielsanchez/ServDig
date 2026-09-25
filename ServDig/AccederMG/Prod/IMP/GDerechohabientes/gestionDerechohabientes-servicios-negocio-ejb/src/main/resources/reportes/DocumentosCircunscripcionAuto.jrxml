@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DocumentosCambioDatos" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1"/>
+	<parameter name="SUBREPORTE_SAV002" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\tfs\\workspace\\Dev\\01DST\\04IMP\\gestionDerechohabientes-servicios-negocio-ejb\\src\\main\\resources\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="titulo" class="java.lang.String"/>
+	<parameter name="LOGO" class="java.lang.String"/>
+	<parameter name="clave" class="java.lang.String"/>
+	<parameter name="lugar" class="java.lang.String"/>
+	<parameter name="fecha" class="java.lang.String"/>
+	<parameter name="SUBREPORTE_CARTILLA" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="SUBREPORTE_SAV005" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="SUBREPORTE_SAV017" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="nss" class="java.lang.String"/>
+	<parameter name="curp" class="java.lang.String"/>
+	<parameter name="regPatronal" class="java.lang.String"/>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="aPaterno" class="java.lang.String"/>
+	<parameter name="aMaterno" class="java.lang.String"/>
+	<parameter name="dVerificador" class="java.lang.String"/>
+	<parameter name="calle" class="java.lang.String"/>
+	<parameter name="numero" class="java.lang.String"/>
+	<parameter name="colonia" class="java.lang.String"/>
+	<parameter name="municipio" class="java.lang.String"/>
+	<parameter name="cp" class="java.lang.String"/>
+	<parameter name="entidad" class="java.lang.String"/>
+	<parameter name="tipoTrabajador" class="java.lang.String"/>
+	<parameter name="observaciones" class="java.lang.String"/>
+	<parameter name="lugar_1" class="java.lang.String"/>
+	<parameter name="fecha_1" class="java.util.Date"/>
+	<parameter name="empleado" class="java.lang.String"/>
+	<parameter name="delegacion" class="java.lang.String"/>
+	<parameter name="subDelegacion" class="java.lang.String"/>
+	<parameter name="umf" class="java.lang.String"/>
+	<parameter name="autorizacion" class="java.lang.Boolean"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="SUBREPORTE_SAV006" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="SUBREPORTE_4305A" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="SUBREPORTE_BENEFICIARIOS" class="net.sf.jasperreports.engine.JasperReport"/>
+	<field name="datosSav002" class="java.util.List"/>
+	<field name="datosCartilla" class="java.util.List"/>
+	<field name="datosSav017" class="java.util.List"/>
+	<field name="datosSav006" class="java.util.List"/>
+	<field name="datos4305A" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="4" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="3" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="315" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="200" height="50"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="titulo">
+					<subreportParameterExpression><![CDATA[$P{titulo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fecha">
+					<subreportParameterExpression><![CDATA[$P{fecha}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LOGO">
+					<subreportParameterExpression><![CDATA[$P{LOGO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_4305A">
+					<subreportParameterExpression><![CDATA[]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="lugar">
+					<subreportParameterExpression><![CDATA[$P{lugar}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_SAV002">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_SAV002}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_BENEFICIARIOS">
+					<subreportParameterExpression><![CDATA[]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="clave">
+					<subreportParameterExpression><![CDATA[$P{clave}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{datosSav002})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUBREPORTE_SAV002}]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement x="0" y="63" width="555" height="1"/>
+			</break>
+			<subreport>
+				<reportElement x="0" y="79" width="200" height="44"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{datosCartilla})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUBREPORTE_CARTILLA}]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement x="0" y="139" width="555" height="1"/>
+			</break>
+			<subreport>
+				<reportElement x="0" y="148" width="200" height="41"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<subreportParameter name="tipoTrabajador">
+					<subreportParameterExpression><![CDATA[$P{tipoTrabajador}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="aPaterno">
+					<subreportParameterExpression><![CDATA[$P{aPaterno}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_SAV005">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_SAV005}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subDelegacion">
+					<subreportParameterExpression><![CDATA[$P{subDelegacion}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="dVerificador">
+					<subreportParameterExpression><![CDATA[$P{dVerificador}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_SAV002">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_SAV002}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="observaciones">
+					<subreportParameterExpression><![CDATA[$P{observaciones}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="aMaterno">
+					<subreportParameterExpression><![CDATA[$P{aMaterno}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="colonia">
+					<subreportParameterExpression><![CDATA[$P{colonia}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="nombre">
+					<subreportParameterExpression><![CDATA[$P{nombre}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LOGO">
+					<subreportParameterExpression><![CDATA[$P{LOGO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="umf">
+					<subreportParameterExpression><![CDATA[$P{umf}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="autorizacion">
+					<subreportParameterExpression><![CDATA[$P{autorizacion}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fecha_1">
+					<subreportParameterExpression><![CDATA[$P{fecha_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="curp">
+					<subreportParameterExpression><![CDATA[$P{curp}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_SAV017">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_SAV017}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="clave">
+					<subreportParameterExpression><![CDATA[$P{clave}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CARTILLA">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CARTILLA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fecha">
+					<subreportParameterExpression><![CDATA[$P{fecha}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="empleado">
+					<subreportParameterExpression><![CDATA[$P{empleado}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="regPatronal">
+					<subreportParameterExpression><![CDATA[$P{regPatronal}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="numero">
+					<subreportParameterExpression><![CDATA[$P{numero}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="titulo">
+					<subreportParameterExpression><![CDATA[$P{titulo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cp">
+					<subreportParameterExpression><![CDATA[$P{cp}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="lugar_1">
+					<subreportParameterExpression><![CDATA[$P{lugar_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="municipio">
+					<subreportParameterExpression><![CDATA[$P{municipio}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="nss">
+					<subreportParameterExpression><![CDATA[$P{nss}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="lugar">
+					<subreportParameterExpression><![CDATA[$P{lugar}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="entidad">
+					<subreportParameterExpression><![CDATA[$P{entidad}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="calle">
+					<subreportParameterExpression><![CDATA[$P{calle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="delegacion">
+					<subreportParameterExpression><![CDATA[$P{delegacion}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{datosSav017})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUBREPORTE_SAV017}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="204" width="200" height="41"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<subreportParameter name="entidad">
+					<subreportParameterExpression><![CDATA[$P{entidad}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="titulo">
+					<subreportParameterExpression><![CDATA[$P{titulo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="tipoTrabajador">
+					<subreportParameterExpression><![CDATA[$P{tipoTrabajador}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_SAV006">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_SAV006}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fecha">
+					<subreportParameterExpression><![CDATA[$P{fecha}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="lugar">
+					<subreportParameterExpression><![CDATA[$P{lugar}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="curp">
+					<subreportParameterExpression><![CDATA[$P{curp}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="clave">
+					<subreportParameterExpression><![CDATA[$P{clave}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="lugar_1">
+					<subreportParameterExpression><![CDATA[$P{lugar_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="umf">
+					<subreportParameterExpression><![CDATA[$P{umf}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="calle">
+					<subreportParameterExpression><![CDATA[$P{calle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="delegacion">
+					<subreportParameterExpression><![CDATA[$P{delegacion}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="autorizacion">
+					<subreportParameterExpression><![CDATA[$P{autorizacion}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="aPaterno">
+					<subreportParameterExpression><![CDATA[$P{aPaterno}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cp">
+					<subreportParameterExpression><![CDATA[$P{cp}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="dVerificador">
+					<subreportParameterExpression><![CDATA[$P{dVerificador}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="colonia">
+					<subreportParameterExpression><![CDATA[$P{colonia}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_SAV002">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_SAV002}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_SAV017">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_SAV017}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_4305A">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_4305A}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CARTILLA">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CARTILLA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="observaciones">
+					<subreportParameterExpression><![CDATA[$P{observaciones}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LOGO">
+					<subreportParameterExpression><![CDATA[$P{LOGO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="nombre">
+					<subreportParameterExpression><![CDATA[$P{nombre}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="regPatronal">
+					<subreportParameterExpression><![CDATA[$P{regPatronal}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="numero">
+					<subreportParameterExpression><![CDATA[$P{numero}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subDelegacion">
+					<subreportParameterExpression><![CDATA[$P{subDelegacion}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_SAV005">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_SAV005}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="nss">
+					<subreportParameterExpression><![CDATA[$P{nss}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="empleado">
+					<subreportParameterExpression><![CDATA[$P{empleado}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="aMaterno">
+					<subreportParameterExpression><![CDATA[$P{aMaterno}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="municipio">
+					<subreportParameterExpression><![CDATA[$P{municipio}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fecha_1">
+					<subreportParameterExpression><![CDATA[$P{fecha_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{datosSav006})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUBREPORTE_SAV006}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="263" width="200" height="40"/>
+				<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+				<subreportParameter name="SUBREPORTE_BENEFICIARIOS">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_BENEFICIARIOS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="entidad">
+					<subreportParameterExpression><![CDATA[$P{entidad}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="titulo">
+					<subreportParameterExpression><![CDATA[$P{titulo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="tipoTrabajador">
+					<subreportParameterExpression><![CDATA[$P{tipoTrabajador}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_SAV006">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_SAV006}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fecha">
+					<subreportParameterExpression><![CDATA[$P{fecha}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="lugar">
+					<subreportParameterExpression><![CDATA[$P{lugar}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="curp">
+					<subreportParameterExpression><![CDATA[$P{curp}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="clave">
+					<subreportParameterExpression><![CDATA[$P{clave}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="lugar_1">
+					<subreportParameterExpression><![CDATA[$P{lugar_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="umf">
+					<subreportParameterExpression><![CDATA[$P{umf}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="calle">
+					<subreportParameterExpression><![CDATA[$P{calle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="delegacion">
+					<subreportParameterExpression><![CDATA[$P{delegacion}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="autorizacion">
+					<subreportParameterExpression><![CDATA[$P{autorizacion}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="aPaterno">
+					<subreportParameterExpression><![CDATA[$P{aPaterno}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cp">
+					<subreportParameterExpression><![CDATA[$P{cp}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="dVerificador">
+					<subreportParameterExpression><![CDATA[$P{dVerificador}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="colonia">
+					<subreportParameterExpression><![CDATA[$P{colonia}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_SAV002">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_SAV002}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_SAV017">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_SAV017}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_4305A">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_4305A}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_CARTILLA">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_CARTILLA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="observaciones">
+					<subreportParameterExpression><![CDATA[$P{observaciones}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LOGO">
+					<subreportParameterExpression><![CDATA[$P{LOGO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="nombre">
+					<subreportParameterExpression><![CDATA[$P{nombre}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="regPatronal">
+					<subreportParameterExpression><![CDATA[$P{regPatronal}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="numero">
+					<subreportParameterExpression><![CDATA[$P{numero}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subDelegacion">
+					<subreportParameterExpression><![CDATA[$P{subDelegacion}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORTE_SAV005">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORTE_SAV005}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="nss">
+					<subreportParameterExpression><![CDATA[$P{nss}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="empleado">
+					<subreportParameterExpression><![CDATA[$P{empleado}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="aMaterno">
+					<subreportParameterExpression><![CDATA[$P{aMaterno}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="municipio">
+					<subreportParameterExpression><![CDATA[$P{municipio}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fecha_1">
+					<subreportParameterExpression><![CDATA[$P{fecha_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{datos4305A})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUBREPORTE_4305A}]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement x="0" y="196" width="555" height="1"/>
+			</break>
+			<break>
+				<reportElement x="0" y="252" width="555" height="1"/>
+			</break>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,99 @@
+<class-diagram version="1.0.11" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" 
+    name="mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaMoralBusiness" 
+    project="gestionIndividuo-service-business-ejb" 
+    file="/gestionIndividuo-service-business-ejb/src/main/java/mx/gob/imss/ctirss/gestionpersonas/servicios/business/PersonaMoralBusiness.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="537" y="565"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="2" corner="BOTTOM_RIGHT" language="java" 
+    name="mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaMoralBusinessLocal" 
+    project="gestionIndividuo-service-business-ejb" 
+    file="/gestionIndividuo-service-business-ejb/src/main/java/mx/gob/imss/ctirss/gestionpersonas/servicios/business/PersonaMoralBusinessLocal.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="239" y="303"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" 
+    name="mx.gob.imss.ctirss.delta.gestion.individuo.service.business.ConsultaPersonaMoralServiceBusiness" 
+    project="gestionIndividuo-service-business-ejb" 
+    file="/gestionIndividuo-service-business-ejb/src/main/java/mx/gob/imss/ctirss/delta/gestion/individuo/service/business/ConsultaPersonaMoralServiceBusiness.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="522" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" 
+    name="mx.gob.imss.ctirss.delta.gestion.individuo.service.business.ConsultaPersonaFisicaServiceBusiness" 
+    project="gestionIndividuo-service-business-ejb" 
+    file="/gestionIndividuo-service-business-ejb/src/main/java/mx/gob/imss/ctirss/delta/gestion/individuo/service/business/ConsultaPersonaFisicaServiceBusiness.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="1039" y="115"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="5" corner="BOTTOM_RIGHT" language="java" 
+    name="mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusiness" 
+    project="gestionIndividuo-service-business-ejb" 
+    file="/gestionIndividuo-service-business-ejb/src/main/java/mx/gob/imss/ctirss/gestionpersonas/servicios/business/PersonaBusiness.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="1118" y="914"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface id="6" corner="BOTTOM_RIGHT" language="java" 
+    name="mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusinessLocal" 
+    project="gestionIndividuo-service-business-ejb" 
+    file="/gestionIndividuo-service-business-ejb/src/main/java/mx/gob/imss/ctirss/gestionpersonas/servicios/business/PersonaBusinessLocal.java" 
+    binary="false">    
+    <position height="-1" width="-1" x="1425" y="418"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <association id="7">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="8" name="personaBusiness"/>      
+      <multiplicity id="9" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="10">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="11" name="personaMoralBusiness"/>      
+      <multiplicity id="12" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="13">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="14">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

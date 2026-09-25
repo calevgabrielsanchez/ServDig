@@ -1,0 +1,12 @@
+<xs:schema targetNamespace="http://mx.gob.imss.ctirss.delta.model.asegurado" xmlns:ns1="http://mx.gob.imss.ctirss.delta.gestion.asegurado.serie.service/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:import namespace="http://mx.gob.imss.ctirss.delta.gestion.asegurado.serie.service/" schemaLocation="asignacionSerieService1.xsd"/>
+
+	<xs:element name="generarAseguradoResponse" type="ns1:estadoAsignacion"/>
+
+	<xs:element name="publicarDetalleResultadoAsignacionResponse" type="xs:boolean"/>
+
+	<xs:element name="publicarFinProcesamientoResponse" type="xs:boolean"/>
+
+	<xs:element name="publicarResultadoAsignacionResponse" type="xs:boolean"/>
+</xs:schema>

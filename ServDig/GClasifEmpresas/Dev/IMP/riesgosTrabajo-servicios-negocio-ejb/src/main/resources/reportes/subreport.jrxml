@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteEstilogob_subreport1" language="groovy" pageWidth="1048" pageHeight="60" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="193"/>
+	<property name="ireport.y" value="0"/>
+	<field name="tipoRiesgo" class="java.lang.String"/>
+	<field name="curp" class="java.lang.String"/>
+	<field name="defuncion" class="java.lang.String"/>
+	<field name="nombreAsegurado" class="java.lang.String"/>
+	<field name="diasSubsidiados" class="java.lang.String"/>
+	<field name="numSegSocial" class="java.lang.String"/>
+	<field name="recaidaRevaluacion" class="java.lang.String"/>
+	<field name="fechaAccidente" class="java.util.Date"/>
+	<field name="fechaAlta" class="java.util.Date"/>
+	<field name="porcentajeIncapac" class="java.lang.String"/>
+	<field name="consec" class="java.lang.String"/>
+    <field name="dv" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="60" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="70" height="60"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{consec}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="0" width="90" height="60"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numSegSocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="0" width="110" height="60"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{curp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="120" height="60"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombreAsegurado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy">
+				<reportElement x="490" y="0" width="40" height="60"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaAccidente}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM">
+				<reportElement x="530" y="0" width="37" height="60"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaAccidente}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd">
+				<reportElement x="567" y="0" width="37" height="60"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaAccidente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="100" height="60"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{recaidaRevaluacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="684" y="0" width="80" height="60"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{diasSubsidiados}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="764" y="0" width="100" height="60"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{porcentajeIncapac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="864" y="0" width="70" height="60"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{defuncion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy">
+				<reportElement x="934" y="0" width="40" height="60"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaAlta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd">
+				<reportElement x="1011" y="0" width="37" height="60"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaAlta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM">
+				<reportElement x="974" y="0" width="37" height="60"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaAlta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="604" y="0" width="80" height="60"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipoRiesgo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

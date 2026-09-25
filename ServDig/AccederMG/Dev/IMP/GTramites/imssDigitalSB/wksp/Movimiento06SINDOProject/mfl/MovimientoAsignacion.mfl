@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE MessageFormat SYSTEM 'mfl.dtd'>
+<!--generar trama para layout de asignacion patronal-->
+<MessageFormat version='2.01.01' name='AsignacionPatron'>
+    <StructFormat name='Movimiento' delim='\n' sharedDelim='y' delimOptional='n' repeat='*'>
+        <FieldFormat name='cizOrigen'      type='Numeric'  delimOptional='y' length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='delOrigen'      type='Numeric'  delimOptional='y' length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='subdelOrigen'   type='Numeric'  delimOptional='y' length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='codEnvio'       type='Numeric'  delimOptional='y' length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='codRetorno'     type='Numeric'  delimOptional='y' length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='condicion'      type='Numeric'  delimOptional='y' length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='tpMovto'        type='Numeric'  delimOptional='y' length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='opcionMovto44'  type='Numeric'  delimOptional='y' length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='nss'            type='Numeric'  delimOptional='y' length='10'  strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='digver'         type='Numeric'  delimOptional='y' length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='nombre'         type='String'   delimOptional='y' length='50'  strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='sexo'           type='Numeric'  delimOptional='y' length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='mesNac'         type='Numeric'  delimOptional='y' length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='lugarNac'       type='Numeric'  delimOptional='y' length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='nssC'           type='Numeric'  delimOptional='y' length='10'  strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='digverC'        type='Numeric'  delimOptional='y' length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='filler'         type='String'   delimOptional='y' length='3'   strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='idUsuario'      type='String'   delimOptional='y' length='7'   strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='filler1'        type='String'   delimOptional='y' length='40'  strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='nombreCond'     type='String'   delimOptional='y' length='50'  strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='tpError'        type='String'   delimOptional='y' length='3'   strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='filler2'        type='String'   delimOptional='y' length='8'   strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='umf'            type='Numeric'  delimOptional='y' length='3'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='origen'         type='Numeric'  delimOptional='y' length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='fechaMovto'     type='Numeric'  delimOptional='y' length='8'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='curp'           type='String'   delimOptional='y' length='18'  strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+    </StructFormat>
+</MessageFormat>

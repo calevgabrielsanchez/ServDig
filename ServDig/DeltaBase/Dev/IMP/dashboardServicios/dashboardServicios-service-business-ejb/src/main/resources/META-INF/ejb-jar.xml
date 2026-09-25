@@ -1,0 +1,20 @@
+<ejb-jar xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd"
+	version="3.0">
+	<interceptors>
+		<interceptor>
+			<interceptor-class>mx.gob.imss.ctirss.infraestructura.dashboardservicios.servicios.entity.InterceptorJdbc</interceptor-class>
+			<around-invoke>
+				<method-name>logCall</method-name>
+			</around-invoke>
+		</interceptor>
+	</interceptors>
+	<assembly-descriptor>
+		<!-- Default interceptor para todos los métodos de todos los EJB's en la aplicación -->
+		<interceptor-binding>
+			<ejb-name>*</ejb-name>
+			<interceptor-class>mx.gob.imss.ctirss.infraestructura.dashboardservicios.servicios.entity.InterceptorJdbc</interceptor-class>
+		</interceptor-binding>
+
+	</assembly-descriptor>
+</ejb-jar>

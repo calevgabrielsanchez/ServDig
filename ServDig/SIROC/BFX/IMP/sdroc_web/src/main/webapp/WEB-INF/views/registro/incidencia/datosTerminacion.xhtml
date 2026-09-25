@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<div id="pageResumenDatosTerminacion" th:fragment="pageDatosTerminacion">
+	<div id="pnlIncTerminacion" class="panel panel-default">
+		<div class="panel-heading">
+			<label class="small" th:text="#{registro.incidencia.anuncio}"/> 
+			<label class="small" th:text="${accion}" /> 
+			<label class="small" th:text="#{registro.incidencia.anuncio.obra}"/>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="panel col-sm-12 text-left">
+					<label class="control-label col-sm-3 small" for="fecTerminacion">Fecha de terminaci&oacute;n de la obra*</label>
+					<div class="col-sm-6">
+						<div class="form-group datepicker-group">
+							<input class="form-control" id="fecTerminacion" type="text"  readonly="readonly" style="background: white; cursor: default !important;">
+								<span class="glyphicon glyphicon-calendar" aria-hidden="true"/>
+							</input>
+						</div>
+					</div>
+					<div class="col-sm-12 text-left">
+						<p id="msgeFecTerminacion" class="small red"/>
+					</div>
+				</div>
+			</div>
+			<div class="alert alert-info small" th:text="#{info.cantidadesobrasuperficie}">
+			</div>
+			<div class="row">
+				<div class="panel col-sm-12 text-left">
+					<label class="control-label col-sm-3 small" for="txtMontoEjercido" th:text="#{reg.incidencia.monto.ejercido}"/>
+					<div class="col-sm-6">
+						<div id="divMonto" class="input-group">
+							<span class=" small input-group-addon small"><small>$</small></span> 
+							<input id="txtMontoEjercido" type="text" class="form-control input-sm" aria-label="Amount (to the nearest dollar)" placeholder="Monto ejercido a la fecha" maxlength="15"> </input> 
+							<span class="small input-group-addon"> <small>MXN</small></span>
+						</div>
+						<span id="msgMontoEjercido" class="small hidden red"/>
+					</div>
+				</div>
+			</div>
+			
+			<div th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron != 4}" class="row">
+			
+			<div id="pnlSuperficie" class="panel col-sm-12 text-left">
+				<label class="small control-label col-sm-3 text-left" for="superficie">Superficie	construida*</label>		
+				<div class="col-sm-6">
+					<div id="divMonto" class="input-group">
+						<input id="txtSuperficie" type="text" class="form-control input-sm" aria-label="Amount (to the nearest dollar)" placeholder="Superficie construida" maxlength="13"/> 
+						<span class="input-group-addon small"><small>m2</small></span>
+					</div>
+					<span id="msgeSuperficie" class="small hidden red"/>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="panel-footer"></div>
+	</div>
+</div>
+
+</html>

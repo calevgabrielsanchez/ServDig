@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:jee="http://www.springframework.org/schema/jee"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:annotation-config />
+ 
+    <bean id="serviceRepository" class="org.springframework.jndi.JndiTemplate">
+		<property name="environment">
+			<props>
+				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+				<prop key="java.naming.provider.url">${service.provider.url}</prop>
+				<prop key="java.naming.security.principal">${service.security.principal}</prop>
+				<prop key="java.naming.security.credentials">${service.security.credentials}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- SERVICIO PARA LA GENERACION DE COMPONENTES COMBO -->
+	<bean id="componentComboService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="componentComboService#mx.gob.imss.ctirss.delta.service.ejb.SelectServiceRemote"/>
+		<property name="businessInterface" value=			  "mx.gob.imss.ctirss.delta.service.interfaces.ISelectService"/>
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	
+
+	<bean id="personaBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="personaBusiness#mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusinessRemote" />
+		<property name="businessInterface" value=		"mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	 
+
+	<bean id="reporteBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="reporteBusiness#mx.gob.imss.ctirss.gestionpersonas.servicios.business.ReporteBusinessRemote" />
+		<property name="businessInterface" value=		"mx.gob.imss.ctirss.gestionpersonas.servicios.business.ReporteBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	 
+
+	<bean id="personaMoralBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="personaMoralBusiness#mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaMoralBusinessRemote" />
+		<property name="businessInterface" value=			 "mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaMoralBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+
+	<bean id="solicitudPersonaBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="solicitudPersonaBusiness#mx.gob.imss.ctirss.gestionpersonas.servicios.business.SolicitudPersonaBusinessRemote" />
+		<property name="businessInterface" value=				 "mx.gob.imss.ctirss.gestionpersonas.servicios.business.SolicitudPersonaBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="serviciosPersonaBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="serviciosPersonaBusiness#mx.gob.imss.ctirss.gestionpersonas.servicios.publicos.ServiciosPersonaBusinessRemote" />
+		<property name="businessInterface" value=				 "mx.gob.imss.ctirss.gestionpersonas.servicios.publicos.ServiciosPersonaBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	 
+	
+	<bean id="individuoServiceBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="individuoServiceBusiness#mx.gob.imss.ctirss.delta.gestion.individuo.service.business.IndividuoServiceBusinessRemote" />
+		<property name="businessInterface" value=				 "mx.gob.imss.ctirss.delta.gestion.individuo.service.business.IndividuoServiceBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<!-- 191807 110912 -->
+	<!-- EJB para la nueva consulta de personas fisicas de lucy para nacho -->
+	<bean id="consultaPersonaFisicaServiceBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="consultaPersonaFisicaServiceBusiness#mx.gob.imss.ctirss.delta.gestion.individuo.service.business.ConsultaPersonaFisicaServiceBusinessRemote" />
+		<property name="businessInterface" value=				 			 "mx.gob.imss.ctirss.delta.gestion.individuo.service.business.ConsultaPersonaFisicaServiceBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<!-- 191807 110912 -->
+	<!-- EJB para la complementar calificaciones de personas fisicas de lucy para nacho -->
+	<bean id="complementarCalificacionPersonaFisicaServiceBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="complementarCalificacionPersonaFisicaServiceBusiness#mx.gob.imss.ctirss.delta.gestion.individuo.service.business.ComplementarCalificacionPersonaFisicaServiceBusinessRemote" />
+		<property name="businessInterface" value=				 			 				 "mx.gob.imss.ctirss.delta.gestion.individuo.service.business.ComplementarCalificacionPersonaFisicaServiceBusinessRemote" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+</beans>

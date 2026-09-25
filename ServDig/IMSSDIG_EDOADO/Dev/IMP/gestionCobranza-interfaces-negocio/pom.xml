@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>mx.gob.imss.ctirss.delta.cobranza</groupId>
+	<artifactId>gestionCobranza-interfaces-negocio</artifactId>
+	<version>2.1-SNAPSHOT</version>
+	
+	<name>Modulo de Interfaces de Negocio de gestionCobranza</name>
+	<url>http://maven.apache.org</url>
+	<packaging>jar</packaging>
+
+
+	<parent>
+		<artifactId>gestionCobranza</artifactId>
+		<groupId>mx.gob.imss.ctirss.delta.cobranza</groupId>
+		<version>2.1-SNAPSHOT</version>
+	</parent>
+
+	
+
+
+
+	
+	<dependencies>
+	
+	 <!-- INICIO DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+
+		<!-- Dependencia del Framework DELTA BASE IMSS -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-framework-base</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>
+
+<!-- Dependencia del Proyecto de Objetos de modelo DELTA IMSS -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-modelo-negocio</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>
+		
+<!-- 		<dependency> -->
+<!-- 		<groupId>mx.gob.imss.ctirss.delta.gestion.domicilio</groupId> -->
+<!-- 	<artifactId>gestionDomicilios-modelo</artifactId> -->
+<!-- 	<version>1.0-SNAPSHOT</version> -->
+<!-- 		</dependency> -->
+		
+
+		<!-- FIN DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+	
+
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<version>3.0</version>
+			<scope>provided</scope>	
+		</dependency>
+		
+		
+
+
+		
+		
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate.javax.persistence</groupId> -->
+<!--     		<artifactId>hibernate-jpa-2.0-api</artifactId> -->
+<!--     		<version>1.0.1.Final</version> -->
+<!-- 		</dependency> -->
+
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<ejbVersion>3.0</ejbVersion>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${endorsed.dir}</outputDirectory>
+							<silent>true</silent>
+							<artifactItems>
+								<artifactItem>
+									<groupId>javax</groupId>
+									<artifactId>javaee-endorsed-api</artifactId>
+									<version>6.0</version>
+									<type>jar</type>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		</pluginManagement>
+	</build>
+	
+</project>

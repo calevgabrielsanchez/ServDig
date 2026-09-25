@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subReporteD" pageWidth="554" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="554" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.610510000000001"/>
+	<property name="ireport.x" value="3"/>
+	<property name="ireport.y" value="0"/>
+	<style name="MOV_AFILIATORIO"/>
+	<parameter name="MT_AC_REINGRESO" class="java.lang.String"/>
+	<parameter name="MT_AC_MOD_SALARIO" class="java.lang.String"/>
+	<parameter name="MT_AC_BAJA" class="java.lang.String"/>
+	<field name="nrp" class="java.lang.String">
+		<fieldDescription><![CDATA[nrp]]></fieldDescription>
+	</field>
+	<field name="fechaFinalMovimiento" class="java.util.Date">
+		<fieldDescription><![CDATA[fechaFinalMovimiento]]></fieldDescription>
+	</field>
+	<field name="tipoMovimientoFinal.idTipoMvtoAsegurado" class="java.lang.Long">
+		<fieldDescription><![CDATA[tipoMovimientoFinal.idTipoMvtoAsegurado]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="11" width="212" height="34"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Último movimiento afiliatorio registrado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="25" width="45" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Reingreso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="25" width="94" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Modificación de Salario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="25" width="25" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Baja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="11" width="163" height="34"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Registro Patronal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="11" width="179" height="34"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de movimiento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="35" width="26" height="10"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[AAAA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="441" y="35" width="13" height="10"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[MM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="429" y="35" width="12" height="10"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[DD]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="275" y="25" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nrp}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="429" y="21" width="100" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaFinalMovimiento}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="3" y="30" width="10" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{tipoMovimientoFinal.idTipoMvtoAsegurado}==1L || $F{tipoMovimientoFinal.idTipoMvtoAsegurado}==8L) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="167" y="30" width="10" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{tipoMovimientoFinal.idTipoMvtoAsegurado}==2L ) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="60" y="30" width="10" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{tipoMovimientoFinal.idTipoMvtoAsegurado}==7L ) ? "X" : ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="58" y="25" width="13" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[[   ]]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="164" y="25" width="13" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[[   ]]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="25" width="13" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[[   ]]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

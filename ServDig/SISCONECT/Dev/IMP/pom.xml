@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>mx.gob.imss.ctirss.correccion</groupId>
+	<artifactId>correccion</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+
+
+	<name>Sistema  Correccion  IMSS</name>
+	<url>http://www.imss.gob.mx/instituto/Directorio/ctirss.htm</url>
+	<build>
+		<!-- To define the plugin version in your parent POM -->
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<skipTests>true</skipTests>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<!-- for use JVM 1.5 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<modules>
+		<module>correccion-framework-base</module>
+		<module>correccion-model-business-pojo</module>
+		<module>correccion-service-business-interface</module>
+		<module>correccion-service-business-ejb</module>
+		<module>correccion-web</module>
+		<module>correccionVentanilla-web</module>
+		<module>correccion-packing</module>
+		<module>correccion-packing-web</module>
+		<module>correccion-commons</module>
+		<module>gestionCorreccion-widget-web</module>
+	</modules>
+
+	<repositories>
+		<repository>
+			<id>repo</id>
+			<name>Respositorio Central IMSS</name>
+			<url>http://172.16.5.134:8080/repository/repo/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>repo</id>
+			<name>Respositorio Central IMSS</name>
+			<url>http://172.16.5.134:8080/repository/repo/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+
+</project>

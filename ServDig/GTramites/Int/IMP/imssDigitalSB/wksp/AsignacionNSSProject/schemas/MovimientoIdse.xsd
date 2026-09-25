@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.mx.gob.imss.ctirss.delta.idse/idse_schema"
+    xmlns:tns="http://www.mx.gob.imss.ctirss.delta.idse/idse_schema"
+    elementFormDefault="qualified">
+    <complexType name="IdseReingresoBajaType">
+        <sequence>
+            <element name="registroPatronal" type="string"></element>
+            <element name="digitoVerificadorRP" type="int"></element>
+            <element name="folioArchivo" type="string"></element>
+            <element name="nSS" type="int"></element>
+            <element name="digitoVerificadorNSS" type="int"></element>
+            <element name="primerApellido" type="string"></element>
+            <element name="segundoApellido" type="string"></element>
+            <element name="nombreDelEstudiante" type="string"></element>
+            <element name="salarioDiarioIntegrado" type="int"></element>
+            <element name="campoEnBlanco" type="string"></element>
+            <element name="tipoDeTrabajador" type="int"></element>
+            <element name="tipoDeSalario" type="int"></element>
+            <element name="semanaOJornadaReducida" type="int"></element>
+            <element name="fechaDelMovimiento" type="int"></element>
+            <element name="unidadDeMedicinaFamiliar" type="int"></element>
+            <element name="campoEnBlanco2" type="string"></element>
+            <element name="tipoDeMovimiento" type="int"></element>
+            <element name="campoEnBlanco3" type="string"></element>
+            <element name="claveTrabajador" type="string"></element>
+            <element name="causaDebaja" type="string"></element>
+            <element name="curp_o_Rfc" type="string"></element>
+            <element name="idFormato" type="int"></element>
+        </sequence>
+    </complexType>
+    <element name="MovimientoIdse" type="tns:IdseReingresoBajaType"/>
+</schema>

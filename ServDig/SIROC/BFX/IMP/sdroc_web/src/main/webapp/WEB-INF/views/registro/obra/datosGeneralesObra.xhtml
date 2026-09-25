@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<div id="datosGeneralesDiv" th:fragment="pageDatosGeneralesObra">
+	<div class="row">
+	<div class="col-sm-12">
+	<div class="panel panel-default" style="padding-left: 0px !important; padding-right: 0px !important;">
+		<div class="panel-heading">
+			<strong>Paso 4.</strong> 
+			<small class="text-muted">Proporcione los datos generales de la obra. </small>
+		</div>
+		<div class="panel-body text-center" style="min-height: 400px;">
+			<input type="text" readonly="readonly" class="hidden"></input>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-12">
+									<h6 id="fechasEjecucion" class="center" th:text="#{reg.obra.periodo}"></h6>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-6">
+									<label class="control-label col-md-3 text-left small"
+										for="fecInicio" id="idLabelFechaIni">Fecha de inicio *:</label>
+										<div class="form-group datepicker-group">
+											<input class="form-control input-sm" id="fecInicio" type="text"
+												maxlength="10" readonly="readonly"
+												style="background: white; cursor: default !important;"><span
+												class="glyphicon glyphicon-calendar input-sm"
+												aria-hidden="true"/></input>
+											<p id="msgeFecIni" class="text-left small red hidden"
+											th:text="#{reg.incidencia.sel.fecha.inicio}"
+											style="padding-top: 5p; padding-bottom: 5px" />
+										</div>
+										
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label class="control-label col-md-3 small"
+											for="fecTermino" id="idLabelFechaFin">Fecha de t&eacute;rmino *:</label>
+											<div class="form-group datepicker-group">
+												<input class="form-control input-sm" id="fecTermino"
+													type="text" maxlength="10" readonly="readonly"
+													style="background: white; cursor: default !important;"><span
+													class="glyphicon glyphicon-calendar input-sm"
+													aria-hidden="true"/></input>
+													<p id="msgeFecFin" class="text-left small red hidden"
+											th:text="#{reg.incidencia.sel.fecha.termino}"
+											style="padding-top: 5px; padding-bottom: 5px"></p>
+											</div>
+											
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="alert alert-info small" th:text="#{info.cantidadesobrasuperficie}">
+			</div>
+			<div class="row">
+			<div class="col-sm-12">
+			<form class="form form-horizontal" role="form">
+			<div id="pnlObjetoContrato" class="form-group">
+				<label class="control-label col-sm-4 text-left small" for="tipoObra" id="idLabObjeto">Objeto del Contrato *:</label>
+				<div class="col-sm-5">
+					<select class="form-control input-sm" id="selObjetoContrato">
+						<option value="0" th:text="#{reg.obra.default.select}"></option>
+						<option th:each="objetoContrato : ${objetosContrato}" th:value="${objetoContrato.cveObjetoContrato}" th:text="${objetoContrato.desObjetoContrato}"></option>
+					</select>
+					<p id="msgeObjetoContrato" class="red hidden small text-left" th:text="#{reg.obra.error.objeto.contrato}" />
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+
+			<div id="pnlObjetoContratoSubEsp" class="form-group" style="margin-bottom: auto">
+				<div>
+					<div class="col-sm-4">
+						<div class="row">
+							<div class="col-sm-12">
+								<label class="control-label text-left small" for="txtObjetoContratoSubEsp"
+									   id="idLabObjetoContratoSubEsp">Objeto de la obra especializada a
+									ejecutar*:</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+
+						<div class="input-group">
+							<input id="txtObjetoContratoSubEsp" type="text" class="form-control input-sm"
+								   aria-label="Amount (to the nearest dollar)"
+								   placeholder="Objeto de la obra" maxlength="120"></input>
+						</div>
+						<p id="msgeObjetoContratoSubEsp" class="red hidden small text-left"
+						   th:text="#{reg.obra.error.objeto.contratoSubEsp}"/>
+					</div>
+					<div class="col-sm-3"></div>
+				</div>
+			</div>
+
+			<div id="infoObjetoContratoSE" class="form-group">
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-sm-12">
+							<p id="msgeCapturaOCSubEsp" class="control-label text-left small"
+							   th:text="#{reg.obra.error.objeto.CapturaOCSubEsp}"/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+            <div id="pnlOtroObjContrato" class="form-group">
+                <label class="control-label col-sm-4 text-left small" for="pnlOtroObjContrato">Especifique objeto del contrato*:</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" id="otroObjetoContrato" placeholder="Especificaci&oacute;n del objeto del contrato" maxlength="300"></textarea>
+					<p id="msgeOtroObjetoContrato" class="red hidden small text-left" th:text="#{reg.obra.error.otro.objeto.contrato}" />
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-4 text-left small" for="monto" id="idLabMonto">Monto de la obra *:</label>
+				<div class="col-sm-5">
+					<div id="divMonto" class="input-group">
+						<span class="input-group-addon small"><small>$</small></span> 
+						<input id="txtMonto" type="text" class="form-control input-sm" aria-label="Amount (to the nearest dollar)" placeholder="Monto del contrato" maxlength="15"></input> 
+						<span class="input-group-addon"><small>MXN</small></span> 
+						<span id="errmsg"></span>
+					</div>
+					<p id="msgeMonto" class="red hidden small" style="text-align:left" th:text="#{reg.obra.error.monto.obra}" />
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+
+			<div id="pnlNumTrabajadores" class="form-group">
+				<label class="control-label col-sm-4 text-left small" for="txtNumTrabajadores">N&uacute;mero aproximado de trabajadores que participar&aacute;n en la ejecuci&oacute;n de la obra especializada*:</label>
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input id="txtNumTrabajadores" type="text" class="form-control input-sm" aria-label="Amount (to the nearest dollar)" placeholder="N&uacute;mero de trabajadores" maxlength="13"></input>
+					</div>
+					<p id="msgeNumTrabajadores" class="text-left red hidden small">Capture el n&uacute;mero aproximado de trabajadores.</p>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+
+			<div id="pnlNumRegSTPS" class="form-group">
+				<label class="control-label col-sm-4 text-left small" for="txtNumRegSTPS" id="idLabRepse">N&uacute;mero REPSE</label>
+				<div class="col-sm-6">
+					<div class="input-group">
+						<input id="txtNumRegSTPS" type="text" class="form-control input-sm" aria-label="Amount (to the nearest dollar)" placeholder="N&uacute;mero de REPSE" maxlength="50"></input>
+
+					</div>
+					<p id="msgeNumRegSTPS" class="text-left red hidden small">Capture n&uacute;mero de REPSE</p>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+
+			<div id="pnlSuperficie" class="form-group">
+				<label class="control-label col-sm-4 text-left small" for="superficie" id="idLabSuper" th:text="#{reg.obra.superficie}"></label>
+				<div class="col-sm-5">
+					<div class="input-group">
+						<input id="txtSuperficie" type="text" class="form-control input-sm" aria-label="Amount (to the nearest dollar)" placeholder="Superficie de construcci&oacute;n" maxlength="13"></input>
+						<span class="input-group-addon"><small>m2</small></span>
+					</div>
+					<p id="msgeSuperficie" class="text-left red hidden small" th:text="#{reg.obra.error.superficie}"></p>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+
+			<div id="pnlTipoObra" class="form-group">
+				<label class="control-label col-sm-4 text-left small" for="tipoObra" id="idLabObra">Tipo de obra *:</label>
+				<div class="col-sm-5">
+					<select class="form-control input-sm" id="selTipoObra">
+						<option value="0" th:text="#{reg.obra.default.select}"></option>
+						<!-- 							<option th:each="tipoObra : ${tiposObra}" th:value="${tipoObra.cveTipoObra}" th:text="${tipoObra.desTipoObra}"></option> -->
+					</select>
+					<p id="msgeTipoObra" class="red hidden small" style="text-align:left">Seleccione tipo de obra</p>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+
+			<div id="numProcedimiento" class="form-group hidden">
+				<label class="control-label col-sm-4 text-left small" for="txtNumProcedimiento" th:text="#{reg.obra.num.procedimiento}" id="idLaProcedimiento"> : </label>
+				<div class="col-sm-5">
+					<div class="input-group">
+						<input id="txtNumProcedimiento" type="text" class="form-control input-sm" aria-label="Amount (to the nearest dollar)"
+							placeholder="N&uacute;mero de procedimiento" maxlength="26"></input>
+						<span class="input-group-addon"><small>#</small></span>
+					</div>
+					<p id="msgeNumProcedimiento" class="red hidden small" th:text="#{reg.obra.num.licitacion}"  style="text-align:left"></p>
+					<p id="msgeNumProcedimientoCaracteres" class="red hidden small" th:text="#{reg.obra.num.licitacion.caracteres}" style="text-align:left"></p>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+
+			<div id="numAviso" class="form-group hidden">
+				<label class="control-label col-sm-4 small text-left" for="txtNumAviso" th:text="#{reg.obra.num.aviso.ubicacion}"></label> 
+				<div class="col-sm-5">
+					<div class="input-group">
+						<input id="txtNumAviso" type="text" class="form-control input-sm" aria-label="Amount (to the nearest dollar)" placeholder="N&uacute;mero de aviso" maxlength="8"/>
+						<span class="input-group-addon"><small>#</small></span>
+					</div>
+					<p id="msgeNumAviso" class="red hidden small"  style="text-align:left">Capture el No. de Aviso</p>
+				</div>
+				<div class="col-sm-3">
+				</div>
+			</div>
+
+			<div id="pnlObservaciones" class="form-group">
+				<label class="control-label col-sm-4 text-left small" id="observaciones" for="comment">
+					Observaciones del registro de obra :
+				</label>
+				<div class="col-sm-6">
+					<textarea class="form-control" id="comment" placeholder="Observaciones del registro de obra" maxlength="300"></textarea>
+					<p id="msgeObervaciones" class="red hidden small" style="text-align:left">Error de formato</p>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+			</form>
+			</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4 text-left">
+			<p id="lblObligatorios" class="small">* Campos obligatorios.</p>
+		</div>
+		<div class="col-sm-8 text-right">
+			<button class="btn btn-default btn-sm" id="btnRegresarEscritorio" onclick="reiniciarValores();uid_call('imss.patrones.registro_obra.datos_generales.btn_cancelar','clickin')">Cancelar</button>
+			<button id="btnDatosObra" class="btn btn-primary btn-sm pull-right" style="margin-left:5px" type="button">Registrar Obra</button>
+		</div>
+	</div>
+	<div id="regObraModal"></div>
+	<div id="firmaDigitalComponent" class="modal fade"></div>
+
+</div>
+</html>

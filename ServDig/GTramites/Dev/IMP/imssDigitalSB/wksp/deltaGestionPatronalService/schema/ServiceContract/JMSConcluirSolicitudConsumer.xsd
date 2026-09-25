@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified"
+ attributeFormDefault="unqualified" targetNamespace="http://mx.gob.imss.delta.global.services/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ 	<xsd:element name="JMSProducer_Input">
+ 		<xsd:complexType>
+ 			<xsd:sequence>
+ 				<xsd:element name="FolioSolicitud" type="xsd:string"></xsd:element>
+ 			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

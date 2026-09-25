@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="registroSolicitudCDA" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" isSummaryWithPageHeaderAndFooter="true" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="title" class="java.lang.String"/>
+	<parameter name="homoclaveTramite" class="java.lang.String"/>
+	<parameter name="fechaPublicacionDOF" class="java.lang.String"/>
+	<parameter name="folio" class="java.lang.String"/>
+	<parameter name="fechaSolicitudTramite" class="java.lang.String"/>
+	<parameter name="NSS" class="java.lang.String"/>
+	<parameter name="CURP" class="java.lang.String"/>
+	<parameter name="RFC" class="java.lang.String"/>
+	<parameter name="NOMBRE" class="java.lang.String"/>
+	<parameter name="PRIMER_APELLIDO" class="java.lang.String"/>
+	<parameter name="SEGUNDO_APELLIDO" class="java.lang.String"/>
+	<parameter name="DIA_NACIMIENTO" class="java.lang.String"/>
+	<parameter name="MES_NACIMIENTO" class="java.lang.String"/>
+	<parameter name="ANIO_NACIMIENTO" class="java.lang.String"/>
+	<parameter name="ENTIDAD_FEDERATIVA" class="java.lang.String"/>
+	<parameter name="MUNICIPIO" class="java.lang.String"/>
+	<parameter name="ANIO_REGISTRO" class="java.lang.String"/>
+	<parameter name="NUM_LIBRO" class="java.lang.String"/>
+	<parameter name="NUM_ACTA" class="java.lang.String"/>
+	<parameter name="NUM_FOJA" class="java.lang.String"/>
+	<parameter name="NUM_TOMO" class="java.lang.String"/>
+	<parameter name="CRIP" class="java.lang.String"/>
+	<parameter name="NACIMIENTO_PAIS" class="java.lang.String"/>
+	<parameter name="CADENA_ORIGINAL" class="java.lang.String"/>
+	<parameter name="SELLO_DIGITAL" class="java.lang.String"/>
+	<parameter name="SECUENCIA_NOTARIAL" class="java.lang.String"/>
+	<parameter name="NUM_SERIE" class="java.lang.String"/>
+	<parameter name="OBSERVACIONES" class="java.lang.String"/>
+	<parameter name="ASG_COLONIA" class="java.lang.String"/>
+	<parameter name="ASG_CODIGO_POSTAL" class="java.lang.String"/>
+	<parameter name="ASG_CALLE" class="java.lang.String"/>
+	<parameter name="ASG_NUM_EXT" class="java.lang.String"/>
+	<parameter name="ASG_NUM_INT" class="java.lang.String"/>
+	<parameter name="ASG_LOCALIDAD" class="java.lang.String"/>
+	<parameter name="ASG_MUNICIPIO" class="java.lang.String"/>
+	<parameter name="ASG_ESTADO" class="java.lang.String"/>
+	<parameter name="ASG_TELEFONO_FIJO" class="java.lang.String"/>
+	<parameter name="ASG_TELEFONO_MOVIL" class="java.lang.String"/>
+	<parameter name="ASG_MAIL" class="java.lang.String"/>
+	<parameter name="titulo" class="java.lang.String"/>
+	<parameter name="folioSolicitud" class="java.lang.String"/>
+	<parameter name="fechaHoraRecepcion" class="java.lang.String"/>
+	<parameter name="cadenaOriginal" class="java.lang.String"/>
+	<parameter name="secuenciaNotarial" class="java.lang.String"/>
+	<parameter name="selloDigital" class="java.lang.String"/>
+	<parameter name="numeroSerie" class="java.lang.String"/>
+	<parameter name="fechaSolicitud" class="java.lang.String"/>
+	<parameter name="IMAGENES_DIR" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<parameter name="SEXO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="109" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="0" width="556" height="48"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR}+"header.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="48" width="554" height="48" forecolor="#000000" backcolor="#E7E8E7"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Instituto Mexicano del Seguro Social]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="83" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="553" height="83"/>
+				<subreportParameter name="IMAGENES_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMAGENES_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="titulo">
+					<subreportParameterExpression><![CDATA[$P{titulo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fechaHoraRecepcion">
+					<subreportParameterExpression><![CDATA[$P{fechaHoraRecepcion}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="secuenciaNotarial">
+					<subreportParameterExpression><![CDATA[$P{secuenciaNotarial}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="folioSolicitud">
+					<subreportParameterExpression><![CDATA[$P{folioSolicitud}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="selloDigital">
+					<subreportParameterExpression><![CDATA[$P{selloDigital}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fechaSolicitud">
+					<subreportParameterExpression><![CDATA[$P{fechaSolicitud}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="numeroSerie">
+					<subreportParameterExpression><![CDATA[$P{numeroSerie}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="cadenaOriginal">
+					<subreportParameterExpression><![CDATA[$P{cadenaOriginal}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "comprobanteSolicitudCDA.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="81">
+			<subreport>
+				<reportElement x="0" y="0" width="553" height="81"/>
+				<subreportParameter name="BNF_COLONIA"/>
+				<subreportParameter name="CADENA_ORIGINAL">
+					<subreportParameterExpression><![CDATA[$P{CADENA_ORIGINAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ASG_NUM_EXT"/>
+				<subreportParameter name="NOMBRE_PATRON"/>
+				<subreportParameter name="ASG_TELEFONO_FIJO">
+					<subreportParameterExpression><![CDATA[$P{ASG_TELEFONO_FIJO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fechaSolicitudTramite">
+					<subreportParameterExpression><![CDATA[$P{fechaSolicitudTramite}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MES_NACIMIENTO"/>
+				<subreportParameter name="ASG_COLONIA"/>
+				<subreportParameter name="BNF_CALLE"/>
+				<subreportParameter name="FECHA_INSCRIPCION"/>
+				<subreportParameter name="NO_REGISTRO_PATRONAL"/>
+				<subreportParameter name="NSS">
+					<subreportParameterExpression><![CDATA[$P{NSS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ASG_CALLE">
+					<subreportParameterExpression><![CDATA[$P{ASG_CALLE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ASG_LOCALIDAD">
+					<subreportParameterExpression><![CDATA[$P{ASG_LOCALIDAD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BNF_CODIGO_POSTAL"/>
+				<subreportParameter name="UMF"/>
+				<subreportParameter name="ANIO_REGISTRO">
+					<subreportParameterExpression><![CDATA[$P{ANIO_REGISTRO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NOMBRE">
+					<subreportParameterExpression><![CDATA[$P{NOMBRE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="homoclaveTramite">
+					<subreportParameterExpression><![CDATA[$P{homoclaveTramite}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BNF_TELEFONO_FIJO"/>
+				<subreportParameter name="BNF_ESTADO"/>
+				<subreportParameter name="BNF_LOCALIDAD"/>
+				<subreportParameter name="AP_PATERNO_MADRE"/>
+				<subreportParameter name="SEGUNDO_APELLIDO">
+					<subreportParameterExpression><![CDATA[$P{SEGUNDO_APELLIDO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BNF_CORREO_ELECTRONICO"/>
+				<subreportParameter name="RFC">
+					<subreportParameterExpression><![CDATA[$P{RFC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NUM_ACTA">
+					<subreportParameterExpression><![CDATA[$P{NUM_ACTA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="PRIMER_APELLIDO">
+					<subreportParameterExpression><![CDATA[$P{PRIMER_APELLIDO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BNF_TELEFONO_MOVIL"/>
+				<subreportParameter name="folio">
+					<subreportParameterExpression><![CDATA[$P{folio}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BNF_NUM_INTERIOR"/>
+				<subreportParameter name="BNF_NUM_EXTERIOR"/>
+				<subreportParameter name="NUM_TOMO">
+					<subreportParameterExpression><![CDATA[$P{NUM_TOMO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OBSERVACIONES">
+					<subreportParameterExpression><![CDATA[$P{OBSERVACIONES}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NOMBRE_AFORE"/>
+				<subreportParameter name="FECHA_BAJA"/>
+				<subreportParameter name="ASG_CODIGO_POSTAL"/>
+				<subreportParameter name="ENTIDAD_FEDERATIVA">
+					<subreportParameterExpression><![CDATA[$P{ENTIDAD_FEDERATIVA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BNF_CURP"/>
+				<subreportParameter name="NOMBRE_PADRE"/>
+				<subreportParameter name="NUM_LIBRO">
+					<subreportParameterExpression><![CDATA[$P{NUM_LIBRO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CURP">
+					<subreportParameterExpression><![CDATA[$P{CURP}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NACIMIENTO_PAIS">
+					<subreportParameterExpression><![CDATA[$P{NACIMIENTO_PAIS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="AP_MATERNO_PADRE"/>
+				<subreportParameter name="ENTIDAD_DONDE_LABORO"/>
+				<subreportParameter name="BNF_NOMBRES"/>
+				<subreportParameter name="ASG_TELEFONO_MOVIL">
+					<subreportParameterExpression><![CDATA[]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CRIP">
+					<subreportParameterExpression><![CDATA[$P{CRIP}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NUM_FOJA">
+					<subreportParameterExpression><![CDATA[$P{NUM_FOJA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMAGENES_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMAGENES_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BNF_RFC"/>
+				<subreportParameter name="title">
+					<subreportParameterExpression><![CDATA[$P{title}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fechaPublicacionDOF">
+					<subreportParameterExpression><![CDATA[$P{fechaPublicacionDOF}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ANIO_NACIMIENTO"/>
+				<subreportParameter name="NUM_SERIE">
+					<subreportParameterExpression><![CDATA[$P{NUM_SERIE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SELLO_DIGITAL">
+					<subreportParameterExpression><![CDATA[$P{SELLO_DIGITAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DIA_NACIMIENTO"/>
+				<subreportParameter name="MUNICIPIO">
+					<subreportParameterExpression><![CDATA[$P{MUNICIPIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ASG_MAIL">
+					<subreportParameterExpression><![CDATA[$P{ASG_MAIL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BNF_PRIMER_APELLIDO"/>
+				<subreportParameter name="AP_PATERNO_PADRE"/>
+				<subreportParameter name="BNF_SEGUNDO_APELLIDO"/>
+				<subreportParameter name="ASG_ESTADO">
+					<subreportParameterExpression><![CDATA[$P{ASG_ESTADO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NOMBRE_MADRE"/>
+				<subreportParameter name="ASG_NUM_INT"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ASG_MUNICIPIO"/>
+				<subreportParameter name="SECUENCIA_NOTARIAL">
+					<subreportParameterExpression><![CDATA[$P{SECUENCIA_NOTARIAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BNF_MUNICIPIO"/>
+				<subreportParameter name="AP_MATERNO_MADRE"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "SolicitudCorreccionDatosAsegurado.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="0" width="554" height="50"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR}+"footer.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

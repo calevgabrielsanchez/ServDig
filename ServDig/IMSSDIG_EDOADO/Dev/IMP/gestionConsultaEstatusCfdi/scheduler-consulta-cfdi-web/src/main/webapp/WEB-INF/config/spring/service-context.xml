@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    
+    <context:annotation-config />
+    
+    <bean id="procesoCronConsultaCfdiService" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="procesoCronConsultaCfdiServiceBusiness#mx.gob.imss.dacvass.scheduler.cron.remote.ProcesoCronConsultaCfdiServiceRemote"/>
+		<property name="businessInterface" value="mx.gob.imss.dacvass.scheduler.cron.remote.ProcesoCronConsultaCfdiServiceRemote"/>
+	</bean>
+    
+	<!-- CONFIGURACION NECESARIA PARA EJECUTAR EL CRON -->
+	<bean id="runMeTask" class="mx.gob.imss.dacvass.scheduler.cron.RunMeTask" />
+	
+	<bean id="schedulerService" class="mx.gob.imss.dacvass.scheduler.cron.SchedulerService">
+		<property name="runMeTask" ref="runMeTask" />
+	</bean>
+ 
+	<!-- Spring Quartz -->
+	<bean id="FirstTaskJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="schedulerService" />
+		<property name="targetMethod" value="executeFirstTask" />
+	</bean>
+	
+	<!-- Cron Trigger, run every 5 seconds -->
+	<!-- PUBLICACION -->
+	<bean id="cronTrigger1" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="FirstTaskJobDetail" />
+		<!-- EXPRESION PARA QUE SE EJECUTE CADA 4 HORAS -->
+		<property name="cronExpression" value="0 0 0/4 1/1 * ? *" />
+		<!-- EXPRESION PARA QUE SE EJECUTE CADA 50 SEGUNDOS -->
+<!-- 		<property name="cronExpression" value="*/50 * * 1/1 * ? *" /> -->
+		<!-- EXPRESION PARA QUE SE EJECUTE CADA 2 MINUTOS -->
+<!-- 		<property name="cronExpression" value="0 */2 * ? * *" /> -->
+	</bean>
+ 
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean="FirstTaskJobDetail" />
+			</list>
+		</property>
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger1" />
+			</list>
+		</property>
+	</bean>
+	
+</beans>

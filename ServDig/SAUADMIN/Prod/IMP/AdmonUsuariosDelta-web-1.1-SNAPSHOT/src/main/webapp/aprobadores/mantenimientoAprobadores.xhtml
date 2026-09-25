@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="../plantillas/plantilla.xhtml">
+	<ui:define name="body">
+		<div class="wp-caption-text">
+			<h3>Registro de aprobadores</h3>
+		</div>
+		<h:form id="mantoApro">
+			<fieldset style="margin: 0; padding: 10px; font-size: 10px;">
+				<div>
+
+					<ace:panel header="Datos Generales">
+
+						<h:panelGrid id="pnRegSolicitudCuentaCrPre3" columns="6"
+							width="100%">
+
+							<h:outputLabel value="Delegación:   "
+								id="lbDelRegSolicitudCuenta" />
+							<h:selectOneMenu id="slDelRegSolicitudCuenta" required="false"
+								requiredMessage="SELECCIONE LA DELEGACION"
+								disabled="#{mantenimientoAprobadores.fgDeleg}"
+								value="#{mantenimientoAprobadores.claveDelegacion}"
+								valueChangeListener="#{mantenimientoAprobadores.actualizaSolicitudesDel}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${mantenimientoAprobadores.lstDelegacion}" />
+								<f:ajax event="change" render="slUMFRegSolicitudCuenta usuarios aprobadores" />
+							</h:selectOneMenu>
+
+							<h:outputLabel value="SubDelegación:"
+								id="lbSubRegSolicitudCuenta" />
+							<h:selectOneMenu id="slSubRegSolicitudCuenta" required="false"
+								requiredMessage="SELECCIONE LA SUBDELEGACION"
+								disabled="#{mantenimientoAprobadores.fgSubdele}"
+								value="#{mantenimientoAprobadores.claveSubdelegacion}"
+								valueChangeListener="#{mantenimientoAprobadores.actualizaSolicitudesSubdel}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${mantenimientoAprobadores.lstSubDelegacion}" />
+								<f:ajax event="change" render="slUMFRegSolicitudCuenta usuarios aprobadores" />
+							</h:selectOneMenu>
+
+							<h:outputLabel value="UMF: " id="lbUMFRegSolicitudCuenta" />
+							<h:selectOneMenu id="slUMFRegSolicitudCuenta"
+								disabled="#{mantenimientoAprobadores.fgUmf}"
+								value="#{mantenimientoAprobadores.claveUMF}"
+								valueChangeListener="#{mantenimientoAprobadores.actualizaSolicitudesUmf}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${mantenimientoAprobadores.lstUMF}" />
+								<f:ajax event="change" render="slUMFRegSolicitudCuenta usuarios aprobadores" />
+							</h:selectOneMenu>
+
+							<h:outputLabel value="Área Normativa:"
+								id="lbAreaNormRegSolicitudCuenta" />
+							<h:selectOneMenu id="slAreaNormRegSolicitudCuenta"
+								required="false" requiredMessage="SELECCIONE EL AREA NORMATIVA"
+								disabled="#{mantenimientoAprobadores.flag}"
+								value="#{mantenimientoAprobadores.claveAreaNormativa}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems
+									value="${mantenimientoAprobadores.lstAreaNormativa}" />
+							</h:selectOneMenu>
+
+							<h:outputLabel value="Departamento:" id="lbDepRegSolicitudCuenta" />
+							<h:selectOneMenu id="slDepRegSolicitudCuenta" required="false"
+								requiredMessage="SELECCIONE EL DEPARTAMENTO"
+								disabled="#{mantenimientoAprobadores.flag}"
+								value="#{mantenimientoAprobadores.claveDepartamento}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems
+									value="${mantenimientoAprobadores.lstDepartamento}" />
+							</h:selectOneMenu>
+
+							<h:outputLabel value="Puesto:" id="lbPuestoRegSolicitudCuenta" />
+							<h:selectOneMenu id="slPuestoRegSolicitudCuenta" required="false"
+								requiredMessage="SELECCIONE EL PUESTO"
+								disabled="#{mantenimientoAprobadores.flag}"
+								value="#{mantenimientoAprobadores.clavePuesto}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${mantenimientoAprobadores.lstPuesto}" />
+							</h:selectOneMenu>
+
+
+						</h:panelGrid>
+
+						<h:panelGrid id="pnRegSolicitudCuentaC" columns="1" width="100%">
+							<h:message for="slAreaNormRegSolicitudCuenta"
+								id="msgAreaNormRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slDepRegSolicitudCuenta"
+								id="msgDepRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slPuestoRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slDelRegSolicitudCuenta"
+								id="msgDelRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slSubRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slUMFRegSolicitudCuenta" errorClass="error"></h:message>
+						</h:panelGrid>
+
+						<h:panelGrid id="buttons" columns="1" width="100%" style="text-align: center">
+							<h:commandButton action="#{mantenimientoAprobadores.actualiza}" value= "Consulta cuentas de usuario" styleClass="mboton" onclick="bloquea();"/>
+						</h:panelGrid>
+
+					</ace:panel>
+
+					<br/>
+					<br/>
+
+					<h:panelGrid id="usus" columns="1" width="100%" style="text-align: center">
+						<ace:panel header="Cuentas de usuarios disponibles">
+							<style type="text/css">
+							/* Important required because row */
+							.ui-datatable-odd {
+								background-color: lightgray !important;
+								background-position-y: -1400px; /* IE7 hack */
+							}
+							</style>
+							<ace:dataTable id="usuarios"
+								value="#{mantenimientoAprobadores.solicitudes}" var="result"
+								paginator="true" paginatorPosition="both"
+								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+								page="1" rows="10" stateMap="${mantenimientoAprobadores.usr}"
+								selectionMode="single"
+								rowSelectListener="${mantenimientoAprobadores.agregaAprobador}">
+								<ace:ajax event="select" execute="@this mantoApro:aprobadores"
+									render="@this mantoApro:aprobadores" />
+								<ace:column id="curp">
+									<f:facet name="header">
+										<h:outputText value="CURP" />
+									</f:facet>
+									<h:outputText id="idCurp" value="#{result.solicitud.desUsrCurp}" />
+								</ace:column>
+								<ace:column id="matricula">
+									<f:facet name="header">
+										<h:outputText value="Matricula" />
+									</f:facet>
+									<h:outputText id="idMat" value="#{result.matricula}" />
+								</ace:column>
+								<ace:column id="nombre">
+									<f:facet name="header">
+										<h:outputText value="Nombre" />
+									</f:facet>
+									<h:outputText id="idNom"
+										value="#{result.solicitud.nombreCompleto}" />
+								</ace:column>
+								<ace:column id="area">
+									<f:facet name="header">
+										<h:outputText value="Área normativa" />
+									</f:facet>
+									<h:outputText id="idArea"
+										value="#{result.solicitud.areaNorm.desAreanorma}" />
+								</ace:column>
+								<ace:column id="del">
+									<f:facet name="header">
+										<h:outputText value="Delegación" />
+									</f:facet>
+									<h:outputText id="idDel"
+										value="#{result.solicitud.delDTO.nombreDelegacion}" />
+								</ace:column>
+								<ace:column id="subdel">
+									<f:facet name="header">
+										<h:outputText value="Subdelegación" />
+									</f:facet>
+									<h:outputText id="idSubdel"
+										value="#{result.solicitud.subdelDTO.nombreSubelegacion}" />
+								</ace:column>
+								<ace:column id="umf">
+									<f:facet name="header">
+										<h:outputText value="UMF" />
+									</f:facet>
+									<h:outputText id="idUmf"
+										value="#{result.solicitud.umfDTO.nombreUmf}" />
+								</ace:column>
+							</ace:dataTable>
+						</ace:panel>
+					</h:panelGrid>
+					<h:panelGrid id="buttons1" columns="1" width="100%" style="text-align: center">
+						<h:commandButton action="#{mantenimientoAprobadores.otogarPermisos}" value= "Otorgar permisos de aprobador" styleClass="mboton" onclick="bloquea();" />
+					</h:panelGrid>
+					
+					<h:panelGrid id="space" columns="1">
+						<h:graphicImage value="../imagenes/blanco1.png" style="width: 143px; " />
+					</h:panelGrid>
+					
+					<h:panelGrid id="aprs" columns="1" width="100%" style="text-align: center" >
+						<ace:panel header="Aprobadores Autorizados">
+							<style type="text/css">
+							/* Important required because row */
+							.ui-datatable-odd {
+								background-color: lightgray !important;
+								background-position-y: -1400px; /* IE7 hack */
+							}
+							</style>
+							<ace:dataTable id="aprobadores"
+								value="#{mantenimientoAprobadores.aprobadores}" var="result"
+								paginator="true" paginatorPosition="both"
+								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+								page="1" rows="10" stateMap="${mantenimientoAprobadores.apr}"
+								selectionMode="single"
+								rowSelectListener="${mantenimientoAprobadores.agregaUsuario}"
+								>
+								<ace:ajax event="select" execute="@this mantoApro:usuarios"
+									render="@this mantoApro:usuarios" />
+								<ace:column id="curp">
+									<f:facet name="header">
+										<h:outputText value="CURP" />
+									</f:facet>
+									<h:outputText id="idCurp" value="#{result.solicitud.desUsrCurp}" />
+								</ace:column>
+								<ace:column id="matricula">
+									<f:facet name="header">
+										<h:outputText value="Matricula" />
+									</f:facet>
+									<h:outputText id="idMat" value="#{result.matricula}" />
+								</ace:column>
+								<ace:column id="nombre">
+									<f:facet name="header">
+										<h:outputText value="Nombre" />
+									</f:facet>
+									<h:outputText id="idNom"
+										value="#{result.solicitud.nombreCompleto}" />
+								</ace:column>
+								<ace:column id="area">
+									<f:facet name="header">
+										<h:outputText value="Área normativa" />
+									</f:facet>
+									<h:outputText id="idArea"
+										value="#{result.solicitud.areaNorm.desAreanorma}" />
+								</ace:column>
+								<ace:column id="del">
+									<f:facet name="header">
+										<h:outputText value="Delegación" />
+									</f:facet>
+									<h:outputText id="idDel"
+										value="#{result.solicitud.delDTO.nombreDelegacion}" />
+								</ace:column>
+								<ace:column id="subdel">
+									<f:facet name="header">
+										<h:outputText value="Subdelegación" />
+									</f:facet>
+									<h:outputText id="idSubdel"
+										value="#{result.solicitud.subdelDTO.nombreSubelegacion}" />
+								</ace:column>
+								<ace:column id="umf">
+									<f:facet name="header">
+										<h:outputText value="UMF" />
+									</f:facet>
+									<h:outputText id="idUmf"
+										value="#{result.solicitud.umfDTO.nombreUmf}" />
+								</ace:column>
+							</ace:dataTable>
+						</ace:panel>
+					</h:panelGrid>
+					<h:panelGrid id="buttons2" columns="1" width="100%" style="text-align: center">
+						<h:commandButton action="#{mantenimientoAprobadores.revocarPermisos}" value= "Revocar permisos de aprobador" styleClass="mboton" onclick="bloquea();" />
+					</h:panelGrid>
+				</div>
+			</fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

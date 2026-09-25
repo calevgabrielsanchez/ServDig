@@ -1,0 +1,38 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+attributeFormDefault="unqualified" targetNamespace="http://mx.gob.imss.email.model"
+xmlns:email="http://mx.gob.imss.email.model">
+<xsd:complexType name="ContentType">
+<xsd:sequence>
+<xsd:element name="MimeType" type="xsd:string" default="text/plain" minOccurs="0"/>
+<xsd:element name="ContentBody" type="xsd:string"/>
+<xsd:element name="ContentEncoding" type="xsd:string" nillable="true"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="EmailPayloadType">
+<xsd:sequence>
+<xsd:element name="FromAccountName" type="xsd:string" minOccurs="0"/>
+<xsd:element name="To" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ReplyToAddress" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Subject" type="xsd:string"/>
+<xsd:element name="Content" type="xsd:string"/>
+<xsd:element name="ContentType" type="xsd:string"/>
+<xsd:element name="Cc" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Bcc" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Parameters">
+	  <xsd:complexType>
+	    <xsd:sequence>
+	      <xsd:element name="entry" maxOccurs="unbounded" minOccurs="0">
+	        <xsd:complexType>
+	          <xsd:sequence>
+	            <xsd:element type="xsd:string" name="key"/>
+	            <xsd:element type="xsd:string" name="value"/>
+	          </xsd:sequence>
+	        </xsd:complexType>
+	      </xsd:element>
+	    </xsd:sequence>
+	  </xsd:complexType>
+	</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:element name="EmailPayload" type="email:EmailPayloadType"/>
+</xsd:schema>

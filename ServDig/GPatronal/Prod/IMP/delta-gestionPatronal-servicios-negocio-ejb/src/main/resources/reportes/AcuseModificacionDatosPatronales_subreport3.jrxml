@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AcuseModificacionDatosPatronales_subreport3" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" scriptletClass="mx.gob.imss.ctirss.delta.gestion.patronal.service.business.reporte.UtilityReportes">
+	<import value="mx.gob.imss.ctirss.delta.gestion.patronal.service.business.reporte.UtilityReportes"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="personaFisica" class="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica">
+		<fieldDescription><![CDATA[personaFisica]]></fieldDescription>
+	</field>
+	<field name="mediosContacto" class="java.util.List">
+		<fieldDescription><![CDATA[mediosContacto]]></fieldDescription>
+	</field>
+	<field name="cveIdTipoPoder" class="java.lang.Long">
+		<fieldDescription><![CDATA[cveIdTipoPoder]]></fieldDescription>
+	</field>
+	<field name="indActAdmonDominio" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[indActAdmonDominio]]></fieldDescription>
+	</field>
+	<field name="accion" class="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoAccionAfectacionEnum"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="103" splitType="Stretch">
+			<textField>
+				<reportElement x="135" y="24" width="260" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{personaFisica}.getCurp()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="135" y="35" width="260" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{personaFisica}.getNombre()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="91" width="254" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[CON PODER PARA REALIZAR ACTOS DE ADMINISTRACION O DOMINIO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="135" y="12" width="260" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{personaFisica}.getRfc()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="68" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[DATOS CONTACTO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="57" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[SEGUNDO APELLIDO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="35" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[NOMBRE(S):]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="135" y="46" width="260" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{personaFisica}.getPrimerApellido()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="135" y="69" width="356" height="21"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{REPORT_SCRIPTLET}.getListMediosContacto($F{mediosContacto})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="24" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[CURP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="12" width="100" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[RFC - HOMOCLAVE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="46" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[PRIMER APELLIDO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="135" y="57" width="260" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{personaFisica}.getSegundoApellido()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="258" y="90" width="106" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{indActAdmonDominio} == null || $F{indActAdmonDominio}.intValueExact() == 0) ? "NO" : "SI"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="1" width="100" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[TIPO DE MOVIMIENTO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="135" y="1" width="260" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{accion}.name()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

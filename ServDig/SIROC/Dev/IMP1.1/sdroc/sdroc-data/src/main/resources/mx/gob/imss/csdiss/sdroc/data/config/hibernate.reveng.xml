@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-schema="public" match-name="roc_calendario_reporte"/>
+  <table-filter match-schema="public" match-name="roc_delegacion"/>
+  <table-filter match-schema="public" match-name="roc_subdelegacion"/>
+  <table-filter match-schema="public" match-name="roc_tipo_incidencia"/>
+  <table-filter match-schema="public" match-name="roc_tipo_obra"/>
+  <table-filter match-schema="public" match-name="roc_tipo_patron"/>
+  <table-filter match-schema="public" match-name="roc_tipo_persona"/>
+  <table-filter match-schema="public" match-name="roc_tipo_registro"/>
+  <table-filter match-schema="public" match-name="rot_informacion_incidencia"/>
+  <table-filter match-schema="public" match-name="rot_informacion_obra"/>
+  <table-filter match-schema="public" match-name="rot_informacion_patron"/>
+  <table-filter match-schema="public" match-name="rot_reporte_bimestral_obra"/>
+  <table-filter match-schema="public" match-name="rot_ubicacion_obra"/>
+</hibernate-reverse-engineering>

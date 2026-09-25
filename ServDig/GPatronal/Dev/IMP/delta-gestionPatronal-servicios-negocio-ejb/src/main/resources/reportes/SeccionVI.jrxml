@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SecccionVI" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Titulo Aviso" hAlign="Left" fontSize="13" isBold="true" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="base" fontSize="7" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="fondo" backcolor="#00CCFF"/>
+	<style name="fondoEncabezado" backcolor="#0000FF"/>
+	<style name="Titulo Encabezado" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="baseBold" fontSize="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+	<style name="vineta" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="P_REGPATRONAL" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[descripcion]]></fieldDescription>
+	</field>
+	<columnHeader>
+		<band height="30">
+			<line>
+				<reportElement x="0" y="0" width="554" height="1"/>
+			</line>
+			<rectangle>
+				<reportElement x="0" y="15" width="554" height="15" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement style="base" x="5" y="15" width="320" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IV.1. Principales productos elaborados o servicios prestados:]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement style="fondoEncabezado" x="0" y="0" width="554" height="15" backcolor="#0070C0"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement style="Titulo Encabezado" x="0" y="0" width="554" height="15" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[IV. Datos de la actividad económica que declara]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement x="554" y="0" width="1" height="30"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30">
+			<rectangle>
+				<reportElement x="0" y="0" width="554" height="30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="baseBold" x="5" y="0" width="544" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement x="554" y="0" width="1" height="30"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="3">
+			<line>
+				<reportElement x="0" y="0" width="554" height="1"/>
+			</line>
+		</band>
+	</columnFooter>
+</jasperReport>

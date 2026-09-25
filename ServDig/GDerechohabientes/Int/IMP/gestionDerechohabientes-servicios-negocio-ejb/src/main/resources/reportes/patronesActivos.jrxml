@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ServiciosAsegurado" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="4.715895382000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="registroPatronal" class="java.lang.String"/>
+	<field name="modalidad" class="java.lang.String"/>
+	<field name="nombreRazonSocial" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="19" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="180" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Registro Patronal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="0" width="182" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Modalidad]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="552" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="18" width="552" height="1"/>
+			</line>
+			<line>
+				<reportElement x="180" y="1" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement x="362" y="1" width="1" height="18"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="397" y="3" width="0" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+			</textField>
+			<staticText>
+				<reportElement x="363" y="2" width="188" height="14"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nombre o razón social]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="180" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{registroPatronal}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="181" y="0" width="181" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{modalidad}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="364" y="0" width="188" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombreRazonSocial}]]></textFieldExpression>
+			</textField>
+			<line direction="BottomUp">
+				<reportElement x="180" y="0" width="1" height="15"/>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="362" y="0" width="1" height="15"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

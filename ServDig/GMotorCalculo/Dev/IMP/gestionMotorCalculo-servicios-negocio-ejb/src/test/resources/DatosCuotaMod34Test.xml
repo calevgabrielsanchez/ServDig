@@ -1,0 +1,20 @@
+<mx:datosCalculoCuota xmlns:mx="http://mx.gob.imss.digital.modelo.cobranza">
+    <fechaInicioCalculo>2017-12-01T17:00:02.289-06:00</fechaInicioCalculo>
+    <fechaFinCalculo>2018-11-30T17:00:02.289-06:00</fechaFinCalculo>
+    <numeroRegistroPatronal/>
+    <modalidad>23</modalidad>
+    <zonaSalarial>A</zonaSalarial>
+    <renovacion>false</renovacion>
+    <empleados>
+        <numeroSeguridadSocial>01015900051</numeroSeguridadSocial>
+        <salario xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+        <edad>0</edad>
+        <curp/>
+        <aplicaCuestionario>false</aplicaCuestionario>
+        <inscripcion>false</inscripcion>
+        <individual>false</individual>
+    </empleados>
+    <aplicaCuestionario>false</aplicaCuestionario>
+    <errorFormGeneral/>
+    <aplicaRecargoPorFechaBaja>false</aplicaRecargoPorFechaBaja>
+</mx:datosCalculoCuota>

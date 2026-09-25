@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:derechohabiente="http://mx.gob.imss.digital.modelo.derechohabiente"
+	xmlns:domicilio="http://mx.gob.imss.digital.modelo.domicilio"
+	targetNamespace="http://mx.gob.imss.digital.modelo.derechohabiente"
+	version="1.0">
+
+	<xs:import namespace="http://mx.gob.imss.digital.modelo.domicilio" schemaLocation="domicilio.xsd" />
+
+	<xs:element name="unidadesMedicoFamiliar" type="derechohabiente:unidadesMedicoFamiliar" />
+	<xs:element name="unidadMedicoFamiliar" type="derechohabiente:unidadMedicoFamiliar" />
+	<xs:element name="tipoUMF" type="derechohabiente:tipoUMF" />
+	<xs:element name="clavePresupuestal" type="derechohabiente:clavePresupuestal" />
+	<xs:element name="nivelAtencion" type="derechohabiente:nivelAtencion" />
+
+	<xs:complexType name="unidadesMedicoFamiliar">
+		<xs:sequence>
+			<xs:element name="unidadMedicoFamiliar" type="derechohabiente:unidadMedicoFamiliar" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="unidadMedicoFamiliar">
+		<xs:sequence>
+			<xs:element name="subdelegacion" type="domicilio:subdelegacion" />
+			<xs:element name="tipoUMF" type="derechohabiente:tipoUMF" />
+			<xs:element name="clavePresupuestal" type="derechohabiente:clavePresupuestal" />
+			<xs:element name="nivelAtencion" type="derechohabiente:nivelAtencion" />
+			<xs:element name="idUMF" type="xs:long" />
+			<xs:element name="descripcion" type="xs:string" />
+			<xs:element name="generacionCita" type="xs:decimal" />
+			<xs:element name="noConsultorio" type="xs:decimal" />
+			<xs:element name="nombreCorto" type="xs:string" />
+			<xs:element name="noEconomico" type="xs:decimal" />
+			<xs:element name="desDireccion" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="tipoUMF">
+		<xs:sequence>
+			<xs:element name="idTipoUMF" type="xs:integer" />
+			<xs:element name="descripcion" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="clavePresupuestal">
+		<xs:sequence>
+			<xs:element name="idClavePresupuestal" type="xs:long" />
+			<xs:element name="descripcion" type="xs:string" />
+			<xs:element name="clavePresupuestalRecortada" type="xs:string" />
+			<xs:element name="clavePresupuestal" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="nivelAtencion">
+		<xs:sequence>
+			<xs:element name="idNivelAtencion" type="xs:long" />
+			<xs:element name="descripcion" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+    <artifactId>ClientesWebservices</artifactId>
+    <version>2.2</version>
+  </parent>
+  <groupId>mx.gob.imss.ws.buzontributario.individual</groupId>
+  <artifactId>ClientesWebservices-buzon-tributario</artifactId>
+  <name>ClientesWebservices-buzon-tributario</name>
+  <version>2.2</version>
+  <url>http://maven.apache.org</url>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>mx.gob.imss.ctirss.delta</groupId>
+      <artifactId>imssdigital-modelo</artifactId>
+      <version>${delta.framework.version}</version>
+      <type>jar</type>
+    </dependency>
+    <!-- Logger -->
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>${org.log4j.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Dependencia del Proyecto Base DELTA - Framework Base -->
+    <dependency>
+      <groupId>mx.gob.imss.ctirss.delta</groupId>
+      <artifactId>delta-framework-base</artifactId>
+      <version>${delta.framework.version}</version>
+      <type>jar</type>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Dependencia del Proyecto Base DELTA - Modelo Negocio -->
+    <dependency>
+      <groupId>mx.gob.imss.ctirss.delta</groupId>
+      <artifactId>delta-modelo-negocio</artifactId>
+      <version>${delta.framework.version}</version>
+      <type>jar</type>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <profiles>
+    <!--<profile>
+      <id>compile-stage</id>
+      <properties>
+      <mvn.version.ambiente>2.2-SNAPSHOT</mvn.version.ambiente>
+        <mvn.buzon.tributario.web.service.url>http://11.254.13.100:7001/WSBuzonTributario/WSBuzonTributario?WSDL</mvn.buzon.tributario.web.service.url>
+      </properties>
+    </profile> -->
+    <profile>
+    <!--<activation>
+        <activeByDefault>true</activeByDefault>
+      </activation> -->
+      <id>compile-prod</id>
+      <properties>
+      <mvn.version.ambiente>2.2</mvn.version.ambiente>
+        <mvn.buzon.tributario.web.service.url>http://adodigital.imss.gob.mx/WSBuzonTributario/WSBuzonTributario?WSDL</mvn.buzon.tributario.web.service.url>
+      </properties>
+    </profile>
+  </profiles>
+
+</project>

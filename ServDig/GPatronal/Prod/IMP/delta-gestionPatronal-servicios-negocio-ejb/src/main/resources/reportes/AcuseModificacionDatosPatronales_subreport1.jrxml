@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AcuseModificacionDatosPatronales_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="curp" class="java.lang.String">
+		<fieldDescription><![CDATA[curp]]></fieldDescription>
+	</field>
+	<field name="domicilioReporte" class="java.lang.String">
+		<fieldDescription><![CDATA[domicilioReporte]]></fieldDescription>
+	</field>
+	<field name="nombres" class="java.lang.String">
+		<fieldDescription><![CDATA[nombres]]></fieldDescription>
+	</field>
+	<field name="primerApellido" class="java.lang.String">
+		<fieldDescription><![CDATA[primerApellido]]></fieldDescription>
+	</field>
+	<field name="rfc" class="java.lang.String">
+		<fieldDescription><![CDATA[rfc]]></fieldDescription>
+	</field>
+	<field name="segundoApellido" class="java.lang.String">
+		<fieldDescription><![CDATA[segundoApellido]]></fieldDescription>
+	</field>
+	<field name="accion" class="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoAccionAfectacionEnum"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="92" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="42" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[NOMBRE(S):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="31" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[CURP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="7" width="100" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[TIPO DE MOVIMIENTO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="64" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[SEGUNDO APELLIDO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="75" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[DOMICILIO PARTICULAR:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="53" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[PRIMER APELLIDO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="19" width="100" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[RFC - HOMOCLAVE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="137" y="7" width="304" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{accion}.name()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="137" y="19" width="304" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{rfc}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="137" y="42" width="304" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="137" y="31" width="304" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{curp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="137" y="53" width="304" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{primerApellido}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="137" y="64" width="304" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{segundoApellido}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="137" y="75" width="304" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

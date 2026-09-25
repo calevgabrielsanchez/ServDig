@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://idtrust.metatrust.com.mx/WsIDTrust.wsdl" xmlns:xsd1="http://idtrust.metatrust.com.mx/WsIDTrust.xsd" name="WsIDTrust" targetNamespace="http://idtrust.metatrust.com.mx/WsIDTrust.wsdl">
+
+   <documentation>
+         Este documento describe los WS de IDTrust 
+
+            SolicitudCertificado   -
+            SolicitudSelloDigital  -
+
+            SolicitudSelloDigitalS -      
+      
+            ValidaFirma            -
+            ValidaFirmaDig         -
+            ValidaFirmaRuta        -
+            ValidaFirmaCMS         -
+            ValidaFirmaCMSDig      -
+            ValidaFirmaCMSRuta     -
+
+            CvesFirmaRegistra      -
+            CvesFirmaElimina       -
+                                
+   </documentation>
+
+   <types>
+      <xsd:schema>
+         <xsd:import namespace="http://idtrust.metatrust.com.mx/WsIDTrust.xsd" schemaLocation="http://firmadigital.imss.gob.mx/WsIDTrust/IDTrustService?xsd=1"/>
+      </xsd:schema>
+   </types>
+
+   <message name="FirmaRequest">
+      <part name="body" element="xsd1:FirmaRequest"/>
+   </message>
+
+   <message name="FirmaResponse">
+      <part name="body" element="xsd1:FirmaResponse"/>
+   </message>
+
+   <message name="FirmaSimpleRequest">
+      <part name="body" element="xsd1:FirmaSimpleRequest"/>
+   </message>
+
+   <message name="FirmaSimpleResponse">
+      <part name="body" element="xsd1:FirmaSimpleResponse"/>
+   </message>
+
+   <message name="CertificadoRequest">
+      <part name="body" element="xsd1:CertificadoRequest"/>
+   </message>
+
+   <message name="CertificadoResponse">
+      <part name="body" element="xsd1:CertificadoResponse"/>
+   </message>
+
+   <message name="GeneraCvesRequest">
+      <part name="body" element="xsd1:GeneraCvesRequest"/>
+   </message>
+
+   <message name="GeneraCvesResponse">
+      <part name="body" element="xsd1:GeneraCvesResponse"/>
+   </message>
+
+   <message name="ConfirmaCvesRequest">
+      <part name="body" element="xsd1:ConfirmaCvesRequest"/>
+   </message>
+
+   <message name="ConfirmaCvesResponse">
+      <part name="body" element="xsd1:ConfirmaCvesResponse"/>
+   </message>
+
+   <message name="RegistraCvesRequest">
+      <part name="body" element="xsd1:RegistraCvesRequest"/>
+   </message>
+
+   <message name="RegistraCvesResponse">
+      <part name="body" element="xsd1:RegistraCvesResponse"/>
+   </message>
+
+   <message name="EliminaCvesRequest">
+      <part name="body" element="xsd1:EliminaCvesRequest"/>
+   </message>
+
+   <message name="EliminaCvesResponse">
+      <part name="body" element="xsd1:EliminaCvesResponse"/>
+   </message>
+
+   <message name="ValidaFirmaRequest">
+      <part name="body" element="xsd1:ValidaFirmaRequest"/>
+   </message>
+
+   <message name="ValidaFirmaResponse">
+      <part name="body" element="xsd1:ValidaFirmaResponse"/>
+   </message>
+
+   <message name="ValidaFirmaHashRequest">
+      <part name="body" element="xsd1:ValidaFirmaHashRequest"/>
+   </message>
+
+   <message name="ValidaFirmaHashResponse">
+      <part name="body" element="xsd1:ValidaFirmaHashResponse"/>
+   </message>
+
+   <message name="ValidaFirmaRutaRequest">
+      <part name="body" element="xsd1:ValidaFirmaRutaRequest"/>
+   </message>
+
+   <message name="ValidaFirmaRutaResponse">
+      <part name="body" element="xsd1:ValidaFirmaRutaResponse"/>
+   </message>
+
+   <message name="ValidaFirmaCMSRequest">
+      <part name="body" element="xsd1:ValidaFirmaCMSRequest"/>
+   </message>
+
+   <message name="ValidaFirmaCMSResponse">
+      <part name="body" element="xsd1:ValidaFirmaCMSResponse"/>
+   </message>
+
+   <message name="ValidaFirmaCMSHashRequest">
+      <part name="body" element="xsd1:ValidaFirmaCMSHashRequest"/>
+   </message>
+
+   <message name="ValidaFirmaCMSHashResponse">
+      <part name="body" element="xsd1:ValidaFirmaCMSHashResponse"/>
+   </message>
+
+   <message name="ValidaFirmaCMSRutaRequest">
+      <part name="body" element="xsd1:ValidaFirmaCMSRutaRequest"/>
+   </message>
+
+   <message name="ValidaFirmaCMSRutaResponse">
+      <part name="body" element="xsd1:ValidaFirmaCMSRutaResponse"/>
+   </message>
+
+
+   <portType name="IDTrustPortType">
+
+      <operation name="Firma">
+         <input message="tns:FirmaRequest"/>
+         <output message="tns:FirmaResponse"/>
+      </operation>
+
+      <operation name="FirmaSimple">
+         <input message="tns:FirmaSimpleRequest"/>
+         <output message="tns:FirmaSimpleResponse"/>
+      </operation>
+
+      <operation name="Certificado">
+         <input message="tns:CertificadoRequest"/>
+         <output message="tns:CertificadoResponse"/>
+      </operation>
+      
+      <operation name="GeneraCves">
+         <input message="tns:GeneraCvesRequest"/>
+         <output message="tns:GeneraCvesResponse"/>
+      </operation>
+      
+      <operation name="ConfirmaCves">
+         <input message="tns:ConfirmaCvesRequest"/>
+         <output message="tns:ConfirmaCvesResponse"/>
+      </operation>
+      
+      <operation name="RegistraCves">
+         <input message="tns:RegistraCvesRequest"/>
+         <output message="tns:RegistraCvesResponse"/>
+      </operation>
+      
+      <operation name="EliminaCves">
+         <input message="tns:EliminaCvesRequest"/>
+         <output message="tns:EliminaCvesResponse"/>
+      </operation>
+
+      <operation name="ValidaFirma">
+         <input message="tns:ValidaFirmaRequest"/>
+         <output message="tns:ValidaFirmaResponse"/>
+      </operation>
+
+      <operation name="ValidaFirmaHash">
+         <input message="tns:ValidaFirmaHashRequest"/>
+         <output message="tns:ValidaFirmaHashResponse"/>
+      </operation>
+
+      <operation name="ValidaFirmaRuta">
+         <input message="tns:ValidaFirmaRutaRequest"/>
+         <output message="tns:ValidaFirmaRutaResponse"/>
+      </operation>
+
+      <operation name="ValidaFirmaCMS">
+         <input message="tns:ValidaFirmaCMSRequest"/>
+         <output message="tns:ValidaFirmaCMSResponse"/>
+      </operation>
+
+      <operation name="ValidaFirmaCMSHash">
+         <input message="tns:ValidaFirmaCMSHashRequest"/>
+         <output message="tns:ValidaFirmaCMSHashResponse"/>
+      </operation>
+
+      <operation name="ValidaFirmaCMSRuta">
+         <input message="tns:ValidaFirmaCMSRutaRequest"/>
+         <output message="tns:ValidaFirmaCMSRutaResponse"/>
+      </operation>
+
+   </portType>
+
+   <binding name="IDTrustSOAPBinding" type="tns:IDTrustPortType">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+											
+      <operation name="Firma">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsIDTrust/Firma"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+
+      <operation name="FirmaSimple">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsIDTrust/FirmaSimple"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+
+      <operation name="Certificado">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsIDTrust/Certificado"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+                    
+      <operation name="GeneraCves">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsIDTrust/GeneraCves"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+
+      <operation name="ConfirmaCves">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsIDTrust/ConfirmaCves"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+
+      <operation name="RegistraCves">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsIDTrust/RegistraCves"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+
+      <operation name="EliminaCves">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsIDTrust/EliminaCves"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+
+
+      <operation name="ValidaFirma">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsIDTrust/ValidaFirma"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+		
+      <operation name="ValidaFirmaHash">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsIDTrust/ValidaFirmaHash"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+		
+      <operation name="ValidaFirmaRuta">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsIDTrust/ValidaFirmaRuta"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+				
+      <operation name="ValidaFirmaCMS">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsIDTrust/ValidaFirmaCMS"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+
+      <operation name="ValidaFirmaCMSHash">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsIDTrust/ValidaFirmaCMSHash"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+
+      <operation name="ValidaFirmaCMSRuta">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsIDTrust/ValidaFirmaCMSRuta"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+                                        
+   </binding>
+
+   <wsdl:service xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="IDTrustService">
+      <wsdl:port name="IDTrustPortTypePort" binding="tns:IDTrustSOAPBinding">
+         <soap:address location="http://firmadigital.imss.gob.mx/WsIDTrust/IDTrustService"/>
+      </wsdl:port>
+   </wsdl:service>
+
+</definitions>

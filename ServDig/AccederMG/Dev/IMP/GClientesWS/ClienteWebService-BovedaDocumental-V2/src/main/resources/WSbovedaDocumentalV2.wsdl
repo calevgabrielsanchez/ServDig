@@ -1,0 +1,268 @@
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.openuri.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.openuri.org/" name="IESEndpointService">
+<types>
+
+<xs:schema xmlns:tns="http://www.openuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0" targetNamespace="http://www.openuri.org/">
+<xs:element name="ActualizacionDocumento">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="entrada" type="tns:EntradaActualizacion" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ActualizacionDocumentoResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ActualizacionDocumentoResult" type="tns:SalidaActualizacion" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="AltaDocumento">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="entrada" type="tns:EntradaAlta"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="AltaDocumentoResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="AltaDocumentoResult" type="tns:SalidaAlta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="BajaDocumento">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="entrada" type="tns:EntradaBaja" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="BajaDocumentoResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="BajaDocumentoResult" type="tns:SalidaBaja" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="BajaLogicaDocumento">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="entrada" type="tns:EntradaBajaLogica" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="BajaLogicaDocumentoResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="BajaLogicaDocumentoResult" type="tns:SalidaBajaLogica" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ConsultaDocumento">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="entrada" type="tns:EntradaConsulta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="ConsultaDocumentoResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ConsultaDocumentoResult" type="tns:SalidaConsulta" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="EntradaBaja">
+<xs:sequence>
+<xs:element name="idDocumento" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SalidaActualizacion">
+<xs:sequence>
+<xs:element name="exito" type="xs:boolean"/>
+<xs:element name="clave" type="xs:string" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Atributo">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" nillable="true"/>
+<xs:element name="valor" type="xs:string" nillable="true"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SalidaBajaLogica">
+<xs:sequence>
+<xs:element name="exito" type="xs:boolean"/>
+<xs:element name="clave" type="xs:string" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="idDocumento" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="EntradaConsulta">
+<xs:sequence>
+<xs:element name="tipoDocumental" type="xs:string"/>
+<xs:element name="tipoConsulta" type="xs:string" minOccurs="0"/>
+<xs:element name="atributo" type="tns:Atributo" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="EntradaActualizacion">
+<xs:sequence>
+<xs:element name="idDocumento" type="xs:string"/>
+<xs:element name="documento" type="xs:base64Binary"/>
+<xs:element name="atributo" type="tns:Atributo" maxOccurs="unbounded"/>
+<xs:element name="versionado" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SalidaBaja">
+<xs:sequence>
+<xs:element name="exito" type="xs:boolean"/>
+<xs:element name="clave" type="xs:string" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="idDocumento" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="EntradaAlta">
+<xs:sequence>
+<xs:element name="documento" type="xs:base64Binary"/>
+<xs:element name="tipoDocumental" type="xs:string"/>
+<xs:element name="ruta" type="xs:string" minOccurs="0"/>
+<xs:element name="tipo" type="xs:string"/>
+<xs:element name="atributo" type="tns:Atributo" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SalidaConsulta">
+<xs:sequence>
+<xs:element name="exito" type="xs:boolean"/>
+<xs:element name="clave" type="xs:string" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="documento" type="tns:Documento" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Documento">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" nillable="true"/>
+<xs:element name="contenido" type="xs:base64Binary"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SalidaAlta">
+<xs:sequence>
+<xs:element name="exito" type="xs:boolean"/>
+<xs:element name="clave" type="xs:string" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="idDocumento" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="EntradaBajaLogica">
+<xs:sequence>
+<xs:element name="idDocumento" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+</types>
+<message name="AltaDocumento">
+<part name="parameters" element="tns:AltaDocumento"/>
+</message>
+<message name="AltaDocumentoResponse">
+<part name="parameters" element="tns:AltaDocumentoResponse"/>
+</message>
+<message name="BajaLogicaDocumento">
+<part name="parameters" element="tns:BajaLogicaDocumento"/>
+</message>
+<message name="BajaLogicaDocumentoResponse">
+<part name="parameters" element="tns:BajaLogicaDocumentoResponse"/>
+</message>
+<message name="BajaDocumento">
+<part name="parameters" element="tns:BajaDocumento"/>
+</message>
+<message name="BajaDocumentoResponse">
+<part name="parameters" element="tns:BajaDocumentoResponse"/>
+</message>
+<message name="ConsultaDocumento">
+<part name="parameters" element="tns:ConsultaDocumento"/>
+</message>
+<message name="ConsultaDocumentoResponse">
+<part name="parameters" element="tns:ConsultaDocumentoResponse"/>
+</message>
+<message name="ActualizacionDocumento">
+<part name="parameters" element="tns:ActualizacionDocumento"/>
+</message>
+<message name="ActualizacionDocumentoResponse">
+<part name="parameters" element="tns:ActualizacionDocumentoResponse"/>
+</message>
+<portType name="IESServicioSoap">
+<operation name="AltaDocumento">
+<input message="tns:AltaDocumento"/>
+<output message="tns:AltaDocumentoResponse"/>
+</operation>
+<operation name="BajaLogicaDocumento">
+<input message="tns:BajaLogicaDocumento"/>
+<output message="tns:BajaLogicaDocumentoResponse"/>
+</operation>
+<operation name="BajaDocumento">
+<input message="tns:BajaDocumento"/>
+<output message="tns:BajaDocumentoResponse"/>
+</operation>
+<operation name="ConsultaDocumento">
+<input message="tns:ConsultaDocumento"/>
+<output message="tns:ConsultaDocumentoResponse"/>
+</operation>
+<operation name="ActualizacionDocumento">
+<input message="tns:ActualizacionDocumento"/>
+<output message="tns:ActualizacionDocumentoResponse"/>
+</operation>
+</portType>
+<binding name="IESEndpointPortBinding" type="tns:IESServicioSoap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="AltaDocumento">
+<soap:operation soapAction="http://www.openuri.org/AltaDocumento"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="BajaLogicaDocumento">
+<soap:operation soapAction="http://www.openuri.org/BajaLogicaDocumento"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="BajaDocumento">
+<soap:operation soapAction="http://www.openuri.org/BajaDocumento"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ConsultaDocumento">
+<soap:operation soapAction="http://www.openuri.org/ConsultaDocumento"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ActualizacionDocumento">
+<soap:operation soapAction="http://www.openuri.org/ActualizacionDocumento"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+</binding>
+<service name="IESEndpointService">
+<port name="IESEndpointPort" binding="tns:IESEndpointPortBinding">
+<soap:address location="${mvn.url.boveda}"/>
+</port>
+</service>
+</definitions>

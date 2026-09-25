@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SecccionVI-b" pageWidth="612" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="592" leftMargin="0" rightMargin="20" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="3.221020000000022"/>
+	<property name="ireport.x" value="37"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Titulo Aviso" hAlign="Left" lineSpacing="Single" fontSize="13" isBold="true" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="base" lineSpacing="Single" fontSize="7" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="fondo" backcolor="#00CCFF" lineSpacing="Single"/>
+	<style name="fondoEncabezado" backcolor="#0000FF" lineSpacing="Single"/>
+	<style name="Titulo Encabezado" lineSpacing="Single" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="baseBold" lineSpacing="Single" fontSize="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+	<style name="vineta" lineSpacing="Single" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<parameter name="P_REGPATRONAL" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="moral" class="mx.gob.imss.ctirss.delta.model.gestion.individuo.Moral"/>
+	<field name="fisica" class="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+	<field name="modalidad" class="mx.gob.imss.ctirss.delta.model.gestion.patronal.Modalidad"/>
+	<field name="digVerificador" class="java.lang.String"/>
+	<field name="numeroRegistroPatronal" class="java.lang.String"/>
+	<field name="clasificacion" class="mx.gob.imss.ctirss.delta.model.gestion.patronal.Clasificacion"/>
+	<title>
+		<band height="27">
+			<staticText>
+				<reportElement style="baseBold" mode="Opaque" x="23" y="0" width="528" height="20" backcolor="#F2F2F2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Datos de la empresa sustituida o fusionada]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement style="fondo" mode="Transparent" x="23" y="0" width="528" height="20" forecolor="#AFB1B1" backcolor="#FFFFFF"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</title>
+	<detail>
+		<band height="47">
+			<printWhenExpression><![CDATA[$F{moral} != null]]></printWhenExpression>
+			<elementGroup>
+				<elementGroup>
+					<staticText>
+						<reportElement style="baseBold" positionType="Float" mode="Opaque" x="23" y="0" width="528" height="20" isRemoveLineWhenBlank="true" backcolor="#F2F2F2"/>
+						<box>
+							<pen lineColor="#AFB1B1"/>
+							<topPen lineWidth="0.75" lineColor="#AFB1B1"/>
+							<leftPen lineWidth="0.75" lineColor="#AFB1B1"/>
+							<bottomPen lineWidth="0.75" lineColor="#AFB1B1"/>
+							<rightPen lineWidth="0.75" lineColor="#AFB1B1"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+							<font fontName="Soberana Sans Light" size="10" isBold="false"/>
+						</textElement>
+						<text><![CDATA[Persona moral]]></text>
+					</staticText>
+					<textField isBlankWhenNull="true">
+						<reportElement positionType="Float" x="118" y="27" width="433" height="20" isRemoveLineWhenBlank="true"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Soberana Sans Light" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{moral}.getRazonSocial()]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement positionType="Float" x="23" y="20" width="528" height="27" isRemoveLineWhenBlank="true"/>
+						<box leftPadding="2">
+							<pen lineColor="#AFB1B1"/>
+							<topPen lineWidth="0.75" lineColor="#AFB1B1"/>
+							<leftPen lineWidth="0.75" lineColor="#AFB1B1"/>
+							<bottomPen lineWidth="0.75" lineColor="#AFB1B1"/>
+							<rightPen lineWidth="0.75" lineColor="#AFB1B1"/>
+						</box>
+						<textElement verticalAlignment="Top" lineSpacing="Single" markup="html">
+							<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+						</textElement>
+						<text><![CDATA[Denominaci&oacute;n o Raz&oacute;n Social:]]></text>
+					</staticText>
+				</elementGroup>
+			</elementGroup>
+		</band>
+		<band height="47">
+			<printWhenExpression><![CDATA[$F{fisica} != null]]></printWhenExpression>
+			<elementGroup>
+				<elementGroup>
+					<textField isBlankWhenNull="true">
+						<reportElement positionType="Float" x="39" y="27" width="122" height="20" isRemoveLineWhenBlank="true"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Soberana Sans Light" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{fisica}.getNombre()]]></textFieldExpression>
+					</textField>
+					<textField isBlankWhenNull="true">
+						<reportElement positionType="Float" x="184" y="27" width="122" height="20" isRemoveLineWhenBlank="true"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Soberana Sans Light" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{fisica}.getPrimerApellido()]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement positionType="Float" x="161" y="20" width="145" height="27" isRemoveLineWhenBlank="true"/>
+						<box leftPadding="2">
+							<pen lineWidth="0.75"/>
+							<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+						</box>
+						<textElement verticalAlignment="Top" lineSpacing="Single" markup="html">
+							<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+						</textElement>
+						<text><![CDATA[Primer apellido:]]></text>
+					</staticText>
+					<textField isBlankWhenNull="true">
+						<reportElement positionType="Float" x="319" y="27" width="122" height="20" isRemoveLineWhenBlank="true"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Soberana Sans Light" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{fisica}.getSegundoApellido()]]></textFieldExpression>
+					</textField>
+					<rectangle radius="0">
+						<reportElement style="fondo" positionType="Float" mode="Transparent" x="23" y="20" width="528" height="27" isRemoveLineWhenBlank="true" forecolor="#AFB1B1" backcolor="#FFFFFF"/>
+						<graphicElement>
+							<pen lineWidth="0.5"/>
+						</graphicElement>
+					</rectangle>
+					<staticText>
+						<reportElement positionType="Float" x="306" y="20" width="135" height="27" isRemoveLineWhenBlank="true"/>
+						<box leftPadding="2">
+							<pen lineWidth="0.75"/>
+							<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+						</box>
+						<textElement verticalAlignment="Top" lineSpacing="Single" markup="html">
+							<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+						</textElement>
+						<text><![CDATA[Segundo apellido:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement positionType="Float" x="441" y="20" width="110" height="27" isRemoveLineWhenBlank="true"/>
+						<box leftPadding="2">
+							<pen lineWidth="0.75"/>
+							<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+						</box>
+						<textElement verticalAlignment="Top" lineSpacing="Single" markup="html">
+							<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+						</textElement>
+						<text><![CDATA[CURP:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement positionType="Float" x="23" y="20" width="138" height="27" isRemoveLineWhenBlank="true"/>
+						<box leftPadding="2">
+							<pen lineWidth="0.75"/>
+							<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+						</box>
+						<textElement verticalAlignment="Top" lineSpacing="Single" markup="html">
+							<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+						</textElement>
+						<text><![CDATA[Nombre:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement style="baseBold" positionType="Float" mode="Opaque" x="23" y="0" width="528" height="20" isRemoveLineWhenBlank="true" backcolor="#F2F2F2"/>
+						<box>
+							<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+							<font fontName="Soberana Sans Light" size="10" isBold="false"/>
+						</textElement>
+						<text><![CDATA[Persona fisica]]></text>
+					</staticText>
+					<textField isBlankWhenNull="true">
+						<reportElement positionType="Float" x="452" y="27" width="99" height="20" isRemoveLineWhenBlank="true"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Soberana Sans Light" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{fisica}.getCurp()]]></textFieldExpression>
+					</textField>
+					<rectangle radius="0">
+						<reportElement style="fondo" positionType="Float" mode="Transparent" x="23" y="0" width="528" height="20" isRemoveLineWhenBlank="true" forecolor="#AFB1B1" backcolor="#FFFFFF"/>
+						<graphicElement>
+							<pen lineWidth="0.5"/>
+						</graphicElement>
+					</rectangle>
+				</elementGroup>
+			</elementGroup>
+		</band>
+		<band height="84">
+			<elementGroup>
+				<elementGroup>
+					<elementGroup>
+						<textField>
+							<reportElement positionType="Float" x="277" y="54" width="79" height="20"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Soberana Sans Light" size="8"/>
+							</textElement>
+							<textFieldExpression class="java.lang.String"><![CDATA[$F{clasificacion}.getFraccion().getNumFraccion()]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement style="baseBold" positionType="Float" mode="Opaque" x="23" y="0" width="528" height="20" backcolor="#F2F2F2"/>
+							<box>
+								<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single" markup="html">
+								<font fontName="Soberana Sans Light" size="10" isBold="false"/>
+							</textElement>
+							<text><![CDATA[Datos del registro patronal y clasificaci&oacute;n de la empresa sustituida o fusionada]]></text>
+						</staticText>
+						<staticText>
+							<reportElement positionType="Float" x="306" y="20" width="245" height="27"/>
+							<box leftPadding="2">
+								<pen lineWidth="0.75"/>
+								<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							</box>
+							<textElement verticalAlignment="Top" lineSpacing="Single" markup="html">
+								<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+							</textElement>
+							<text><![CDATA[RFC:]]></text>
+						</staticText>
+						<textField isBlankWhenNull="true">
+							<reportElement positionType="Float" x="477" y="54" width="74" height="20"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Soberana Sans Light" size="8"/>
+							</textElement>
+							<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{clasificacion}.getPrimaSRTActual()]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement positionType="Float" x="356" y="47" width="110" height="27"/>
+							<box leftPadding="2">
+								<pen lineWidth="0.75"/>
+								<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							</box>
+							<textElement verticalAlignment="Top" lineSpacing="Single" markup="html">
+								<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+							</textElement>
+							<text><![CDATA[Clase:]]></text>
+						</staticText>
+						<rectangle radius="0">
+							<reportElement style="fondo" positionType="Float" mode="Transparent" x="23" y="0" width="528" height="20" forecolor="#AFB1B1" backcolor="#FFFFFF"/>
+							<graphicElement>
+								<pen lineWidth="0.5"/>
+							</graphicElement>
+						</rectangle>
+						<textField isBlankWhenNull="true">
+							<reportElement positionType="Float" x="39" y="54" width="79" height="20"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Soberana Sans Light" size="8"/>
+							</textElement>
+							<textFieldExpression class="java.lang.String"><![CDATA[$F{clasificacion}.getFraccion().getGrupo().getDivision().getNumDivision()]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement positionType="Float" x="93" y="27" width="213" height="20"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Soberana Sans Light" size="8"/>
+							</textElement>
+							<textFieldExpression class="java.lang.String"><![CDATA[$F{numeroRegistroPatronal} + "" + $F{modalidad}.getNumModalidad() + "-" + $F{digVerificador}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement positionType="Float" x="161" y="54" width="60" height="20"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Soberana Sans Light" size="8"/>
+							</textElement>
+							<textFieldExpression class="java.lang.String"><![CDATA[$F{clasificacion}.getFraccion().getGrupo().getNumGrupo()]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement positionType="Float" x="466" y="47" width="85" height="27"/>
+							<box leftPadding="2">
+								<pen lineWidth="0.75"/>
+								<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							</box>
+							<textElement verticalAlignment="Top" lineSpacing="Single" markup="html">
+								<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+							</textElement>
+							<text><![CDATA[Prima SRT:]]></text>
+						</staticText>
+						<textField isBlankWhenNull="true">
+							<reportElement positionType="Float" x="329" y="27" width="222" height="20"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Soberana Sans Light" size="8"/>
+							</textElement>
+							<textFieldExpression class="java.lang.String"><![CDATA[$F{fisica} != null ? $F{fisica}.getRfc() : $F{moral}.getRfc()]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement positionType="Float" x="367" y="54" width="99" height="20"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Soberana Sans Light" size="8"/>
+							</textElement>
+							<textFieldExpression class="java.lang.Long"><![CDATA[$F{clasificacion}.getFraccion().getClase().getClave()]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement positionType="Float" x="118" y="47" width="103" height="27"/>
+							<box leftPadding="2">
+								<pen lineWidth="0.75"/>
+								<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							</box>
+							<textElement verticalAlignment="Top" lineSpacing="Single" markup="html">
+								<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+							</textElement>
+							<text><![CDATA[Grupo:]]></text>
+						</staticText>
+						<staticText>
+							<reportElement positionType="Float" x="23" y="20" width="283" height="27"/>
+							<box leftPadding="2">
+								<pen lineWidth="0.75"/>
+								<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							</box>
+							<textElement verticalAlignment="Top" lineSpacing="Single" markup="html">
+								<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+							</textElement>
+							<text><![CDATA[Registro Patronal:]]></text>
+						</staticText>
+						<staticText>
+							<reportElement positionType="Float" x="221" y="47" width="135" height="27"/>
+							<box leftPadding="2">
+								<pen lineWidth="0.75"/>
+								<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							</box>
+							<textElement verticalAlignment="Top" lineSpacing="Single" markup="html">
+								<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+							</textElement>
+							<text><![CDATA[Fracci&oacute;n:]]></text>
+						</staticText>
+						<staticText>
+							<reportElement positionType="Float" x="23" y="47" width="95" height="27"/>
+							<box leftPadding="2">
+								<pen lineWidth="0.75"/>
+								<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+								<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+							</box>
+							<textElement verticalAlignment="Top" lineSpacing="Single" markup="html">
+								<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+							</textElement>
+							<text><![CDATA[Divisi&oacute;n:]]></text>
+						</staticText>
+					</elementGroup>
+				</elementGroup>
+			</elementGroup>
+		</band>
+	</detail>
+</jasperReport>

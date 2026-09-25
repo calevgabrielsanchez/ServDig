@@ -1,0 +1,435 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>mx.gob.imss.ctirss.delta.general.production</groupId>
+	<artifactId>delta-packing</artifactId>
+	<version>2.0-SNAPSHOT</version>
+	<packaging>ear</packaging>
+	
+	<parent>
+		<artifactId>delta</artifactId>
+		<groupId>mx.gob.imss.ctirss.delta</groupId>
+		<version>2.6-SNAPSHOT</version>
+	</parent>
+
+	<name>Empaquetado Servicios Delta</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<skipTests>true</skipTests>
+		<dep>none</dep>
+		<junit.version>4.8.2</junit.version>
+
+		<!-- DEPENDENCIAS DE OTROS PROYECTOS -->
+		<delta.framework.version>2.6-SNAPSHOT</delta.framework.version>
+		<delta.documentos.probatorios>2.4-SNAPSHOT</delta.documentos.probatorios>
+		<delta.domicilios>2.4-SNAPSHOT</delta.domicilios>
+		<delta.clientews>2.2-SNAPSHOT</delta.clientews>
+		<delta.clientews.derechohabientes>2.3-SNAPSHOT</delta.clientews.derechohabientes>
+		<delta.clientews.legado>1.0-SNAPSHOT</delta.clientews.legado>
+		<delta.solicitud>2.2-SNAPSHOT</delta.solicitud>
+		<delta.medioscontacto>2.3-SNAPSHOT</delta.medioscontacto>
+		<delta.personas>2.4-SNAPSHOT</delta.personas>
+		<delta.patronal>2.4-SNAPSHOT</delta.patronal>
+		<delta.clasificacion.empr>2.4-SNAPSHOT</delta.clasificacion.empr>
+		<delta.asegurados>2.2-SNAPSHOT</delta.asegurados>
+		<delta.dhabiente>2.2-SNAPSHOT</delta.dhabiente>
+		<delta.cobranza>2.1-SNAPSHOT</delta.cobranza>
+		<delta.beneficios>1.0-SNAPSHOT</delta.beneficios>
+		<delta.cuestionario>1.0-SNAPSHOT</delta.cuestionario>
+		<delta.ietc>1.0-SNAPSHOT</delta.ietc>
+        <delta.motor>1.0-SNAPSHOT</delta.motor>
+        <delta.ivro>1.0-SNAPSHOT</delta.ivro>
+        <delta.cda>1.0-SNAPSHOT</delta.cda>
+		<delta.gestionsolicitud.flujo.trabajo>1.0-SNAPSHOT</delta.gestionsolicitud.flujo.trabajo>
+		<gestion.rtt>1.0-SNAPSHOT</gestion.rtt>
+		<delta.clientews.renapo>2.3</delta.clientews.renapo>
+	</properties>
+
+	<dependencies>
+		<!-- EJB'S DE OTROS MODULOS. DELTA BASE. -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-servicios-negocio-ejb</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>ejb</type>
+		</dependency>
+
+		<!-- EJB'S DE OTROS MODULOS. EJB de servicios de documentos probatorios -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.documento.probatorio</groupId>
+			<artifactId>gestionDocumentoProbatorio-servicios-negocio-ejb</artifactId>
+			<version>${delta.documentos.probatorios}</version>
+			<type>ejb</type>
+		</dependency>
+
+		<!-- EJB'S DE OTROS MODULOS. EJB de servicios de domicilios -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.domicilio</groupId>
+			<artifactId>gestionDomicilios-servicios-negocio-ejb</artifactId>
+			<version>${delta.domicilios}</version>
+			<type>ejb</type>
+		</dependency>
+
+		<!-- Cliente de Webservices. RENAPO y SAT consulta de CURP, cliente de 
+			derechohabientes -->
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.clienteswebservices.renapo.curp</groupId>
+			<artifactId>ClientesWebservices-renapo-curp</artifactId>
+			<version>${delta.clientews.renapo}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.clienteswebservices.sat.consulta.rfc</groupId>
+			<artifactId>ClientesWebservices-sat-consulta-rfc</artifactId>
+			<version>${delta.clientews}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.clienteswebservices.beneficiarios</groupId>
+			<artifactId>ClientesWebservices-derechohabientes</artifactId>
+			<version>${delta.clientews.derechohabientes}</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.clienteswebservices.validaPago</groupId>
+			<artifactId>ClienteWebserviceValidaPagoVentanilla</artifactId>
+			<version>${delta.clientews.legado}</version>
+		</dependency>
+
+		<!-- Servicios Gestion de Solicitud -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.solicitud</groupId>
+			<artifactId>gestionSolicitud-servicios-negocio-ejb</artifactId>
+			<version>${delta.solicitud}</version>
+			<type>ejb</type>
+		</dependency>
+
+		<!-- EJB'S DE OTROS MODULOS. EJB de servicios de gestion de medios -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.medio.contacto</groupId>
+			<artifactId>gestionMediosContacto-servicios-negocio-ejb</artifactId>
+			<version>${delta.medioscontacto}</version>
+			<type>ejb</type>
+		</dependency>
+		
+		<!-- EJB'S DE OTROS MODULOS. EJB de RTT -->
+		<!--dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.clasificacion</groupId>
+			<artifactId>riesgosTrabajo-servicios-negocio-ejb</artifactId>
+			<version>${gestion.rtt}</version>
+			<type>ejb</type>
+		</dependency-->
+
+		<!-- EJB'S DE OTROS MODULOS. EJB de servicios de Personas -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.individuo.service.ejb</groupId>
+			<artifactId>gestionIndividuo-service-business-ejb</artifactId>
+			<version>${delta.personas}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>net.sf.jasperreports</groupId>
+					<artifactId>jasperreports</artifactId>
+				</exclusion>
+			</exclusions>
+			<type>ejb</type>
+		</dependency>
+
+		<!-- EJB'S DE OTROS MODULOS. EJB de servicios de Patronal -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.patronal</groupId>
+			<artifactId>delta-gestionPatronal-servicios-negocio-ejb</artifactId>
+			<version>${delta.patronal}</version>
+			<type>ejb</type>
+		</dependency>
+
+		<!-- EJB'S DE OTROS MODULOS. EJB de servicios de Clasificacion de Empresas -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.clasificacion</groupId>
+			<artifactId>gestionClasificacion-servicios-negocio-ejb</artifactId>
+			<version>${delta.clasificacion.empr}</version>
+			<type>ejb</type>
+		</dependency>
+
+		<!-- EJB'S DE OTROS MODULOS. EJB de servicios de Asegurados -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.asegurado</groupId>
+			<artifactId>gestionAsegurados-servicios-negocio-ejb</artifactId>
+			<version>${delta.asegurados}</version>
+			<type>ejb</type>
+		</dependency>
+
+		<!-- EJB'S DE OTROS MODULOS. EJB de servicios de Derechohabientes
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.derechohabientes.ws</groupId>
+			<artifactId>gestionDerechohabientes-ws-servicios-negocio-ejb</artifactId>
+			<version>${delta.dhabiente}</version>
+			<type>ejb</type>
+		</dependency>
+		-->
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.derechohabientes</groupId>
+			<artifactId>gestionDerechohabientes-servicios-negocio-ejb</artifactId>
+			<version>${delta.dhabiente}</version>
+			<type>ejb</type>
+		</dependency>
+
+		<!-- EJB'S DE OTROS MODULOS. EJB de servicios de Edo de Adeudo -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.cobranza</groupId>
+			<artifactId>gestionCobranza-servicios-negocio-ejb</artifactId>
+			<version>${delta.cobranza}</version>
+			<type>ejb</type>
+		</dependency>
+
+		<!-- EJB'S DE OTROS MODULOS. EJB de servicios de Beneficios -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.beneficio</groupId>
+			<artifactId>gestionBeneficio-servicios-negocio-ejb</artifactId>
+			<version>${delta.beneficios}</version>
+			<type>ejb</type>
+		</dependency>
+		
+		<!-- EJB'S DE OTROS MODULOS. EJB de servicios de Beneficios -->
+		<dependency>
+			<groupId>mx.gob.imss.distss.gestion.cuestionario</groupId>
+			<artifactId>gestionCuestionario-servicios-negocio-ejb</artifactId>
+			<version>${delta.cuestionario}</version>
+			<type>ejb</type>
+		</dependency>
+				
+		<!-- EJB'S DE OTROS MODULOS. EJB de servicios de IETC -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>mx.gob.imss.ctirss.delta.ietc</groupId> -->
+<!-- 			<artifactId>ietc-servicios-negocio-ejb</artifactId> -->
+<!-- 			<version>${delta.ietc}</version> -->
+<!-- 			<type>ejb</type> -->
+<!-- 		</dependency> -->
+  
+        <!-- EJB'S DE OTROS MODULOS. EJB de servicios Motor -->
+        <dependency>
+          <groupId>mx.gob.imss.ctirss.delta.gestion.motorCalculo</groupId>
+          <artifactId>gestionMotorCalculo-servicios-negocio-ejb</artifactId>
+          <version>${delta.cuestionario}</version>
+          <type>ejb</type>
+        </dependency>
+        <!-- EJB'S DE OTROS MODULOS. EJB de servicios IVRO -->
+          <dependency>
+            <groupId>mx.gob.imss.ctirss.delta.gestion.seguroVoluntario</groupId>
+            <artifactId>gestionSeguroVoluntario-servicios-negocio-ejb</artifactId>
+            <version>${delta.cuestionario}</version>
+            <type>ejb</type>
+          </dependency>
+        
+        <!-- EJB'S DE OTROS MODULOS. EJB de servicios de correcion de datos de asegurado (CDA) -->
+		
+        <dependency>
+			<artifactId>correcciondatosasegurado-servicios-negocio-ejb</artifactId>
+			<groupId>mx.gob.imss.cit.cda</groupId>
+			<version>1.0-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+
+	   <dependency>
+		  <artifactId>gestionsolicitud-flujo-trabajo-servicios-negocio-ejb</artifactId>
+		  <groupId>mx.gob.imss.cit.gestion.solicitud</groupId>
+		  <version>${delta.gestionsolicitud.flujo.trabajo}</version>
+		  <type>ejb</type>
+	  </dependency>
+	
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- Maven EAR Plug-In -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<version>5</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+				</configuration>
+			</plugin>
+
+			<!-- Habilita los facets y natures para que el eclipse reconoza el proyecto 
+				como de tipo de EAR. -->
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<additionalBuildcommands>
+						<buildCommand>
+							<name>org.eclipse.jdt.core.javabuilder</name>
+						</buildCommand>
+						<buildCommand>
+							<name>org.eclipse.wst.common.project.facet.core.builder</name>
+						</buildCommand>
+						<buildCommand>
+							<name>org.eclipse.wst.validation.validationbuilder</name>
+						</buildCommand>
+					</additionalBuildcommands>
+
+					<additionalProjectnatures>
+						<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
+						<projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+						<projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+					</additionalProjectnatures>
+
+					<additionalConfig>
+						<file>
+							<name>.settings/org.eclipse.wst.common.project.facet.core.xml</name>
+							<content>
+							<![CDATA[
+								<faceted-project>
+									<runtime name="Weblogic Runtime" />
+									<fixed facet="jst.ear" />
+									<fixed facet="jst.java" />
+									<installed facet="jst.java" version="6.0" />
+									<installed facet="jst.ear" version="5.0" />
+									<installed facet="wls.ear" version="10.3.4" />
+								</faceted-project>
+							]]>
+							</content>
+						</file>
+
+						<file>
+							<name>.settings/org.eclipse.wst.common.component</name>
+							<content>
+							<![CDATA[
+								<project-modules id="moduleCoreId" project-version="1.5.0">
+									<wb-module deploy-name="${project.artifactId}">
+										<wb-resource deploy-path="/" source-path="/src/main/java" />
+										<wb-resource deploy-path="/" source-path="/src/main/resources" />
+										<property name="java-output-path" value="target/classes" />
+									</wb-module>
+								</project-modules>
+							]]>
+							</content>
+						</file>
+					</additionalConfig>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+			</extension>
+
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+			</extension>
+		</extensions>
+	</build>
+
+	
+
+	<profiles>
+		<!-- Perfil para el deployment de los servicios REMOTO -->
+		<profile>
+			<id>dev-deploy-all</id>
+
+			<activation>
+				<property>
+					<name>dev-deploy-all</name>
+				</property>
+			</activation>
+
+			<build>
+				<plugins>
+					<!-- Weblogic Deployment Plug-In -->
+					<plugin>
+						<groupId>com.oracle.weblogic</groupId>
+						<artifactId>weblogic-maven-plugin</artifactId>
+						<version>10.3.4</version>
+						<configuration>
+							<adminurl>t3://172.24.116.38:11000</adminurl>
+							<user>admin_wldldev</user>
+							<password>wldldev_admin</password>
+							<upload>true</upload>
+							<action>deploy</action>
+							<remote>true</remote>
+							<verbose>true</verbose>
+							<source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
+							<name>${project.build.finalName}</name>
+							<targets>c_web_digital</targets>
+							<nostage>true</nostage>
+						</configuration>
+
+						<executions>
+							<execution>
+								<phase>install</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Perfil para Remover los deploys en el ambiente de Desarrollo IMSS -->
+		<profile>
+			<id>dev-remove-all</id>
+
+			<activation>
+				<property>
+					<name>dev-remove-all</name>
+				</property>
+			</activation>
+
+			<build>
+				<plugins>
+					<!-- Weblogic Deployment Plug-In -->
+					<plugin>
+						<groupId>com.oracle.weblogic</groupId>
+						<artifactId>weblogic-maven-plugin</artifactId>
+						<version>10.3.4</version>
+						<configuration>
+							<adminurl>t3://172.24.116.38:11000</adminurl>
+							<user>admin_wldldev</user>
+							<password>wldldev_admin</password>
+							<name>${project.build.finalName}</name>
+							<targets>c_web_digital</targets>
+						</configuration>
+
+						<executions>
+							<execution>
+								<phase>install</phase>
+								<goals>
+									<goal>undeploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

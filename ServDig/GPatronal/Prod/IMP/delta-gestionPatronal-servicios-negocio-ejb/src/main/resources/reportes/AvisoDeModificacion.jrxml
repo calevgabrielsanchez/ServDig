@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AvisoDeModificacion" pageWidth="612" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="3.2153832150000112"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="480"/>
+	<style name="Titulo Aviso" hAlign="Left" lineSpacing="Single" fontSize="13" isBold="true" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="base" lineSpacing="Single" fontSize="7" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="fondo" backcolor="#00CCFF" lineSpacing="Single"/>
+	<style name="fondoEncabezado" backcolor="#0000FF" lineSpacing="Single"/>
+	<style name="Titulo Encabezado" lineSpacing="Single" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="baseBold" lineSpacing="Single" fontSize="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+	<style name="vineta" lineSpacing="Single" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<parameter name="IMAGENES_DIR" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<parameter name="P_FOLIO_SOLCT" class="java.lang.String"/>
+	<parameter name="P_FECSOLCITUD" class="java.lang.String"/>
+	<parameter name="P_REGPATRONAL" class="java.lang.String"/>
+	<parameter name="P_RAZONSOCIAL" class="java.lang.String"/>
+	<parameter name="P_NOMBRE_PERS" class="java.lang.String"/>
+	<parameter name="P_PATERNO_PER" class="java.lang.String"/>
+	<parameter name="P_MATERNO_PER" class="java.lang.String"/>
+	<parameter name="P_CURPPERSONA" class="java.lang.String"/>
+	<parameter name="P_NOMB_COMERC" class="java.lang.String"/>
+	<parameter name="P_RFC_PERSONA" class="java.lang.String"/>
+	<parameter name="P_CVE_TRAMITE" class="java.lang.String"/>
+	<parameter name="P_DESCTRAMITE" class="java.lang.String"/>
+	<parameter name="P_CVE_DELEGAC" class="java.lang.String"/>
+	<parameter name="P_DES_DELEGAC" class="java.lang.String"/>
+	<parameter name="P_CVE_SUB_DEL" class="java.lang.String"/>
+	<parameter name="P_DES_SUB_DEL" class="java.lang.String"/>
+	<parameter name="P_NUM_FRACCIO" class="java.lang.String"/>
+	<parameter name="P_NUMER_GRUPO" class="java.lang.String"/>
+	<parameter name="P_NUM_DIVISIO" class="java.lang.String"/>
+	<parameter name="P_CLASE_CLASI" class="java.lang.String"/>
+	<parameter name="P_PRIMA_CLASI" class="java.math.BigDecimal"/>
+	<parameter name="P_MOSTRAR_LEY" class="java.lang.String"/>
+	<parameter name="P_FECPRESENTA" class="java.lang.String"/>
+	<parameter name="P_FECH_EFECTO" class="java.lang.String"/>
+	<parameter name="P_CAD_ORIG" class="java.lang.String"/>
+	<parameter name="P_SELLO" class="java.lang.String"/>
+	<parameter name="P_SEC_NOT" class="java.lang.String"/>
+	<parameter name="P_USUARIO" class="java.lang.String"/>
+	<parameter name="IS_FISICA" class="java.lang.Boolean"/>
+	<parameter name="P_TIPO_MODIFICACION" class="java.lang.String"/>
+	<parameter name="IS_MORAL" class="java.lang.Boolean"/>
+	<parameter name="CT_CALLE" class="java.lang.String"/>
+	<parameter name="CT_NUM_EXT" class="java.lang.String"/>
+	<parameter name="CT_NUM_INT" class="java.lang.String"/>
+	<parameter name="CT_ENTRE_CALLE_A" class="java.lang.String"/>
+	<parameter name="CT_ENTRE_CALLE_B" class="java.lang.String"/>
+	<parameter name="CT_COLONIA" class="java.lang.String"/>
+	<parameter name="CT_LOCALIDAD" class="java.lang.String"/>
+	<parameter name="CT_DELEGACION" class="java.lang.String"/>
+	<parameter name="CT_ENTIDAD" class="java.lang.String"/>
+	<parameter name="CT_TEL_FIJO_A" class="java.lang.String"/>
+	<parameter name="CT_TEL_FIJO_B" class="java.lang.String"/>
+	<parameter name="CT_CP" class="java.lang.String"/>
+	<parameter name="CT_CORREO" class="java.lang.String"/>
+	<parameter name="P_NUM_SERIE" class="java.lang.String"/>
+	<parameter name="rutaImagen" class="java.lang.String">
+		<defaultValueExpression><![CDATA["imagen/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUB_DATOS_GENERALES" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SUB_CLASIFICACION" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SUB_CENTRO" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SUB_CENTRO_DOMANT" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SUB_PRODUCTOS" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SUB_MATERIAS" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SUB_MAQUINARIA" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SUB_TRANSPORTE" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SUB_PROCESOS" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SUB_PERSONAL" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SUB_ACTIVIDADES_COM" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SUB_FUSION_SUS" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SUB_BIENES" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SUB_FIRMAS" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="SUB_FIRMA_IMSS" class="net.sf.jasperreports.engine.JasperReport" isForPrompting="false"/>
+	<parameter name="P_NRP_ANT" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="equipos" class="java.util.List">
+		<fieldDescription><![CDATA[equipos]]></fieldDescription>
+	</field>
+	<field name="bienes" class="java.util.List">
+		<fieldDescription><![CDATA[bienes]]></fieldDescription>
+	</field>
+	<field name="equiposTransporte" class="java.util.List">
+		<fieldDescription><![CDATA[equiposTransporte]]></fieldDescription>
+	</field>
+	<field name="clasificacion" class="mx.gob.imss.ctirss.delta.model.gestion.patronal.Clasificacion">
+		<fieldDescription><![CDATA[clasificacion]]></fieldDescription>
+	</field>
+	<field name="fisica" class="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica">
+		<fieldDescription><![CDATA[fisica]]></fieldDescription>
+	</field>
+	<field name="materiaPrimaMateriales" class="java.util.List">
+		<fieldDescription><![CDATA[materiaPrimaMateriales]]></fieldDescription>
+	</field>
+	<field name="moral" class="mx.gob.imss.ctirss.delta.model.gestion.individuo.Moral">
+		<fieldDescription><![CDATA[moral]]></fieldDescription>
+	</field>
+	<field name="numeroRegistroPatronal" class="java.lang.String">
+		<fieldDescription><![CDATA[numeroRegistroPatronal]]></fieldDescription>
+	</field>
+	<field name="personal" class="java.util.List">
+		<fieldDescription><![CDATA[personal]]></fieldDescription>
+	</field>
+	<field name="proceso" class="mx.gob.imss.ctirss.delta.model.gestion.patronal.Proceso">
+		<fieldDescription><![CDATA[proceso]]></fieldDescription>
+	</field>
+	<field name="productos" class="java.util.List">
+		<fieldDescription><![CDATA[productos]]></fieldDescription>
+	</field>
+	<field name="subdelegacion" class="mx.gob.imss.ctirss.delta.model.domicilio.Subdelegacion">
+		<fieldDescription><![CDATA[subdelegacion]]></fieldDescription>
+	</field>
+	<field name="tipoPersonaFiscal" class="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoPersonaFiscal">
+		<fieldDescription><![CDATA[tipoPersonaFiscal]]></fieldDescription>
+	</field>
+	<field name="desAfectacion" class="java.lang.String">
+		<fieldDescription><![CDATA[desAfectacion]]></fieldDescription>
+	</field>
+	<field name="desUsosBienes" class="java.lang.String">
+		<fieldDescription><![CDATA[desUsosBienes]]></fieldDescription>
+	</field>
+	<field name="sujetosObligados" class="java.util.List"/>
+	<pageHeader>
+		<band height="115" splitType="Stretch">
+			<rectangle>
+				<reportElement x="23" y="23" width="528" height="42" forecolor="#AFB1B1" backcolor="#231F20"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<image>
+				<reportElement mode="Transparent" x="38" y="36" width="53" height="15"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR}.concat("gobmx.png")]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="23" y="66" width="528" height="41" forecolor="#231F20" backcolor="#F2F2F2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="10"/>
+				</textElement>
+				<text><![CDATA[Instituto Mexicano del Seguro Social - Instituto del Fondo Nacional de la Vivienda para los Trabajadores]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="23" y="65" width="528" height="42" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="41">
+			<subreport isUsingCache="false" runToBottom="false">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="528" height="41"/>
+				<subreportParameter name="P_NOMBRE_PERS">
+					<subreportParameterExpression><![CDATA[$P{P_NOMBRE_PERS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="PRIMA">
+					<subreportParameterExpression><![CDATA[$P{P_PRIMA_CLASI}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IS_MORAL">
+					<subreportParameterExpression><![CDATA[$P{IS_MORAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_NOMB_COMERC">
+					<subreportParameterExpression><![CDATA[$P{P_NOMB_COMERC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_FECPRESENTA">
+					<subreportParameterExpression><![CDATA[$P{P_FECPRESENTA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_FOLIO_SOLCT">
+					<subreportParameterExpression><![CDATA[$P{P_FOLIO_SOLCT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_RAZONSOCIAL">
+					<subreportParameterExpression><![CDATA[$P{P_RAZONSOCIAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ID_FRACCION">
+					<subreportParameterExpression><![CDATA[$P{P_NUM_FRACCIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ID_DIVISION">
+					<subreportParameterExpression><![CDATA[$P{P_NUM_DIVISIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CLASE">
+					<subreportParameterExpression><![CDATA[$P{P_CLASE_CLASI}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMAGENES_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMAGENES_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_MOSTRAR_LEY">
+					<subreportParameterExpression><![CDATA[$P{P_MOSTRAR_LEY}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_PATERNO_PER">
+					<subreportParameterExpression><![CDATA[$P{P_PATERNO_PER}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IS_FISICA">
+					<subreportParameterExpression><![CDATA[$P{IS_FISICA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_FECH_EFECTO">
+					<subreportParameterExpression><![CDATA[$P{P_FECH_EFECTO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_CURPPERSONA">
+					<subreportParameterExpression><![CDATA[$P{P_CURPPERSONA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_MATERNO_PER">
+					<subreportParameterExpression><![CDATA[$P{P_MATERNO_PER}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_FECSOLCITUD">
+					<subreportParameterExpression><![CDATA[$P{P_FECSOLCITUD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_REGPATRONAL">
+					<subreportParameterExpression><![CDATA[$P{P_REGPATRONAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_TIPO_MODIFICACION">
+					<subreportParameterExpression><![CDATA[$P{P_TIPO_MODIFICACION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_RFC_PERSONA">
+					<subreportParameterExpression><![CDATA[$P{P_RFC_PERSONA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ID_GRUPO">
+					<subreportParameterExpression><![CDATA[$P{P_NUMER_GRUPO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_CVE_TRAMITE">
+					<subreportParameterExpression><![CDATA[$P{P_CVE_TRAMITE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_DATOS_GENERALES}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="39">
+			<printWhenExpression><![CDATA[$P{P_CVE_TRAMITE}.equals( "CT" )]]></printWhenExpression>
+			<subreport isUsingCache="false">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" mode="Transparent" x="0" y="0" width="528" height="39" isRemoveLineWhenBlank="true"/>
+				<subreportParameter name="CT_CALLE">
+					<subreportParameterExpression><![CDATA[$P{CT_CALLE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_NUM_EXT">
+					<subreportParameterExpression><![CDATA[$P{CT_NUM_EXT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_NUM_INT">
+					<subreportParameterExpression><![CDATA[$P{CT_NUM_INT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_ENTRE_CALLE_A">
+					<subreportParameterExpression><![CDATA[$P{CT_ENTRE_CALLE_A}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_ENTRE_CALLE_B">
+					<subreportParameterExpression><![CDATA[$P{CT_ENTRE_CALLE_B}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_COLONIA">
+					<subreportParameterExpression><![CDATA[$P{CT_COLONIA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_LOCALIDAD">
+					<subreportParameterExpression><![CDATA[$P{CT_LOCALIDAD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_DELEGACION">
+					<subreportParameterExpression><![CDATA[$P{CT_DELEGACION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_ENTIDAD">
+					<subreportParameterExpression><![CDATA[$P{CT_ENTIDAD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_TEL_FIJO_A">
+					<subreportParameterExpression><![CDATA[$P{CT_TEL_FIJO_A}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_TEL_FIJO_B">
+					<subreportParameterExpression><![CDATA[$P{CT_TEL_FIJO_B}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_CP">
+					<subreportParameterExpression><![CDATA[$P{CT_CP}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_CORREO">
+					<subreportParameterExpression><![CDATA[$P{CT_CORREO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_CENTRO}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="39">
+			<printWhenExpression><![CDATA[$P{P_CVE_TRAMITE}.equals( "ACD" )]]></printWhenExpression>
+			<subreport isUsingCache="false">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" mode="Transparent" x="0" y="0" width="528" height="39" isRemoveLineWhenBlank="true"/>
+				<subreportParameter name="CT_CALLE">
+					<subreportParameterExpression><![CDATA[$P{CT_CALLE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_NUM_EXT">
+					<subreportParameterExpression><![CDATA[$P{CT_NUM_EXT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_NUM_INT">
+					<subreportParameterExpression><![CDATA[$P{CT_NUM_INT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_ENTRE_CALLE_A">
+					<subreportParameterExpression><![CDATA[$P{CT_ENTRE_CALLE_A}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_ENTRE_CALLE_B">
+					<subreportParameterExpression><![CDATA[$P{CT_ENTRE_CALLE_B}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_COLONIA">
+					<subreportParameterExpression><![CDATA[$P{CT_COLONIA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_LOCALIDAD">
+					<subreportParameterExpression><![CDATA[$P{CT_LOCALIDAD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_DELEGACION">
+					<subreportParameterExpression><![CDATA[$P{CT_DELEGACION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_ENTIDAD">
+					<subreportParameterExpression><![CDATA[$P{CT_ENTIDAD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_TEL_FIJO_A">
+					<subreportParameterExpression><![CDATA[$P{CT_TEL_FIJO_A}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_TEL_FIJO_B">
+					<subreportParameterExpression><![CDATA[$P{CT_TEL_FIJO_B}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_CP">
+					<subreportParameterExpression><![CDATA[$P{CT_CP}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CT_CORREO">
+					<subreportParameterExpression><![CDATA[$P{CT_CORREO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_NRP_ANT">
+					<subreportParameterExpression><![CDATA[$P{P_NRP_ANT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_CENTRO_DOMANT}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="39">
+			<subreport isUsingCache="false">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="528" height="39"/>
+				<subreportParameter name="CLASE">
+					<subreportParameterExpression><![CDATA[$F{clasificacion}.getFraccion().getClase().getDescripcion()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ID_DIVISION">
+					<subreportParameterExpression><![CDATA[""+$F{clasificacion}.getFraccion().getGrupo().getDivision().getNumDivision()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="PRIMA">
+					<subreportParameterExpression><![CDATA[$F{clasificacion}.getPrimaSRTActual()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DIVISION">
+					<subreportParameterExpression><![CDATA[$F{clasificacion}.getFraccion().getGrupo().getDivision().getDescripcion()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="GIRO">
+					<subreportParameterExpression><![CDATA[$F{clasificacion}.getGiro()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FRACCION">
+					<subreportParameterExpression><![CDATA[$F{clasificacion}.getFraccion().getDescripcion()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="PRESTA_SERVICIO_PERSONAL">
+					<subreportParameterExpression><![CDATA[$F{clasificacion}.getIndPrestaServicioPersonal()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="GRUPO">
+					<subreportParameterExpression><![CDATA[$F{clasificacion}.getFraccion().getGrupo().getDescripcion()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ID_FRACCION">
+					<subreportParameterExpression><![CDATA[""+$F{clasificacion}.getFraccion().getNumFraccion()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ID_GRUPO">
+					<subreportParameterExpression><![CDATA[""+$F{clasificacion}.getFraccion().getGrupo().getNumGrupo()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_CLASIFICACION}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="41">
+			<subreport isUsingCache="false">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="528" height="41"/>
+				<subreportParameter name="P_REGPATRONAL">
+					<subreportParameterExpression><![CDATA[$P{P_REGPATRONAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{productos})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_PRODUCTOS}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="42">
+			<subreport isUsingCache="false" runToBottom="false">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="528" height="42"/>
+				<subreportParameter name="P_REGPATRONAL">
+					<subreportParameterExpression><![CDATA[$P{P_REGPATRONAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{materiaPrimaMateriales})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_MATERIAS}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="41" splitType="Stretch">
+			<subreport isUsingCache="false">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="528" height="41"/>
+				<subreportParameter name="P_REGPATRONAL">
+					<subreportParameterExpression><![CDATA[$P{P_REGPATRONAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{equipos})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_MAQUINARIA}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="40">
+			<subreport isUsingCache="false">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="528" height="40"/>
+				<subreportParameter name="P_REGPATRONAL">
+					<subreportParameterExpression><![CDATA[$P{P_REGPATRONAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{equiposTransporte})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_TRANSPORTE}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="40">
+			<subreport isUsingCache="false">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="528" height="40"/>
+				<subreportParameter name="INTERMEDIOS">
+					<subreportParameterExpression><![CDATA[$F{proceso}.getDesIntermedio()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="INICIALES">
+					<subreportParameterExpression><![CDATA[$F{proceso}.getDesInicial()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FINALES">
+					<subreportParameterExpression><![CDATA[$F{proceso}.getDesFinal()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_PROCESOS}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="41">
+			<subreport isUsingCache="false">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="528" height="41"/>
+				<subreportParameter name="P_REGPATRONAL">
+					<subreportParameterExpression><![CDATA[$P{P_REGPATRONAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{personal})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_PERSONAL}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="40">
+			<subreport isUsingCache="false">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="528" height="40" isRemoveLineWhenBlank="true"/>
+				<subreportParameter name="indServiciosATerceros">
+					<subreportParameterExpression><![CDATA[$F{clasificacion}.getIndServiciosATerceros()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="indDistribuyeEntrega">
+					<subreportParameterExpression><![CDATA[$F{clasificacion}.getIndDistribuyeEntrega()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="indTransportePropio">
+					<subreportParameterExpression><![CDATA[$F{clasificacion}.getIndTransportePropio()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="indTransporteAjeno">
+					<subreportParameterExpression><![CDATA[$F{clasificacion}.getIndTransporteAjeno()]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_ACTIVIDADES_COM}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="39">
+			<subreport isUsingCache="false" runToBottom="false">
+				<reportElement x="0" y="0" width="528" height="39" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{sujetosObligados} != null && !$F{sujetosObligados}.isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="P_CAD_ORIG">
+					<subreportParameterExpression><![CDATA[$P{P_CAD_ORIG}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_SEC_NOT">
+					<subreportParameterExpression><![CDATA[$P{P_SEC_NOT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_DES_SUB_DEL">
+					<subreportParameterExpression><![CDATA[$P{P_DES_SUB_DEL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_NUM_SERIE">
+					<subreportParameterExpression><![CDATA[$P{P_NUM_SERIE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_DES_DELEGAC">
+					<subreportParameterExpression><![CDATA[$P{P_DES_DELEGAC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_SELLO">
+					<subreportParameterExpression><![CDATA[$P{P_SELLO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{sujetosObligados})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_FUSION_SUS}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="45">
+			<printWhenExpression><![CDATA[$P{P_CVE_TRAMITE}.equals( "J" ) || $P{P_CVE_TRAMITE}.equals( "K" ) || $P{P_CVE_TRAMITE}.equals( "L" ) || $P{P_CVE_TRAMITE}.equals( "M" ) || $P{P_CVE_TRAMITE}.equals( "N" )]]></printWhenExpression>
+			<subreport>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="528" height="45" isRemoveLineWhenBlank="true"/>
+				<subreportParameter name="desUsosBienes">
+					<subreportParameterExpression><![CDATA[$F{desUsosBienes}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="desAfectacion">
+					<subreportParameterExpression><![CDATA[$F{desAfectacion}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_REGPATRONAL">
+					<subreportParameterExpression><![CDATA[$P{P_REGPATRONAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{bienes})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_BIENES}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="40" splitType="Immediate">
+			<printWhenExpression><![CDATA[$P{P_SELLO}=="" || $P{P_SELLO}==null]]></printWhenExpression>
+			<subreport>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="528" height="40"/>
+				<subreportParameter name="P_NOMB_COMERC">
+					<subreportParameterExpression><![CDATA[$P{P_NOMB_COMERC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_CAD_ORIG">
+					<subreportParameterExpression><![CDATA[$P{P_CAD_ORIG}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_SEC_NOT">
+					<subreportParameterExpression><![CDATA[$P{P_SEC_NOT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_DES_SUB_DEL">
+					<subreportParameterExpression><![CDATA[$P{P_DES_SUB_DEL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_DES_DELEGAC">
+					<subreportParameterExpression><![CDATA[$P{P_DES_DELEGAC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_SELLO">
+					<subreportParameterExpression><![CDATA[$P{P_SELLO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_USUARIO">
+					<subreportParameterExpression><![CDATA[$P{P_USUARIO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_FIRMAS}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="41">
+			<printWhenExpression><![CDATA[$P{P_SELLO}!=null && $P{P_SELLO}!=""]]></printWhenExpression>
+			<subreport isUsingCache="false">
+				<reportElement x="0" y="0" width="528" height="39"/>
+				<subreportParameter name="P_CAD_ORIG">
+					<subreportParameterExpression><![CDATA[$P{P_CAD_ORIG}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_SEC_NOT">
+					<subreportParameterExpression><![CDATA[$P{P_SEC_NOT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_DES_SUB_DEL">
+					<subreportParameterExpression><![CDATA[$P{P_DES_SUB_DEL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_NUM_SERIE">
+					<subreportParameterExpression><![CDATA[$P{P_NUM_SERIE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_DES_DELEGAC">
+					<subreportParameterExpression><![CDATA[$P{P_DES_DELEGAC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_SELLO">
+					<subreportParameterExpression><![CDATA[$P{P_SELLO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUB_FIRMA_IMSS}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="94">
+			<rectangle>
+				<reportElement positionType="Float" x="23" y="12" width="528" height="62" forecolor="#AFB1B1" backcolor="#E7E8E7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<image>
+				<reportElement positionType="Float" mode="Transparent" x="41" y="22" width="165" height="33"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR}.concat("gobiernoDeLaRepublica.png")]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="Float" x="485" y="74" width="26" height="13"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Página ]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement positionType="Float" x="537" y="74" width="15" height="13"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{PAGE_NUMBER}.toString()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="381" y="23" width="155" height="53"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Paseo de la Reforma 476, P.B.
+Col. Juárez, Alcaldía Cuauhtémoc
+C.P. 06600, CDMX
+Tel. 800 623 23 23
+http://www.imss.gob.mx/contacto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="381" y="15" width="74" height="20"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contacto:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="512" y="74" width="17" height="13"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{PAGE_NUMBER}.toString()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="524" y="74" width="17" height="13"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="23" y="12" width="527" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="23" y="11" width="528" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

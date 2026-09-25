@@ -1,0 +1,92 @@
+Si se requiere agregar una nueva opción al menú, se agrega el id al property menu.opciones, esta opción
+estará en el nivel superior del menú principal, se tienen dos tipos: opción única o cuando 
+tiene dependientes. 
+
+Se deben de crear las siguientes propiedades iniciando con el id del paso anterior:
+		- idNuevaOpcion.titulo -> Descripción de la opción
+		- idNuevaOpcion.collapsible -> Booleano para determinar si se tienen o no dependientes
+				+ true - cuando se requiera tener dependientes
+				+ false - cuando la opción es única
+		- idNuevaOpcion.url -> URL inicial de esta opción, será encargada de obtener cada una de las gráficas a generar para la opción.
+				Si no está definida se generará la URL por default: 
+				/gestionSolicitud-visor-graficas-web/grafica/{idNuevaOpcion}/init
+		- idNuevaOpcion.graficas -> Se usa sólo cuando la opción es única (collapsible=false), indica
+				la lista de gráficas a generar al elegir esta opción (id's separados por pipes)
+		- idNuevaOpcion.opciones -> Se usa sólo cuando la opción tiene dependientes (collapsible=true),
+				indica la lista de opciones dependientes (id's separados por pipes)
+
+Para crear las opciones dependientes, sólo se necesita definir las siguientes propiedades, que tienen el mismo objetivo descrito arriba: 
+		- idOpcionDependiente.titulo
+		- idOpcionDependiente.url
+		- idOpcionDependiente.graficas
+		
+
+Para definir la configuración de las gráficas se tienen dos tipos: barras o líneas.
+
+GRÁFICA DE BARRAS, para las gráficas de barras se tienen que definir las siguientes propiedades:
+		- idGrafica.tipo -> Inidca el tipo de gráfica, para las gráficas de barras debe ser 1
+		- idGrafica.nombre -> Nombre/Título a mostrar en la gráfica 
+		- idGrafica.descripcion -> Descripción de la gráfica
+		- idGrafica.url -> URL para refrescar la gráfica. Si no está definida se generará la URL por default: 
+				/gestionSolicitud-visor-graficas-web/grafica/{idNuevaOpcion}
+		- idGrafica.xkey -> Identificador del atributo a pintar en el eje X
+		- idGrafica.xkey.labels -> Lista de descripciones/etiquetas a mostrar en el eje X. Cada descripción debe estar separada
+				por pipes y si se requiere usar una abreviación se pone antes de la descipción separando ambas por un "#".
+				Ejemplo: VIG.#VIGENCIA EN LÍNEA|C. CL.#CAMBIO DE CLÍNICA|R. ASEG.#REGISTRO DE ASEGURADO
+				Cada una de estas descripciones representará una barra en la gráfica
+		- idGrafica.xkey.conditions -> Lista de condiciones a cumplir para que la etiqueta/descripción previa se contabilice.
+				Cada condición debe estar en la misma posición de la lista que su etiqueta correspondiente. 
+				Ejemplo: origen==1 and tramite==43|origen==2 and tramite==43|origen==1 and tramite==85
+				Estas condiciones usan Spring Expression Language (SpEL) para evaluar el resultado de la consulta, los atributos
+				disponibles a evaluar corresponden a la clase mx.gob.imss.ctirss.delta.model.gestion.solicitud.graficas.GraficaResponse
+		- idGrafica.ykeys -> Si la barra solo representará un valor, es decir, no estará apliada, basta con definir una llave para 
+				el atributo a graficar en el eje Y.
+				Si la barra tendrá otras barras apliadas, este valor reprensenta una lista con las llaves de cada una de las barras a apilar.
+				Ejemplo: movInternet|movVentanilla|movPortalCiudadano
+		- idGrafica.ykeys.labels -> Representa la(s) etiqueta(s) a mostar junto al valor del eje Y. Si son barras apiladas debe ser una 
+				lista con cada una de las etiquetas.
+				Ejemplo: INTERNET|VENTANILLA|P. CIUDADANO
+		- idGrafica.ykeys.conditions -> Sólo se define cuando se utilizan barras apiladas y es la lista de condiciones a cumplir por cada
+				barra apilada. Se basa en el atributo idGrafica.ykeys, pero se agrega por cada llave la condición a cumplir, separando por "@" 
+				Ejemplo: movInternet@origen==2|movVentanilla@origen==1|movPortalCiudadano@origen==6
+		- idGrafica.tipoFormatoEjeX -> Define el formato ha utilizar para mostar la etiqueta del eje X, para el caso de las gráficas de barras
+				debe ser 0.
+		- idGrafica.mostrarDetalleDia -> Indicador para utilzar el pop-up nativo de la gráfica (true) o mostar el detalle en un contenedor
+				independiente a la gráfica (false). Útil cuando se tienen muchos trámites en la gráfica y el pop-up impide visualizarla 
+				correctamente.
+		- idGrafica.tipoAgrupacion -> Tipo de agrupación a utilizar al realizar la consulta
+				+ porOrigen -> Se agrupa por origen
+				+ porOrigenTramite -> Se agrupa por origen y por tipo de trámite
+		- idGrafica.fechaInicio -> Fecha en la que salió el trámite a producción, debe llevar el formato dd/MM/yyyy
+		- idGrafica.origenes -> Lista de origenes a tomar en cuenta para la gráfica (id en base de datos de cada origen separados por pipe)
+		- idGrafica.estados -> Lista de estados a tomar en cuenta para la gráfica (id en base de datos de cada estado separados por pipe)
+		- idGrafica.tramites-> Lista de trámites a tomar en cuenta para la gráfica (id en base de datos de cada trámites separados por pipe)
+		
+GRÁFICA DE LÍNEAS, para las gráficas de líneas se tienen que definir las siguientes propiedades:
+		- idGrafica.tipo -> Inidca el tipo de gráfica, para las gráficas de barras debe ser 2
+		- idGrafica.nombre -> Nombre/Título a mostrar en la gráfica 
+		- idGrafica.descripcion -> Descripción de la gráfica
+		- idGrafica.xkey -> Identificador del atributo a pintar en el eje X
+		- idGrafica.ykeys -> Lista con las llaves de cada una de las líneas a gráficar
+				Ejemplo: reporteVigencia|cambioClinica|registroAsegurado
+		- idGrafica.ykeys.conditions -> Lista de condiciones a cumplir por cada línea a graficar. Se basa en el atributo idGrafica.ykeys, 
+				pero se agrega por cada llave la condición a cumplir, separando por "@". Esta propiedas se debe omitir cuando se utilice 
+				el tipo de agrupación diaHistoricoTotalTramtiesAgrupados.
+				Ejemplo: reporteVigencia@origen==2 and tramite==94|cambioClinica@origen==2 and tramite==36|registroAsegurado@origen==2 and tramite==44
+		- idGrafica.ykeys.labels -> Representa la(s) etiqueta(s) a mostar junto al valor del eje Y.
+				Ejemplo: REPORTE DE VIGENCIA|CAMBIO DE CL\u00CDNICA|REGISTRO DE ASEGURADO
+		- idGrafica.tipoFormatoEjeX -> Define el formato ha utilizar para mostar la etiqueta del eje X.
+				+ 1 -> Se presenta la fecha con formato dd/MM/yyyy
+				+ 2 -> Se presenta la fecha con formatao MMMM yyyy
+		- idGrafica.mostrarDetalleDia -> Indicador para utilzar el pop-up nativo de la gráfica (true) o mostar el detalle en un contenedor
+				independiente a la gráfica (false). Útil cuando se tienen muchos trámites en la gráfica y el pop-up impide visualizarla 
+				correctamente.
+		- idGrafica.tipoAgrupacion ->  Tipo de agrupación a utilizar al realizar la consulta
+				+ mesHistorico -> Se agrupa por mes desde la fecha de inicio hasta el día actual
+				+ diaMesActual -> Se agrupa por día durante el mes en curso
+				+ diaHistoricoTotalTramtiesAgrupados -> Se agrupa por día desde la fecha de inicio hasta el día actual y se hace un
+						gran total de los trámites incluidos
+		- idGrafica.fechaInicio -> Fecha en la que salió el trámite a producción, debe llevar el formato dd/MM/yyyy
+		- idGrafica.origenes -> Lista de origenes a tomar en cuenta para la gráfica (id en base de datos de cada origen separados por pipe)
+		- idGrafica.estados -> Lista de estados a tomar en cuenta para la gráfica (id en base de datos de cada estado separados por pipe)
+		- idGrafica.tramites-> Lista de trámites a tomar en cuenta para la gráfica (id en base de datos de cada trá

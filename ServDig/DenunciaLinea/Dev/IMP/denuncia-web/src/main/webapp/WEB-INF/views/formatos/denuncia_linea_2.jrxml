@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="denuncia_linea_2" pageWidth="555" pageHeight="1100" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<parameter name="numeroDenuncia" class="java.lang.String"/>
+	<parameter name="numFolioDenuncia" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select
+        p.des_nombre || ' ' || p.des_paterno || ' ' || p.des_materno as "nombreD",--dlt_persona
+        p.cve_tipodenunciante as "calidadDenuncia",
+        p.cve_rfc as "rfcD",
+        p.cve_curp as "curpD",
+        p.num_telefono as "telefonoD",
+        d.nomvial as "domicilioD",
+        d.numextnum as "numeroD",
+        d.numintnum as "interiorD",
+         l.nom_loc as "coloniaD",
+         cp.codigo as "cpD",
+          m.nom_mun as "delegacionD",
+           v.nom_via as "callesD"
+
+from dlt_denuncia den, DLT_PERSONA p, dg_domicilio_geografico d,  dg_cat_localidad l, dg_codigos_postales cp,
+dg_cat_municipio m, dg_vialidad v
+where den.CVE_FOLIODENUNCIA = $P{numeroDenuncia}
+    and p.CVE_TIPODENUNCIANTE between 2 and 3
+    and den.CVE_FOLIODENUNCIA = p.CVE_FOLIODENUNCIA(+)
+    and p.DOMICILIO_ID = d.DOMICILIO_ID(+)
+    and d.CVE_LOC = l.CVE_LOC(+)
+    and d.CODIGO = cp.CODIGO(+)
+    and d.CVE_ENT = m.CVE_ENT(+)
+    and d.CVE_VIA_PRIN = v.CVE_VIA(+)]]>
+	</queryString>
+	<field name="nombreD" class="java.lang.String"/>
+	<field name="calidadDenuncia" class="java.math.BigDecimal"/>
+	<field name="rfcD" class="java.lang.String"/>
+	<field name="curpD" class="java.lang.String"/>
+	<field name="telefonoD" class="java.lang.String"/>
+	<field name="domicilioD" class="java.lang.String"/>
+	<field name="numeroD" class="java.lang.String"/>
+	<field name="interiorD" class="java.lang.String"/>
+	<field name="coloniaD" class="java.lang.String"/>
+	<field name="cpD" class="java.lang.String"/>
+	<field name="delegacionD" class="java.lang.String"/>
+	<field name="callesD" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="637" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="554" height="637"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<frame>
+					<reportElement x="10" y="0" width="536" height="140"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<staticText>
+						<reportElement x="0" y="20" width="37" height="12"/>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Nombre:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="0" y="0" width="124" height="20"/>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="9" isBold="true"/>
+						</textElement>
+						<text><![CDATA[DATOS DEL DENUNCIANTE]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="0" y="32" width="536" height="12"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{nombreD}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="3" y="44" width="124" height="12"/>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Calidad con la que denuncia:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="272" y="44" width="104" height="12"/>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[R.F.C.:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="408" y="44" width="128" height="12"/>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[C.U.R.P.:]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="0" y="56" width="252" height="12"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{calidadDenuncia}.equals("2") ? "BENEFICIARIO" : "REPRESENTANTE"]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="272" y="56" width="137" height="12"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{rfcD}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="407" y="56" width="129" height="12"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{curpD}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="0" y="68" width="90" height="12"/>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Domicilio:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="399" y="68" width="62" height="12"/>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Número:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="466" y="68" width="70" height="12"/>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Interior:]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="0" y="80" width="384" height="12"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{domicilioD}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="399" y="80" width="62" height="12"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{numeroD}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="465" y="80" width="71" height="12"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{interiorD}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="0" y="92" width="90" height="12"/>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Colonia:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="311" y="92" width="53" height="12"/>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[C:P.:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="376" y="92" width="95" height="12"/>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Delegación o Municipio:]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="0" y="104" width="283" height="12"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{coloniaD}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="311" y="104" width="53" height="12"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{cpD}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="366" y="104" width="170" height="12"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{delegacionD}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="0" y="116" width="90" height="12"/>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Entre calles:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="376" y="116" width="100" height="12"/>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Número de teléfono:]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="0" y="128" width="354" height="12"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{callesD}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="366" y="128" width="170" height="12"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{telefonoD}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</frame>
+			<frame>
+				<reportElement x="10" y="160" width="536" height="453"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textField>
+					<reportElement x="0" y="20" width="536" height="23"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Para dar trámite a su denuncia Usted deberá con este acuse ante la Subdelegación más cercana a su domicilio ratificar su denuncia dentro de los 10 días hábiles siguientes, con el numero de " + $P{numFolioDenuncia} + "."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="137" height="20"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DISPOSICIONES FINALES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="54" width="536" height="375"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Si el representante legal realiza la denuncia, para su ratificación deberá acudir forzosamente con carta poder, poder notarial y la identificación oficial correspondiente; si es un beneficiario, deberá acudir con las identificaciones oficiales del denunciante y beneficiario.
+
+Para el caso de no realizar la ratificación de su denuncia, ésta se tendrá por no presentada, en cuyo caso podrá presentar una nueva por esta misma vía o acudir directamente a la Subdelegación correspondiente.
+
+Para la ratificación correspondiente deberá acudir a la Subdelegación con los documentos en original y copia que se solicitó durante el requisitado de la denuncia en línea, y demás documentación comprobatoria que considere necesaria(ejemplo; comprobantes de pago recientes y de años anteriores, así como estados de cuenta, copia de contrato laboral en su caso, laudo favorable, etcétera).
+
+Una vez la ratificada la denuncia ante la Subdelegación correspondiente, se analizará el contenido de la misma así como de la documentación presentada, y se le infomará, en su caso, sobre la procedencia del ejercicio de las facultades de comprobación de este instituto, conforma a la disposiciones legales vigentes.
+
+El ejercicio de facultades de comprobación, está condicionado a la verificación de las siguientes situaciones que se precisan a continuación, entre otras:
+
+1.- El patrón no sea localizado.
+
+2.- En caso de que las facultades de comprobación por parte del IMSS,hayan caducado(5 años) en términos de los artículos 367 de la Ley del Seguro Social y 67 del Código Fiscal de la Federación.
+
+3.- Patrones Personas Físicas que hayan fallecido.
+
+4.- Patrones Personas Morales liquidadas a disueltas conforme a las disposiciones legales aplicables.
+
+5.- Por Ley, el Patrón no se encuentre obligado a proporcionar seguro social, salvo que exista celebrado un convenio de incorporación voluntaria al régimen obligatorio, de acuerdo con lo establecido por los articulos 13 fracción V y 14 de la Ley del Seguro Social.
+
+6.- Contar con laudo desfavorable que desconozca la relación laboral.
+
+Ratificada la denuncia en el supuesto de que no se encuadre en una o varias de las situaciones descritas arriba, el Instituto ejercerá las facultades de fiscalización y contará con un plazo máximo legal d 18 meses para informar el resultado de las mismas, el cual podrá ampliarse en caso de inconformidad o medio de defensa legal promovido por el patrón.
+
+Se hace de su conocimiento que una vez guardada la información, el IMSS cuenta con los datos personales queusted proporcionó en la presente solicitud, los cuales serán protegidos y confidenciales en términos de los artículos 22 de la Ley del Seguro Social; 14 y 15 de la Ley Federal de Transparencia y Acceso a la información Pública Gubernamental, por lo que se le comunica que la falsedad de declaraciones, y la falsificación de documentos, constituyen la comisión de Delitos castigados por la Ley, por lo que se recomienda tener plena certeza de los hechos que se relatan en la denuncia y de la autenticidad de los documentos que adjuntan en la misma.]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="244" y="0" width="28" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[2 de]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="272" y="0" width="21" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

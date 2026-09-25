@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://mx.gob.imss.ctirss.delta.cobranza/generarTimbrePago/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="generarTimbrePago" targetNamespace="http://mx.gob.imss.ctirss.delta.cobranza/generarTimbrePago/"
+	xmlns:xsd1="http://www.mx.gob.imss.ctirss.delta.cobranza">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://www.mx.gob.imss.ctirss.delta.cobranza"
+				schemaLocation="pago.xsd">
+			</xsd:import>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="generarTimbrePagoRequest">
+		<wsdl:part element="xsd1:pagoRequest" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="generarTimbrePagoResponse">
+		<wsdl:part element="xsd1:pagoResponse" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:portType name="generarTimbrePago">
+		<wsdl:operation name="generarTimbrePago">
+			<wsdl:input message="tns:generarTimbrePagoRequest" />
+			<wsdl:output message="tns:generarTimbrePagoResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="generarTimbrePagoSOAP" type="tns:generarTimbrePago">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="generarTimbrePago">
+			<soap:operation
+				soapAction="http://mx.gob.imss.ctirss.delta.cobranza/generarTimbrePago/generarTimbrePago" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="generarTimbrePago">
+		<wsdl:port binding="tns:generarTimbrePagoSOAP" name="generarTimbrePagoSOAP">
+			<soap:address location="http://www.example.org/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

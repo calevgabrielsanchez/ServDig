@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s0:definitions targetNamespace="http://172.24.116.26:10000/spes/services/AutorizaGF" xmlns:s0="http://schemas.xmlsoap.org/wsdl/" xmlns:s1="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s2="http://172.24.116.26:10000/spes/services/AutorizaGF" xmlns:s3="http://schemas.xmlsoap.org/wsdl/soap/">
+  <s0:message name="ingresaAutorizacionResponse">
+    <s0:part name="ingresaAutorizacionReturn" type="s1:string"/>
+  </s0:message>
+  <s0:message name="ingresaAutorizacionRequest">
+    <s0:part name="xmlIn" type="s1:string"/>
+  </s0:message>
+  <s0:message name="consultaGastosFunerariosResponse">
+    <s0:part name="consultaGastosFunerariosReturn" type="s1:string"/>
+  </s0:message>
+  <s0:message name="consultaGastosFunerariosRequest">
+    <s0:part name="xmlIn" type="s1:string"/>
+  </s0:message>
+  <s0:portType name="AutorizaGastosFunerarios">
+    <s0:operation name="consultaGastosFunerarios" parameterOrder="xmlIn">
+      <s0:input message="s2:consultaGastosFunerariosRequest" name="consultaGastosFunerariosRequest"/>
+      <s0:output message="s2:consultaGastosFunerariosResponse" name="consultaGastosFunerariosResponse"/>
+    </s0:operation>
+    <s0:operation name="ingresaAutorizacion" parameterOrder="xmlIn">
+      <s0:input message="s2:ingresaAutorizacionRequest" name="ingresaAutorizacionRequest"/>
+      <s0:output message="s2:ingresaAutorizacionResponse" name="ingresaAutorizacionResponse"/>
+    </s0:operation>
+  </s0:portType>
+  <s0:binding name="AutorizaGFSoapBinding" type="s2:AutorizaGastosFunerarios">
+    <s3:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <s0:operation name="consultaGastosFunerarios">
+      <s3:operation soapAction=""/>
+      <s0:input name="consultaGastosFunerariosRequest">
+        <s3:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://service.agf.servicios.spes.cia.imss.gob.mx" use="encoded"/>
+      </s0:input>
+      <s0:output name="consultaGastosFunerariosResponse">
+        <s3:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://172.24.116.26:10000/spes/services/AutorizaGF" use="encoded"/>
+      </s0:output>
+    </s0:operation>
+    <s0:operation name="ingresaAutorizacion">
+      <s3:operation soapAction=""/>
+      <s0:input name="ingresaAutorizacionRequest">
+        <s3:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://service.agf.servicios.spes.cia.imss.gob.mx" use="encoded"/>
+      </s0:input>
+      <s0:output name="ingresaAutorizacionResponse">
+        <s3:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://172.24.116.26:10000/spes/services/AutorizaGF" use="encoded"/>
+      </s0:output>
+    </s0:operation>
+  </s0:binding>
+  <s0:service name="AutorizaGastosFunerariosService">
+    <s0:port binding="s2:AutorizaGFSoapBinding" name="AutorizaGF">
+      <s3:address location="http://10.140.0.32:10001/OperacionesSistrap/AutorizaGF"/>
+    </s0:port>
+  </s0:service>
+</s0:definitions>

@@ -1,0 +1,198 @@
+package mx.gob.imss.distss.derechohabientes.adimss.service.persistence.vangent;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+
+/**
+ * The persistent class for the PROCESS_JOBS_DETAILS database table.
+ * 
+ */
+@Entity
+@Table(name="PROCESS_JOBS_DETAILS")
+@NamedQuery(name="ProcessJobsDetail.findAll", query="SELECT p FROM ProcessJobsDetail p")
+public class ProcessJobsDetail implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	private long idprocessjobdetail;
+
+	private BigDecimal createdby;
+
+	@Temporal(TemporalType.DATE)
+	private Date createdon;
+
+	private BigDecimal idadimsskey;
+
+	private BigDecimal idenrol;
+
+	private BigDecimal idenrollmentstation;
+
+	private BigDecimal idenrolsequence;
+
+	private BigDecimal idenrolstate;
+
+	private BigDecimal messagesnumber;
+
+	private String processjobcomments;
+
+	private BigDecimal updatedby;
+
+	@Temporal(TemporalType.DATE)
+	private Date updatedon;
+
+	//bi-directional many-to-one association to JobStatusCat
+	@ManyToOne
+	@JoinColumn(name="IDJOBSTATUS")
+	private JobStatusCat jobStatusCat;
+
+	//bi-directional many-to-one association to ProcessJob
+	@ManyToOne
+	@JoinColumn(name="IDPROCESSJOB")
+	private ProcessJob processJob;
+
+	//bi-directional many-to-one association to ProcessJobsImageData
+	@OneToMany(mappedBy="processJobsDetail")
+	private List<ProcessJobsImageData> processJobsImageData;
+
+	public ProcessJobsDetail() {
+	}
+
+	public long getIdprocessjobdetail() {
+		return this.idprocessjobdetail;
+	}
+
+	public void setIdprocessjobdetail(long idprocessjobdetail) {
+		this.idprocessjobdetail = idprocessjobdetail;
+	}
+
+	public BigDecimal getCreatedby() {
+		return this.createdby;
+	}
+
+	public void setCreatedby(BigDecimal createdby) {
+		this.createdby = createdby;
+	}
+
+	public Date getCreatedon() {
+		return this.createdon;
+	}
+
+	public void setCreatedon(Date createdon) {
+		this.createdon = createdon;
+	}
+
+	public BigDecimal getIdadimsskey() {
+		return this.idadimsskey;
+	}
+
+	public void setIdadimsskey(BigDecimal idadimsskey) {
+		this.idadimsskey = idadimsskey;
+	}
+
+	public BigDecimal getIdenrol() {
+		return this.idenrol;
+	}
+
+	public void setIdenrol(BigDecimal idenrol) {
+		this.idenrol = idenrol;
+	}
+
+	public BigDecimal getIdenrollmentstation() {
+		return this.idenrollmentstation;
+	}
+
+	public void setIdenrollmentstation(BigDecimal idenrollmentstation) {
+		this.idenrollmentstation = idenrollmentstation;
+	}
+
+	public BigDecimal getIdenrolsequence() {
+		return this.idenrolsequence;
+	}
+
+	public void setIdenrolsequence(BigDecimal idenrolsequence) {
+		this.idenrolsequence = idenrolsequence;
+	}
+
+	public BigDecimal getIdenrolstate() {
+		return this.idenrolstate;
+	}
+
+	public void setIdenrolstate(BigDecimal idenrolstate) {
+		this.idenrolstate = idenrolstate;
+	}
+
+	public BigDecimal getMessagesnumber() {
+		return this.messagesnumber;
+	}
+
+	public void setMessagesnumber(BigDecimal messagesnumber) {
+		this.messagesnumber = messagesnumber;
+	}
+
+	public String getProcessjobcomments() {
+		return this.processjobcomments;
+	}
+
+	public void setProcessjobcomments(String processjobcomments) {
+		this.processjobcomments = processjobcomments;
+	}
+
+	public BigDecimal getUpdatedby() {
+		return this.updatedby;
+	}
+
+	public void setUpdatedby(BigDecimal updatedby) {
+		this.updatedby = updatedby;
+	}
+
+	public Date getUpdatedon() {
+		return this.updatedon;
+	}
+
+	public void setUpdatedon(Date updatedon) {
+		this.updatedon = updatedon;
+	}
+
+	public JobStatusCat getJobStatusCat() {
+		return this.jobStatusCat;
+	}
+
+	public void setJobStatusCat(JobStatusCat jobStatusCat) {
+		this.jobStatusCat = jobStatusCat;
+	}
+
+	public ProcessJob getProcessJob() {
+		return this.processJob;
+	}
+
+	public void setProcessJob(ProcessJob processJob) {
+		this.processJob = processJob;
+	}
+
+	public List<ProcessJobsImageData> getProcessJobsImageData() {
+		return this.processJobsImageData;
+	}
+
+	public void setProcessJobsImageData(List<ProcessJobsImageData> processJobsImageData) {
+		this.processJobsImageData = processJobsImageData;
+	}
+
+	public ProcessJobsImageData addProcessJobsImageData(ProcessJobsImageData processJobsImageData) {
+		getProcessJobsImageData().add(processJobsImageData);
+		processJobsImageData.setProcessJobsDetail(this);
+
+		return processJobsImageData;
+	}
+
+	public ProcessJobsImageData removeProcessJobsImageData(ProcessJobsImageData processJobsImageData) {
+		getProcessJobsImageData().remove(processJobsImageData);
+		processJobsImageData.setProcessJobsDetail(null);
+
+		return processJobsImageData;
+	}
+
+}

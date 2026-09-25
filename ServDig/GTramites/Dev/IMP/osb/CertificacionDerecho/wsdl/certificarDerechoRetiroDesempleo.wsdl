@@ -1,0 +1,42 @@
+<wsdl:definitions name="certificarDerechoRetiroDesempleo" targetNamespace="http://www.serviciosdigitales.imss.gob.mx/certificarDerechoRetiroDesempleo/" xmlns:cdr="http://www.serviciosdigitales.imss.gob.mx/certificarDerechoRetiroDesempleo/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cert="http://www.serviciosdigitales.imss.gob.mx/certificacionDerechoRetiroDesempleo">
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.serviciosdigitales.imss.gob.mx">
+			<xsd:import namespace="http://www.serviciosdigitales.imss.gob.mx/certificacionDerechoRetiroDesempleo" schemaLocation="../schema/certificacionDerechoRetiroDesempleo.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="certificarRequest">
+		<wsdl:part element="cert:certificacionDerechoRequest" name="parameters"/>
+	</wsdl:message>
+
+	<wsdl:message name="certificarResponse">
+		<wsdl:part element="cert:certificacionDerechoResponse" name="parameters"/>
+	</wsdl:message>
+
+	<wsdl:portType name="certificarDerechoRetiroDesempleo">
+		<wsdl:operation name="certificar">
+			<wsdl:input message="cdr:certificarRequest"/>
+			<wsdl:output message="cdr:certificarResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="certificarDerechoRetiroDesempleoSOAP" type="cdr:certificarDerechoRetiroDesempleo">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="certificar">
+			<soap:operation soapAction="http://www.serviciosdigitales.imss.gob.mx/certificarDerechoRetiroDesempleo/certificar"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="certificarDerechoRetiroDesempleo">
+		<wsdl:port binding="cdr:certificarDerechoRetiroDesempleoSOAP" name="certificarDerechoRetiroDesempleoSOAP">
+			<soap:address location="http://www.example.org/"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

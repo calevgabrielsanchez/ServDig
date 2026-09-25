@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE tiles-definitions PUBLIC 
+ "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd"> 
+ 
+<tiles-definitions> 
+
+	<definition name="baseL" template="/WEB-INF/views/layout/baseL.jsp"> 
+		<put-attribute name="title"  value="Template"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/layout/body.jsp"/> 
+	</definition>
+
+	<definition name="baseLayout" template="/WEB-INF/views/layout/baseLayout.jsp"> 
+		<put-attribute name="title"  value="Template"/> 
+	    <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp"/> 
+	
+		<put-attribute name="body"   value="/WEB-INF/views/layout/body.jsp"/> 
+		<put-attribute name="footer"   value="/WEB-INF/views/layout/footer.jsp"/> 
+	</definition>
+	
+	<definition name="domGeoOpenWindowLayout" template="/WEB-INF/views/layout/domGeoOpenWinLayout.jsp"> 
+		<put-attribute name="title"  value="Template"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/layout/body.jsp"/> 
+
+	</definition>
+	
+		<definition name="reportesDownload" template="/WEB-INF/views/layout/reportesWinLayout.jsp"> 
+		<put-attribute name="title"  value="Template"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/layout/body.jsp"/> 
+
+	</definition>
+
+	<definition name="loginLayout" template="/WEB-INF/views/layout/loginLayout.jsp"> 
+		<put-attribute name="title"  value="Template"/> 
+	   	<put-attribute name="body"   value="/WEB-INF/views/layout/body.jsp"/> 
+		<put-attribute name="footer"   value="/WEB-INF/views/layout/footer.jsp"/> 
+	</definition>  
+	
+	<definition name="loginLayoutFuncionario" template="/WEB-INF/views/layout/loginLayout.jsp"> 
+		<put-attribute name="title"  value="Template"/> 
+	   	<put-attribute name="body"   value="/WEB-INF/views/layout/body.jsp"/> 
+		<put-attribute name="footer"   value="/WEB-INF/views/layout/footerFuncionario.jsp"/> 
+	</definition> 
+	
+	<definition name="home" extends="baseLayout"> 
+		<put-attribute name="title"  value="Bienvenido"/> 
+		<put-attribute name="body" value="/WEB-INF/views/welcome.jsp" />       
+	</definition> 
+	<definition name="homeFuncionario" extends="baseLayout"> 
+        <put-attribute name="title"  value="Bienvenido"/> 
+        <put-attribute name="body" value="/WEB-INF/views/welcome.jsp" />       
+    </definition> 
+      <definition name="accesoFuncionario" extends="loginLayoutFuncionario"> 
+		<put-attribute name="title"  value="Acceso al Sistema"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/login/accesoFuncionario.jsp"/>       
+	</definition>
+	 <definition name="inicioDenunciaSub" extends="base.definition"> 
+        <put-attribute name="title"  value="Denuncia en línea"/> 
+        <put-attribute name="menu"   value="/WEB-INF/views/layout/body.jsp"/>
+        <put-attribute name="contenido"   value="/WEB-INF/views/denuncia/inicio/denunciaMainSub.jsp"/>       
+     </definition>
+   <definition name="acceso" extends="loginLayoutFuncionario"> 
+		<put-attribute name="title"  value="Acceso al Sistema"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/login/acceso.jsp"/>       
+	</definition>
+	<definition name="inicioRegistro" extends="loginLayout"> 
+        <put-attribute name="title"  value="Bienvenido"/> 
+        <put-attribute name="body"   value="/WEB-INF/views/registro/opcionesRegistro.jsp"/>
+    </definition>
+    <definition name="registro" extends="loginLayout"> 
+        <put-attribute name="title"  value="Bienvenido"/> 
+        <put-attribute name="body"   value="/WEB-INF/views/registro/registro.jsp"/>
+    </definition>
+    <definition name="login" extends="loginLayout"> 
+        <put-attribute name="title"  value="Bienvenido"/> 
+        <put-attribute name="body"   value="/WEB-INF/views/registro/opcionesRegistro.jsp"/>
+    </definition>
+   <definition name="loginFuncionario/perfil" extends="loginLayout"> 
+		<put-attribute name="title"  value="Selección de Perfil"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/loginFuncionarios/perfilFunc.jsp"/>       
+	</definition> 
+    <definition name="recuperar" extends="loginLayout"> 
+        <put-attribute name="title"  value="Bienvenido"/> 
+        <put-attribute name="body"   value="/WEB-INF/views/registro/recuperar.jsp"/>
+    </definition>
+     <definition name="recuperarConf" extends="loginLayout"> 
+        <put-attribute name="title"  value="Bienvenido"/> 
+        <put-attribute name="body"   value="/WEB-INF/views/registro/recuperarConfirma.jsp"/>
+    </definition>
+   <definition name="salida" extends="loginLayout"> 
+		<put-attribute name="title"  value="Acceso al Sistema"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/login/salida.jsp"/>       
+	</definition> 
+	<definition name="salidaAplicacion" extends="loginLayout"> 
+		<put-attribute name="title"  value="Acceso al Sistema"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/login/salidaAplicacion.jsp"/>       
+	</definition> 
+   <definition name="login/perfil" extends="loginLayoutFuncionario"> 
+		<put-attribute name="title"  value="Selección de Perfil"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/login/perfil.jsp"/>       
+	</definition> 
+	
+	<definition name="catalogos/deteccion/deteccionMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Detección"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/catalogos/deteccion/deteccionMain.jsp"/>       
+	</definition>
+ 
+ 
+ 	<definition name="promocion" extends="baseLayout"> 
+		<put-attribute name="title"  value="Promoción"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/promocion/promocionMain.jsp"/>       
+	</definition>
+	
+	<definition name="promocionSaticB" extends="baseLayout"> 
+		<put-attribute name="title"  value="Promoción Satic-B"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/promocion/saticB/promocionSaticbMain.jsp"/>       
+	</definition>
+	
+	<definition name="promocionExortCons" extends="baseLayout"> 
+		<put-attribute name="title"  value="Exhorto de Construcción"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/promocion/exhortoConst/promocionExhortoConst.jsp"/>       
+	</definition>
+	
+	<definition name="promocionSB" extends="baseLayout"> 
+		<put-attribute name="title"  value="Promoción Salario Base"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/promocion/promocionSalarioBase.jsp"/>       
+	</definition>
+	
+	<definition name="promocionSBCIndividual" extends="baseLayout"> 
+		<put-attribute name="title"  value="Promoción Salario Base"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/promocion/sbc/promocionSBCIndividual.jsp"/>       
+	</definition>
+	
+	<definition name="promocionConsulta" extends="baseLayout"> 
+		<put-attribute name="title"  value="Reporte de Obras Promovidas"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/promocion/consulta/consultaMain.jsp"/>       
+	</definition>
+	
+<!-- CATALOGOS DEL SISTEMA -->	
+	 <definition name="catalogos/percepciones/percepcionesMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Percepciones"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/catalogos/percepciones/percepcionesMain.jsp"/>       
+	 </definition>
+	 
+	 
+	  <definition name="catalogos/gastos/gastosMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Gastos"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/catalogos/gastos/gastosMain.jsp"/>
+	 </definition>
+	 
+	  <definition name="catalogos/grupoCategoria/grupoCategoriaMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Grupo Categoria"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/catalogos/grupoCategoria/grupoCategoriaMain.jsp"/>       
+	 </definition>
+	 
+	 <definition name="catalogos/trabajadores/trabajadoresMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Trabajadores"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/catalogos/trabajadores/trabajadoresMain.jsp"/>       
+	 </definition>
+	 
+	  <definition name="catalogos/tipo/tipoMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Catalogo Tipo"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/catalogos/selector/tipo/tipoMain.jsp"/>       
+	 </definition>
+	 
+	 <!-- Catalogo Origen -->
+	 <definition name="catalogos/origen/origenMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Catalogo Origen"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/catalogos/selector/origen/origenMain.jsp"/>       
+	 </definition>
+	 
+	  <!-- Catalogo Tipo Origen -->
+	 <definition name="catalogos/tipoOrigen/tipoOrigenMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Catalogo Tipo Origen"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/catalogos/tipoOrigen/tipoOrigenMain.jsp"/>       
+	 </definition>
+	 
+	 <!-- Catalogo Criterio Seleccion -->
+	 <definition name="catalogos/criterioSeleccion/criterioSeleccionMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Catalogo Criterio Seleccion"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/catalogos/selector/criterioSeleccion/criterioSeleccionMain.jsp"/>       
+	 </definition>
+	 
+ <!-- CEDULAS CORRECCION -->
+ 	 <definition name="cedulasCorreccion/descarga/descargaMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Descarga Cedulas Correccion"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/cedulasCorreccion/descarga/descargaMain.jsp"/>       
+	 </definition>
+	 <definition name="cedulasCorreccion/descarga/descargaResultado" extends="baseLayout"> 
+		<put-attribute name="title"  value="Descarga Cedulas Correccion"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/cedulasCorreccion/descarga/descargaResultado.jsp"/>       
+	 </definition>
+	  <definition name="cedulasCorreccion/descarga/descargaWindow" extends="reportesDownload">
+	 	<put-attribute name="title" value="Descarga Cédulas Corrección"></put-attribute>
+	 	<put-attribute name="body" value="/WEB-INF/views/cedulasCorreccion/descarga/descargaWindow.jsp"></put-attribute>
+	 </definition>
+	  <definition name="cedulasCorreccion/descarga/descargaResponse" extends="reportesDownload">
+	 	<put-attribute name="title" value="Reportes Control Gestión"></put-attribute>
+	 	<put-attribute name="body" value="/WEB-INF/views/cedulasCorreccion/descarga/descargaResponse.jsp"></put-attribute>
+	 </definition>
+	 
+	 
+	 
+ 	 <definition name="solicitudCorreccion/main" extends="baseLayout"> 
+		<put-attribute name="title"  value="Solicitud de Correccion"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/solicitudCorreccion/main.jsp"/>       
+	 </definition>
+
+ 	 <definition name="autorizacionSolicitud/main" extends="baseLayout"> 
+		<put-attribute name="title"  value="Solicitud de Correccion"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/solicitudCorreccion/autorizacionSolicitud/autorizacionMain.jsp"/>       
+	 </definition>
+
+ 	 <definition name="autorizacionSolicitud/detalle" extends="baseLayout"> 
+		<put-attribute name="title"  value="Solicitud de Correccion"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/solicitudCorreccion/autorizacionSolicitud/autorizacionDetalle.jsp"/>       
+	 </definition>
+  
+ 	 <definition name="reportes/muestraPDF" extends="baseL"> 
+		<put-attribute name="title"  value="Reportes"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/reportes/muestraPDF.jsp"/>       
+	 </definition>
+
+ 	 <definition name="reportes/index" extends="baseL"> 
+		<put-attribute name="title"  value="Reportes"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/reportes/index1.jsp"/>       
+	 </definition>
+	 
+	  <definition name="reportes/index2" extends="baseL"> 
+		<put-attribute name="title"  value="Reportes"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/reportes/index2.jsp"/>       
+	 </definition>
+
+ 	 <definition name="/cedulasCorreccion/carga/cargaMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Carga Cedulas Correccion"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/cedulasCorreccion/carga/cargaMain.jsp"/>       
+	 </definition>
+	 
+	  <!-- Caratula -->
+ 	<definition name="controlGestion/promocion/promocionCGMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Descarga Cedulas Correccion"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/controlGestion/promocion/promocionCGMain.jsp"/>       
+	 </definition>
+	 
+	  <definition name="controlGestion/correccion/correccionCGMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Descarga Cedulas Correccion"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/controlGestion/correccion/correccionCGMain.jsp"/>       
+	 </definition>
+
+  	 <definition name="solicitudProrroga/mainProrroga" extends="baseLayout"> 
+		<put-attribute name="title"  value="Solicitud de Prorroga"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/solicitudProrroga/mainProrroga.jsp"/>       
+	 </definition>
+	 
+	  <!-- Dictamen -->
+	 
+	<definition name="consulta/dictamen/consultaDictamenMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Consulta del Dictamen"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/reportes/muestraPDF.jsp"/>       
+	 </definition>
+	 
+	   <!-- Notaria -->
+	<definition name="consulta/notaria/consultaNotariaMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Consulta Notaria Electronica"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/consultaNotaria/consultaNotariaMain.jsp"/>       
+	 </definition>
+	 
+	 <definition name="consulta/notaria/consultaNotariaPDF" extends="baseLayout"> 
+		<put-attribute name="title"  value="Consulta del Dictamen"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/reportes/consultaAvisoPDF.jsp"/>       
+	 </definition>
+ <!-- DOMICILIOS GEOGRAFICOS -->
+ 
+  	 <definition name="domiciliosGeograficos/domGeoGeneric" extends="domGeoOpenWindowLayout"> 
+		<put-attribute name="title"  value="Domicilios Geográficos"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/domicilioGeografico/domGeoRegistroSession.jsp"/>       
+	 </definition>
+	 
+	 <definition name="domiciliosGeograficos/domGeoMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Domicilios Geográficos"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/domicilioGeografico/domGeoMain.jsp"/>       
+	 </definition>
+	 
+	 <!-- INVITACION -->
+ 	<definition name="invitacion/solicitud/invitacionMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Invitación"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/invitacion/invitacionMain.jsp"/>       
+	 </definition>
+	 
+	  <!-- CANCELAR INVITACION -->
+ 	<definition name="invitacion/cancelar/cancelarInvitacionMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Cancelar Invitación"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/invitacion/cancelacionInvitacion/cancelacionInvitacionMain.jsp"/>       
+	 </definition>
+
+	 <definition name="correccion/presentacionCorreccionMain" extends="baseLayout">
+	 	<put-attribute name="title" value="Presentacion de la Corrección"></put-attribute>
+	 	<put-attribute name="body" value="/WEB-INF/views/solicitudCorreccion/presentacionCorreccion/presentacionCorreccionMain.jsp"></put-attribute>
+	 </definition>
+	 <definition name="correccion/anexoSolCorrResumen" extends="baseLayout">
+	 	<put-attribute name="title" value="Resumen Anexo Solcitud Corrección"></put-attribute>
+	 	<put-attribute name="body" value="/WEB-INF/views/solicitudCorreccion/presentacionCorreccion/copPagadasAnexoSolCorr.jsp"></put-attribute>
+	 </definition>
+ <!-- REPORTES CARATULA  -->
+ 
+ 	<definition name="reportes/caratula/reportesMain" extends="baseLayout">
+	 	<put-attribute name="title" value="Reportes Control Gestión"></put-attribute>
+	 	<put-attribute name="body" value="/WEB-INF/views/reportes/caratula/reportesMain.jsp"></put-attribute>
+	 </definition>
+	 <definition name="reportes/caratula/reportWindow" extends="reportesDownload">
+	 	<put-attribute name="title" value="Reportes Control Gestión"></put-attribute>
+	 	<put-attribute name="body" value="/WEB-INF/views/reportes/caratula/reportWindow.jsp"></put-attribute>
+	 </definition>
+	 
+	 <!-- MONITOREO -->
+	 <definition name="cedulasCorreccion/monitor/monitorMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Monitoreo de Cedulas"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/cedulasCorreccion/monitor/monitorMain.jsp"/>       
+	 </definition>
+	 <definition name="reportes/caratula/reportResponse" extends="reportesDownload">
+	 	<put-attribute name="title" value="Reportes Control Gestión"></put-attribute>
+	 	<put-attribute name="body" value="/WEB-INF/views/reportes/caratula/reportResponse.jsp"></put-attribute>
+	 </definition>
+	 <!-- Promocion Carga -->
+	 <definition name="promocion/cargaMain" extends="baseLayout">
+	 	<put-attribute name="title" value="Promocion Carga"></put-attribute>
+	 	<put-attribute name="body" value="/WEB-INF/views/promocion/promocionCritSeleccion/promocionCritSeleccionMain.jsp"></put-attribute>
+	 </definition>
+	  <!-- Determinacion de la Base de Cotizacion Omitida -->
+	 <definition name="detBaseCotOmitida/solicitud/detBaseCotOmitidaMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Determinacion de la Base de Cotizacion Omitida"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/detBaseCotOmitida/detBaseCotOmitidaMain.jsp"/>       
+	 </definition>
+	 
+	 <!-- Autorizacion de Prorroga -->
+	 <definition name="autorizacionProrroga/autorizacionProrrogaMain" extends="baseLayout"> 
+		<put-attribute name="title"  value="Autorizacion de Prorroga"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/solicitudProrroga/autorizacionProrroga/autorizacionProrrogaMain.jsp"/>       
+	 </definition>
+	 <!-- Deteccion Carga -->
+	 <definition name="deteccion/cargaMain" extends="baseLayout">
+	 	<put-attribute name="title" value="Detección Carga"></put-attribute>
+	 	<put-attribute name="body" value="/WEB-INF/views/catalogos/deteccion/cargaDeteccion/deteccionCargaMain.jsp"></put-attribute>
+	 </definition>
+	 <!-- Promocion Exhorto Ordinario-->
+	 <definition name="promocion/exhortoOrdinario" extends="baseLayout">
+	 	<put-attribute name="title" value="Promocion Exhorto Ordinario"></put-attribute>
+	 	<put-attribute name="body" value="/WEB-INF/views/promocion/exhortoOrdinario/exhortoOrdinario.jsp"></put-attribute>
+	 </definition>
+	 
+	  <!-- Promocion Exhorto Ordinario Individual-->
+	 <definition name="promocion/exhortoOrdinarioIndividual" extends="baseLayout">
+	 	<put-attribute name="title" value="Promocion Exhorto Ordinario"></put-attribute>
+	 	<put-attribute name="body" value="/WEB-INF/views/promocion/exhortoOrdinario/exhortoOrdinarioIndividual.jsp"></put-attribute>
+	 </definition>
+	 
+	 <!-- Deteccion Alta-->
+	 <definition name="deteccion/alta/deteccionAltaMain" extends="baseLayout">
+	 	<put-attribute name="title" value="Deteccion Alta"></put-attribute>
+	 	<put-attribute name="body" value="/WEB-INF/views/catalogos/deteccion/deteccionValidaObra.jsp"></put-attribute>
+	 </definition>
+	 
+	  <!-- Deteccion Alta Modal-->
+	 <definition name="deteccionAlta/modalAlta" extends="domGeoOpenWindowLayout"> 
+		<put-attribute name="title"  value="Deteccion Alta"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/catalogos/deteccion/deteccionValidaObra.jsp"/>       
+	 </definition>
+	 
+	 <!-- Seguimiento -->
+	 <definition name="seguimiento/controlPrincipal/seguimientoMain" extends="baseLayout">
+	 	<put-attribute name="title" value="Seguimiento Estudio de Corrección"></put-attribute>
+	 	<put-attribute name="body"   value="/WEB-INF/views/seguimiento/seguimientoMain.jsp"/>
+	 </definition>
+	 
+	<!-- Denuncia --> 
+	
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title" value="Denuncia en Linea" />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/header.jsp" />		
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu_denuncia.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu_denuncia.jsp" />
+		<put-attribute name="contenido" value="/WEB-INF/views/layout/body.jsp" />			
+		<put-attribute name="pie" value="/WEB-INF/views/layout/footer.jsp" />
+	</definition>
+
+
+	
+     <definition name="denuncia/denunciaMain" extends="base.definition"> 
+		<put-attribute name="title"  value="Denuncia en línea"/> 
+		<put-attribute name="menu"   value="/WEB-INF/views/layout/body.jsp"/>
+		<put-attribute name="contenido"   value="/WEB-INF/views/denuncia/denunciaMain.jsp"/>       
+	 </definition>
+	 
+	 <definition name="inicio" extends="base.definition"> 
+		<put-attribute name="title"  value="Denuncia en línea - Registro"/> 
+		<put-attribute name="menu"   value="/WEB-INF/views/layout/body.jsp"/>
+		<put-attribute name="contenido"   value="/WEB-INF/views/denuncia/inicio/mainMenu.jsp"/>       
+	 </definition>
+	 <definition name="nueva" extends="base.definition"> 
+        <put-attribute name="title"  value="Denuncia en línea - Registro"/> 
+        <put-attribute name="menu"   value="/WEB-INF/views/layout/body.jsp"/>
+        <put-attribute name="contenido"   value="/WEB-INF/views/denuncia/inicio/denunciaMain.jsp"/>       
+     </definition>
+  
+     
+     <definition name="refArchivo" template="/WEB-INF/views/denuncia/consulta/msjCargaArchivo.jsp">         
+     </definition>
+    
+     
+	 <definition name="opciones" extends="loginLayout"> 
+        <put-attribute name="title"  value="Bienvenido"/> 
+        <put-attribute name="body"   value="/WEB-INF/views/registro/opcionesRegistro.jsp"/>
+    </definition>
+	
+	
+	<definition name="denuncia/datosTrabajadorMain" extends="base.definition"> 
+		<put-attribute name="title"  value="Registro de Denuncia- Datos del trabajador"/>
+		<put-attribute name="contenido"   value="/WEB-INF/views/denuncia/datosTrabajadorMain.jsp"/>	 				    
+	 </definition>
+	 
+	 <definition name="denuncia/datosPatronMain" extends="base.definition"> 
+		<put-attribute name="title"  value="Registro de Denuncia - Datos del Patrón"/> 
+		<put-attribute name="contenido"   value="/WEB-INF/views/denuncia/datosPatronMain.jsp"/>       
+	 </definition>
+	 
+	 <definition name="denuncia/datosTrabajoMain" extends="base.definition"> 
+		<put-attribute name="title"  value="Registro de Denuncia - Datos del Trabajo"/> 
+		<put-attribute name="contenido"   value="/WEB-INF/views/denuncia/datosTrabajoMain.jsp"/>       
+	 </definition>
+	 
+     <definition name="denuncia/ratificacionMain" extends="base.definition"> 
+        <put-attribute name="title"  value="Denuncia en línea - Registro"/> 
+        <put-attribute name="menu"   value="/WEB-INF/views/layout/body.jsp"/>
+        <put-attribute name="contenido"   value="/WEB-INF/views/denuncia/inicio/denunciaRatificacionMain.jsp"/>      
+     </definition>
+     
+      <definition name="denuncia/ratificacionRatMain" extends="base.definition"> 
+        <put-attribute name="title"  value="Denuncia en línea - Registro"/> 
+        <put-attribute name="menu"   value="/WEB-INF/views/layout/body.jsp"/>
+        <put-attribute name="contenido"   value="/WEB-INF/views/denuncia/inicio/denunciaRatificacionRatMain.jsp"/>      
+     </definition>
+
+	<definition name="salidaDenuncia" extends="loginLayout"> 
+		<put-attribute name="title"  value="Acceso al Sistema"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/login/salida.jsp"/>       
+	</definition> 
+		 
+	 <definition name="salidaAplicacionDenuncia" extends="loginLayout"> 
+		<put-attribute name="title"  value="Acceso al Sistema"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/login/salidaAplicacion.jsp"/>       
+	 </definition> 
+
+     <definition name="consultaCurp" extends="base.definition"> 
+		<put-attribute name="title"  value="Registro de Denuncia - Denuncias"/> 
+		<put-attribute name="menu"   value="/WEB-INF/views/layout/body.jsp"/>
+		<put-attribute name="contenido"   value="/WEB-INF/views/denuncia/consulta/consultaCurp.jsp"/>       
+	 </definition>
+	 
+	 <definition name="consultaCurpFunc" extends="base.definition"> 
+		<put-attribute name="title"  value="Registro de Denuncia - Denuncias"/> 
+		<put-attribute name="menu"   value="/WEB-INF/views/layout/body.jsp"/>
+		<put-attribute name="contenido"   value="/WEB-INF/views/denuncia/consulta/consultaCurpFuncionario.jsp"/>       
+	 </definition> 
+	 
+	  <definition name="reportes/index" extends="baseL"> 
+		<put-attribute name="title"  value="Reportes"/> 
+		<put-attribute name="body"   value="/WEB-INF/views/reportes/index1.jsp"/>       
+	 </definition>
+	 
+	  <definition name="muestraPDF" extends="base.definition"> 
+		<put-attribute name="title"  value="Reportes"/>
+		<put-attribute name="menu"   value="/WEB-INF/views/layout/body.jsp"/> 
+		<put-attribute name="contenido"   value="/WEB-INF/views/reportes/muestraPDF.jsp"/>       
+	 </definition>
+	 <definition name="muestraRatPDF" extends="base.definition"> 
+        <put-attribute name="title"  value="Reportes"/>
+        <put-attribute name="menu"   value="/WEB-INF/views/layout/body.jsp"/> 
+        <put-attribute name="contenido"   value="/WEB-INF/views/reportes/muestraRatPDF.jsp"/>       
+     </definition>	
+     
+    <definition name="ratificacion" extends="base.definition"> 
+        <put-attribute name="title"  value="Denuncia en línea - Registro"/> 
+        <put-attribute name="menu"   value="/WEB-INF/views/layout/body.jsp"/>
+        <put-attribute name="contenido"   value="/WEB-INF/views/denuncia/inicio/denunciaRatificacionMain.jsp"/>       
+     </definition>    
+     
+     <definition name="derivacion" extends="base.definition"> 
+        <put-attribute name="title"  value="Denuncia en línea - Derivacion"/> 
+        <put-attribute name="menu"   value="/WEB-INF/views/layout/body.jsp"/>
+        <put-attribute name="contenido"   value="/WEB-INF/views/denuncia/derivacionDenuncia.jsp"/>       
+     </definition> 	
+      	 
+     <definition name="seguimiento" extends="base.definition"> 
+        <put-attribute name="title"  value="Denuncia en línea - Seguimiento"/> 
+        <put-attribute name="menu"   value="/WEB-INF/views/layout/body.jsp"/>
+        <put-attribute name="contenido"   value="/WEB-INF/views/denuncia/seguimientoDenuncia.jsp"/>       
+     </definition> 	
+</tiles-definitions>

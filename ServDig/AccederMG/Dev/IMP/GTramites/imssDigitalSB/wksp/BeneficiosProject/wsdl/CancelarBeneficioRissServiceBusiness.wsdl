@@ -1,0 +1,46 @@
+<?xml version='1.0'?>
+<WL5G3N0:definitions name="JwsServiceDefinitions" targetNamespace="imss.beneficio" xmlns="" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="imss.beneficio" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="imss.beneficio" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="imss.beneficio" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="cancelarBeneficio">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="rfc" type="xs:string"/>
+            <xs:element name="nrp" type="xs:string"/>
+            <xs:element name="fechaBaja" type="xs:dateTime"/>
+            <xs:element name="claveBaja" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelarBeneficioResponse">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="cancelarBeneficio">
+    <WL5G3N0:part element="WL5G3N1:cancelarBeneficio" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="cancelarBeneficioResponse">
+    <WL5G3N0:part element="WL5G3N1:cancelarBeneficioResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="Jws">
+    <WL5G3N0:operation name="cancelarBeneficio" parameterOrder="parameters">
+      <WL5G3N0:input message="WL5G3N1:cancelarBeneficio"/>
+      <WL5G3N0:output message="WL5G3N1:cancelarBeneficioResponse"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="JwsServiceSoapBinding" type="WL5G3N1:Jws">
+    <WL5G3N2:binding style="document" transport="http://www.bea.com/soap/transport/local"/>
+    <WL5G3N0:operation name="cancelarBeneficio">
+      <WL5G3N2:operation soapAction="imss.beneficio/cancelarBeneficio" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body parts="parameters" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+</WL5G3N0:definitions>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+     <HEAD>
+     <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE"></META>
+     </HEAD>
+    <h:head>      
+   		<link href="styles/style.css" type="text/css" rel="stylesheet" />
+    </h:head>
+    
+    <ui:composition template="../plantillas/plantilla.xhtml">
+    <ui:define name="body">
+      <div id ="titulo" align="center">
+  		  <h3>Consulta de Usuarios</h3>
+   	 </div>
+     <h:form id="selectForm">
+           <style type="text/css">
+             /* Important required because row */
+             .ui-datatable-odd {
+               background-color:lightgray !important;
+               background-position-y: -1400px; /* IE7 hack */
+               }
+           </style>
+            <ace:dataTable value="${usuarioBean.usuarios}" 
+            		var="usuario" id="usuarios"
+            		stateMap="${usuarioBean.stateMap}" 
+            		selectionMode="single"
+            		doubleClickSelect="#{usuarioBean.dblClick}"
+            		rendered="#{usuarioBean.selectionMode eq 'single' and usuarioBean.instantUpdate}">
+                <ace:ajax event="select" render="@this selectForm:status" execute="@this" />
+                
+                <ace:column>
+                    <f:facet name="header">
+                        ID
+                    </f:facet>
+                    ${usuario.uid}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Nombre
+                    </f:facet>
+                    ${usuario.nombres}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Apellido Paterno
+                    </f:facet>
+                    ${usuario.apellidoPaterno}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Apellido Materno
+                    </f:facet>
+                    ${usuario.apellidoMaterno}
+                </ace:column>
+                <ace:column>
+                	<f:facet name="header">
+                		Area
+                	</f:facet>
+                	${usuario.perfil.descripcion}
+                </ace:column>
+                <ace:column>
+                	<f:facet name="header">CURP</f:facet>
+                    ${usuario.curp}
+                </ace:column>
+                 <ace:column>
+                	<f:facet name="header">Estatus</f:facet>
+                       ${usuario.activo==true?"Activo":"Inactivo"}
+                </ace:column>
+            </ace:dataTable>
+            <br/>
+           <div id ="actualizar" align="center">
+            	<!--  <h:commandButton actionListener="${usuarioBean.actualizarTabla}" value="Refrescar" styleClass="mboton" /> -->
+            	<h:commandLink action="${usuarioBean.actualizarTabla}">
+                         <h:graphicImage value="../imagenes/recargar.jpg" style="height: 41px; width: 43px; "></h:graphicImage>
+                     </h:commandLink>
+            </div>           
+    </h:form>        
+    </ui:define>
+    </ui:composition>
+    
+</html>    
+    

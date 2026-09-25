@@ -1,0 +1,26 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://mx.gob.imss.delta.global.service/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="validacionRissRequest">
+	  <xs:complexType>
+	    <xs:sequence>
+			<xs:element name="rfc" type="xs:string"/>
+			<xs:element name="curp" nillable="true" type="xs:string"/>
+	      <xs:element name="nss" nillable="true" type="xs:string"/>
+			<xs:element name="nrp" nillable="true" type="xs:string"/>
+			<xs:element name="tipoPersona" type="xs:string"/>
+		</xs:sequence>
+	  </xs:complexType>
+	</xs:element>
+	<xs:element name="validacionRissResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="indicadorDerechoBeneficio" type="xs:boolean" />
+				<xs:element name="tipoApartadoBeneficio" type="xs:string" />
+				<xs:element name="fechaRif" type="xs:string" />
+				<xs:element name="motivoDeRechazo" type="xs:string" />
+				<xs:element name="exito" type="xs:int" />
+				<xs:element name="claveError" type="xs:int" />
+				<xs:element name="descripcion" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Consulta de Cuentas de Usuario</title>
+        <link href="styles/style.css" type="text/css" rel="stylesheet" />
+    </h:head>
+    <ui:composition template="../plantillas/plantilla.xhtml">
+    <ui:define name="body">
+        <h:form id="selectFormFromTableOne">
+         
+         	<fieldset style="border: 1px solid silver; margin: 0; padding: 10px;">
+         	   <div align="center" id="generaltitulo">
+				 <h3>Consulta de Cuentas de Usuario</h3>
+				</div>
+				<div align="left" id="general">
+				    <h:panelGrid id="pnRegSolicitudCuentaCrPre1" columns="6">
+				        <h:outputLabel value="AREA NORMATIVA:" id="lbNombreRegSolicitudCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco2.png" style="width: 196px; "/>
+				        <h:outputLabel value="DEPARTAMENTO:" id="lbApPatRegSolicituCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco1.png" style="width: 138px; "/>
+				        <h:outputLabel value="PUESTO:" id="lbApMatRegSolicituCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco2.png" />
+				    </h:panelGrid>
+					
+					<h:panelGrid id="pnRegSolicitudCuentaC" columns="9">				
+                	<h:selectOneMenu id="slAreaNormRegSolicitudCuenta" required="true" requiredMessage="SELECCIONE EL AREA NORMATIVA"
+                	disabled="#{solicitudCuentaBean.flagFirstSlide}" value="#{usuarioBean.claveAreNormativa}" 
+                	valueChangeListener="#{usuarioBean.listenerDepartamento}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+				        <f:selectItems value="${usuarioBean.lstAreaNormativa}" />	
+				        <f:ajax event="change" render="slDepRegSolicitudCuenta" />											
+					</h:selectOneMenu>
+					<h:message for="slAreaNormRegSolicitudCuenta" id="msgAreaNormRegSolicitudCuenta"  errorClass="error"/>							
+										
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+													
+                	<h:selectOneMenu id="slDepRegSolicitudCuenta" required="true" requiredMessage="SELECCIONE EL DEPARTAMENTO"
+                	disabled="#{solicitudCuentaBean.flagFirstSlide}" value="#{usuarioBean.claveDepartamento}"
+                	valueChangeListener="#{usuarioBean.listenerPuesto}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+						<f:selectItems value="${usuarioBean.lstDepartamento}" />
+						<f:ajax event="change" render="slPuestoRegSolicitudCuenta" />					
+					</h:selectOneMenu>
+					<h:message for="slDepRegSolicitudCuenta" id="msgDepRegSolicitudCuenta"  errorClass="error"/>
+					
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+					
+                	<h:selectOneMenu id="slPuestoRegSolicitudCuenta" required="true" requiredMessage="SELECCIONE EL PUESTO"
+                	disabled="#{solicitudCuentaBean.flagFirstSlide}" value="#{usuarioBean.clavePuesto}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+						<f:selectItems value="${usuarioBean.lstPuesto}" />		
+					</h:selectOneMenu>
+					<h:message for="slPuestoRegSolicitudCuenta" errorClass="error"/>										
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>		
+					</h:panelGrid>
+					
+					<h:panelGrid id="pnRegSolicitudCuentaCrPre4" columns="6">
+				        <h:outputLabel value="DELEGACION" id="lbDelRegSolicitudCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco2.png" style="width: 184px; "/>
+				        <h:outputLabel value="SUBDELEGACION" id="lbSubRegSolicitudCuenta"/>	
+				        <h:graphicImage value="../imagenes/blanco2.png" style="width: 156px; "/>
+				        <h:outputLabel value="UMF: " id="lbUMFRegSolicitudCuenta"/>		
+				        <h:graphicImage value="../imagenes/blanco2.png" />
+				    </h:panelGrid>
+					
+					<h:panelGrid id="pnRegSolicitudCuentaQ" columns="12">
+					    <h:selectOneMenu id="slDelRegSolicitudCuenta" required="true" requiredMessage="SELECCIONE LA DELEGACION"
+					    disabled="#{solicitudCuentaBean.flagFirstSlide}" value="#{solicitudCuentaBean.usuarioSolicitud.claveDelegacion}"
+					    valueChangeListener="#{solicitudCuentaBean.listenerSubDelegaciones}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+						<f:selectItems value="${usuarioBean.lstDelegacion}" />
+						<f:ajax event="change" render="slSubRegSolicitudCuenta" />						
+						</h:selectOneMenu>
+					    <h:message for="slDelRegSolicitudCuenta" id="msgDelRegSolicitudCuenta"  errorClass="error"/>
+					
+					    <h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/> 
+					
+					    <h:selectOneMenu id="slSubRegSolicitudCuenta" required="true" requiredMessage="SELECCIONE LA SUBDELEGACION"
+					    disabled="#{solicitudCuentaBean.flagFirstSlide}" value="#{solicitudCuentaBean.usuarioSolicitud.claveSubDelegacion}"
+					    valueChangeListener="#{solicitudCuentaBean.listenerUMF}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+                         <f:selectItems value="${solicitudCuentaBean.lstSubDelegacion}" var="s"
+							itemValue="${s.SubdelegacionTO.cveSubelegacion}"
+							itemLabel="${s.SubdelegacionTO.nombreSubelegacion}" />
+						<f:ajax listener="#{solicitudCuentaBean.listenerUnidadMedica}" render="slUMFRegSolicitudCuenta"/>					
+						</h:selectOneMenu>
+					    <h:message for="slSubRegSolicitudCuenta" errorClass="error"/>
+													
+						<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>							
+													
+					    <h:selectOneMenu  id="slUMFRegSolicitudCuenta" disabled="#{solicitudCuentaBean.flagFirstSlide}" value="#{solicitudCuentaBean.usuarioSolicitud.claveUMF}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+				         <f:selectItems value="${solicitudCuentaBean.lstUMF}" var="v"
+							itemValue="${v.UnidadMedicaTO.cveUmf}"
+							itemLabel="${v.UnidadMedicaTO.nombreUmf}" />						
+						</h:selectOneMenu>	
+						<h:message for="slUMFRegSolicitudCuenta" errorClass="error"></h:message>											    			    								
+					    <h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+					
+					    <h:commandLink action="#{usuarioBean.desactivarPrimerSlide}">
+                         <h:graphicImage value="../imagenes/agregarareas.png"></h:graphicImage>
+                        </h:commandLink> 
+                        
+                        <h:commandLink action="#{usuarioBean.editarUsuario}" onclick="return confirm('Deseas editar el usuario seleccionado?')">
+                         <h:graphicImage value="../imagenes/editarpersona.png"></h:graphicImage>
+                        </h:commandLink>
+                        
+                        <h:commandLink action="#{usuarioBean.eliminarUsuario}" onclick="return confirm('Deseas dar de baja el perfil seleccionado?')">
+                         <h:graphicImage value="../imagenes/eliminar.png"></h:graphicImage>
+                     </h:commandLink>
+					</h:panelGrid>
+				
+					</div>
+				</fieldset> 								
+             <br/>   
+             
+         <div id ="titulo" align="center">
+            <h3>Usuarios</h3>
+         </div>   
+           <style type="text/css">
+             /* Important required because row */
+             .ui-datatable-odd {
+               background-color:lightgray !important;
+               background-position-y: -1400px; /* IE7 hack */
+               }
+           </style>
+            <ace:dataTable value="${consultaCuentasBean.listUsuariosSolicitud}" 
+            		var="usuario" id="usuarios" 
+            		selectionMode="single"
+            		stateMap="${consultaCuentasBean.stateMapFromGeneralTable}" 
+            		rowSelectListener="#{consultaCuentasBean.handleSelectUsuarioFromGeneralTable}"
+            		paginator="true"
+            		rows="10">
+            		<ace:ajax event="select" render="@this selectForm:datosFromGeneralTable" execute="@this" />
+                
+                <ace:column>
+                    <f:facet name="header">
+                    </f:facet>
+                    o
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        AREA
+                    </f:facet>
+                    ${usuario.desArea}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        DELEGACION
+                    </f:facet>
+                    ${usuario.desDelegacion}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        SUBDELEGACION
+                    </f:facet>
+                    ${usuario.desSubdelegacion}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        DEPARTAMENTO
+                    </f:facet>
+                    ${usuario.desDepartamento}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        PUESTO
+                    </f:facet>
+                    ${usuario.desPuesto}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        NOMBRE
+                    </f:facet>
+                    ${usuario.nombreCompleto}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        ESTATUS
+                    </f:facet>
+                    ${usuario.desEstatus}
+                </ace:column>
+                <ace:column>
+                 <f:facet name="header">
+                        No. PERFILES
+                    </f:facet>
+                    ${usuario.numPerfiles}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        No. MODULOS
+                    </f:facet>
+                    ${usuario.numModulos}
+                </ace:column>
+           
+            </ace:dataTable>
+            <br/>
+  
+           <!-- <fieldset style="border: 1px solid silver; margin: 0; padding: 10px;">
+           </fieldset>  -->
+           
+           <br/>
+           <br/>
+           
+            <div id ="titulod" align="center">
+            <h3>PERFILES <h:graphicImage value="../imagenes/blanco2.png" style="width: 529px; height: 3px; "/> MODULOS</h3>
+            </div>
+            
+             <h:panelGrid id="pnRegSolicitudCuentaCrPre2" columns="3"> 
+             <ace:dataTable value="${consultaCuentasBean.rolesDataDetail}" 
+            		var="rol" id="roles" 
+            		selectionMode="single"
+            		stateMap="${consultaCuentasBean.stateMapFromPerfilesTable}">
+            		<ace:ajax event="select" render="@this selectForm:datosFromPerfilesTable" execute="@this" />
+                
+                <ace:column>
+                    <f:facet name="header">
+                        AREA
+                    </f:facet>
+                    ${rol.desArea}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        DEPARTAMENTO
+                    </f:facet>
+                    ${rol.desDepartamento}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        PUESTOS
+                    </f:facet>
+                    ${rol.desPuesto}
+                </ace:column>
+           
+            </ace:dataTable>
+            
+            <h:graphicImage value="../imagenes/blanco1.png" style="width: 158px; height: 10px; "/>
+            
+             <ace:dataTable value="${consultaCuentasBean.modulosDataDetail}" 
+            		var="modulo" id="modulos"
+            		selectionMode="single"
+            		stateMap="${consultaCuentasBean.stateMapFromModulosTable}">
+                <ace:ajax event="select" render="@this selectForm:datosFromPerfilesTable" execute="@this" />
+                
+            <h:graphicImage value="../imagenes/blanco1.png" style="width: 158px; height: 10px; "/>
+            
+            <ace:column>
+                    <f:facet name="header">
+                        AREA
+                    </f:facet>
+                    ${modulo.desArea}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        DEPARTAMENTO
+                    </f:facet>
+                    ${modulo.desDepartamento}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        MODULOS
+                    </f:facet>
+                    ${modulo.desModulo}
+                </ace:column>
+           
+            </ace:dataTable>  
+            </h:panelGrid>
+            <br/>
+       </h:form>
+ </ui:define>
+ </ui:composition>
+ </html>        

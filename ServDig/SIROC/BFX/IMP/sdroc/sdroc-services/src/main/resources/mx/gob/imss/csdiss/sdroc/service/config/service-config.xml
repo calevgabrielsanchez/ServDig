@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<!-- Se buscara dentro de este paquete y sus subpaquetes beans con algun estereotipo para crearlos como beans.
+		La declaracion de esta etiqueta tambien activa todo lo incluido por context:annotation-config -->
+	<context:component-scan base-package="mx.gob.imss.csdiss.sdroc.service"/>
+	<!-- Activamos la creacion de aspectos que usen @AspectJ -->
+	<aop:config proxy-target-class="true" />    
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	
+	<!-- Usamos el mismo truco para obtener los archivos de configuración de beans de obtención de datos (típicamente Daos) -->
+	<import resource="classpath*:mx/gob/imss/csdiss/sdroc/data/**/*-config.xml" />
+		
+</beans>

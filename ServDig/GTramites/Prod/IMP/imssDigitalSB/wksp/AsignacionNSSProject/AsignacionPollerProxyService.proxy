@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:file="http://www.bea.com/wli/sb/transports/file" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:ftp="http://www.bea.com/wli/sb/transports/ftp" xmlns:con5="http://www.bea.com/wli/sb/stages/publish/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description/>
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:request type="XML">
+        <con6:schema ref="AsignacionNSSProject/schemas/archivoDisMag" element="EMPLEADOS_EMPRESA" xmlns:con6="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:request>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:transactions isRequired="false" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>ftp</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>ftp://11.254.13.4:21/ftpDelta/asegurado/input/</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific>
+      <ftp:inbound-properties>
+        <ftp:recursive-scan>false</ftp:recursive-scan>
+        <ftp:passByReference>false</ftp:passByReference>
+        <ftp:directStreaming>false</ftp:directStreaming>
+        <ftp:pollerTargetManagedServer>osb_server1</ftp:pollerTargetManagedServer>
+        <ftp:download-directory>
+          <env:value>/ctirss/w/servicios4/srvs04/domains/d_osb/delta/estudiante/osb/stage</env:value>
+        </ftp:download-directory>
+        <ftp:timeout>60</ftp:timeout>
+        <ftp:auth-info>
+          <ftp:service-account ref="AsignacionNSSProject/ftp/DeltaServiceAccount"/>
+        </ftp:auth-info>
+        <ftp:post-read-action>delete</ftp:post-read-action>
+        <ftp:error-directory>
+          <env:value>/ctirss/w/servicios4/srvs04/domains/d_osb/delta/estudiante/osb/error</env:value>
+        </ftp:error-directory>
+        <ftp:retry-count>3</ftp:retry-count>
+        <ftp:file-mask>*.*</ftp:file-mask>
+        <ftp:poll-info>
+          <ftp:interval-milliseconds>20000</ftp:interval-milliseconds>
+        </ftp:poll-info>
+        <ftp:read-limit>10</ftp:read-limit>
+        <ftp:sortByArrival>false</ftp:sortByArrival>
+        <ftp:transfer-mode>binary</ftp:transfer-mode>
+      </ftp:inbound-properties>
+      <ftp:request-encoding>utf-8</ftp:request-encoding>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con1:pipeline type="request" name="generarAseguradoNode_request">
+      <con1:stage name="generarAseguradoStage1">
+        <con1:context>
+          <con3:userNsDecl namespace="http://mx.gob.imss.ctirss.delta.gestion.asegurado.serie.service/" prefix="ns2"/>
+          <con3:userNsDecl namespace="http://mx.gob.imss.ctirss.delta.model.asegurado" prefix="ns3"/>
+          <con3:userNsDecl prefix="aseg" namespace="http://imss.gob.mx/asegurado/"/>
+          <con3:userNsDecl prefix="asegI" namespace="java:mx.gob.imss.ctirss.delta.model.gestion.asegurado.integracion"/>
+          <con3:userNsDecl prefix="m" namespace="http://imss.gob.mx/sistema/"/>
+        </con1:context>
+        <con1:actions>
+          <con2:log>
+            <con3:id>_ActionId-2017672577187715290-19b881bb.13c8d9d4a24.-7fcc</con3:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con3:xqueryText>$body/EMPLEADOS_EMPRESA</con3:xqueryText>
+            </con2:expr>
+            <con2:message>Empleados</con2:message>
+          </con2:log>
+          <con4:assign varName="empleadosList">
+            <con3:id>_ActionId-2017672577187715290-19b881bb.13c8d9d4a24.-7f5a</con3:id>
+            <con4:expr>
+              <con3:xqueryText>$body/EMPLEADOS_EMPRESA</con3:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="numAsignados">
+            <con3:id>_ActionId-4708263552798785096-3254ab9.13cab36a080.-7bef</con3:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">0</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="numErrores">
+            <con3:id>_ActionId-4708263552798785096-3254ab9.13cab36a080.-7a9b</con3:id>
+            <con4:expr>
+              <con3:xqueryText>0</con3:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="numRecuperados">
+            <con3:id>_ActionId-367289871648706837--1abe819.1435a993350.-7f74</con3:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">0</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="curpsErroneas">
+            <con3:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fca</con3:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">''</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con2:log>
+            <con3:id>_ActionId-2595439713656615368-b7e9163.13d02e4db9e.-7fe2</con3:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con3:xqueryText>$inbound/ctx:transport/ctx:request/tp:headers/ftp:fileName</con3:xqueryText>
+            </con2:expr>
+            <con2:message>FileRoot</con2:message>
+          </con2:log>
+          <con4:assign varName="registroPatronalFile">
+            <con3:id>_ActionId-3987750613622803456--258e5293.13cb19212ad.-7e70</con3:id>
+            <con4:expr>
+              <con3:xqueryText>fn:tokenize($inbound/ctx:transport/ctx:request/tp:headers/ftp:fileName, "/")[last()]</con3:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con2:log>
+            <con3:id>_ActionId-3987750613622803456--258e5293.13cb19212ad.-7e50</con3:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con3:xqueryText>$registroPatronalFile</con3:xqueryText>
+            </con2:expr>
+            <con2:message>registroPatronalFile</con2:message>
+          </con2:log>
+          <con4:assign varName="registroPatronal">
+            <con3:id>_ActionId-3987750613622803456--258e5293.13cb19212ad.-7e15</con3:id>
+            <con4:expr>
+              <con3:xqueryText>fn:tokenize($registroPatronalFile, "_")[1]</con3:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con2:log>
+            <con3:id>_ActionId-3987750613622803456--258e5293.13cb19212ad.-7e2e</con3:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con3:xqueryText>$registroPatronal</con3:xqueryText>
+            </con2:expr>
+            <con2:message>registroPatronal</con2:message>
+          </con2:log>
+          <con4:assign varName="prefijoFolioArchivo">
+            <con3:id>_ActionId-3765268577636083178--2d997b2c.143a2746173.-7fc7</con3:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:floor((fn:current-dateTime() - xs:dateTime("1970-01-01T00:00:00-00:00")) div xdt:dayTimeDuration("PT0.001S"))</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="posfijoFolioArchivo">
+            <con3:id>_ActionId-3765268577636083178--2d997b2c.143a2746173.-7f90</con3:id>
+            <con4:expr>
+              <con3:xqueryText>fn:concat(fn:year-from-dateTime(fn:current-dateTime()), fn:month-from-dateTime(fn:current-dateTime()), fn:day-from-dateTime(fn:current-dateTime()))</con3:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="folioArchivo">
+            <con3:id>_ActionId-3765268577636083178--2d997b2c.143a2746173.-7fa8</con3:id>
+            <con4:expr>
+              <con3:xqueryText>fn:concat($prefijoFolioArchivo, $posfijoFolioArchivo)</con3:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:foreach>
+            <con3:id>_ActionId-2017672577187715290-19b881bb.13c8d9d4a24.-7f99</con3:id>
+            <con4:variable>empleadosList</con4:variable>
+            <con4:expression>
+              <con3:xpathText>./*:EMPLEADO</con3:xpathText>
+            </con4:expression>
+            <con4:value-variable>empleado</con4:value-variable>
+            <con4:index-variable>index</con4:index-variable>
+            <con4:total-variable>count</con4:total-variable>
+            <con4:actions>
+              <con2:log>
+                <con3:id>_ActionId-2017672577187715290-19b881bb.13c8d9d4a24.-7f35</con3:id>
+                <con2:logLevel>error</con2:logLevel>
+                <con2:expr>
+                  <con3:xqueryText>$body/EMPLEADOS_EMPRESA/EMPLEADO</con3:xqueryText>
+                </con2:expr>
+                <con2:message>Empleado:</con2:message>
+              </con2:log>
+              <con4:replace varName="body" contents-only="true">
+                <con3:id>_ActionId-4708263552798785096-3254ab9.13cab36a080.-7fbc</con3:id>
+                <con4:location>
+                  <con3:xpathText>.</con3:xpathText>
+                </con4:location>
+                <con4:expr>
+                  <con3:xqueryText>$empleado</con3:xqueryText>
+                </con4:expr>
+              </con4:replace>
+              <con4:assign varName="curp">
+                <con3:id>_ActionId-4708263552798785096-3254ab9.13cab36a080.-7e08</con3:id>
+                <con4:expr>
+                  <con3:xqueryText>$empleado/CURP/text()</con3:xqueryText>
+                </con4:expr>
+              </con4:assign>
+              <con4:assign varName="nombreCompleto">
+                <con3:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fc8</con3:id>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat($empleado/NOMBRE/text(),' ',$empleado/APELLIDO_PATERNO/text(),' ',$empleado/APELLIDO_MATERNO/text())</con:xqueryText>
+                </con4:expr>
+              </con4:assign>
+              <con4:assign varName="altaEstudianteRequestDocument">
+                <con3:id>_ActionId-367289871648706837--1abe819.1435a993350.-7f79</con3:id>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<aseg:generarNSSEstudiante xmlns:aseg="http://imss.gob.mx/asegurado/">
+    <aseg:arg0 xmlns:java="java:mx.gob.imss.ctirss.delta.model.asegurado">
+        <java:Nombre>{$empleado/NOMBRE/text()}</java:Nombre>
+        <java:ApellidoPaterno>{$empleado/APELLIDO_PATERNO/text()}</java:ApellidoPaterno>
+        <java:ApellidoMaterno>{$empleado/APELLIDO_MATERNO/text()}</java:ApellidoMaterno>
+        <java:Sexo>{$empleado/SEXO/text()}</java:Sexo>
+        <java:LugarNacimiento>{$empleado/LUGAR_NACIMIENTO/text()}</java:LugarNacimiento>
+        <java:DiaNacimiento>{$empleado/DIA_NACIMIENTO/text()}</java:DiaNacimiento>
+        <java:MesNacimiento>{$empleado/MES_NACIMIENTO/text()}</java:MesNacimiento>
+        <java:AnioNacimiento>{$empleado/ANIO_NACIMIENTO/text()}</java:AnioNacimiento>
+        <java:Curp>{$curp}</java:Curp>
+        <java:CodigoPostal>{$empleado/CODIGO_POSTAL/text()}</java:CodigoPostal>
+        <java:RegistroPatronal>{fn:substring($registroPatronal, 1, 10)}</java:RegistroPatronal>
+    </aseg:arg0>
+    <aseg:arg1>HAMC</aseg:arg1>
+</aseg:generarNSSEstudiante>]]></con:xqueryText>
+                </con4:expr>
+              </con4:assign>
+              <con4:wsCallout>
+                <con3:id>_ActionId-367289871648706837--1abe819.1435a993350.-7f78</con3:id>
+                <con4:service ref="AsignacionNSSProject/JavaBusinessService/AsignacionEJBService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                <con4:operation>generarNSSEstudiante</con4:operation>
+                <con4:request>
+                  <con4:body wrapped="false">$altaEstudianteRequestDocument</con4:body>
+                  <con4:header/>
+                </con4:request>
+                <con4:response>
+                  <con4:body wrapped="false">altaEstudianteResponseDocument</con4:body>
+                  <con4:header/>
+                </con4:response>
+                <con4:requestTransform>
+                  <con4:replace varName="body" contents-only="true">
+                    <con3:id>_ActionId-367289871648706837--1abe819.1435a993350.-7f77</con3:id>
+                    <con4:location>
+                      <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                    </con4:location>
+                    <con4:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$altaEstudianteRequestDocument</con:xqueryText>
+                    </con4:expr>
+                  </con4:replace>
+                  <con2:log>
+                    <con3:id>_ActionId-367289871648706837--1abe819.1435a993350.-7f60</con3:id>
+                    <con2:logLevel>error</con2:logLevel>
+                    <con2:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+                    </con2:expr>
+                    <con2:message>Invocando generarNSSEstudiante</con2:message>
+                  </con2:log>
+                  <con4:routing-options>
+                    <con3:id>_ActionId-8983014310238432209--26b17ef7.1437d75bd23.-7fe1</con3:id>
+                    <con4:mode>request-response</con4:mode>
+                    <con4:qualityOfService>best-effort</con4:qualityOfService>
+                  </con4:routing-options>
+                </con4:requestTransform>
+                <con4:responseTransform/>
+              </con4:wsCallout>
+              <con2:log>
+                <con3:id>_ActionId-3987750613622803456--258e5293.13cb19212ad.-7df2</con3:id>
+                <con2:logLevel>error</con2:logLevel>
+                <con2:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$altaEstudianteRequestDocument</con:xqueryText>
+                </con2:expr>
+                <con2:message>generarAseguradoRequest</con2:message>
+              </con2:log>
+              <con2:log>
+                <con3:id>_ActionId-367289871648706837--1abe819.1435a993350.-7f75</con3:id>
+                <con2:logLevel>error</con2:logLevel>
+                <con2:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$altaEstudianteResponseDocument</con:xqueryText>
+                </con2:expr>
+                <con2:message>respuesta alta estudiante::::</con2:message>
+              </con2:log>
+              <con4:assign varName="estatusRegistro">
+                <con3:id>_ActionId-4708263552798785096-3254ab9.13cab36a080.-7ca9</con3:id>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$altaEstudianteResponseDocument/aseg:return/asegI:EstatusRegistro/text()</con:xqueryText>
+                </con4:expr>
+              </con4:assign>
+              <con4:assign varName="msgProceso">
+                <con3:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fbc</con3:id>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$altaEstudianteResponseDocument/aseg:return/asegI:MsgProceso/text()</con:xqueryText>
+                </con4:expr>
+              </con4:assign>
+              <con4:assign varName="nssCompleto">
+                <con3:id>_ActionId-367289871648706837--1abe819.1435a993350.-7f71</con3:id>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$altaEstudianteResponseDocument/aseg:return/asegI:Nss/text()</con:xqueryText>
+                </con4:expr>
+              </con4:assign>
+              <con4:ifThenElse>
+                <con3:id>_ActionId-4708263552798785096-3254ab9.13cab36a080.-7aec</con3:id>
+                <con4:case>
+                  <con4:condition>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$estatusRegistro='1'</con:xqueryText>
+                  </con4:condition>
+                  <con4:actions>
+                    <con4:assign varName="numAsignados">
+                      <con3:id>_ActionId-4708263552798785096-3254ab9.13cab36a080.-7abd</con3:id>
+                      <con4:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">xs:integer(&lt;e xsi:type="xs:integer">{$numAsignados}&lt;/e> + 1)</con:xqueryText>
+                      </con4:expr>
+                    </con4:assign>
+                    <con2:log>
+                      <con3:id>_ActionId-8983014310238432209--26b17ef7.1437d75bd23.-7fe0</con3:id>
+                      <con2:logLevel>error</con2:logLevel>
+                      <con2:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$numAsignados</con:xqueryText>
+                      </con2:expr>
+                      <con2:message>numAsignados::</con2:message>
+                    </con2:log>
+                  </con4:actions>
+                </con4:case>
+                <con4:case>
+                  <con4:condition>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$estatusRegistro='2'</con:xqueryText>
+                  </con4:condition>
+                  <con4:actions>
+                    <con4:assign varName="numRecuperados">
+                      <con3:id>_ActionId-367289871648706837--1abe819.1435a993350.-7f73</con3:id>
+                      <con4:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">xs:integer(&lt;e xsi:type="xs:integer">{$numRecuperados}&lt;/e> + 1)</con:xqueryText>
+                      </con4:expr>
+                    </con4:assign>
+                    <con2:log>
+                      <con3:id>_ActionId-8983014310238432209--26b17ef7.1437d75bd23.-7fdf</con3:id>
+                      <con2:logLevel>error</con2:logLevel>
+                      <con2:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$numRecuperados</con:xqueryText>
+                      </con2:expr>
+                      <con2:message>numRecuperados</con2:message>
+                    </con2:log>
+                  </con4:actions>
+                </con4:case>
+                <con4:default>
+                  <con4:assign varName="numErrores">
+                    <con3:id>_ActionId-4708263552798785096-3254ab9.13cab36a080.-7a7e</con3:id>
+                    <con4:expr>
+                      <con3:xqueryText>xs:integer(&lt;e xsi:type="xs:integer">{$numErrores}&lt;/e> + 1)</con3:xqueryText>
+                    </con4:expr>
+                  </con4:assign>
+                  <con4:assign varName="curpsErroneas">
+                    <con3:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fc9</con3:id>
+                    <con4:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat($curpsErroneas,$nombreCompleto,' ',$curp,' ',$msgProceso,'&amp;#13;')</con:xqueryText>
+                    </con4:expr>
+                  </con4:assign>
+                  <con2:log>
+                    <con3:id>_ActionId-8983014310238432209--26b17ef7.1437d75bd23.-7fde</con3:id>
+                    <con2:logLevel>error</con2:logLevel>
+                    <con2:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$numErrores</con:xqueryText>
+                    </con2:expr>
+                    <con2:message>numErrores:::</con2:message>
+                  </con2:log>
+                </con4:default>
+              </con4:ifThenElse>
+              <con4:ifThenElse>
+                <con3:id>_ActionId-367289871648706837--1abe819.1435a993350.-7f66</con3:id>
+                <con4:case>
+                  <con4:condition>
+                    <con3:xqueryConditionExpr>
+                      <con3:boolExpr operator="or">
+                        <con3:compExpr operator="=">
+                          <con3:leftPath>$estatusRegistro</con3:leftPath>
+                          <con3:rightPath>'1'</con3:rightPath>
+                        </con3:compExpr>
+                        <con3:compExpr operator="=">
+                          <con3:leftPath>$estatusRegistro</con3:leftPath>
+                          <con3:rightPath>'2'</con3:rightPath>
+                        </con3:compExpr>
+                      </con3:boolExpr>
+                    </con3:xqueryConditionExpr>
+                  </con4:condition>
+                  <con4:actions>
+                    <con5:route>
+                      <con3:id>_ActionId-367289871648706837--1abe819.1435a993350.-7f65</con3:id>
+                      <con5:service ref="AsignacionNSSProject/IdseProxyService" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                      <con5:outboundTransform>
+                        <con4:assign varName="peticionIDSE">
+                          <con3:id>_ActionId-367289871648706837--1abe819.1435a993350.-7f64</con3:id>
+                          <con4:expr>
+                            <con3:xqueryText><![CDATA[<idse:MovimientoIdse xmlns:idse="http://www.mx.gob.imss.ctirss.delta.idse/idse_schema">
+    <idse:registroPatronal>{fn:substring($registroPatronal, 1,10)}</idse:registroPatronal>
+    <idse:digitoVerificadorRP>{fn:substring($registroPatronal, 11, 1)}</idse:digitoVerificadorRP>
+    <idse:folioArchivo>{$folioArchivo}</idse:folioArchivo>
+    <idse:nSS>{fn:substring($nssCompleto, 1, 10)}</idse:nSS>
+    <idse:digitoVerificadorNSS>{fn:substring($nssCompleto, 11, 1)}</idse:digitoVerificadorNSS>
+    <idse:primerApellido>{$altaEstudianteResponseDocument/aseg:return/asegI:PrimerApellido/text()}</idse:primerApellido>
+    <idse:segundoApellido>{$altaEstudianteResponseDocument/aseg:return/asegI:SegundoApellido/text()}</idse:segundoApellido>
+    <idse:nombreDelEstudiante>{$altaEstudianteResponseDocument/aseg:return/asegI:Nombre/text()}</idse:nombreDelEstudiante>
+    <idse:tipoDeTrabajador>2</idse:tipoDeTrabajador>
+    <idse:tipoDeSalario>1</idse:tipoDeSalario>
+    <idse:semanaOJornadaReducida>0</idse:semanaOJornadaReducida>
+    <idse:fechaDelMovimiento>{$altaEstudianteResponseDocument/aseg:return/asegI:FechaOperacion/text()}</idse:fechaDelMovimiento>
+    <idse:unidadDeMedicinaFamiliar>{$altaEstudianteResponseDocument/aseg:return/asegI:Umf/asegI:NoEconomico/text()}</idse:unidadDeMedicinaFamiliar>
+    <idse:tipoDeMovimiento>08</idse:tipoDeMovimiento>
+    <idse:curp_o_Rfc>{$altaEstudianteResponseDocument/aseg:return/asegI:Curp/text()}</idse:curp_o_Rfc>
+    <idse:idFormato>9</idse:idFormato>
+</idse:MovimientoIdse>]]></con3:xqueryText>
+                          </con4:expr>
+                        </con4:assign>
+                        <con4:replace varName="body" contents-only="true">
+                          <con3:id>_ActionId-367289871648706837--1abe819.1435a993350.-7f63</con3:id>
+                          <con4:location>
+                            <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                          </con4:location>
+                          <con4:expr>
+                            <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$peticionIDSE</con:xqueryText>
+                          </con4:expr>
+                        </con4:replace>
+                      </con5:outboundTransform>
+                    </con5:route>
+                  </con4:actions>
+                </con4:case>
+                <con4:default>
+                  <con5:route>
+                    <con3:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fd3</con3:id>
+                    <con5:service ref="AsignacionNSSProject/IdseProxyService" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                    <con5:outboundTransform>
+                      <con4:assign varName="peticionIDSE">
+                        <con3:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fd2</con3:id>
+                        <con4:expr>
+                          <con3:xqueryText><![CDATA[<idse:MovimientoIdse xmlns:idse="http://www.mx.gob.imss.ctirss.delta.idse/idse_schema">
+    <idse:registroPatronal>{fn:substring($registroPatronal, 1,10)}</idse:registroPatronal>
+    <idse:digitoVerificadorRP>{fn:substring($registroPatronal, 11, 1)}</idse:digitoVerificadorRP>
+    <idse:folioArchivo>{$folioArchivo}</idse:folioArchivo>
+    <idse:nSS></idse:nSS>
+    <idse:digitoVerificadorNSS></idse:digitoVerificadorNSS>
+    <idse:primerApellido>{$empleado/APELLIDO_PATERNO/text()}</idse:primerApellido>
+    <idse:segundoApellido>{$empleado/APELLIDO_MATERNO/text()}</idse:segundoApellido>
+    <idse:nombreDelEstudiante>{$empleado/NOMBRE/text()}</idse:nombreDelEstudiante>
+    <idse:tipoDeTrabajador>2</idse:tipoDeTrabajador>
+    <idse:tipoDeSalario>1</idse:tipoDeSalario>
+    <idse:semanaOJornadaReducida>0</idse:semanaOJornadaReducida>
+    <idse:fechaDelMovimiento>{$altaEstudianteResponseDocument/aseg:return/asegI:FechaOperacion/text()}</idse:fechaDelMovimiento>
+    <idse:unidadDeMedicinaFamiliar>{$altaEstudianteResponseDocument/aseg:return/asegI:Umf/asegI:NoEconomico/text()}</idse:unidadDeMedicinaFamiliar>
+    <idse:tipoDeMovimiento>08</idse:tipoDeMovimiento>
+    <idse:curp_o_Rfc>{$altaEstudianteResponseDocument/aseg:return/asegI:Curp/text()}</idse:curp_o_Rfc>
+    <idse:idFormato>9</idse:idFormato>
+</idse:MovimientoIdse>]]></con3:xqueryText>
+                        </con4:expr>
+                      </con4:assign>
+                      <con4:replace varName="body" contents-only="true">
+                        <con3:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fd1</con3:id>
+                        <con4:location>
+                          <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                        </con4:location>
+                        <con4:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$peticionIDSE</con:xqueryText>
+                        </con4:expr>
+                      </con4:replace>
+                    </con5:outboundTransform>
+                  </con5:route>
+                </con4:default>
+              </con4:ifThenElse>
+            </con4:actions>
+          </con4:foreach>
+          <con5:route>
+            <con3:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fd7</con3:id>
+            <con5:service ref="deltaGestionPatronalService/proxy/mail/DynamicProxyServer" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con5:outboundTransform>
+              <con4:assign varName="template">
+                <con3:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fd6</con3:id>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<html>
+  <body>
+<div style="width: 95%; background-color: lightgray; padding: 40px;"> 
+<div style="background-color: white; margin: 0px auto; height: auto;">
+
+	<table align="center" style="width: 80%">
+		<tr>
+			<td align="center">
+				<h2 style="font-size:30px;">Instituto Mexicano del Seguro Social</h2>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<a style="line-height:40px;
+					font-size:11px;
+					display:inline;
+					margin-left:5px;
+					color:#999;"
+	 				href="http://www.imss.gob.mx" title="Portal IMSS">Visita 
+						el portal oficial del Instituto Mexicano del Seguro Social
+				</a>
+			</td>
+		</tr>
+	 	<tr>
+			<td>
+				<p style="font-size: 16px !important; ">        
+					Este correo contiene las estadisticas generales asociadas a la solicitud de inscripción de estudiantes realizada por parte del patrón {fn:substring($registroPatronal,1,11)}.<br/> <br/>
+Le informamos que su solicitud ha sido atendida. Le pedimos por favor verificar los cambios a través de su portal <b>IDSE</b>.<br/><br/>
+<b>Número de estudiantes a los cuales se les realizó asignación de Número de Seguro Social: {$numAsignados}</b> <br/>
+<b>Número de estudiantes para los cuales se realizó la recuperación de Número de Seguro Social: {$numRecuperados}</b> <br/>
+<b>Número de estudiantes a los cuales no se logro realizar su asignación o recuperación de Número de Seguro Social: {$numErrores}*</b> <br/><br/>
+<b>Nombre del archivo generado: {fn:concat('SIEArchivoBase_',$folioArchivo,'_',fn:substring($registroPatronal, 1,10),'.txt')}</b> <br/>
+
+<br/><br/>
+* El archivo adjunto a este correo (CurpInvalidas.txt) contiene los nombres y curp de los estudiantes para los cuales no fue posible realizar la asignación o recuperación de Número de Seguro Social (NSS).
+<br/><br/>
+      
+				</p>
+<br/>
+
+			</td>
+		</tr>
+		<tfoot style="width: 90%">
+			<tr>
+				<th width="50%">
+						<div style="text-align: center; padding-bottom: 30px;"> 
+<h4 style="font-size: 14px !important; ">Gracias por usar los servicios digitales creados para usted por el Instituto Mexicano del Seguro Social.</h4>
+<img title="Portal IMSS" src="http://deltadev.imss.gob.mx/delta/resources/imagenes/header70.jpg"/> 
+<p style="text-align: center; font-size: 10px;"> Reforma 476, Col. Juárez, México DF - Tel 01 800 623 23 23 - <br/> ALGUNOS DERECHOS RESERVADOS IMSS - 2012 
+</p> 
+</div>
+				</th>
+			</tr>
+		</tfoot>
+	</table>
+
+
+</div>
+</div>
+   </body>
+
+</html>]]></con:xqueryText>
+                </con4:expr>
+              </con4:assign>
+              <con4:assign varName="emailRequest">
+                <con3:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fd5</con3:id>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<mx:EmailPayload xmlns:mx="http://mx.gob.imss.email.model">
+    <mx:FromAccountName>Portal IMSS Digital</mx:FromAccountName>
+    <mx:To>{$correoNotificacion}</mx:To>
+    <mx:ReplyToAddress></mx:ReplyToAddress>
+    <mx:Subject>Estadisticas de inscripción de estudiantes del patrón {fn:substring($registroPatronal,1,11)}</mx:Subject>
+    <mx:Content>{$template}</mx:Content>
+    <mx:ContentType>text/html</mx:ContentType>
+    <mx:Attachment>
+        <mx:Content-Type>text/plain</mx:Content-Type>
+        <mx:Content-Disposition>CurpsInvalidas.txt</mx:Content-Disposition>
+        <mx:textBody>{$curpsErroneas}</mx:textBody>
+    </mx:Attachment>
+    <mx:Cc></mx:Cc>
+    <mx:Bcc></mx:Bcc>
+</mx:EmailPayload>]]></con:xqueryText>
+                </con4:expr>
+              </con4:assign>
+              <con4:replace varName="body" contents-only="true">
+                <con3:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fd4</con3:id>
+                <con4:location>
+                  <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                </con4:location>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$emailRequest</con:xqueryText>
+                </con4:expr>
+              </con4:replace>
+            </con5:outboundTransform>
+          </con5:route>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline type="response" name="generarAseguradoNode_response"/>
+    <con1:flow>
+      <con1:pipeline-node name="generarAseguradoNode">
+        <con1:request>generarAseguradoNode_request</con1:request>
+        <con1:response>generarAseguradoNode_response</con1:response>
+      </con1:pipeline-node>
+    </con1:flow>
+  </ser:router>
+</xml-fragment>

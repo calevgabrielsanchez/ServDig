@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SecccionVI-e" pageWidth="612" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="592" leftMargin="0" rightMargin="20" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="2.1961500000000074"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Titulo Aviso" hAlign="Left" lineSpacing="Single" fontSize="13" isBold="true" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="base" lineSpacing="Single" fontSize="7" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="fondo" backcolor="#00CCFF" lineSpacing="Single"/>
+	<style name="fondoEncabezado" backcolor="#0000FF" lineSpacing="Single"/>
+	<style name="Titulo Encabezado" lineSpacing="Single" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="baseBold" lineSpacing="Single" fontSize="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+	<style name="vineta" lineSpacing="Single" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<parameter name="indTransportePropio" class="java.lang.Integer"/>
+	<parameter name="indTransporteAjeno" class="java.lang.Integer"/>
+	<parameter name="indDistribuyeEntrega" class="java.lang.Integer"/>
+	<parameter name="indServiciosATerceros" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="indTransporteAjeno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[indTransporteAjeno]]></fieldDescription>
+	</field>
+	<field name="indTransportePropio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[indTransportePropio]]></fieldDescription>
+	</field>
+	<field name="indDistribuyeEntrega" class="java.lang.Integer">
+		<fieldDescription><![CDATA[indDistribuyeEntrega]]></fieldDescription>
+	</field>
+	<field name="indRegPatClase" class="java.lang.Integer">
+		<fieldDescription><![CDATA[indRegPatClase]]></fieldDescription>
+	</field>
+	<field name="indServiciosATerceros" class="java.lang.Integer">
+		<fieldDescription><![CDATA[indServiciosATerceros]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="97">
+			<rectangle>
+				<reportElement mode="Transparent" x="284" y="28" width="267" height="60" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement style="baseBold" mode="Opaque" x="23" y="8" width="528" height="20" backcolor="#F2F2F2"/>
+				<box>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Actividades complementarias a la principal]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="23" y="28" width="261" height="60" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement style="base" x="86" y="62" width="99" height="11"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Con transporte ajeno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="86" y="74" width="99" height="14"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[No distribuye, ni entrega]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="86" y="49" width="99" height="10"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Con transporte propio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="348" y="33" width="203" height="27"/>
+				<textElement lineSpacing="Single" markup="html">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Servicios de instalaci&oacute;n, reparaci&oacute;n o mantenimiento a terceros.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="42" y="33" width="143" height="13"/>
+				<textElement lineSpacing="Single" markup="html">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Distribuci&oacute;n o entrega de mercanc&iacute;as:]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement x="41" y="50" width="10" height="10"/>
+			</ellipse>
+			<ellipse>
+				<reportElement x="41" y="63" width="10" height="10"/>
+			</ellipse>
+			<ellipse>
+				<reportElement x="41" y="75" width="10" height="10"/>
+			</ellipse>
+			<ellipse>
+				<reportElement x="314" y="35" width="10" height="10"/>
+			</ellipse>
+			<ellipse>
+				<reportElement x="41" y="49" width="10" height="10" backcolor="#000000">
+					<printWhenExpression><![CDATA[$P{indTransportePropio}.equals( new java.lang.Integer(1))]]></printWhenExpression>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement x="41" y="63" width="10" height="10" backcolor="#000000">
+					<printWhenExpression><![CDATA[$P{indTransporteAjeno}.equals( new java.lang.Integer(1))]]></printWhenExpression>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement x="41" y="75" width="10" height="10" backcolor="#000000">
+					<printWhenExpression><![CDATA[$P{indDistribuyeEntrega}.equals( new java.lang.Integer(1))]]></printWhenExpression>
+				</reportElement>
+			</ellipse>
+			<ellipse>
+				<reportElement x="314" y="35" width="10" height="10" backcolor="#000000">
+					<printWhenExpression><![CDATA[$P{indServiciosATerceros}.equals( new java.lang.Integer(1))]]></printWhenExpression>
+				</reportElement>
+			</ellipse>
+		</band>
+	</detail>
+</jasperReport>

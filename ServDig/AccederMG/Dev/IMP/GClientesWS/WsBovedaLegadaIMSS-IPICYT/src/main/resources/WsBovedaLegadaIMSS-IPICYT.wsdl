@@ -1,0 +1,284 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.openuri.org/legado/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.openuri.org/legado/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.openuri.org/legado/">
+<wsdl:types>
+<xsd:schema xmlns:ope="http://www.openuri.org/legado/" attributeFormDefault="unqualified" elementFormDefault="qualified" ope:minVersion="1.1" targetNamespace="http://www.openuri.org/legado/">
+<xsd:element name="AltaDocumento">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element minOccurs="1" name="entrada" type="ope:EntradaAlta"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="AltaDocumentoResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element minOccurs="0" name="AltaDocumentoResult" type="ope:SalidaAlta"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="BajaLogicaDocumento">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element minOccurs="0" name="entrada" type="ope:EntradaBajaLogica"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="BajaLogicaDocumentoResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element minOccurs="0" name="BajaLogicaDocumentoResult" type="ope:SalidaBajaLogica"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="BajaDocumento">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element minOccurs="0" name="entrada" type="ope:EntradaBaja"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="BajaDocumentoResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element minOccurs="0" name="BajaDocumentoResult" type="ope:SalidaBaja"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ConsultaDocumento">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element minOccurs="0" name="entrada" type="ope:EntradaConsulta"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ConsultaDocumentoResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element minOccurs="0" name="ConsultaDocumentoResult" type="ope:SalidaConsulta"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ActualizacionDocumento">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element minOccurs="0" name="entrada" type="ope:EntradaActualizacion"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ActualizacionDocumentoResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element minOccurs="0" name="ActualizacionDocumentoResult" type="ope:SalidaActualizacion"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:complexType name="EntradaAlta">
+<xsd:sequence>
+<xsd:element minOccurs="1" name="documento" type="xsd:base64Binary"/>
+<xsd:element minOccurs="1" name="tipoDocumental" type="xsd:string"/>
+<xsd:element minOccurs="0" name="ruta" type="xsd:string"/>
+<xsd:element minOccurs="1" name="tipo" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="atributo" type="ope:Atributo"/>
+<xsd:element minOccurs="0" name="identificador" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:simpleType name="char">
+<xsd:restriction base="xsd:string">
+<xsd:length value="1"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:complexType name="SalidaAlta">
+<xsd:sequence>
+<xsd:element name="exito" type="xsd:boolean"/>
+<xsd:element minOccurs="0" name="clave" type="xsd:string"/>
+<xsd:element minOccurs="0" name="descripcion" type="xsd:string"/>
+<xsd:element minOccurs="0" name="idDocumento" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="EntradaBajaLogica">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="idDocumento" type="xsd:string"/>
+<xsd:element minOccurs="1" name="identificador" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SalidaBajaLogica">
+<xsd:sequence>
+<xsd:element name="exito" type="xsd:boolean"/>
+<xsd:element minOccurs="0" name="clave" type="xsd:string"/>
+<xsd:element minOccurs="0" name="descripcion" type="xsd:string"/>
+<xsd:element minOccurs="0" name="idDocumento" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="EntradaBaja">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="idDocumento" type="xsd:string"/>
+<xsd:element minOccurs="0" name="identificador" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SalidaBaja">
+<xsd:sequence>
+<xsd:element name="exito" type="xsd:boolean"/>
+<xsd:element minOccurs="0" name="clave" type="xsd:string"/>
+<xsd:element minOccurs="0" name="descripcion" type="xsd:string"/>
+<xsd:element minOccurs="0" name="idDocumento" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="EntradaConsulta">
+<xsd:sequence>
+<xsd:element minOccurs="1" name="tipoDocumental" type="xsd:string"/>
+<xsd:element minOccurs="0" name="tipoConsulta" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="atributo" type="ope:Atributo"/>
+<xsd:element minOccurs="0" name="identificador" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SalidaConsulta">
+<xsd:sequence>
+<xsd:element name="exito" type="xsd:boolean"/>
+<xsd:element minOccurs="0" name="clave" type="xsd:string"/>
+<xsd:element minOccurs="0" name="descripcion" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" name="documento" type="ope:Documento"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Atributo">
+<xsd:sequence>
+<xsd:element name="nombre" nillable="true" type="xsd:string"/>
+<xsd:element name="valor" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Documento">
+<xsd:sequence>
+<xsd:element name="nombre" nillable="true" type="xsd:string"/>
+<xsd:element name="contenido" type="xsd:base64Binary"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="EntradaActualizacion">
+<xsd:sequence>
+<xsd:element name="idDocumento" type="xsd:string"/>
+<xsd:element name="documento" type="xsd:base64Binary"/>
+<xsd:element maxOccurs="unbounded" name="atributo" type="ope:Atributo"/>
+<xsd:element minOccurs="0" name="versionado" type="xsd:boolean"/>
+<xsd:element minOccurs="0" name="identificador" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SalidaActualizacion">
+<xsd:sequence>
+<xsd:element name="exito" type="xsd:boolean"/>
+<xsd:element minOccurs="0" name="clave" type="xsd:string"/>
+<xsd:element minOccurs="0" name="descripcion" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="documentos">
+<xsd:sequence>
+<xsd:element name="uuid" type="xsd:string"/>
+<xsd:element name="nombre" type="xsd:string"/>
+<xsd:element name="creado" type="xsd:string"/>
+<xsd:element name="folio" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:schema>
+</wsdl:types>
+<wsdl:message name="BajaLogicaDocumento">
+<wsdl:part element="tns:BajaLogicaDocumento" name="BajaLogicaDocumento"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="BajaLogicaDocumentoResponse">
+<wsdl:part element="tns:BajaLogicaDocumentoResponse" name="BajaLogicaDocumentoResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="BajaDocumento">
+<wsdl:part element="tns:BajaDocumento" name="BajaDocumento"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="BajaDocumentoResponse">
+<wsdl:part element="tns:BajaDocumentoResponse" name="BajaDocumentoResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="ConsultaDocumento">
+<wsdl:part element="tns:ConsultaDocumento" name="ConsultaDocumento"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="ConsultaDocumentoResponse">
+<wsdl:part element="tns:ConsultaDocumentoResponse" name="ConsultaDocumentoResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="ActualizacionDocumento">
+<wsdl:part element="tns:ActualizacionDocumento" name="ActualizacionDocumento"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="ActualizacionDocumentoResponse">
+<wsdl:part element="tns:ActualizacionDocumentoResponse" name="ActualizacionDocumentoResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="AltaDocumento">
+<wsdl:part element="tns:AltaDocumento" name="AltaDocumento"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="AltaDocumentoResponse">
+<wsdl:part element="tns:AltaDocumentoResponse" name="AltaDocumentoResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="legadoPort">
+<wsdl:operation name="BajaLogicaDocumento">
+<wsdl:input message="tns:BajaLogicaDocumento" name="BajaLogicaDocumento"> </wsdl:input>
+<wsdl:output message="tns:BajaLogicaDocumentoResponse" name="BajaLogicaDocumentoResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="BajaDocumento">
+<wsdl:input message="tns:BajaDocumento" name="BajaDocumento"> </wsdl:input>
+<wsdl:output message="tns:BajaDocumentoResponse" name="BajaDocumentoResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ConsultaDocumento">
+<wsdl:input message="tns:ConsultaDocumento" name="ConsultaDocumento"> </wsdl:input>
+<wsdl:output message="tns:ConsultaDocumentoResponse" name="ConsultaDocumentoResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ActualizacionDocumento">
+<wsdl:input message="tns:ActualizacionDocumento" name="ActualizacionDocumento"> </wsdl:input>
+<wsdl:output message="tns:ActualizacionDocumentoResponse" name="ActualizacionDocumentoResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AltaDocumento">
+<wsdl:input message="tns:AltaDocumento" name="AltaDocumento"> </wsdl:input>
+<wsdl:output message="tns:AltaDocumentoResponse" name="AltaDocumentoResponse"> </wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="legadoPortSoap11" type="tns:legadoPort">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="BajaLogicaDocumento">
+<soap:operation soapAction="http://www.openuri.org/legado/BajaLogicaDocumento" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="BajaDocumento">
+<soap:operation soapAction="http://www.openuri.org/legado/BajaDocumento" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ConsultaDocumento">
+<soap:operation soapAction="http://www.openuri.org/legado/ConsultaDocumento" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ActualizacionDocumento">
+<soap:operation soapAction="http://www.openuri.org/legado/ActualizacionDocumento" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AltaDocumento">
+<soap:operation soapAction="http://www.openuri.org/legado/AltaDocumento" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="legadoPortService">
+<wsdl:port binding="tns:legadoPortSoap11" name="legadoPortSoap11">
+<soap:address location="${mvn.url.ws}/alfresco-ws-1.0/servicios"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

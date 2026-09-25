@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="comprobanteSolicitudCDA" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.1000000000000019"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="131"/>
+	<style name="style1" fill="Solid"/>
+	<parameter name="titulo" class="java.lang.String"/>
+	<parameter name="folioSolicitud" class="java.lang.String"/>
+	<parameter name="cadenaOriginal" class="java.lang.String"/>
+	<parameter name="secuenciaNotarial" class="java.lang.String"/>
+	<parameter name="selloDigital" class="java.lang.String"/>
+	<parameter name="numeroSerie" class="java.lang.String"/>
+	<parameter name="fechaSolicitud" class="java.lang.String"/>
+	<parameter name="IMAGENES_DIR" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="102">
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="0" width="555" height="50"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "header.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="50" width="554" height="48" forecolor="#000000" backcolor="#E7E8E7"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Instituto Mexicano del Seguro Social]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="14" width="554" height="20" forecolor="#000000" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" pdfFontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="14" width="554" height="20"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{titulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="225" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="117" y="33" width="322" height="20" forecolor="#000000" backcolor="#E7E8E7"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Folio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="117" y="89" width="322" height="20" forecolor="#000000" backcolor="#E7E8E7"/>
+				<box rightPadding="0">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Fecha de solicitud del trámite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="174" width="525" height="34"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="8" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Usted deberá ingresar al portal del trámite una vez transcurridos: 40 días hábiles contados a partir de la fecha de su solicitud; en caso contrario se  procederá a cancelar su trámite.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="117" y="53" width="322" height="36"/>
+				<box rightPadding="0">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{folioSolicitud}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="109" width="322" height="36"/>
+				<box rightPadding="0">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{fechaSolicitud}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" forecolor="#000000"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="224" width="554" height="1" forecolor="#000000"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="554" y="0" width="1" height="225" forecolor="#000000"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="225" forecolor="#000000"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="246" y="134" width="13" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[DD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="134" width="18" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[MM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="289" y="134" width="26" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[AAAA]]></text>
+			</staticText>
+		</band>
+		<band height="61">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="555" height="57"/>
+				<box leftPadding="3" rightPadding="2">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="6" isBold="false" pdfFontName="Helvetica" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Los datos personales recabados serán protegidos y serán incorporados y tratados en el sistema de datos Personales denominado Sistema Integral de Derechos y Obligaciones, con Fundamento en los artículos : 15 de la Ley del Seguro Social y 14 del Reglamento de la Ley del Seguro Social en Materia de Afiliación, Clasificación de Empresas, Recaudación y Fiscalización y cuya finalidad es contener, proteger, ordenar y clasificar los datos de los patrones y asegurados, el cual tiene registro en el listado del Sistema de Datos Personales ante el Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (www.ifai.org.mx) y podrán ser transmitidos de acuerdo con lo previsto en la Ley. La Unidad Administrativa responsable del Sistema de Datos Personales es la Dirección de Incorporación y Recaudación en coordinación con la Dirección de Innovación y Desarrollo Tecnológico del IMSS y la dirección donde el interesado podrá ejercer los derechos de acceso y corrección ante la misma es la Subdelegación de control que corresponde al domicilio del patrón o del asegurado, en su caso. Lo anterior se informa en cumplimiento del Decimoséptimo de los Lineamientos de Protección de datos Personales, publicado en el Diario Oficial de la Federación el 30 de septiembre de 2005."]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="41">
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="110" height="34"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true" pdfFontName="Helvetica" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Cadena original: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="109" y="0" width="434" height="41"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="6" pdfFontName="Helvetica" pdfEncoding="Cp1252"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{cadenaOriginal}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="40">
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="110" height="34"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true" pdfFontName="Helvetica" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Sello digital: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="109" y="0" width="434" height="34"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="6" pdfFontName="Helvetica" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{selloDigital}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="40">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="110" height="34"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true" pdfFontName="Helvetica" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Secuencia notarial: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="0" width="434" height="34"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="6" pdfFontName="Helvetica" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{secuenciaNotarial}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="40">
+			<textField>
+				<reportElement x="109" y="0" width="434" height="34"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="6" pdfFontName="Helvetica" pdfEncoding="Cp1250"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{numeroSerie}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="110" height="34"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true" pdfFontName="Helvetica" pdfEncoding="Cp1250"/>
+				</textElement>
+				<text><![CDATA[Número de Serie: ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="78" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="1" y="0" width="554" height="60"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR}+"footer.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="490" y="68" width="51" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="541" y="68" width="8" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

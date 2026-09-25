@@ -1,0 +1,9 @@
+{
+  "data":[
+          {"folio":"12345678901234","fechaSolicitud":"18/05/2016","nssInvolucrados":"01234567678 01234567678","origen":"Internet","responsable":"Antonio Sampayo Vargas","estatus":"Asignado","ultimaActualizacion":"18/05/2016","tipo":""},
+          {"folio":"123456","fechaSolicitud":"20/05/2016"}
+        ],
+        "currentPage": 3,
+        "pageSize":10,
+        "totalOfRecords": 505
+}

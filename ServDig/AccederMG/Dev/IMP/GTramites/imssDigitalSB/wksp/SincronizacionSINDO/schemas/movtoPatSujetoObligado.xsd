@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.mx.gob.imss.ctirss.delta/movtoPatSujetoObligado"
+    xmlns:tns="http://www.mx.gob.imss.ctirss.delta/movtoPatSujetoObligado" elementFormDefault="qualified">
+
+    <element name="MovtoPatSujetoObligadoType">
+    <complexType>
+        <sequence>
+            <element name="cveIdMovtoPatSujOblig" type="int"></element>
+            <element name="cveIdPatronDestino" type="decimal"></element>
+            <element name="fecAvisoSat" type="date"></element>
+            <element name="fecInforme" type="date"></element>
+            <element name="fecMovimiento" type="date"></element>
+            <element name="fecOficio" type="date"></element>
+            <element name="fecRegistroActualizado" type="date"></element>
+            <element name="fecRegistroAlta" type="date"></element>
+            <element name="folioMovimiento" type="string"></element>
+            <element name="numeroOficio" type="string"></element>
+            <element name="observaciones" type="string"></element>
+            <element name="cveIdTipoMovto" type="int"></element>
+            <element name="registroPatronal" type="string"></element>
+        </sequence>
+    </complexType>
+
+    </element>
+</schema>

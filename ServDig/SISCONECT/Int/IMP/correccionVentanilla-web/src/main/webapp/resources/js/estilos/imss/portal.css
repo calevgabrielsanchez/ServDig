@@ -1,0 +1,200 @@
+
+
+
+#header {
+	width:1000px;
+	height:110px;
+	margin: 0 auto;
+}
+#logo {
+	width:650px;
+	height:85px;
+	float:left;
+	text-align:left;
+	padding-top:25px;
+	padding-left:50px;
+}
+#cuadro_buscador {
+	width:250px;
+	height:110px;
+	float:right;
+}
+#menu_arriba {
+	width:240px;
+	height:20px;
+	text-align:right;
+	padding-top: 15px;
+	color:#929497;
+}
+#buscador {
+	width:250px;
+	height:26px;
+	text-align:right;
+	float:right;
+	padding-top:10px;
+}
+#redes {
+	width:240px;
+	height:30px;
+	text-align:right;
+	float:left;
+	padding-right:10px;
+	padding-top:10px;
+}
+
+#menu_principal {
+	width:1000px;
+	height:48px;
+	margin:auto;
+	color:#8b8b8b;
+	background-image:url(../../imagenes/menu.jpg);
+	background-repeat:no-repeat;
+	text-transform:none;
+}
+
+.clear {
+	clear:both;
+}
+
+.menuboton {
+	font-family:Soberana Titular;
+	font-size:1em;
+	float:left;
+	width:200px;
+	height:27px;
+	padding-top:15px;
+	text-align:center;
+}
+.menuboton a {
+	font-family:Soberana Titular;
+	font-size:16px;
+	text-decoration:none;
+	color:#8b8b8b;
+	text-transform:none;
+}
+.menuboton a:hover {
+	font-family:Soberana Titular;
+	font-size:1em;
+	text-decoration:none;
+	color:#8b8b8b;
+	text-transform:none;
+}
+
+/*breadcrumbs*/
+#breadcrumbs {
+    color: #3B6858;
+    float: left;
+    font-family: Verdana,Geneva,sans-serif;
+    font-size: 11px;
+    line-height: 17px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: left;
+    width: 780px;
+}
+#breadcrumbs a {
+	color:#515151;
+	text-decoration:none;
+	font-family:Soberana Titular;
+	font-size:11px;
+}
+#breadcrumbs a:hover {
+	color:#207969;
+	font-family:Soberana Titular;
+	font-size:1em;
+	text-decoration: underline;
+}
+#share {
+	float:right;
+	width:200px;
+	text-align:right;
+	margin-top:25px;
+}
+#ultimamodificacion {
+	font: 0.7em Soberana Sans;
+	text-align:right;
+	color:#929497;
+}
+
+#herramientas {
+    height: auto;
+    width: 1000px;
+    margin:auto;
+}
+
+
+.cajatitulo {
+    color: #207969;
+    font-family: Soberana Titular;
+    font-size: 1.5em;
+}
+
+
+
+ul.navegacion  {
+	
+}
+
+ul.navegacion a{
+	color:#9A999E;
+}
+
+
+
+ul.navegacion li.active{
+	background: none repeat scroll 0 0 #D8E3DB;
+    border-radius: 20px;
+    font-family: Soberana Titular;
+    padding: 5px 20px;
+    width: 33%;
+    text-align: center;
+    display: inline;
+}
+
+ul.navegacion li{
+	background: none repeat scroll 0 0 #E2E4E7;
+    border-radius: 20px;
+    font-family: Soberana Titular;
+    font-size:9px;
+    padding: 5px 20px;
+    width: 33%;
+    text-align: center;
+    display: inline;
+}
+
+
+/*footer*/
+#footer {
+	clear:both;
+	width:1000px;
+	height:100%;
+	text-align:center;
+	margin-top:20px;
+}
+.footer {
+	font-family: Soberana Titular;
+	font-size:0.8em;
+	text-transform: uppercase;
+	color:#999999;
+	text-decoration:none;
+}
+.footer a {
+	font-family: Soberana Titular;
+	font-size:1em;
+	text-transform: uppercase;
+	color:#999999;
+	text-decoration:none;
+}
+.footer a:hover {
+	font-family: Soberana Titular;
+	font-size:1em;
+	text-transform: uppercase;
+	color:#999999;
+	text-decoration:none;
+}
+
+
+#espacio {
+    clear: both;
+    height: 10px;
+}

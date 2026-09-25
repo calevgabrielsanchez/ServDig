@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title"
+			value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />		
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="databaseError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="internalError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="500" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="404" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+	
+	<definition name="TestConsulta" extends="baseLayoutEstrados"> 
+       <put-attribute name="title"  value="Bienvenido"/>
+       <put-attribute name="body"   value="/WEB-INF/views/estrados/testView/TestVista.jsp"/>
+    </definition>
+    
+	<!-- Definiciones para la navegacion de estrados -->    
+    <definition name="baseLayoutEstrados" template="/WEB-INF/views/estrados/commons/baseLayout.jsp"> 
+		<put-attribute name="title"  value="Template"/> 
+		<put-attribute name="header"   value="/WEB-INF/views/estrados/commons/header.jsp"/>
+	   	<put-attribute name="body"   value="/WEB-INF/views/estrados/commons/body.jsp"/> 
+		<put-attribute name="footer"   value="/WEB-INF/views/estrados/commons/footer.jsp"/> 
+	</definition>
+	
+	<definition name="baseLayoutEstradosExterna" template="/WEB-INF/views/estrados/commons/baseLayoutExterna.jsp"> 
+		<put-attribute name="title"  value="Template"/>
+	   	<put-attribute name="body"   value="/WEB-INF/views/estrados/commons/body.jsp"/>
+	</definition>
+     
+    <definition name="registrarNotificacionEstradosPrincipal" extends="baseLayoutEstrados"> 
+       <put-attribute name="title"  value="Bienvenido"/>         
+       <put-attribute name="body"   value="/WEB-INF/views/estrados/registroNotificacion/estradosRegistroNotificacionPrincipal.jsp"/> 
+    </definition>
+	
+	<definition name="consultaExterna" extends="baseLayoutEstradosExterna">
+       <put-attribute name="title"  value="Consulta Externa"/>
+       <put-attribute name="body"   value="/WEB-INF/views/estrados/consultaExterna/consultaExterna.jsp"/>
+    </definition>
+    
+    <definition name="consultaInterna" extends="baseLayoutEstrados">
+       <put-attribute name="title"  value="Consulta Interna"/>
+       <put-attribute name="body"   value="/WEB-INF/views/estrados/consultaInterna/consultaInterna.jsp"/>
+    </definition>
+
+</tiles-definitions>

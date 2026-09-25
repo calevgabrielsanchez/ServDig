@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="comprobanteSeguroMod40" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.3660269107301413"/>
+	<property name="ireport.x" value="11"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="Table Dataset 1"/>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="nss" class="java.lang.String"/>
+	<parameter name="curp" class="java.lang.String"/>
+	<parameter name="fecNacimiento" class="java.lang.String"/>
+	<parameter name="edad" class="java.lang.Integer"/>
+	<parameter name="sexo" class="java.lang.String"/>
+	<parameter name="domicilio" class="java.lang.String"/>
+	<parameter name="modalidad" class="java.lang.String"/>
+	<parameter name="nrp" class="java.lang.String"/>
+	<parameter name="delegacion" class="java.lang.String"/>
+	<parameter name="subdelegacion" class="java.lang.String"/>
+	<parameter name="tipoTramite" class="java.lang.String"/>
+	<parameter name="periodo" class="java.lang.String"/>
+	<parameter name="cuota" class="java.math.BigDecimal"/>
+	<parameter name="formaPago" class="java.lang.String"/>
+	<parameter name="cuestionario" class="java.lang.Boolean"/>
+	<parameter name="origen" class="java.lang.Integer"/>
+	<parameter name="usuario" class="java.lang.String"/>
+	<parameter name="subdelegacionUsuario" class="java.lang.String"/>
+	<parameter name="rfcFirma" class="java.lang.String"/>
+	<parameter name="nombreFirma" class="java.lang.String"/>
+	<parameter name="curpFirma" class="java.lang.String"/>
+	<parameter name="numeroSerie" class="java.lang.String"/>
+	<parameter name="secuenciaNotarial" class="java.lang.String"/>
+	<parameter name="selloDigital" class="java.lang.String"/>
+	<parameter name="cadenaOriginal" class="java.lang.String"/>
+	<parameter name="aseguramiento" class="java.lang.String"/>
+	<parameter name="segob" class="java.lang.String"/>
+	<parameter name="imss" class="java.lang.String"/>
+	<parameter name="IMAGENES_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["images/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="beneficio" class="java.lang.Boolean"/>
+	<parameter name="recargo" class="java.lang.Boolean"/>
+	<parameter name="salarioDiario" class="java.math.BigDecimal"/>
+	<parameter name="testvo" class="mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.model.CuestionarioVO"/>
+	<parameter name="aplicaCuestionario" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[false]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.io.InputStream"/>
+	<parameter name="SUBREPORT2" class="java.io.InputStream"/>
+	<parameter name="REPORT_MAIN" class="java.io.InputStream"/>
+	<pageHeader>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="42" width="572" height="42" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Instituto Mexicano del Seguro Social]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="572" height="84" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="572" height="42" forecolor="#AFB1B1" backcolor="#221E1E"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="440" y="108" width="132" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nombreFirma}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="414" y="108" width="26" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Folio]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="86" width="571" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{tipoTramite}.equals("Renovación")?"Renovación":"Incorporación") +  " Voluntaria al Régimen Obligatorio del Seguro Social"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement mode="Transparent" x="15" y="11" width="58" height="22"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR}+ "headerPicture.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="449" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="7" width="40" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="56" width="572" height="17" backcolor="#E7E8E7"/>
+				<box>
+					<pen lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Datos generales de Solicitante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="214" width="572" height="17" backcolor="#E7E8E7"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Del aseguramiento, forma y fecha de pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="73" width="141" height="19"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="92" width="141" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NSS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="289" y="92" width="45" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CURP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="112" width="141" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="289" y="112" width="45" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Edad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="429" y="112" width="59" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="149" width="141" height="25"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Domicilio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="251" width="141" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Modalidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="174" width="141" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Delegación de Adscripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="194" width="141" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subdelegación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="231" width="141" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de trámite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="291" width="141" height="21"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Aseguramiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="312" width="141" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Periodo de Aseguramiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="332" width="141" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cuota total a pagar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="352" width="141" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forma de pago]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="141" y="92" width="148" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nss}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="334" y="92" width="238" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{curp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="141" y="112" width="148" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{fecNacimiento}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="334" y="112" width="95" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{edad}.toString()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="488" y="112" width="84" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{sexo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="141" y="149" width="431" height="25"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{domicilio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="141" y="251" width="431" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{modalidad}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="141" y="174" width="431" height="20" isPrintWhenDetailOverflows="true"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="styled">
+					<font size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{delegacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="141" y="194" width="431" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{subdelegacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="141" y="231" width="431" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{tipoTramite}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="141" y="312" width="431" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{periodo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="141" y="332" width="431" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$P{cuota}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement x="141" y="352" width="431" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{formaPago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="291" width="431" height="21"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{aseguramiento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="141" y="73" width="431" height="19" isPrintWhenDetailOverflows="true"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="42" y="7" width="530" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{rfcFirma}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="132" width="572" height="17" backcolor="#E7E8E7">
+					<printWhenExpression><![CDATA[!$P{modalidad}.contains("34")]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Domicilio del Solicitante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="132" width="572" height="17" backcolor="#E7E8E7">
+					<printWhenExpression><![CDATA[$P{modalidad}.contains("34")]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Domicilio del Centro de Trabajo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="372" width="141" height="16"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estatus del Trámite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="372" width="431" height="16"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pendiente de Pago]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="2" y="41" width="572" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Este documento únicamente es para efectos informativos, su " + ($P{tipoTramite}.equals("Renovación")?"renovación":"inscripción") + " se acreditará una vez realizado el pago respectivo en los términos establecidos."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="27" width="560" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Mediante el presente se hace constar la recepción de su solicitud de " + ($P{tipoTramite}.equals("Renovación")?"Renovación":"Incorporación") + " Voluntaria al Régimen Obligatorio del Seguro Social."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="271" width="141" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NRP]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="141" y="271" width="431" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nrp}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="388" width="141" height="16">
+					<printWhenExpression><![CDATA[!$P{modalidad}.contains("34")]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salario diario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="388" width="141" height="16">
+					<printWhenExpression><![CDATA[$P{modalidad}.contains("34")]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salario diario integrado]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="141" y="388" width="431" height="16"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$P{salarioDiario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="404" width="565" height="14">
+					<printWhenExpression><![CDATA[!$P{cuestionario}.booleanValue()]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[No aplica llenado de cuestionario, ni tiempos de espera para recibir los servicios médicos, en términos de lo establecido en el Artículo 85 del RACERF.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="404" width="565" height="14">
+					<printWhenExpression><![CDATA[$P{cuestionario}.booleanValue()]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Aplican llenado de cuestionario y tiempos de espera para recibir los servicios médicos, en términos de lo establecido en los Artículos 81,82,83 y 84 del RACERF.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="418" width="565" height="14">
+					<printWhenExpression><![CDATA[$P{modalidad}.equals("34")]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Este seguro generará un Registro Patronal (Modalidad 34), en caso de no contar con uno registrado ante el Instituto Mexicano del Seguro Social.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="432" width="565" height="14">
+					<printWhenExpression><![CDATA[$P{beneficio}.booleanValue()]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[El importe del pago calculado considera el beneficio del descuento que se otorga en el Régimen de Incorporación a la  Seguridad Social.]]></text>
+			</staticText>
+		</band>
+		<band height="8" splitType="Stretch">
+			<printWhenExpression><![CDATA[$P{aplicaCuestionario}]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="572" height="8">
+					<printWhenExpression><![CDATA[$P{aplicaCuestionario}]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="testvo">
+					<subreportParameterExpression><![CDATA[$P{testvo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression class="java.io.InputStream"><![CDATA[$P{REPORT_MAIN}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="8">
+			<printWhenExpression><![CDATA[$P{aplicaCuestionario}]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="572" height="8">
+					<printWhenExpression><![CDATA[$P{aplicaCuestionario}]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="testvo">
+					<subreportParameterExpression><![CDATA[$P{testvo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression class="java.io.InputStream"><![CDATA[$P{SUBREPORT_DIR}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="8">
+			<printWhenExpression><![CDATA[$P{aplicaCuestionario}]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="572" height="8">
+					<printWhenExpression><![CDATA[$P{aplicaCuestionario}]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="testvo">
+					<subreportParameterExpression><![CDATA[$P{testvo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression class="java.io.InputStream"><![CDATA[$P{SUBREPORT2}]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="190">
+			<staticText>
+				<reportElement x="3" y="140" width="76" height="11"/>
+				<textElement verticalAlignment="Top">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello digital:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="79" y="173" width="490" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{numeroSerie}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="79" y="162" width="490" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{secuenciaNotarial}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="79" y="140" width="490" height="22"/>
+				<textElement verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{selloDigital}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="79" y="111" width="490" height="29" isPrintWhenDetailOverflows="true"/>
+				<textElement verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{cadenaOriginal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="111" width="76" height="14"/>
+				<textElement verticalAlignment="Top">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena original:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="173" width="76" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número de Serie:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="162" width="76" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Secuencia notarial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="0" width="565" height="18"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Beneficiarios]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="3" y="18" width="565" height="22"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Para el caso de beneficiarios, se deberá acudir a la Unidad de Medicina Familiar, para que previo cumplimiento de los requisitos, y llenado de cuestionario, se realice el registro correspondiente.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="45" width="516" height="20">
+					<printWhenExpression><![CDATA[$P{origen} == 1]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Usuario que llevó a cabo  el trámite]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="63" width="515" height="14">
+					<printWhenExpression><![CDATA[$P{origen} == 1]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="77" width="515" height="14">
+					<printWhenExpression><![CDATA[$P{origen} == 1]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{subdelegacionUsuario}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="168" y="44" width="206" height="1">
+					<printWhenExpression><![CDATA[$P{origen} == 1]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="66">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="5" width="571" height="50" forecolor="#AFB1B1" backcolor="#E7E8E7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="481" y="16" width="87" height="32"/>
+				<textElement markup="none">
+					<font fontName="Arial" size="5"/>
+				</textElement>
+				<text><![CDATA[Paseo de la Reforma 476, P.B.
+Col. Juárez, Cuauhtémoc
+C.P. 06600 Ciudad de México
+Tel. 01 800 623 23 23
+http://atencion.contactoimss.com.mx]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="547" y="54" width="24" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="467" y="54" width="80" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="481" y="9" width="28" height="8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Contacto:]]></text>
+			</staticText>
+			<image>
+				<reportElement positionType="Float" mode="Transparent" x="14" y="15" width="165" height="33"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "footer.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="5" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

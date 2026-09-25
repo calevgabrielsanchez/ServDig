@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<sua:datosCalculoCuota xmlns:sua="http://mx.gob.imss.digital.modelo.cobranza">
+  <fechaInicioCalculo>2014-12-01T12:27:14-06:00</fechaInicioCalculo>
+  <fechaFinCalculo>2015-11-31T12:27:14-06:00</fechaFinCalculo>
+  <!-- <numeroRegistroPatronal>Y6068874103</numeroRegistroPatronal> -->
+  <numeroRegistroPatronal>Y5846422102</numeroRegistroPatronal>
+  <modalidad>22</modalidad>
+  <!-- <modalidad>16</modalidad> -->
+  <zonaSalarial>A</zonaSalarial>
+  <empleados>
+    <empleado>
+      <numeroSeguridadSocial>01004200216</numeroSeguridadSocial>
+      <!-- <numeroSeguridadSocial>78684610658</numeroSeguridadSocial> -->
+      <!--modalidad>22</modalidad -->
+      <salario>250.29</salario>
+      <!-- <salario>67.29</salario> -->
+      <movimientos>
+        <movimiento>
+          <tipoMovimiento>1</tipoMovimiento>
+          <fecha>2014-09-28T20:49:45</fecha>
+          <dias>1</dias>
+          <folio>
+          </folio>
+          <salario>100.00</salario>
+        </movimiento>
+      </movimientos>
+    </empleado>
+<!--     <empleado> -->
+<!--     <numeroSeguridadSocial>78684610658</numeroSeguridadSocial> -->
+<!--     <salario>250.29</salario> -->
+<!--     <movimientos> -->
+<!--     <movimiento> -->
+<!--     <tipoMovimiento>1</tipoMovimiento> -->
+<!--     <fecha>2014-09-28T20:49:45</fecha> -->
+<!--     <dias>1</dias> -->
+<!--     <folio> </folio> -->
+<!--     <salario>100.00</salario> -->
+<!--     </movimiento> -->
+<!--     </movimientos> -->
+<!--     </empleado> -->
+  </empleados>
+</sua:datosCalculoCuota>

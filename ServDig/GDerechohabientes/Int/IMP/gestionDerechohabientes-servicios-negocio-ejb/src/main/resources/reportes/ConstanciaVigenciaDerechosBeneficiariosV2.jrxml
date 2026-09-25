@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BeneficiariosVigenciaDerechos" pageWidth="524" pageHeight="842" columnWidth="524" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="32.504117830165626"/>
+	<property name="ireport.x" value="16582"/>
+	<property name="ireport.y" value="1120"/>
+	<field name="nombreBen" class="java.lang.String"/>
+	<field name="primerApellidoBen" class="java.lang.String"/>
+	<field name="curpBen" class="java.lang.String"/>
+	<field name="parentescoBen" class="java.lang.String"/>
+	<field name="fechaNacimientoBen" class="java.util.Date"/>
+	<field name="edadBen" class="java.lang.Long"/>
+	<field name="sexoBen" class="java.lang.String"/>
+	<field name="delegacionBen" class="java.lang.String"/>
+	<field name="umfBen" class="java.lang.String"/>
+	<field name="situacionBen" class="java.lang.String"/>
+	<field name="segundoApellidoBen" class="java.lang.String"/>
+	<field name="detalleSituacionBen" class="java.lang.String"/>
+	<field name="vencimientoVigenciaBen" class="java.util.Date"/>
+	<field name="turno" class="java.lang.String"/>
+	<field name="consultorio" class="java.lang.String"/>
+	<field name="agregadoMedico" class="java.lang.String"/>
+	<field name="servicioMedico" class="java.lang.String"/>
+	<field name="lugarNacimientoAsegurado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="19" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="524" height="19" forecolor="#AFB1B1" backcolor="#E7E8E7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="251" y="0" width="30" height="19" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="0" width="47" height="19" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[Nombre(s)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="0" width="30" height="19" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[Calidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="282" y="0" width="53" height="19" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[Delegación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="335" y="-1" width="45" height="20" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[UMF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="422" y="0" width="28" height="19" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[Turno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="381" y="0" width="40" height="19" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[Consultorio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="451" y="0" width="35" height="19" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[Con derecho
+al servicio
+médico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="488" y="0" width="35" height="19" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[Agregado
+médico]]></text>
+			</staticText>
+			<line>
+				<reportElement x="33" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="82" y="-1" width="63" height="20" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[Primer Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="0" width="42" height="19" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[Fecha de Nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="146" y="0" width="63" height="19" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[Segundo Apellido]]></text>
+			</staticText>
+			<line>
+				<reportElement x="81" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="145" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="208" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="251" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="281" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="334" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="380" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="422" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="450" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="486" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<line>
+				<reportElement x="553" y="-793" width="1" height="50"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="-793" width="1" height="50"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="282" y="0" width="52" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{delegacionBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="334" y="0" width="45" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{umfBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="32" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{parentescoBen}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="32" y="-793" width="1" height="50" forecolor="#000000" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="166" y="-793" width="1" height="50" forecolor="#000000" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="311" y="-793" width="1" height="50" forecolor="#000000" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="411" y="-793" width="1" height="50" forecolor="#000000" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="481" y="-793" width="1" height="50" forecolor="#000000" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="515" y="-793" width="1" height="50" forecolor="#000000" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="451" y="0" width="36" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{servicioMedico}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="97" y="-793" width="1" height="50" forecolor="#000000" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="33" y="0" width="48" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombreBen}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="209" y="0" width="41" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaNacimientoBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="252" y="0" width="29" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sexoBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="422" y="0" width="28" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{turno}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="381" y="0" width="41" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{consultorio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="487" y="0" width="36" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{agregadoMedico}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="82" y="0" width="63" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{primerApellidoBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="146" y="0" width="62" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{segundoApellidoBen}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="33" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="81" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="145" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="208" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="251" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="281" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="334" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="380" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="422" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="450" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="486" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="18" width="523" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="523" y="0" width="1" height="19" forecolor="#AFB1B1" backcolor="#999999"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

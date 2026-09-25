@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="../plantillas/plantilla.xhtml">
+		<ui:define name="body">					
+			<h:form id="formPendientes">
+				<fieldset style="border:1px solid silver; margin: 0; padding: 10px;">
+					 <div id ="titulo" align="center">
+  		  				<h3>Solicitudes Abiertas</h3>
+   	 				</div>	
+   	 				
+   	 				  <div id="alerta" align="center">
+   	 				  <h:outputLabel value="#{aprobadorBean.resultRegistros}" id="resultRegistros" style="color: blue"/></div>
+   	 				
+   	 					<div id ="body" align="center">						
+					<h:dataTable value="#{aprobadorBean.listSolicitudes}" var="sol" border="2" binding="#{usuarioBean.tabla}" id="dtSolicitudes">
+						<h:column>
+						<h:graphicImage value="../imagenes/linea.png" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputLabel value="#{aprobadorBean.labelNombre}" style="font-weight:bold"></h:outputLabel>								
+							</f:facet>
+							<h:graphicImage value="../imagenes/linead.png" />
+							<h:outputLabel value="#{sol.nombres}"></h:outputLabel>
+							<h:graphicImage value="../imagenes/linead.png" />
+						</h:column>
+						<h:column>
+						<h:graphicImage value="../imagenes/linea.png" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+							
+								<h:outputLabel value="#{aprobadorBean.labelPaterno}" style="font-weight:bold"></h:outputLabel>							
+							</f:facet>
+							<h:graphicImage value="../imagenes/linead.png" />
+							<h:outputLabel value="#{sol.apellidoPaterno}"></h:outputLabel>
+							<h:graphicImage value="../imagenes/linead.png" />
+						</h:column>
+						<h:column>
+						<h:graphicImage value="../imagenes/linea.png" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+							
+								<h:outputLabel value="#{aprobadorBean.labelMaterno}" style="font-weight:bold"></h:outputLabel>	
+															
+							</f:facet>
+							<h:graphicImage value="../imagenes/linead.png" />
+							<h:outputLabel value="#{sol.apellidoMaterno}"></h:outputLabel>
+							<h:graphicImage value="../imagenes/linead.png" />
+						</h:column>
+						<h:column>
+						<h:graphicImage value="../imagenes/linea.png" />
+						</h:column>
+						<h:column>
+							<h:commandButton action="#{usuarioBean.aprobarSolicitud}" value="Continuar" styleClass="mboton">
+							</h:commandButton>
+							
+						</h:column>	
+				
+					</h:dataTable>
+					</div>						
+				</fieldset>							
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

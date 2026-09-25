@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://mx.gob.imss.delta.global.service/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://mx.gob.imss.delta.global.service/"
+	name="ValidacionRifSatService">
+	<types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="http://mx.gob.imss.delta.global.service/">
+			<xsd:element name="validarRifSatRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="rfc" type="xsd:string"/>
+						<xsd:element name="indicadorInstitucionConsulta" type="xsd:int" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="validarRifSatResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="rfcVigente" type="xsd:string" />
+						<xsd:element name="indicadorDerechoBeneficio" type="xsd:boolean" />
+						<xsd:element name="indicadorApartadoC" type="xsd:boolean" />
+						<xsd:element name="curp" type="xsd:string" />
+						<xsd:element name="fechaInicioRIF" type="xsd:string" />
+						<xsd:element name="exito" type="xsd:int" />
+						<xsd:element name="claveError" type="xsd:int" />
+						<xsd:element name="descripcion" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</types>
+	<message name="request">
+		<part name="validarRifSatRequest" element="tns:validarRifSatRequest" />
+	</message>
+	<message name="response">
+		<part name="validarRifSatResponse" element="tns:validarRifSatResponse"></part>
+	</message>
+	<portType name="ValidacionRifSatService">
+		<operation name="validarRifSat">
+			<input message="tns:request" />
+			<output message="tns:response"></output>
+		</operation>
+	</portType>
+	<binding name="ValidacionRifSatServicePortBinding" type="tns:ValidacionRifSatService">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="document" />
+		<operation name="validarRifSat">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+	<service name="ValidacionRifSatService">
+		<port name="ValidacionRifSatServicePort" binding="tns:ValidacionRifSatServicePortBinding">
+			<soap:address
+				location="http://localhost:7002/ValidacionRifSatService/ValidacionRifSatService" />
+		</port>
+	</service>
+</definitions>

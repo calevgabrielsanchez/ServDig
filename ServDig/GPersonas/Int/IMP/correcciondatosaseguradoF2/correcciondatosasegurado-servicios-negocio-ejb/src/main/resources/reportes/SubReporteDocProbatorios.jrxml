@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubReporteDocProbatorios" pageWidth="554" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="514" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="419" splitType="Stretch">
+			<staticText>
+				<reportElement x="26" y="246" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Identificación oficial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="10" width="447" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Documento expedido por el IMSS que contenga el Número de Seguridad Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="58" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[c) Certificado de incapacidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="366" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Padres: Identificación oficial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="200" width="504" height="30"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[En caso de que el asegurado autorice que el trámite lo realice un tercero, éste deberá presentar además de los documentos señalados en los puntos del 1 al 5:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="90" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[e) Credencial ADIMSS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="122" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[g) Comprobantes de pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="277" width="504" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[En caso de fallecimiento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="74" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[d) Cartilla de citas médicas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="382" width="488" height="32"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Concubina / Concubinario: Constancia testimonial con que acredite el concubinato expedida por la autoridad judicial competente e Identificación oficial.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="42" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[b) Tarjeta de afiliación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="154" width="407" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[i) Comprobantes SAR-03, SAR-04 o estado de cuenta de la AFORE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="334" width="340" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Esposa: Acta de matrimonio e identificación oficial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="138" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[h) Carta de renuncia o finiquito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="318" width="504" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Tratándose de:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="230" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Poder notarial que lo acredite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="106" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[f) Liquidaciones pagadas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="170" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[j) Otros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="350" width="340" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Hijos: Acta de nacimiento e identificación oficial.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="293" width="369" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Acta de defunción del asegurado en copia simple y original para su cotejo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="26" width="442" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[a) Avisos Afiliatorios (Forma 2-A, AFIL-02, AFIL-03, AFIL-04, IDSE-03, AFIL-06 y DST-002).]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

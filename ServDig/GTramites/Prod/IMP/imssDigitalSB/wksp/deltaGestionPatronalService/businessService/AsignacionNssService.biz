@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:ejb="http://www.bea.com/wli/sb/transports/ejb">
+  <ser:coreEntry isProxy="false" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description>Servicio que atiende las solicitudes de asignación de NSS</ser:description>
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" transport-typed="true" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:binding>
+        <con:name>JwsServiceSoapBinding</con:name>
+        <con:namespace>http://delta.global.services/</con:namespace>
+      </con:binding>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+    </ser:monitoring>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:throttling enabled="false">
+      <ser:capacity>0</ser:capacity>
+      <ser:maxQueueLength>0</ser:maxQueueLength>
+      <ser:timeToLive>0</ser:timeToLive>
+    </ser:throttling>
+    <ser:result-caching isEnabled="true" isSupported="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>ejb</tran:provider-id>
+    <tran:inbound>false</tran:inbound>
+    <tran:URI weight="0">
+      <env:value>ejb:deltaJNDIProvider:serviceBusiness#mx.gob.imss.ctirss.delta.gestion.asegurado.service.interfaces.ServiceBusinessRemote</env:value>
+    </tran:URI>
+    <tran:outbound-properties>
+      <tran:load-balancing-algorithm>round-robin</tran:load-balancing-algorithm>
+      <tran:retry-count>0</tran:retry-count>
+      <tran:retry-interval>30</tran:retry-interval>
+      <tran:retry-application-errors>true</tran:retry-application-errors>
+      <tran:delay-interval-configuration isEnabled="false">
+        <tran:delay-interval>0</tran:delay-interval>
+      </tran:delay-interval-configuration>
+    </tran:outbound-properties>
+    <tran:provider-specific>
+      <ejb:security>
+        <ejb:passClientIdentity>false</ejb:passClientIdentity>
+      </ejb:security>
+      <ejb:service>
+        <ejb:clientJar ref="deltaGestionPatronalService/libs/gestionAsegurados-interfaces-negocio-1.2-SNAPSHOT"/>
+        <ejb:ejbBizService classname="mx.gob.imss.ctirss.delta.gestion.asegurado.service.interfaces.ServiceBusinessRemote">
+          <ejb:method name="actualizaAsignacionNSS" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud actualizaAsignacionNSS(mx.gob.imss.ctirss.delta.model.gestion.tramite.TramiteCambioInformacionPersona,mx.gob.imss.ctirss.delta.model.Usuario) throws mx.gob.imss.ctirss.delta.framework.exceptions.DatosInsuficientesParaConsultaException,mx.gob.imss.ctirss.delta.exception.gestion.asegurado.PersonaConNSSException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException,mx.gob.imss.ctirss.delta.exception.individuo.AfectacionDatosPersonaException,mx.gob.imss.ctirss.delta.framework.exceptions.PersonaNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException" exclude="true">
+            <ejb:operation>actualizaAsignacionNSS</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.tramite.TramiteCambioInformacionPersona"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="altaPersonaNss" signature="java.lang.String altaPersonaNss(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica,mx.gob.imss.ctirss.delta.model.gestion.nss.Serie)" exclude="true">
+            <ejb:operation>altaPersonaNss</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.nss.Serie"/>
+            <ejb:return name="return" type="java.lang.String"/>
+          </ejb:method>
+          <ejb:method name="cambiarDuenioNSS" signature="void cambiarDuenioNSS(java.lang.String,java.lang.Long,java.lang.Long)" exclude="true">
+            <ejb:operation>cambiarDuenioNSS</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:param name="arg1" type="java.lang.Long"/>
+            <ejb:param name="arg2" type="java.lang.Long"/>
+          </ejb:method>
+          <ejb:method name="cancelar" signature="void cancelar(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud)" exclude="true">
+            <ejb:operation>cancelar</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="concluir" signature="void concluir(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudEnProcesoException" exclude="true">
+            <ejb:operation>concluir</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="crearEncolarSolicitudAsignacionMasivaSIE" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud crearEncolarSolicitudAsignacionMasivaSIE(mx.gob.imss.ctirss.delta.model.gestion.nss.AsignacionMasivaWrapper,mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException" exclude="true">
+            <ejb:operation>crearEncolarSolicitudAsignacionMasivaSIE</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.nss.AsignacionMasivaWrapper"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="crearSolicitudAsignacionNSS" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud crearSolicitudAsignacionNSS(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica,mx.gob.imss.ctirss.delta.model.enums.TipoSerieEnum,mx.gob.imss.ctirss.delta.model.gestion.solicitud.OrigenSolicitudEnum,java.lang.String,mx.gob.imss.ctirss.delta.model.asegurado.SolicitudNssCorreo,mx.gob.imss.ctirss.delta.model.Usuario,mx.gob.imss.ctirss.delta.model.gestion.nss.ModuloOrigenAsignacionEnum) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException,mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException" exclude="true">
+            <ejb:operation>crearSolicitudAsignacionNSS</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.enums.TipoSerieEnum"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.OrigenSolicitudEnum"/>
+            <ejb:param name="arg3" type="java.lang.String"/>
+            <ejb:param name="arg4" type="mx.gob.imss.ctirss.delta.model.asegurado.SolicitudNssCorreo"/>
+            <ejb:param name="arg5" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:param name="arg6" type="mx.gob.imss.ctirss.delta.model.gestion.nss.ModuloOrigenAsignacionEnum"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="crearSolicitudRecuperacionNSS" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud crearSolicitudRecuperacionNSS(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica,mx.gob.imss.ctirss.delta.model.gestion.solicitud.OrigenSolicitudEnum,mx.gob.imss.ctirss.delta.model.Usuario) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException,mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException" exclude="true">
+            <ejb:operation>crearSolicitudRecuperacionNSS</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.OrigenSolicitudEnum"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="ejecutarOperacionValidacionCorreoCurp" signature="void ejecutarOperacionValidacionCorreoCurp(mx.gob.imss.ctirss.delta.model.asegurado.SolicitudNssCorreo)" exclude="true">
+            <ejb:operation>ejecutarOperacionValidacionCorreoCurp</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.asegurado.SolicitudNssCorreo"/>
+          </ejb:method>
+          <ejb:method name="encolarSolicitudAsignacionNSS" signature="void encolarSolicitudAsignacionNSS(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException" exclude="true">
+            <ejb:operation>encolarSolicitudAsignacionNSS</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="enviarCorreoNSS" signature="void enviarCorreoNSS(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica,java.lang.String,boolean,java.lang.Long)" exclude="true">
+            <ejb:operation>enviarCorreoNSS</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:param name="arg1" type="java.lang.String"/>
+            <ejb:param name="arg2" type="boolean"/>
+            <ejb:param name="arg3" type="java.lang.Long"/>
+          </ejb:method>
+          <ejb:method name="generaNss" signature="java.lang.String generaNss(java.lang.Long,java.lang.Long,java.lang.Long)" exclude="true">
+            <ejb:operation>generaNss</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="java.lang.Long"/>
+            <ejb:param name="arg2" type="java.lang.Long"/>
+            <ejb:return name="return" type="java.lang.String"/>
+          </ejb:method>
+          <ejb:method name="generarNSSEstudiante" signature="mx.gob.imss.ctirss.delta.model.gestion.asegurado.integracion.AseguradoWrapper generarNSSEstudiante(mx.gob.imss.ctirss.delta.model.asegurado.AltaDatosAsignacionNSSType,java.lang.String) throws mx.gob.imss.ctirss.delta.exception.gestion.serie.NivelDeAsignacionSerieIndefinidoException,mx.gob.imss.ctirss.delta.exception.gestion.serie.SeriesNoLocalizadasException,mx.gob.imss.ctirss.delta.exception.gestion.serie.ErrorAlActivarSerieException" exclude="false">
+            <ejb:operation>generarNSSEstudiante</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.asegurado.AltaDatosAsignacionNSSType"/>
+            <ejb:param name="arg1" type="java.lang.String"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.asegurado.integracion.AseguradoWrapper"/>
+          </ejb:method>
+          <ejb:method name="generarNSSUnSoloPaso" signature="mx.gob.imss.ctirss.delta.model.gestion.asegurado.integracion.AseguradoWrapper generarNSSUnSoloPaso(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica,mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica,mx.gob.imss.ctirss.delta.model.gestion.nss.ModuloOrigenAsignacionEnum,mx.gob.imss.ctirss.delta.model.Usuario) throws mx.gob.imss.ctirss.delta.exception.individuo.CURPNoLocalizadoEnEntidadExternaException,mx.gob.imss.ctirss.delta.framework.exceptions.ClienteWebserviceRenapoCurpException,mx.gob.imss.ctirss.delta.exception.individuo.validacion.ErrorValidacionDatosConsultaEnEntidaExternaException,mx.gob.imss.ctirss.delta.exception.gestion.asegurado.GenerarNSSException,mx.gob.imss.ctirss.delta.exception.individuo.ErrorComparacionDatosRENAPOException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException,mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException,mx.gob.imss.ctirss.delta.exception.domicilio.UmfNoLocalizadaException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.exception.individuo.AfectacionDatosPersonaException,mx.gob.imss.ctirss.delta.framework.exceptions.PersonaNoEncontradaException,mx.gob.imss.ctirss.delta.exception.domicilio.DomicilioNoValidoException,mx.gob.imss.ctirss.delta.exception.gestion.serie.NivelDeAsignacionSerieIndefinidoException,mx.gob.imss.ctirss.delta.exception.gestion.serie.SeriesNoLocalizadasException,mx.gob.imss.ctirss.delta.exception.gestion.serie.ErrorAlActivarSerieException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException,mx.gob.imss.ctirss.delta.exception.individuo.calificacion.PersonaSinCalificacionesException" exclude="true">
+            <ejb:operation>generarNSSUnSoloPaso</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.gestion.nss.ModuloOrigenAsignacionEnum"/>
+            <ejb:param name="arg3" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.asegurado.integracion.AseguradoWrapper"/>
+          </ejb:method>
+          <ejb:method name="generarSolicitudAsignacionNSS" signature="java.util.Map generarSolicitudAsignacionNSS(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica,mx.gob.imss.ctirss.delta.model.gestion.solicitud.OrigenSolicitudEnum,mx.gob.imss.ctirss.delta.model.gestion.nss.ModuloOrigenAsignacionEnum) throws mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException,mx.gob.imss.ctirss.delta.exception.individuo.CURPNoLocalizadoEnEntidadExternaException,mx.gob.imss.ctirss.delta.framework.exceptions.ClienteWebserviceRenapoCurpException,mx.gob.imss.ctirss.delta.exception.individuo.validacion.ErrorValidacionDatosConsultaEnEntidaExternaException,mx.gob.imss.ctirss.delta.exception.gestion.asegurado.GenerarNSSException,mx.gob.imss.ctirss.delta.exception.individuo.ErrorComparacionDatosRENAPOException,mx.gob.imss.ctirss.delta.exception.gestion.asegurado.PersonaConNSSException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException,mx.gob.imss.ctirss.delta.exception.domicilio.DomicilioNoLocalizadoException,mx.gob.imss.ctirss.delta.exception.domicilio.UmfNoLocalizadaException" exclude="true">
+            <ejb:operation>generarSolicitudAsignacionNSS</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.OrigenSolicitudEnum"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.gestion.nss.ModuloOrigenAsignacionEnum"/>
+            <ejb:return name="return" type="java.util.Map"/>
+          </ejb:method>
+          <ejb:method name="getDatosBasicosPersonaNueva" signature="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica getDatosBasicosPersonaNueva(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica) throws mx.gob.imss.ctirss.delta.exception.individuo.CURPNoLocalizadoEnEntidadExternaException,mx.gob.imss.ctirss.delta.framework.exceptions.ClienteWebserviceRenapoCurpException,mx.gob.imss.ctirss.delta.exception.individuo.validacion.ErrorValidacionDatosConsultaEnEntidaExternaException" exclude="true">
+            <ejb:operation>getDatosBasicosPersonaNueva</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+          </ejb:method>
+          <ejb:method name="guardarSolicitudAsignacionNSS" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud guardarSolicitudAsignacionNSS(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud,mx.gob.imss.ctirss.delta.model.derechohabiente.UnidadMedicaFamiliar,mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException" exclude="true">
+            <ejb:operation>guardarSolicitudAsignacionNSS</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.derechohabiente.UnidadMedicaFamiliar"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="localizarPersonaFisica" signature="java.util.List localizarPersonaFisica(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica) throws mx.gob.imss.ctirss.delta.exception.individuo.CURPNoLocalizadoEnEntidadExternaException,mx.gob.imss.ctirss.delta.framework.exceptions.ClienteWebserviceRenapoCurpException,mx.gob.imss.ctirss.delta.exception.individuo.validacion.ErrorValidacionDatosConsultaEnEntidaExternaException,mx.gob.imss.ctirss.delta.exception.individuo.ErrorComparacionDatosRENAPOException,mx.gob.imss.ctirss.delta.framework.exceptions.DatosInsuficientesParaConsultaException" exclude="true">
+            <ejb:operation>localizarPersonaFisica</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:return name="return" type="java.util.List"/>
+          </ejb:method>
+          <ejb:method name="obtenerSolicitudEnProceso" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud obtenerSolicitudEnProceso(java.lang.Long) throws mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException" exclude="true">
+            <ejb:operation>obtenerSolicitudEnProceso</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="obtenerSolicitudRegistrada" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud obtenerSolicitudRegistrada(java.lang.Long) throws mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException" exclude="true">
+            <ejb:operation>obtenerSolicitudRegistrada</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="procesarSolicitudAsignacionNSS" signature="mx.gob.imss.ctirss.delta.model.gestion.asegurado.integracion.AseguradoWrapper procesarSolicitudAsignacionNSS(java.lang.Long) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.exception.individuo.AfectacionDatosPersonaException,mx.gob.imss.ctirss.delta.framework.exceptions.PersonaNoEncontradaException,mx.gob.imss.ctirss.delta.exception.individuo.RegistroPersonaFisicaException,mx.gob.imss.ctirss.delta.exception.gestion.serie.NivelDeAsignacionSerieIndefinidoException,mx.gob.imss.ctirss.delta.exception.gestion.serie.SeriesNoLocalizadasException,mx.gob.imss.ctirss.delta.exception.gestion.serie.ErrorAlActivarSerieException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException,mx.gob.imss.ctirss.delta.exception.domicilio.DomicilioNoValidoException,mx.gob.imss.ctirss.delta.exception.individuo.CURPNoLocalizadoEnEntidadExternaException,mx.gob.imss.ctirss.delta.framework.exceptions.ClienteWebserviceRenapoCurpException,mx.gob.imss.ctirss.delta.exception.individuo.validacion.ErrorValidacionDatosConsultaEnEntidaExternaException,mx.gob.imss.ctirss.delta.exception.individuo.calificacion.PersonaSinCalificacionesException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException" exclude="false">
+            <ejb:operation>procesarSolicitudAsignacionNSS</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.asegurado.integracion.AseguradoWrapper"/>
+          </ejb:method>
+          <ejb:method name="procesarSolicitudAsignacionNSSSinConsulta" signature="mx.gob.imss.ctirss.delta.model.gestion.asegurado.integracion.AseguradoWrapper procesarSolicitudAsignacionNSSSinConsulta(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.exception.individuo.AfectacionDatosPersonaException,mx.gob.imss.ctirss.delta.framework.exceptions.PersonaNoEncontradaException,mx.gob.imss.ctirss.delta.exception.domicilio.DomicilioNoValidoException,mx.gob.imss.ctirss.delta.exception.gestion.serie.NivelDeAsignacionSerieIndefinidoException,mx.gob.imss.ctirss.delta.exception.gestion.serie.SeriesNoLocalizadasException,mx.gob.imss.ctirss.delta.exception.gestion.serie.ErrorAlActivarSerieException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException,mx.gob.imss.ctirss.delta.exception.individuo.CURPNoLocalizadoEnEntidadExternaException,mx.gob.imss.ctirss.delta.framework.exceptions.ClienteWebserviceRenapoCurpException,mx.gob.imss.ctirss.delta.exception.individuo.validacion.ErrorValidacionDatosConsultaEnEntidaExternaException,mx.gob.imss.ctirss.delta.exception.individuo.calificacion.PersonaSinCalificacionesException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException" exclude="true">
+            <ejb:operation>procesarSolicitudAsignacionNSSSinConsulta</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.asegurado.integracion.AseguradoWrapper"/>
+          </ejb:method>
+          <ejb:method name="procesarTramiteSolicitud" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud procesarTramiteSolicitud(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.exception.gestion.serie.NivelDeAsignacionSerieIndefinidoException,mx.gob.imss.ctirss.delta.exception.gestion.serie.SeriesNoLocalizadasException,mx.gob.imss.ctirss.delta.exception.gestion.serie.ErrorAlActivarSerieException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudEnProcesoException" exclude="true">
+            <ejb:operation>procesarTramiteSolicitud</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="validacionesNSS" signature="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica validacionesNSS(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica,boolean) throws mx.gob.imss.ctirss.delta.exception.individuo.CURPNoLocalizadoEnEntidadExternaException,mx.gob.imss.ctirss.delta.framework.exceptions.ClienteWebserviceRenapoCurpException,mx.gob.imss.ctirss.delta.exception.individuo.validacion.ErrorValidacionDatosConsultaEnEntidaExternaException,mx.gob.imss.ctirss.delta.exception.gestion.asegurado.GenerarNSSException,mx.gob.imss.ctirss.delta.exception.individuo.ErrorComparacionDatosRENAPOException,mx.gob.imss.ctirss.delta.exception.gestion.asegurado.PersonaConNSSException,mx.gob.imss.ctirss.delta.exception.domicilio.DomicilioNoLocalizadoException,mx.gob.imss.ctirss.delta.exception.domicilio.UmfNoLocalizadaException" exclude="true">
+            <ejb:operation>validacionesNSS</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:param name="arg1" type="boolean"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+          </ejb:method>
+          <ejb:method name="validacionesNSSSinConsultaRENAPO" signature="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica validacionesNSSSinConsultaRENAPO(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica,mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica,boolean) throws mx.gob.imss.ctirss.delta.exception.individuo.CURPNoLocalizadoEnEntidadExternaException,mx.gob.imss.ctirss.delta.framework.exceptions.ClienteWebserviceRenapoCurpException,mx.gob.imss.ctirss.delta.exception.individuo.validacion.ErrorValidacionDatosConsultaEnEntidaExternaException,mx.gob.imss.ctirss.delta.exception.gestion.asegurado.GenerarNSSException,mx.gob.imss.ctirss.delta.exception.individuo.ErrorComparacionDatosRENAPOException,mx.gob.imss.ctirss.delta.exception.gestion.asegurado.PersonaConNSSException,mx.gob.imss.ctirss.delta.exception.domicilio.DomicilioNoLocalizadoException,mx.gob.imss.ctirss.delta.exception.domicilio.UmfNoLocalizadaException" exclude="true">
+            <ejb:operation>validacionesNSSSinConsultaRENAPO</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:param name="arg2" type="boolean"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+          </ejb:method>
+          <ejb:method name="validaExisteNSSActualizacion" signature="mx.gob.imss.ctirss.delta.model.asegurado.AsignacionNSS validaExisteNSSActualizacion(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica) throws mx.gob.imss.ctirss.delta.framework.exceptions.ArgumentosInvalidosException,mx.gob.imss.ctirss.delta.exception.gestion.asegurado.AsignacionNSSNoLocalizadoException,mx.gob.imss.ctirss.delta.framework.base.exception.GestionPatronalBusinessException,mx.gob.imss.ctirss.delta.exception.gestion.asegurado.AseguradoConRPAsignado,mx.gob.imss.ctirss.delta.framework.exceptions.ClienteWebserviceRenapoCurpException" exclude="true">
+            <ejb:operation>validaExisteNSSActualizacion</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.asegurado.AsignacionNSS"/>
+          </ejb:method>
+        </ejb:ejbBizService>
+        <ejb:targetNamespace>http://delta.global.services/</ejb:targetNamespace>
+        <ejb:style>Document Wrapped</ejb:style>
+        <ejb:encoding>Literal</ejb:encoding>
+      </ejb:service>
+      <ejb:ejb30>true</ejb:ejb30>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+</xml-fragment>

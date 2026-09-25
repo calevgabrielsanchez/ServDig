@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="pageAcuseRegistro">
+	<div class="row">
+	<div class="col-md-12">
+		<div class="alert alert-success">
+			<span id="txtGeneraReg"></span>
+			Se ha enviado una copia del acuse a su correo electr&oacute;nico.
+		</div>
+		<h4>
+			Finalizado <small class="text-muted" id="txtExitoReg"></small>
+		</h4>
+		
+		<div id="msgAvisoContratista" class="alert alert-warning hidden">
+			<label class="small"  th:text="#{reg.aviso.contratista}"></label>
+		</div>
+		<div id="msgAvisoIntemediario" class="alert alert-warning hidden">
+			<label class="small" th:text="#{reg.aviso.intermediario}"></label>
+		</div>
+		<div id="msgAvisoSubcontratista" class="alert alert-warning hidden">
+			<label class="small" th:text="#{reg.aviso.subcontratista}"></label>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="divAcuse" class="panel panel-default">
+					<div class="panel-heading" id="txtAcuseReg"></div>
+					<div class="panel-body text-center" style="min-height: 400px;">
+						<iframe id="pnlRepAcuse" th:src="@{valor}" height="400px" width="100%"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="pnlEncuesta" >
+			<div class="col-md-12 text-left">
+				<button id="btnTerminar" class="btn btn-primary btn-sm" onclick="parent.startEncuestaHC(400,'imss_siroc');">Terminar</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-left">
+				<button id="btnEncuesta" class="btn btn-primary btn-sm hidden" type="button" onclick="uid_call('imss.patrones.registro_obra.acuse.btn_terminar','clickin')">Terminar</button>
+			</div>
+		</div>
+
+	</div>
+	</div>
+</div>
+</html>

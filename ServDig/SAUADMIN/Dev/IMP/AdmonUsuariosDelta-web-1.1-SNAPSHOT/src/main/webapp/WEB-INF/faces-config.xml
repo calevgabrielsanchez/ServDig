@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config version="2.0"
+              xmlns="http://java.sun.com/xml/ns/javaee" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+    <application>
+<!--     	<message-bundle>resources.application</message-bundle> -->
+<!--     	<locale-config> -->
+<!--     		<default-locale>en</default-locale> -->
+<!--     	</locale-config> -->
+<!--         <resource-bundle> -->
+<!--             <base-name>mx.gob.imss.ctirss.sso.admonusuarios.resources.mensajes</base-name> -->
+<!--             <var>msgs</var> -->
+<!--         </resource-bundle> -->
+    </application>
+    <navigation-rule>
+		<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>new</from-outcome>
+			<to-view-id>/admonUsuarios/AdmonUsuariosAdd.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+				<navigation-case>
+			<from-outcome>nuevo</from-outcome>
+			<to-view-id>/admonUsuarios/apruebaSolicitudCuenta.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>userSuccess</from-outcome>
+			<to-view-id>/plantillas/plantilla.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>login</from-outcome>
+			<to-view-id>/plantillas/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>consultaPendiente</from-outcome>
+			<to-view-id>/admonUsuarios/solicitudesPendientes.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>aprobacionPendiente</from-outcome>
+			<to-view-id>/admonUsuarios/solicitudesPendientesNVer.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>delete</from-outcome>
+			<to-view-id>/admonUsuarios/AdmonUsuariosDel.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>update</from-outcome>
+			<to-view-id>/admonUsuarios/AdmonUsuariosUpd.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>actualizar</from-outcome>
+			<to-view-id>/admonUsuarios/AdmonUsuariosUpdNVer.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>consulta</from-outcome>
+			<to-view-id>/admonUsuarios/AdmonUsuariosSch.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>altaRol</from-outcome>
+			<to-view-id>/admonRoles/admonRolesAltas.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>busquedaRol</from-outcome>
+			<to-view-id>/admonRoles/admonRolesBusqueda.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>perfiles</from-outcome>
+			<to-view-id>/perfiles/admonPerfiles.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>regSolicitud</from-outcome>
+			<to-view-id>/solicitudCuentas/registroSolicituCuenta.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>bajaDefinitivaUsuario</from-outcome>
+			<to-view-id>/admonUsuarios/BajaDefinitivaUsuario.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inicializada</from-outcome>
+			<to-view-id>/solicitudCuentas/registroSolicitudCuenta.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inicializadaAds</from-outcome>
+			<to-view-id>/solicitudCuentas/registroSolicitudCuentaAdscripcion.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inicializadaAdsDel</from-outcome>
+			<to-view-id>/solicitudCuentas/registroSolicitudCuentaDelegacion.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inicializadaAdmon</from-outcome>
+			<to-view-id>/solicitudCuentas/registroSolicitudCuentaAdmon.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>buscaAprobadores</from-outcome>
+			<to-view-id>/aprobadores/mantenimientoAprobadores.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>buscaAprobadoresHosp</from-outcome>
+			<to-view-id>/aprobadores/mantenimientoAprobadoresHosp.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>catalogoPuestos</from-outcome>
+			<to-view-id>/mantenimientoCatalogos/consultaPuestos.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>consultada</from-outcome>
+			<to-view-id>/solicitudCuentas/registroSolicitudCuenta.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>aprobSolicitudAl</from-outcome>
+			<to-view-id>/solicitudCuentas/solicitudesPendientesNVer.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>exito</from-outcome>
+			<to-view-id>/solicitudCuentas/operacionExitosa.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>exitoGuardar</from-outcome>
+			<to-view-id>/solicitudCuentas/operacionExitosaSol.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>		
+		<navigation-case>
+			<from-outcome>exitoReactivacion</from-outcome>
+			<to-view-id>/solicitudCuentas/recuperacionExitosaSol.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>		
+		<navigation-case>
+			<from-outcome>registroAprobador</from-outcome>
+			<to-view-id>/solicitudCuentas/admonAprobadores.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>	
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/security/accesoDenegado.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>consultaCuentas</from-outcome>
+			<to-view-id>/solicitudCuentas/consultaCuentas.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>aprobacionSol</from-outcome>
+			<to-view-id>/aprobadores/consultaAprobadores.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>	
+
+		<navigation-case>
+			<from-outcome>consulta</from-outcome>
+			<to-view-id>/aprobadores/consulta.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>	
+		<navigation-case>
+			<from-outcome>consultaPrincipal</from-outcome>
+			<to-view-id>/aprobadores/consulta.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>	
+		<navigation-case>
+			<from-outcome>consultaDelegacional</from-outcome>
+			<to-view-id>/aprobadores/consultaDelegacional.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>	
+		<navigation-case>
+			<from-outcome>consultaGenerica</from-outcome>
+			<to-view-id>/aprobadores/consultaGenerica.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>	
+
+		<navigation-case>
+			<from-outcome>aprobacionSolPrin</from-outcome>
+			<to-view-id>/aprobadores/consultaDelegacional.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>	
+		<navigation-case>
+			<from-outcome>aprobacionSolAdmon</from-outcome>
+			<to-view-id>/aprobadores/consultaAprobadoresAdmon.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>	
+		<navigation-case>
+			<from-outcome>aprobacionSolDeleg</from-outcome>
+			<to-view-id>/aprobadores/consultaAprobadoresDelegacional.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>	
+		<navigation-case>
+			<from-outcome>recuperaCuentas</from-outcome>
+			<to-view-id>/solicitudCuentas/recuperacionSolicitud.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>recuperaPass</from-outcome>
+			<to-view-id>/admonUsuarios/recuperacionCredenciales.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>recuperaPass2</from-outcome>
+			<to-view-id>/admonUsuarios/recuperacionCredenciales2.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>recuperaContrasena</from-outcome>
+			<to-view-id>/admonUsuarios/recuperacionContrasenaSession.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>modificarPerfil</from-outcome>
+			<to-view-id>/aprobadores/consultaAprobadores2.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>	
+		<navigation-case>
+			<from-outcome>consultaNotificaciones</from-outcome>
+			<to-view-id>/notificaciones/consultaNotificaciones.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>	
+		<navigation-case>
+			<from-outcome>consultaNotificacionesHosp</from-outcome>
+			<to-view-id>/notificaciones/consultaNotificacionesHosp.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>	
+		<navigation-case>
+			<from-outcome>mantenimientoModulos</from-outcome>
+			<to-view-id>/mantenimientoCatalogos/mantenimientoCatModulos.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+	        <from-outcome>fallido</from-outcome>
+	        <to-view-id>/solicitudCuentas/operacionFallida.xhtml</to-view-id>
+	        <redirect />
+        </navigation-case>	
+		<navigation-case>
+	        <from-outcome>out</from-outcome>
+	        <to-view-id>/</to-view-id>
+	        <redirect />
+        </navigation-case>	
+	</navigation-rule>
+</faces-config>

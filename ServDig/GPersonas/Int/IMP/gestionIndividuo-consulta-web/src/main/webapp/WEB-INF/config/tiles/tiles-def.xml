@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	
+	<definition name="GestionPersonas" template="/WEB-INF/views/layout/principal.jsp">
+		<put-attribute name="title" value=" M&#x00f3;dulo Gesti&#x00f3;n de personas - Portal DELTA  " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+	</definition>
+	
+	<definition name="GestionPersonasMain" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title" value=" M&#x00f3;dulo Gesti&#x00f3;n de personas - Portal DELTA  " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+		
+	
+	<definition name="consultapersonafisica" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/fisica/consulta.jsp "/>
+	</definition>
+	
+	<definition name="consultacandidatos" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/fisica/candidatos.jsp "/>
+	</definition>
+	
+	<definition name="consultadetallecandidato" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/fisica/detalle.jsp "/>
+	</definition>
+	
+	<definition name="consultadetallecandidatocomplementar" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/fisica/detalleComplementar.jsp "/>
+	</definition>
+	
+	<!-- PERSONA MORAL  -->
+	
+	<definition name="consultaPersonaMoral" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/moral/consulta.jsp "/>
+	</definition>
+	
+	<definition name="consultaCandidatosPersonaMoral" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/moral/candidatos.jsp "/>
+	</definition>
+	
+	<definition name="consultaDetalleCandidatoPersonaMoral" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/moral/detalle.jsp "/>
+	</definition>
+	
+	<definition name="consultaDetalleCandidatoComplementarPersonaMoral" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/moral/detalleComplementar.jsp "/>
+	</definition>	
+
+	<!-- Componente -->
+		
+	<definition name="componente.base.definition" template="/WEB-INF/views/layout/main-embebed.jsp">
+	</definition>
+	
+	<definition name="componente.simple.base.definition" template="/WEB-INF/views/layout/simple-embebed.jsp">
+	</definition>
+	
+	<definition name="simple.base.definition" template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title" value=" M&#x00f3;dulo Gesti&#x00f3;n de personas - Portal DELTA " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+    <definition name="wizard.base.definition" template="/WEB-INF/views/layout/main-wizard.jsp">
+		<put-attribute name="title" value=" Portal de Servicios DELTA " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-empty.jsp" />
+	</definition>
+	
+	
+	<definition name="detalleIndividuo" extends="componente.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/individuo/DetalleIndividuo.jsp "/>
+	</definition>
+	
+	<definition name="detalleIndividuoMoral" extends="componente.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/individuo/DetalleIndividuoMoral.jsp "/>
+	</definition>
+	
+	<definition name="individuoTest" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/individuo/test/IndividuoTest.jsp "/>
+	</definition>
+	
+		<!-- Definiciones de las vistas de errores generales -->
+	
+	<definition name="error" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="databaseError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="internalError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="500" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="404" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+	
+	
+	<!-- Definiciones de las vistas de los servicios rest -->
+	
+	<definition name="consultarestpf" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/fisica/rest/consulta.jsp "/>
+	</definition>
+	
+	<definition name="consultacandidatosrest" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/fisica/rest/candidatos.jsp "/>
+	</definition>
+	
+	<!-- 191807 131212 Identificacion de cambios automaticos -->
+	<definition name="ingresar-datos-fisica-test" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/fisica/identificar/cambios-automaticos/ingresar-datos-test.jsp"/>
+	</definition>
+	
+	<definition name="ingresar-datos-fisica" extends="wizard.base.definition">
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="subencabezado" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/fisica/identificar/cambios-automaticos/ingresar-datos.jsp"/>
+	</definition>
+
+	<definition name="publicar-modificacion-fisica-test" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/fisica/identificar/cambios-automaticos/publicarModificacion.jsp"/>
+	</definition>
+	
+	<definition name="resultado-consultar-comparar-fisica" extends="wizard.base.definition">
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="subencabezado" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/fisica/identificar/cambios-automaticos/resultado-consultar-comparar.jsp"/>
+	</definition>	
+	
+	<definition name="ingresar-datos-moral-test" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/moral/identificar/cambios-automaticos/ingresar-datos-test.jsp"/>
+	</definition>
+	
+	<definition name="ingresar-datos-moral" extends="wizard.base.definition">
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="subencabezado" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/moral/identificar/cambios-automaticos/ingresar-datos.jsp"/>
+	</definition>
+
+	<definition name="publicar-modificacion-moral-test" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/moral/identificar/cambios-automaticos/publicarModificacion.jsp"/>
+	</definition>
+	
+	<definition name="resultado-consultar-comparar-moral" extends="wizard.base.definition">
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="subencabezado" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/moral/identificar/cambios-automaticos/resultado-consultar-comparar.jsp"/>
+	</definition>
+	<!--  -->
+	
+	<!-- Modificacion de Datos Manual -->
+	<definition name="initModManualFisicaTest" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/fisica/modificacion/manual/initModManualTest.jsp"/>
+	</definition>
+	
+	<definition name="initModManualFisica" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/fisica/modificacion/manual/initModManual.jsp"/>
+		<put-attribute name="pie" value="" />
+	</definition>
+	
+	<definition name="capturarModifManualFisica" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/fisica/modificacion/manual/captura.jsp"/>
+	</definition>	
+	
+	<definition name="initModManualMoralTest" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/moral/modificacion/manual/initModManualTest.jsp"/>
+	</definition>
+	
+	<definition name="initModManualMoral" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/moral/modificacion/manual/initModManual.jsp"/>
+		<put-attribute name="pie" value="" />
+	</definition>
+	
+	<definition name="capturarModifManualMoral" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/moral/modificacion/manual/captura.jsp"/>
+	</definition>
+	<!--  -->
+	
+	<!-- Notificaciones -->
+	<definition name="notificacionesTest" extends="GestionPersonas">
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/notificacion/consultaNotificacionesTest.jsp"/>
+	</definition>
+	
+	<definition name="detalleConsultaNotificaciones" extends="GestionPersonas">
+		<put-attribute name="title" value="DETALLE DE NOTIFICACIONES" />
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/notificacion/resultado-consulta-notificaciones.jsp"/>
+	</definition>
+	
+	<definition name="notificacionesResumen" extends="componente.simple.base.definition">
+		<put-attribute name="title" value="RESUMEN DE NOTIFICACIONES" />
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/notificacion/resumen-notificaciones.jsp"/>
+	</definition>
+	
+	<definition name="detalleNotificacion" extends="wizard.base.definition">
+		<put-attribute name="title" value="DETALLE NOTIFICACION" />
+		<put-attribute name="contenido" value="/WEB-INF/views/persona/notificacion/detalle-notificacion.jsp"/>
+	</definition>
+	<!--  -->
+	
+	<!-- Definicion de la pantalla del Wizard de Actualizar Datos-->
+	<definition name="wizardActualizarDatosFisicaInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/fisica/actualizacion-datos/inicial.jsp"/>
+	</definition>
+	<definition name="wizardActualizarDatosFisicaContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/fisica/actualizacion-datos/contenido.jsp"/>
+	</definition>
+	
+	<definition name="wizardActualizarDatosMoralInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/moral/actualizacion-datos/inicial.jsp"/>
+	</definition>
+	<definition name="wizardActualizarDatosMoralContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/moral/actualizacion-datos/contenido.jsp"/>
+	</definition>
+	<!--  -->
+	
+	<!-- Definicion de la pantalla del Wizard de Modificar Medios y Domicilio (Particulares y Fiscales) -->
+	<definition name="wizardModifMediosParticularesFisicaInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/fisica/modificacion/medios/particulares/inicial.jsp"/>
+		<put-attribute name="pie" value=""/>
+	</definition>
+	<definition name="wizardModifMediosParticularesFisicaContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/fisica/modificacion/medios/particulares/contenido.jsp"/>
+	</definition>
+	
+	<definition name="wizardModifMediosFiscalesFisicaInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/fisica/modificacion/medios/fiscales/inicial.jsp"/>
+	</definition>
+	<definition name="wizardModifMediosFiscalesFisicaContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/fisica/modificacion/medios/fiscales/contenido.jsp"/>
+	</definition>
+	<!--  -->
+	
+	<!--  Definicion de la pantalla de registro de usuarios -->
+	<definition name="wizardRegistroUsuarioInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/fisica/registro-usuario/inicial.jsp"/>
+	</definition>
+	<definition name="wizardValidaUsuarioFirma" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/fisica/registro-usuario/confirmaUsuarioContenido.jsp"/>
+	</definition>
+	
+	<!--  Definicion de la pantalla de renovacion de fiel -->
+	<definition name="wizardRenovacionFielInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/fisica/renovacion-fiel/inicial.jsp"/>
+	</definition>
+	<definition name="wizardRenovacionFielContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/fisica/renovacion-fiel/contenido.jsp"/>
+	</definition>
+	<!--  -->
+	
+	<!--  Actualizar RFC -->
+	<definition name="actualizarRfcWizard" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/common/actualizarRfc/actualizarRfc.jsp"/>
+	</definition>
+	<!--  -->
+
+	<!-- Ubicar persona -->
+	<definition name="ubicarPersonaTest" extends="GestionPersonasMain">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/persona/ubicar/unitTest.jsp" />
+	</definition>
+	<definition name="ubicarPersonaInit" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/persona/ubicar/capturaDatosBusqueda.jsp" />
+	</definition>
+	<definition name="ubicarResultadosPersonaFisica" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/persona/ubicar/resultadoBusqueda.jsp" />
+	</definition>
+	<definition name="ubicarResultadosPersonaMoral" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/persona/ubicar/resultadoBusqueda.jsp" />
+	</definition>
+	<definition name="mostrarFolioSolicitud" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/persona/ubicar/folioSolicitud.jsp" />
+	</definition>
+	
+	<!-- -->
+</tiles-definitions>

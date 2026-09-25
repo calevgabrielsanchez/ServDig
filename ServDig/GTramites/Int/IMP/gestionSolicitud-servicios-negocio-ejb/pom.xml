@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>gestionSolicitud-servicios-negocio-ejb</artifactId>
+	<version>2.2</version>
+
+	<name>Modulo de Servicios de Negocio Domicilios  (ejb)</name>
+	<url>http://maven.apache.org</url>
+	<packaging>ejb</packaging>
+
+	<parent>
+		<artifactId>gestionSolicitud</artifactId>
+		<groupId>mx.gob.imss.ctirss.delta.gestion.solicitud</groupId>
+		<version>2.2</version>
+	</parent>
+
+	<properties>
+		<org.cometd.java.version>2.5.1</org.cometd.java.version>
+		<org.springframework.version>3.0.5.RELEASE</org.springframework.version>
+	</properties>
+
+	<dependencies>
+
+		<!-- INICIO DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+
+		<!-- Dependencia del Proyecto de Objetos de modelo DELTA IMSS -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-modelo-negocio</artifactId>
+			<version>${delta.framework.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Dependencia del Proyecto de Objetos de Persistencia DELTA IMSS -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-persistencia</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency><!-- <dependency> <groupId>mx.com.metatrust.idtrust.wsidtrust</groupId> 
+			<artifactId>ClienteWebServiceSellado</artifactId> <version>1.0</version> 
+			</dependency> -->
+		<dependency>
+			<groupId>mx.com.metatrust.doctrust</groupId>
+			<artifactId>ClienteWebServiceGuardaDocumentos</artifactId>
+			<version>${delta.clientews.guardadoc}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.solicitud</groupId>
+			<artifactId>gestionSolicitud-interfaces-negocio</artifactId>
+			<version>${delta.solicitud}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.individuo.service.interface</groupId>
+			<artifactId>gestionIndividuo-service-business-interface</artifactId>
+			<version>${delta.personas}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.asegurado</groupId>
+			<artifactId>gestionAsegurados-interfaces-negocio</artifactId>
+			<version>${delta.asegurados}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.beneficio</groupId>
+			<artifactId>gestionBeneficio-interfaces-negocio</artifactId>
+			<version>${delta.beneficios}</version>
+		</dependency>
+
+		<!-- Dependencia de Derechohabientes -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.derechohabientes</groupId>
+			<artifactId>gestionDerechohabientes-interfaces-negocio</artifactId>
+			<version>${delta.derechohabientes}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.patronal</groupId>
+			<artifactId>delta-gestionPatronal-interfaces-negocio</artifactId>
+			<version>${delta.patronal}</version>
+		</dependency>
+		
+				<dependency>
+			<artifactId>correcciondatosasegurado-interfaces-negocio</artifactId>  
+	  		<groupId>mx.gob.imss.cit.cda</groupId>
+	  		<version>1.0</version>
+		</dependency>
+		
+		<!-- FIN DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+
+		<!-- Dependencias para convertir a base64 y viceversa -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.8</version>
+		</dependency>
+
+		<!-- Jackson JSON Mapper -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+
+		<!-- HIBERNATE CORE -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-commons-annotations</artifactId>
+			<version>3.2.0.Final</version>
+		</dependency>
+
+		<!-- HIBERNATE DEPENDENCIES -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+
+		<!-- EJB -->
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<version>3.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- WEBLOGIC -->
+		<dependency>
+			<groupId>weblogic</groupId>
+			<artifactId>wlfullclient</artifactId>
+			<version>10.3.4</version>
+			<scope>provided</scope>
+			<!-- TODO regrearlo a test y pasar x otro lado las deps a JMS -->
+		</dependency>
+		<dependency>
+			<groupId>oracle.jdbc</groupId>
+			<artifactId>ojdbc</artifactId>
+			<version>6</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>firmaCertificado</groupId>
+			<artifactId>PKI</artifactId>
+			<version>2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>firmaCertificado</groupId>
+			<artifactId>PKISoporte</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.idse</groupId>
+			<artifactId>WSFirmaDigitalClient</artifactId>
+			<version>2.0.0p</version>
+		</dependency>
+
+		<dependency>
+			<groupId>axis</groupId>
+			<artifactId>axis</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.patronal</groupId>
+			<artifactId>delta-gestionPatronal-interfaces-negocio</artifactId>
+			<version>${delta.patronal}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>
+        		mx.gob.imss.ctirss.delta.gestion.domicilio
+        	</groupId>
+			<artifactId>gestionDomicilios-interfaces-negocio</artifactId>
+			<version>${delta.domicilios}</version>
+		</dependency>
+
+		<!-- Codigo QR -->
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>1.8</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.10-FINAL</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-codec</artifactId>
+					<groupId>commons-codec</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.10-FINAL</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency> 
+		
+		<dependency>
+			<groupId>mx.gob.imss.utilerias</groupId>
+			<artifactId>utilMail</artifactId>
+			<version>1.0.03</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.7</version>
+		</dependency>
+		
+		<!--  Dependencia del JaxbUtils -->
+		<dependency>
+			<groupId>mx.gob.imss.distss.digital</groupId>
+        	<artifactId>jaxb-utils</artifactId>
+        	<version>1.0</version>
+		</dependency>
+		
+		<!-- Mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework.version}</version>
+			<exclusions>
+				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>2.6.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+		
+		<!-- cliente http para nueva boveda-->
+		 <dependency>
+		  <groupId>org.apache.httpcomponents</groupId>
+		  <artifactId>httpclient</artifactId>
+		  <version>4.5.13</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20230618</version>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<ejbVersion>3.0</ejbVersion>
+				</configuration>
+			</plugin>
+
+			<!-- Ejecuta tareas de Ant -->
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<echo message="building module..." />
+								<delete dir="${project.build.outputDirectory}/interceptor" />
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Habilita los facets y natures para que el eclipse reconoza el proyecto 
+				como de tipo de EJB. -->
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<additionalBuildcommands>
+						<buildCommand>
+							<name>org.eclipse.jdt.core.javabuilder</name>
+						</buildCommand>
+						<buildCommand>
+							<name>org.eclipse.wst.common.project.facet.core.builder</name>
+						</buildCommand>
+						<buildCommand>
+							<name>org.eclipse.wst.validation.validationbuilder</name>
+						</buildCommand>
+					</additionalBuildcommands>
+
+					<additionalProjectnatures>
+						<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
+						<projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+						<projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+					</additionalProjectnatures>
+
+					<additionalConfig>
+						<file>
+							<name>.settings/org.eclipse.wst.common.project.facet.core.xml</name>
+							<content>
+								<![CDATA[
+								<faceted-project>
+									<runtime name="Weblogic Runtime" />
+									<fixed facet="jst.ejb" />
+									<fixed facet="jst.java" />
+									<installed facet="jst.java" version="6.0" />
+									<installed facet="jst.ejb" version="3.0" />
+								</faceted-project>
+								]]>
+							</content>
+						</file>
+						<file>
+							<name>.settings/org.eclipse.wst.common.component</name>
+							<content>
+								<![CDATA[
+								<project-modules id="moduleCoreId" project-version="1.5.0">
+									<wb-module deploy-name="${project.artifactId}">
+										<wb-resource deploy-path="/" source-path="/src/main/java" />
+										<wb-resource deploy-path="/" source-path="/src/main/resources" />
+										<property name="java-output-path" value="target/classes" />
+									</wb-module>
+								</project-modules>
+								]]>
+							</content>
+						</file>
+					</additionalConfig>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>compile-stage</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.sellado.serie}" value="ID-SELLOS-1" dir="target/classes">
+											<include name="**/firmaDigital.properties" />
+										</replace>
+										<replace token="${mvn.log.level.trace}" value="trace" dir="target/classes">
+											<include name="**/log4j.xml" />
+										</replace>
+										<replace token="${mvn.log.level.warn}" value="warn" dir="target/classes">
+											<include name="**/log4j.xml" />
+										</replace>
+										<replace token="${mvn.log.level.info}" value="info" dir="target/classes">
+											<include name="**/log4j.xml" />
+										</replace>
+										<replace token="${mvn.log.level.debug}" value="debug" dir="target/classes">
+											<include name="**/log4j.xml" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>compile-prod-internet</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.sellado.serie}" value="IMSS_CSD_01" dir="target/classes">
+											<include name="**/firmaDigital.properties" />
+										</replace>
+										<replace token="${mvn.log.level.trace}" value="error" dir="target/classes">
+											<include name="**/log4j.xml" />
+										</replace>
+										<replace token="${mvn.log.level.warn}" value="error" dir="target/classes">
+											<include name="**/log4j.xml" />
+										</replace>
+										<replace token="${mvn.log.level.info}" value="error" dir="target/classes">
+											<include name="**/log4j.xml" />
+										</replace>
+										<replace token="${mvn.log.level.debug}" value="error" dir="target/classes">
+											<include name="**/log4j.xml" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>compile-prod-intranet</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.sellado.serie}" value="IMSS_CSD_01" dir="target/classes">
+											<include name="**/firmaDigital.properties" />
+										</replace>
+										<replace token="${mvn.log.level.trace}" value="error" dir="target/classes">
+											<include name="**/log4j.xml" />
+										</replace>
+										<replace token="${mvn.log.level.warn}" value="error" dir="target/classes">
+											<include name="**/log4j.xml" />
+										</replace>
+										<replace token="${mvn.log.level.info}" value="error" dir="target/classes">
+											<include name="**/log4j.xml" />
+										</replace>
+										<replace token="${mvn.log.level.debug}" value="error" dir="target/classes">
+											<include name="**/log4j.xml" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="header :: head">
+<meta name="tipo_contenido" content="text/html;"
+	http-equiv="content-type" charset="utf-8"></meta>
+</head>
+<body>
+	<div class="container">
+	<input id="pasoConsulta" value="4" class="hidden"/>
+	<input id="cveRegPatronal" type="hidden" th:value="${regPatronal}" />
+	<input id="cveRP" type="hidden" th:value="${cveRegPatronal}" />
+	<input id="numeroObra" type="hidden" th:value="${numeroObra}" />
+		<div th:substituteby="header :: pageHeader"></div>
+		<!-- 		<input th:value="${type}"></input> -->
+			<div id="pnlDatosResumen" class="panel panel-default">
+				<div class="panel-heading" >
+					<div class="row">
+						<div class="col-sm-6 text-left">
+							<small th:text="#{escritorio.titulo}" />
+						</div>
+						<div class="col-sm-6 text-right">	
+							<a class="accordion-toggle text-right" data-toggle="collapse"
+								data-parent="#accordion" href="#collapseOne"> 
+								<img id="imgCollapsable"
+									src="/sdroc_web/static/images/panel-collapsed.png"
+									style="width: 25px">
+								</img>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse in">
+					<div id="pnlInformation" class="panel-body text-center">
+						<div th:substituteby="registro/obra/datosPatron :: pageDatosPatron"></div>
+					</div>
+		
+				</div>
+			</div>
+
+
+		<div id="pnlReporteSubcontrato" class="panel panel-default small">
+			<div class="panel-heading">			
+				Subcontratos
+			</div>
+			<div class="panel-body text-center">
+				<div class="scrollable-table">
+					<table id="tblSubcontratos" class="table table-striped table-responsive">
+						<thead>
+							<tr>
+								<th class="small">No.</th>
+								<th class="small">N&uacute;mero de Registro de Obra</th>
+								<th class="small">Nombre o Raz&oacute;n Social</th>
+								<th class="small">Tipo de patr&oacute;n</th>
+								<!-- <th class="small">evaluacion 32</th> -->
+								<th class="small">Opini&oacute;n de cumplimiento</th>
+								<th th:text="#{escritorio.tabla.estatus}" class="small"><span
+										class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true" />
+								</th>
+								<th class="small">Monto</th>
+							</tr>
+						</thead>
+						<tbody class="searchable">
+							<tr th:each="ro, status : ${listaSubcontratos}"
+								class="text-left">	
+								<td th:text="${status.count}" class="small" />
+								<td th:text="${ro.cveRegistroObra}" class="small"> </td>
+								<td th:text="${ro.informacionPatronDTO.refRazonSocial}" class="small"> </td>					
+								<td th:text="${ro.informacionPatronDTO.tipoPatronDTO.desTipoPatron}" class="small"/>
+								<!-- <td th:text="${ro.numEvaluacionD32}" class="small"/> -->
+								<td class="text-center" >
+<!-- 									<img th:src="@{ ${ro.numEvaluacionD32} != 1 ? (${ro.numEvaluacionD32} >= 3 ? '/static/images/red.png' : '/static/images/green.png') : '/static/images/yellow.png'}" width="20px;" height="20px;"></img> -->
+									     <img th:src="@{ ${ro.numEvaluacionD32} != 1 ? (${ro.numEvaluacionD32} == 3 ? '/static/images/red.png' : '/static/images/yellow.png') : '/static/images/green.png'}" width="20px;" height="20px;"></img>
+								</td>
+								<td th:text="${ro.estatusObraDTO.desEstatusObra}" class="small"/>
+								<td th:text="${#numbers.formatInteger(ro.impObra,0,'COMMA')}" class="small" />
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 text-left">
+				<form>
+					<button value="submit" th:formaction="@{|/exportarExcel/subcontratos/${cveRegPatronal}|}"
+						type="submit" class="btn btn-primary pull-right btn-sm" id="btnExportarResSub">Exportar resultados</button>
+				</form>
+				<form>
+					<button value="submit" formaction="javascript:regresarSubcontrato()"
+						type="submit" class="btn btn-primary pull-right btn-sm" style="margin-right: 5px;" id="btnSalirSubconsulta">Regresar</button>
+				</form>
+				
+			</div>
+		</div>
+		<br></br> <br></br>
+
+	</div>
+</body>
+</html>
+
+

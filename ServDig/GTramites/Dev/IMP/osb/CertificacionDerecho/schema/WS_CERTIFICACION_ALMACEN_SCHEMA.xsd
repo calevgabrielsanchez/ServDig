@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://certificacion.service.imss.gob.mx/" xmlns:tns="http://certificacion.service.imss.gob.mx/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="certificacionRetiroPorDesempleo" type="tns:certificacionRetiroPorDesempleo"/>
+
+  <xs:element name="certificacionRetiroPorDesempleoResponse" type="tns:certificacionRetiroPorDesempleoResponse"/>
+
+  <xs:complexType name="certificacionRetiroPorDesempleo">
+    <xs:sequence>
+      <xs:element name="Mensaje" type="tns:messageWSCertificacion" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="messageWSCertificacion" final="extension restriction">
+    <xs:sequence>
+      <xs:element name="nss" type="xs:string"/>
+      <xs:element name="curp" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="fechaSolicitud" type="xs:string"/>
+      <xs:element name="claveAfore" type="xs:string"/>
+      <xs:element name="numeroResolucion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="certificacionRetiroPorDesempleoResponse">
+    <xs:sequence>
+      <xs:element name="Respuesta" type="tns:respuestaWSCertificacion" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="respuestaWSCertificacion">
+    <xs:complexContent>
+      <xs:extension base="tns:respuestaWS">
+        <xs:sequence>
+          <xs:element name="infoCertificacion" type="tns:InfoCertificacion" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="respuestaWS">
+    <xs:sequence>
+      <xs:element name="codigoError" type="xs:int" minOccurs="0"/>
+      <xs:element name="mensajeError" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="InfoCertificacion" final="extension restriction">
+    <xs:sequence>
+      <xs:element name="nss" type="xs:string"/>
+      <xs:element name="curp" type="xs:string" minOccurs="0"/>
+      <xs:element name="delegacion" type="xs:string"/>
+      <xs:element name="subdelegacion" type="xs:string"/>
+      <xs:element name="umf" type="xs:string" minOccurs="0"/>
+      <xs:element name="apellidoPaterno" type="xs:string"/>
+      <xs:element name="apellidoMaterno" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombre" type="xs:string"/>
+      <xs:element name="prestacionSolicitada" type="xs:string"/>
+      <xs:element name="fechaSolicitud" type="xs:string"/>
+      <xs:element name="numeroResolucion" type="xs:string"/>
+      <xs:element name="claveResolucion" type="xs:string"/>
+      <xs:element name="claveMensajePROCESARA" type="xs:string"/>
+      <xs:element name="claveMensajePROCESARB" type="xs:string"/>
+      <xs:element name="fechaPrestTramite" type="xs:string" minOccurs="0"/>
+      <xs:element name="salarioBaseCotizacionIncisoA" type="xs:string"/>
+      <xs:element name="salarioPromedioCotizacionIncisoB" type="xs:string"/>
+      <xs:element name="retiroComplementario" type="xs:string"/>
+      <xs:element name="fechaBaja" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

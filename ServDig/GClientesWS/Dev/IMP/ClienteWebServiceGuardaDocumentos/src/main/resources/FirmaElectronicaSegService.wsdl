@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg.wsdl" xmlns:xsd1="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg.xsd" name="WsFirmaElectronicaSeg" targetNamespace="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg.wsdl">
+
+   <documentation>
+         Este documento describe los WS de Firma Electronica Seguimiento
+   </documentation>
+
+   <types>
+      <xsd:schema>
+         <xsd:import namespace="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg.xsd" schemaLocation="http://${mvn.url.firmadigital}/WsFirmaElectronicaSeg/FirmaElectronicaSegService?xsd=1"/>
+      </xsd:schema>
+   </types>
+
+   <message name="RegistroSeguimientoRequest">
+      <part name="body" element="xsd1:RegistroSeguimientoRequest"/>
+   </message>
+
+   <message name="RegistroSeguimientoResponse">
+      <part name="body" element="xsd1:RegistroSeguimientoResponse"/>
+   </message>
+
+   <message name="FirmaSimpleRequest">
+      <part name="body" element="xsd1:FirmaSimpleRequest"/>
+   </message>
+
+   <message name="FirmaSimpleResponse">
+      <part name="body" element="xsd1:FirmaSimpleResponse"/>
+   </message>
+   
+   <message name="FirmaXMLSegRequest">
+      <part name="body" element="xsd1:FirmaXMLSegRequest"/>
+   </message>
+
+   <message name="FirmaXMLSegResponse">
+      <part name="body" element="xsd1:FirmaXMLSegResponse"/>
+   </message>
+   <!-- Mensajes para extension IDTrust -->
+   <message name="ConfirmaCveSegRequest">
+       <part name="body" element="xsd1:ConfirmaCveSegRequest"/>
+   </message>
+   
+   <message name="ConfirmaCveSegResponse">
+       <part name="body" element="xsd1:ConfirmaCveSegResponse"/>
+   </message>
+   
+   <message name="ConsultaCertSegRequest">
+       <part name="body" element="xsd1:ConsultaCertSegRequest"/>
+   </message>
+   
+   <message name="ConsultaCertSegResponse">
+       <part name="body" element="xsd1:ConsultaCertSegResponse"/>
+   </message>
+   
+   <message name="EliminaCvesSegRequest">
+       <part name="body" element="xsd1:EliminaCvesSegRequest"/>
+   </message>
+   
+   <message name="EliminaCvesSegResponse">
+       <part name="body" element="xsd1:EliminaCvesSegResponse"/>
+   </message>
+   
+   <message name="FirmaSegRequest">
+       <part name="body" element="xsd1:FirmaSegRequest"/>
+   </message>
+   
+   <message name="FirmaSegResponse">
+       <part name="body" element="xsd1:FirmaSegResponse"/>
+   </message>
+   
+   <message name="GeneraCvesSegRequest">
+       <part name="body" element="xsd1:GeneraCvesSegRequest"/>
+   </message>
+   
+   <message name="GeneraCvesSegResponse">
+       <part name="body" element="xsd1:GeneraCvesSegResponse"/>
+   </message>
+   
+   <message name="RegistraCvesSegRequest">
+       <part name="body" element="xsd1:RegistraCvesSegRequest"/>
+   </message>
+   
+   <message name="RegistraCvesSegResponse">
+       <part name="body" element="xsd1:RegistraCvesSegResponse"/>
+   </message>
+   
+   <message name="ValFirmaCMSHashSegRequest">
+       <part name="body" element="xsd1:ValFirmaCMSHashSegRequest"/>
+   </message>
+   
+      
+   <message name="ValidaFirmaSegRequest">
+       <part name="body" element="xsd1:ValidaFirmaSegRequest"/>
+   </message> 
+   
+   <message name="ValidaFirmaRutaSegRequest">
+       <part name="body" element="xsd1:ValidaFirmaRutaSegRequest"/>
+   </message>
+   
+   <message name="ValidaFirmaHashSegRequest">
+       <part name="body" element="xsd1:ValidaFirmaHashSegRequest"/>
+   </message>
+   
+   <message name="ValidaFirmaSegResponse">
+       <part name="body" element="xsd1:ValidaFirmaSegResponse"/>
+   </message>
+   
+   <message name="RecuperaArchivoRequest">
+       <part name="body" element="xsd1:RecuperaArchivoRequest"/>
+   </message>
+   
+   <message name="RecuperaArchivoResponse">
+       <part name="body" element="xsd1:RecuperaArchivoResponse"/>
+   </message>
+   
+   <message name="ValidaCertificadoSegRequest">
+       <part name="body" element="xsd1:ValidaCertificadoSegRequest"/>
+   </message>
+   
+   <message name="ValidaCertificadoSegResponse">
+       <part name="body" element="xsd1:ValidaCertificadoSegResponse"/>
+   </message>
+   
+   <message name="ValidaCMSV2Request">
+       <part name="body" element="xsd1:ValidaCMSV2Request"/>
+   </message>
+   
+   <message name="ValidaCMSV2Response">
+       <part name="body" element="xsd1:ValidaCMSV2Response"/>
+   </message>   
+   <!-- Fin mensajes de extension -->
+
+
+   <portType name="FirmaElectronicaSegPortType">
+
+      <operation name="RegistroSeguimiento">
+         <input message="tns:RegistroSeguimientoRequest"/>
+         <output message="tns:RegistroSeguimientoResponse"/>
+      </operation>
+
+      <operation name="FirmaSimple">
+         <input message="tns:FirmaSimpleRequest"/>
+         <output message="tns:FirmaSimpleResponse"/>
+      </operation>
+      
+      <operation name="FirmaXML">
+         <input message="tns:FirmaXMLSegRequest"/>
+         <output message="tns:FirmaXMLSegResponse"/>
+      </operation>
+      
+      <!-- Operaciones de extension de los servicios de IDTrust -->
+      <operation name="confirmaClaves">
+          <input message="tns:ConfirmaCveSegRequest"/>
+          <output message="tns:ConfirmaCveSegResponse"/>
+      </operation>
+      
+      <operation name="consultaCertificado">
+          <input message="tns:ConsultaCertSegRequest"/>
+          <output message="tns:ConsultaCertSegResponse"/>
+      </operation>
+      
+      <operation name="eliminaClaves">
+          <input message="tns:EliminaCvesSegRequest"/>
+          <output message="tns:EliminaCvesSegResponse"/>
+      </operation>
+      
+      <operation name="firma">
+          <input message="tns:FirmaSegRequest"/>
+          <output message="tns:FirmaSegResponse"/>
+      </operation>
+      
+      <operation name="generaClaves">
+          <input message="tns:GeneraCvesSegRequest"/>
+          <output message="tns:GeneraCvesSegResponse"/>
+      </operation>
+      
+      <operation name="registraClaves">
+          <input message="tns:RegistraCvesSegRequest"/>
+          <output message="tns:RegistraCvesSegResponse"/>
+      </operation>
+      
+      <operation name="validaFirma">
+          <input message="tns:ValidaFirmaSegRequest"/>
+          <output message="tns:ValidaFirmaSegResponse"/>
+      </operation>
+      
+      <operation name="recuperaArchivo">
+          <input message="tns:RecuperaArchivoRequest"/>
+          <output message="tns:RecuperaArchivoResponse"/>
+      </operation>
+      
+      <operation name="validaCertificado">
+          <input message="tns:ValidaCertificadoSegRequest"/>
+          <output message="tns:ValidaCertificadoSegResponse"/>
+      </operation>
+      
+      <operation name="validaCMSV2">
+          <input message="tns:ValidaCMSV2Request"/>
+          <output message="tns:ValidaCMSV2Response"/>
+      </operation>
+      
+      
+      <!-- Fin de operaciones de extension -->
+
+   </portType>
+
+
+   <binding name="FirmaElectronicaSegSOAPBinding" type="tns:FirmaElectronicaSegPortType">
+
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+											
+      <operation name="RegistroSeguimiento">
+         <soap:operation soapAction="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg/RegistroSeguimiento"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+                             
+      <operation name="FirmaSimple">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsFirmaElectronicaSeg/FirmaSimple"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+      
+      <operation name="FirmaXML">
+         <soap:operation soapAction="http://idtrust.metatrust.com.mx/WsFirmaElectronicaSeg/FirmaXML"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>     
+      
+      <!-- Operaciones para extender los servicios de IDTrust -->
+      <operation name="confirmaClaves">
+         <soap:operation soapAction="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg/confirmaClaves"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+      
+      <operation name="consultaCertificado">
+         <soap:operation soapAction="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg/consultaCertificado"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+      
+      <operation name="eliminaClaves">
+         <soap:operation soapAction="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg/eliminaClaves"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+      
+      <operation name="firma">
+         <soap:operation soapAction="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg/firma"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+      
+      <operation name="generaClaves">
+         <soap:operation soapAction="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg/generaClaves"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+      
+      <operation name="registraClaves">
+         <soap:operation soapAction="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg/registraClaves"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+      
+      <operation name="validaFirma">
+         <soap:operation soapAction="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg/validaFirma"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+      
+      <operation name="recuperaArchivo">
+          <soap:operation soapAction="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg/recuperaArchivo"/>
+          <input>
+              <soap:body use="literal"/>
+          </input>
+          <output>
+              <soap:body use="literal"/>
+          </output>
+      </operation>
+      
+      <operation name="validaCertificado">
+          <soap:operation soapAction="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg/validaCertificado"/>
+          <input>
+              <soap:body use="literal"/>
+          </input>
+          <output>
+              <soap:body use="literal"/>
+          </output>
+      </operation>
+      
+      <operation name="validaCMSV2">
+          <soap:operation soapAction="http://doctrust.metatrust.com.mx/WsFirmaElectronicaSeg/validaCMSV2"/>
+          <input>
+              <soap:body use="literal"/>
+          </input>
+          <output>
+              <soap:body use="literal"/>
+          </output>
+      </operation>
+      
+      <!-- Fin extensiones --> 
+                                                   
+   </binding>
+
+   <wsdl:service xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="FirmaElectronicaSegService">
+      <wsdl:port name="FirmaElectronicaSegPortTypePort" binding="tns:FirmaElectronicaSegSOAPBinding">
+         <soap:address location="http://${mvn.url.firmadigital}/WsFirmaElectronicaSeg/FirmaElectronicaSegService"/>
+      </wsdl:port>
+   </wsdl:service>
+
+</definitions>

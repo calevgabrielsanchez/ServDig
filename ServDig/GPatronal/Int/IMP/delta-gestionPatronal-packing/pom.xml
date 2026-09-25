@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>delta-gestionPatronal-packing</artifactId>
+	<name>Modulo Empaquetador de Servicios DELTA</name>
+	<url>http://maven.apache.org</url>
+	<packaging>ear</packaging>
+
+	<parent>
+		<artifactId>delta-gestionPatronal</artifactId>
+		<groupId>mx.gob.imss.ctirss.delta.gestion.patronal</groupId>
+		<version>2.4</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+		<org.slf4j.version>1.6.1</org.slf4j.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<url>http://172.16.5.134:8080/repository/repo/</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+
+		<!-- INICIO DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+
+		<!-- Dependencia del EJB -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-servicios-negocio-ejb</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.patronal</groupId>
+			<artifactId>delta-gestionPatronal-servicios-negocio-ejb</artifactId>
+			<version>${delta.patronal}</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.domicilio</groupId>
+			<artifactId>gestionDomicilios-servicios-negocio-ejb</artifactId>
+			<version>${delta.domicilios}</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.medio.contacto</groupId>
+			<artifactId>gestionMediosContacto-servicios-negocio-ejb</artifactId>
+			<version>${delta.medioscontacto}</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.individuo.service.ejb</groupId>
+			<artifactId>gestionIndividuo-service-business-ejb</artifactId>
+			<version>${delta.personas}</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.documento.probatorio</groupId>
+			<artifactId>gestionDocumentoProbatorio-servicios-negocio-ejb</artifactId>
+			<version>${delta.documentos.probatorios}</version>
+			<type>ejb</type>
+		</dependency>
+
+
+		<!-- FIN DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+
+		<dependency>
+			<groupId>
+				mx.gob.imss.ctirss.delta.gestion.solicitud
+			</groupId>
+			<artifactId>
+				gestionSolicitud-servicios-negocio-ejb
+			</artifactId>
+			<version>${delta.solicitud}</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>
+				mx.gob.imss.ctirss.delta.gestion.clasificacion
+			</groupId>
+			<artifactId>
+				gestionClasificacion-servicios-negocio-ejb
+			</artifactId>
+			<version>${delta.clasificacion.empr}</version>
+			<type>ejb</type>
+		</dependency>
+		
+		<!-- EJB'S DE OTROS MODULOS. EJB de WebService-CalculoNRP-->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+			<artifactId>WebService-CalculoNRP</artifactId>
+			<version>${delta.clientews.calculonrp}</version>
+			<type>ejb</type>			
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<version>5</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+				</configuration>
+			</plugin>
+
+			<!-- Habilita los facets y natures para que el eclipse reconoza el proyecto 
+				como de tipo de EAR. -->
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<additionalBuildcommands>
+						<buildCommand>
+							<name>org.eclipse.jdt.core.javabuilder</name>
+						</buildCommand>
+						<buildCommand>
+							<name>org.eclipse.wst.common.project.facet.core.builder</name>
+						</buildCommand>
+						<buildCommand>
+							<name>org.eclipse.wst.validation.validationbuilder</name>
+						</buildCommand>
+			
+					</additionalBuildcommands>
+					<additionalProjectnatures>
+						<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
+						<projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+						<projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+					</additionalProjectnatures>
+					<additionalConfig>
+						<file>
+							<name>.settings/org.eclipse.wst.common.project.facet.core.xml</name>
+							<content>
+							<![CDATA[
+								<faceted-project>
+									<runtime name="Weblogic Runtime" />
+									<fixed facet="jst.ear" />
+									<fixed facet="jst.java" />
+									<installed facet="jst.java" version="6.0" />
+									<installed facet="jst.ear" version="5.0" />
+									<installed facet="wls.ear" version="10.3.4" />
+								</faceted-project>
+							]]>
+							</content>
+						</file>
+						<file>
+							<name>.settings/org.eclipse.wst.common.component</name>
+							<content>
+							<![CDATA[
+								<project-modules id="moduleCoreId" project-version="1.5.0">
+									<wb-module deploy-name="${project.artifactId}">
+										<wb-resource deploy-path="/" source-path="/src/main/java" />
+										<wb-resource deploy-path="/" source-path="/src/main/resources" />
+										<property name="java-output-path" value="target/classes" />
+									</wb-module>
+								</project-modules>
+							]]>
+							</content>
+						</file>
+					</additionalConfig>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-ear-plugin
+										</artifactId>
+										<versionRange>
+											[2.6,)
+										</versionRange>
+										<goals>
+											<goal>
+												generate-application-xml
+											</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.5</version>
+			</dependency>
+			<dependency>
+				<groupId>antlr</groupId>
+				<artifactId>antlr</artifactId>
+				<version>2.7.7</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<profiles>
+		<!-- Perfil para el deployment de los servicios REMOTO -->
+		<profile>
+			<id>dev-deploy-all-deprecated</id>
+			<activation>
+				<property>
+					<name>dev-deploy-all-deprecated</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- Weblogic Deployment Plug-In -->
+					<plugin>
+						<groupId>com.oracle.weblogic</groupId>
+						<artifactId>weblogic-maven-plugin</artifactId>
+						<version>10.3.4</version>
+						<configuration>
+							<adminurl>t3://172.24.116.38:11000</adminurl>
+							<user>admin_wldldev</user>
+							<password>wldldev_admin</password>
+							<upload>true</upload>
+							<action>deploy</action>
+							<remote>true</remote>
+							<verbose>true</verbose>
+							<source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
+							<name>${project.build.finalName}</name>
+							<targets>c_dlweb_01</targets>
+							<nostage>true</nostage>
+						</configuration>
+
+						<executions>
+							<execution>
+								<phase>install</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Perfil para Remover los deploys en el ambiente de Desarrollo IMSS -->
+		<profile>
+			<id>dev-remove-all-deprecated</id>
+			<activation>
+				<property>
+					<name>dev-remove-all-deprecated</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- Weblogic Deployment Plug-In -->
+			<plugin>
+				<groupId>com.oracle.weblogic</groupId>
+				<artifactId>weblogic-maven-plugin</artifactId>
+				<version>10.3.4</version>
+				<configuration>
+					<adminurl>t3://172.24.116.38:11000</adminurl>
+					<user>admin_wldldev</user>
+					<password>wldldev_admin</password>
+					<name>${project.build.finalName}</name>
+					<targets>c_dlweb_01</targets>
+				</configuration>
+
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>undeploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+				</plugins>			
+			</build>
+		</profile>
+	</profiles>
+
+</project>

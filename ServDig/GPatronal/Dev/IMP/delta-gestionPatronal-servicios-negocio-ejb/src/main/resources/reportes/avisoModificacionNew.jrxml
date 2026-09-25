@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IMAGENES_DIR" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<parameter name="P_FOLIO_SOLCT" class="java.lang.String"/>
+	<parameter name="P_FECSOLCITUD" class="java.lang.String"/>
+	<parameter name="P_REGPATRONAL" class="java.lang.String"/>
+	<parameter name="P_RAZONSOCIAL" class="java.lang.String"/>
+	<parameter name="P_NOMBRE_PERS" class="java.lang.String"/>
+	<parameter name="P_CURPPERSONA" class="java.lang.String"/>
+	<parameter name="P_NOMB_COMERC" class="java.lang.String"/>
+	<parameter name="P_RFC_PERSONA" class="java.lang.String"/>
+	<parameter name="P_CVE_TRAMITE" class="java.lang.String"/>
+	<parameter name="P_DESCTRAMITE" class="java.lang.String"/>
+	<parameter name="P_CVE_DELEGAC" class="java.lang.String"/>
+	<parameter name="P_DES_DELEGAC" class="java.lang.String"/>
+	<parameter name="P_CVE_SUB_DEL" class="java.lang.String"/>
+	<parameter name="P_DES_SUB_DEL" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="572" height="125"/>
+				<subreportParameter name="P_NOMBRE_PERS">
+					<subreportParameterExpression><![CDATA[$P{P_NOMBRE_PERS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMAGENES_DIR">
+					<subreportParameterExpression><![CDATA[$P{IMAGENES_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_NOMB_COMERC">
+					<subreportParameterExpression><![CDATA[$P{P_NOMB_COMERC}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_CURPPERSONA">
+					<subreportParameterExpression><![CDATA[$P{P_CURPPERSONA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_FECSOLCITUD">
+					<subreportParameterExpression><![CDATA[$P{P_FECSOLCITUD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_FOLIO_SOLCT">
+					<subreportParameterExpression><![CDATA[$P{P_FOLIO_SOLCT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_RAZONSOCIAL">
+					<subreportParameterExpression><![CDATA[$P{P_RAZONSOCIAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_REGPATRONAL">
+					<subreportParameterExpression><![CDATA[$P{P_REGPATRONAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_RFC_PERSONA">
+					<subreportParameterExpression><![CDATA[$P{P_RFC_PERSONA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "SeccionI.jrxml"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

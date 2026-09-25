@@ -1,0 +1,156 @@
+<?xml version='1.0'?>
+<WL5G3N0:definitions name="JwsServiceDefinitions" targetNamespace="http://mx.gob.imss.delta.clasificacion/" xmlns="" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://mx.gob.imss.delta.clasificacion/" xmlns:WL5G3N2="java:mx.gob.imss.ctirss.delta.framework.base.exception" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.framework.base.model" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://mx.gob.imss.delta.clasificacion/" xmlns:WL5G3N2="java:mx.gob.imss.ctirss.delta.framework.base.exception" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="AbstractModel">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="ErrorFormGeneral" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.model.gestion.patronal" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://mx.gob.imss.delta.clasificacion/" xmlns:WL5G3N2="java:mx.gob.imss.ctirss.delta.framework.base.exception" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:mx.gob.imss.ctirss.delta.framework.base.model"/>
+      <xs:complexType name="Grupo">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Id" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Division" nillable="true" type="java1:Division" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.gestion.patronal"/>
+              <xs:element minOccurs="1" name="NumGrupo" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Division">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Activo" nillable="true" type="xs:boolean"/>
+              <xs:element minOccurs="1" name="Id" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="NumDivision" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Fraccion">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="PrimaSRT" nillable="true" type="xs:decimal"/>
+              <xs:element minOccurs="1" name="Id" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="DescripcionDetallada" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Grupo" nillable="true" type="java1:Grupo" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.gestion.patronal"/>
+              <xs:element minOccurs="1" name="Clase" nillable="true" type="java1:Clase" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.gestion.patronal"/>
+              <xs:element minOccurs="1" name="NumFraccion" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Clase">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://mx.gob.imss.delta.clasificacion/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://mx.gob.imss.delta.clasificacion/" xmlns:WL5G3N2="java:mx.gob.imss.ctirss.delta.framework.base.exception" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:mx.gob.imss.ctirss.delta.model.gestion.patronal"/>
+      <xs:element name="obtenerFraccionClaseActiva">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" nillable="true" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="obtenerFraccionClaseActivaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="java:Fraccion" xmlns:java="java:mx.gob.imss.ctirss.delta.model.gestion.patronal"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="bajaPatronal">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="arg0" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="bajaPatronalResponse">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.framework.base.exception" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://mx.gob.imss.delta.clasificacion/" xmlns:WL5G3N2="java:mx.gob.imss.ctirss.delta.framework.base.exception" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="GestionPatronalBusinessException">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AbstractException"/>
+      <xs:element name="GestionPatronalBusinessException" type="java:GestionPatronalBusinessException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+    </xs:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="obtenerFraccionClaseActiva">
+    <WL5G3N0:part element="WL5G3N1:obtenerFraccionClaseActiva" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="obtenerFraccionClaseActivaResponse">
+    <WL5G3N0:part element="WL5G3N1:obtenerFraccionClaseActivaResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="GestionPatronalBusinessException">
+    <WL5G3N0:part element="WL5G3N2:GestionPatronalBusinessException" name="GestionPatronalBusinessException"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="bajaPatronal">
+    <WL5G3N0:part element="WL5G3N1:bajaPatronal" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="bajaPatronalResponse">
+    <WL5G3N0:part element="WL5G3N1:bajaPatronalResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="Jws">
+    <WL5G3N0:operation name="obtenerFraccionClaseActiva" parameterOrder="parameters">
+      <WL5G3N0:input message="WL5G3N1:obtenerFraccionClaseActiva"/>
+      <WL5G3N0:output message="WL5G3N1:obtenerFraccionClaseActivaResponse"/>
+      <WL5G3N0:fault message="WL5G3N1:GestionPatronalBusinessException" name="GestionPatronalBusinessException"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="bajaPatronal" parameterOrder="parameters">
+      <WL5G3N0:input message="WL5G3N1:bajaPatronal"/>
+      <WL5G3N0:output message="WL5G3N1:bajaPatronalResponse"/>
+      <WL5G3N0:fault message="WL5G3N1:GestionPatronalBusinessException" name="GestionPatronalBusinessException"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="JwsServiceSoapBinding" type="WL5G3N1:Jws">
+    <WL5G3N3:binding style="document" transport="http://www.bea.com/soap/transport/local"/>
+    <WL5G3N0:operation name="obtenerFraccionClaseActiva">
+      <WL5G3N3:operation soapAction="http://mx.gob.imss.delta.clasificacion/obtenerFraccionClaseActiva" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N3:body parts="parameters" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body parts="parameters" use="literal"/>
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="GestionPatronalBusinessException">
+        <WL5G3N3:fault name="GestionPatronalBusinessException" use="literal"/>
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="bajaPatronal">
+      <WL5G3N3:operation soapAction="http://mx.gob.imss.delta.clasificacion/bajaPatronal" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N3:body parts="parameters" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body use="literal"/>
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="GestionPatronalBusinessException">
+        <WL5G3N3:fault name="GestionPatronalBusinessException" use="literal"/>
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+</WL5G3N0:definitions>

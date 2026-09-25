@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Acuse" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="785"/>
+	<style name="Titulo Aviso" hAlign="Left" fontSize="13" isBold="true" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="base" fontSize="7" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="fondo" backcolor="#00CCFF"/>
+	<style name="fondoEncabezado" backcolor="#0000FF"/>
+	<style name="Titulo Encabezado" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="baseBold" fontSize="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+	<style name="vineta" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<parameter name="P_FECSOLCITUD" class="java.lang.String"/>
+	<parameter name="P_FOLIO_SOLCT" class="java.lang.String"/>
+	<parameter name="P_DESCTRAMITE" class="java.lang.String"/>
+	<parameter name="P_REGPATRONAL" class="java.lang.String"/>
+	<parameter name="P_RAZONSOCIAL" class="java.lang.String"/>
+	<parameter name="P_NOMBRE_PERS" class="java.lang.String"/>
+	<parameter name="P_RFC_PERSONA" class="java.lang.String"/>
+	<parameter name="P_CURPPERSONA" class="java.lang.String"/>
+	<parameter name="P_CVE_DELEGAC" class="java.lang.String"/>
+	<parameter name="P_DES_DELEGAC" class="java.lang.String"/>
+	<parameter name="P_CVE_SUB_DEL" class="java.lang.String"/>
+	<parameter name="P_DES_SUB_DEL" class="java.lang.String"/>
+	<parameter name="IMAGENES_DIR" class="java.lang.String"/>
+	<parameter name="P_FECPRESENTA" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<pageHeader>
+		<band height="76">
+			<staticText>
+				<reportElement style="Titulo Encabezado" x="108" y="0" width="446" height="57"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Acuse de pre-captura de solicitud de modificación en la inscripción patronal y en el Seguro de Riesgos de Trabajo]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="3" width="103" height="68"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "imss2.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="155">
+			<rectangle radius="0">
+				<reportElement style="Titulo Encabezado" x="0" y="134" width="554" height="18"/>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="Titulo Encabezado" x="0" y="36" width="554" height="18"/>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="Titulo Encabezado" x="0" y="112" width="554" height="22"/>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" x="0" y="94" width="554" height="18"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement x="0" y="71" width="554" height="23"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="136" y="39" width="221" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_REGPATRONAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="7" y="138" width="28" height="11"/>
+				<textElement/>
+				<text><![CDATA[CURP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="379" y="40" width="18" height="11"/>
+				<textElement/>
+				<text><![CDATA[RFC:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="136" y="117" width="413" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_NOMBRE_PERS}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="136" y="137" width="412" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_CURPPERSONA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="7" y="98" width="49" height="12"/>
+				<textElement/>
+				<text><![CDATA[Persona fï¿½sica]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="420" y="39" width="130" height="14"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_RFC_PERSONA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="6" y="75" width="97" height="18"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Denominación o razon social:]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement style="fondoEncabezado" x="0" y="0" width="554" height="18"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="135" y="77" width="413" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_RAZONSOCIAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="6" y="41" width="63" height="11"/>
+				<textElement/>
+				<text><![CDATA[Registro Patronal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="7" y="115" width="120" height="18"/>
+				<textElement/>
+				<text><![CDATA[Apellido paterno, materno,
+nombre(s):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Titulo Encabezado" x="6" y="2" width="121" height="17" forecolor="#FFFFFF"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Datos de la solicitud]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement style="fondo" x="0" y="18" width="554" height="18"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement style="base" x="7" y="23" width="89" height="11"/>
+				<textElement/>
+				<text><![CDATA[Fecha de captura:]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement style="fondo" x="0" y="54" width="554" height="18"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement style="base" x="6" y="59" width="50" height="11"/>
+				<textElement/>
+				<text><![CDATA[Persona Moral]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="369" y="23" width="19" height="11"/>
+				<textElement/>
+				<text><![CDATA[Folio:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="131" y="18" width="1" height="134"/>
+			</line>
+			<line>
+				<reportElement x="363" y="18" width="1" height="36"/>
+			</line>
+			<line>
+				<reportElement x="409" y="36" width="1" height="18"/>
+			</line>
+			<textField>
+				<reportElement x="398" y="22" width="151" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_FOLIO_SOLCT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="22" width="219" height="15"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_FECPRESENTA}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="152">
+			<rectangle radius="0">
+				<reportElement style="Titulo Encabezado" x="0" y="3" width="554" height="146"/>
+			</rectangle>
+			<textField>
+				<reportElement x="9" y="10" width="204" height="12">
+					<printWhenExpression><![CDATA[!$P{P_NOMBRE_PERS}.isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_NOMBRE_PERS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="213" y="10" width="85" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[con registro patronal]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="297" y="10" width="88" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_REGPATRONAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="384" y="10" width="136" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[, usted ha realizado el trámite de]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="59" y="23" width="461" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_DESCTRAMITE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="36" width="47" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[con fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="59" y="36" width="100" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_FECSOLCITUD}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="160" y="36" width="30" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[y folio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="59" width="539" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Favor de presentarse con documentos probatorios en original y copia a fin de corroborar la información manifestada, en la Delegación:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="310" y="70" width="238" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_DES_SUB_DEL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="86" width="347" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[en un plazo que no exceda de 8 días hábiles a partir de esta fecha.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="192" y="36" width="100" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_FOLIO_SOLCT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="23" width="50" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[pre-captura:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="9" y="10" width="204" height="12">
+					<printWhenExpression><![CDATA[!$P{P_RAZONSOCIAL}.isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_RAZONSOCIAL}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="9" y="70" width="238" height="11"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_DES_DELEGAC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="247" y="70" width="63" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Subdelegación]]></text>
+			</staticText>
+		</band>
+		<band height="199">
+			<rectangle>
+				<reportElement x="-1" y="0" width="555" height="193"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="6" width="546" height="186"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[
+1. TIP (Tarjeta de Identificación Patronal) documento expedido por el Instituto Mexicano del Seguro Social al darse de alta un registro patronal.
+En ausencia de la TIP por caso fortuito, presentar Comprobante de solicitud de reposición de la TIP ante el Instituto y Cédula del Registro Federal de Contribuyentes, documento expedido por el Servicio de Administración Tributaría.
+2. Identificación oficial con fotografía y firma del solicitante (patrón o representante legal) como son:
+a. Credencial para votar expedida por el Instituto Federal Electoral (IFE).
+b. Pasaporte vigente, mexicano o extranjero.
+c. Cartilla del Servicio Militar Nacional.
+d. Cédula profesional.
+e. Matrícula consular (documento de identidad que expide una oficina consular a favor de un connacional).
+f. Tarjeta/Cédula/Carnet de identidad para extranjeros.
+g. Forma migratoria FM2 o FM3 expedida por el Instituto Nacional de Migración (en caso de extranjero).
+Nota: Los datos del representante legal seran verificados contra los datos registrados en el sistema.
+3. Para cambio de actividad, incorporación de actividades, sustitución patronal, fusión o escisión presentar cualquiera de los siguientes:
+a. Testimonio notarial inscrito en el Registro Público de la Propiedad y del Comercio, que acredite las modificaciones presentadas, en su caso, sentencia definitiva que lo determine.
+b. Aviso de modificación de la actividad, presentado ante la Secretaría de Hacienda y Crédito Público (SHCP).
+c. Documento que acredite el cambio de actividad emitido por autoridad competente.
+4. Para cambio de domicilio presentar cualquiera de los documentos siguientes y un croquis de localización:
+a. Aviso del cambio de domicilio presentado ante la Secretaría de Hacienda y Crédito Público (SHCP).
+b. Aviso de la baja del registro patronal anterior, con antigüedad no mayor a 6 meses.
+c. Comprobante del nuevo domicilio.
+(El croquis de ubicación del domicilio del centro de trabajo por el que solicita el registro patronal, debera indicar las calles de colindancia, lugares de referencia o cualquier detalle que permita ubicar con facilidad su domicilio, el cual debe presentarse utilizando para ello una hoja blanca tamaño carta.)
+5. Para reanudación de actividades presentar cualquiera de los siguientes:
+a. Aviso de la reanudación de actividades presentado ante la Secretaria de Hacienda y Crédito Público (SHCP).
+b. Documento que acredite el cambio de actividad emitido por autoridad competente.
+6. Para compra de activos, enajenación, arrendamiento, comodato o fideicomiso traslativo presentar cualquiera de los siguientes:
+a. Contrato o instrumento jurídico que avale la operación.
+b. Documento que acredite el acto que da origen al aviso de modificación.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="4" width="100" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documentación:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

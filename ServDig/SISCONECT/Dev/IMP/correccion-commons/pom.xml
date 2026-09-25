@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+	<groupId>mx.gob.imss.ctirss.correccion</groupId>  
+    <artifactId>correccion</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  
+  <groupId>mx.gob.imss.ctirss.correccion.commons</groupId>
+  <artifactId>correccion-commons</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>correccion-commons</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <org.springframework.version>3.0.5.RELEASE</org.springframework.version>
+	<org.slf4j.version>1.6.1</org.slf4j.version>
+	<org.hibernate.version>3.5.5-Final</org.hibernate.version>
+  </properties>
+
+  <dependencies>
+  
+   <!-- Dependencia del Framework del IMSS -->
+    <dependency>
+    	<groupId>mx.gob.imss.ctirss.correccion.framework</groupId>
+  		<artifactId>correccion-framework-base</artifactId>
+  		<version>1.0-SNAPSHOT</version>
+    </dependency>
+    
+    <dependency>
+     <groupId>mx.gob.imss.ctirss.correccion.pojo</groupId>
+  	 <artifactId>correccion-model-business-pojo</artifactId>
+     <version>1.0-SNAPSHOT</version>
+    </dependency>
+    
+    	<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+  		
+		
+  	<!-- BeanUtils -->
+		<dependency>
+		    <groupId>commons-beanutils</groupId>
+		    <artifactId>commons-beanutils</artifactId>
+		    <version>1.8.3</version>
+		</dependency>
+	<!-- Para Tags -->
+</dependencies>
+</project>

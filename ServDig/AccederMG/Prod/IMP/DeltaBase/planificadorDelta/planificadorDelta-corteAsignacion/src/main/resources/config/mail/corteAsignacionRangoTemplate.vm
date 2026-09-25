@@ -1,0 +1,184 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Corte de Asignaciones de NSS realizadas - IMSS Digital</title>
+<style type="text/css">
+<!
+[
+CDATA
+[
+.ReadMsgBody
+{width:
+100%;
+}
+.ExternalClass {
+	width: 100%;
+}
+
+.ExternalClass,.ExternalClass p,.ExternalClass span,.ExternalClass font,.ExternalClass td,.ExternalClass div
+	{
+	line-height: 100%;
+}
+
+table,td {
+	mso-table-lspace: 0pt;
+	mso-table-rspace: 0pt;
+}
+
+#outlook a {
+	padding: 0;
+}
+
+img {
+	-ms-interpolation-mode: bicubic;
+}
+
+.resultado {
+	color: #3B6858;
+}
+
+.table th,.table td {
+	line-height: 20px;
+	text-align: left;
+	vertical-align: top;
+	border-top: 1px solid #9A999E;
+	padding: 5px;
+}
+
+.table .titulo {
+	vertical-align: middle;
+	background-color: #E2E4E7;
+	font-size: 1.2em;
+	text-align: center;
+	color: #444242;
+	font-family: Soberana Titular;
+}
+
+.table-bordered {
+	border-width: 1px 1px 1px 0px;
+	border-style: solid solid solid none;
+	border-color: #9A999E #9A999E #9A999E -moz-use-text-color;
+	-moz-border-top-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	border-image: none;
+	border-radius: 4px;
+	border-collapse: separate;
+}
+
+.table-bordered th,.table-bordered td {
+	border-left: 1px solid #9A999E;
+}
+]]>
+</style>
+</head>
+<body
+	style="height: 100% !important; margin: 0; padding: 0; width: 100% !important; font-family: Verdana, Geneva, sans-serif; font-size: 14px !important; text-align: justify;">
+	<div style="width: 100%; background-color: #EDEFF0; display: table;">
+		<div
+			style="background-color: white; margin: 90px 90px 10px; height: auto; border-radius: 4px;">
+			<div style="padding: 30px 50px;">
+				<div id="logo" style="margin-bottom: 20px; width: 100%;">
+					<img title="IMSS banner" src="http://serviciosdigitales.imss.gob.mx/delta/resources/imagenes/banner.gif" />
+				</div>
+				<div style="text-align: center;">
+					<strong>Corte de Asignaciones de NSS realizadas en IMSS Digital</strong>
+				</div>
+				<div style="text-align: center; font-size: 10px !important;">
+					<p>M&eacute;xico D.F., ${fechaOperacion}</p>
+				</div>
+				<p>
+					Este correo es env&iacute;ado por el Instituto Mexicano del Seguro Social
+					en referencia al corte ${tipoCorte} de Asignaciones de NSS realizadas <strong>${descripcionCorte}</strong> 
+					<br /><br />Se obtuvieron los siguientes resultados:
+				</p>
+				#if($ejecucionExitosa == "true")
+				<table style="font-size: 14px;">
+					<tr>
+						<td>Fecha y hora de consulta: </td>
+						<td style="width: 20px;" />
+						<td>${fechaHoraConsulta}</td>
+					</tr>
+					<tr>
+						<td>Resultado: </td>
+						<td style="width: 20px;" />
+						<td></td>
+					</tr>
+				</table>
+				<div align="center">
+					<br />
+					<table style="font-size: 14px;" class="table table-striped table-bordered" cellspacing="0" cellpadding="0" border="0">
+						<tbody>
+							<tr>
+								<td class="titulo" >-</td>
+								<td class="titulo" >Asignaciones de NSS</td>
+								<td class="titulo" >Localizaciones de NSS</td>
+								<td class="titulo" >Subtotal (por Origen)</td>
+							</tr>
+							<tr>
+								<td class="titulo" >Internet</td>
+								<td>${numAsignacionInternet}</td>
+								<td>${numLocalizacionInternet}</td>
+								<td class="resultado">${totalInternet}</td>
+							</tr>
+							<tr>
+								<td class="titulo" >Ventanilla</td>
+								<td>${numAsignacionVentanilla}</td>
+								<td>${numLocalizacionVentanilla}</td>
+								<td class="resultado">${totalVentanilla}</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td class="titulo" >Subtotal (por Operaci&oacute;n)</td>
+								<td class="resultado">${totalAsignacion}</td>
+								<td class="resultado">${totalLocalizacion}</td>
+								<td class="resultado"><strong>${totalMovimientos}</strong></td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+				#else
+				<p>
+					<span style="color: red">Ha ocurrido un error inesperado al
+						realizar la consulta de Asignaciones de NSS realizadas</span>
+				</p>
+				<table style="font-size: 14px;">
+					<tr>
+						<td>Mensaje de error</td>
+						<td style="width: 20px;" />
+						<td>${msgExcepcionGeneral}</td>
+					</tr>
+				</table>
+				<p>Favor de notificarlo al &aacute;rea que corresponda</p>
+				#end
+				<br />
+				<div style="text-align: center;">
+					<img title="Portal IMSS"
+						src="http://serviciosdigitales.imss.gob.mx/delta/resources/imagenes/header70.jpg" />
+					<p style="text-align: center; font-size: 10px;">
+						Reforma 476, Col. Ju&aacute;rez, M&eacute;xico DF - Tel 01 800 623 23 23 - <br />
+						ALGUNOS DERECHOS RESERVADOS IMSS - 2012
+					</p>
+				</div>
+				<div style="font-size: 10px !important; font-style: italic;">
+					<p>
+						<strong>AVISO IMPORTANTE:</strong> Este correo electr&oacute;nico y/o el
+						material adjunto es para uso exclusivo de la persona o la entidad
+						a la que expresamente se le ha enviado, el cual contiene
+						informaci&oacute;n confidencial. Si no es el destinatario leg&iacute;timo del
+						mismo, por favor rep&oacute;rtelo inmediatamente a la cuenta del
+						remitente y elim&iacute;nelo. Cualquier revisi&oacute;n, almacenamiento,
+						retransmisi&oacute;n, difusi&oacute;n o cualquier otro uso de este correo, por
+						personas o entidades distintas a las del destinatario leg&iacute;timo,
+						queda expresamente prohibida. Este correo electr&oacute;nico no pretende
+						ni debe ser considerado como constitutivo de ninguna relaci&oacute;n
+						legal, contractual o de otra &iacute;ndole similar.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

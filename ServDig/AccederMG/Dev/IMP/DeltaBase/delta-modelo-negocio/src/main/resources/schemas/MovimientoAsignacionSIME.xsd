@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://delta.ctirss.imss.gob.mx/SIME"
+    xmlns:tns="http://delta.ctirss.imss.gob.mx/SIME"
+    elementFormDefault="qualified">
+    <element name="MovimientoAsignacionSIMEType">
+        <complexType>
+            <sequence>
+                <element name="registroPatronal"     type="string"></element>
+                <element name="nss"                  type="int"></element>
+                <element name="primerApellido"       type="string"></element>
+                <element name="segundoApellido"      type="string"></element>
+                <element name="nombre"               type="string"></element>
+                <element name="salarioBase"          type="int"></element>
+                <element name="campoGenerico"        type="string"></element>
+                <element name="tipoTrabajor"         type="int"></element>
+                <element name="tipoSalario"          type="int"></element>
+                <element name="jornadaReducida"      type="int"></element>
+                <element name="fechaMovimiento"      type="date"></element>
+                <element name="unidadMedica"         type="int"></element>
+                <element name="campoGenerico2"       type="string"></element>
+                <element name="tipoMovimiento"       type="int"></element>
+                <element name="guia"                 type="int"></element>
+                <element name="clave"                type="string"></element>
+                <element name="campoGenerico3"       type="string"></element>
+                <element name="curp"                 type="string"></element>
+                <element name="identificadorFormato" type="int"></element>
+            </sequence>
+        </complexType>
+    </element>
+</schema>
+

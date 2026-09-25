@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+  	http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util.xsd">
+
+	
+    <context:annotation-config />
+    
+    <bean id="serviceRepository" class="org.springframework.jndi.JndiTemplate">
+        <property name="environment">
+            <props>
+                <prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+                <prop key="java.naming.provider.url">${service.provider.url}</prop>
+                <prop key="java.naming.security.principal">${service.security.principal}</prop>
+                <prop key="java.naming.security.credentials">${service.security.credentials}</prop>
+            </props>
+        </property>
+    </bean>
+  
+    <util:map id="jaxwsCustomProperties">
+        <entry key="com.sun.xml.ws.connect.timeout">
+            <value type="java.lang.Integer">${common.connect.timeout}</value>
+        </entry>
+        <entry key="com.sun.xml.ws.request.timeout">
+            <value type="java.lang.Integer">${common.request.timeout}</value>
+        </entry>
+    </util:map>
+	
+    <bean id="consultaRTTServiceBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="consultaRTTServiceBusiness#mx.gob.imss.distss.delta.rtt.service.interfaces.ConsultalRiesgoTrabajoServiceRemote" />
+        <property name="businessInterface" value="mx.gob.imss.distss.delta.rtt.service.interfaces.ConsultalRiesgoTrabajoServiceRemote" />
+        <property name="jndiTemplate" ref="serviceRepository" />
+    </bean>	
+    
+      <bean id="escritoDesacuerdoBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="escritoDesacuerdoBusiness#mx.gob.imss.distss.delta.rtt.service.interfaces.EscritoDesacuerdoBusinessRemote" />
+        <property name="businessInterface"  value="mx.gob.imss.distss.delta.rtt.service.interfaces.EscritoDesacuerdoBusinessRemote" />
+        <property name="jndiTemplate" ref="serviceRepository" />
+    </bean>	
+    
+    <bean id="solicitudBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="solicitudBusiness#mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.SolicitudBusinessRemote" />
+        <property name="businessInterface"  value="mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.SolicitudBusinessRemote" />
+        <property name="jndiTemplate" ref="serviceRepository" />
+    </bean>	
+    
+    <bean id="consultaEscritoDesacuerdoBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="consultaEscritoDesacuerdoBusiness#mx.gob.imss.distss.delta.rtt.service.interfaces.ConsultaEscritoDesacuerdoServiceRemote" />
+        <property name="businessInterface"  value="mx.gob.imss.distss.delta.rtt.service.interfaces.ConsultaEscritoDesacuerdoServiceRemote" />
+        <property name="jndiTemplate" ref="serviceRepository" />
+    </bean>	
+</beans>

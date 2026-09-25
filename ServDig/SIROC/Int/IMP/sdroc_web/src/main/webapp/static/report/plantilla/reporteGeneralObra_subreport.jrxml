@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteRegistroObra_subreport1" pageWidth="1500" pageHeight="200" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.210000000000003"/>
+	<property name="ireport.x" value="501"/>
+	<property name="ireport.y" value="0"/>
+	<field name="cveRegistroObra" class="java.lang.String"/>
+	<field name="cveRegistroObraPrincipalReporte" class="java.lang.String"/>
+	<field name="tipoObraDTO.clasificacionObraDTO.desClasificacionObra" class="java.lang.String"/>
+	<field name="informacionPatronDTO.tipoPatronDTO.desTipoPatron" class="java.lang.String"/>
+	<field name="ubicacionObraDTO.refColonia" class="java.lang.String"/>
+	<field name="fecIniObra" class="java.util.Date"/>
+	<field name="fecIniContrato" class="java.util.Date"/>
+	<field name="fecFinObra" class="java.util.Date"/>
+	<field name="fecFinContrato" class="java.util.Date"/>
+	<field name="impObra" class="java.lang.Double"/>
+	<field name="informacionPatronDTO.cveRegPatronal" class="java.lang.String"/>
+	<field name="impContratado" class="java.lang.Double"/>
+	<field name="informacionPatronDTO.tipoPatronDTO.cveTipoPatron" class="java.lang.Long"/>
+	<field name="ubicacionObraDTO.calle" class="java.lang.String"/>
+	<field name="ubicacionObraDTO.numExterior" class="java.lang.String"/>
+	<field name="ubicacionObraDTO.numExteriorAlf" class="java.lang.String"/>
+	<field name="ubicacionObraDTO.numInterior" class="java.lang.String"/>
+	<field name="ubicacionObraDTO.numInteriorAlf" class="java.lang.String"/>
+	<field name="ubicacionObraDTO.refMunicipio" class="java.lang.String"/>
+	<field name="ubicacionObraDTO.refEntidad" class="java.lang.String"/>
+	<field name="ubicacionObraDTO.codigoPostal" class="java.lang.String"/>
+	<variable name="contador" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[Boolean.TRUE]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="200" y="0" width="150" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cveRegistroObra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="350" y="0" width="150" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cveRegistroObraPrincipalReporte} == null ? "NA" : $F{cveRegistroObraPrincipalReporte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="50" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{contador}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="500" y="0" width="60" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipoObraDTO.clasificacionObraDTO.desClasificacionObra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="560" y="0" width="80" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{informacionPatronDTO.tipoPatronDTO.desTipoPatron}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="640" y="0" width="300" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ubicacionObraDTO.calle} + " EXT."
++($F{ubicacionObraDTO.numExterior}==null || $F{ubicacionObraDTO.numExterior}.equals("null") || $F{ubicacionObraDTO.numExterior}.equals("0")?"":" "+$F{ubicacionObraDTO.numExterior})
++($F{ubicacionObraDTO.numExteriorAlf}==null || $F{ubicacionObraDTO.numExteriorAlf}.equals("null") || $F{ubicacionObraDTO.numExteriorAlf}.equals("")?($F{ubicacionObraDTO.numExterior}==null || $F{ubicacionObraDTO.numExterior}.equals("null") || $F{ubicacionObraDTO.numExterior}.equals("")?" SN":""):" "+$F{ubicacionObraDTO.numExteriorAlf})
++ " INT." +($F{ubicacionObraDTO.numInterior}==null || $F{ubicacionObraDTO.numInterior}.equals("null") || $F{ubicacionObraDTO.numInterior}.equals("0")?"":" "+$F{ubicacionObraDTO.numInterior})
++($F{ubicacionObraDTO.numInteriorAlf}==null || $F{ubicacionObraDTO.numInteriorAlf}.equals("null") || $F{ubicacionObraDTO.numInteriorAlf}.equals("0")?($F{ubicacionObraDTO.numInterior}==null || $F{ubicacionObraDTO.numInterior}.equals("null") || $F{ubicacionObraDTO.numInterior}.equals("0")?" SN":""):" "+$F{ubicacionObraDTO.numInteriorAlf})+", "
++$F{ubicacionObraDTO.refColonia}+", "+$F{ubicacionObraDTO.refMunicipio}+", "
++$F{ubicacionObraDTO.refEntidad}+", CP "+$F{ubicacionObraDTO.codigoPostal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement stretchType="RelativeToTallestObject" x="940" y="0" width="70" height="30" isRemoveLineWhenBlank="true"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{informacionPatronDTO.tipoPatronDTO.cveTipoPatron} == 4 ? "NA" : new SimpleDateFormat("dd/MM/yyyy").format($F{fecIniObra})]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement stretchType="RelativeToTallestObject" x="1010" y="0" width="70" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{informacionPatronDTO.tipoPatronDTO.cveTipoPatron} == 4 ? "NA" : new SimpleDateFormat("dd/MM/yyyy").format($F{fecFinObra})]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement stretchType="RelativeToTallestObject" x="1080" y="0" width="70" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{informacionPatronDTO.tipoPatronDTO.cveTipoPatron} == 4 ? new SimpleDateFormat("dd/MM/yyyy").format($F{fecIniContrato}) : "NA"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement stretchType="RelativeToTallestObject" x="1150" y="0" width="70" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{informacionPatronDTO.tipoPatronDTO.cveTipoPatron} == 4 ? new SimpleDateFormat("dd/MM/yyyy").format($F{fecFinContrato}) :"NA"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement stretchType="RelativeToTallestObject" x="1220" y="0" width="120" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{informacionPatronDTO.tipoPatronDTO.cveTipoPatron} == 4 ? "NA" : "$ " + new DecimalFormat("#,##0").format($F{impObra})]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement stretchType="RelativeToTallestObject" x="1340" y="0" width="120" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{informacionPatronDTO.tipoPatronDTO.cveTipoPatron} == 4 ? "$ " + new DecimalFormat("#,##0").format($F{impObra}) : "NA"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="50" y="0" width="150" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{informacionPatronDTO.cveRegPatronal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

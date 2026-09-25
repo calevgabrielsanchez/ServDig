@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CartaNoAdeudo" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.768460768250001"/>
+	<property name="ireport.x" value="27"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["reportes/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGENES_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["reportes/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="imagenQR" class="java.lang.Object"/>
+	<parameter name="cadenaOriginal" class="java.lang.String"/>
+	<parameter name="selloDigital" class="java.lang.String"/>
+	<parameter name="fechaSolicitud" class="java.lang.String">
+		<parameterDescription><![CDATA[fechaReporte]]></parameterDescription>
+	</parameter>
+	<parameter name="horaSolicitud" class="java.lang.String"/>
+	<parameter name="folioSolicitud" class="java.lang.String">
+		<parameterDescription><![CDATA[folioSolicitud]]></parameterDescription>
+	</parameter>
+	<parameter name="rfc" class="java.lang.String"/>
+	<parameter name="nombreRS" class="java.lang.String"/>
+	<parameter name="numTrabajadores" class="java.lang.Integer"/>
+	<parameter name="fechaInicioVigencia" class="java.lang.String"/>
+	<parameter name="fechaFinVigencia" class="java.lang.String"/>
+	<parameter name="secuenciaNotaria" class="java.lang.String"/>
+	<parameter name="numSerialCertificado" class="java.lang.String"/>
+	<parameter name="numAcuerdo" class="java.lang.String"/>
+	<parameter name="fechaAcuerdo" class="java.lang.String"/>
+	<parameter name="leyendaJuicio" class="java.lang.String"/>
+	<parameter name="leyendaAuditoria" class="java.lang.String"/>
+	<parameter name="leyendaConvenio" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<title>
+		<band height="93" splitType="Stretch">
+			<image>
+				<reportElement x="165" y="17" width="221" height="40"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "LogoIMSS.PNG"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="11" y="11" width="123" height="41"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "GobiernoMexico.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="472" y="2" width="79" height="72"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "Mujer.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="22" width="571" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Opinión del Cumplimiento de Obligaciones Fiscales en materia de Seguridad Social]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="571" height="22"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["FECHA: " + $P{fechaSolicitud}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="102" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="165" y="44" width="406" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nombreRS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="22" width="165" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Clave de R.F.C.:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="44" width="165" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Nombre, Denominación o Razón Social:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="165" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Folio:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="4" y="66" width="567" height="36"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Estimado Patrón:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="165" y="0" width="406" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{folioSolicitud}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="165" y="22" width="406" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{rfc}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="66" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="5" y="0" width="560" height="66" backcolor="#FFFFFF"/>
+				<box topPadding="5" leftPadding="5" bottomPadding="5" rightPadding="5">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["<br/>"+"Respuesta de opinión:" + "<br/><br/>" +
+
+"En atención a su consulta sobre el Cumplimiento de Obligaciones, se le informa lo siguiente:"+ "<br/><br/>" +
+
+"En los controles electrónicos del Instituto Mexicano del Seguro Social, se observa que en el momento en que se realiza esta revisión, se encuentra al corriente con las obligaciones de pago de aportaciones Seguridad Social, toda vez que no se registran créditos fiscales firmes a su cargo, por lo anterior se emite opinión <style isBold=\"true\">Positiva</style>."+ "<br/><br/>" +
+
+"La presente opinión se realiza únicamente verificando que no existan créditos fiscales firmes a su cargo, sin que sea una constancia del correcto entero de las aportaciones de Seguridad Social, para lo cual el IMSS se reserva sus facultades de verificación previstas en la Ley del Seguro Social y el Código Fiscal de la Federación."+ "<br/><br/>" +
+
+"Revisión practicada el día <style isBold=\"true\">"+ $P{fechaSolicitud} + "</style>, a las <style isBold=\"true\">"+ $P{horaSolicitud} +"</style> horas." + "<br/><br/>" +
+
+"Esta carta opinión del cumplimiento de obligaciones fiscales tiene una vigencia hasta el <style isBold=\"true\" isUnderline=\"true\">" + $P{fechaFinVigencia} + "</style>."
++"<br>"+
+		($P{leyendaJuicio}.isEmpty()? "":"<br>"+$P{leyendaJuicio}+"<br>")+
+		($P{leyendaAuditoria}.isEmpty()? "":"<br>"+$P{leyendaAuditoria}+"<br>")+
+        ($P{leyendaConvenio}.isEmpty()? "":"<br>"+$P{leyendaConvenio}+"<br>")
++"<br>"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="21">
+			<rectangle>
+				<reportElement mode="Transparent" x="5" y="0" width="560" height="20"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="11" y="0" width="550" height="20" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8" isBold="true" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Usted tiene registrado(s) " + $P{numTrabajadores} + " trabajador(es) activo(s) ante el IMSS."]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="116" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="1" y="0" width="570" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["NOTAS:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="3" y="67" width="566" height="48"/>
+				<box topPadding="7"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Este servicio es gratuito. " + "<br>" +
+"El IMSS es el instrumento básico de seguridad social para todos los trabajadores y sus familias." + "<br><br>" +
+
+"Sus datos personales son incorporados y protegidos en los sistemas del IMSS, de conformidad con los Lineamientos de Protección de Datos Personales y con las diversas disposiciones fiscales y legales sobre confidencialidad y protección de datos, a fin de ejercer las facultades conferidas a la autoridad fiscal." + "<br><br>" +
+"Si desea modificar o corregir sus datos personales, puede acudir a la Subdelegación competente."]]></textFieldExpression>
+			</textField>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="1" y="16" width="11" height="8"/>
+					<textElement verticalAlignment="Top" markup="none">
+						<font size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[1.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="12" y="16" width="559" height="8"/>
+					<textElement markup="none">
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["En caso de estar inconforme y usted sea el particular que esté inscrito ante el IMSS o sea el representante legal, podrá usted promover una aclaración ante la Subdelegación que controla el (los) crédito(s) fiscales y adjuntar este documento, así como los documentos que soporten su aclaración."]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="1" y="24" width="11" height="8"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[2.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="12" y="24" width="559" height="8"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["La presente opinión se emite considerando lo establecido en los incisos a) y b), del Acuerdo de fecha 27 de abril de 2022 emitido por el H. Consejo Técnico del Instituto Mexicano del Seguro Social."]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="1" y="32" width="11" height="8"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[3.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="12" y="32" width="559" height="8"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Tiene una vigencia del mismo día que fue consultada, de conformidad con el Acuerdo de fecha 27 de abril de 2022 emitido por el H. Consejo Técnico del Instituto Mexicano del Seguro Social."]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="1" y="40" width="11" height="8"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[4.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="12" y="40" width="559" height="8"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["La opinión del cumplimiento, se genera atendiendo a la situación fiscal del patrón en los siguientes sentidos: POSITIVA.- Cuando el particular esté inscrito ante el IMSS y al corriente en el cumplimiento de las obligaciones que se consideran en los incisos a) y b) de la regla cuarta, de conformidad con el Acuerdo de fecha 27 de abril de 2022 emitido por el H. Consejo Técnico del Instituto Mexicano del Seguro Social; NEGATIVA.- Cuando el particular no esté al corriente en el cumplimiento de las obligaciones en materia de seguridad social que se consideran en los incisos a) y b) de la regla cuarta del acuerdo antes citado; SIN OPINIÓN.- Cuando no se localice en los controles electrónicos del IMSS la información suficiente para determinar el cumplimiento de las obligaciones fiscales en materia de seguridad social de los particulares."]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="1" y="48" width="11" height="8"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[5.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="12" y="48" width="559" height="8"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Se incluyen datos informativos, en su caso tales como: si el particular cuenta con algún acto de fiscalización en proceso o si cuenta con medios de defensa interpuestos en contra de acto administrativos o resoluciones emitidas por el IMSS o si cuenta con algún convenio de pago a plazos, los cuales no inciden en el sentido que se emita la opinión."]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="1" y="56" width="11" height="8"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[6.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="12" y="56" width="559" height="8"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["La presente opinión se emite de conformidad con lo establecido en el artículo 32-D del Código Fiscal de la Federación y del Acuerdo ACDO.SA2.HCT.270422/107.P.DIR de fecha 27 de abril de 2022 emitido por el H. Consejo Técnico del Instituto Mexicano del Seguro Social."]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+		</band>
+		<band height="107" splitType="Prevent">
+			<staticText>
+				<reportElement x="121" y="7" width="452" height="7" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="570" height="7"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+			</textField>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="121" y="14" width="54" height="17"/>
+					<box bottomPadding="0"/>
+					<textElement verticalAlignment="Top" markup="none">
+						<font size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cadena Original:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="175" y="14" width="396" height="17"/>
+					<box bottomPadding="0"/>
+					<textElement markup="styled">
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{cadenaOriginal}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="121" y="31" width="54" height="17"/>
+					<box topPadding="5"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Sello digital: ]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="175" y="31" width="396" height="17"/>
+					<box topPadding="5"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{selloDigital}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="175" y="48" width="396" height="17"/>
+					<box topPadding="5"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{secuenciaNotaria}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="121" y="48" width="54" height="17"/>
+					<box topPadding="5"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Secuencia Notarial:]]></text>
+				</staticText>
+			</elementGroup>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="121" y="65" width="54" height="17"/>
+					<box topPadding="5"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Número de Serie:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="175" y="65" width="396" height="17"/>
+					<box topPadding="5"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{numSerialCertificado}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<staticText>
+				<reportElement x="3" y="7" width="8" height="100" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<image>
+				<reportElement x="12" y="7" width="100" height="100"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{imagenQR}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="1" y="6" width="569" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement x="450" y="3" width="80" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Hoja "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="530" y="3" width="40" height="15"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2009 (http://www.altova.com) by desarrollo (desarrollo) -->
+<xs:schema xmlns="modelo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" targetNamespace="modelo" elementFormDefault="qualified" attributeFormDefault="unqualified" jaxb:extensionBindingPrefixes="xjc" jaxb:version="2.1">
+	<xs:annotation>
+		<xs:appinfo>
+			<jaxb:globalBindings>
+				<jaxb:javaType name="java.util.Date" xmlType="xs:dateTime" parseMethod="mx.gob.imss.ctirss.delta.gestion.individuo.utility.bean.XmlDateTimeConverter.parseDate" printMethod="mx.gob.imss.ctirss.delta.gestion.individuo.utility.bean.XmlDateTimeConverter.printDate"/>
+				<xjc:superClass name="mx.gob.imss.ctirss.delta.framework.base.model.AbstractModel"/>
+				<xjc:serializable uid="1234321"/>
+			</jaxb:globalBindings>
+		</xs:appinfo>
+	</xs:annotation>
+	<xs:element name="solicitud">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tramite" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="id-solicitud" type="xs:long"/>
+			<xs:attribute name="num-solicitud" type="xs:string"/>
+			<xs:attribute name="usuario" type="xs:string"/>
+			<xs:attribute name="fecha-registro" type="xs:dateTime"/>
+			<xs:attribute name="fecha-registro-formateada" type="xs:string"/>
+			<xs:attribute name="id-estado-solicitud" type="xs:long"/>
+			<xs:attribute name="des-estado-solicitud" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tramite">
+		<xs:complexType>
+			<xs:sequence>
+				<!--<xs:element ref="estadoTramitePersona" minOccurs="1" maxOccurs="1"/>-->
+				<xs:element ref="tipo-tramite" />
+				<xs:element ref="razon-resultado" minOccurs="0" />
+				<xs:element ref="estado-tramite" minOccurs="0" />
+				<xs:choice>
+					<xs:element ref="persona" minOccurs="0" />
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="id-tramite" type="xs:long"
+				use="required" />
+			<xs:attribute name="ind-resultado" type="xs:long" />
+			<xs:attribute name="observacion" type="xs:string"
+				use="required" />
+			<xs:attribute name="fecha-tramite" type="xs:dateTime"
+				use="required" />
+			<xs:attribute name="ind-ratificado" type="xs:boolean"></xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="estado-tramite">
+		<xs:complexType>
+			<xs:attribute name="id-estado-tramite-persona" type="xs:int"/>
+			<xs:attribute name="descripcion" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tipo-tramite">
+		<xs:complexType>
+			<xs:attribute name="id-tipo-tramite" type="xs:long" use="required"/>
+			<xs:attribute name="descripcion" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="razon-resultado">
+		<xs:complexType>
+			<xs:attribute name="id-razon-resultado" type="xs:long" use="required"/>
+			<xs:attribute name="descripcion" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="persona">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fisica"/>
+				<xs:element ref="moral"/>
+				<xs:element ref="tipo-persona"/>
+				<xs:element ref="persona-estado" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="persona-calificacion" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="domicilio" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="medio-contacto" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="documento-probatorio" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="id-persona" type="xs:long"/>
+			<xs:attribute name="fecha-registro" type="xs:dateTime"/>
+			<xs:attribute name="fecha-baja" type="xs:dateTime"/>
+			<xs:attribute name="fecha-actualizacion" type="xs:dateTime"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fisica">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="documento-probatorio" minOccurs="0"/>
+				<xs:element ref="pais" minOccurs="0"/>
+				<xs:element ref="sexo" minOccurs="0"/>
+				<xs:element ref="entidad-federativa" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="nss" type="xs:long"/>
+			<xs:attribute name="curp" type="xs:string"/>
+			<xs:attribute name="rfc" type="xs:string"/>
+			<xs:attribute name="nombres" type="xs:string"/>
+			<xs:attribute name="primer-apellido" type="xs:string"/>
+			<xs:attribute name="segundo-apellido" type="xs:string"/>
+			<xs:attribute name="id-sexo" type="xs:int" use="optional"/>
+			<xs:attribute name="des-sexo" type="xs:string"/>
+			<xs:attribute name="fecha-nacimiento" type="xs:dateTime"/>
+			<xs:attribute name="fecha-registro" type="xs:dateTime"/>
+			<xs:attribute name="fecha-baja" type="xs:dateTime"/>
+			<xs:attribute name="fecha-modificacion" type="xs:dateTime"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="moral">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tipo-sociedad"/>
+			</xs:sequence>
+			<xs:attribute name="nrp" type="xs:string"/>
+			<xs:attribute name="rfc" type="xs:string"/>
+			<xs:attribute name="razon-social" type="xs:string"/>
+			<xs:attribute name="acta-constitutiva" type="xs:string"/>
+			<xs:attribute name="des-situacion" type="xs:string"/>
+			<xs:attribute name="id-situacion" type="xs:int"/>
+			<xs:attribute name="fecha-creacion" type="xs:dateTime"/>
+			<xs:attribute name="fecha-registro" type="xs:dateTime"/>
+			<xs:attribute name="fecha-baja" type="xs:dateTime"/>
+			<xs:attribute name="fecha-modificacion" type="xs:dateTime"/>
+			<xs:attribute name="id-acta-constitutiva" type="xs:long"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="acta-constitutiva">
+		<xs:complexType>
+			<xs:attribute name="id-acta-constitutiva" type="xs:long"/>
+			<xs:attribute name="id-persona-moral" type="xs:long"/>
+			<xs:attribute name="fecha-expedicion-acta" type="xs:dateTime"/>
+			<xs:attribute name="num-acta" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="documento-probatorio">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="acta" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="descripcion" type="xs:string"/>
+			<xs:attribute name="id-documento-probatorio" type="xs:int"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="acta">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="nacimiento" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="foja" type="xs:string"/>
+			<xs:attribute name="libro" type="xs:string"/>
+			<xs:attribute name="numero-acta" type="xs:string"/>
+			<xs:attribute name="clave-entidad-registro" type="xs:string"/>
+			<xs:attribute name="clave-municipio-registro" type="xs:string"/>
+			<xs:attribute name="des-entidad-registro" type="xs:string"/>
+			<xs:attribute name="des-municipio-registro" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="nacimiento">
+		<xs:complexType>
+			<xs:attribute name="anio" type="xs:int"/>
+			<xs:attribute name="tomo" type="xs:string"/>
+			<xs:attribute name="crip" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pais">
+		<xs:complexType>
+			<xs:attribute name="id-pais" type="xs:int"/>
+			<xs:attribute name="descripcion" type="xs:string"/>
+			<xs:attribute name="nacionalidad" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="estado-persona">
+		<xs:complexType>
+			<xs:attribute name="idEstadoPersona" type="xs:int"/>
+			<xs:attribute name="descripcion"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="calificacion">
+		<xs:complexType>
+			<xs:attribute name="id-calificacion" type="xs:int"/>
+			<xs:attribute name="descripcion" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sexo">
+		<xs:complexType>
+			<xs:attribute name="id-sexo" type="xs:int"/>
+			<xs:attribute name="descripcion" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tipo-domicilio">
+		<xs:complexType>
+			<xs:attribute name="id-tipo-domicilio" type="xs:int"/>
+			<xs:attribute name="descripcion" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="domicilio">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="codigo-postal" minOccurs="0"/>
+				<xs:element ref="asentamiento" minOccurs="0"/>
+				<xs:element ref="tipo-ambito" minOccurs="0"/>
+				<xs:element ref="tipo-domicilio" minOccurs="0"/>
+				<xs:element ref="vialidad-primaria"/>
+				<xs:element ref="vialidad-referencia-posterior"/>
+				<xs:element ref="vialidad-referencia-primaria"/>
+				<xs:element ref="vialidad-referencia-secundaria"/>
+			</xs:sequence>
+			<xs:attribute name="clave" type="xs:int"/>
+			<xs:attribute name="num-exterior-1" type="xs:int"/>
+			<xs:attribute name="num-exterior-alf" type="xs:string"/>
+			<xs:attribute name="num-exterior-2" type="xs:int"/>
+			<xs:attribute name="num-interior" type="xs:int"/>
+			<xs:attribute name="num-interior-alf" type="xs:string"/>
+			<xs:attribute name="latitud" type="xs:int"/>
+			<xs:attribute name="longitud" type="xs:int"/>
+			<xs:attribute name="descripcion" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tipo-persona">
+		<xs:complexType>
+			<xs:attribute name="id-tipo-persona" type="xs:int"/>
+			<xs:attribute name="descripcion" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="persona-estado">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="estado-persona" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="fecha-estado" type="xs:date"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="persona-calificacion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="calificacion"/>
+			</xs:sequence>
+			<xs:attribute name="fecha-calificacion" type="xs:date"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="medio-contacto">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tipo-medio-contacto"/>
+				<xs:element ref="correo-electronico" minOccurs="0"/>
+				<xs:element ref="telefono-fijo" minOccurs="0"/>
+				<xs:element ref="telefono-movil" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="id-medio-contacto" type="xs:int"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="persona-domicilio"/>
+	<xs:element name="entidad-federativa">
+		<xs:complexType>
+			<xs:attribute name="id-entidad-federativa" type="xs:int"/>
+			<xs:attribute name="descripcion" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tipo-vialidad">
+		<xs:complexType>
+			<xs:attribute name="clave" type="xs:int"/>
+			<xs:attribute name="descripcion" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="codigo-postal">
+		<xs:complexType>
+			<xs:attribute name="codigo-postal" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="asentamiento">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="localidad"/>
+				<xs:element ref="codigo-postal"/>
+				<xs:element ref="tipo-asentamiento"/>
+			</xs:sequence>
+			<xs:attribute name="clave" type="xs:string"/>
+			<xs:attribute name="nombre" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tipo-ambito">
+		<xs:complexType>
+			<xs:attribute name="clave" type="xs:int"/>
+			<xs:attribute name="descripcion" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="localidad">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="municipio"/>
+				<xs:element ref="asentamiento" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="clave" type="xs:string"/>
+			<xs:attribute name="nombre" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="municipio">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="localidad" maxOccurs="unbounded"/>
+				<xs:element ref="entidad-federativa"/>
+			</xs:sequence>
+			<xs:attribute name="clave" type="xs:string"/>
+			<xs:attribute name="descripcion" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tipo-asentamiento">
+		<xs:complexType>
+			<xs:attribute name="clave" type="xs:int"/>
+			<xs:attribute name="descripcion" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="vialidad-primaria">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="vialidad"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="vialidad-referencia-primaria">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="vialidad"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="vialidad-referencia-secundaria">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="vialidad"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="vialidad-referencia-posterior">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="vialidad"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="vialidad">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tipo-vialidad" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="clave" type="xs:int"/>
+			<xs:attribute name="nombre" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tipo-sociedad">
+		<xs:complexType>
+			<xs:attribute name="id-tipo-sociedad" type="xs:int"/>
+			<xs:attribute name="descripcion" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tipo-medio-contacto">
+		<xs:complexType>
+			<xs:attribute name="id-tipo-medio-contacto" type="xs:int"/>
+			<xs:attribute name="descripcion" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="correo-electronico">
+		<xs:complexType>
+			<xs:attribute name="correo-electronico" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="telefono-fijo">
+		<xs:complexType>
+			<xs:attribute name="clave-lada" type="xs:string"/>
+			<xs:attribute name="numero-telefonico" type="xs:string"/>
+			<xs:attribute name="extension" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="telefono-movil">
+		<xs:complexType>
+			<xs:attribute name="numero-telefonico" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

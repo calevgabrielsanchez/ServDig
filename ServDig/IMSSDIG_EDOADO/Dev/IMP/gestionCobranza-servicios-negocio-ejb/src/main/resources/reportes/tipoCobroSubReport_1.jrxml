@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="tipoCobroSubReport_1" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<field name="crIncAct" class="java.lang.String"/>
+	<field name="situacionCobro" class="java.lang.String"/>
+	<field name="crPer" class="java.lang.String"/>
+	<field name="crCred" class="java.lang.String"/>
+	<field name="crSalIV" class="java.lang.String"/>
+	<field name="crSalRt" class="java.lang.String"/>
+	<field name="crSalGuar" class="java.lang.String"/>
+	<field name="crSalTot" class="java.lang.String"/>
+	<field name="factorAct" class="java.lang.String"/>
+	<field name="act" class="java.lang.String"/>
+	<field name="porcentajeRecargos" class="java.lang.String"/>
+	<field name="crInt" class="java.lang.String"/>
+	<field name="enfermedadesMaternidad" class="java.lang.String"/>
+	<field name="sumaTotal" class="java.lang.String"/>
+	<field name="regPatCor" class="java.lang.String"/>
+	<field name="crPat" class="java.lang.String"/>
+	<field name="tipoNotificacion" class="java.lang.String"/>
+	<field name="modCor" class="java.lang.String"/>
+	<background>
+		<band height="1" splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<rectangle>
+				<reportElement key="rectangle-1" x="0" y="0" width="552" height="12" backcolor="#B1C7BD">
+					<printWhenExpression><![CDATA[new Boolean($V{COLUMN_COUNT}.intValue()%2==0)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-1" mode="Transparent" x="58" y="-1" width="42" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{crCred}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-6" mode="Transparent" x="202" y="-1" width="50" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{crSalTot}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-7" mode="Transparent" x="302" y="-1" width="50" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{act}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-8" mode="Transparent" x="403" y="-1" width="50" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{crInt}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-9" mode="Transparent" x="10" y="-1" width="30" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{crPer}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-10" mode="Transparent" x="501" y="-1" width="50" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sumaTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="0" width="53" height="11">
+					<printWhenExpression><![CDATA[ new Boolean(!$F{crPat}.equals($F{regPatCor})).booleanValue() && ($F{tipoNotificacion}.equals("3"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{regPatCor} + '-' + $F{modCor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

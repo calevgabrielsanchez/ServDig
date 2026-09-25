@@ -1,0 +1,43 @@
+<wsdl:definitions name="certificarInactividadPagoParcialidades" targetNamespace="http://www.serviciosdigitales.imss.gob.mx/certificarInactividadPagoParcialidades" xmlns:cip="http://www.serviciosdigitales.imss.gob.mx/certificarInactividadPagoParcialidades" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.serviciosdigitales.imss.gob.mx/certificacionInactividadPagoParcialidades">
+	
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.serviciosdigitales.imss.gob.mx">
+			<xsd:import namespace="http://www.serviciosdigitales.imss.gob.mx/certificacionInactividadPagoParcialidades" schemaLocation="../schema/certificacionInactividadPagoParcialidades.xsd">
+			</xsd:import>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="certificarRequest">
+		<wsdl:part name="parameters" element="xsd1:certificacionInactividadRequest"/>
+	</wsdl:message>
+
+	<wsdl:message name="certificarResponse">
+		<wsdl:part element="xsd1:certificacionInactividadResponse" name="parameters"/>
+	</wsdl:message>
+
+	<wsdl:portType name="certificarInactividadPagoParcialidades">
+		<wsdl:operation name="certificar">
+			<wsdl:input message="cip:certificarRequest"/>
+			<wsdl:output message="cip:certificarResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="certificarInactividadPagoParcialidadesSOAP" type="cip:certificarInactividadPagoParcialidades">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="certificar">
+			<soap:operation soapAction="http://www.serviciosdigitales.imss.gob.mx/certificarInactividadPagoParcialidades/NewOperation"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	<wsdl:service name="certificarInactividadPagoParcialidades">
+		<wsdl:port binding="cip:certificarInactividadPagoParcialidadesSOAP" name="certificarInactividadPagoParcialidadesSOAP">
+			<soap:address location="http://www.example.org/"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

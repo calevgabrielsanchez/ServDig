@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>mx.gob.imss.ctirss.delta.gestion.clasificacion</groupId>
+	<artifactId>gestionClasificacion-servicios-negocio-ejb</artifactId>
+	<version>2.4</version>
+	<name>Modulo Servicios de Negocio DELTA (ejb)</name>
+	<url>http://maven.apache.org</url>
+	<packaging>ejb</packaging>
+
+	<parent>
+		<artifactId>gestionClasificacion</artifactId>
+		<groupId>mx.gob.imss.ctirss.delta.gestion.clasificacion</groupId>
+		<version>2.4</version>
+	</parent>
+
+
+	<properties>
+		<project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+		<org.springframework.version>3.0.5.RELEASE</org.springframework.version>
+		<org.slf4j.version>1.6.1</org.slf4j.version>
+		<org.hibernate.version>3.6.9.Final</org.hibernate.version>
+		<skip>true</skip>
+	</properties>
+
+	<dependencies>
+	
+		<!-- INICIO DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+
+		
+
+		<!-- Dependencia del Proyecto de Objetos de modelo DELTA IMSS -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-modelo-negocio</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>
+		
+		<!-- Dependencia del Proyecto de Objetos de Persistencia DELTA IMSS -->
+		<dependency>
+		<groupId>mx.gob.imss.ctirss.delta.gestion.clasificacion</groupId>
+	<artifactId>gestionClasificacion-modelo</artifactId>
+	<version>${delta.clasificacion.empr}</version>
+		</dependency>
+		<dependency>
+		<groupId>mx.gob.imss.ctirss.delta.gestion.clasificacion</groupId>
+	<artifactId>gestionClasificacion-interfaces-negocio</artifactId>
+	<version>${delta.clasificacion.empr}</version>
+</dependency>
+
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-servicios-negocio-ejb</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>
+		
+		
+			<dependency>
+		<groupId>mx.gob.imss.ctirss.delta.gestion.patronal</groupId>
+		<artifactId>delta-gestionPatronal-interfaces-negocio</artifactId>
+		<version>${delta.patronal}</version>
+	</dependency>
+		<dependency>
+		<groupId>mx.gob.imss.ctirss.delta.gestion.domicilio</groupId>
+		<artifactId>gestionDomicilios-interfaces-negocio</artifactId>
+		<version>${delta.domicilios}</version>
+	</dependency>
+	<dependency>
+		<groupId>mx.gob.imss.ctirss.delta.gestion.solicitud</groupId>
+		<artifactId>gestionSolicitud-interfaces-negocio</artifactId>
+		<version>${delta.solicitud}</version>
+	</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-persistencia</artifactId>
+			<version>${delta.framework.version}</version>
+		</dependency>
+
+		<!-- FIN DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+		
+		
+		
+		
+		<!-- HIBERNATE CORE --> 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-commons-annotations</artifactId>
+			<version>3.2.0.Final</version>
+		</dependency>
+			<!-- HIBERNATE DEPENDECIES-->
+		
+		<!-- Log -->
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+		
+		<!-- Fin de Log -->
+		
+		
+		
+		
+
+		<!--  TEST -->
+
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		
+		
+
+
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<version>3.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>oracle.jdbc</groupId>
+			<artifactId>ojdbc</artifactId>
+			<version>6</version>
+			<scope>test</scope>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>seguriSignClient</groupId>
+			<artifactId>seguriSignClient</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.dapsua</groupId>
+			<artifactId>PKI</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.dapsua</groupId>
+			<artifactId>PKISoporte</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		
+		
+		<dependency>
+		<groupId>net.sf.jasperreports</groupId>
+		<artifactId>jasperreports</artifactId>
+		<version>4.0.1</version>
+	</dependency>
+		<dependency>
+		<groupId>com.lowagie</groupId>
+		<artifactId>itext</artifactId>
+		<version>2.1.0</version>
+	</dependency>
+		<dependency>
+		<groupId>commons-lang</groupId>
+		<artifactId>commons-lang</artifactId>
+		<version>2.1</version>
+	</dependency>
+		<dependency>
+		<groupId>mx.gob.imss.mac</groupId>
+		<artifactId>poi</artifactId>
+		<version>3.5</version>
+	</dependency>
+	
+<!-- 	<dependency>
+		<groupId>mx.gob.imss.ctirss</groupId>
+		<artifactId>ws-clasificacion-empresas</artifactId>
+		<version>0.0.1</version>
+	</dependency> -->
+	
+	<dependency>
+		<groupId>mx.gob.imss.ctirss.cliente.clasificacion</groupId>
+		<artifactId>ClientesWebservicesClasificacion</artifactId>
+		<version>2.2</version>
+	</dependency>
+	
+	
+
+		<!-- Inicio OpenEJB -->
+		<dependency>
+			<groupId>org.apache.openejb</groupId>
+			<artifactId>openejb-core</artifactId>
+			<version>3.1.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>3.4.0.GA</version>
+			<scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-annotations</artifactId>
+                </exclusion>
+            </exclusions>
+		</dependency>
+		<dependency>
+		    <groupId>mx.gob.imss.ctirss.delta</groupId>
+		    <artifactId>delta-servicios-negocio-ejb</artifactId>
+		    <version>${delta.framework.version}</version>
+		    <scope>test</scope>
+	    </dependency>
+		<dependency>
+		    <groupId>mx.gob.imss.ctirss.delta.gestion.solicitud</groupId>
+		    <artifactId>gestionSolicitud-servicios-negocio-ejb</artifactId>
+		    <version>${delta.solicitud}</version>
+		    <scope>test</scope>
+	    </dependency>
+	    <dependency>
+		    <groupId>mx.gob.imss.ctirss.delta.gestion.patronal</groupId>
+		    <artifactId>delta-gestionPatronal-servicios-negocio-ejb</artifactId>
+		    <version>${delta.patronal}</version>
+		    <scope>test</scope>
+	    </dependency>
+	    <dependency>
+		    <groupId>mx.gob.imss.ctirss.delta.gestion.medio.contacto</groupId>
+		    <artifactId>gestionMediosContacto-servicios-negocio-ejb</artifactId>
+		    <version>${delta.medioscontacto}</version>
+		    <scope>test</scope>
+	    </dependency>
+	    <dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.individuo.service.ejb</groupId>
+			<artifactId>gestionIndividuo-service-business-ejb</artifactId>
+			<version>${delta.personas}</version>
+			<type>ejb</type>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.codehaus.groovy</groupId>
+					<artifactId>groovy</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	    <dependency>
+		    <groupId>org.codehaus.groovy</groupId>
+		    <artifactId>groovy-all</artifactId>
+		    <version>1.7.5</version>
+		    <scope>test</scope>
+	    </dependency>
+	    <dependency>
+			<groupId>weblogic</groupId>
+			<artifactId>wlfullclient</artifactId>
+			<version>10.3.4</version>
+			<scope>test</scope>
+			<!-- TODO regrearlo a test y pasar x otro lado las deps a JMS -->
+		</dependency>
+	<!-- Fin OpenEJB -->
+
+	
+	
+	
+	</dependencies>
+
+
+
+
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.14</version>
+                <configuration>
+                    <skipTests>${skip}</skipTests>
+                </configuration>
+            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<ejbVersion>3.0</ejbVersion>
+				</configuration>
+			</plugin>
+
+			<!-- Habilita los facets y natures para que el eclipse reconoza el proyecto 
+				como de tipo de EJB. -->
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<additionalBuildcommands>
+						<buildCommand>
+							<name>org.eclipse.jdt.core.javabuilder</name>
+						</buildCommand>
+						<buildCommand>
+							<name>org.eclipse.wst.common.project.facet.core.builder</name>
+						</buildCommand>
+						<buildCommand>
+							<name>org.eclipse.wst.validation.validationbuilder</name>
+						</buildCommand>
+					</additionalBuildcommands>
+
+					<additionalProjectnatures>
+						<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
+						<projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+						<projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+					</additionalProjectnatures>
+
+					<additionalConfig>
+						<file>
+							<name>.settings/org.eclipse.wst.common.project.facet.core.xml</name>
+							<content>
+								<![CDATA[
+								<faceted-project>
+									<runtime name="Weblogic Runtime" />
+									<fixed facet="jst.ejb" />
+									<fixed facet="jst.java" />
+									<installed facet="jst.java" version="6.0" />
+									<installed facet="jst.ejb" version="3.0" />
+								</faceted-project>
+								]]>
+							</content>
+						</file>
+						<file>
+							<name>.settings/org.eclipse.wst.common.component</name>
+							<content>
+								<![CDATA[
+								<project-modules id="moduleCoreId" project-version="1.5.0">
+									<wb-module deploy-name="${project.artifactId}">
+										<wb-resource deploy-path="/" source-path="/src/main/java" />
+										<wb-resource deploy-path="/" source-path="/src/main/resources" />
+										<property name="java-output-path" value="target/classes" />
+									</wb-module>
+								</project-modules>
+								]]>
+							</content>
+						</file>
+					</additionalConfig>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build></project>

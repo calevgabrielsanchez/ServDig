@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>mx.gob.imss.ctirss.delta.gestion.asegurado</groupId>
+	<artifactId>gestionAsegurados-interfaces-negocio</artifactId>
+	<version>2.2</version>
+
+	<name>Modulo de Interfaces de Negocio de Domicilios</name>
+	<url>http://maven.apache.org</url>
+	<packaging>jar</packaging>
+
+	<parent>
+		<artifactId>gestionAsegurados</artifactId>
+		<groupId>mx.gob.imss.ctirss.delta.gestion.asegurado</groupId>
+		<version>2.2</version>
+	</parent>
+
+	<dependencies>
+		<!-- Dependencia del Proyecto Base DELTA -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-framework-base</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Dependencia del Proyecto Base DELTA -->
+		<!-- Dependencia del Proyecto de Objetos de modelo DELTA IMSS -->
+	    <dependency>
+	      <groupId>mx.gob.imss.ctirss.delta</groupId>
+	      <artifactId>imssdigital-modelo</artifactId>
+	      <version>${delta.framework.version}</version>
+	      <type>jar</type>
+	    </dependency>
+			
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-modelo-negocio</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<version>3.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.8.1</version>
+				<configuration>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="header :: head">
+<meta name="tipo_contenido" content="text/html;"
+	http-equiv="content-type" charset="utf-8"></meta>
+</head>
+<body onload="iniciaSenso()">
+	<div class="container">
+		<div th:substituteby="header :: pageHeader"></div>
+		<label id="ultimaFecReanudacion"  th:text="@{${fecReanudacion} == null ? 0 : ${fecReanudacion}}" class="hidden"/>
+		<label id="reporteBimestralPresentar" th:text="${reporteBimestralPresentar}" class="hidden"/>
+		<input id="idAccion" th:value="${idAccion}" type="hidden" />
+		<input id="cveInformacionObra" type="hidden" th:value="${cveInformacionObra}" />
+		<input id="idBimestre" type="hidden" th:value="${bimestre}" />
+		<input id="idCveRegistroObra" type="hidden" th:value="${obra.cveRegistroObra}" />
+		<input type="hidden" id="patronAmparo" th:value="${session.patronAmparo}"/>
+		<div id="pnlDatosResumen" class="panel panel-default">
+			<div class="panel-heading">
+				<small>Registro de Incidencia</small>
+			</div>
+			<div class="panel-body text-center">
+				<div th:substituteby="registro/obra/datosPatron :: pageDatosPatron"></div>
+				<div class="row small">
+					<div class="col-sm-3 text-left">
+						<label class="control-label small" for="txtRazonSocial">N&uacute;mero registro de obra:</label>
+					</div>
+					<div class="col-sm-9 text-left">
+						<label id="lblNumRegistroObra" class="control-label small" style="font-weight: normal !important;" th:text="${obra.cveRegistroObra}"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:substituteby="registro/incidencia/datosResumenObra :: pageDatosResumenIncidencia" />
+
+		<div th:if="${idAction} == 1">
+			<div th:substituteby="registro/incidencia/datosCancelacion :: pageDatosCancelacion" />
+		</div>
+		<div th:if="${idAction} == 2">
+			<div th:substituteby="registro/incidencia/datosSuspension :: pageDatosSuspension" />
+		</div>
+		<div th:if="${idAction} == 3">
+			<div th:substituteby="registro/incidencia/datosTerminacion :: pageDatosTerminacion" />
+		</div>
+		<div th:if="${idAction} == 4">
+			<div th:substituteby="registro/incidencia/datosActualizacion :: pageDatosActualizacion" />
+		</div>
+		<div th:if="${idAction} == 5">
+			<div th:substituteby="registro/incidencia/datosReanudacion :: pageDatosReanudacion" />
+		</div>
+		<div th:if="${idAction} == 6">
+			<div th:substituteby="registro/incidencia/datosReporteBimestral :: pageDatosReporteBimestral" />
+		</div>
+		<div th:if="${idAction} == 7">
+			<div th:substituteby="registro/incidencia/datosRemplazo :: pageDatosRemplazo" />
+		</div>
+		<div id="pnlAcuseRegIncidencia" class="panel panel-success hidden">
+			<div class="panel-heading" th:if="${idAction} != 7">Registro de incidencia</div>
+			<div class="panel-heading" th:if="${idAction} == 7">Registro de remplazo de obra</div>
+			<div class="panel-body text-center" style="min-height: 400px;">
+				<iframe id="pnlRepIncidencia" th:src="@{value}" height="250px" width="100%"></iframe>
+				<br></br> <br></br>
+				<div class="alert alert-info">
+					<strong th:if="${idAction} != 7">Incidencia registrada correctamente.</strong>
+					<strong th:if="${idAction} == 7">Remplazo de obra registrado correctamente.</strong>
+					<small>Se ha enviado una copia del acuse a su correo electr&oacute;nico.</small>
+				</div>
+			</div>
+		</div>
+		<div id="feedback">
+		<div class="col-sm-12 text-left ">
+			<p id="lblObligatorios" class="text-muted small">* Campos obligatorios</p>
+		</div>
+		</div>
+		<br></br>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="col-sm-6 text-left">
+					<form>
+						<button value="submit" formaction="/sdroc_web/escritorio" type="submit" class="btn btn-default btn-sm" id="btnRegresarResumen">Cancelar</button>
+					</form>	
+				</div>
+				<div id="pnlFinish" class="col-sm-6 text-right">
+					<button class="btn btn-primary btn-sm" id="btnRegistroIncidencia" th:text="${btnAccion}"></button>
+				</div>
+			</div>
+		</div>
+		<br></br> <br></br>
+		<div id="regIncidenciaModal">
+			<div >
+				<div>
+					<div>
+						<p id="msgConfirmacion" class="small" />
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="hidden" id="msgsValidacionObraReinicio">
+			<p class="small" th:text="#{validacionObra.reinicio}"/>
+		</div>
+	</div>
+</body>
+</html>

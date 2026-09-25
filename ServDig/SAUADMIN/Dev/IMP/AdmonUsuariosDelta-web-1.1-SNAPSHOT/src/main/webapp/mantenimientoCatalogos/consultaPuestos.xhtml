@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<style type="text/css">
+.alignmentLeft {
+	text-align: left;
+}
+</style>
+<ui:composition template="../plantillas/plantilla.xhtml">
+	<ui:define name="body">
+		<h:form>
+			<fieldset style="border: 1px solid silver; margin: 0; padding: 10px;">
+				<div align="left" id="general">
+					<ace:panel header="Datos Generales">
+						<h:panelGrid id="pnRegSolicitudCuentaCrPre3" columns="6" width="100%">
+
+							<h:outputLabel value="Area Normativa:" id="lbAreaNormRegSolicitudCuenta" />
+							<h:selectOneMenu id="slAreaNormRegSolicitudCuenta"
+								required="false" requiredMessage="SELECCIONE EL AREA NORMATIVA"
+								disabled="#{consultaGenerica.flag}"
+								value="#{consultaGenerica.claveAreaNormativa}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${consultaGenerica.lstAreaNormativa}" />
+							</h:selectOneMenu>
+
+							<h:outputLabel value="Departamento:" id="lbDepRegSolicitudCuenta" />
+							<h:selectOneMenu id="slDepRegSolicitudCuenta" required="false"
+								requiredMessage="SELECCIONE EL DEPARTAMENTO"
+								disabled="#{consultaGenerica.flag}"
+								value="#{consultaGenerica.claveDepartamento}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${consultaGenerica.lstDepartamento}" />
+							</h:selectOneMenu>
+
+							<h:outputLabel value="Puesto:" id="lbPuestoRegSolicitudCuenta" />
+							<h:selectOneMenu id="slPuestoRegSolicitudCuenta" required="false"
+								requiredMessage="SELECCIONE EL PUESTO"
+								disabled="#{consultaGenerica.flag}"
+								value="#{consultaGenerica.clavePuesto}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${consultaGenerica.lstPuesto}" />
+							</h:selectOneMenu>
+
+							<h:outputLabel value="Delegación:   "
+								id="lbDelRegSolicitudCuenta" />
+							<h:selectOneMenu id="slDelRegSolicitudCuenta" required="false"
+								requiredMessage="SELECCIONE LA DELEGACION"
+								disabled="#{consultaGenerica.flag}"
+								value="#{consultaGenerica.claveDelegacion}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${consultaGenerica.lstDelegacion}" />
+							</h:selectOneMenu>
+
+							<h:outputLabel value="SubDelegación:"
+								id="lbSubRegSolicitudCuenta" />
+							<h:selectOneMenu id="slSubRegSolicitudCuenta" required="false"
+								requiredMessage="SELECCIONE LA SUBDELEGACION"
+								disabled="#{consultaGenerica.flag}"
+								value="#{consultaGenerica.claveSubdelegacion}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${consultaGenerica.lstSubDelegacion}" />
+							</h:selectOneMenu>
+
+							<h:outputLabel value="UMF: " id="lbUMFRegSolicitudCuenta" />
+							<h:selectOneMenu id="slUMFRegSolicitudCuenta"
+								disabled="#{consultaGenerica.flag}"
+								value="#{consultaGenerica.claveUMF}" style="width:200px">
+								<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+								<f:selectItems value="${consultaGenerica.lstUMF}" />
+							</h:selectOneMenu>
+
+						</h:panelGrid>
+
+						<h:panelGrid id="pnRegSolicitudCuentaC" columns="1" width="100%">
+							<h:message for="slAreaNormRegSolicitudCuenta"
+								id="msgAreaNormRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slDepRegSolicitudCuenta"
+								id="msgDepRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slPuestoRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slDelRegSolicitudCuenta"
+								id="msgDelRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slSubRegSolicitudCuenta" errorClass="error" />
+							<h:message for="slUMFRegSolicitudCuenta" errorClass="error"></h:message>
+						</h:panelGrid>
+					</ace:panel>
+				</div>
+			</fieldset>
+		</h:form>
+		<!-- -->
+		<fieldset style="border: 1px solid silver; margin: 0; padding: 10px;">
+			<div id="titulo" align="center">
+				<h3>Mantenimiento al catálogo puestos</h3>
+			</div>
+			<h:form id="catPueS">
+				<h:inputHidden id="cvePuesto" name="cvePuesto"
+					value="#{puestosMB.cvePuesto}" />
+				<!--h:inputHidden id="descripcion" name="descripcion" value="#{puestosMB.descripcion}"/ -->
+				<div align="center">
+					<style type="text/css">
+					/* Important required because row */
+					.ui-datatable-odd {
+						background-color: lightgray !important;
+						background-position-y: -1400px; /* IE7 hack */
+					}
+					</style>
+
+
+					<ace:dataTable id="stat" value="#{puestosMB.puestos}" var="pueS"
+						paginator="true" paginatorPosition="bottom"
+						resizableColumns="true" style="width:70%" rows="15">
+
+						<ace:column id="des_sta" headerText="Descripción"
+							sortBy="#{pueS.desPuesto}" style="width:80%"
+							filterBy="#{pueS.desPuesto}">
+							<h:outputText name="idRowData" value="#{pueS.desPuesto}" />
+						</ace:column>
+
+						<ace:column id="cve_sta" headerText="Seleccionar"
+							style="width:20%">
+							<input type="radio" name="grupoUno" id="grupoUno"
+								onclick='changeSelected("#{pueS.cveSsopuesto}", "#{pueS.desPuesto}")' />
+						</ace:column>
+
+					</ace:dataTable>
+
+					<br />
+					<table border="1">
+
+						<tr>
+							<td><h:commandButton value=" Eliminar "
+									action="#{puestosMB.delete}" /></td>
+							<td><h:commandButton type="button"
+									onclick="modificarPueS.show();" value=" Modificar " /></td>
+							<td><h:commandButton type="button"
+									onclick="crearPueS.show();" value=" Crear " /></td>
+
+						</tr>
+					</table>
+
+					<ace:dialog id="dialog1" header="Crear Un nuevo Puesto"
+						widgetVar="crearPueS" closable="false" modal="true"
+						draggable="false" showEffect="clip" hideEffect="fade" width="600">
+
+						<h:panelGrid columns="2" columnClasses="alignmentLeft"
+							width="100%" cellpadding="0" cellspacing="0">
+							<h:outputLabel value="Descripción:" />
+							<h:inputText size="50" id="descripcionCrear"
+								value="#{puestosMB.descripcionCrear}" />
+						</h:panelGrid>
+						<br />
+						<br />
+						<h:panelGrid columns="2" width="100%">
+							<h:commandButton onclick="crearPueS.hide();"
+								value="  Crear Puesto  " action="#{puestosMB.add}" />
+							<h:commandButton type="button" onclick="crearPueS.hide();"
+								value="  Cancelar  " />
+						</h:panelGrid>
+
+					</ace:dialog>
+
+					<ace:dialog id="dialog" header="Modificar Puesto"
+						widgetVar="modificarPueS" closable="false" modal="true"
+						draggable="false" showEffect="clip" hideEffect="fade" width="600">
+
+						<h:panelGrid columns="2" columnClasses="alignmentLeft"
+							width="100%" cellpadding="0" cellspacing="0">
+							<h:outputLabel value="Descripción:" />
+							<h:inputText size="50" id="descripcion"
+								value="#{puestosMB.descripcion}" />
+						</h:panelGrid>
+						<br />
+						<br />
+						<h:panelGrid columns="2" width="100%">
+							<h:commandButton onclick="crearPueS.hide();"
+								value="  Modificar Puesto  " action="#{puestosMB.update}" />
+							<h:commandButton type="button" onclick="modificarPueS.hide();"
+								value="  Cancelar  " />
+						</h:panelGrid>
+
+					</ace:dialog>
+				</div>
+			</h:form>
+		</fieldset>
+		<script type="text/javascript">
+			var valorCveSta;
+			function changeSelected(cve, descPst) {
+				valorCveSta = cve;
+				var slctd = document.getElementById('catPueS:cvePuesto')
+				var desC11 = document.getElementById('catPueS:descripcion')
+				desC11.value = descPst
+				slctd.value = valorCveSta;
+			}
+		</script>
+	</ui:define>
+</ui:composition>
+</html>

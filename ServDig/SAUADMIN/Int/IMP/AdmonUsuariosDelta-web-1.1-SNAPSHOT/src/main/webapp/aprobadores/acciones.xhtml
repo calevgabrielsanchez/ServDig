@@ -1,0 +1,66 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+
+<h:panelGrid width="100%" columns="3" styleClass="centeredPanelGrid" style="text-align:right;margin: 0; padding: 10px; font-size: 10px;">
+
+	<ace:menuButton id="acciones" effect="slide" value="Registro de cuentas de usuario">
+		
+		<ace:menuItem value="Registro Generico" rendered="#{usuarioMB.aprobadorSession.tipoAprobador eq 1 or usuarioMB.aprobadorSession.tipoAprobador eq 3}" onclick="dialogRegistroAdmon.show()" style="text-align:left;">
+			<ace:ajax execute="@this" render="@this" listener="#{registraSolicitudAdmonMB.inicializaSolicitud2}" immediate="true"/>
+		</ace:menuItem>
+
+		<ace:menuItem value="En esta área de adscripción" 
+			rendered="#{usuarioMB.aprobadorSession.tipoAprobador eq 0 
+			or usuarioMB.aprobadorSession.tipoAprobador eq 2 
+			or usuarioMB.aprobadorSession.tipoAprobador eq 11 
+			or usuarioMB.aprobadorSession.tipoAprobador eq 33}" 
+			onclick="dialogRegistro.show()" style="text-align:left;">
+			<ace:ajax execute="@this" render="@this" listener="#{registraSolicitudMB.inicializaSolicitud2}" immediate="true"/>
+		</ace:menuItem>
+
+		<ace:menuItem value="En otra área de adscripción" 
+			rendered="#{(usuarioMB.aprobadorSession.tipoAprobador eq 0 
+			or usuarioMB.aprobadorSession.tipoAprobador eq 2 
+			or usuarioMB.aprobadorSession.tipoAprobador eq 11 
+			or usuarioMB.aprobadorSession.tipoAprobador eq 33) and usuarioMB.aprobadorSession.solicitud.areaNormativaId != 4}"
+		 	onclick="dialogRegistroAds.show()" style="text-align:left;">
+			<ace:ajax execute="@this" render="@this" listener="#{registraSolicitudAdsMB.inicializaSolicitud2}" immediate="true"/>
+		</ace:menuItem>
+
+		<ace:menuItem value="En hospitales de 2do y 3er nivel" rendered="#{usuarioMB.aprobadorSession.tipoAprobador eq 2 or usuarioMB.aprobadorSession.tipoAprobadorDpes eq 11332}" onclick="dialogRegistroHos.show()" style="text-align:left;">
+			<ace:ajax execute="@this" render="@this" listener="#{registraSolicitudDelegacionMB.inicializaSolicitud2}" immediate="true"/>
+		</ace:menuItem>
+
+		<ace:menuItem value="Registro de administradores" onclick="dialogAdminis.show()" style="text-align:left;">
+			<ace:ajax execute="@this" render="@all" listener="#{mantenimientoAprobadoresMB.inicializaRegistroAdmin}" immediate="true"/>
+		</ace:menuItem>
+
+		<ace:menuItem value="Consulta de notificaciones" onclick="dialogNotif.show()" style="text-align:left;">
+			<ace:ajax execute="@this" render="@all" listener="#{notificarSolicitudMB.inicializaParametros2}" immediate="true"/>
+		</ace:menuItem>
+
+		<ace:menuItem value="Recuperación de contraseña" style="text-align:left;" action="#{recuperacionController.inicializaRecuperacionNew}" onclick="bloquea();">
+		</ace:menuItem>
+
+		<ace:menuItem id="r" value="Recuperar cuenta" style="text-align:left;" onclick="recuperaCuenta.show();">
+			<f:attribute name="cuenta" value="#{solicitud.desUsrCurp}" />
+			<ace:ajax event="activate" execute="@all" render="@all" listener="#{solicitudPrincipalMB.recuperarCuenta}" immediate="true" />
+		</ace:menuItem>
+		
+		<ace:menuItem id="idRecuperaOtraAdscripcion" value="Recuperar cuenta en otra área de adscripción" 
+			rendered="#{usuarioMB.aprobadorSession.tipoAprobador eq 33 and usuarioMB.aprobadorSession.solicitud.areaNormativaId eq 3}"
+			style="text-align:left;" onclick="recuperaCuentaOtraAdscripcion.show();">
+			<ace:ajax event="activate" execute="@all" render="@all" listener="#{recuperaSolicitudOtraAdscripcionMB.obtenerDatosUsuario}" immediate="true" />
+		</ace:menuItem>
+
+	</ace:menuButton>
+</h:panelGrid>
+
+</html>

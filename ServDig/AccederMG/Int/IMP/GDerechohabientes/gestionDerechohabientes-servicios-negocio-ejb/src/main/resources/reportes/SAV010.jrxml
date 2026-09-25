@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SVA010" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="nss" class="java.lang.String"/>
+	<field name="curp" class="java.lang.String"/>
+	<field name="clinica" class="java.lang.String"/>
+	<field name="umf" class="java.lang.String"/>
+	<field name="nombreDerechohabiente" class="java.lang.String"/>
+	<field name="patron" class="java.lang.String"/>
+	<field name="fechaBaja" class="java.util.Date"/>
+	<field name="curpDerechohabiente" class="java.lang.String"/>
+	<field name="lugar" class="java.lang.String"/>
+	<field name="fecha" class="java.util.Date"/>
+	<field name="empleado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="123" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="2" width="265" height="20" forecolor="#003399"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTITUTO MEXICANO DEL SEGURO SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="23" width="265" height="22" forecolor="#003399"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[SERVICIOS DE AFILIACION VIGENCIA DE DERECHOS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="103" width="302" height="20" forecolor="#003399"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AVISO DE BAJA EN CLINICA DE ADSCRIPCION]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="279" y="44" width="100" height="44"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="387" y="22" width="186" height="42"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="387" y="76" width="186" height="40"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="394" y="96" width="173" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[C.U.R.P.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="44" width="173" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NÚMERO DE SEGURIDAD SOCIAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="279" y="66" width="100" height="1"/>
+			</line>
+			<line>
+				<reportElement x="387" y="96" width="186" height="1"/>
+			</line>
+			<line>
+				<reportElement x="387" y="44" width="186" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="279" y="67" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[CLÍNICA REMITENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="515" y="3" width="57" height="20" forecolor="#003399"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[S.A.V. 010]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="394" y="25" width="173" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nss}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="394" y="77" width="173" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{curp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="46" width="92" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clinica}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="269" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="11" width="572" height="169"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="28" y="24" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[C. DIRECTOR DE LA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="44" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[UNIDAD MÉDICA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="128" y="59" width="100" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="28" y="88" width="250" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[COMUNICO A USTED QUE EL DERECHOHABIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="113" width="377" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[QUE FUE ENVIADO A ESA UNIDAD MEDICA CAUSO BAJA CON EL PATRÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="143" width="44" height="20"/>
+				<textElement/>
+				<text><![CDATA[EL DÍA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="288" y="104" width="276" height="1"/>
+			</line>
+			<line>
+				<reportElement x="411" y="128" width="153" height="1"/>
+			</line>
+			<line>
+				<reportElement x="72" y="156" width="156" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="5" y="236" width="265" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[LUGAR Y FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="234" width="272" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NOMBRE Y FIRMA DEL EMPLEADO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="295" y="232" width="272" height="1"/>
+			</line>
+			<line>
+				<reportElement x="6" y="234" width="265" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="130" y="39" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{umf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="415" y="109" width="149" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{patron}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="84" width="170" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombreDerechohabiente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="467" y="85" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{curpDerechohabiente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="13" y="194" width="257" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{lugar}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="72" y="143" width="156" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaBaja}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="13" y="216" width="257" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="295" y="212" width="269" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{empleado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+</jasperReport>

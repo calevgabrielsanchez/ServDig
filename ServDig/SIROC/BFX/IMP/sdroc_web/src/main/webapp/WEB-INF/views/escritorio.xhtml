@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="header :: head">
+<meta name="tipo_contenido" content="text/html;"
+	http-equiv="content-type" charset="utf-8"></meta>
+</head>
+<body>
+       
+       <noscript>
+       		<p>
+       			<img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=17183199&amp;ns_site=gobmx&amp;name=imss.asegurados.asignacionNSS.inicio" height="1" width="1" alt="*"></img>
+       		</p>
+       </noscript>
+ 
+	<div class="container">
+		<div th:substituteby="header :: pageHeader"></div>
+		<div id="pageResumenDatosObra" th:fragment="pageObraResumen">
+			<div class="panel-group" id="accordion">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<!--       <h4 class="panel-title"> -->
+						<div class="row">
+							<div class="col-sm-6 text-left">
+								<small th:text="#{escritorio.titulo}" />
+							</div>
+							<div class="col-sm-6 text-right">
+								<a class="accordion-toggle" data-toggle="collapse"
+									data-parent="#accordion" href="#collapseOne"> <img
+									id="imgCollapsable"
+									src="/sdroc_web/static/images/panel-collapsed.png"
+									style="width: 25px"></img>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse in">
+						<div id="pnlInformation" class="panel-body text-center">
+							<div
+								th:substituteby="registro/obra/datosPatron :: pageDatosPatron" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<nav class="navbar navbar-default">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<a class="navbar-brand " href="#"> <label class="small"
+									th:text="#{reg.incidencia.menu.title}" />
+								</a>
+							</div>
+							<ul class="nav navbar-nav right">
+								<li class="active"><a th:href="@{/registro}"
+									th:text="#{reg.incidencia.menu.registro}" class="small" /></li>
+								<li><a th:href="@{/consulta}"
+									th:text="#{reg.incidencia.menu.consulta}" class="small" /></li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+
+			<br></br>
+			<div class="alert alert-info small" th:text="#{info.cantidadesobrasuperficie}">
+			</div>
+			<div id="pnlTablero" class="panel panel-default">
+				<div class="panel-heading">
+					<small th:text="#{escritorio.tabla.titulo}" />
+				</div>
+				<div class="panel-body text-center small">
+					<div class="hidden" id="msgsEscritorio">
+						<p th:text="#{actualizacion.warning}" />
+					</div>
+					<div class="hidden" id="msgsValidacionObra">
+						<p th:text="#{validacionObra.warning}" />
+					</div>
+					<div class="hidden" id="msgsBimestreIncumplido">
+						<p th:text="#{actualizacion.warning.bimestre.incumplido}" />
+					</div>
+					<div class="hidden" id="msgReporteBimestralRN">
+						<p th:text="#{reporteBimestral.rn.general}" />
+					</div>
+					<table id="tblEscritorio" class="table table-striped">
+						<thead>
+							<tr>
+								<th th:text="as" class="hidden"></th>
+								<th th:text="ab" class="hidden"></th>
+								<th th:text="#{escritorio.tabla.contador}" class="small"></th>
+								<th th:text="#{escritorio.tabla.num.registro}" class="small"></th>
+								<th th:text="#{escritorio.tabla.cumplimiento}"
+									class="text-center small"><span
+									class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true" />
+								</th>
+								<th th:text="#{escritorio.tabla.estatus}" class="small"><span
+									class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true" />
+								</th>
+								<th th:text="#{escritorio.tabla.acciones}" class="small" />
+							</tr>
+						</thead>
+						<tbody class="searchable">
+							<tr th:each="obra, it : ${lstObrasRegistradas}"
+								class="text-left small">
+								<td class="hidden"><input th:value="${obra.numActualiza}" />
+								</td>
+								<td class="hidden"><label
+									th:text="${obra.numEvaluacionD32}" /></td>
+								<td th:text="${it.count}" />
+								<td th:text="${obra.cveRegistroObra}" />
+								<td class="text-center"><img
+									th:src="@{ ${obra.numIncumplimientos} != 1 ? (${obra.numIncumplimientos} >= 2 ? '/static/images/red.png' : '/static/images/green.png') : '/static/images/yellow.png'}"
+									width="25px;" height="25px;"></img></td>
+								<td th:text="${obra.estatusObraDTO.desEstatusObra}" />
+								<td>
+									<div
+										th:if="${obra.estatusObraDTO.cveEstatusObra != 3 and obra.estatusObraDTO.cveEstatusObra != 5}">
+										<select onchange="accionIncidencias(this)">
+											<option th:id="${obra.cveRegistroObra}" value=""
+												selected="selected" th:text="#{reg.obra.default.select}" />
+											<option
+												th:if="${obra.estatusObraDTO.cveEstatusObra == 1 or obra.estatusObraDTO.cveEstatusObra == 2 or obra.estatusObraDTO.cveEstatusObra == 4}"
+												th:id="${obra.cveRegistroObra}" value="/sdroc_web/cancelar/"
+												th:text="#{escritorio.tabla.cancela}" />
+											<option
+												th:if="${(obra.estatusObraDTO.cveEstatusObra == 1 or obra.estatusObraDTO.cveEstatusObra == 2)}"
+												th:id="${obra.cveRegistroObra}"
+												value="/sdroc_web/actualizar/"
+												th:text="#{escritorio.tabla.actualiza}" />
+
+											<option
+												th:if="${obra.estatusObraDTO.cveEstatusObra == 1 or obra.estatusObraDTO.cveEstatusObra == 2}"
+												th:id="${obra.cveRegistroObra}"
+												value="/sdroc_web/suspender/"
+												th:text="#{escritorio.tabla.suspencion}" />
+
+											<option
+												th:if="${obra.estatusObraDTO.cveEstatusObra == 1 or obra.estatusObraDTO.cveEstatusObra == 2}"
+												th:id="${obra.cveRegistroObra}" value="/sdroc_web/terminar/"
+												th:text="#{escritorio.tabla.terminacion}" />
+
+											<option th:if="${obra.estatusObraDTO.cveEstatusObra == 4}"
+												th:id="${obra.cveRegistroObra}" value="/sdroc_web/reanudar/"
+												th:text="#{escritorio.tabla.reanudacion}" />
+
+											<option
+												th:if="${obra.estatusObraDTO.cveEstatusObra == 1 or obra.estatusObraDTO.cveEstatusObra == 2 or obra.estatusObraDTO.cveEstatusObra == 4}"
+												th:id="${obra.cveRegistroObra}"
+												value="/sdroc_web/reporteBimestral/"
+												th:text="#{escritorio.tabla.reporte.bimestral}" />
+										</select>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="text-left">
+						<button class="btn btn-danger btn-sm" id="btnClosePantalla" th:text="#{escritorio.cerrar}" onclick="uid_call('imss.patrones.registro_obra.escritorio.btn_cancelar','clickout')" />
+					</div>
+				</div>
+			</div>
+			<br></br>
+
+		</div>
+	</div>
+</body>
+</html>
+
+

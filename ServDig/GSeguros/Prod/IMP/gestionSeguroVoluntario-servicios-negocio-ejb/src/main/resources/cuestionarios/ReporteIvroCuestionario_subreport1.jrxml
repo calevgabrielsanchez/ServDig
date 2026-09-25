@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteIvroCuestionario_subreport1" pageWidth="572" pageHeight="752" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.6500000000000001"/>
+	<property name="ireport.x" value="199"/>
+	<property name="ireport.y" value="230"/>
+	<parameter name="testvo" class="mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.model.CuestionarioVO"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<columnHeader>
+		<band height="433">
+			<rectangle>
+				<reportElement x="22" y="59" width="264" height="357"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="25" y="73" width="105" height="18"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1. ALERGIA O ASMA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="105" width="187" height="18"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2. ENFERMEDADES CRONICAS DE LA SANGRE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="134" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[3. CANCER O TUMORES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="166" width="132" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[4. DIABETES MELLITUS CON:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="188" width="100" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[A) INSUFICIENCIA RENAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="208" width="100" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[B) RETINOPATIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="228" width="100" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[C) NEUROPATIA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="159" y="191" width="52" height="1"/>
+			</line>
+			<line>
+				<reportElement x="130" y="214" width="81" height="1"/>
+			</line>
+			<line>
+				<reportElement x="125" y="238" width="86" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="64" y="246" width="100" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[D) INSUFICIENCIA CIRCULATORIA
+  PERIFERICA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="128" y="261" width="81" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="27" y="289" width="147" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[5. ENFERMEDADES DEL CORAZÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="319" width="147" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[6. ENFERMEDADES DEL HIGADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="345" width="193" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[7. ENF. NERVIOSAS O PSIQUIÁTRICAS CRÓNICAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="376" width="193" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[8. PRESIÓN ARTERIAL ALTA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="286" y="59" width="263" height="357"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="288" y="77" width="121" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[9. REUMATISMO O ARTRITIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="109" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[10.  TUBERCOLOSIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="140" width="176" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[11. ULCERA DEL ESTOMAGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="172" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[12. SIDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="199" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[13. V.I.H. POSITIVO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="234" width="212" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[14. ENFERMEDADES CONGÉNITAS (DE NACIMIENTO)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="266" width="207" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[15. BRONQUITIS CRÓNICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="297" width="158" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[16. ACCIDENTE VASCULAR O EMBOLIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="325" width="218" height="46"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[17. DEFORMACIONES O LIMITACIONES
+ DE MOVIMIENTO POR ACCIDENTES
+O ENFERMEDADES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="369" width="178" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[18. ALCOHOLISMO ADICTIVO (FRECUENTE)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="392" width="208" height="28"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[19. ADICCIÓN POR SUSTANCIAS TÓXICAS
+  (FRECUENTE )]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement x="245" y="67" width="22" height="21"/>
+			</ellipse>
+			<line>
+				<reportElement x="121" y="81" width="125" height="1"/>
+			</line>
+			<line>
+				<reportElement x="211" y="112" width="53" height="1"/>
+			</line>
+			<line>
+				<reportElement x="130" y="144" width="134" height="1"/>
+			</line>
+			<line>
+				<reportElement x="164" y="296" width="75" height="1"/>
+			</line>
+			<line>
+				<reportElement x="164" y="324" width="75" height="1"/>
+			</line>
+			<line>
+				<reportElement x="221" y="350" width="18" height="1"/>
+			</line>
+			<line>
+				<reportElement x="143" y="383" width="96" height="1"/>
+			</line>
+			<line>
+				<reportElement x="390" y="114" width="120" height="1"/>
+			</line>
+			<line>
+				<reportElement x="402" y="146" width="105" height="1"/>
+			</line>
+			<line>
+				<reportElement x="332" y="179" width="178" height="1"/>
+			</line>
+			<line>
+				<reportElement x="364" y="205" width="146" height="1"/>
+			</line>
+			<line>
+				<reportElement x="495" y="240" width="15" height="1"/>
+			</line>
+			<line>
+				<reportElement x="421" y="278" width="89" height="1"/>
+			</line>
+			<line>
+				<reportElement x="450" y="302" width="60" height="1"/>
+			</line>
+			<line>
+				<reportElement x="450" y="334" width="60" height="1"/>
+			</line>
+			<line>
+				<reportElement x="464" y="375" width="46" height="1"/>
+			</line>
+			<line>
+				<reportElement x="454" y="402" width="55" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="250" y="68" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaUna()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="244" y="102" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="249" y="103" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaDos()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="244" y="135" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="249" y="136" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaTres()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="210" y="180" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="214" y="182" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaCuartoA()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="209" y="251" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="214" y="254" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaCuartoD()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="209" y="228" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="214" y="229" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaCuartoC()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="209" y="204" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="214" y="205" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaCuartoB()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="241" y="286" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="246" y="287" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaCinco()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="240" y="312" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="245" y="313" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaSeis()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="239" y="340" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="244" y="341" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaSiete()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="241" y="372" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="246" y="373" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaOcho()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="409" y="83" width="100" height="1"/>
+			</line>
+			<ellipse>
+				<reportElement x="505" y="74" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="510" y="75" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaNueve()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="508" y="102" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="513" y="103" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaDiez()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="508" y="133" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="513" y="134" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaOnce()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="508" y="168" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="513" y="169" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaDoce()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="508" y="196" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="513" y="197" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaTrece()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="508" y="228" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="513" y="229" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaCatorce()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="508" y="269" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="513" y="270" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaQuince()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="508" y="292" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="513" y="293" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaDieciseis()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="508" y="322" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="513" y="323" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaDiecisiete()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="508" y="366" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="513" y="367" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaDieciocho()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="508" y="393" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="513" y="395" width="14" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaDiecinueve()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="28" width="587" height="31"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  4. HISTORIA DE ENFERMEDADES  MARQUE SI PADECE
+ALGUNA DE LAS ENFERMEDADES SIGUIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="268" width="100" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[E) NINGUNA DE LAS ANTERIORES]]></text>
+			</staticText>
+			<line>
+				<reportElement x="125" y="283" width="84" height="1"/>
+			</line>
+			<ellipse>
+				<reportElement x="209" y="272" width="22" height="21"/>
+			</ellipse>
+			<textField>
+				<reportElement x="213" y="275" width="14" height="17"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{testvo}.getPreguntaCuartoNoNe()]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+</jasperReport>

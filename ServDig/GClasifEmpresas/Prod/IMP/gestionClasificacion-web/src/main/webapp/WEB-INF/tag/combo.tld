@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.1</jsp-version>
+	<short-name>combo</short-name>
+	<uri></uri>
+	<description>Taglib para la creacion dinamica de combos</description>
+	<tag>
+		<name>creaCombo</name>
+		<tag-class>
+	mx.gob.imss.ctirss.delta.gestion.clasificacion.web.utils.ComboTag</tag-class>
+		<body-content>empty</body-content>
+		<description>Taglib para la creacion dinamica de combos</description>
+		<attribute>
+			<name>entidad</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>idHtml</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>					
+		<attribute>
+			<name>entidadPadre</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>idHtmlPadre</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>idHtmlContenedor</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>		
+	</tag>
+</taglib>

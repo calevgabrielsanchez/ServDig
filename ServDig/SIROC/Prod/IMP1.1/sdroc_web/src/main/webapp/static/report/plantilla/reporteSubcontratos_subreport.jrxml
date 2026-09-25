@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteRegistroObra_subreport1" pageWidth="830" pageHeight="200" columnWidth="830" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="cveRegistroObra" class="java.lang.String"/>
+	<field name="informacionPatronDTO.refRazonSocial" class="java.lang.String"/>
+	<field name="informacionPatronDTO.tipoPatronDTO.desTipoPatron" class="java.lang.String"/>
+	<field name="numEvaluacionD32" class="java.lang.Integer"/>
+	<field name="impObra" class="java.lang.Double"/>
+	<field name="estatusObraDTO.desEstatusObra" class="java.lang.String"/>
+	<variable name="contador" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[Boolean.TRUE]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="50" y="0" width="100" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cveRegistroObra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="50" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{contador}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="80" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{informacionPatronDTO.tipoPatronDTO.desTipoPatron}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #,##0">
+				<reportElement x="710" y="0" width="120" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{impObra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="300" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{informacionPatronDTO.refRazonSocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="0" width="80" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numEvaluacionD32}!=1?($F{numEvaluacionD32}==3?"Rojo":"Amarillo"):"Verde"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="610" y="0" width="100" height="30"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{estatusObraDTO.desEstatusObra}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

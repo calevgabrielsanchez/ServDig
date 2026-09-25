@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title"			value=" Instituto Mexicano del Seguro Social " />
+		<put-attribute name="navegacion" 	value="/WEB-INF/views/layout/navegacion.jsp" />
+	</definition>
+		
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>	
+	<definition name="databaseError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>	
+	<definition name="internalError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>	
+	<definition name="500" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>	
+	<definition name="404" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+	
+	<!-- Pantallas RISS -->
+	<definition name="iniciarRiss" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/beneficio/riss/inicio.jsp" />
+	</definition>	
+	<definition name="confirmarDatosRiss" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/beneficio/riss/confirmarDatos.jsp" />
+	</definition>	
+	<definition name="confirmarDatosAdicionalesRiss" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/beneficio/riss/datosAdicionales.jsp" />
+	</definition>	
+	<definition name="resultadoValidacionRiss" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/beneficio/riss/resultadoValidacion.jsp" />
+	</definition>	
+	<definition name="concluirRiss" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/beneficio/riss/concluirSolicitud.jsp" />
+	</definition>
+	
+</tiles-definitions>

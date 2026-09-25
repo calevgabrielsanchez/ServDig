@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SecccionVI-d" pageWidth="612" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="592" leftMargin="0" rightMargin="20" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="2.196150000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Titulo Aviso" hAlign="Left" lineSpacing="Single" fontSize="13" isBold="true" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="base" lineSpacing="Single" fontSize="7" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="fondo" backcolor="#00CCFF" lineSpacing="Single"/>
+	<style name="fondoEncabezado" backcolor="#0000FF" lineSpacing="Single"/>
+	<style name="Titulo Encabezado" lineSpacing="Single" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="baseBold" lineSpacing="Single" fontSize="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+	<style name="vineta" lineSpacing="Single" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<parameter name="P_REGPATRONAL" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="numTrabajadores" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[numTrabajadores]]></fieldDescription>
+	</field>
+	<field name="oficioOcupacion" class="java.lang.String">
+		<fieldDescription><![CDATA[oficioOcupacion]]></fieldDescription>
+	</field>
+	<columnHeader>
+		<band height="48">
+			<staticText>
+				<reportElement style="baseBold" positionType="Float" mode="Opaque" x="23" y="8" width="528" height="20" backcolor="#F2F2F2"/>
+				<box>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Personal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" positionType="Float" x="124" y="28" width="427" height="20"/>
+				<box>
+					<pen lineColor="#AFB1B1"/>
+					<topPen lineWidth="0.75" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.75" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.75" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.75" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single" markup="html">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Oficio u ocupaci&oacute;n]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" positionType="Float" x="23" y="28" width="101" height="20"/>
+				<box>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single" markup="html">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[N&uacute;mero de
+ Trabajadores]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" positionType="Float" x="124" y="0" width="427" height="20"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.75" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.75" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.75" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.75" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{oficioOcupacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" positionType="Float" x="23" y="0" width="101" height="20"/>
+				<box>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{numTrabajadores}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

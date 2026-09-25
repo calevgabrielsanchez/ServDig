@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title"
+			value="Portal Ventanilla de Servicios IMSS Digital" />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="infoUsuario"
+			value="/WEB-INF/views/layout/infoUsuario.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<definition name="simple.base.definition" template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title"			value="Portal Ventanilla de Servicios IMSS Digital" />
+		<put-attribute name="encabezado"	value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado-simple.jsp" />
+		<put-attribute name="pie" 			value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<definition name="wizard.base.definition" template="/WEB-INF/views/layout/main-wizard.jsp">
+		<put-attribute name="title" value=" Portal Ventanilla de Servicios IMSS Digital " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-empty.jsp" />
+	</definition>
+	
+	<definition name="base.error.definition" template="/WEB-INF/views/layout/main-error.jsp">
+		<put-attribute name="title"
+			value="Portal Ventanilla de Servicios IMSS Digital" />
+	</definition>
+
+	<definition name="home" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/portal/menuPrincipal.jsp " />
+	</definition>
+
+	<definition name="vistaTramite" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/portal/vistaTramite.jsp " />
+	</definition>
+	
+	<!-- Definiciones de los errores en general -->
+	<definition name="error" extends="base.error.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="databaseError" extends="base.error.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="internalError" extends="base.error.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="500" extends="base.error.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="404" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+	
+</tiles-definitions>

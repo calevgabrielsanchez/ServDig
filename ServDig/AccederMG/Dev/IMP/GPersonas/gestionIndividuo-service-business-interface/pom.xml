@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>gestionIndividuo</artifactId>
+		<groupId>mx.gob.imss.ctirss.delta.gestion.individuo</groupId>
+		<version>2.4</version>
+	</parent>
+
+	<groupId>mx.gob.imss.ctirss.delta.gestion.individuo.service.interface</groupId>
+	<artifactId>gestionIndividuo-service-business-interface</artifactId>
+	<name>gestionIndividuo-service-business-interface</name>
+	
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<version>3.0</version>
+			<scope>provided</scope>			
+		</dependency>		
+
+		<!-- Dependencia del Proyecto Base DELTA -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-framework-base</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+			<scope>provided</scope>	
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-modelo-negocio</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+			<scope>provided</scope>	
+		</dependency>
+        <dependency>
+            <groupId>mx.gob.imss.ws.buzontributario.individual</groupId>
+            <artifactId>ClientesWebservices-buzon-tributario</artifactId>
+            <version>${clientes.buzon.tributario}</version>
+        </dependency>
+    </dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.8.1</version>
+				<configuration>
+					<excludePackageNames>mx.gob.imss.ctirss.delta.gestion.individuo.utility.bean:mx.gob.imss.ctirss.delta.gestion.individuo.util:mx.gob.imss.ctirss.delta.model.gestion.individuo.vo</excludePackageNames>
+					<charset>iso-8859-1</charset>
+					<encoding>iso-8859-1</encoding>
+					<docencoding>iso-8859-1</docencoding>					
+					<locale>es_MX</locale>
+					<header>Gestion Personas ${version}</header>
+					<footer>Gestion Personas ${version}</footer>
+					<show>public</show>
+					<windowtitle>Gestion Personas ${version}</windowtitle>
+					<outputDirectory>${project.build.directory}/misalidajavadoc</outputDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>	
+	
+</project>

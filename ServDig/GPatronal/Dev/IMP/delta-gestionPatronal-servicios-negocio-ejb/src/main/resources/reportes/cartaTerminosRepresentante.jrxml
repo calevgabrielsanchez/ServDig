@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cartaTerminosRepresentante" pageWidth="612" pageHeight="792" columnWidth="522" leftMargin="45" rightMargin="45" topMargin="45" bottomMargin="45">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1804"/>
+	<field name="fecha" class="java.util.Date"/>
+	<field name="firmaDocto" class="java.lang.String"/>
+	<field name="selloDigital" class="java.lang.String"/>
+	<field name="cadenaOriginal" class="java.lang.String"/>
+	<field name="selloDigitalRepresentado" class="java.lang.String"/>
+	<field name="cadenaOriginalRepresentado" class="java.lang.String"/>
+	<field name="secuenciaNotaria" class="java.lang.String"/>
+	<field name="numeroSerie" class="java.lang.String"/>
+	<field name="secuenciaNotariaRepresentado" class="java.lang.String"/>
+	<field name="numeroSerieRepresentado" class="java.lang.String"/>
+	<detail>
+		<band height="702" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="522" height="43"/>
+				<textElement textAlignment="Justified">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CARTA DE TÉRMINOS Y CONDICIONES PARA UTILIZAR LA FIRMA ELECTRÓNICA AVANZADA DE UN REPRESENTANTE LEGAL, PARA PRESENTAR ACTOS ANTE EL IMSS EN REPRESENTACIÓN DE UNA PERSONA FÍSICA O MORAL.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="128" width="522" height="52"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[La FIEL sustituye la firma autógrafa del firmante y producirá los mismos efectos que las leyes otorgan a los documentos con firma autógrafa, teniendo el mismo valor probatorio. Asimismo, con el uso de la FIEL se tiene por reconocida la garantía de la autoría del firmante y de la integridad de los documentos electrónicos que se firmen con ella y, por ende, el contenido de los mismos no podrá desconocerse ni admitirá prueba en contrario.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="181" width="522" height="54"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[La expedición de los certificados digitales y la generación de las claves públicas y privadas que conforman la FIEL de personas físicas y morales, se regirán por el Código Fiscal de la Federación, su reglamentación secundaria en la materia y, en su caso, por la Ley de la Firma Electrónica Avanzada. Por lo tanto, la expedición de los certificados digitales, su renovación, revocación y demás trámites relacionados con la FIEL, se deberán realizar ante el SAT, cumpliendo con los requisitos y procedimientos establecidos en la normatividad aplicable.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="235" width="522" height="43"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[En caso de pérdida, robo o destrucción de la FIEL, o cualquier otro evento que ponga en riesgo la confidencialidad de los certificados electrónicos, las llaves o claves que conforman la FIEL, la persona física o moral, bajo su absoluta responsabilidad, deberá proceder con su inmediata revocación o reposición ante el SAT, sujetándose a los procesos y lineamientos que el mismo determine.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="279" width="522" height="42"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Los particulares, ya sean personas físicas o morales, que opten por realizar actos ante el IMSS a través de la FIEL de sus representantes legales, deberán firmar mancomunadamente, con sus respectivas FIEL y en momentos sucesivos inmediatos, el presente documento, manifestando, bajo protesta de decir verdad, lo siguiente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="49" y="323" width="473" height="61"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Reconocen que es de su exclusiva responsabilidad el resguardo del certificado digital y la confidencialidad de la clave privada que conforman sus respectivas FIEL, con el fin de evitar la utilización no autorizada de las mismas. Por lo tanto, mediante la firma del presente documento con la FIEL, se tendrá por válido y sin que se admita prueba en contrario, el vínculo entre cada firmante, sea persona moral o física, y los datos que fueron utilizados para la creación de la respectiva FIEL; por lo cual, la aceptación del presente documento serán imputables a los titulares de los certificados digitales que se hayan utilizado.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="49" y="385" width="473" height="51"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[El firmado del presente documento con la FIEL será considerado hecho legítima y auténticamente por los firmantes y, en caso de personas morales, por el administrador único, el Presidente del Consejo de Administración o la persona o personas, cualquiera que sea el nombre con el que se les designe, que tengan conferida la dirección general, la gerencia general o la administración de la persona moral de que se trate, en el momento en el que se presentaron los documentos digitales. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="22" y="323" width="27" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="22" y="385" width="27" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="49" y="437" width="473" height="32"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Lo anterior no admitirá prueba en contrario ante el IMSS y el titular del certificado digital será responsable de las consecuencias jurídicas que derive de la aceptación del presente documento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="22" y="437" width="27" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[3.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="49" y="471" width="473" height="63"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[La persona física o moral que sea titular del certificado digital que se utilice para firmar el presente documento en carácter de representado, tendrá dicho carácter ante el IMSS y, en este acto, autoriza a realizar actos por su nombre y cuenta ante el IMSS, a la persona física que es titular del certificado digital que se utiliza para firmar este documento en carácter de representante legal, quien efectivamente detenta esa representación, contando con poder suficiente y debidamente otorgado conforme a la legislación civil, para realizar actos ante el IMSS, según lo requiere la legislación y normativa aplicable. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="22" y="471" width="27" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[4.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="49" y="535" width="473" height="42"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[La persona física que es titular del certificado digital que se utiliza para firmar este documento en carácter de representante legal, tendrá dicho carácter ante el IMSS y, en este acto, acepta realizar mediante el uso de su propia FIEL, actos por cuenta y nombre de su representado ante el IMSS en tanto no sean revocadas sus facultades de representación.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="22" y="535" width="27" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[5.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="45" width="522" height="83"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Con fundamento en las “Reglas de carácter general para el uso de la firma electrónica avanzada, cuyo certificado digital sea emitido por el Servicio de Administración Tributaria, en los actos que se realicen ante el Instituto Mexicano del Seguro Social”, publicadas en el Diario Oficial de la Federación el 14 de noviembre de 2013, los particulares, ya sean personas físicas y morales, podrán optar por realizar los actos que señala la Ley del Seguro Social, sus Reglamentos y demás disposiciones que de ella emanen, de manera electrónica y firmándola directamente con su firma electrónica avanzada (FIEL) o la de su representante legal, cuyo certificado digital esté vigente y haya sido emitido por el Servicio de Administración Tributaria (SAT), siempre que el Instituto Mexicano del Seguro Social (IMSS) ponga a disposición de los particulares las herramientas tecnológicas necesarias para ello.]]></text>
+			</staticText>
+		</band>
+		<band height="702">
+			<staticText>
+				<reportElement positionType="Float" x="49" y="-123" width="473" height="62"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Los actos que firme el representante legal con su FIEL, a nombre y cuenta del representado, serán considerados hechos legítima y auténticamente por el firmante, siendo el representado el único responsable ante el IMSS de las consecuencias jurídicas que deriven de los actos que haya realizado el representante legal. Lo anterior, no admitirá prueba en contrario ante el IMSS, sin perjuicio de las acciones civiles o penales que pueda seguir el representado en contra de su representante legal por cualquier acto u omisión indebido en el cumplimiento de su mandato.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="22" y="-123" width="27" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[6.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="49" y="-59" width="473" height="45"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Los particulares, por sí mismos o a través de sus representantes legales, podrán en cualquier momento, dejar sin efectos la autorización del uso de la FIEL de sus representantes legales para realizar actos ante el IMSS por cuenta y nombre de ellos; para lo cual, firmarán con su respectiva FIEL la baja correspondiente que el Instituto ponga a su disposición para tal efecto.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="22" y="-59" width="27" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[7.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="1" width="473" height="61"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[El representado en este acto expresamente ratifica todos los actos que por su nombre y cuenta, realice ante el Instituto su representante legal mediante el uso de la FIEL, en tanto no se le revoque la autorización correspondiente ante el IMSS, en los términos establecidos en el presente documento. Por lo anterior, queda bajo la absoluta responsabilidad del representado dejar sin efectos la autorización del uso de la FIEL de sus representantes legales para realizar actos ante el IMSS por cuenta y nombre de él, cuando los poderes de los mismos hayan sido revocados o cuando así convenga a sus intereses.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="1" width="27" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[8.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="49" y="64" width="473" height="51"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[La falta de vigencia o revocación del certificado digital que ampara la FIEL del representante legal, no eximirá a la persona física o moral de cumplir con sus obligaciones ante el IMSS; por lo cual, será su responsabilidad realizar las gestiones necesarias para cumplir cabalmente con las mismas, de conformidad con la Ley del Seguro Social, sus Reglamentos y demás disposiciones aplicables.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="22" y="64" width="27" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[9.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="118" width="522" height="49"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Los firmantes del presente documento declaran, bajo protesta de decir verdad, que las manifestaciones anteriores son ciertas, y que conocen de las penas en que incurren quienes declaran falsamente ante una autoridad distinta de la judicial, y que son sabedores de las demás responsabilidades civiles y administrativas que se pudieran derivar por ello.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="34" y="167" width="488" height="33"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Declaramos que hemos leído y conocemos los términos y condiciones, así como las “Reglas de carácter general para el uso de la Firma Electrónica Avanzada, cuyo certificado digital sea emitido por el Servicio de Administración Tributaria, en los actos que se realicen ante el Instituto Mexicano del Seguro Social”, y que voluntariamente aceptamos los alcances legales de los mismos, mediante nuestras firmas electrónicas FIEL. ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="7" y="169" width="19" height="17"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="12" y="170" width="11" height="20"/>
+				<textElement>
+					<font size="13" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[X]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="277" width="93" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena original:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="94" y="277" width="428" height="37"/>
+				<textElement textAlignment="Justified">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cadenaOriginal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="227" width="33" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="96" y="316" width="426" height="34"/>
+				<textElement textAlignment="Justified">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{selloDigital}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="314" width="94" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello Digital:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement positionType="Float" x="34" y="227" width="488" height="20"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="253" width="168" height="20"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Firma representante legal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="446" width="132" height="20"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Firma representado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="504" width="94" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello digital:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="468" width="93" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena original:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="96" y="505" width="426" height="35"/>
+				<textElement textAlignment="Justified">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{selloDigitalRepresentado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="94" y="468" width="428" height="35"/>
+				<textElement textAlignment="Justified">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cadenaOriginalRepresentado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="379" width="93" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número de serie:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="94" y="382" width="428" height="13"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numeroSerie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="94" y="355" width="428" height="13"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{secuenciaNotaria}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="352" width="93" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Secuencia Notarial:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="94" y="544" width="428" height="13"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{secuenciaNotariaRepresentado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="541" width="93" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Secuencia Notarial:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="94" y="571" width="428" height="13"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numeroSerieRepresentado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="568" width="93" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número de serie:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

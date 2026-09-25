@@ -1,0 +1,95 @@
+Registro de cambios para compilar ACCEDER 
+
+Configurar el archivo de settings de la ruta Maven 3.6.3\conf
+En la sección servers agregar las siguientes líneas 
+
+<server>
+<id>ctirss</id>
+<username>admin</username>
+<password>Arch1v42o16</password>
+</server>
+
+
+Descargar las siguientes librerías de https://imssmx.sharepoint.com/sites/
+AccederUnificado/Documentos%20compartidos/Forms/AllItems.aspx?ga=1&id=%2Fsites%2FAccederUnificado%2F
+Documentos%20compartidos%2FGeneral%2FJAR%5FACCEDER
+
+Repository_ad.zip
+Repository_el.zip
+Repository_mo.zip
+Repository_mx.zip
+Repository_px.zip
+
+
+Conectarse a la red del IMSS a través de una VPN 
+
+
+En la ruta C:\AccederUnificado\DeltaBase\Dev\IMP\delta-framework-base\
+src\main\java\mx\gob\imss\ctirss\delta\framework\base\controller remplazar el 
+archivo AbstractController.java por el proporcionado
+
+
+
+En la ruta C:\temp colocar el archivo sso.properties 
+
+
+
+Se proporciona archivo pom que remplaza al original en la ruta 
+C:\AccederUnificado\DeltaBase\Dev\IMP\delta-framework-base
+
+
+
+Del documento: general-context.xml
+En la ruta C:\AccederUnificado\GDerechohabientes\Dev\IMP\gestionDerechohabientes-web\src\main\webapp\WEB-INF\config\spring
+Comentar línea 17
+	<!--import resource="ac-security.xml"/-->
+
+
+
+Del documento: config.properties
+En la ruta C:\AccederUnificado\GDerechohabientes\Dev\IMP\gestionDerechohabientes-web\src\main\webapp\WEB-INF\config\spring
+Comentar líneas 2,3,4 
+#service.provider.url=${mvn.web.app.service.provider.url}
+#service.security.principal=${mvn.web.app.service.provider.principal}
+#service.security.credentials=${mvn.web.app.service.provider.credentials}
+
+Agregar desde la línea 5 
+service.provider.url=t3://localhost:7001
+service.security.principal=weblogic
+service.security.credentials=weblogic1
+
+
+
+
+
+Del documento: Documento web.xml
+En la ruta C:\AccederUnificado\GDerechohabientes\Dev\IMP\gestionDerechohabientes-web\src\main\webapp\WEB-INF
+comentar líneas
+30 a 51
+73 a 82
+
+
+
+
+ruta para descarga del apache
+https://archive.apache.org/dist/httpd/binaries/win32/
+
+
+En la configuración del Apache reemplazar el archivo de configuración httpd por el compartido 
+Agregar en C:\Program Files (x86)\Apache Software Foundation\Apache2.2\modules
+el archivo: mod_wl_22.so
+
+
+
+
+
+
+Crear en C:\share
+Descomprimir el zip de 
+oracle.zip
+
+
+
+
+
+

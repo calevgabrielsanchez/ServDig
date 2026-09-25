@@ -1,0 +1,178 @@
+<?xml version='1.0'?>
+<WL5G3N0:definitions name="JwsServiceDefinitions" targetNamespace="http://imss.gob.mx/asegurado/" xmlns="" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://imss.gob.mx/asegurado/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.exception.gestion.serie" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.model.domicilio" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://imss.gob.mx/asegurado/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.exception.gestion.serie" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:mx.gob.imss.ctirss.delta.framework.base.model"/>
+      <xs:complexType name="Subdelegacion">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Id" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Delegacion" nillable="true" type="java1:Delegacion" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Delegacion">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Ciz" nillable="true" type="xs:int"/>
+              <xs:element minOccurs="1" name="Id" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="mx.gob.imss.ctirss.delta.exception.gestion.serie" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://imss.gob.mx/asegurado/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.exception.gestion.serie" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="string" type="xs:string"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.framework.base.model" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://imss.gob.mx/asegurado/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.exception.gestion.serie" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="AbstractModel">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="ErrorFormGeneral" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.model.asegurado" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://imss.gob.mx/asegurado/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.exception.gestion.serie" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="AltaDatosAsignacionNSSType">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Nombre" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="ApellidoPaterno" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="ApellidoMaterno" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Sexo" nillable="false" type="xs:int"/>
+          <xs:element minOccurs="1" name="LugarNacimiento" nillable="false" type="xs:int"/>
+          <xs:element minOccurs="1" name="DiaNacimiento" nillable="false" type="xs:int"/>
+          <xs:element minOccurs="1" name="MesNacimiento" nillable="false" type="xs:int"/>
+          <xs:element minOccurs="1" name="AnioNacimiento" nillable="false" type="xs:int"/>
+          <xs:element minOccurs="1" name="Curp" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="CodigoPostal" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="RegistroPatronal" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.model.gestion.asegurado.integracion" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://imss.gob.mx/asegurado/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.exception.gestion.serie" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+      <xs:import namespace="java:mx.gob.imss.ctirss.delta.framework.base.model"/>
+      <xs:complexType name="UMFSimple">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="IdUMF" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="NoEconomico" nillable="true" type="xs:decimal"/>
+              <xs:element minOccurs="1" name="Subdelegacion" nillable="true" type="java1:Subdelegacion" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.domicilio"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AseguradoWrapper">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Nombre" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="PrimerApellido" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="SegundoApellido" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Curp" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Nss" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Umf" nillable="true" type="java1:UMFSimple" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.gestion.asegurado.integracion"/>
+              <xs:element minOccurs="1" name="Nrp" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="EstatusRegistro" nillable="false" type="xs:int"/>
+              <xs:element minOccurs="1" name="MsgProceso" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.framework.base.exception" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://imss.gob.mx/asegurado/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.exception.gestion.serie" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="AbstractException"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://imss.gob.mx/asegurado/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://imss.gob.mx/asegurado/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.exception.gestion.serie" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:mx.gob.imss.ctirss.delta.model.asegurado"/>
+      <xs:import namespace="java:mx.gob.imss.ctirss.delta.model.gestion.asegurado.integracion"/>
+      <xs:element name="generarNSSEstudiante">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="arg0" type="java:AltaDatosAsignacionNSSType" xmlns:java="java:mx.gob.imss.ctirss.delta.model.asegurado"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="generarNSSEstudianteResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="java:AseguradoWrapper" xmlns:java="java:mx.gob.imss.ctirss.delta.model.gestion.asegurado.integracion"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.exception.gestion.serie" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://imss.gob.mx/asegurado/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.exception.gestion.serie" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+      <xs:complexType name="NivelDeAsignacionSerieIndefinidoException">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SeriesNoLocalizadasException">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ErrorAlActivarSerieException">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="NivelDeAsignacionSerieIndefinidoException" type="java:NivelDeAsignacionSerieIndefinidoException" xmlns:java="java:mx.gob.imss.ctirss.delta.exception.gestion.serie"/>
+      <xs:element name="SeriesNoLocalizadasException" type="java:SeriesNoLocalizadasException" xmlns:java="java:mx.gob.imss.ctirss.delta.exception.gestion.serie"/>
+      <xs:element name="ErrorAlActivarSerieException" type="java:ErrorAlActivarSerieException" xmlns:java="java:mx.gob.imss.ctirss.delta.exception.gestion.serie"/>
+    </xs:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="generarNSSEstudiante">
+    <WL5G3N0:part element="WL5G3N1:generarNSSEstudiante" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="generarNSSEstudianteResponse">
+    <WL5G3N0:part element="WL5G3N1:generarNSSEstudianteResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="NivelDeAsignacionSerieIndefinidoException">
+    <WL5G3N0:part element="WL5G3N2:string" name="NivelDeAsignacionSerieIndefinidoException"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SeriesNoLocalizadasException">
+    <WL5G3N0:part element="WL5G3N2:string" name="SeriesNoLocalizadasException"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="ErrorAlActivarSerieException">
+    <WL5G3N0:part element="WL5G3N2:string" name="ErrorAlActivarSerieException"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="Jws">
+    <WL5G3N0:operation name="generarNSSEstudiante" parameterOrder="parameters">
+      <WL5G3N0:input message="WL5G3N1:generarNSSEstudiante"/>
+      <WL5G3N0:output message="WL5G3N1:generarNSSEstudianteResponse"/>
+      <WL5G3N0:fault message="WL5G3N1:NivelDeAsignacionSerieIndefinidoException" name="NivelDeAsignacionSerieIndefinidoException"/>
+      <WL5G3N0:fault message="WL5G3N1:SeriesNoLocalizadasException" name="SeriesNoLocalizadasException"/>
+      <WL5G3N0:fault message="WL5G3N1:ErrorAlActivarSerieException" name="ErrorAlActivarSerieException"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="JwsServiceSoapBinding" type="WL5G3N1:Jws">
+    <WL5G3N3:binding style="document" transport="http://www.bea.com/soap/transport/local"/>
+    <WL5G3N0:operation name="generarNSSEstudiante">
+      <WL5G3N3:operation soapAction="http://imss.gob.mx/asegurado/generarNSSEstudiante" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N3:body parts="parameters" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N3:body parts="parameters" use="literal"/>
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="SeriesNoLocalizadasException">
+        <WL5G3N3:fault name="SeriesNoLocalizadasException" use="literal"/>
+      </WL5G3N0:fault>
+      <WL5G3N0:fault name="NivelDeAsignacionSerieIndefinidoException">
+        <WL5G3N3:fault name="NivelDeAsignacionSerieIndefinidoException" use="literal"/>
+      </WL5G3N0:fault>
+      <WL5G3N0:fault name="ErrorAlActivarSerieException">
+        <WL5G3N3:fault name="ErrorAlActivarSerieException" use="literal"/>
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+</WL5G3N0:definitions>

@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SeccionI" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" isFloatColumnFooter="true" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="5.0"/>
+	<property name="ireport.x" value="98"/>
+	<property name="ireport.y" value="1823"/>
+	<style name="Titulo Aviso" hAlign="Left" fontSize="13" isBold="true" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="base" fontSize="7" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="fondo" backcolor="#00CCFF"/>
+	<style name="fondoEncabezado" backcolor="#0000FF"/>
+	<style name="Titulo Encabezado" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="baseBold" fontSize="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+	<style name="vineta" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<parameter name="IMAGENES_DIR" class="java.lang.String"/>
+	<parameter name="P_FOLIO_SOLCT" class="java.lang.String"/>
+	<parameter name="P_FECSOLCITUD" class="java.lang.String"/>
+	<parameter name="P_REGPATRONAL" class="java.lang.String"/>
+	<parameter name="P_RAZONSOCIAL" class="java.lang.String"/>
+	<parameter name="P_NOMBRE_PERS" class="java.lang.String"/>
+	<parameter name="P_CURPPERSONA" class="java.lang.String"/>
+	<parameter name="P_NOMB_COMERC" class="java.lang.String"/>
+	<parameter name="P_RFC_PERSONA" class="java.lang.String"/>
+	<parameter name="CLASE" class="java.lang.String"/>
+	<parameter name="PRIMA" class="java.math.BigDecimal"/>
+	<parameter name="ID_FRACCION" class="java.lang.String"/>
+	<parameter name="ID_GRUPO" class="java.lang.String"/>
+	<parameter name="ID_DIVISION" class="java.lang.String"/>
+	<parameter name="P_PATERNO_PER" class="java.lang.String"/>
+	<parameter name="P_MATERNO_PER" class="java.lang.String"/>
+	<detail>
+		<band height="77" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="3" width="553" height="30"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aviso de modificación de las empresas para el
+Seguro de Riesgos de Trabajo
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="35" width="444" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Este formato consta de 8 secciones. Favor de llenarlo conforme al instructivo que se presenta en la sección VIII]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="452" y="35" width="100" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[(*) Datos opcionales(*)]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="47" width="554" height="28"/>
+			</rectangle>
+			<rectangle>
+				<reportElement style="fondo" mode="Transparent" x="146" y="47" width="105" height="11"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement style="fondo" mode="Transparent" x="146" y="58" width="105" height="17"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement style="fondo" mode="Transparent" x="450" y="47" width="104" height="11"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement style="fondo" mode="Transparent" x="450" y="58" width="104" height="17"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement style="base" x="5" y="47" width="140" height="28"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[1. Fecha de presentación de este aviso:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="451" y="47" width="103" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[DD / MM / AAAA]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="146" y="58" width="105" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_FECSOLCITUD}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="256" y="47" width="194" height="28"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[2. Fecha a partir de la cual surte efectos la modificación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="146" y="47" width="105" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[DD / MM / AAAA]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="451" y="58" width="103" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_FECSOLCITUD}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="542">
+			<rectangle radius="0">
+				<reportElement style="fondoEncabezado" x="0" y="1" width="554" height="14" backcolor="#0070C0"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" x="0" y="15" width="554" height="15" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" mode="Transparent" x="0" y="30" width="554" height="15" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" x="0" y="45" width="554" height="15" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" mode="Transparent" x="0" y="60" width="135" height="30" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" mode="Transparent" x="135" y="60" width="135" height="30" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" mode="Transparent" x="270" y="60" width="135" height="30" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" mode="Transparent" x="405" y="60" width="149" height="30" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" x="0" y="90" width="554" height="15" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" mode="Transparent" x="0" y="105" width="270" height="15" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" mode="Transparent" x="270" y="105" width="284" height="15" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" mode="Transparent" x="0" y="120" width="100" height="15" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" mode="Transparent" x="100" y="120" width="100" height="15" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" mode="Transparent" x="200" y="120" width="188" height="15" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" mode="Transparent" x="388" y="120" width="74" height="15" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" mode="Transparent" x="462" y="120" width="92" height="15" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement style="fondo" x="0" y="135" width="554" height="15" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="150" width="135" height="90"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="135" y="150" width="419" height="30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="135" y="180" width="419" height="15"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="135" y="195" width="419" height="15" backcolor="#99CCFF"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="135" y="210" width="419" height="30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="135" y="210" width="139" height="30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="274" y="210" width="139" height="30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="412" y="210" width="142" height="30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="240" width="135" height="45"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="285" width="135" height="30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="315" width="135" height="75"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Opaque" x="135" y="285" width="419" height="30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Opaque" x="135" y="240" width="419" height="45"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="135" y="315" width="419" height="75"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="1" width="554" height="460"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="Titulo Encabezado" x="0" y="1" width="554" height="14" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[I. Datos generales del patrón o sujeto obligado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="baseBold" x="5" y="15" width="133" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[I.1. Persona Moral]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="7" y="30" width="108" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[3. Denominación o razón social:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="115" y="30" width="439" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_RAZONSOCIAL}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="515" y="120" width="39" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{ID_GRUPO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="5" y="60" width="71" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[4. Apellido paterno]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="10" y="75" width="125" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_PATERNO_PER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="140" y="60" width="71" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[5. Apellido materno]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="145" y="75" width="125" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_MATERNO_PER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="275" y="60" width="71" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[6. Apellido materno]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="280" y="75" width="125" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_NOMBRE_PERS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="410" y="60" width="71" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[7. CURP]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="415" y="75" width="139" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_CURPPERSONA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="baseBold" x="5" y="90" width="246" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[I.3. Datos del registro patronal y de la clasificación actual de la empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="5" y="105" width="65" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[8. Registro patronal]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="135" y="105" width="135" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_REGPATRONAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="275" y="105" width="71" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[9.RFC]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="354" y="105" width="200" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_CURPPERSONA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="5" y="120" width="65" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[10. División]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="70" y="120" width="30" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{ID_DIVISION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="105" y="120" width="65" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[11. Grupo]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="170" y="120" width="30" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{ID_GRUPO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="205" y="120" width="65" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[12. Fracción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="393" y="120" width="35" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[13. Clase]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="467" y="120" width="48" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[14. Prima SRT]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="256" y="120" width="132" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{ID_FRACCION}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="baseBold" x="428" y="120" width="34" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{ID_GRUPO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="baseBold" x="5" y="45" width="120" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[I.2. Persona física]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="baseBold" x="5" y="135" width="246" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[I.4 Tipo de modificación que origina este aviso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="baseBold" x="140" y="195" width="120" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[Datos de la baja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="5" y="150" width="110" height="30"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Reanudación de actividades]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="5" y="180" width="110" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cambio de domicilio]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="120" y="160" width="10" height="10"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="120" y="183" width="10" height="10"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="base" x="140" y="150" width="413" height="30"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Si han pasado 6 meses o más, desde la fecha en que suspendió actividades y la presentación de este aviso, requisite los datos de la baja y las secciones III, IV y VII.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="140" y="210" width="71" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[15. Delegación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="279" y="210" width="71" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[16. Subdelegación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="417" y="210" width="98" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[17. Fecha de la baja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="140" y="180" width="413" height="15"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Requisite los datos de la baja y las secciones II, III, IV y VII.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="5" y="240" width="110" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cambio de actividad económica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="5" y="255" width="110" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Incorporación de actividades ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="5" y="270" width="110" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Escisión (empresa escindente) ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="120" y="243" width="10" height="10"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="120" y="258" width="10" height="10"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="120" y="273" width="10" height="10"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="base" x="140" y="240" width="413" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Requisite las secciones III, IV y VII.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="140" y="285" width="413" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Requisite las secciones  III, IV, V y VII.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="140" y="315" width="413" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Requisite las secciones III, IV , VI y VII.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="5" y="285" width="110" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Sustitución patronal ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="5" y="300" width="110" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fusión ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="120" y="288" width="10" height="10"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="120" y="303" width="10" height="10"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="base" x="5" y="315" width="110" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Compra de activos ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="5" y="330" width="110" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Comodato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="5" y="345" width="110" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Enajenación ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="5" y="360" width="110" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Arrendamiento ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="5" y="375" width="110" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fideicomiso traslativo]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="120" y="318" width="10" height="10"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="120" y="333" width="10" height="10"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="120" y="348" width="10" height="10"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="120" y="363" width="10" height="10"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="120" y="378" width="10" height="10"/>
+			</rectangle>
+		</band>
+	</detail>
+</jasperReport>

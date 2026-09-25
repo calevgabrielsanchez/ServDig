@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description/>
+    <ser:security/>
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:request type="XML">
+        <con5:schema ref="AsignacionNSSProject/schemas/MovimientoIdse" element="MovimientoIdse" xmlns:con5="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:request>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:pageAttachments isEnabled="false"/>
+    <ser:transactions isRequired="false" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/AsignacionNSSProject/IdseProxyService</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>true</tran:all-headers>
+    <tran:provider-specific>
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con1:pipeline type="request" name="Pipeline-Idse_request">
+      <con1:stage name="Stage-Idse">
+        <con1:context>
+          <con2:varNsDecl namespace="http://www.mx.gob.imss.ctirss.delta.idse/idse_schema" prefix="idse"/>
+        </con1:context>
+        <con1:actions>
+          <con3:log>
+            <con2:id>_ActionId-5418648794775554548--4c6389e0.1435936eeaa.-7fc7</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con2:xqueryText>$body</con2:xqueryText>
+            </con3:expr>
+            <con3:message>-----------------------------------------------------------
+BODY BODY BODY BODY BODY BODY BODY BODY
+-----------------------------------------------------------</con3:message>
+          </con3:log>
+          <con4:assign varName="nrp">
+            <con2:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fdb</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/idse:MovimientoIdse/idse:registroPatronal/text()</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="nss">
+            <con2:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fd0</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/idse:MovimientoIdse/idse:nSS/text()</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="folioArchivo">
+            <con2:id>_ActionId-2361242735592168495--76d4515a.1446a4971a8.-7fef</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/idse:MovimientoIdse/idse:folioArchivo/text()</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="idseReingresoBaja">
+            <con2:id>_ActionId-5418648794775554548--4c6389e0.1435936eeaa.-7fa8</con2:id>
+            <con4:expr>
+              <con2:xqueryTransform>
+                <con2:resource ref="AsignacionNSSProject/xquery/MovimientoIdseXML_MFL"/>
+                <con2:param name="movimientoIdse1">
+                  <con2:path>$body/idse:MovimientoIdse</con2:path>
+                </con2:param>
+              </con2:xqueryTransform>
+            </con4:expr>
+          </con4:assign>
+          <con3:log>
+            <con2:id>_ActionId-5418648794775554548--4c6389e0.1435936eeaa.-7f8d</con2:id>
+            <con3:logLevel>warning</con3:logLevel>
+            <con3:expr>
+              <con2:xqueryText>$idseReingresoBaja</con2:xqueryText>
+            </con3:expr>
+            <con3:message>------------------------------------------
+  MOVIMIENTO REINGRESO BAJA
+------------------------------------------</con3:message>
+          </con3:log>
+          <con4:replace varName="body" contents-only="true">
+            <con2:id>_ActionId-5418648794775554548--4c6389e0.1435936eeaa.-7f44</con2:id>
+            <con4:location>
+              <con2:xpathText>.</con2:xpathText>
+            </con4:location>
+            <con4:expr>
+              <con2:xqueryText>$idseReingresoBaja</con2:xqueryText>
+            </con4:expr>
+          </con4:replace>
+          <con4:mflTransform>
+            <con2:id>_ActionId-5418648794775554548--4c6389e0.1435936eeaa.-7f1f</con2:id>
+            <con4:type>XML-To-nonXML</con4:type>
+            <con4:sourceExpr>
+              <con2:xqueryText>$body/MovimientoIdse</con2:xqueryText>
+            </con4:sourceExpr>
+            <con4:mfl-resource ref="AsignacionNSSProject/mfl/MovimientoIdse"/>
+            <con4:assign-variable>trama</con4:assign-variable>
+          </con4:mflTransform>
+          <con3:log>
+            <con2:id>_ActionId-5418648794775554548--4c6389e0.1435936eeaa.-7f03</con2:id>
+            <con3:logLevel>warning</con3:logLevel>
+            <con3:expr>
+              <con2:xqueryText>$trama</con2:xqueryText>
+            </con3:expr>
+            <con3:message>----------------------------
+TRAMA TRAMA TRAMA
+----------------------------</con3:message>
+          </con3:log>
+          <con3:log>
+            <con2:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fc3</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$nss</con:xqueryText>
+            </con3:expr>
+            <con3:message>---------------------------
+NSS
+-------------------------------</con3:message>
+          </con3:log>
+          <con4:ifThenElse>
+            <con2:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fcf</con2:id>
+            <con4:case>
+              <con4:condition>
+                <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:exists($nss)</con:xqueryText>
+              </con4:condition>
+              <con4:actions>
+                <con4:javaCallout varName="result_str">
+                  <con2:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fc2</con2:id>
+                  <con4:archive ref="AsignacionNSSProject/lib/layout-callout"/>
+                  <con4:className>mx.gob.imss.ctirss.delta.gestion.clasificacion.callouts.LayoutCallOut</con4:className>
+                  <con4:method>public static java.lang.String generateLayout(java.lang.String, [B)</con4:method>
+                  <con4:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat('/ctirss/w/servicios4/srvs04/domains/d_osb/delta/estudiante/file/layout/SIEArchivoBase_',$folioArchivo,'_',$nrp,'.txt')</con:xqueryText>
+                  </con4:expr>
+                  <con4:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$trama</con:xqueryText>
+                  </con4:expr>
+                  <con4:return-param-as-ref>false</con4:return-param-as-ref>
+                </con4:javaCallout>
+              </con4:actions>
+            </con4:case>
+            <con4:default>
+              <con4:javaCallout varName="result_str">
+                <con2:id>_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fc1</con2:id>
+                <con4:archive ref="AsignacionNSSProject/lib/layout-callout"/>
+                <con4:className>mx.gob.imss.ctirss.delta.gestion.clasificacion.callouts.LayoutCallOut</con4:className>
+                <con4:method>public static java.lang.String generateLayout(java.lang.String, [B)</con4:method>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat('/ctirss/w/servicios4/srvs04/domains/d_osb/delta/estudiante/file/error/SIEArchivoBase_',$folioArchivo,'_',$nrp,'.txt')</con:xqueryText>
+                </con4:expr>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$trama</con:xqueryText>
+                </con4:expr>
+                <con4:return-param-as-ref>false</con4:return-param-as-ref>
+              </con4:javaCallout>
+            </con4:default>
+          </con4:ifThenElse>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline type="response" name="Pipeline-Idse_response"/>
+    <con1:flow>
+      <con1:pipeline-node name="Pipeline-Idse">
+        <con1:request>Pipeline-Idse_request</con1:request>
+        <con1:response>Pipeline-Idse_response</con1:response>
+      </con1:pipeline-node>
+    </con1:flow>
+  </ser:router>
+</xml-fragment>

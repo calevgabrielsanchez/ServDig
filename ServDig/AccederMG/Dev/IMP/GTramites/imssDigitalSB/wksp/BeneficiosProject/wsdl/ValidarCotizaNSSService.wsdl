@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:sch0="http://mx/gob/imss/webservices/cotizador/servicio"
+	xmlns:sch1="http://cotizador.webservices.imss.gob.mx" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://mx/gob/imss/webservices/cotizador/servicio"
+	targetNamespace="http://mx/gob/imss/webservices/cotizador/servicio">
+	<wsdl:types>
+		<xsd:schema xmlns="http://mx/gob/imss/webservices/cotizador/servicio"
+			xmlns:cotizador="http://cotizador.webservices.imss.gob.mx" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			attributeFormDefault="unqualified" elementFormDefault="qualified"
+			targetNamespace="http://mx/gob/imss/webservices/cotizador/servicio">
+			<xsd:import namespace="http://cotizador.webservices.imss.gob.mx" />
+			<xsd:element name="operacionRequest">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="entrada" type="cotizador:Message" />
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="operacionResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="salida" type="cotizador:Respuesta" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+		<xs:schema xmlns="http://cotizador.webservices.imss.gob.mx"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified"
+			elementFormDefault="qualified" targetNamespace="http://cotizador.webservices.imss.gob.mx">
+			<xs:element name="Message" type="Message" />
+			<xs:complexType name="Message">
+				<xs:all>
+					<xs:element name="cveAsignacionNSS" type="xs:integer" />
+				</xs:all>
+			</xs:complexType>
+			<xs:element name="salida" type="Respuesta" />
+			<xs:complexType name="Respuesta">
+				<xs:sequence>
+					<xs:element name="codigo" type="xs:integer" />
+					<xs:element name="mensaje" type="xs:string" />
+					<xs:element name="indicadorCotiza" type="xs:integer" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="operacionRequest">
+		<wsdl:part element="tns:operacionRequest" name="operacionRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="operacionResponse">
+		<wsdl:part element="tns:operacionResponse" name="operacionResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="ValidarCotizaNSSService">
+		<wsdl:operation name="operacion">
+			<wsdl:input message="tns:operacionRequest" name="operacionRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:operacionResponse" name="operacionResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ValidarCotizaNSSServiceSoap11" type="tns:ValidarCotizaNSSService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="operacion">
+			<soap:operation soapAction="" />
+			<wsdl:input name="operacionRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="operacionResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ValidarCotizaNSSServices">
+		<wsdl:port binding="tns:ValidarCotizaNSSServiceSoap11" name="ValidarCotizaNSSServiceSoap11">
+			<soap:address
+				location="http://11.254.13.146:7001/RISSIMSS_ValidarCotizaNSS/cotizador" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

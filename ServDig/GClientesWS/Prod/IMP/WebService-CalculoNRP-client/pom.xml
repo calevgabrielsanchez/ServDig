@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>ClientesWebservices</artifactId>
+    <groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+    <version>2.2</version>
+  </parent>
+  <groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+  <artifactId>WebService-CalculoNRP-client</artifactId>
+  <version>2.0</version>
+  <name>WebService-CalculoNRP-client</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+  <build>
+		<plugins>
+			
+			
+				<!-- Habilita los facets y natures para que el eclipse
+			     reconoza el proyecto como de tipo de Dynamic Web.
+			 -->
+			
+			      <plugin>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <configuration>
+                    <additionalBuildcommands>
+                        <buildCommand>
+                            <name>org.eclipse.jdt.core.javabuilder</name>
+                        </buildCommand>
+                        <buildCommand>
+                            <name>org.eclipse.wst.common.project.facet.core.builder</name>
+                        </buildCommand>
+                        <buildCommand>
+                            <name>org.eclipse.wst.validation.validationbuilder</name>
+                        </buildCommand>
+                        
+                    </additionalBuildcommands>
+                    <additionalProjectnatures>
+                        <projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+                        <projectnature>org.eclipse.jdt.core.javanature</projectnature>
+                        <projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+                        <projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+		                <projectnature>org.eclipse.wst.jsdt.core.jsNature</projectnature>
+                        
+                    </additionalProjectnatures>
+                    <additionalConfig>
+                        <file>
+                            <name>.settings/org.eclipse.wst.common.project.facet.core.xml</name>
+                            <content>&lt;faceted-project&gt;
+  &lt;runtime name="Weblogic Runtime"/&gt;
+  &lt;fixed facet="wls.web"/&gt;
+  &lt;fixed facet="oracle.weblogic.webservice.clients"/&gt;
+  &lt;fixed facet="jst.web"/&gt;
+  &lt;fixed facet="oracle.weblogic.webservices"/&gt;
+  &lt;fixed facet="java.apt"/&gt;
+  &lt;fixed facet="wst.jsdt.web"/&gt;
+  &lt;fixed facet="java"/&gt;
+  &lt;installed facet="java" version="1.6"/&gt;
+  &lt;installed facet="java.apt" version="5.0"/&gt;
+  &lt;installed facet="jst.web" version="2.5"/&gt;
+  &lt;installed facet="oracle.weblogic.webservice.clients" version="2.1"/&gt;
+  &lt;installed facet="wls.web" version="10.3.4"/&gt;
+  &lt;installed facet="oracle.weblogic.webservices" version="2.1"/&gt;
+  &lt;installed facet="wst.jsdt.web" version="1.0"/&gt;
+  
+&lt;/faceted-project&gt;</content>
+                        </file>
+                        <file>
+                            <name>.settings/org.eclipse.wst.common.component</name>
+                            <content>&lt;project-modules id="moduleCoreId" project-version="1.5.0"&gt;
+    &lt;wb-module deploy-name="dynamic"&gt;
+        &lt;wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/&gt;
+        &lt;wb-resource deploy-path="/" source-path="/src/main/java" /&gt;
+        &lt;wb-resource deploy-path="/" source-path="/src/main/resources" /&gt;
+        &lt;property name="context-root" value="${project.artifactId}"/&gt;
+       	&lt;property name="java-output-path" value="target/classes" /&gt;
+    &lt;/wb-module&gt;
+&lt;/project-modules&gt;</content>
+                        </file>
+                        
+                        
+                    </additionalConfig>
+                </configuration>
+            </plugin>
+		</plugins>
+	</build>
+  
+</project>

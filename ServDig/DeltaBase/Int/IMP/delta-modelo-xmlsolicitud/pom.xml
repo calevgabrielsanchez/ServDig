@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>mx.gob.imss.ctirss.delta</groupId>
+	<artifactId>delta-modelo-xmlsolicitud</artifactId>
+	<version>2.6</version>
+	<name>Modulo de Modelo de Negocio para XML Solicitud</name>
+	<url>http://maven.apache.org</url>
+	<packaging>jar</packaging>
+
+	<parent>
+		<artifactId>delta</artifactId>
+		<groupId>mx.gob.imss.ctirss.delta</groupId>
+		<version>2.6</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-framework-base</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>	
+		<dependency>
+		       <groupId>commons-lang</groupId>
+		       <artifactId>commons-lang</artifactId>
+		       <version>2.5</version>
+		</dependency>	
+		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics-runtime</artifactId>
+			<version>0.6.3</version>
+		</dependency>
+	</dependencies>
+
+<!--	<repositories>
+		<repository>
+			<id>java.net</id>
+			<name>java.net Maven Repository</name>
+			<url>https://maven-repository.dev.java.net/nonav/repository</url>
+		</repository>
+	</repositories> -->
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.8.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<generatePackage>mx.gob.imss.ctirss.delta.model.xml.solicitud</generatePackage>
+					<extension>true</extension>
+					<args>
+						<arg>-Xequals</arg>
+						<arg>-XhashCode</arg>
+						<arg>-Xcopyable</arg>
+						<arg>-Xmergeable</arg>
+					</args>
+					<plugins>
+						<dependency>
+							<groupId>org.jvnet.jaxb2_commons</groupId>
+							<artifactId>jaxb2-basics</artifactId>
+							<version>0.6.3</version>
+						</dependency>
+					</plugins>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

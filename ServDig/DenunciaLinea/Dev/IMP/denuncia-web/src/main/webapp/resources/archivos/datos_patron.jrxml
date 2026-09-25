@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="datos_patron" pageWidth="566" pageHeight="792" whenNoDataType="NoDataSection" columnWidth="526" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="rutaImagen" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:\\Mis Documentos\\projects\\denunciaEnLinea\\denuncia-web\\src\\main\\webapp\\resources\\images\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="numFolioDenuncia" class="java.lang.String"/>
+	<parameter name="rutaReporte" class="java.lang.String"/>
+	<parameter name="nombrePatron" class="java.lang.String"/>
+	<parameter name="callePatron" class="java.lang.String"/>
+	<parameter name="noExtPatron" class="java.lang.String"/>
+	<parameter name="noIntPatron" class="java.lang.String"/>
+	<parameter name="coloniaPatron" class="java.lang.String"/>
+	<parameter name="codigoPostalPatron" class="java.lang.String"/>
+	<parameter name="municipioPatron" class="java.lang.String"/>
+	<parameter name="estadoPatron" class="java.lang.String"/>
+	<parameter name="telefonoPatron" class="java.lang.String"/>
+	<parameter name="documentoIDPatron" class="java.lang.String"/>
+	<parameter name="numDocumentoIDPatron" class="java.lang.String"/>
+	<parameter name="representantePatron" class="java.lang.String"/>
+	<parameter name="actividadPatron" class="java.lang.String"/>
+	<parameter name="callePatronFis" class="java.lang.String"/>
+	<parameter name="noExtPatronFis" class="java.lang.String"/>
+	<parameter name="noIntPatronFis" class="java.lang.String"/>
+	<parameter name="coloniaPatronFis" class="java.lang.String"/>
+	<parameter name="codigoPostalPatronFis" class="java.lang.String"/>
+	<parameter name="municipioPatronFis" class="java.lang.String"/>
+	<parameter name="estadoPatronFis" class="java.lang.String"/>
+	<parameter name="telefonoPatronFis" class="java.lang.String"/>
+	<parameter name="numTrabEst" class="java.lang.String"/>
+	<parameter name="diversosPatrones" class="java.lang.String"/>
+	<parameter name="rfcPatron" class="java.lang.String"/>
+	<parameter name="regPatronal" class="java.lang.String"/>
+	<parameter name="calleCenTrab" class="java.lang.String"/>
+	<parameter name="noExtCenTrab" class="java.lang.String"/>
+	<parameter name="noIntCenTrab" class="java.lang.String"/>
+	<parameter name="coloniaCenTrab" class="java.lang.String"/>
+	<parameter name="codigoPostalCenTrab" class="java.lang.String"/>
+	<parameter name="municipioCenTrab" class="java.lang.String"/>
+	<parameter name="estadoCenTrab" class="java.lang.String"/>
+	<parameter name="telefonoCenTrab" class="java.lang.String"/>
+	<parameter name="labores" class="java.lang.String"/>
+	<parameter name="nombreJefeInmediato" class="java.lang.String"/>
+	<parameter name="horarioLabores" class="java.lang.String"/>
+	<parameter name="contratoSI" class="java.lang.String"/>
+	<parameter name="sueldo" class="java.lang.String"/>
+	<parameter name="vacaciones" class="java.lang.String"/>
+	<parameter name="periodoPagos" class="java.lang.String"/>
+	<parameter name="diasVacaciones" class="java.lang.String"/>
+	<parameter name="contratoNO" class="java.lang.String"/>
+	<parameter name="aguinaldo" class="java.lang.String"/>
+	<parameter name="comisiones" class="java.lang.String"/>
+	<parameter name="baseComisiones" class="java.lang.String"/>
+	<parameter name="formaPago" class="java.lang.String"/>
+	<parameter name="riesgoSI" class="java.lang.String"/>
+	<parameter name="riesgoNO" class="java.lang.String"/>
+	<parameter name="fechaPrestacionTrab" class="java.lang.String"/>
+	<parameter name="fechaIngresoTrab" class="java.lang.String"/>
+	<parameter name="salarioReal" class="java.lang.String"/>
+	<parameter name="fechaDejoLaborar" class="java.lang.String"/>
+	<parameter name="observaciones" class="java.lang.String"/>
+	<parameter name="documentacionAdjunta" class="java.lang.String"/>
+	<parameter name="recibeComprobanteSI" class="java.lang.String"/>
+	<parameter name="recibeComprobanteNO" class="java.lang.String"/>
+	<parameter name="tipoComprobante" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<noData>
+		<band height="50">
+			<staticText>
+				<reportElement x="180" y="10" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Static text]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>

@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteComprobanteAlta" pageWidth="612" pageHeight="792" columnWidth="532" leftMargin="40" rightMargin="40" topMargin="20" bottomMargin="20" isSummaryNewPage="true" isSummaryWithPageHeaderAndFooter="true">
+	<property name="ireport.zoom" value="1.1000000000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="85"/>
+	<parameter name="IMSS_HEADER_PARAM" class="java.io.InputStream"/>
+	<parameter name="FECHA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="HORA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FOLIO_OPER" class="java.lang.Long" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NOMBRE_SOLICITANTE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OPERACION" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ESTATUS_OPER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="JUSTIFICACION_LEGAL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMSS_HEADER2_PARAM" class="java.awt.Image"/>
+	<parameter name="CALIFICACIONES_PERSONA_FISICA" class="java.lang.String"/>
+	<field name="idTramite" class="java.lang.Long"/>
+	<field name="fechaTramite" class="java.util.Date"/>
+	<field name="observacion" class="java.lang.String"/>
+	<field name="personaFisica" class="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+	<field name="personaMoral" class="mx.gob.imss.ctirss.delta.model.gestion.individuo.Moral"/>
+	<pageHeader>
+		<band height="79" splitType="Stretch">
+			<image onErrorType="Icon" evaluationTime="Band">
+				<reportElement x="0" y="3" width="411" height="75"/>
+				<imageExpression><![CDATA[$P{IMSS_HEADER2_PARAM}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="106">
+			<staticText>
+				<reportElement x="38" y="92" width="84" height="12"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[TRÃ?MITE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="92" width="299" height="12"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[DATOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="532" height="18" forecolor="#FFFF99" backcolor="#333333"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COMPROBANTE DE REGISTRO DE PERSONA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="28" width="122" height="20" forecolor="#333300"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Solicitud]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="48" width="122" height="20" forecolor="#333300"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Solicitante]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="122" y="28" width="131" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{FOLIO_OPER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="122" y="48" width="131" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{NOMBRE_SOLICITANTE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="375" y="28" width="121" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="375" y="48" width="121" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{HORA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="253" y="28" width="122" height="20" forecolor="#333300"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="253" y="48" width="122" height="20" forecolor="#333300"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="72" width="532" height="20" forecolor="#333300"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[La solicitud se procesÃ³ con los siguientes datos]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="165">
+			<staticText>
+				<reportElement x="38" y="0" width="84" height="165"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Alta de Persona FÃ­sica]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="232" y="0" width="264" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personaFisica} != null ?
+    $F{personaFisica}.getNombre() :
+    ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="232" y="15" width="264" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personaFisica} != null ?
+    $F{personaFisica}.getPrimerApellido() :
+    ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="232" y="30" width="262" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personaFisica} != null ?
+    $F{personaFisica}.getSegundoApellido() :
+    ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="232" y="45" width="262" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personaFisica} != null && $F{personaFisica}.getSexo() != null ? $F{personaFisica}.getSexo().getDescripcion() : ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="232" y="60" width="262" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personaFisica} != null ?
+    $F{personaFisica}.getFechaNacimientoFormateada() :
+    ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="232" y="75" width="262" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personaFisica}.getLugarNacimiento().getNombre()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="232" y="90" width="262" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(  $F{personaFisica} != null
+&& $F{personaFisica}.getCurp() != null ?
+    $F{personaFisica}.getCurp() : ""
+)]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="232" y="105" width="262" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personaFisica}.getRfc()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="232" y="120" width="262" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{personaFisica}.getPersonaCalificaciones().get(0).getCalificacion().getDescripcion() != null
+&& "NO VALIDADO".equalsIgnoreCase($F{personaFisica}.getPersonaCalificaciones().get(0).getCalificacion().getDescripcion())) ?
+"NO VALIDADO" : "VALIDADO"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="232" y="135" width="262" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CALIFICACIONES_PERSONA_FISICA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="122" y="0" width="110" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nombre(s)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="15" width="110" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Primer Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="30" width="110" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Segundo Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="45" width="110" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="60" width="110" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de Nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="75" width="110" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Entidad de Nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="90" width="110" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CURP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="105" width="110" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[RFC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="120" width="110" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Estatus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="135" width="110" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CalificaciÃ³n]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="232" y="150" width="262" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personaFisica}.getIdPersona()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="122" y="150" width="110" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#0A6659"/>
+					<bottomPen lineWidth="1.0" lineColor="#0A6659"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Identificador]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="13">
+			<textField>
+				<reportElement mode="Opaque" x="253" y="0" width="22" height="12" forecolor="#333300" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="303" y="0" width="22" height="12" forecolor="#333300" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="206" y="0" width="47" height="12" forecolor="#333300" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[HOJA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="275" y="0" width="28" height="12" forecolor="#333300" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[DE ]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="57">
+			<staticText>
+				<reportElement mode="Opaque" x="194" y="2" width="145" height="12" forecolor="#333300" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[JustificaciÃ³n Legal]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="38" y="16" width="484" height="28"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{JUSTIFICACION_LEGAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="206" y="44" width="47" height="12" forecolor="#333300" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[HOJA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="275" y="44" width="28" height="12" forecolor="#333300" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[DE ]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="253" y="44" width="22" height="12" forecolor="#333300" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="303" y="44" width="22" height="12" forecolor="#333300" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+</jasperReport>

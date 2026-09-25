@@ -1,0 +1,64 @@
+<%@ include file="../general/taglibs.jsp"%>
+
+<link rel="icon" href="${staticResourcesPath}/iconos/favicon.ico" />
+
+<!-- GobMx -->
+<link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+
+<!-- Bootstrap -->
+<link type="text/css" href="${staticResourcesPath}/estilos/bootstrap/DT_bootstrap.css" rel="stylesheet" />
+
+<!-- Jquery-->
+<link type="text/css" href="${staticResourcesPath}/estilos/jquery/ui-lightness/jquery-ui.css" rel="stylesheet" />
+
+<!-- Fonts -->
+<link type="text/css" href="${staticResourcesPath}/estilos/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+
+<!-- IMSS -->
+<link type="text/css" href="${staticResourcesPath}/estilos/imss/portal.css" rel="stylesheet" />
+<!-- estilo para que los cuadros de dialogo se vean en negro -->
+<link type="text/css" href="${staticResourcesPath}/estilos/imss/fixGobMx.css" rel="stylesheet" />
+<!--[if IE]> <link href="${staticResourcesPath}/estilos/imss/ie.css" type="text/css" rel="stylesheet" /><![endif]-->
+
+<!-- jQuery -->
+<script type="text/javascript" src="${staticResourcesPath}/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="${staticResourcesPath}/js/jquery/dtable/jquery.dataTables.js"></script>
+<script type="text/javascript" src="${staticResourcesPath}/js/jquery/dtable/jquery.dataTables.pagination.js"></script>
+<script type="text/javascript" src="${staticResourcesPath}/js/jquery/dtable/jquery.dataTables.sort.date.plugin.js"></script>
+<script type="text/javascript" src="${staticResourcesPath}/js/jquery/jquery-post-json.js"></script>
+<script type="text/javascript" src="${staticResourcesPath}/js/jquery/form2Object/form2object.js"></script>
+<script type="text/javascript" src="${staticResourcesPath}/js/jquery/form2Object/jquery.toObject.js"></script>
+<script type="text/javascript" src="${staticResourcesPath}/js/jquery/jquery.alphanum.js"></script>
+
+<!-- Bootstrap -->
+<c:if test="${ param.isGobMxIncluded ne true}">
+	<script type="text/javascript" src="${staticResourcesPath}/js/bootstrap/bootstrap.min.js"></script>
+</c:if>
+<script type="text/javascript" src="${staticResourcesPath}/js/bootstrap/DT_bootstrap.js"></script>
+<script type="text/javascript" src="${staticResourcesPath}/js/bootstrap/bootstrap-tooltip.js"></script>
+<c:if test="${ param.isGobMxIncluded ne true}">
+	<script type="text/javascript" src="${staticResourcesPath}/js/bootstrap/bootstrap-popover.js"></script>
+</c:if>
+
+<!-- jQuery UI -->
+<script type="text/javascript" src="${staticResourcesPath}/js/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="${staticResourcesPath}/js/jquery/jquery.ui.datepicker-es.js" ></script>
+
+<!-- JSON -->
+<script type="text/javascript" src="${staticResourcesPath}/js/json/json2.js"></script>
+<script type="text/javascript" src="${staticResourcesPath}/js/json/json.min.js"></script>
+
+<!-- Generales DELTA -->
+<script type="text/javascript" src="${staticResourcesPath}/js/delta/general.js"></script>
+<script type="text/javascript" src="${staticResourcesPath}/js/delta/gestionCtrlSelect.js"></script>
+<script type="text/javascript" src="${staticResourcesPath}/js/delta/procesaErrores.js"></script>
+<script type="text/javascript" src="${staticResourcesPath}/js/delta/limpiaFormularios.js"></script>
+
+<!-- html5 enabled -->
+<script type="text/javascript" src="${staticResourcesPath}/js/delta/html5.js"></script>
+
+<!-- Scripts de "Procesando..." -->
+<script type="text/javascript" src="${staticResourcesPath}/js/jquery/blockUI/jquery.blockUI.js"></script>
+
+<script type="text/javascript" src="<spring:url value="/static/resources/js/wizard/common/dialogoCtrl.js" htmlEscape="true" />"></script>

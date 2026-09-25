@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#*" PATH="/*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#*:0" NAME="item" PATH="/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="new::#admonUsuarios#AdmonUsuariosAdd.xhtml"
+    NAME="output" PATH="/admonUsuarios/AdmonUsuariosAdd.xhtml"
+    TARGET="rules:#admonUsuarios#AdmonUsuariosAdd.xhtml" TITLE="new" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="consultaPendiente::#admonUsuarios#solicitudesPendientes.xhtml"
+    NAME="output1" PATH="/admonUsuarios/solicitudesPendientes.xhtml"
+    TARGET="rules:#admonUsuarios#solicitudesPendientes.xhtml"
+    TITLE="consultaPendiente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="delete::#admonUsuarios#AdmonUsuariosDel.xhtml" NAME="output2"
+    PATH="/admonUsuarios/AdmonUsuariosDel.xhtml"
+    TARGET="rules:#admonUsuarios#AdmonUsuariosDel.xhtml" TITLE="delete" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="update::#admonUsuarios#AdmonUsuariosUpd.xhtml" NAME="output3"
+    PATH="/admonUsuarios/AdmonUsuariosUpd.xhtml"
+    TARGET="rules:#admonUsuarios#AdmonUsuariosUpd.xhtml" TITLE="update" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="consulta::#admonUsuarios#AdmonUsuariosSch.xhtml" NAME="output4"
+    PATH="/admonUsuarios/AdmonUsuariosSch.xhtml"
+    TARGET="rules:#admonUsuarios#AdmonUsuariosSch.xhtml"
+    TITLE="consulta" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="busquedaRol::#admonRoles#admonRolesBusqueda.xhtml"
+    NAME="output5" PATH="/admonRoles/admonRolesBusqueda.xhtml"
+    TARGET="rules:#admonRoles#admonRolesBusqueda.xhtml"
+    TITLE="busquedaRol" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="perfiles::#perfiles#admonPerfiles.xhtml"
+    NAME="output6" PATH="/perfiles/admonPerfiles.xhtml"
+    TARGET="rules:#perfiles#admonPerfiles.xhtml" TITLE="perfiles" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="regSolicitud::#solicitudCuentas#registroSolicituCuenta.xhtml"
+    NAME="output7" PATH="/solicitudCuentas/registroSolicituCuenta.xhtml"
+    TARGET="rules:#solicitudCuentas#registroSolicituCuenta.xhtml"
+    TITLE="regSolicitud" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="exito::#solicitudCuentas#operacionExitosa.xhtml" NAME="output8"
+    PATH="/solicitudCuentas/operacionExitosa.xhtml"
+    TARGET="rules:#solicitudCuentas#operacionExitosa.xhtml"
+    TITLE="exito" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#admonUsuarios#AdmonUsuariosAdd.xhtml"
+  PATH="/admonUsuarios/AdmonUsuariosAdd.xhtml" SHAPE="304,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#admonUsuarios#AdmonUsuariosUpd.xhtml"
+  PATH="/admonUsuarios/AdmonUsuariosUpd.xhtml" SHAPE="304,449,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#admonRoles#admonRolesAltas.xhtml"
+  PATH="/admonRoles/admonRolesAltas.xhtml" SHAPE="304,673,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#perfiles#admonPerfiles.xhtml"
+  PATH="/perfiles/admonPerfiles.xhtml" SHAPE="304,897,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#admonUsuarios#AdmonUsuariosSch.xhtml"
+  PATH="/admonUsuarios/AdmonUsuariosSch.xhtml" SHAPE="304,561,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#admonUsuarios#AdmonUsuariosDel.xhtml"
+  PATH="/admonUsuarios/AdmonUsuariosDel.xhtml" SHAPE="304,337,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#admonRoles#admonRolesBusqueda.xhtml"
+  PATH="/admonRoles/admonRolesBusqueda.xhtml" SHAPE="304,785,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#solicitudCuentas#registroSolicituCuenta.xhtml"
+  PATH="/solicitudCuentas/registroSolicituCuenta.xhtml"
+  SHAPE="304,369,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#solicitudCuentas#admonAprobadores.xhtml"
+  PATH="/solicitudCuentas/admonAprobadores.xhtml" SHAPE="304,401,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#admonUsuarios#solicitudesPendientes.xhtml"
+  PATH="/admonUsuarios/solicitudesPendientes.xhtml" SHAPE="304,401,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#solicitudCuentas#operacionExitosa.xhtml"
+  PATH="/solicitudCuentas/operacionExitosa.xhtml" SHAPE="304,401,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

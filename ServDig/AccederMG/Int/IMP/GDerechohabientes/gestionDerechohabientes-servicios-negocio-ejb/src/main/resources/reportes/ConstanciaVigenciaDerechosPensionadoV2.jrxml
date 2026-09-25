@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ComprobanteVigenciaderechos" pageWidth="612" pageHeight="842" columnWidth="524" leftMargin="42" rightMargin="46" topMargin="42" bottomMargin="10" isSummaryWithPageHeaderAndFooter="true">
+	<property name="ireport.zoom" value="1.4388703192737118"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="528"/>
+	<parameter name="SUBREPORTE_BENEFICIARIOS" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\tfs\\workspace\\Dev\\01DST\\04IMP\\gestionDerechohabientes-servicios-negocio-ejb\\src\\main\\resources\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LOGO" class="java.lang.String"/>
+	<parameter name="SUBREPORTE_SERVICIOS" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="LOGO_IMSS" class="java.lang.String"/>
+	<parameter name="SUBREPORTE_PATRONES" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="PIE" class="java.lang.String"/>
+	<parameter name="FOTO_ASEGURADO" class="java.lang.Object"/>
+	<field name="nss" class="java.lang.String"/>
+	<field name="nombreAsegurado" class="java.lang.String"/>
+	<field name="primerApellidoAsegurado" class="java.lang.String"/>
+	<field name="segundoApellidoAsegurado" class="java.lang.String"/>
+	<field name="curp" class="java.lang.String"/>
+	<field name="sexoAsegurado" class="java.lang.String"/>
+	<field name="lugarNacimientoAsegurado" class="java.lang.String"/>
+	<field name="fechaNacimientoAsegurado" class="java.lang.String"/>
+	<field name="beneficiarios" class="java.util.List"/>
+	<field name="situacion" class="java.lang.String"/>
+	<field name="delegacion" class="java.lang.String"/>
+	<field name="umf" class="java.lang.String"/>
+	<field name="registroPatronal" class="java.lang.String"/>
+	<field name="modalidadPatron" class="java.lang.String"/>
+	<field name="detalleSituacion" class="java.lang.String"/>
+	<field name="fechaExpedicion" class="java.util.Date"/>
+	<field name="servicios" class="java.util.List"/>
+	<field name="tipoMovimiento" class="java.lang.String"/>
+	<field name="ultimoMovimiento" class="java.util.Date"/>
+	<field name="turno" class="java.lang.String"/>
+	<field name="consultorio" class="java.lang.String"/>
+	<field name="bandera" class="java.lang.String"/>
+	<field name="agregadoMedico" class="java.lang.String"/>
+	<field name="cadenaOriginal" class="java.lang.String"/>
+	<field name="selloDigital" class="java.lang.String"/>
+	<field name="secuenciaNotarial" class="java.lang.String"/>
+	<field name="numeroSerie" class="java.lang.String"/>
+	<field name="nombreUsuario" class="java.lang.String"/>
+	<field name="delegacionUsuario" class="java.lang.String"/>
+	<field name="unidadUsuario" class="java.lang.String"/>
+	<field name="fechaValidezConstancia" class="java.util.Date"/>
+	<field name="patrones" class="java.util.List"/>
+	<field name="nombrePatron" class="java.lang.String"/>
+	<field name="prestaciones" class="java.util.List"/>
+	<field name="mensajeBeneficiarios" class="java.lang.String"/>
+	<field name="servicioMedico" class="java.lang.String"/>
+	<field name="servicioIncapacidad" class="java.lang.String"/>
+	<field name="estadoDerechohabiente" class="mx.gob.imss.ctirss.delta.model.derechohabiente.EstadoDerechohabiente"/>
+	<field name="subEstadoDerechohabiente" class="mx.gob.imss.ctirss.delta.model.derechohabiente.SubEstadoDerechohabiente"/>
+	<field name="fechaInicioVigencia" class="java.util.Date"/>
+	<field name="fechaFinVigencia" class="java.util.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="84" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="524" height="42" forecolor="#AFB1B1" backcolor="#221E1E"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="42" width="524" height="42" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10"/>
+				</textElement>
+				<text><![CDATA[Instituto Mexicano del Seguro Social]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="524" height="84" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<image>
+				<reportElement mode="Transparent" x="15" y="11" width="58" height="22"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{LOGO}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="403" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="334" y="20" width="190" height="19" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de publicación del formato en el DOF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="74" width="524" height="18" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Datos Generales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="227" width="524" height="21" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10"/>
+				</textElement>
+				<text><![CDATA[Datos de Aseguramiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="20" width="167" height="19" forecolor="#000000" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Homoclave del trámite]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="74" width="524" height="138" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="20" width="167" height="40" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="227" width="524" height="168" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="105" y="132" width="175" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Nombre(s), primer apellido y segundo apellido:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="92" width="175" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[NSS:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="137" y="249" width="282" height="20">
+					<printWhenExpression><![CDATA[$F{servicioMedico} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{servicioMedico}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="137" y="291" width="367" height="20">
+					<printWhenExpression><![CDATA[$F{delegacion} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{delegacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="137" y="313" width="367" height="20">
+					<printWhenExpression><![CDATA[$F{umf} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{umf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="105" y="152" width="175" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Sexo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="172" width="175" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Fecha de nacimiento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="192" width="175" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Lugar de nacimiento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="112" width="175" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[CURP:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="281" y="92" width="241" height="20">
+					<printWhenExpression><![CDATA[$F{nss} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nss}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="281" y="132" width="241" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{nombreAsegurado}!= null ? $F{nombreAsegurado}:"") + " " + ($F{primerApellidoAsegurado} != null ? $F{primerApellidoAsegurado} : "") + " " + ($F{segundoApellidoAsegurado} != null ? $F{segundoApellidoAsegurado}  : "")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="281" y="112" width="241" height="20">
+					<printWhenExpression><![CDATA[$F{curp} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{curp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="281" y="152" width="241" height="20">
+					<printWhenExpression><![CDATA[$F{sexoAsegurado} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sexoAsegurado}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="281" y="192" width="241" height="20">
+					<printWhenExpression><![CDATA[$F{lugarNacimientoAsegurado} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{lugarNacimientoAsegurado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="281" y="172" width="241" height="20">
+					<printWhenExpression><![CDATA[$F{fechaNacimientoAsegurado} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fechaNacimientoAsegurado}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="137" y="333" width="367" height="20">
+					<printWhenExpression><![CDATA[$F{turno} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{turno}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="137" y="353" width="367" height="20">
+					<printWhenExpression><![CDATA[$F{consultorio} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{consultorio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="137" y="375" width="367" height="20">
+					<printWhenExpression><![CDATA[$F{agregadoMedico} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{agregadoMedico}]]></textFieldExpression>
+			</textField>
+			<elementGroup/>
+			<line>
+				<reportElement positionType="Float" x="0" y="247" width="524" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="91" width="524" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="4" y="249" width="130" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Con derecho al servicio médico:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="270" width="75" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Vigente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="291" width="75" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Delegación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="312" width="75" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[UMF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="333" width="75" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Turno:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="354" width="75" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Consultorio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="375" width="75" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Agregado Médico:]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="0" y="269" width="524" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="290" width="524" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="353" width="524" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="374" width="524" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="311" width="524" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="137" y="271" width="367" height="20">
+					<printWhenExpression><![CDATA[$F{fechaValidezConstancia} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{fechaValidezConstancia}.getDate()==12 && $F{fechaValidezConstancia}.getMonth()+1==12 &&  $F{fechaValidezConstancia}.getYear()+1900==2222) ? "PENSIONADO" : (($F{fechaValidezConstancia}.getDate()==12 && $F{fechaValidezConstancia}.getMonth()+1==12 &&  $F{fechaValidezConstancia}.getYear()+1900==2223) ? "------" : new SimpleDateFormat("dd/MM/yyyy").format($F{fechaValidezConstancia}))]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="332" width="524" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="80" y="270" width="52" height="20">
+					<printWhenExpression><![CDATA[$F{fechaValidezConstancia} == null]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[ ---]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="38" width="167" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="1" y="39" width="166" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[IMSS-02-020]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="168" y="39" width="167" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="167" y="20" width="167" height="19" forecolor="#000000" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Homoclave del formato]]></text>
+			</staticText>
+			<line>
+				<reportElement x="167" y="38" width="167" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="335" y="41" width="187" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[    10       /       11         /     2015]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="51" width="9" height="8"/>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[DD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="422" y="51" width="11" height="8"/>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[MM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="467" y="51" width="17" height="8"/>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<text><![CDATA[AAAA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="334" y="38" width="190" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="105" y="151" width="418" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="105" y="171" width="418" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="105" y="132" width="419" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="105" y="191" width="418" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="167" y="20" width="167" height="40" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="524" height="20" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Constancia de Vigencia de Derechos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="38" width="166" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[FF-IMSS-012]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="334" y="20" width="190" height="40" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<image>
+				<reportElement x="4" y="94" width="97" height="115"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{FOTO_ASEGURADO}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement positionType="Float" x="106" y="112" width="419" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="78">
+			<printWhenExpression><![CDATA[$F{estadoDerechohabiente}.getIdEstadoDerechohabiente().equals(1L) ||
+$F{estadoDerechohabiente}.getIdEstadoDerechohabiente().equals(2L) ||
+$F{estadoDerechohabiente}.getIdEstadoDerechohabiente().equals(3L)]]></printWhenExpression>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="39" width="175" height="19" isRemoveLineWhenBlank="true" backcolor="#E7E8E7"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="175" y="39" width="174" height="19" isRemoveLineWhenBlank="true" backcolor="#E7E8E7"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10"/>
+				</textElement>
+				<text><![CDATA[Inicio de Vigencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="12" width="524" height="19" isRemoveLineWhenBlank="true" backcolor="#E7E8E7"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10"/>
+				</textElement>
+				<text><![CDATA[Detalle de vigencia]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="175" y="58" width="174" height="20" isRemoveLineWhenBlank="true"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaInicioVigencia}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="58" width="175" height="20" isRemoveLineWhenBlank="true"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{estadoDerechohabiente}.getDescripcion()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="349" y="39" width="175" height="19" isRemoveLineWhenBlank="true" backcolor="#E7E8E7"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10"/>
+				</textElement>
+				<text><![CDATA[Fecha de Constancia]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="349" y="58" width="175" height="20" isRemoveLineWhenBlank="true"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaFinVigencia}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="240">
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="40" width="524" height="33">
+					<printWhenExpression><![CDATA[$F{mensajeBeneficiarios} != null]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{mensajeBeneficiarios}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="84" width="524" height="19" backcolor="#E7E8E7">
+					<printWhenExpression><![CDATA[$F{bandera} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10"/>
+				</textElement>
+				<text><![CDATA[Datos del usuario IMSS que emite el reporte]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="137" y="146" width="387" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bandera} != null]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{unidadUsuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="106" width="137" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bandera} != null]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="137" y="126" width="387" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bandera} != null]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{delegacionUsuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="146" width="137" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bandera} != null]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Unidad Hospitalaria de Adscripción:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="15" width="524" height="19" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10"/>
+				</textElement>
+				<text><![CDATA[Beneficiarios]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement positionType="Float" mode="Transparent" x="0" y="84" width="524" height="19" forecolor="#AFB1B1">
+					<printWhenExpression><![CDATA[$F{bandera} != null]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="166" width="524" height="64" forecolor="#000000"/>
+				<box topPadding="3" leftPadding="2" rightPadding="2">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Justified">
+					<font fontName="Soberana Sans Light" size="7"/>
+				</textElement>
+				<text><![CDATA[La información contenida en esta constancia es confidencial y por tanto los datos personales proporcionados por los asegurados, pensionados y sus beneficiarios registrados, están protegidos en términos de la Ley Federal de Transparencia y Accesos a la Información Pública Gubernamental y de los Lineamientos de Protección de Datos Personales emitidos por el Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI).
+
+Los datos del Registro Patronal y Razón Social, corresponden al último movimiento registrado en la cuenta individual del asegurado o pensionado.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="40" width="524" height="33">
+					<printWhenExpression><![CDATA[$F{beneficiarios}.isEmpty() && $F{mensajeBeneficiarios} == null]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[No se encontraron beneficiarios.]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement positionType="Float" mode="Transparent" x="0" y="15" width="524" height="19" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="137" y="106" width="387" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bandera} != null]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombreUsuario}]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="true">
+				<reportElement positionType="Float" x="0" y="34" width="200" height="33">
+					<printWhenExpression><![CDATA[$F{mensajeBeneficiarios} == null && !($F{beneficiarios}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{beneficiarios})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUBREPORTE_BENEFICIARIOS}]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="126" width="137" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{bandera} != null]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="5">
+					<topPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.5" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.5" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8"/>
+				</textElement>
+				<text><![CDATA[Delegación de Adscripción:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="71" splitType="Stretch">
+			<textField>
+				<reportElement x="419" y="60" width="80" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Hoja "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="499" y="60" width="24" height="10"/>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement positionType="Float" x="0" y="10" width="524" height="50" forecolor="#AFB1B1" backcolor="#E7E8E7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="1" width="523" height="8"/>
+				<textElement>
+					<font fontName="Soberana Sans Light Italic" size="5"/>
+				</textElement>
+				<text><![CDATA["De conformidad con los artículos 4 y 69-M, fracción V de la Ley Federal de Procedimiento Administrativo, los formatos para solicitar trámites y servicios deberán publicarse en el Diario Oficial de la Federación (DOF)"]]></text>
+			</staticText>
+			<image>
+				<reportElement positionType="Float" mode="Transparent" x="14" y="20" width="165" height="33"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{PIE}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement positionType="Float" x="0" y="9" width="524" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="423" y="21" width="87" height="32"/>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="5"/>
+				</textElement>
+				<text><![CDATA[Paseo de la Reforma 476, P.B.
+Col. Juárez, Delegación
+Cuauhtémoc C.P. 06600 México, D.F.
+Tel. 01 800 623 23 23
+http://atencion.contactoimss.com.mx]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="423" y="10" width="28" height="8"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contacto:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="106" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="2" y="1" width="80" height="20"/>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena Original:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="57" width="80" height="20"/>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Secuencia Notarial:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="89" y="1" width="435" height="31">
+					<printWhenExpression><![CDATA[$F{cadenaOriginal} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cadenaOriginal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="89" y="32" width="435" height="20">
+					<printWhenExpression><![CDATA[$F{selloDigital} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{selloDigital}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="83" width="80" height="20"/>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número de Serie:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="32" width="80" height="20"/>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello Digital:]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="89" y="57" width="436" height="20">
+					<printWhenExpression><![CDATA[$F{secuenciaNotarial} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{secuenciaNotarial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="89" y="83" width="436" height="20">
+					<printWhenExpression><![CDATA[$F{numeroSerie} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numeroSerie}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

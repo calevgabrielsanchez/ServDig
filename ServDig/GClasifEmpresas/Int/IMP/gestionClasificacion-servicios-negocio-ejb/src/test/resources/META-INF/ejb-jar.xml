@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd"
+    version="3.0">
+
+    <enterprise-beans>
+        <session>
+            <ejb-name>analisisMovimientoBusiness</ejb-name>
+            <mapped-name>analisisMovimientoBusiness</mapped-name>  
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.interfaces.analisis.AnalisisServiceBusinessRemote</business-remote>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.business.analisis.AnalisisServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>clasificacionPropuestaBusiness</ejb-name>
+            <mapped-name>clasificacionPropuestaBusiness</mapped-name>  
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.interfaces.clasificacion.ClasificacionPropuestaServiceBusinessRemote</business-remote>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.business.clasificacion.ClasificacionPropuestaServiceBussines</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>   
+            <ejb-name>ruleServiceBusinessRemote</ejb-name>
+            <mapped-name>ruleServiceBusinessRemote</mapped-name>   
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.rule.RuleServiceBusinessRemote</business-remote>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.business.rule.RuleServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>   
+        </session>
+        
+        <session>   
+            <ejb-name>solicitudPatronalBusiness</ejb-name>
+            <mapped-name>solicitudPatronalBusiness</mapped-name> 
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.solicitud.SolicitudServiceBusinessRemote</business-remote>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.business.solicitud.SolicitudServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>   
+        </session>
+        
+        <session>   
+            <ejb-name>solicitudService</ejb-name>
+            <mapped-name>solicitudService</mapped-name>  
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.SolicitudBusinessRemote</business-remote>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.solicitud.service.business.SolicitudBusiness</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>   
+            <ejb-name>solicitudServiceBusiness</ejb-name>
+            <mapped-name>solicitudServiceBusiness</mapped-name> 
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.interfaces.solicitud.SolicitudServiceBusinessRemote</business-remote>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.business.solicitud.SolicitudServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>   
+        </session>
+        
+        <session>   
+            <ejb-name>sujetoObligadoService</ejb-name>
+            <mapped-name>sujetoObligadoService</mapped-name> 
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.SujetoObligadoServiceBusinessRemote</business-remote>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.business.SujetoObligadoServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>   
+        </session>
+
+        <session>   
+            <ejb-name>mediosContactoService</ejb-name>
+            <mapped-name>mediosContactoService</mapped-name> 
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.medio.contacto.service.interfaces.MediosContactoServiceBusinessRemote</business-remote>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.medio.contacto.service.business.MediosContactoServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>   
+        </session>
+        
+        <session>   
+            <ejb-name>sujetoObligadoServiceBusiness</ejb-name>
+            <mapped-name>sujetoObligadoServiceBusiness</mapped-name> 
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.SujetoObligadoServiceBusinessRemote</business-remote>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.business.SujetoObligadoServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>   
+        </session>
+        
+        <session>   
+            <ejb-name>domicilioService</ejb-name>
+            <mapped-name>domicilioService</mapped-name> 
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.domicilio.service.interfaces.domicilio.DomicilioServiceBusinessRemote</business-remote>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.domicilio.service.business.domicilio.DomicilioServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>   
+        </session>
+        
+        <session>   
+            <ejb-name>clasificacionActividadEconomicaServiceBusiness</ejb-name>
+            <mapped-name>clasificacionActividadEconomicaServiceBusiness</mapped-name> 
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.business.clasificacion.actividad.economica.ClasificacionActividadEconomicaServiceBusinessLocal</business-local>
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.clasificacion.actividad.economica.ClasificacionActividadEconomicaServiceBusinessRemote</business-remote>
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.business.clasificacion.actividad.economica.ClasificacionActividadEconomicaServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>   
+        </session>
+        
+        <session>
+            <ejb-name>representanteLegalServiceBusiness</ejb-name>
+            <mapped-name>representanteLegalServiceBusiness</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.business.rep.legal.RepresentanteLegalServiceBusinessLocal</business-local>   
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.rep.legal.RepresentanteLegalServiceBusinessRemote</business-remote>
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.business.rep.legal.RepresentanteLegalServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>socioServiceBusiness</ejb-name>
+            <mapped-name>socioServiceBusiness</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.business.socios.SocioServiceBusinessLocal</business-local>   
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.socios.SocioServiceBusinessRemote</business-remote>
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.business.socios.SocioServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>   
+            <ejb-name>sujetoObligadoService</ejb-name>
+            <mapped-name>sujetoObligadoService</mapped-name> 
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.SujetoObligadoServiceBusinessRemote</business-remote>
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.business.SujetoObligadoServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>   
+        </session>
+        
+        <session>   
+            <ejb-name>afiliacionService</ejb-name>
+            <mapped-name>afiliacionService</mapped-name> 
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.afiliacion.AfiliacionServiceBusinessRemote</business-remote>
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.business.afiliacion.AfiliacionServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>   
+        </session>
+        
+        <session>   
+            <ejb-name>configuracionCeBusiness</ejb-name>
+            <mapped-name>configuracionCeBusiness</mapped-name> 
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.interfaces.analisis.ConfiguracionCeBusinessRemote</business-remote>
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.business.analisis.ConfiguracionCeBusiness</ejb-class>   
+            <session-type>Stateless</session-type>   
+        </session>
+        
+        <session>   
+            <ejb-name>gceSujetoObligadoServiceBusiness</ejb-name>
+            <mapped-name>gceSujetoObligadoServiceBusiness</mapped-name> 
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.interfaces.analisis.GCESujetoObligadoServiceBusinessRemote</business-remote>
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.business.analisis.GCESujetoObligadoServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>   
+        </session>
+        
+        <session>   
+            <ejb-name>personaBusinessGP</ejb-name>
+            <mapped-name>personaBusinessGP</mapped-name>
+            <business-local>mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusinessLocal</business-local>
+            <business-remote>mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusinessRemote</business-remote>
+            <ejb-class>mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusiness</ejb-class>   
+            <session-type>Stateless</session-type>   
+        </session>
+                
+        <session>
+            <ejb-name>analisisEntity</ejb-name>
+            <mapped-name>analisisEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.analisis.AnalisisServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.analisis.AnalisisServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>analisisMovimientoUtility</ejb-name>
+            <mapped-name>analisisMovimientoUtility</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.utility.analisis.AnalisisServiceUtilityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.utility.analisis.AnalisisServiceUtility</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>clasificacionPropuestaEntity</ejb-name>
+            <mapped-name>clasificacionPropuestaEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.clasificacion.ClasificacionPropuestaServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.clasificacion.ClasificacionPropuestaServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>bitacoraEntity</ejb-name>
+            <mapped-name>bitacoraEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.bitacora.BitacoraServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.bitacora.BitacoraServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>bitacoraUtility</ejb-name>
+            <mapped-name>bitacoraUtility</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.utility.bitacora.BitacoraServiceUtilityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.utility.bitacora.BitacoraServiceUtility</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>solicitudEntity</ejb-name>
+            <mapped-name>solicitudEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.solicitud.service.entity.SolicitudEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.solicitud.service.entity.SolicitudEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>solicitudConversor</ejb-name>
+            <mapped-name>solicitudConversor</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.solicitud.service.utility.SolicitudConversorLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.solicitud.service.utility.SolicitudConversor</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>tramiteConversor</ejb-name>
+            <mapped-name>tramiteConversor</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.solicitud.service.utility.TramiteConversorLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.solicitud.service.utility.TramiteConversor</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>entity</ejb-name>
+            <mapped-name>entity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.SujetoObligadoServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.SujetoObligadoServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>sujetoObligadoUtility</ejb-name>
+            <mapped-name>sujetoObligadoUtility</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.utility.SujetoObligadoUtilityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.utility.SujetoObligadoUtility</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>entityMedioContacto</ejb-name>
+            <mapped-name>entity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.medio.contacto.service.entity.MedioContactoServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.medio.contacto.service.entity.MedioContactoServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>utility</ejb-name>
+            <mapped-name>utility</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.medio.contacto.service.utility.MedioContactoServiceUtilityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.medio.contacto.service.utility.MedioContactoServiceUtility</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>solicitudServiceEntity</ejb-name>
+            <mapped-name>solicitudServiceEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.solicitud.SolicitudServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.solicitud.SolicitudServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>solicitudUtility</ejb-name>
+            <mapped-name>solicitudUtility</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.utility.solicitud.SolicitudServiceUtilityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.utility.solicitud.SolicitudServiceUtility</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>clasificacionUtlity</ejb-name>
+            <mapped-name>clasificacionUtlity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.utility.clasificacion.actividad.economica.ClasificacionActividadEconomicaServiceUtilityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.utility.clasificacion.actividad.economica.ClasificacionActividadEconomicaServiceUtility</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>entityDomicilio</ejb-name>
+            <mapped-name>entity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.domicilio.service.entity.domicilio.DomicilioServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.domicilio.service.entity.domicilio.DomicilioServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>domicilioServiceUtilityLocal</ejb-name>
+            <mapped-name>domicilioServiceUtilityLocal</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.domicilio.service.utility.DomicilioServiceUtilityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.domicilio.service.utility.DomicilioServiceUtility</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>tramiteEntity</ejb-name>
+            <mapped-name>tramiteEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.tramite.service.entity.TramiteServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.tramite.service.entity.TramiteServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>solicitudPatronalEntity</ejb-name>
+            <mapped-name>solicitudEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.solicitud.SolicitudServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.solicitud.SolicitudServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>representanteLegalServiceEntity</ejb-name>
+            <mapped-name>representanteLegalServiceEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.rep.legal.RepresentanteLegalServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.rep.legal.RepresentanteLegalServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>representanteLegalUtility</ejb-name>
+            <mapped-name>representanteLegalUtility</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.utility.rep.legal.RepresentanteLegalUtilityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.utility.rep.legal.RepresentanteLegalUtility</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>clasificacionServiceEntity</ejb-name>
+            <mapped-name>clasificacionServiceEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.clasificacion.actividad.economica.ClasificacionActividadEconomicaServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.clasificacion.actividad.economica.ClasificacionActividadEconomicaServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+
+        <session>
+            <ejb-name>clasificacionServiceEntity</ejb-name>
+            <mapped-name>clasificacionServiceEntity</mapped-name>
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.clasificacion.ClasificacionServiceEntityLocal</business-local>
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.clasificacion.ClasificacionServiceEntity</ejb-class>
+        </session>
+        
+        <session>
+            <ejb-name>escrituraConstitutivaServiceEntity</ejb-name>
+            <mapped-name>escrituraConstitutivaServiceEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.escritura.constitutiva.EscrituraConstitutivaServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.escritura.constitutiva.EscrituraConstitutivaServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>registroSindicatoServiceEntity</ejb-name>
+            <mapped-name>registroSindicatoServiceEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.registro.sindicato.RegistroSindicatoServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.registro.sindicato.RegistroSindicatoServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>registroSindicatoServiceUtility</ejb-name>
+            <mapped-name>registroSindicatoServiceUtility</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.utility.registro.sindicato.RegistroSindicatoServiceUtilityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.utility.registro.sindicato.RegistroSindicatoServiceUtility</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>escrituraConstitutivaServiceUtility</ejb-name>
+            <mapped-name>escrituraConstitutivaServiceUtilityLocal</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.utility.escritura.constitutiva.EscrituraConstitutivaServiceUtilityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.utility.escritura.constitutiva.EscrituraConstitutivaServiceUtility</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>delegacionDao</ejb-name>
+            <mapped-name>delegacionDaoLocal</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.domicilio.service.dao.DelegacionDaoLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.domicilio.service.dao.DelegacionDao</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>centroTrabajoServiceEntityLocal</ejb-name>
+            <mapped-name>centroTrabajoServiceEntityLocal</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.centro.trabajo.CentroTrabajoServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.centro.trabajo.CentroTrabajoServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>formaContactoServiceEntity</ejb-name>
+            <mapped-name>formaContactoServiceEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.contacto.FormaContactoServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.contacto.FormaContactoServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>personasGPServiceEntity</ejb-name>
+            <mapped-name>personasGPServiceEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.personas.gp.PersonasGPServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.personas.gp.PersonasGPServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>doctoAnalisisCeServiceEntity</ejb-name>
+            <mapped-name>doctoAnalisisCeServiceEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.DoctoAnalisisCeServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.DoctoAnalisisCeServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>doctoAnalisisCeServiceUtility</ejb-name>
+            <mapped-name>doctoAnalisisCeServiceUtility</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.utility.DoctoAnalisisCeServiceUtilityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.utility.DoctoAnalisisCeServiceUtility</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>gceSujetoObligadoServiceEntity</ejb-name>
+            <mapped-name>gceSujetoObligadoServiceEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.GCESujetoObligadoServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.GCESujetoObligadoServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>tramiteServiceEntity</ejb-name>
+            <mapped-name>tramiteServiceEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.tramite.TramiteServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.tramite.TramiteServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>tramiteServiceEntity</ejb-name>
+            <mapped-name>tramiteServiceEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.tramite.TramiteServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.tramite.TramiteServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>tramiteUtility</ejb-name>
+            <mapped-name>tramiteUtility</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.utility.tramite.TramiteServiceUtilityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.utility.tramite.TramiteServiceUtility</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>seqGeneralesServiceEntity</ejb-name>
+            <mapped-name>seqGeneralesServiceEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.secuenciasgenerales.SeqGeneralesServiceEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.clasificacion.service.entity.secuenciasgenerales.SeqGeneralesServiceEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>clasifActEconomicaBusiness</ejb-name>
+            <mapped-name>clasifActEconomicaBusiness</mapped-name>  
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.clasificacion.actividad.economica.ClasificacionActividadEconomicaServiceBusinessRemote</business-remote>
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.business.clasificacion.actividad.economica.ClasificacionActividadEconomicaServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>claseEntity</ejb-name>
+            <mapped-name>claseEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.clasificacion.ClasificacionServiceEntityLocal</business-local>
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.patronal.service.entity.clasificacion.ClasificacionServiceEntity</ejb-class>
+            <session-type>Stateless</session-type>
+        </session>
+        
+        <session>
+            <ejb-name>tramiteServiceUtilityLocal</ejb-name>
+            <mapped-name>tramiteServiceUtilityLocal</mapped-name>
+            <business-local>mx.gob.imss.ctirss.delta.tramite.service.utility.TramiteServiceUtilityLocal</business-local>
+            <ejb-class>mx.gob.imss.ctirss.delta.tramite.service.utility.TramiteServiceUtility</ejb-class>
+            <session-type>Stateless</session-type>
+        </session>
+        
+    </enterprise-beans>
+
+</ejb-jar>

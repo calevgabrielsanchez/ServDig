@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+		<artifactId>ClientesWebservices</artifactId>
+		<version>2.2</version>
+	</parent>
+	<groupId>mx.gob.imss.ctirss.clienteswebservices.responsables.subdelegacion</groupId>
+	<artifactId>ClientesWebservices-responsables-subdelegacion</artifactId>
+	<name>ClientesWebservices-responsables-subdelegacion</name>
+	<url>http://maven.apache.org</url>
+	
+
+	<dependencies>
+		
+		<!-- Ejecucion de Pruebas -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- Logger -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${org.log4j.version}</version>
+			<scope>provided</scope>			
+		</dependency>
+		
+		<!-- Dependencia del Proyecto Base DELTA - Framework Base -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-framework-base</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+			<scope>provided</scope>	
+		</dependency>
+		
+		<!-- Dependencia del Proyecto Base DELTA - Modelo Negocio -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-modelo-negocio</artifactId>
+			<version>2.6</version>
+			<type>jar</type>
+			<scope>provided</scope>				
+		</dependency>
+		
+	</dependencies>
+	<profiles>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>compile-stage</id>
+			<properties>
+				<mvn.responsables.web.service.url>http://saudigital-stage.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService</mvn.responsables.web.service.url>
+			</properties>
+		</profile>
+		<profile>
+			<id>compile-prod</id>
+			<properties>
+				<mvn.responsables.web.service.url>http://saudigital.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService</mvn.responsables.web.service.url>
+			</properties>
+		</profile>
+	</profiles>
+</project>
+

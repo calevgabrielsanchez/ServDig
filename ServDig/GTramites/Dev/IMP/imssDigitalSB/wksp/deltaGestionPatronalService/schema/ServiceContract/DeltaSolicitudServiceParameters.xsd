@@ -1,0 +1,17 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://mx.gob.imss.delta.global.service/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="gblModel:mx.gob.imss.ctirss.delta.global.model" schemaLocation="../XMLModel/gblModel.xsd"/>
+  <xs:element name="consultarDatosGeneralesRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="solicitudId" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="consultarDatosGeneralesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return" type="gblModel:SolicitudTO" xmlns:gblModel="gblModel:mx.gob.imss.ctirss.delta.global.model"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

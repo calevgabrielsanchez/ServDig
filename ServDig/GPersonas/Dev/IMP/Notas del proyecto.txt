@@ -1,0 +1,30 @@
+
+
+************* DEPENDENCIA CON EL PROYECTO DELTA-BASE
+
+Se deberá bajar el proyecto: delta-base para poder compilar este sistema
+
+La dirección del control de version se encuentra en:
+http://11.254.16.21/svn/base_arquitectura_delta/codigo/trunk/delta_base
+
+Se deberá compilar e instalar con la siguiente instrucción:
+mvn compile package install
+
+
+
+************* GENERACION DE JAR DE WEBLOGIC
+Referencia:
+http://docs.oracle.com/cd/E12840_01/wls/docs103/client/jarbuilder.html
+
+El jar de weblogic se genera con la siguiente instrucción:
+C:\workplace\aplicaciones\windows\Oracle\OracleWeblogic10.3.4\wlserver\server\lib>java -jar wljarbuilder.jar
+
+Se deberá instalar en el repositorio local de maven:
+SET WEBLOGIC_BIBLIOTECAS=C:\workplace\aplicaciones\windows\Oracle\OracleWeblogic10.3.4\wlserver\server\lib
+mvn install:install-file -DgroupId=weblogic -DartifactId=wlfullclient -Dversion=10.3.4 -Dpackaging=jar -Dfile=%WEBLOGIC_BIBLIOTECAS%\wlfullclient.jar
+
+************* IMPLEMENTACION TEMPORAL DE LOS OBJETOS DE NEGOCIO DE DERECHOHABIENTES
+mvn install:install-file -DgroupId=mx.gob.imss.ctirss.delta.derechohabientes.model -DartifactId=derechohabientes-model-business-pojo -Dversion=0.0.1 -Dpackaging=jar -Dfile=gestionDerechohabientes-modelo-1.0-SNAPSHOT.jar
+
+************* IMPLEMENTACION DE INTERFACES DE DOCUMENTOS PROBATORIOS
+mvn install:install-file -DgroupId=gestionDocumentoProbatorio-interfaces-negocio -DartifactId=gestionDocumentoProbatorio-interfaces-negocio -Dversion=0.0.1 -Dpackaging=jar -Dfile=gestionDocumentoProbatorio-interfaces-negocio-1.0-SNAPSHOT.jar

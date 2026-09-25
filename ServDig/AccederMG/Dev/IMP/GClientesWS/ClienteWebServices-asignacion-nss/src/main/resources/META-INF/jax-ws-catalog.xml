@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog prefer="system" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <system systemId="InicioLlamadaTransServiceService.wsdl" uri="../../../../../../../../Users/vanderluk/tfs/dev/clws/04IMP/ClienteWebServices-asignacion-nss/src/main/resources/InicioLlamadaTransServiceService.wsdl"/>
+</catalog>

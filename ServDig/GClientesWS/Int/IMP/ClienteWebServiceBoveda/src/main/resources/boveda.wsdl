@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WL5G3N0:definitions targetNamespace="http://www.openuri.org/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.openuri.org/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.openuri.org/" xmlns:conv="http://www.openuri.org/2002/04/soap/conversation/" xmlns:cw="http://www.openuri.org/2002/04/wsdl/conversation/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:jms="http://www.openuri.org/2002/04/wsdl/jms/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ope="http://www.openuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.openuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+      <s:element name="AltaDocumento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" name="entrada" type="ope:EntradaAlta"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AltaDocumentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="AltaDocumentoResult" type="ope:SalidaAlta"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BajaLogicaDocumento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="entrada" type="ope:EntradaBajaLogica"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BajaLogicaDocumentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="BajaLogicaDocumentoResult" type="ope:SalidaBajaLogica"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BajaDocumento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="entrada" type="ope:EntradaBaja"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BajaDocumentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="BajaDocumentoResult" type="ope:SalidaBaja"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaDocumento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="entrada" type="ope:EntradaConsulta"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaDocumentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="ConsultaDocumentoResult" type="ope:SalidaConsulta"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizacionDocumento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="entrada" type="ope:EntradaActualizacion"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizacionDocumentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="ActualizacionDocumentoResult" type="ope:SalidaActualizacion"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EntradaAlta">
+        <s:sequence>
+          <s:element minOccurs="1" name="documento" type="s:base64Binary"/>
+          <s:element minOccurs="1" name="tipoDocumental" type="s:string"/>
+          <s:element minOccurs="0" name="ruta" type="s:string"/>
+          <s:element minOccurs="1" name="tipo" type="s:string"/>
+          <s:element maxOccurs="unbounded" name="atributo" type="ope:Atributo"/>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="char">
+        <s:restriction base="s:string">
+          <s:length value="1"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="SalidaAlta">
+        <s:sequence>
+          <s:element name="exito" type="s:boolean"/>
+          <s:element minOccurs="0" name="clave" type="s:string"/>
+          <s:element minOccurs="0" name="descripcion" type="s:string"/>
+          <s:element minOccurs="0" name="idDocumento" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntradaBajaLogica">
+        <s:sequence>
+          <s:element minOccurs="0" name="idDocumento" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SalidaBajaLogica">
+        <s:sequence>
+          <s:element name="exito" type="s:boolean"/>
+          <s:element minOccurs="0" name="clave" type="s:string"/>
+          <s:element minOccurs="0" name="descripcion" type="s:string"/>
+          <s:element minOccurs="0" name="idDocumento" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntradaBaja">
+        <s:sequence>
+          <s:element minOccurs="0" name="idDocumento" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SalidaBaja">
+        <s:sequence>
+          <s:element name="exito" type="s:boolean"/>
+          <s:element minOccurs="0" name="clave" type="s:string"/>
+          <s:element minOccurs="0" name="descripcion" type="s:string"/>
+          <s:element minOccurs="0" name="idDocumento" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntradaConsulta">
+        <s:sequence>
+          <s:element minOccurs="1" name="tipoDocumental" type="s:string"/>
+          <s:element minOccurs="0" name="tipoConsulta" type="s:string"/>
+          <s:element maxOccurs="unbounded" name="atributo" type="ope:Atributo"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SalidaConsulta">
+        <s:sequence>
+          <s:element name="exito" type="s:boolean"/>
+          <s:element minOccurs="0" name="clave" type="s:string"/>
+          <s:element minOccurs="0" name="descripcion" type="s:string"/>
+          <s:element maxOccurs="unbounded" name="documento" type="ope:Documento"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Atributo">
+        <s:sequence>
+          <s:element name="nombre" nillable="true" type="s:string"/>
+          <s:element name="valor" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Documento">
+        <s:sequence>
+          <s:element name="nombre" nillable="true" type="s:string"/>
+          <s:element name="contenido" type="s:base64Binary"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntradaActualizacion">
+        <s:sequence>
+          <s:element name="idDocumento" type="s:string"/>
+          <s:element name="documento" type="s:base64Binary"/>
+          <s:element maxOccurs="unbounded" name="atributo" type="ope:Atributo"/>
+          <s:element minOccurs="0" name="versionado" type="s:boolean"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SalidaActualizacion">
+        <s:sequence>
+          <s:element name="exito" type="s:boolean"/>
+          <s:element minOccurs="0" name="clave" type="s:string"/>
+          <s:element minOccurs="0" name="descripcion" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="AltaDocumentoSoapIn">
+    <WL5G3N0:part element="WL5G3N1:AltaDocumento" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AltaDocumentoSoapOut">
+    <WL5G3N0:part element="WL5G3N1:AltaDocumentoResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="BajaLogicaDocumentoSoapIn">
+    <WL5G3N0:part element="WL5G3N1:BajaLogicaDocumento" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="BajaLogicaDocumentoSoapOut">
+    <WL5G3N0:part element="WL5G3N1:BajaLogicaDocumentoResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="BajaDocumentoSoapIn">
+    <WL5G3N0:part element="WL5G3N1:BajaDocumento" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="BajaDocumentoSoapOut">
+    <WL5G3N0:part element="WL5G3N1:BajaDocumentoResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="ConsultaDocumentoSoapIn">
+    <WL5G3N0:part element="WL5G3N1:ConsultaDocumento" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="ConsultaDocumentoSoapOut">
+    <WL5G3N0:part element="WL5G3N1:ConsultaDocumentoResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="ActualizacionDocumentoSoapIn">
+    <WL5G3N0:part element="WL5G3N1:ActualizacionDocumento" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="ActualizacionDocumentoSoapOut">
+    <WL5G3N0:part element="WL5G3N1:ActualizacionDocumentoResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="IESServicioSoap">
+    <WL5G3N0:operation name="AltaDocumento">
+      <WL5G3N0:input message="WL5G3N1:AltaDocumentoSoapIn"/>
+      <WL5G3N0:output message="WL5G3N1:AltaDocumentoSoapOut"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="BajaLogicaDocumento">
+      <WL5G3N0:input message="WL5G3N1:BajaLogicaDocumentoSoapIn"/>
+      <WL5G3N0:output message="WL5G3N1:BajaLogicaDocumentoSoapOut"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="BajaDocumento">
+      <WL5G3N0:input message="WL5G3N1:BajaDocumentoSoapIn"/>
+      <WL5G3N0:output message="WL5G3N1:BajaDocumentoSoapOut"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="ConsultaDocumento">
+      <WL5G3N0:input message="WL5G3N1:ConsultaDocumentoSoapIn"/>
+      <WL5G3N0:output message="WL5G3N1:ConsultaDocumentoSoapOut"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="ActualizacionDocumento">
+      <WL5G3N0:input message="WL5G3N1:ActualizacionDocumentoSoapIn"/>
+      <WL5G3N0:output message="WL5G3N1:ActualizacionDocumentoSoapOut"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="IESServicioSoap" type="WL5G3N1:IESServicioSoap">
+    <WL5G3N2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="AltaDocumento">
+      <WL5G3N2:operation soapAction="http://www.openuri.org/AltaDocumento" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="BajaLogicaDocumento">
+      <WL5G3N2:operation soapAction="http://www.openuri.org/BajaLogicaDocumento" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="BajaDocumento">
+      <WL5G3N2:operation soapAction="http://www.openuri.org/BajaDocumento" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="ConsultaDocumento">
+      <WL5G3N2:operation soapAction="http://www.openuri.org/ConsultaDocumento" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="ActualizacionDocumento">
+      <WL5G3N2:operation soapAction="http://www.openuri.org/ActualizacionDocumento" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="IESServicio">
+    <WL5G3N0:port binding="WL5G3N1:IESServicioSoap" name="IESServicioSoap">
+      <WL5G3N2:address location="${mvn.url.boveda}"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cobranza="http://mx.gob.imss.digital.modelo.cobranza" xmlns:comun="http://mx.gob.imss.digital.modelo.comun" xmlns:cuestinario="http://mx.gob.imss.digital.modelo.cuestionario" xmlns:domicilio="http://mx.gob.imss.digital.modelo.domicilio" xmlns:patron="http://mx.gob.imss.digital.modelo.patron" xmlns:persona="http://mx.gob.imss.digital.modelo.persona" xmlns:seguros="http://mx.gob.imss.digital.modelo.seguros" xmlns:tramite="http://mx.gob.imss.digital.modelo.tramite" targetNamespace="http://mx.gob.imss.digital.modelo.seguros" version="1.0">
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.cuestionario" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/cuestinario.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.domicilio" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/domicilio.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.persona" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/persona.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.comun" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/comun.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.cobranza" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/cobranza.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.patron" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/patron.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.tramite" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/tramite.xsd"/>
+
+  <xs:element name="asignacionNssIvro" type="seguros:asignacionNssIvro"/>
+
+  <xs:element name="comprobanteSeguroReporte" type="seguros:comprobanteSeguroReporte"/>
+
+  <xs:element name="comprobantesSeguroReporte" type="seguros:comprobantesSeguroReporte"/>
+
+  <xs:element name="cuestionarioSeguroReporte" type="seguros:cuestionarioSeguroReporte"/>
+
+  <xs:element name="cuestionariosSeguroReporte" type="seguros:cuestionariosSeguroReporte"/>
+
+  <xs:element name="documentoSeguro" type="seguros:documentoSeguro"/>
+
+  <xs:element name="estadoSeguroIvro" type="seguros:estadoSeguroIvro"/>
+
+  <xs:element name="periodoSeguro" type="seguros:periodoSeguro"/>
+
+  <xs:element name="seguroIvro" type="seguros:seguroIvro"/>
+
+  <xs:element name="segurosIvro" type="seguros:segurosIvro"/>
+
+  <xs:complexType name="documentoSeguro">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idDocumento" type="xs:long"/>
+      <xs:element minOccurs="0" name="nombreArchivo" type="xs:string"/>
+      <xs:element minOccurs="0" name="archivo" type="xs:base64Binary"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listComprobanteSeguro" nillable="true" type="seguros:comprobanteSeguroReporte"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="comprobanteSeguroReporte">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nombre" type="xs:string"/>
+      <xs:element minOccurs="0" name="nss" type="xs:string"/>
+      <xs:element minOccurs="0" name="curp" type="xs:string"/>
+      <xs:element minOccurs="0" name="fecNacimiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="edad" type="xs:int"/>
+      <xs:element minOccurs="0" name="sexo" type="xs:string"/>
+      <xs:element minOccurs="0" name="domicilio" type="xs:string"/>
+      <xs:element minOccurs="0" name="modalidad" type="xs:string"/>
+      <xs:element minOccurs="0" name="nrp" type="xs:string"/>
+      <xs:element minOccurs="0" name="delegacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="subdelegacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoTramite" type="xs:string"/>
+      <xs:element minOccurs="0" name="periodo" type="xs:string"/>
+      <xs:element minOccurs="0" name="cuota" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="formaPago" type="xs:string"/>
+      <xs:element minOccurs="0" name="cuestionario" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="origen" type="xs:int"/>
+      <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+      <xs:element minOccurs="0" name="subdelegacionUsuario" type="xs:string"/>
+      <xs:element minOccurs="0" name="rfcFirma" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreFirma" type="xs:string"/>
+      <xs:element minOccurs="0" name="curpFirma" type="xs:string"/>
+      <xs:element minOccurs="0" name="aseguramiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="cadenaOriginal" type="xs:string"/>
+      <xs:element minOccurs="0" name="selloDigital" type="xs:string"/>
+      <xs:element minOccurs="0" name="secuenciaNotarial" type="xs:string"/>
+      <xs:element minOccurs="0" name="numeroSerie" type="xs:string"/>
+      <xs:element minOccurs="0" name="beneficio" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="recargo" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="salarioDiario" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="estadoSeguroIvro">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idEstadoSeguro" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="periodoSeguro">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaIncial" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaFinal" type="xs:dateTime"/>
+      <xs:element name="renovacion" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="asignacionNssIvro">
+    <xs:sequence>
+      <xs:element name="cveIdAsignacionNss" type="xs:long"/>
+      <xs:element minOccurs="0" name="canSemanaCotizada" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="fecRegistroActualizado" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fecRegistroAlta" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fecRegistroBaja" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="indActivo" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="numNss" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cuestionarioSeguroReporte">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="cuestinario:respuestasCuestionario"/>
+      <xs:element minOccurs="0" name="titular" type="xs:string"/>
+      <xs:element minOccurs="0" name="apPaterno" type="xs:string"/>
+      <xs:element minOccurs="0" name="apMaterno" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombres" type="xs:string"/>
+      <xs:element minOccurs="0" name="nss" type="xs:string"/>
+      <xs:element minOccurs="0" name="calleIOManzana" type="xs:string"/>
+      <xs:element minOccurs="0" name="numero" type="xs:string"/>
+      <xs:element minOccurs="0" name="colonia" type="xs:string"/>
+      <xs:element minOccurs="0" name="curp" type="xs:string"/>
+      <xs:element minOccurs="0" name="poblacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="estado" type="xs:string"/>
+      <xs:element minOccurs="0" name="codPostal" type="xs:string"/>
+      <xs:element minOccurs="0" name="telefono" type="xs:string"/>
+      <xs:element minOccurs="0" name="lugNacimiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaNacimiento" type="xs:string"/>
+      <xs:element minOccurs="0" name="edad" type="xs:string"/>
+      <xs:element minOccurs="0" name="sexFem" type="xs:string"/>
+      <xs:element minOccurs="0" name="sexMas" type="xs:string"/>
+      <xs:element minOccurs="0" name="estCivil" type="xs:string"/>
+      <xs:element minOccurs="0" name="cveDeleg" type="xs:string"/>
+      <xs:element minOccurs="0" name="unidadMedFam" type="xs:string"/>
+      <xs:element minOccurs="0" name="mod34" type="xs:string"/>
+      <xs:element minOccurs="0" name="mod35" type="xs:string"/>
+      <xs:element minOccurs="0" name="mod43" type="xs:string"/>
+      <xs:element minOccurs="0" name="mod44" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="seguroIvro">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cveIdSeguroIvro" type="xs:long"/>
+      <xs:element minOccurs="0" name="titular" type="persona:fisica"/>
+      <xs:element minOccurs="0" name="fechaInicio" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaFin" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="estadoSeguro" type="seguros:estadoSeguroIvro"/>
+      <xs:element minOccurs="0" ref="comun:modalidad"/>
+      <xs:element minOccurs="0" name="fechaBaja" type="xs:dateTime"/>
+      <xs:element minOccurs="0" ref="cobranza:compra"/>
+      <xs:element minOccurs="0" name="tramite" type="tramite:tramiteSeguroIvro"/>
+      <xs:element minOccurs="0" name="tramiteSeguroFamiliar" type="tramite:tramiteSeguroIvroMod33"/>
+      <xs:element minOccurs="0" name="tramiteContVoluntaria" type="tramite:tramiteSeguroIvroMod40"/>
+      <xs:element minOccurs="0" name="enRenovacion" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="extemporanea" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="comprobantesSeguroReporte">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="comprobante" nillable="true" type="seguros:comprobanteSeguroReporte"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="segurosIvro">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="seguroIvro" nillable="true" type="seguros:seguroIvro"/>
+      <xs:element minOccurs="0" name="origen" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cuestionariosSeguroReporte">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="cuestionarios" nillable="true" type="seguros:cuestionarioSeguroReporte"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

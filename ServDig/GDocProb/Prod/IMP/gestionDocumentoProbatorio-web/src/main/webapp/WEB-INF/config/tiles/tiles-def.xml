@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="simple.base.definition" template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title"
+			value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title"
+			value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />
+
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<definition name="base.definition.embebed" template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title"
+			value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition.embebed.simple"
+		template="/WEB-INF/views/layout/main-embebed-simple.jsp">
+	</definition>
+
+	<!-- Definicion de la pantalla del gestionDocumentoProbatorio -->
+	<definition name="gestionDocumentoProbatorio" extends="simple.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/gestionDocumentoProbatorio/gestionDocumentoProbatorio.jsp " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de logeo -->
+	<definition name="login" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/login.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla de bienvenida de la aplicacion -->
+	<definition name="welcome" extends="simple.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/general/welcome.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="home" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/home.jsp " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-home.jsp" />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de captura de domicilio -->
+	<definition name="domicilioRegistro" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/domicilio/registro.jsp " />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de captura de domicilio -->
+	<definition name="domicilioRegistroEmbebed" extends="base.definition.embebed">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/domicilio/registro.jsp " />
+		<put-attribute name="controles"
+			value="/WEB-INF/views/domicilio/embebed/controles.jsp" />
+		<put-attribute name="funciones"
+			value="/WEB-INF/views/domicilio/embebed/funciones.jsp" />
+	</definition>
+
+
+
+	<!-- Definicion de la pantalla de Inicio de tramite -->
+	<definition name="tramiteinicio" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/tramite/inicio.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla de Captura de tramite -->
+	<definition name="tramitecapturar" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/tramite/capturar.jsp " />
+	</definition>
+
+
+	<!-- Administración de medios de contacto -->
+	<definition name="initAdmonDocumentosProbatorios" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/doctosProbatorios/administrar/initAdmonDocsProbatorios.jsp" />
+	</definition>
+
+	<definition name="admon.doctosProbatorios.captura" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/doctosProbatorios/administrar/capturaDocsProbatorios.jsp" />
+		<put-attribute name="controles" value="" />
+		<put-attribute name="funciones" value="" />
+		<put-attribute name="pie" value="" />
+	</definition>
+	<!-- Administración de medios de contacto -->
+
+
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="databaseError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="internalError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="500" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="404" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+	
+	<definition name="wizard.base.definition" template="/WEB-INF/views/layout/main-wizard.jsp">
+		<put-attribute name="title" value=" Portal de Servicios DELTA " />
+		<put-attribute name="pie"
+			value="/WEB-INF/views/layout/pie-empty.jsp" />
+	</definition>
+	
+	<definition name="initWizardCapturaDocumentos" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/captura/contenido.jsp" />
+	</definition>
+	
+	<!-- Documentos -->
+	<definition name="cedulaProfesional"        template="/WEB-INF/views/documentosCaptura/cedulaProfesional.jsp"/>
+	<definition name="cartillaMilitar"          template="/WEB-INF/views/documentosCaptura/cartillaMilitar.jsp"/>
+	<definition name="constanciaEstudios"       template="/WEB-INF/views/documentosCaptura/constanciaEstudios.jsp"/>
+	<definition name="certificadoNacimiento"    template="/WEB-INF/views/documentosCaptura/certificadoNacimiento.jsp"/>
+	<definition name="pasaporte"                template="/WEB-INF/views/documentosCaptura/pasaporte.jsp"/>
+	
+	<definition name="actaComun"            template="/WEB-INF/views/documentosCaptura/actaComun.jsp"/>
+	<definition name="actaNacimiento"            template="/WEB-INF/views/documentosCaptura/actaNacimiento.jsp"/>
+	<definition name="curp"                      template="/WEB-INF/views/documentosCaptura/curp.jsp"/>
+	
+	<definition name="credencialElector"         template="/WEB-INF/views/documentosCaptura/credencialElector.jsp"/>
+	
+	<definition name="dictamenIncapacitado"                template="/WEB-INF/views/documentosCaptura/dictamenIncapacitado.jsp"/>
+	<definition name="obstetrico"                template="/WEB-INF/views/documentosCaptura/obstetrico.jsp"/>
+	<definition name="certificadoSitCritica"                template="/WEB-INF/views/documentosCaptura/certificadoSituacionCritica.jsp"/>
+	<definition name="acuerdo"                template="/WEB-INF/views/documentosCaptura/acuerdo.jsp"/>
+	<definition name="vigenciaTemporal"                template="/WEB-INF/views/documentosCaptura/vigenciaTemporal.jsp"/>
+	<definition name="compDom"                template="/WEB-INF/views/documentosCaptura/compDom.jsp"/>
+	<definition name="adimss"                template="/WEB-INF/views/documentosCaptura/adimss.jsp"/>
+	<definition name="actaPactoCivil"                template="/WEB-INF/views/documentosCaptura/actaPactoCivil.jsp"/>
+	<definition name="actaTerminoUnionCivil"                template="/WEB-INF/views/documentosCaptura/actaTerminoUnionCivil.jsp"/>
+	<definition name="actaUnionCivil"                template="/WEB-INF/views/documentosCaptura/actaUnionCivil.jsp"/>
+	<!-- Documentos muestra-->
+	
+	<definition name="muestraDocTram"        template="/WEB-INF/views/general/fileRead/fileRead.jsp"/>
+	<definition name="cedulaProfesionalMuestra"        template="/WEB-INF/views/documentosMuestra/cedulaProfesionalMuestra.jsp"/>
+	<definition name="cartillaMilitarMuestra"          template="/WEB-INF/views/documentosMuestra/cartillaMilitarMuestra.jsp"/>
+	<definition name="constanciaEstudiosMuestra"       template="/WEB-INF/views/documentosMuestra/constanciaEstudiosMuestra.jsp"/>
+	<definition name="certificadoNacimientoMuestra"    template="/WEB-INF/views/documentosMuestra/certificadoNacimientoMuestra.jsp"/>
+	<definition name="pasaporteMuestra"                template="/WEB-INF/views/documentosMuestra/pasaporteMuestra.jsp"/>
+	
+	<definition name="actaComunMuestra"            		template="/WEB-INF/views/documentosMuestra/actaComunMuestra.jsp"/>
+	<definition name="actaNacimientoMuestra"            template="/WEB-INF/views/documentosMuestra/actaNacimientoMuestra.jsp"/>
+	<definition name="curpMuestra"                      template="/WEB-INF/views/documentosMuestra/curpMuestra.jsp"/>
+	<definition name="credencialElectorMuestra"         template="/WEB-INF/views/documentosMuestra/credencialElectorMuestra.jsp"/>
+	
+	<definition name="dictamenIncapacitadoMuestra"                template="/WEB-INF/views/documentosMuestra/dictamenIncapacitadoMuestra.jsp"/>
+	<definition name="obstetricoMuestra"                template="/WEB-INF/views/documentosMuestra/obstetricoMuestra.jsp"/>
+	<definition name="certificadoSitCriticaMuestra"                template="/WEB-INF/views/documentosMuestra/certificadoSituacionCriticaMuestra.jsp"/>
+	<definition name="acuerdoMuestra"                template="/WEB-INF/views/documentosMuestra/acuerdoMuestra.jsp"/>
+	<definition name="vigenciaTemporalMuestra"                template="/WEB-INF/views/documentosMuestra/vigenciaTemporalMuestra.jsp"/>
+	<definition name="compDomMuestra"                template="/WEB-INF/views/documentosMuestra/compDomMuestra.jsp"/>
+	<definition name="adimssMuestra"                template="/WEB-INF/views/documentosMuestra/adimssMuestra.jsp"/>
+	<definition name="actaTerminoUnionCivilMuestra"                template="/WEB-INF/views/documentosCaptura/actaTerminoUnionCivilMuestra.jsp"/>
+	<definition name="actaUnionCivilMuestra"                template="/WEB-INF/views/documentosCaptura/actaUnionCivilMuestra.jsp"/>
+
+</tiles-definitions>

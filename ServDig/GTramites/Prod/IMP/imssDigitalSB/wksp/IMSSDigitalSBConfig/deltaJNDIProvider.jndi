@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:con="http://www.bea.com/wli/sb/resources/config">
+    <con:description>JNDI delta</con:description>
+    <con:providerUrl>t3://172.24.116.37:15051,172.24.116.37:15052</con:providerUrl>
+    <con:UserPassword>
+        <con:username>admin_wlgeceqa</con:username>
+        <con:password>wlgeceqa_admin</con:password>
+    </con:UserPassword>
+    <con:cacheValues>true</con:cacheValues>
+    <con:requestTimeout>0</con:requestTimeout>
+</xml-fragment>

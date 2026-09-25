@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<h:form id="formPerf">
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{modificarSolicitudMB.inicializaParametros}"/>
+		</f:metadata>
+		<ace:dataTable id="solicitudesAutorizadas" style="font-size:10px"
+                         value="#{modificarSolicitudMB.lista}"
+                         var="solicitud"
+                         rows="10"
+                      paginator="true"
+                         paginatorPosition="top"
+                         selectionMode="single"
+                         rowSelectListener="#{modificarSolicitudMB.selectListenerDetalle}" 
+                         >
+               <ace:ajax event="select" execute="@all" render="@all" onComplete="dialogP.show();"/>
+               
+               <ace:column id="nombreP" headerText="Nombre">
+                   <h:outputText id="nombreCellP" value=" #{solicitud.nombreCompleto}"/>
+               </ace:column>
+                <ace:column id="estatusP" headerText="Estatus">
+                   <h:outputText id="estatusCellP" value="#{solicitud.estatusDTO.desEstatus}"/>
+               </ace:column>
+               <ace:column id="perfilesP" headerText="No. Grupos">
+                   <h:outputText id="perfilesCellP" value="#{solicitud.numPerfiles}"/>
+               </ace:column>
+                <ace:column id="modulosP" headerText="No. Módulos">
+                   <h:outputText id="modulosCellP" value="#{solicitud.numModulos}"/>
+               </ace:column>
+               <ace:column id="areaP" headerText="Área Normativa">
+                   <h:outputText id="areaCellP" value="#{solicitud.areaNorm.desAreanorma}"/>
+               </ace:column>
+               <ace:column id="delP" headerText="Delegación">
+                   <h:outputText id="delCellP" value="#{solicitud.delDTO.nombreDelegacion}"/>
+               </ace:column>
+               <ace:column id="subP" headerText="Subdelegación">
+                   <h:outputText id="subCellP" value="#{solicitud.subdelDTO.nombreSubelegacion}"/>
+               </ace:column>
+               <ace:column id="depP" headerText="Departamento">
+                   <h:outputText id="depCellP" value="#{solicitud.dptoDTO.desDepartamento}"/>
+               </ace:column>
+               <ace:column id="puestoP" headerText="Puesto">
+                   <h:outputText id="puestoCellP" value="#{solicitud.puestoDTO.nombrePuesto}"/>
+               </ace:column>
+               <ace:column id="fechaSolP" headerText="Fecha de solicitud">
+                   <h:outputText id="fechaSolCellP" value="#{solicitud.fecRegistroAlta}">
+                   	<f:convertDateTime pattern="dd/MM/yyyy"/>
+                   </h:outputText>
+               </ace:column>
+           </ace:dataTable>
+            <ace:panel id="detallePerfiles" >
+			<ace:dialog id="dialogP"
+                               widgetVar="dialogP"
+                               modal="true"
+                               draggable="true"
+                               showEffect="clip"
+                               hideEffect="fade"
+                               width="800">
+
+				<h:panelGrid width="100%" columns="2" id="detalleP">
+                    <h:outputLabel id="curpLabelP" for="curptxtP" value="CURP:"/>
+                    <h:outputText id="curptxtP" value="#{modificarSolicitudMB.solicitud.desUsrCurp}" />
+
+					<h:outputLabel id="matriLabelP" for="matritxtP" value="Matrícula:"/>
+                    <h:outputText id="matritxtP" value="#{modificarSolicitudMB.solicitud.cveMatricula}" />
+
+					<h:outputLabel id="nombreLabelP" for="nombretxtP" value="Nombre:"/>
+                    <h:outputText id="nombretxtP" value="#{modificarSolicitudMB.solicitud.nombreCompleto}" />
+
+					<h:outputLabel id="correoLabelP" for="correotxtP" value="Correo:"/>
+                    <h:outputText id="correotxtP" value="#{modificarSolicitudMB.solicitud.refCorreoElectronico}" />
+                       
+                    <h:outputLabel id="telLabelP" for="teltxtP" value="Teléfono:"/>
+                    <h:outputText id="teltxtP" value="#{modificarSolicitudMB.solicitud.desTelefonoOfi}" />
+
+					<h:outputLabel id="deptoLabelP" for="deptotxtP" value="Departamento:"/>
+                    <h:outputText id="deptotxtP" value="#{modificarSolicitudMB.solicitud.dptoDTO.desDepartamento}" />
+
+					<h:outputLabel id="ptoLabelP" for="ptotxtP" value="Puesto:"/>
+                    <h:outputText id="ptotxtP" value="#{modificarSolicitudMB.solicitud.puestoDTO.nombrePuesto}" />
+
+					<h:outputLabel id="delLabelP" for="deltxtP" value="Delegación:"/>
+                    <h:outputText id="deltxtP" value="#{modificarSolicitudMB.solicitud.delDTO.nombreDelegacion}" />
+                 </h:panelGrid>
+                  	
+				<ace:dataTable id="perfilesRowP"
+	                          value="#{modificarSolicitudMB.solicitud.perfilesDTO}"
+	                          var="perfil"
+	                          rows="5"
+	                          paginator="true"
+                          	  paginatorPosition="top">
+	                         
+				                <ace:column id="descAreaP" headerText="Área">
+				                	<h:outputLabel id="txdescAreaP#{perfil.cveSsoperfilessol}" value="#{perfil.areaNormDTO.desAreanorma}"/>
+								</ace:column>
+								<ace:column id="descDeptoP" headerText="Departamento">
+				                	<h:outputLabel id="txdescDeptoP#{perfil.cveSsoperfilessol}" value="#{perfil.deptoDTO.desDepartamento}"/>
+								</ace:column>
+				                <ace:column id="descPerfil" headerText="Puesto">
+				                	<h:outputLabel id="txdescPerfil#{perfil.cveSsoperfilessol}" value="#{perfil.puestoDTO.nombrePuesto}"/>
+								</ace:column>
+								
+ 								<ace:column id="opPerfil" headerText="Operación"> 
+				                	<h:commandButton id="btnBorrar" value="Borrar" disabled="#{perfil.desDefault eq 'Si'}">
+				                		<f:ajax  listener="#{modificarSolicitudMB.borraPefil}" render="@all" execute="@all" event="click" immediate="true"/>	
+				                		<f:attribute name="attPerfil" value="#{perfil}"/>
+				                	</h:commandButton>
+				                </ace:column>
+	                   	</ace:dataTable>
+	                   	
+	                   	<h:panelGrid width="100%" columns="4" id="perfilesAddP"> 
+	                   		<h:panelGrid width="100%" columns="1" id="perfiles1P">
+		                   		<h:outputLabel value="Área Normativa:" id="lbAreaNormPerfilP" />
+								<h:selectOneMenu id="slAreaNormRegSolicitudCuenta"
+									required="false" requiredMessage="SELECCIONE EL AREA NORMATIVA"
+									disabled="#{consultaGenerica.flag}"
+									value="#{consultaGenerica.claveAreaNormativa}">
+									<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+									<f:selectItems value="${consultaGenerica.lstAreaNormativa}" />
+								</h:selectOneMenu>
+							</h:panelGrid>
+							<h:panelGrid width="100%" columns="1" id="perfiles2P">
+								<h:outputLabel value="Departamento:" id="lbDepPerfilP"/>
+								<h:selectOneMenu id="slDepRegSolicitudCuenta2" required="false"
+									requiredMessage="SELECCIONE EL DEPARTAMENTO"
+									value="#{consultaGenerica.claveDepartamentoRolAdd}"
+									disabled="#{consultaGenerica.flag}"
+									valueChangeListener="#{consultaGenerica.listenerPuestoAdd}">
+									<f:selectItems value="${consultaGenerica.lstDepartamentoRol}" />
+									<f:ajax event="change" render="slPuestoRegSolicitudCuentaC1" />
+								</h:selectOneMenu>
+							</h:panelGrid>
+							<h:panelGrid width="100%" columns="1" id="perfiles3P">
+								<h:outputLabel value="Puesto:" id="lbPuestoPerfilP" />
+								<h:selectOneMenu id="slPuestoRegSolicitudCuentaC1" required="true"
+									requiredMessage="SELECCIONE EL PUESTO"
+									value="#{modificarSolicitudMB.clavePuesto}"
+									valueChangeListener="#{modificarSolicitudMB.listenerPuesto}">
+									<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+									<f:selectItems value="${consultaGenerica.lstPuestoAdd}" />
+									<f:ajax event="change" render="slPuestoRegSolicitudCuentaC1" />
+								</h:selectOneMenu>
+							</h:panelGrid>
+							<h:commandButton value="+" id="btnAgregarPerfilP" disabled="#{modificarSolicitudMB.disabledBotonAdd}">
+								<f:ajax  listener="#{modificarSolicitudMB.agregaPerfil}" render="@all" execute="@all" event="click" immediate="true"/>
+							</h:commandButton>
+						</h:panelGrid>
+
+				
+				<h:messages id="allMsgsP" showDetail="true" style="color:red;margin:8px;" />				
+
+            </ace:dialog>
+	</ace:panel>
+	</h:form>
+</ui:composition>

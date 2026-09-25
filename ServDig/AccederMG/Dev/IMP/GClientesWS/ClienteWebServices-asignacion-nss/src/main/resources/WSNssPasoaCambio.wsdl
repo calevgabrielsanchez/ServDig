@@ -1,0 +1,36 @@
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://soap.resource.ado.imss.gob.mx/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://soap.resource.ado.imss.gob.mx/" name="WSNssPasoaCambio">
+<types>
+<xsd:schema>
+<xsd:import namespace="http://soap.resource.ado.imss.gob.mx/" schemaLocation="http://adodigital.imss.gob.mx:80/WSNssPasoaCambioService/WSNssPasoaCambio?xsd=1"/>
+</xsd:schema>
+</types>
+<message name="getInfoByNss">
+<part name="parameters" element="tns:getInfoByNss"/>
+</message>
+<message name="getInfoByNssResponse">
+<part name="parameters" element="tns:getInfoByNssResponse"/>
+</message>
+<portType name="WSNssPasoaCambio">
+<operation name="getInfoByNss">
+<input message="tns:getInfoByNss"/>
+<output message="tns:getInfoByNssResponse"/>
+</operation>
+</portType>
+<binding name="WSNssPasoaCambioPortBinding" type="tns:WSNssPasoaCambio">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="getInfoByNss">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+</binding>
+<service name="WSNssPasoaCambio">
+<port name="WSNssPasoaCambioPort" binding="tns:WSNssPasoaCambioPortBinding">
+<soap:address location="http://adodigital.imss.gob.mx:80/WSNssPasoaCambioService/WSNssPasoaCambio"/>
+</port>
+</service>
+</definitions>

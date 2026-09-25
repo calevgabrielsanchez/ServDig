@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="simple.base.definition" template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title"
+			value=" Gestión de asegurados" />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title" value=" Gestión de asegurados" />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="breadcrumbs" value="" />
+		<put-attribute name="navegacion" value="" />
+		<put-attribute name="nameComScore" value="" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition.sinHeader" template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title" value=" Gestión de asegurados" />
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="subencabezado" value="" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="breadcrumbs" value="" />
+		<put-attribute name="navegacion" value="" />
+		<put-attribute name="nameComScore" value="" />
+		<put-attribute name="pie" value="" />
+	</definition>
+
+
+	<definition name="base.definition.embebed" template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title"
+			value=" Gestión de asegurados" />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="wizard.base.definition" template="/WEB-INF/views/layout/main-wizard.jsp">
+		<put-attribute name="title" value=" Portal de servicios" />
+		<put-attribute name="pie" value="" />
+	</definition>
+
+	<!-- Definicion de la pantalla del gestionasegurados -->
+	<definition name="portal" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/portal/portal.jsp " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de logeo -->
+	<definition name="login" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/login.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla de bienvenida de la aplicacion -->
+	<definition name="welcome" extends="simple.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/general/welcome.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="home" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/home.jsp " />
+
+	</definition>
+
+
+
+
+	<!-- Definicion de la pantalla de consulta por datos basicos -->
+	<definition name="consultaDatosBasicos" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/tramite/consultaDatosBasicos.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla cuando se encuentra ya registrada la persona -->
+	<definition name="personaYaRegistrada" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/tramite/personaRegistrada.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla para la captura de los datos basicos limitada -->
+	<definition name="capturaDatosBasicosLimitada" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/tramite/capturaDatosBasicosLimitada.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla para la captura de los datos basicos libres -->
+	<definition name="capturaDatosBasicosLibre" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/tramite/capturaDatosBasicosLibre.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla para la captura de los datos complementarios 
+		(paso 3) -->
+	<definition name="capturaComplementos" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/tramite/capturaDatosComplementarios.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla para la captura de los datos basicos libres 
+		(paso 3 alterno para solicitudes pendientes desde la consulta del folio) -->
+	<definition name="capturaComplementosConSerie" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/tramite/capturaDatosComplementariosConSerie.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla de conclusion de solicitud -->
+	<definition name="concluirSolicitud" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/tramite/concluirSolicitud.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla de confirmacion de cancelar solicitud pendiente -->
+	<definition name="confirmacionCancelacionSolicitudPendiente"
+		extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/tramite/confirmacionCancelacionSolicitudPendiente.jsp " />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de conclusion de solicitud -->
+	<definition name="concluirSolicitudExterno" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/tramite/concluirSolicitudExterno.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla de Inicio de tramite -->
+	<definition name="tramiteinicio" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/tramite/inicio.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla de Captura de tramite -->
+	<definition name="tramitecapturar" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/tramite/capturar.jsp " />
+	</definition>
+	
+	<!-- Modulo de consulta de vigencia -->
+	<!-- Home de consulta de vigencia -->
+	<definition name="homeVigencia" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/consultaVigencia/homeVigencia.jsp" />
+	</definition>
+	
+	<!-- Modulo de consulta de vigencia -->
+	<!-- Home de consulta de vigencia -->
+	<definition name="loginVigencia" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/consultaVigencia/inicio.jsp" />
+		<put-attribute name="nameComScore" value=".consulta_vigencia.inicio" />
+	</definition>
+	
+	<definition name="vigenciaFinaliza" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/consultaVigencia/solicitudFinalizada.jsp" />
+		<put-attribute name="nameComScore" value=".consulta_vigencia.tramite_finalizado" />
+	</definition>
+	
+	
+	<!-- Definicion de la pantalla de consulta por datos basicos -->
+	<definition name="consultaVigencia" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/consultaVigencia/consultaVigencia.jsp" />
+	</definition>
+	
+	<definition name="salidaVigencia" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/consultaVigencia/salidaVigencia.jsp" />
+	</definition>
+	
+	<!-- Definicion de la pantalla para actualizar correo electrónico -->
+ 	<definition name="actCorreo" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/consultaVigencia/inActualizacion.jsp" />
+	</definition> 
+	
+	<!-- Definición de la pantalla para actualizar correo electrónico sin e.firma -->
+ 	<definition name="capturaDocs" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/consultaVigencia/capturaDocu.jsp" />
+	</definition>
+
+	<!-- Definición de la pantalla de error en la actualizacion del correo electronico  -->
+ 	<definition name="errorActualizacion" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/consultaVigencia/errorActualizacionCorreo.jsp" />
+	</definition>
+
+	<!-- Modulo de consulta de cartilla -->
+	<!-- Home de consulta de cartilla -->
+	<definition name="loginCartilla" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/consultaCartilla/inicio.jsp" />
+		<put-attribute name="nameComScore" value=".consulta_cartilla.inicio" />
+	</definition>
+	
+	<definition name="cartillaFinaliza" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/consultaCartilla/solicitudFinalizada.jsp" />
+		<put-attribute name="nameComScore" value=".consulta_cartilla.tramite_finalizado" />
+	</definition>
+
+	<definition name="cartillaFinalizaNSS" extends="base.definition.sinHeader">
+		<put-attribute name="contenido" value="/WEB-INF/views/consultaCartilla/solicitudFinalizadaNSS.jsp" />
+		<put-attribute name="nameComScore" value=".consulta_cartilla.tramite_finalizadoNSS" />
+	</definition>
+	
+	<!-- Definicion de la pantalla de consulta por datos basicos -->
+	<definition name="consultaCartilla" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/consultaCartilla/consultaCartilla.jsp" />
+	</definition>
+	
+	<definition name="salidaCartilla" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/consultaCartilla/salidaCartilla.jsp" />
+	</definition>
+
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+
+	<!-- WIZARD NSS -->
+	<definition name="wizardAsignacionNSSInitTest" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/asignarNSS/initTest.jsp" />
+	</definition>
+	<definition name="wizardAsignacionNSSInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/asignarNSS/inicial.jsp" />
+	</definition>
+	<definition name="wizardAsignacionNSSContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/asignarNSS/contenido.jsp" />
+	</definition>
+	<definition name="wizardAsignacionNSSConfirmacion" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/asignarNSS/confirmar.jsp" />
+	</definition>
+	<definition name="wizardAsignacionNSSFin" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/asignarNSS/finalizar.jsp" />
+	</definition>
+	
+	<!-- WIZARD NSS -->
+	<definition name="databaseError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="internalError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="500" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="404" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+	
+	<definition name="initConsultaPersona" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/busquedaPersona/contenido.jsp"/>
+	</definition>
+	
+	<definition name="initConsultaNss" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/busquedaNss/contenido.jsp"/>
+	</definition>
+	
+	<!-- Definicion de la pantalla para la captura de los datos basicos libres -->
+	<definition name="mostrarTarjetaNSS" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/credencialNSS/mostrarTarjeta.jsp" />
+	</definition>
+	
+	<!-- Vistas para la asignacion o localizacion de NSS con el User Experience -->
+	<definition name="loginAsignacionNSS" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/asignacionNSS/inicioAsignacion.jsp" />
+		<put-attribute name="nameComScore" value=".asignacion_nss.inicio" />
+	</definition>
+	
+	<definition name="capturaDomicilioNSS" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/asignacionNSS/capturaDomicilio.jsp" />
+		<put-attribute name="nameComScore" value=".asignacion_nss.captura_domicilio" />
+	</definition>
+	
+	<definition name="asignacionFinalizada" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/asignacionNSS/asignacionFinalizada.jsp" />
+		<put-attribute name="nameComScore" value=".asignacion_nss.tramite_finalizado" />
+	</definition>
+
+</tiles-definitions>

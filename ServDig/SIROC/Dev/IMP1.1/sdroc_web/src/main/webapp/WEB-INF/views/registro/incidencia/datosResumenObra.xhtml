@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<div id="pageResumenDatosIncidencia"
+	th:fragment="pageDatosResumenIncidencia">
+		<input id="idMontoObra" type="hidden" th:value="${obra.impObra}" /> 
+		<input id="idMontoEjer" type="hidden" th:value="${obra.impEjercido}" /> 
+		<input id="idSuperficieIn" type="hidden" th:value="${obra.refSupConstruccion}" />
+	
+	<div id="pnlDatosPatron" class="panel panel-default">
+		<div class="panel-heading small" th:text="#{reg.incidencia.resumen.title}"></div>
+		<div class="panel-body text-left">
+<!-- 			<h6> -->
+<!-- 				<label th:text="#{reg.incidencia.resumen.title}"/> -->
+<!-- 				<hr/> -->
+<!-- 			</h6> -->
+
+			<form class="form-inline small">
+				<div class="row">
+					<div class="col-sm-3 text-left">
+						<label class="control-label small" th:text="#{reg.obra.ubicacion}"/>
+					</div>
+					<div class="col-sm-9 text-left">
+						<label id="lblClaseObra" class="control-label small"
+							style="font-weight: normal !important;"
+							th:utext="${obra.ubicacionObraDTO.calle + ' EXT.'
+								+ (obra.ubicacionObraDTO.numExterior != null and obra.ubicacionObraDTO.numExterior != 'null' and obra.ubicacionObraDTO.numExterior != '' ? ' ' + obra.ubicacionObraDTO.numExterior : '')
+								+ (obra.ubicacionObraDTO.numExteriorAlf != null and obra.ubicacionObraDTO.numExteriorAlf != 'null' and obra.ubicacionObraDTO.numExteriorAlf != '' ? ' ' + obra.ubicacionObraDTO.numExteriorAlf : (obra.ubicacionObraDTO.numExterior != null and obra.ubicacionObraDTO.numExterior != 'null' and obra.ubicacionObraDTO.numExterior != '' ? '' : ' SN'))
+								+ ' INT.' + (obra.ubicacionObraDTO.numInterior != null and obra.ubicacionObraDTO.numInterior != 'null' and obra.ubicacionObraDTO.numInterior != '' and obra.ubicacionObraDTO.numInterior != '0' ? ' ' + obra.ubicacionObraDTO.numInterior : '')
+								+ (obra.ubicacionObraDTO.numInteriorAlf != null and obra.ubicacionObraDTO.numInteriorAlf != 'null' and obra.ubicacionObraDTO.numInteriorAlf != '' and obra.ubicacionObraDTO.numInteriorAlf != '0' ? ' ' + obra.ubicacionObraDTO.numInteriorAlf : (obra.ubicacionObraDTO.numInterior != null and obra.ubicacionObraDTO.numInterior != 'null' and obra.ubicacionObraDTO.numInterior != '' and obra.ubicacionObraDTO.numInterior != '0' ? '' : ' SN'))
+								+ ', ' + obra.ubicacionObraDTO.refColonia
+								+ ', ' + obra.ubicacionObraDTO.refMunicipio 
+								+ ', ' + obra.ubicacionObraDTO.refEntidad
+								+ ', CP ' + obra.ubicacionObraDTO.codigoPostal}"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3 text-left">
+						<label class="small" th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron != 4}" th:text="#{reg.obra.periodo}"/> 
+						<label class="small" th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron == 4}" th:text="#{reg.incidencia.resumen.vigencia}"/>
+					</div>
+					<div class="col-sm-9 text-left">
+						<label class="small" th:text="#{reg.incidencia.resumen.fec.inicio}"/> 
+						<label id="lblFechaInicio" class="control-label small" style="font-weight: normal !important;" th:text="${#calendars.format(obra.fecIniObra,'dd/MM/yyyy')}" />
+						<label class="small" th:text="#{reg.incidencia.resumen.fec.termino}"/> 
+						<label id="lblFechaTermino" class="control-label small" style="font-weight: normal !important;" th:text="${#calendars.format(obra.fecFinObra,'dd/MM/yyyy')}" />
+					</div>
+				</div>
+				<div th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron} == 4" class="row">
+					<div class="col-sm-3 text-left">
+						<label class="control-label small" th:text="#{reg.incidencia.resumen.objeto.contrato}"/>
+					</div>
+					<div class="col-sm-9 text-left">
+						<label class="control-label small" style="font-weight: normal !important;" th:text="${obra.objetoContratoDTO.desObjetoContrato}"></label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3 text-left">
+						<label class="control-label small" th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron != 4}" th:text="#{reg.incidencia.resumen.monto.obra}"></label>
+						<label class="control-label small" th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron == 4}" th:text="#{reg.incidencia.resumen.monto.contrato}"></label>
+					</div>
+					<div class="col-sm-9 text-left">
+						<label id="lblMontoObra" class="control-label small" style="font-weight: normal !important;" th:text="${new java.text.DecimalFormat('$#,##0;$-#,##0').format(obra.impObra)}"></label>
+						<label  class="control-label small" style="font-weight: normal !important;"> MXN</label>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-3 text-left">
+						<label class="control-label small" th:text="#{reg.incidencia.resumen.monto.ejercido}"></label>
+					</div>
+					<div class="col-sm-9 text-left">
+						<label id="lblMontoEjercido" class="control-label small" style="font-weight: normal !important;" th:text="${new java.text.DecimalFormat('$#,##0;$-#,##0').format(obra.impEjercido)}"></label>
+						<label  class="control-label small" style="font-weight: normal !important;"> MXN</label>
+					</div>
+				</div>
+				<div th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron != 4}" class="row">
+					<div class="col-sm-3 text-left small">
+						<label class="control-label" th:text="#{reg.obra.superficie}"></label>
+					</div>
+					<div class="col-sm-9 text-left">
+						<label class="control-label small" id="lblSuperficieConstruccion"	style="font-weight: normal !important;" th:text="${new java.text.DecimalFormat('#,##0;-#,##0').format(obra.refSupConstruccion)}"></label>
+						<label class="control-label small" style="font-weight: normal !important;">&nbsp;m2</label>
+					</div>
+				</div>
+				<div
+					th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron != 4}"
+					class="row">
+					<div class="col-sm-3 text-left">
+						<label class="control-label small" th:text="#{reg.incidencia.resumen.tipo.obra}"></label>
+					</div>
+					<div class="col-sm-9 text-left">
+						<label class="control-label small" style="font-weight: normal !important;" th:text="${obra.tipoObraDTO.desTipoObra}"></label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3 text-left">
+						<label class="control-label small" th:text="#{reg.incidencia.resumen.observaciones}"></label>
+					</div>
+					<div class="col-sm-9 text-left">
+						<label class="control-label break-word small" style="font-weight: normal !important;" th:text="@{${obra.refObservacion} == '' ? '---------------------' : ${obra.refObservacion}}"></label>
+					</div>
+				</div>
+				<div class="row" th:if="${idAccion} == 5">
+					<div class="col-sm-3 text-left">
+						<label class="control-label small" th:text="#{reg.incidencia.resumen.fec.suspension}"></label>
+					</div>
+					<div class="col-sm-9 text-left">
+						<label id="lblFecSuspencionR" class="control-label small" style="font-weight: normal !important;" th:text="${#calendars.format(fecSuspension,'dd/MM/yyyy')}"></label>
+					</div>
+				</div>
+				<div class="row" th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron == 2 and obra.tipoObraDTO.clasificacionObraDTO.cveClasificacionObra == 2}">
+					<div class="col-sm-3 text-left">
+						<label class="control-label small" th:text="#{reg.incidencia.resumen.numero.licitacion}"></label>
+					</div>
+					<div class="col-sm-9 text-left">
+						<label class="control-label small" style="font-weight: normal !important;" th:text="${obra.numProcedimiento}"></label>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</html>

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AcuseVentanilla" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="66"/>
+	<style name="Titulo Aviso" hAlign="Left" fontSize="13" isBold="true" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="base" fontSize="7" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="fondo" backcolor="#00CCFF"/>
+	<style name="fondoEncabezado" backcolor="#0000FF"/>
+	<style name="Titulo Encabezado" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="baseBold" fontSize="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+	<style name="vineta" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<subDataset name="List">
+		<field name="desDocumento" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="dataset1"/>
+	<parameter name="P_FECSOLCITUD" class="java.lang.String"/>
+	<parameter name="P_FOLIO_SOLCT" class="java.lang.String"/>
+	<parameter name="P_DESCTRAMITE" class="java.lang.String"/>
+	<parameter name="P_REGPATRONAL" class="java.lang.String"/>
+	<parameter name="P_RAZONSOCIAL" class="java.lang.String"/>
+	<parameter name="P_NOMBRE_PERS" class="java.lang.String"/>
+	<parameter name="P_RFC_PERSONA" class="java.lang.String"/>
+	<parameter name="P_CURPPERSONA" class="java.lang.String"/>
+	<parameter name="P_CVE_DELEGAC" class="java.lang.String"/>
+	<parameter name="P_DES_DELEGAC" class="java.lang.String"/>
+	<parameter name="P_CVE_SUB_DEL" class="java.lang.String"/>
+	<parameter name="P_DES_SUB_DEL" class="java.lang.String"/>
+	<parameter name="IMAGENES_DIR" class="java.lang.String"/>
+	<parameter name="P_FECPRESENTA" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<parameter name="beanDS" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="P_CADENA_ORIGINAL" class="java.lang.String"/>
+	<parameter name="P_SELLO_DIGITAL" class="java.lang.String"/>
+	<parameter name="P_SEC_NOTARIAL" class="java.lang.String"/>
+	<parameter name="imagenQR" class="java.lang.Object"/>
+	<parameter name="P_NUM_SERIE" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<pageHeader>
+		<band height="76">
+			<staticText>
+				<reportElement style="Titulo Encabezado" x="310" y="3" width="244" height="54"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="3" width="265" height="54"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "logoGobRep.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="476" y="3" width="74" height="44"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "IMSS-LogoVerde.png"]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="403" y="60" width="151" height="12"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_FOLIO_SOLCT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="383" y="61" width="19" height="11"/>
+				<textElement/>
+				<text><![CDATA[Folio:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="144">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="81" y="93" width="113" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_REGPATRONAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="1" y="105" width="28" height="11" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[!$P{P_CURPPERSONA}.isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[CURP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="0" y="66" width="18" height="11"/>
+				<textElement/>
+				<text><![CDATA[RFC:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="103" y="78" width="413" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_NOMBRE_PERS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="24" y="104" width="210" height="12" isRemoveLineWhenBlank="true" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_CURPPERSONA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="17" y="65" width="91" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_RFC_PERSONA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="0" y="79" width="101" height="14"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[NOMBRE O RAZÓN SOCIAL:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="103" y="79" width="413" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_RAZONSOCIAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="base" x="0" y="94" width="95" height="11"/>
+				<textElement/>
+				<text><![CDATA[REGISTRO PATRONAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="base" x="0" y="27" width="59" height="11"/>
+				<textElement/>
+				<text><![CDATA[Fecha de captura:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="58" y="26" width="206" height="11"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_FECPRESENTA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Titulo Encabezado" x="191" y="3" width="220" height="24"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ACUSE DE RECIBO ELECTRÓNICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="42" width="555" height="22"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Mediante el presente se hace constar la transmisión y recepción de actos, documentos electrónicos y/o mensajes de datos respecto de la Modificación en el Seguro de Riesgos de Trabajo por ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="52" y="51" width="502" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_DESCTRAMITE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="129" width="162" height="15"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Con los siguientes documentos electrónicos:]]></text>
+			</staticText>
+		</band>
+		<band height="173">
+			<frame>
+				<reportElement x="-1" y="0" width="555" height="16"/>
+				<componentElement>
+					<reportElement x="2" y="0" width="553" height="12"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="List">
+							<dataSourceExpression><![CDATA[$P{beanDS}]]></dataSourceExpression>
+						</datasetRun>
+						<jr:listContents height="12" width="553">
+							<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="553" height="12"/>
+								<textElement verticalAlignment="Bottom">
+									<font size="6" isBold="false"/>
+								</textElement>
+								<textFieldExpression class="java.lang.String"><![CDATA[$F{desDocumento}]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+			</frame>
+		</band>
+		<band height="229">
+			<staticText>
+				<reportElement x="3" y="217" width="401" height="12"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="7" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ESTE DOCUMENTO ES UNA REPRESENTACIÓN IMPRESA DE UN COMPROBANTE ELECTRÓNICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="83" width="69" height="33"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena Original:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="165" width="69" height="20"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Secuencia Notarial:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="170" y="83" width="384" height="33" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
+					<font fontName="SansSerif" size="5" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_CADENA_ORIGINAL}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="170" y="116" width="384" height="49" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
+					<font fontName="SansSerif" size="5" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_SELLO_DIGITAL}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="516" y="216" width="40" height="13"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="102" y="116" width="69" height="49"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello Digital:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="170" y="166" width="384" height="19" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
+					<font fontName="SansSerif" size="5" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_SEC_NOTARIAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="436" y="216" width="80" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="16" y="116" width="79" height="64"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{imagenQR}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="101" y="184" width="69" height="12"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número de Serie:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="170" y="184" width="384" height="12" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
+					<font fontName="SansSerif" size="5" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{P_NUM_SERIE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

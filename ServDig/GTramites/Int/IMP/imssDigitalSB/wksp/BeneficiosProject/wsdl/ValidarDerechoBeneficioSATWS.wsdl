@@ -1,0 +1,62 @@
+<WL5G3N0:definitions name="ValidarDerechoBeneficioRif" targetNamespace="http://sat.gob.mx/ws/ValidarDerechoBeneficioRif" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://sat.gob.mx/ws/ValidarDerechoBeneficioRif" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://sat.gob.mx/ws/ValidarDerechoBeneficioRif" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://sat.gob.mx/ws/ValidarDerechoBeneficioRif" schemaLocation="../schema/ServiceContract/ValidarDerechoBeneficioSATSchema.xsd"/>
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="validarDerechoBeneficioRifRequest">
+    <WL5G3N0:part element="WL5G3N1:validarDerechoBeneficioRifRequest" name="request"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="validarDerechoBeneficioRifResponse">
+    <WL5G3N0:part element="WL5G3N1:validarDerechoBeneficioRifResponse" name="response"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="ValidarDerechoBeneficioRifPortType">
+    <WL5G3N0:documentation>Conjunto de operaciones del servicio Validar
+			Derecho Beneficio RIF.
+		</WL5G3N0:documentation>
+    <WL5G3N0:operation name="validarDerechoBeneficioRif">
+      <WL5G3N0:documentation>
+				Servicio encargado de validar si un Contribuyente
+				(Persona Física) por medio de su RFC cuenta con derecho al beneficio
+				del RIF.
+			</WL5G3N0:documentation>
+      <WL5G3N0:input message="WL5G3N1:validarDerechoBeneficioRifRequest">
+        <WL5G3N0:documentation>
+					Mensaje de petición(request) de la operación
+					que
+					contiene los
+					parámetros
+					requeridos para la
+					operación
+					validarDerechoBeneficioRif.
+				</WL5G3N0:documentation>
+      </WL5G3N0:input>
+      <WL5G3N0:output message="WL5G3N1:validarDerechoBeneficioRifResponse">
+        <WL5G3N0:documentation>
+					Mensaje de respuesta(response) de la operación
+					que
+					contiene los parámetros
+					requeridos para la operación
+					validarDerechoBeneficioRif.
+				</WL5G3N0:documentation>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="ValidarDerechoBeneficioRifEndpointBinding" type="WL5G3N1:ValidarDerechoBeneficioRifPortType">
+    <WL5G3N2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="validarDerechoBeneficioRif">
+      <WL5G3N2:operation soapAction="http://localhost:8080/ws/ValidarDerechoBeneficioRif/validarDerechoBeneficioRif"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="ValidarDerechoBeneficioRifService">
+    <WL5G3N0:port binding="WL5G3N1:ValidarDerechoBeneficioRifEndpointBinding" name="ValidarDerechoBeneficioRif">
+      <WL5G3N2:address location="http://172.16.23.236:80/ServiciosRISS/SAT/ValidarDerechoBeneficioWS"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

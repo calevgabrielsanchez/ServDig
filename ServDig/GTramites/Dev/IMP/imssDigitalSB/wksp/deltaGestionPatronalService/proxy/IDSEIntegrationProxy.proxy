@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description/>
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:request type="XML">
+        <con4:schema ref="deltaGestionPatronalService/schema/XMLModel/RPIdse" element="requestIdse" xmlns:con4="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:request>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:largeMessageSupport isEnabled="true">
+      <ser:persistToFile>false</ser:persistToFile>
+      <ser:enableCompression>true</ser:enableCompression>
+    </ser:largeMessageSupport>
+    <ser:transactions isRequired="true" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>jms</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>jms://172.24.116.37:15051,172.24.116.37:15052/jms.SolicitudConnectionFactory/jms.IDSEComplianceDistributedQueue</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific>
+      <jms:is-queue>true</jms:is-queue>
+      <jms:is-secure>false</jms:is-secure>
+      <jms:inbound-properties>
+        <jms:response-required>false</jms:response-required>
+        <jms:XA-required>false</jms:XA-required>
+      </jms:inbound-properties>
+      <jms:request-encoding>UTF-8</jms:request-encoding>
+      <jms:jndi-timeout>0</jms:jndi-timeout>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con1:pipeline name="Registar RP en IDSE_response" type="response"/>
+    <con1:pipeline name="Registar RP en IDSE_request" type="request">
+      <con1:stage name="Generar Documentos de Peticion">
+        <con1:comment/>
+        <con1:context>
+          <con2:userNsDecl prefix="m" namespace="http://delta.global.services.utility/"/>
+          <con2:userNsDecl prefix="sol" namespace="solicitud:mx.gob.imss.ctirss.delta.model.gestion.solicitud"/>
+          <con2:userNsDecl prefix="gbl" namespace="gblModel:mx.gob.imss.ctirss.delta.global.model"/>
+          <con2:userNsDecl prefix="cnrp" namespace="http://patrones.reing.ctirss.imss.gob.mx/"/>
+          <con2:userNsDecl prefix="jgbl" namespace="java:mx.gob.imss.ctirss.delta.global.model"/>
+          <con2:varNsDecl prefix="rp" namespace="rp:mx.gob.imss.ctirss.delta.global.model"/>
+          <con2:varNsDecl prefix="fwbm" namespace="fwbm:mx.gob.imss.ctirss.delta.framework.base.model"/>
+          <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con1:context>
+        <con1:actions>
+          <con3:log>
+            <con2:id>_ActionId-2038305897104497637-1f94bbad.141e132665f.-7ff0</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+            </con3:expr>
+            <con3:message>Se invocara nuevo servicio de IDSE</con3:message>
+          </con3:log>
+          <con4:assign varName="nrpCompleto">
+            <con2:id>_ActionId-8826446041629584931--4852dc58.14223f990e8.-7ff5</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat($body/mx:requestIdse/mx:RegistroPatronal/text(), $body/mx:requestIdse/mx:DigitoVerificador/text())</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="email">
+            <con2:id>_ActionId-1994334658112977797-2e58690c.141ec3877e9.-7ff0</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:requestIdse/mx:EMail/text()</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con3:log>
+            <con2:id>_ActionId-6496532042894576472--3828632d.142301591a1.-7ff4</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:requestIdse/mx:RazonSocial/text()</con:xqueryText>
+            </con3:expr>
+            <con3:message>Razon social acentos</con3:message>
+          </con3:log>
+          <con4:assign varName="razonSocialSinAcentos">
+            <con2:id>_ActionId-4287923438254745191--6df46994.14229ca7b08.-7fed</con2:id>
+            <con4:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReemplazaAcentosXQT"/>
+                <con:param name="dirtyData">
+                  <con:path>$body/mx:requestIdse/mx:RazonSocial/text()</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="domicilioSinAcento">
+            <con2:id>_ActionId-4287923438254745191--6df46994.14229ca7b08.-7fec</con2:id>
+            <con4:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReemplazaAcentosXQT"/>
+                <con:param name="dirtyData">
+                  <con:path>$body/mx:requestIdse/mx:DomicilioCompleto/text()</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="localidadSinAcento">
+            <con2:id>_ActionId-4287923438254745191--6df46994.14229ca7b08.-7feb</con2:id>
+            <con4:expr>
+              <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resource ref="deltaGestionPatronalService/XQuery/ReemplazaAcentosXQT"/>
+                <con:param name="dirtyData">
+                  <con:path>$body/mx:requestIdse/mx:Localidad/text()</con:path>
+                </con:param>
+              </con:xqueryTransform>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="requestIDSE" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:con6="http://www.bea.com/wli/sb/stages/publish/config">
+            <con2:id>_ActionId-4287923438254745191--6df46994.14229ca7b08.-7fee</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<rpnp:parameters xmlns:rpnp="http://rpnp.ws.idse.imss.gob.mx/">
+    <pkcs7Bean>
+      <claveSerial>{$body/mx:requestIdse/mx:pkcs7Bean/mx:ClaveSerial/text()}</claveSerial>
+      <nombreCompleto>{$body/mx:requestIdse/mx:pkcs7Bean/mx:NombreCompleto/text()}</nombreCompleto>
+      <estatusFiel>1</estatusFiel>
+      <correoElectronico>{$body/mx:requestIdse/mx:pkcs7Bean/mx:CorreoElectronico/text()}</correoElectronico>
+      <curpFiel>{$body/mx:requestIdse/mx:pkcs7Bean/mx:CurpFiel/text()}</curpFiel>
+      <nombreUsuario>{$body/mx:requestIdse/mx:pkcs7Bean/mx:NombreUsuario/text()}</nombreUsuario>
+      <rfcAsociado>{$body/mx:requestIdse/mx:pkcs7Bean/mx:RfcAsociado/text()}</rfcAsociado>
+      <fechaValidaInicio>{$body/mx:requestIdse/mx:pkcs7Bean/mx:FechaValidaInicio/text()}</fechaValidaInicio>
+      <fechaValidaFin>{$body/mx:requestIdse/mx:pkcs7Bean/mx:FechaValidaFin/text()}</fechaValidaFin>
+      <telefono>{$body/mx:requestIdse/mx:pkcs7Bean/mx:Telefono/text()}</telefono>
+      <idRol>{$body/mx:requestIdse/mx:pkcs7Bean/mx:IdRol/text()}</idRol>
+    </pkcs7Bean>     
+    <regPatronBean>
+        <registroPatronal>{$nrpCompleto}</registroPatronal>
+        <fechaRecepcion>{$body/mx:requestIdse/mx:FechaRecepcion/text()}</fechaRecepcion>
+        <fechaActivacion>{$body/mx:requestIdse/mx:FechaActivacion/text()}</fechaActivacion>
+        <razonSocial>{$body/mx:requestIdse/mx:RazonSocial/text()}</razonSocial>
+        <rfcRegistroPatronal>{$body/mx:requestIdse/mx:RFC/text()}</rfcRegistroPatronal>
+        <tipoPersona>{$body/mx:requestIdse/mx:TipoPersona/text()}</tipoPersona>
+        <estatusRP>2</estatusRP>
+        <usuarioSubDel>PDigIMSS</usuarioSubDel>
+    </regPatronBean>
+</rpnp:parameters>]]></con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:assign varName="regIdseRequest">
+            <con2:id>_ActionId-4287923438254745191--6df46994.14229ca7b08.-7fea</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<rpnp:parametersIdse xmlns:rpnp="http://rpnp.ws.idse.imss.gob.mx/">
+    <cveDel>{$body/mx:requestIdse/mx:ClaveDelegacion/text()}</cveDel>
+    <cveSub>{$body/mx:requestIdse/mx:ClaveSubdelegacion/text()}</cveSub>
+    <regPatron>{$body/mx:requestIdse/mx:RegistroPatronal/text()}</regPatron>
+    <regPatronDig>{$body/mx:requestIdse/mx:DigitoVerificador/text()}</regPatronDig>
+    <razonSocial>{$razonSocialSinAcentos}</razonSocial>
+    <municipio>{$body/mx:requestIdse/mx:ClaveMunicipio/text()}</municipio>
+    <sector>90</sector>
+    <rfc>{$body/mx:requestIdse/mx:RFC/text()}</rfc>
+    <domicilio>{$domicilioSinAcento}</domicilio>
+    <localidad>{$localidadSinAcento}</localidad>
+    <actividad>{$body/mx:requestIdse/mx:Actividad/text()}</actividad>
+    <fraccion>{$body/mx:requestIdse/mx:Fraccion/text()}</fraccion>
+    <claseRt>{$body/mx:requestIdse/mx:Clase/text()}</claseRt>
+    <email>{$body/mx:requestIdse/mx:EMail/text()}</email>
+    <repLegal>{$body/mx:requestIdse/mx:RepresentanteLegal/text()}</repLegal>
+</rpnp:parametersIdse>]]></con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con3:log>
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f50</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'VERIFICACION'</con:xqueryText>
+            </con3:expr>
+            <con3:message>Se formará petición para servicio idse 2-0</con3:message>
+          </con3:log>
+          <con4:assign varName="requestAltaIDSE">
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f5d</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<mxIdse:registrarAltaPatronalIDSE xmlns:mxIdse="http://mx.gob.imss.idse/" xmlns:java="java:mx.gob.imss.ctirss.idse.model">
+    <mxIdse:iectBean>
+        <java:Pkcs7Bean>
+            <java:ClaveSerial>{$body/mx:requestIdse/mx:pkcs7Bean/mx:ClaveSerial/text()}</java:ClaveSerial>
+            <java:NombreCompleto>{$body/mx:requestIdse/mx:pkcs7Bean/mx:NombreCompleto/text()}</java:NombreCompleto>
+            <java:EstatusFiel>1</java:EstatusFiel>
+            <java:CorreoElectronico>{$body/mx:requestIdse/mx:pkcs7Bean/mx:CorreoElectronico/text()}</java:CorreoElectronico>
+            <java:CurpFiel>{$body/mx:requestIdse/mx:pkcs7Bean/mx:CurpFiel/text()}</java:CurpFiel>
+            <java:NombreUsuario>{$body/mx:requestIdse/mx:pkcs7Bean/mx:NombreUsuario/text()}</java:NombreUsuario>
+            <java:RfcAsociado>{$body/mx:requestIdse/mx:pkcs7Bean/mx:RfcAsociado/text()}</java:RfcAsociado>
+            <java:FechaValidaInicio>{$body/mx:requestIdse/mx:pkcs7Bean/mx:FechaValidaInicio/text()}</java:FechaValidaInicio>
+            <java:FechaValidaFin>{$body/mx:requestIdse/mx:pkcs7Bean/mx:FechaValidaFin/text()}</java:FechaValidaFin>
+            <java:Telefono>{$body/mx:requestIdse/mx:pkcs7Bean/mx:Telefono/text()}</java:Telefono>
+            <java:IdRol>{$body/mx:requestIdse/mx:pkcs7Bean/mx:IdRol/text()}</java:IdRol>
+        </java:Pkcs7Bean>
+        <java:RegPatronBean>
+            <java:RegistroPatronal>{$nrpCompleto}</java:RegistroPatronal>
+            <java:FechaRecepcion>{$body/mx:requestIdse/mx:FechaRecepcion/text()}</java:FechaRecepcion>
+            <java:FechaActivacion>{$body/mx:requestIdse/mx:FechaActivacion/text()}</java:FechaActivacion>
+            <java:RazonSocial>{$body/mx:requestIdse/mx:RazonSocial/text()}</java:RazonSocial>
+            <java:RfcRegistroPatronal>{$body/mx:requestIdse/mx:RFC/text()}</java:RfcRegistroPatronal>
+            <java:TipoPersona>{$body/mx:requestIdse/mx:TipoPersona/text()}</java:TipoPersona>
+            <java:EstatusRP>2</java:EstatusRP>
+            <java:UsuarioSubDel>PDigIMSS</java:UsuarioSubDel>
+        </java:RegPatronBean>
+    </mxIdse:iectBean>
+    <mxIdse:idseBean>
+        <java:CveDel>{$body/mx:requestIdse/mx:ClaveDelegacion/text()}</java:CveDel>
+        <java:CveSub>{$body/mx:requestIdse/mx:ClaveSubdelegacion/text()}</java:CveSub>
+        <java:RegPatron>{$body/mx:requestIdse/mx:RegistroPatronal/text()}</java:RegPatron>
+        <java:RegPatronDig>{$body/mx:requestIdse/mx:DigitoVerificador/text()}</java:RegPatronDig>
+        <java:RazonSocial>{$razonSocialSinAcentos}</java:RazonSocial>
+        <java:Municipio>{$body/mx:requestIdse/mx:ClaveMunicipio/text()}</java:Municipio>
+        <java:Sector>90</java:Sector>
+        <java:Rfc>{$body/mx:requestIdse/mx:RFC/text()}</java:Rfc>
+        <java:Domicilio>{$domicilioSinAcento}</java:Domicilio>
+        <java:Localidad>{$localidadSinAcento}</java:Localidad>
+        <java:Actividad>{$body/mx:requestIdse/mx:Actividad/text()}</java:Actividad>
+        <java:Fraccion>{$body/mx:requestIdse/mx:Fraccion/text()}</java:Fraccion>
+        <java:ClaseRt>{$body/mx:requestIdse/mx:Clase/text()}</java:ClaseRt>
+        <java:Email>{$body/mx:requestIdse/mx:EMail/text()}</java:Email>
+        <java:RepLegal>{$body/mx:requestIdse/mx:RepresentanteLegal/text()}</java:RepLegal>
+    </mxIdse:idseBean>
+</mxIdse:registrarAltaPatronalIDSE>]]></con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con3:log>
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f4f</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$requestAltaIDSE</con:xqueryText>
+            </con3:expr>
+            <con3:message>Mensaje idse 2-0</con3:message>
+          </con3:log>
+        </con1:actions>
+      </con1:stage>
+      <con1:stage name="Invocar Alta IDSE V2">
+        <con1:comment/>
+        <con1:actions>
+          <con4:wsCallout>
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f5c</con2:id>
+            <con4:service ref="IDSEIntegracion/businessService/IDSEIntegratorService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con4:operation>registrarAltaPatronalIDSE</con4:operation>
+            <con4:request>
+              <con4:body wrapped="false">$requestAltaIDSE</con4:body>
+              <con4:header/>
+            </con4:request>
+            <con4:response>
+              <con4:body wrapped="false">responseAltaIDSE</con4:body>
+              <con4:header/>
+            </con4:response>
+            <con4:requestTransform/>
+            <con4:responseTransform/>
+          </con4:wsCallout>
+        </con1:actions>
+      </con1:stage>
+      <con1:stage name="Invocar Servicios de IDSE">
+        <con1:comment/>
+        <con1:context>
+          <con2:userNsDecl prefix="rp" namespace="rp:mx.gob.imss.ctirss.delta.global.model"/>
+          <con2:userNsDecl prefix="fwbm" namespace="fwbm:mx.gob.imss.ctirss.delta.framework.base.model"/>
+          <con2:userNsDecl prefix="m" namespace="http://delta.global.services.utility/"/>
+          <con2:userNsDecl prefix="sol" namespace="solicitud:mx.gob.imss.ctirss.delta.model.gestion.solicitud"/>
+          <con2:userNsDecl prefix="gbl" namespace="gblModel:mx.gob.imss.ctirss.delta.global.model"/>
+          <con2:userNsDecl prefix="cnrp" namespace="http://patrones.reing.ctirss.imss.gob.mx/"/>
+          <con2:userNsDecl prefix="jgbl" namespace="java:mx.gob.imss.ctirss.delta.global.model"/>
+          <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con1:context>
+        <con1:actions>
+          <con4:assign varName="ejecutar">
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f52</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'0'</con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:ifThenElse>
+            <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f5b</con2:id>
+            <con4:case>
+              <con4:condition>
+                <con2:xqueryConditionExpr>
+                  <con2:compExpr operator="=">
+                    <con2:leftPath>$ejecutar</con2:leftPath>
+                    <con2:rightPath>'1'</con2:rightPath>
+                  </con2:compExpr>
+                </con2:xqueryConditionExpr>
+              </con4:condition>
+              <con4:actions>
+                <con4:wsCallout xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:con6="http://www.bea.com/wli/sb/stages/publish/config">
+                  <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f5a</con2:id>
+                  <con4:service ref="deltaGestionPatronalService/businessService/AltaPatronalIDSEBusinessService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                  <con4:operation>registraOperacionIETC</con4:operation>
+                  <con4:request>
+                    <con4:body wrapped="false">$requestIDSE</con4:body>
+                    <con4:header/>
+                  </con4:request>
+                  <con4:response>
+                    <con4:body wrapped="false">responseIDSE</con4:body>
+                    <con4:header/>
+                  </con4:response>
+                  <con4:requestTransform>
+                    <con4:replace varName="body" contents-only="true">
+                      <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f59</con2:id>
+                      <con4:location>
+                        <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                      </con4:location>
+                      <con4:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$requestIDSE</con:xqueryText>
+                      </con4:expr>
+                    </con4:replace>
+                    <con5:log>
+                      <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f58</con2:id>
+                      <con5:logLevel>error</con5:logLevel>
+                      <con5:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+                      </con5:expr>
+                      <con5:message>Invoca IDSE:::</con5:message>
+                    </con5:log>
+                  </con4:requestTransform>
+                  <con4:responseTransform>
+                    <con5:log>
+                      <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f57</con2:id>
+                      <con5:logLevel>error</con5:logLevel>
+                      <con5:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$responseIDSE</con:xqueryText>
+                      </con5:expr>
+                      <con5:message>Respuesta primera fase idse:::::</con5:message>
+                    </con5:log>
+                  </con4:responseTransform>
+                </con4:wsCallout>
+                <con4:wsCallout>
+                  <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f56</con2:id>
+                  <con4:service ref="deltaGestionPatronalService/businessService/AltaPatronalIDSEBusinessService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                  <con4:operation>registraOperacionIDSE</con4:operation>
+                  <con4:request>
+                    <con4:body wrapped="false">$regIdseRequest</con4:body>
+                    <con4:header/>
+                  </con4:request>
+                  <con4:response>
+                    <con4:body wrapped="false">regIdseResponse</con4:body>
+                    <con4:header/>
+                  </con4:response>
+                  <con4:requestTransform>
+                    <con3:log>
+                      <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f55</con2:id>
+                      <con3:logLevel>error</con3:logLevel>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$regIdseRequest</con:xqueryText>
+                      </con3:expr>
+                      <con3:message>Request registrar idse::::</con3:message>
+                    </con3:log>
+                    <con4:replace varName="body" contents-only="true">
+                      <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f54</con2:id>
+                      <con4:location>
+                        <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                      </con4:location>
+                      <con4:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$regIdseRequest</con:xqueryText>
+                      </con4:expr>
+                    </con4:replace>
+                  </con4:requestTransform>
+                  <con4:responseTransform>
+                    <con3:log>
+                      <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f53</con2:id>
+                      <con3:logLevel>error</con3:logLevel>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$regIdseResponse</con:xqueryText>
+                      </con3:expr>
+                      <con3:message>Datos Respuest Registrar IDSE</con3:message>
+                    </con3:log>
+                  </con4:responseTransform>
+                </con4:wsCallout>
+              </con4:actions>
+            </con4:case>
+            <con4:default>
+              <con3:log>
+                <con2:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f51</con2:id>
+                <con3:logLevel>error</con3:logLevel>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'Correcto'</con:xqueryText>
+                </con3:expr>
+                <con3:message>No se ejecuto sincronizacion de versión 1:::</con3:message>
+              </con3:log>
+            </con4:default>
+          </con4:ifThenElse>
+        </con1:actions>
+      </con1:stage>
+      <con1:stage name="Notificar Registro de IDSE">
+        <con1:comment/>
+        <con1:context>
+          <con2:userNsDecl prefix="rp" namespace="rp:mx.gob.imss.ctirss.delta.global.model"/>
+          <con2:userNsDecl prefix="fwbm" namespace="fwbm:mx.gob.imss.ctirss.delta.framework.base.model"/>
+          <con2:userNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+          <con2:userNsDecl prefix="m" namespace="http://delta.global.services.utility/"/>
+          <con2:userNsDecl prefix="sol" namespace="solicitud:mx.gob.imss.ctirss.delta.model.gestion.solicitud"/>
+          <con2:userNsDecl prefix="gbl" namespace="gblModel:mx.gob.imss.ctirss.delta.global.model"/>
+          <con2:userNsDecl prefix="cnrp" namespace="http://patrones.reing.ctirss.imss.gob.mx/"/>
+          <con2:userNsDecl prefix="jgbl" namespace="java:mx.gob.imss.ctirss.delta.global.model"/>
+        </con1:context>
+        <con1:actions>
+          <con6:assign varName="htmlContent" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con4="http://www.bea.com/wli/sb/pipeline/config" xmlns:con5="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id>_ActionId-4287923438254745191--6df46994.14229ca7b08.-7fe2</con2:id>
+            <con6:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<html>
+
+  <body>
+<div style="width: 95%; background-color: lightgray; padding: 40px;"> 
+<div style="background-color: white; margin: 0px auto; height: auto;">
+
+	<table align="center" style="width: 80%">
+		<tr>
+			<td align="center">
+				<h2 style="font-size:30px;">Instituto Mexicano del Seguro Social</h2>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<a style="line-height:40px;
+					font-size:11px;
+					display:inline;
+					margin-left:5px;
+					color:#999;"
+	 				href="http://www.imss.gob.mx" title="Portal IMSS">Visita 
+						el portal oficial del Instituto Mexicano del Seguro Social
+				</a>
+			</td>
+		</tr>
+	 	<tr>
+			<td>
+				<p style="font-size: 16px !important; ">
+					Felicidades!!!!, a partir de este momento usted puede acceder a los servicios que el Instituto Mexicano del Seguro Social le proporciona mediante su portal <b>IDSE</b>. Su nuevo registro patronal <b>{$nrpCompleto}</b> esta activo para realizar los trámites electrónicos que ponemos a su disposición.
+      
+				</p>
+<br/><h3 align="center" style="font-family: sans-serif; font-size: 18px !important; ">{$mensajeNotificacion }</h3>
+			</td>
+		</tr>
+		<tfoot style="width: 90%">
+			<tr>
+				<th width="50%">
+						<div style="text-align: center; padding-bottom: 30px;"> 
+<img title="Portal IMSS" src="http://deltadev.imss.gob.mx/delta/resources/imagenes/header70.jpg"/> 
+<p style="text-align: center; font-size: 10px;"> Reforma 476, Col. Juárez, México DF - Tel 01 800 623 23 23 - <br/> ALGUNOS DERECHOS RESERVADOS IMSS - 2012 
+</p> 
+</div>
+				</th>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+</div>
+   </body>
+
+</html>]]></con:xqueryText>
+            </con6:expr>
+          </con6:assign>
+          <con5:route xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con4="http://www.bea.com/wli/sb/pipeline/config" xmlns:con5="http://www.bea.com/wli/sb/stages/publish/config">
+            <con2:id>_ActionId-4287923438254745191--6df46994.14229ca7b08.-7fe1</con2:id>
+            <con5:service ref="deltaGestionPatronalService/proxy/mail/DynamicProxyServer" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con5:outboundTransform>
+              <con6:replace varName="body" contents-only="true" xmlns:con6="http://www.bea.com/wli/sb/stages/transform/config">
+                <con2:id>_ActionId-4287923438254745191--6df46994.14229ca7b08.-7fe0</con2:id>
+                <con6:location>
+                  <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                </con6:location>
+                <con6:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<rmx:EmailPayload xmlns:rmx="http://mx.gob.imss.email.model">
+    <rmx:FromAccountName>Portal IMSS Digital</rmx:FromAccountName>
+    <rmx:To>{$email}</rmx:To>
+    <rmx:ReplyToAddress></rmx:ReplyToAddress>
+    <rmx:Subject>Bienvenido a IDSE!!!</rmx:Subject>
+    <rmx:Content>{$htmlContent}</rmx:Content>
+    <rmx:ContentType>text/html</rmx:ContentType>
+    <rmx:Cc></rmx:Cc>
+    <rmx:Bcc></rmx:Bcc>
+</rmx:EmailPayload>]]></con:xqueryText>
+                </con6:expr>
+              </con6:replace>
+              <con3:log>
+                <con2:id>_ActionId-4287923438254745191--6df46994.14229ca7b08.-7fdf</con2:id>
+                <con3:logLevel>error</con3:logLevel>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+                </con3:expr>
+                <con3:message>Request del correo de notificacion:::</con3:message>
+              </con3:log>
+            </con5:outboundTransform>
+          </con5:route>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:flow>
+      <con1:pipeline-node name="Registar RP en IDSE">
+        <con1:comment/>
+        <con1:request>Registar RP en IDSE_request</con1:request>
+        <con1:response>Registar RP en IDSE_response</con1:response>
+      </con1:pipeline-node>
+    </con1:flow>
+  </ser:router>
+</xml-fragment>

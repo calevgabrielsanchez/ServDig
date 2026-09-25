@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:contacto="http://mx.gob.imss.digital.modelo.medio.contacto" xmlns:domicilio="http://mx.gob.imss.digital.modelo.domicilio" xmlns:ns4="mx.gob.imss.digital.modelo.derechohabiente" xmlns:patron="http://mx.gob.imss.digital.modelo.patron" xmlns:persona="http://mx.gob.imss.digital.modelo.persona" targetNamespace="http://mx.gob.imss.digital.modelo.persona" version="1.0">
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.domicilio" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/domicilio.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.medio.contacto" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/medio-contacto.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.patron" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/patron.xsd"/>
+
+  <xs:import namespace="mx.gob.imss.digital.modelo.derechohabiente" schemaLocation="schema1.xsd"/>
+
+  <xs:element name="certificado" type="persona:certificado"/>
+
+  <xs:element name="estadoCivil" type="persona:estadoCivil"/>
+
+  <xs:element name="familiar" type="persona:familiar"/>
+
+  <xs:element name="fiel" type="persona:fiel"/>
+
+  <xs:element name="fisica" type="persona:fisica"/>
+
+  <xs:element name="moral" type="persona:moral"/>
+
+  <xs:element name="parentesco" type="persona:parentesco"/>
+
+  <xs:element name="persona" type="persona:persona"/>
+
+  <xs:element name="sexo" type="persona:sexo"/>
+
+  <xs:element name="tipoPersona" type="persona:tipoPersona"/>
+
+  <xs:complexType name="tipoPersona">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idTipoPersona" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="parentesco">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idParentesco" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="moral">
+    <xs:complexContent>
+      <xs:extension base="persona:persona">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cveMoral" type="xs:long"/>
+          <xs:element minOccurs="0" name="razonSocial" type="xs:string"/>
+          <xs:element minOccurs="0" name="nrp" type="xs:string"/>
+          <xs:element minOccurs="0" name="rfcSat" type="xs:string"/>
+          <xs:element minOccurs="0" name="actaConstitutiva" type="xs:string"/>
+          <xs:element minOccurs="0" name="desSituacion" type="xs:string"/>
+          <xs:element minOccurs="0" name="idSituacion" type="xs:int"/>
+          <xs:element minOccurs="0" name="fechaCreacionFormateada" type="xs:string"/>
+          <xs:element minOccurs="0" name="fechaCreacion" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="fechaRegistro" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="fechaBaja" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="fechaModificacion" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="busqAprox" type="xs:string"/>
+          <xs:element minOccurs="0" name="idActaConstitutiva" type="xs:long"/>
+          <xs:element minOccurs="0" name="altaEnImss" type="xs:string"/>
+          <xs:element minOccurs="0" name="numeroLineaArchivo" type="xs:int"/>
+          <xs:element minOccurs="0" name="estadosFormateados" type="xs:string"/>
+          <xs:element minOccurs="0" name="subEstadosFormateados" type="xs:string"/>
+          <xs:element minOccurs="0" name="indAcreditado" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="persona">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idPersona" type="xs:long"/>
+      <xs:element minOccurs="0" ref="persona:tipoPersona"/>
+      <xs:element minOccurs="0" name="domicilioParticular" type="domicilio:domicilio"/>
+      <xs:element minOccurs="0" name="domicilioFiscal" type="domicilio:domicilio"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="mediosContacto" nillable="true" type="contacto:medioContacto"/>
+      <xs:element minOccurs="0" ref="contacto:telefonoFijo"/>
+      <xs:element minOccurs="0" ref="contacto:telefonoMovil"/>
+      <xs:element minOccurs="0" ref="contacto:correoElectronico"/>
+      <xs:element minOccurs="0" ref="contacto:facebook"/>
+      <xs:element minOccurs="0" ref="contacto:twitter"/>
+      <xs:element minOccurs="0" name="rfc" type="xs:string"/>
+      <xs:element minOccurs="0" name="rfcOriginal" type="xs:string"/>
+      <xs:element minOccurs="0" name="rfcSolicitado" type="xs:string"/>
+      <xs:element minOccurs="0" name="rfcVigente" type="xs:string"/>
+      <xs:element minOccurs="0" name="indRIF" type="xs:boolean"/>
+      <xs:element minOccurs="0" ref="persona:fiel"/>
+      <xs:element minOccurs="0" name="registrosPatronales" type="patron:registroPatronales"/>
+      <xs:element minOccurs="0" name="umfAsociado" type="ns4:unidadMedicoFamiliar"/>
+      <xs:element minOccurs="0" name="errorFormGeneral" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fiel">
+    <xs:complexContent>
+      <xs:extension base="persona:certificado">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="certificado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="claveSerial" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreCompleto" type="xs:string"/>
+      <xs:element minOccurs="0" name="estatusFiel" type="xs:int"/>
+      <xs:element minOccurs="0" name="correoElectronico" type="xs:string"/>
+      <xs:element minOccurs="0" name="curpFiel" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreUsuario" type="xs:string"/>
+      <xs:element minOccurs="0" name="rfcAsociado" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaValidaInicio" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaValidaFin" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="telefono" type="xs:string"/>
+      <xs:element minOccurs="0" name="idRol" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fisica">
+    <xs:complexContent>
+      <xs:extension base="persona:persona">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cveFisica" type="xs:long"/>
+          <xs:element minOccurs="0" name="nombre" type="xs:string"/>
+          <xs:element minOccurs="0" name="primerApellido" type="xs:string"/>
+          <xs:element minOccurs="0" name="segundoApellido" type="xs:string"/>
+          <xs:element minOccurs="0" name="fechaNacimiento" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="lugarNacimiento" type="domicilio:entidadFederativa"/>
+          <xs:element minOccurs="0" name="fechaDefuncion" type="xs:dateTime"/>
+          <xs:element minOccurs="0" ref="persona:estadoCivil"/>
+          <xs:element minOccurs="0" name="curp" type="xs:string"/>
+          <xs:element minOccurs="0" ref="domicilio:pais"/>
+          <xs:element minOccurs="0" ref="persona:sexo"/>
+          <xs:element minOccurs="0" name="curpRenapo" type="xs:string"/>
+          <xs:element minOccurs="0" name="fechaNacimientoFormateada" type="xs:string"/>
+          <xs:element minOccurs="0" name="fechaRegistro" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="fechaBaja" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="fechaModificacion" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="altaEnImss" type="xs:string"/>
+          <xs:element minOccurs="0" name="numeroLineaArchivo" type="xs:int"/>
+          <xs:element minOccurs="0" name="busqAprox" type="xs:string"/>
+          <xs:element minOccurs="0" name="estadosFormateados" type="xs:string"/>
+          <xs:element minOccurs="0" name="subEstadosFormateados" type="xs:string"/>
+          <xs:element minOccurs="0" name="mesRegistroNac" type="xs:int"/>
+          <xs:element minOccurs="0" name="anioRegistroNac" type="xs:int"/>
+          <xs:element minOccurs="0" name="nss" type="xs:string"/>
+          <xs:element minOccurs="0" name="nssCifrado" type="xs:string"/>
+          <xs:element minOccurs="0" name="estatusRenapo" type="xs:string"/>
+          <xs:element minOccurs="0" name="cveEstatusRenapo" type="xs:string"/>
+          <xs:element minOccurs="0" name="idModalidad" type="xs:long"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="estadoCivil">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idEstadoCivil" type="xs:int"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sexo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idSexo" type="xs:int"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+      <xs:element minOccurs="0" name="genero" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="familiar">
+    <xs:complexContent>
+      <xs:extension base="persona:fisica">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="persona:parentesco"/>
+          <xs:element name="aplicaCuestionario" type="xs:boolean"/>
+          <xs:element name="inscripcion" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

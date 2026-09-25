@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF8'?>
+<!DOCTYPE MessageFormat SYSTEM 'mfl.dtd'>
+<MessageFormat name="MovPatronalCambioDomicilio" version='2.01.01'>
+    <StructFormat name='MovimientoCambioDomicilio' delim='\n' sharedDelim='y' delimOptional='n' repeat='*'>
+        <FieldFormat name='delegacionOrigen'     type='Numeric' delimOptional='y' length="2" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='subdelegacionOrigen'     type='Numeric' delimOptional='y' length="2" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='claveAplicacion'    type='Numeric' delimOptional='y' length="1" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='tipoMovimiento'     type='Numeric' delimOptional='y' length="2" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='origenMovimiento'   type='Numeric' delimOptional='y' length="1" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='numeroFolio'    type='Numeric' delimOptional='y' length="5" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='argumento'   type='Numeric' delimOptional='y' length="2" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='registroPatronal'   type='String' delimOptional='y' length="10" strlenInChars='y' codepage='UTF-8' defaultValue=" " pad=" "/>
+        <FieldFormat name='digitoVerificador'    type='Numeric' delimOptional='y' length="1" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='fechaMovimiento'      type='Numeric' delimOptional='y' length="8" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='fechaRecepcionMovimiento'  type='Numeric' delimOptional='y' length="8" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='claveUnica'   type='String' delimOptional='y' length="18" strlenInChars='y' codepage='UTF-8' defaultValue=" " pad=" "/>
+        <FieldFormat name='subrogacionServicio'  type='Numeric' delimOptional='y' length="1" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='claveMunicipio'     type='String' delimOptional='y' length="3" strlenInChars='y' codepage='UTF-8' defaultValue=" " pad=" "/>
+        <FieldFormat name='nombrePatron'      type='String' delimOptional='y' length="50" strlenInChars='y' codepage='UTF-8' defaultValue=" " pad=" "/>
+        <FieldFormat name='domicilioPatron'      type='String' delimOptional='y' length="40" strlenInChars='y' codepage='UTF-8' defaultValue=" " pad=" "/>
+        <FieldFormat name='codigoPostal'     type='String' delimOptional='y' length="5" strlenInChars='y' codepage='UTF-8' defaultValue="0" pad="0"/>
+        <FieldFormat name='localidadPatron'      type='String' delimOptional='y' length="40" strlenInChars='y' codepage='UTF-8' defaultValue=" " pad=" "/>
+        <FieldFormat name='giro'        type='String' delimOptional='y' length="40" strlenInChars='y' codepage='UTF-8' defaultValue=" " pad=" "/>
+        <FieldFormat name='clase'       type='Numeric' delimOptional='y' length="1" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='fraccion'    type='Numeric' delimOptional='y' length="4" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='prima'       type='Numeric' delimOptional='y' length="7" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='causaBaja'   type='Numeric' delimOptional='y' length="1" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='fechaCambioClasificacion'    type='Numeric' delimOptional='y' length="4" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='tipoCotizacion'     type='Numeric' delimOptional='y' length="1" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='fechaInicioHuelga'   type='Numeric' delimOptional='y' length="8" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='numEmpMunicipio'    type='Numeric' delimOptional='y' length="8" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='nRelCorp'    type='String' delimOptional='y' length="10" strlenInChars='y' codepage='UTF-8' defaultValue=" " pad=" "/>
+        <FieldFormat name='nombrePatronalCorp'  type='String' delimOptional='y' length="50" strlenInChars='y' codepage='UTF-8' defaultValue=" " pad=" "/>
+        <FieldFormat name='tipoPago'      type='Numeric' delimOptional='y' length="1" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='mesEmision'      type='Numeric' delimOptional='y' length="2" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+        <FieldFormat name='idSSf'       type='Numeric' delimOptional='y' length="1" strlenInChars='y' codepage='Default' defaultValue="0" pad="0"/>
+    </StructFormat>
+</MessageFormat>

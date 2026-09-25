@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	
+	<persistence-unit name="estradosPersistenceUnit">
+	
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
+		<jta-data-source>jdbc/estrados</jta-data-source>
+		
+		<class>mx.imss.estrados.entity.NeeCatAreanormativa</class>
+		<class>mx.imss.estrados.entity.NeeCatAreaRespNotif</class>
+		<class>mx.imss.estrados.entity.NeeCatDelegacion</class>
+		<class>mx.imss.estrados.entity.NeeCatDepartamento</class>
+		<class>mx.imss.estrados.entity.NeeCatDiasInhabil</class>
+		<class>mx.imss.estrados.entity.NeeCatProceso</class>
+		<class>mx.imss.estrados.entity.NeeCatStatus</class>
+		<class>mx.imss.estrados.entity.NeeCatSubdelegacion</class>
+		<class>mx.imss.estrados.entity.NeeCatSujetoANotificar</class>
+		<class>mx.imss.estrados.entity.NeeCatTipodocumento</class>
+		<class>mx.imss.estrados.entity.NeeDocumentosAdjuntos</class>
+		<class>mx.imss.estrados.entity.NeeNotificaciones</class>
+		<class>mx.imss.estrados.entity.SsoVwUsuario</class>
+		
+		<properties>
+			<property name="hibernate.archive.autodetection" value="class"/>
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
+			<property name="hibernate.transaction.factory_class" value="org.hibernate.transaction.JTATransactionFactory"/>
+			<property name="hibernate.query.factory_class" value="org.hibernate.hql.classic.ClassicQueryTranslatorFactory"/>
+			<property name="current_session_context_class" value="jta"/>	
+			<!-- <property name="hibernate.hbm2ddl.auto" value="create"/> -->
+		</properties>
+		
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2009 (http://www.altova.com) by desarrollo (desarrollo) -->
+<xs:schema xmlns="modelo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" targetNamespace="modelo" elementFormDefault="qualified" attributeFormDefault="unqualified" jaxb:version="1.0">
+	<xs:annotation>
+		<xs:appinfo>
+			<jaxb:globalBindings>
+				<jaxb:serializable/>
+			</jaxb:globalBindings>
+		</xs:appinfo>
+	</xs:annotation>
+	<xs:element name="ejecucion-servicio">
+		<xs:annotation>
+			<xs:documentation>Resultado de la ejecucion del servicio</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="mensaje" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Mensaje de ejecuciòn del servicio. Ver el tipo de datos: mensajes-sistema</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="detalle" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Muetra el detalle del mensaje de ejecución, los mensajes tales como el tipo 2 y 3 muestran el detalle del error generado en el sistema</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="mensajes-sistema" final="list">
+		<xs:annotation>
+			<xs:documentation>Mensajes del sistema</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="MEN00 Ejecución exitosa"/>
+			<xs:enumeration value="ERR01 Se generó un error al procesar el xml de entrada-salida"/>
+			<xs:enumeration value="ERR02 Se generó un error al accesar la base de datos: "/>
+			<xs:enumeration value="ERR03 Se generó un error interno en el webservice: "/>
+			<xs:enumeration value="ERR04 No se envió el XML de entrada del servicio (ParametroXml)"/>
+			<xs:enumeration value="ERR10 No se encontró el servicio que se desea ejecutar"/>
+			<xs:enumeration value="ERR11 Los parámetros necesarios para la ejecución del servicio no fueron enviados: "/>
+			<xs:enumeration value="ERR12 La operacion de alta/modificacion/baja no pudo ejecutarse"/>
+			<xs:enumeration value="ERR13 El registro ya existe en base de datos"/>
+			<xs:enumeration value="ERR14 El registro no existe en base de datos"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="sistema">
+		<xs:annotation>
+			<xs:documentation>c</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="servicio" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="cve-sistema" type="xs:string" use="required"/>
+			<xs:attribute name="des-sistema" type="xs:string" use="required"/>
+			<xs:attribute name="nota-sistema" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="servicio">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="operacion"/>
+			</xs:sequence>
+			<xs:attribute name="cve-servicio" type="xs:string" use="required"/>
+			<xs:attribute name="des-servicio" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="operacion">
+		<xs:annotation>
+			<xs:documentation>Operaciones ejecutadas por un servicio</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="cve-operacion" type="xs:string" use="required"/>
+			<xs:attribute name="des-operacion" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="bitacora-servicios">
+		<xs:annotation>
+			<xs:documentation>Bitacora de servicios</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="id-bitacora" type="xs:long" use="required"/>
+			<xs:attribute name="cve-sistema" type="xs:string" use="required"/>
+			<xs:attribute name="des-sistema" type="xs:string" use="required"/>
+			<xs:attribute name="cve-servicio" type="xs:string" use="required"/>
+			<xs:attribute name="des-servicio" type="xs:string" use="optional"/>
+			<xs:attribute name="cve-operacion" type="xs:string" use="required"/>
+			<xs:attribute name="des-operacion" type="xs:string" use="optional"/>
+			<xs:attribute name="fh-inicio" type="xs:dateTime" use="required"/>
+			<xs:attribute name="fh-final" type="xs:dateTime" use="optional"/>
+			<xs:attribute name="tiempo-milisegundos" type="xs:long" use="optional"/>
+			<xs:attribute name="tiempo-segundos" type="xs:long" use="optional"/>
+			<xs:attribute name="entrada" type="xs:string" use="optional"/>
+			<xs:attribute name="salida" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

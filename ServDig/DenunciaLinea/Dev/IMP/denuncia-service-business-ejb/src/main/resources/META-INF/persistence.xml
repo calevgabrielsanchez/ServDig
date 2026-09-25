@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="deltaPersistenceUnit" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<!--jta-data-source>qa_ora_delta_inc</jta-data-source--> 
+		<jta-data-source>ds_ora_denuncia_view</jta-data-source>
+		
+		<class>mx.imss.ctirss.menu.model.Menu</class>
+		<class>mx.imss.ctirss.model.DltDatospatron</class>
+		<class>mx.imss.ctirss.model.DltDenuncia</class>
+		<class>mx.imss.ctirss.model.DltFormapago</class>
+		<class>mx.imss.ctirss.model.DltInfotrabajo</class>
+		<class>mx.imss.ctirss.model.DltMotivodenuncia</class>
+		<class>mx.imss.ctirss.model.DltPersona</class>
+		<class>mx.imss.ctirss.model.DltUsuarioden</class>
+		<class>mx.imss.ctirss.model.DltDocumento</class>
+		<class>mx.imss.ctirss.model.DltNroFolio</class>		
+		<class>mx.imss.ctirss.catalogos.model.DlcActEconomica</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcDelegacion</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcDivision</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcGrupo</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcMenu</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcMenusistema</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcMotivodenuncia</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcPerfilUsuario</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcPregunta</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcRol</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcSistema</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcStatus</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcSubdelegacion</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcTipoconcepto</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcTipodenunciante</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcTipodocumento</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcTiposformapago</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcUsuario</class>
+		<class>mx.imss.ctirss.catalogos.model.DlcUsuarioFuncionario</class>
+		<class>mx.imss.ctirss.model.DltDerivaSub</class>
+		
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgDomicilioGeografico</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DomicilioGeografico</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgAsentamiento</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatLocalidad</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatTipoDom</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCodigosPostales</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgVialidad</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatAdministracion</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatAmbito</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatEstado</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatEstadoCp</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatMargen</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatMunicipio</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatPeriodo</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatTermGen</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatTipoAsen</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgDomiciliosCaminos</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgDomiciliosCarreteras</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatVialidad</class>
+		<class>mx.gob.imss.ctirss.domiciliosInegi.model.DgCatDerechosTransito</class>
+		
+		
+		<properties>
+		  <property name="hibernate.archive.autodetection" value="class"/>
+		  <property name="hibernate.show_sql" value="true"/>
+		  <property name="hibernate.format_sql" value="true"/>
+		  <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
+		  <property name="hibernate.transaction.factory_class" value="org.hibernate.transaction.JTATransactionFactory"/>
+		  <property name="hibernate.query.factory_class" value="org.hibernate.hql.classic.ClassicQueryTranslatorFactory"/> 		 	
+		  <property name="current_session_context_class" value="jta"/>			
+<!-- 		  <property name="hibernate.default_schema" value="DELIBDPR"/> -->
+		  <property name="hibernate.default_schema" value="DELIBDDS"/>
+		</properties>
+	</persistence-unit>
+</persistence>

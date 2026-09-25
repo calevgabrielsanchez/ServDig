@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SolicitudTramite" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="titulo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch">
+			<textField>
+				<reportElement mode="Transparent" x="141" y="28" width="292" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["SOLICITUD DE "+$F{titulo}+" POR INTERNET"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="141" y="11" width="292" height="17"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTITUTO MEXICANO DEL SEGURO SOCIAL]]></text>
+			</staticText>
+			<image>
+				<reportElement x="17" y="0" width="66" height="60"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Guillermo\\imss\\logos\\imssColor.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="571" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="18" y="131" width="526" height="122"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="289" y="9" width="253" height="90"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="17" y="9" width="253" height="90"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="0" y="-17" width="532" height="127"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="19" y="12" width="241" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DATOS DE LA SOLICITUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="291" y="12" width="253" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DATOS DEL ASEGURADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="36" width="39" height="20"/>
+				<textElement/>
+				<text><![CDATA[FOLIO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="58" width="39" height="20"/>
+				<textElement/>
+				<text><![CDATA[FECHA: ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="63" y="48" width="197" height="1"/>
+			</line>
+			<line>
+				<reportElement x="63" y="69" width="197" height="1"/>
+			</line>
+			<line>
+				<reportElement x="454" y="49" width="84" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="291" y="58" width="50" height="20"/>
+				<textElement/>
+				<text><![CDATA[NOMBRE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="291" y="36" width="175" height="20"/>
+				<textElement/>
+				<text><![CDATA[NÚMERO DE SEGURDIAD SOCIAL: ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="341" y="70" width="197" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="19" y="131" width="530" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DATOS DE LA CITA ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="99" y="188" width="171" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="29" y="176" width="88" height="20"/>
+				<textElement/>
+				<text><![CDATA[DELEGACIÓN:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="117" y="208" width="153" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="29" y="196" width="98" height="20"/>
+				<textElement/>
+				<text><![CDATA[SUBDELEGACIÓN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="216" width="159" height="20"/>
+				<textElement/>
+				<text><![CDATA[UNIDAD DE MEDICINA FAMILIAR:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="177" y="228" width="93" height="1"/>
+			</line>
+			<line>
+				<reportElement x="349" y="204" width="171" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="279" y="192" width="88" height="20"/>
+				<textElement/>
+				<text><![CDATA[FECHA: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="214" width="88" height="20"/>
+				<textElement/>
+				<text><![CDATA[HORA:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="349" y="226" width="171" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="-17" width="530" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[INFORMACIÓN GENERAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="18" y="280" width="530" height="1"/>
+			</line>
+			<rectangle radius="10">
+				<reportElement x="17" y="403" width="532" height="127"/>
+			</rectangle>
+			<line>
+				<reportElement x="17" y="30" width="253" height="1"/>
+			</line>
+			<line>
+				<reportElement x="290" y="30" width="253" height="1"/>
+			</line>
+			<line>
+				<reportElement x="19" y="150" width="525" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

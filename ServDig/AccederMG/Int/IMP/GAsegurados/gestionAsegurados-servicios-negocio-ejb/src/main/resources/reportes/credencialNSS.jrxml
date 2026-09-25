@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteComprobanteAsignacion" pageWidth="300" pageHeight="200" columnWidth="300" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isSummaryNewPage="true" isSummaryWithPageHeaderAndFooter="true">
+	<property name="ireport.zoom" value="4.279675059165054"/>
+	<property name="ireport.x" value="26"/>
+	<property name="ireport.y" value="372"/>
+	<parameter name="imagenQR" class="java.lang.Object"/>
+	<parameter name="logoIMSS" class="java.lang.String"/>
+	<parameter name="imgRecorte" class="java.lang.String"/>
+	<field name="nss" class="java.lang.String"/>
+	<field name="curp" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="primerApellido" class="java.lang.String"/>
+	<field name="segundoApellido" class="java.lang.String"/>
+	<detail>
+		<band height="195">
+			<image>
+				<reportElement x="207" y="113" width="79" height="64"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{imagenQR}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Transparent" x="25" y="18" width="243" height="31" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box leftPadding="0">
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Instituto Mexicano del Seguro Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="131" width="174" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Soberana Sans Light" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Asociado a la CURP:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="32" y="151" width="175" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box leftPadding="0"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Soberana Sans Light" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{curp}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="99" y="50" width="169" height="61" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box rightPadding="3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="html">
+					<font fontName="Soberana Sans Light" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[(($F{nombre} != null ? ($F{nombre}.trim() + " ") : "")+
+    ($F{primerApellido} != null ? ($F{primerApellido}.trim() + " ") : "")+
+    ($F{segundoApellido} != null ? ($F{segundoApellido}.trim() + " ") : "")) +
+"<br>tu Número de Seguridad<br>Social es: <b>" +($F{nss} != null ? $F{nss} : " ")+"</b>"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="168" y="171" width="100" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Soberana Sans Light" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Imprime y recorta]]></text>
+			</staticText>
+			<image>
+				<reportElement mode="Transparent" x="40" y="53" width="69" height="65"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{logoIMSS}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement mode="Transparent" x="272" y="164" width="24" height="22"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{imgRecorte}]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement mode="Transparent" x="25" y="18" width="243" height="153" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</detail>
+</jasperReport>

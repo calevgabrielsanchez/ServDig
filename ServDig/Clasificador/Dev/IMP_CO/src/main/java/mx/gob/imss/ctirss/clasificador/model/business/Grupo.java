@@ -1,0 +1,100 @@
+package mx.gob.imss.ctirss.clasificador.model.business;
+
+
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import mx.gob.imss.ctirss.clasificador.model.business.Division;
+import mx.gob.imss.ctirss.clasificador.model.business.Fraccion;
+import mx.gob.imss.ctirss.clasificador.model.business.GrupoId;
+
+@Entity
+@Table(name = "APC_GRUPO")
+public class Grupo implements Serializable {
+  private GrupoId id;
+  
+  private Division apcDivision;
+  
+  private String nomGrupo;
+  
+  private Boolean indActivo;
+  
+  private Set<Fraccion> apcFraccions = new HashSet<Fraccion>(0);
+  
+  public Grupo() {}
+  
+  public Grupo(int cveGrupo, int cveDivision, String nomGrupo) {
+    this.id = new GrupoId(cveGrupo, cveDivision);
+    this.nomGrupo = nomGrupo;
+  }
+  
+  public Grupo(GrupoId id, Division apcDivision) {
+    this.id = id;
+    this.apcDivision = apcDivision;
+  }
+  
+  public Grupo(GrupoId id, Division apcDivision, String nomGrupo, Boolean indActivo, Set<Fraccion> apcFraccions) {
+    this.id = id;
+    this.apcDivision = apcDivision;
+    this.nomGrupo = nomGrupo;
+    this.indActivo = indActivo;
+    this.apcFraccions = apcFraccions;
+  }
+  
+  @EmbeddedId
+  @AttributeOverrides({@AttributeOverride(name = "cveGrupo", column = @Column(name = "CVE_GRUPO", nullable = false)), @AttributeOverride(name = "cveDivision", column = @Column(name = "CVE_DIVISION", nullable = false))})
+  public GrupoId getId() {
+    return this.id;
+  }
+  
+  public void setId(GrupoId id) {
+    this.id = id;
+  }
+  
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "CVE_DIVISION", nullable = false, insertable = false, updatable = false)
+  public Division getApcDivision() {
+    return this.apcDivision;
+  }
+  
+  public void setApcDivision(Division apcDivision) {
+    this.apcDivision = apcDivision;
+  }
+  
+  @Column(name = "NOM_GRUPO", length = 200)
+  public String getNomGrupo() {
+    return this.nomGrupo;
+  }
+  
+  public void setNomGrupo(String nomGrupo) {
+    this.nomGrupo = nomGrupo;
+  }
+  
+  @Column(name = "IND_ACTIVO")
+  public Boolean getIndActivo() {
+    return this.indActivo;
+  }
+  
+  public void setIndActivo(Boolean indActivo) {
+    this.indActivo = indActivo;
+  }
+  
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "apcGrupo")
+  public Set<Fraccion> getApcFraccions() {
+    return this.apcFraccions;
+  }
+  
+  public void setApcFraccions(Set<Fraccion> apcFraccions) {
+    this.apcFraccions = apcFraccions;
+  }
+}

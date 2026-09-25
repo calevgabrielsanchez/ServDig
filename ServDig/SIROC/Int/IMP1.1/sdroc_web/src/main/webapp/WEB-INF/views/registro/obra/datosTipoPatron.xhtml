@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<meta name="tipo_contenido" content="text/html;"
+	http-equiv="content-type" charset="utf-8"></meta>	
+<div th:fragment="pageTipoPatron">
+	<div>
+		<div class="panel panel-default">
+			<div class="panel-heading" >
+				<strong>Paso 2.</strong> <small class="text-muted" >Seleccione el tipo de usuario.</small>
+			</div>
+			<div class="panel-body text-center" style="min-height: 100%;">
+				<div class="row">
+				<div class="col-md-12 text-center">
+					<div id="msgPatron" class="alert alert-danger hidden">
+						Seleccione tipo de usuario</div>
+				</div>
+				</div>
+				<div class="row">
+				<div id="divPropietario" class="col-sm-3">
+					<div id="pnlPropietario" class="panel panel-default hidden">
+						<div class="panel-body">
+							<img id="propietarySel" th:src="@{/static/images/propietary.png}" width="100" height="100" class="hidden" />
+							<img id="propietary" th:src="@{/static/images/propietary_unselect.png}" width="100" height="100" />
+						</div>
+						<div class="panel-footer">
+							<strong>Propietario</strong>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div id="pnlContratista" class="panel panel-default hidden">
+						<div class="panel-body">
+							<img id="contratist" th:src="@{/static/images/contratist.png}" width="100" height="100" />
+							<img id="contratistSel" th:src="@{/static/images/contratist_select.png}" width="100" height="100" class="hidden" />
+						</div>
+						<div class="panel-footer">
+							<strong>Contratista</strong>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div id="pnlSubcontratista" class="panel panel-default hidden">
+						<div class="panel-body">
+							<img id="subcontratistSel" th:src="@{/static/images/subcontratist.png}" width="100" height="100" class="hidden" />
+							<img id="subcontratist" th:src="@{/static/images/subcontratist_unselect.png}" width="100" height="100" />
+						</div>
+						<div class="panel-footer">
+							<small>
+								<strong>Subcontratista</strong>
+							</small>	
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div id="pnlIntermediario" class="panel panel-default">
+						<div class="panel-body">
+							<img id="intermediary" th:src="@{/static/images/intermediary.png}" width="100" height="100" />
+							<img id="intermediarySel" th:src="@{/static/images/intermediary_select.png}" width="100" height="100" class="hidden" />
+						</div>
+						<div class="panel-footer">	
+							<strong>Intermediario</strong>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12" style="padding-right: 0px;">
+		<div class="col-md-12 text-left pull-right" style="padding-right: 0px;">
+			<form action="/">
+				<button class="btn btn-default btn-sm" id="btnRegresarEscritorio" formaction="javascript:reiniciarValores()" onclick="uid_call('imss.patrones.registro_obra.tipo_patron.btn_cancelar','clickin')">Cancelar</button>
+				<button id="btnTipoPatron" class="btn btn-primary  btn-sm" type="button" onclick="uid_call('imss.patrones.registro_obra.tipo_patron.btn_siguiente','clickin')">Siguiente</button>
+			</form>
+			<span></span>
+			
+			<br></br> <br></br> <br></br>
+		</div>
+	</div>
+</div>
+</html>

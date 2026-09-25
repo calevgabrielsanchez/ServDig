@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+  <property name="hibernate.connection.datasource">ds_ora_delta_inc</property>
+  <property name="hibernate.show_sql">true</property>
+  <property name="hibernate.format_sql">true</property>
+  <property name="hibernate.archive.autodetection">class, hbm</property>
+  <property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+  <mapping class="mx.gob.imss.ctirss.correccion.model.Clase"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.model.Grupo"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.model.Division"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.model.Fraccion"/>  
+  <mapping class="mx.gob.imss.ctirss.correccion.deteccion.model.Deteccion"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.deteccion.model.CrtDeteccion"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.catalogos.model.CgcCatmotivocancelacion"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.catalogos.model.CrcTipoobra"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.catalogos.model.CrcFaseconstruccion"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.catalogos.model.CrcDelegacion"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.catalogos.model.CrcSubDelegacion"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.catalogos.model.CgcCatcriterioseleccion"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractClase"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractGrupo"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractFraccion"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractDivision"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.deteccion.base.model.AbstractDeteccion"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.deteccion.base.model.AbstractCrtDeteccion"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCgcCatmotivocancelacion"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcTipoobra"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcFaseconstruccion"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcDelegacion"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.catalogos.base.model.AbstractCrcSubdelegacion"/>
+  
+  <mapping class="mx.gob.imss.ctirss.correccion.model.DicClase"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.model.DicGrupo"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.model.DicDivision"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.model.DicFraccion"/>  
+  <mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractDicClase"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractDicGrupo"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractDicFraccion"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractDicDivision"/>
+  
+  <mapping class="mx.gob.imss.ctirss.correccion.menu.model.Menu"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.menu.base.model.AbstractMenu"/>
+  
+  <mapping class="mx.gob.imss.ctirss.correccion.login.model.Login"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.login.model.SegMenu"/>
+  
+  <mapping class="mx.gob.imss.ctirss.correccion.login.model.SegMenusistema"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.login.model.SegPerfilUsuario"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.login.model.SegRol"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.login.model.SegSistema"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.login.model.SegUsuario"/>
+  <mapping class="mx.gob.imss.ctirss.correccion.login.base.model.AbstractLogin"/>
+		
+
+<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatAuditor"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatConceptoOmitido"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatDelegacion"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatFlujo"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatMotivoCancelacion"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatMotivoRechazo"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatOrigen"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatProceso"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatRegion"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatSituacionCO"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatStatus"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatSubdelegacion"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatTipo"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatTipoObra"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatTipoObraFuente"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcCatTipoOrigen"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgtAnexoConceptoOmitido"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgtAnexoPago"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgtAnexoRP"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgtCatCriterioSeleccion"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgtCorreccion"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgtPromocion"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCgcReglaNegocio"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCrtNroFolio"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCrcTipoCorr"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatAuditor"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatConceptoOmitido"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatDelegacion"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatFlujo"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatMotivoCancelacion"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatMotivoRechazo"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatOrigen"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatProceso"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatRegion"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatSituacionCO"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatStatus"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatSubdelegacion"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatTipo"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatTipoObra"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatTipoObraFuente"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcCatTipoOrigen"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgtAnexoConceptoOmitido"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgtAnexoPago"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgtAnexoRP"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgtCatCriterioSeleccion"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgtCorreccion"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgtPromocion"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CrtSelector"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CgcReglaNegocio"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CrcTipoCorr"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CrtNroFolio"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.base.model.AbstractCrtPresentacorr"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CrtPresentacorr"/>
+		<mapping class="mx.gob.imss.ctirss.correccion.model.CrtRevDerivASubd"/>
+
+<!--  
+  <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</property>
+  <property name="hibernate.current_session_context_class">jta</property>
+ -->    
+ </session-factory>
+</hibernate-configuration>

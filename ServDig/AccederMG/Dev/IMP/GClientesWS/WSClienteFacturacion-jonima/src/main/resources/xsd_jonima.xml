@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0" targetNamespace="http://servicios.flujocontrol.com/" xmlns:tns="http://servicios.flujocontrol.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Authenticate" type="tns:Authenticate"/>
+  <xs:element name="AuthenticateResponse" type="tns:AuthenticateResponse"/>
+  <xs:element name="CreateDocument" type="tns:CreateDocument"/>
+  <xs:element name="CreateDocumentResponse" type="tns:CreateDocumentResponse"/>
+  <xs:element name="CreateUser" type="tns:CreateUser"/>
+  <xs:element name="CreateUserResponse" type="tns:CreateUserResponse"/>
+  <xs:element name="ExecuteProcedure" type="tns:ExecuteProcedure"/>
+  <xs:element name="ExecuteProcedureResponse" type="tns:ExecuteProcedureResponse"/>
+  <xs:element name="RefreshToken" type="tns:RefreshToken"/>
+  <xs:element name="RefreshTokenResponse" type="tns:RefreshTokenResponse"/>
+  <xs:complexType name="CreateDocument">
+    <xs:sequence>
+      <xs:element name="user" type="xs:string" minOccurs="0"/>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="document" type="tns:createDocument1" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createDocument1">
+    <xs:sequence>
+      <xs:element name="appName" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="fields" type="tns:documentFields" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="flowName" type="xs:string" minOccurs="0"/>
+      <xs:element name="owner" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="documentFields">
+    <xs:sequence>
+      <xs:element name="fieldName" type="xs:string" minOccurs="0"/>
+      <xs:element name="fieldValue" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreateDocumentResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:createDocumentResponse1" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createDocumentResponse1">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="status" type="xs:int"/>
+      <xs:element name="statusMsg" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RefreshToken">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RefreshTokenResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreateUser">
+    <xs:sequence>
+      <xs:element name="user" type="xs:string" minOccurs="0"/>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="user_mail" type="xs:string" minOccurs="0"/>
+      <xs:element name="short_name" type="xs:string" minOccurs="0"/>
+      <xs:element name="full_name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreateUserResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:createUserResponse1" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createUserResponse1">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="status" type="xs:int"/>
+      <xs:element name="statusMsg" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExecuteProcedure">
+    <xs:sequence>
+      <xs:element name="user" type="xs:string" minOccurs="0"/>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="procedure" type="tns:executeProcedure1" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="executeProcedure1">
+    <xs:sequence>
+      <xs:element name="appName" type="xs:string" minOccurs="0"/>
+      <xs:element name="fields" type="tns:documentFields" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="owner" type="xs:string" minOccurs="0"/>
+      <xs:element name="procedure" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExecuteProcedureResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:executeProcedureResponse1" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="executeProcedureResponse1">
+    <xs:sequence>
+      <xs:element name="content" type="xs:string" minOccurs="0"/>
+      <xs:element name="status" type="xs:int"/>
+      <xs:element name="statusMsg" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Authenticate">
+    <xs:sequence>
+      <xs:element name="user" type="xs:string" minOccurs="0"/>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuthenticateResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

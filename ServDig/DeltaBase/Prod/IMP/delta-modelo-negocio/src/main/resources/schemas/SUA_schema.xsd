@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://mx.gob.imss.ctirss.delta/movimientosua"
+    xmlns:tns="http://mx.gob.imss.ctirss.delta/movimientosua"
+    elementFormDefault="qualified">
+    <complexType name="Patron">
+        <sequence>
+            <element name="tipoDeRegistro"                         type="int"    /> <!-- length="2"  -->
+            <element name="registroPatronalIMSS"                   type="string" /> <!-- length="11" -->
+            <element name="rfcPatron"                              type="string" /> <!-- length="13" -->
+            <element name="periodoDePago"                          type="int"    /> <!-- length="6"  -->
+            <element name="folioSUA"                               type="int"    /> <!-- length="6"  -->
+            <element name="nombreORazonSocial"                     type="string" /> <!-- length="50" -->
+            <element name="calleNoYColonia"                        type="string" /> <!-- length="40" -->
+            <element name="poblacionYMunicipioODelegacionPolitica" type="string" /> <!-- length="40" -->
+            <element name="entidadFederativa"                      type="int"    /> <!-- length="2"  -->
+            <element name="codigoPostal"                           type="int"    /> <!-- length="5"  -->
+            <element name="telefono"                               type="long"   /> <!-- length="15" -->
+            <element name="primaDeRiesgoDeTrabajo">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100.0"/>
+                    </restriction>
+                </simpleType>
+            </element> <!-- length="7"  5 decimales -->
+            <element name="fechaDeLaPrimaDeRiesgoDeTrabajo"        type="int"    /> <!-- length="6"  -->
+            <element name="actividadEconomica"                     type="string" /> <!-- length="40" -->
+            <element name="delegacionDelIMSS"                      type="int"    /> <!-- length="2"  -->
+            <element name="subdelegacionDelIMSS"                   type="int"    /> <!-- length="2"  -->
+            <element name="areaGeograficaSalariosMinimos"          type="string" /> <!-- length="1"  -->
+            <element name="porcentajeDeAportacionINFONAVIT">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10.0"/>
+                    </restriction>
+                </simpleType>
+            </element> <!-- length="2"  1 decimal-->
+            <element name="convenioDeReembolsoDeSubsidios"         type="string" /> <!-- length="1"  -->
+            <element name="tipoDeCotizacion"                       type="int"    /> <!-- length="1"  -->
+            <element name="DiasCotizadosPeriodoConIncidencias"     type="int"    /> <!-- length="7"  -->
+            <element name="numeroDeTrabajadoresCotizantes"         type="long"   /> <!-- length="9"  -->
+            <element name="tipoDocumento"                          type="int"    /> <!-- length="2"  -->
+            <element name="numeroDeCreditoIMSS"                    type="long"   /> <!-- length="9"  -->
+            <element name="filler"                                 type="string" /> <!-- length="16" -->
+            <element name="trabajadores" type="tns:Trabajador" minOccurs="1" maxOccurs="2"/>
+        </sequence>
+    </complexType>
+    <complexType name="SumarioPatronal">
+        <sequence>
+            <element name="tipoDeRegistro"                                                   type="int"   /><!-- length="2" -->
+            <element name="registroPatronalIMSS"                                             type="string"/><!-- length="11" -->
+            <element name="rfcPatron"                                                        type="string"/><!-- length="13" -->
+            <element name="periodoDePago"                                                    type="string"/><!-- length="6" -->
+            <element name="folioSUA"                                                         type="int"   /><!-- length="6" -->
+            <element name="tasaDeActualizacionEmpleada">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="10" decimales: 6 -->
+            <element name="tasaDeRecargosEmpleada">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="10" decimales: 6 -->
+            <element name="cuotaFijaDeEnfermedadYMaternidad">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="cuotaExcedenteDeEnfermedadYMaternidad">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="prestacionesEnDineroDeEnfermedadYMaternidad">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="gastosMedicosPensionadosArt25">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="riesgosDeTrabajo">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="invalidezYVida">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="guarderiaYPrestacionesSociales">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="subtotalDeCuatroSegurosIMSS">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="1000000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="11" decimales: 2 -->
+            <element name="actualizacionDeLosCuatroSegurosIMSS">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="recargosDeLosCuatroSegurosIMSS">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="retiro">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="cesantiaYVejez">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="subtotalRetiroCesantiaYVejez">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="1000000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="11" decimales: 2 -->
+            <element name="actualizacionDeRetiroCesantiaYVejez">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="recargosDeRetiroCesantiaYVejez">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="aportacionesVoluntarias">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="1000000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="11" decimales: 2 -->
+            <element name="aportacionPatronalINFONAVITParaCuentaIndividual">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="aportacionPatronalINFONAVITParaAmortizacionDeCreditos">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="amortizacionDeCreditoINFONAVIT">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="aportacionesComplementarias">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="multasINFONAVIT">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="donativoFUNDEMEX">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="9"  decimales: 2 -->
+            <element name="folioDeRequerimiento"                                             type="string"/><!-- length="6" -->
+            <element name="filler"                                                           type="string"/><!-- length="9" -->
+        </sequence>
+    </complexType>
+    <complexType name="RegistroValidacion">
+        <sequence>
+            <element name="tipoDeRegistro"                                                                  type="int" />          <!-- length="2"-->
+            <element name="registroPatronalIMSS"                                                            type="string" />       <!-- length="11"-->
+            <element name="rFCPatron"                                                                       type="string" />       <!-- length="13"-->
+            <element name="periodoDePago"                                                                   type="int" />          <!-- length="6"-->
+            <element name="folioSUA"                                                                        type="int" />          <!-- length="6"-->
+            <element name="sumaDeTasasDeRecargosYActualizacionQueSeAplico">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="10"  decimales: 6-->
+            <element name="tamanioDelArchivoEnBytes"                                                        type="long" />         <!-- length="10"-->
+            <element name="fechaLimiteDePago"                                                               type="int" />          <!-- length="8"-->
+            <element name="numeroDeDiscos"                                                                  type="int" />          <!-- length="2"-->
+            <element name="versionSUA"                                                                      type="string" />       <!-- length="4"-->
+            <element name="totalADepositarEnCuentaIMSS4RSS">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="12"  decimales: 2-->
+            <element name="totalADepositarEnCuentaIMSS_RCV">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="12"  decimales: 2-->
+            <element name="totalADepositarEnCuentaINFONAVITAportacionPatronalParaCuentaIndividual">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="12"  decimales: 2-->
+            <element name="totalADepositarEnCuentaINFONAVITAmortizacionDeCreditosActualizacionesYRecargos">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="12"  decimales: 2-->
+            <element name="checkSum"                                                                        type="long" />         <!-- length="19"-->
+            <element name="cuotaFija">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="9"   decimales: 2-->
+            <element name="cuotaExcedentePatronal">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="9"   decimales: 2-->
+            <element name="cuotaExcedenteObrero">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="9"   decimales: 2-->
+            <element name="prestacionesEnDineroPatronal">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="9"   decimales: 2-->
+            <element name="prestacionesEnDineroObrero">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="9"   decimales: 2-->
+            <element name="gastosMedicosPensionadosPatronal">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="9"   decimales: 2-->
+            <element name="gastosMedicosPensionadosObrero">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="9"   decimales: 2-->
+            <element name="riesgosDeTrabajo">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="9"   decimales: 2-->
+            <element name="invalidezYVidaPatronal">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="9"   decimales: 2-->
+            <element name="invalidezYVidaObrero">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="9"   decimales: 2-->
+            <element name="guarderiaYPrestacionesSociales">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10000000.0"/>
+                    </restriction>
+                </simpleType>
+            </element>         <!-- length="9"   decimales: 2-->
+            <element name="factorDeReversionCF"                                                             type="string" />       <!-- length="3"-->
+            <element name="factorDeReversionExcPatronal"                                                    type="string" />       <!-- length="3"-->
+            <element name="factorDeReversionExcObrero"                                                      type="string" />       <!-- length="3"-->
+            <element name="factorDeReversionPDPatronal"                                                     type="string" />       <!-- length="3"-->
+            <element name="factorDeReversionPDObrero"                                                       type="string" />       <!-- length="3"-->
+            <element name="factorDeReversionGMPPatronal"                                                    type="string" />       <!-- length="3"-->
+            <element name="factorDeReversionGMPObrero"                                                      type="string" />       <!-- length="3"-->
+            <element name="factorDeReversionRT"                                                             type="string" />       <!-- length="3"-->
+            <element name="factorDeReversionIVPatronal"                                                     type="string" />       <!-- length="3"-->
+            <element name="factorDeReversionIVObrero"                                                       type="string" />       <!-- length="3"-->
+            <element name="factorDeReversionGPS"                                                            type="string" />       <!-- length="3"-->
+            <element name="factorDeAusentismo">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="10.0"/>
+                    </restriction>
+                </simpleType>
+            </element>          <!-- length="3"   decimales: 2-->
+            <element name="filler"                                                                          type="string" />       <!-- length="21"-->
+        </sequence>
+    </complexType>
+    <complexType name="Trabajador">
+        <sequence>
+            <element name="tipoDeRegistro"                                type="int"    /><!-- length="2"                -->
+            <element name="registroPatronalIMSS"                          type="string" /><!-- length="11"               -->
+            <element name="rfcPatron"                                     type="string" /><!-- length="13"               -->
+            <element name="periodoDePago"                                 type="string" /><!-- length="6"                -->
+            <element name="numeroDeSeguridadSocialDelTrabajador"          type="long"   /><!-- length="11"               -->
+            <element name="rfcDelTrabajador"                              type="string" /><!-- length="13"               -->
+            <element name="claveUnicaDelRegistroDePoblacion"              type="string" /><!-- length="18"               -->
+            <element name="numeroDeCreditoINFONAVIT"                      type="long"   /><!-- length="10"               -->
+            <element name="fechaDeInicioDelDescuentoDeCreditoINFONAVIT"   type="int"    /><!-- length="8"                -->
+            <element name="numeroDeMovimientosEnElPeriodo"                type="int"    /><!-- length="2"                -->
+            <element name="nombreDelTrabajador"                           type="string" /><!-- length="50"               -->
+            <element name="ultimoSalarioDiarioIntegradoDelPeriodo">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="tipoDeTrabajador"                              type="int"    /><!-- length="1"                -->
+            <element name="jornadaPorSemanaReducida"                      type="int"    /><!-- length="1"                -->
+            <element name="diasCotizadosEnElMes"                          type="int"    /><!-- length="2"                -->
+            <element name="diasDeIncapacidadEnElMes"                      type="int"    /><!-- length="2"                -->
+            <element name="diasDeAusentismoEnElMes"                       type="int"    /><!-- length="2"                -->
+            <element name="cuotaFijaDeEnfermedadYMaternidad">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="cuotaExcedenteDeEnfermedadYMaternidad">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="prestacionesEnDineroDeEnfermedadYMaternidad">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="gastosMedicosPensionadosArt25">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="riesgosDeTrabajo">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="invalidezYVida">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="guarderiaYPrestacionesSociales">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="actualizacionYRecargosDeLosCuatroSegurosIMSS">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="diasCotizadosEnElBimestre"                     type="int"    /><!-- length="2"                -->
+            <element name="diasDeIncapacidadEnElBimestre"                 type="int"    /><!-- length="2"                -->
+            <element name="diasDeAusentismoEnElBimestre"                  type="int"    /><!-- length="2"                -->
+            <element name="retiro">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="actualizacionYRecargosDeRetiro">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="cesantiaYVejezCuotaPatronal">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="cesantiaYVejezCuotaTrabajador">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="actualizacionYRecargosDeCesantiaYVejez">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="aportacionVoluntaria">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="aportacionPatronalINFONAVIT">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="amortizacionDeCreditoINFONAVIT">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element><!-- length="7"  decimales: 2  -->
+            <element name="cuotaExcedenteCuotaObrera"                     type="string" /><!-- length="3"                -->
+            <element name="prestacionesEnDineroCuotaObrera"               type="string" /><!-- length="3"                -->
+            <element name="gastosMedicosPensionadosCuotaObrera"           type="string" /><!-- length="3"                -->
+            <element name="invalidezYVidaCuotaObrera"                     type="string" /><!-- length="3"                -->
+            <element name="cesantiaYVejezCuotaObrera"                     type="string" /><!-- length="3"                -->
+            <element name="municipio"                                     type="string" /><!-- length="3"                -->
+            <element name="movimientos" type="tns:Movimiento" minOccurs="1" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="Movimiento">
+        <sequence>
+            <element name="tipoDeRegistro"                         type="int"     /> <!-- length="2" -->
+            <element name="registroPatronalIMSS"                   type="string"  /> <!-- length="11" -->
+            <element name="numeroDeSeguridadSocialDelTrabajador1"  type="long"    /> <!-- length="11" -->
+            <element name="tipoDeMovimientoOIncidencia1"           type="int"     /> <!-- length="2" -->
+            <element name="fechaDeMovimientoOIncidencia1"          type="int"     /> <!-- length="8" -->
+            <element name="folioDeIncapacidad1"                    type="string"  /> <!-- length="8" -->
+            <element name="diasDeIncidencia1"                      type="int"     /> <!-- length="2" -->
+            <element name="salarioDiarioIntegrado1">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element> <!-- length="7"   decimales: 2 -->
+            <element name="numeroDeSeguridadSocialDelTrabajador2"  type="long"    /> <!-- length="11" -->
+            <element name="tipoDeMovimientoOIncidencia2"           type="int"     /> <!-- length="2" -->
+            <element name="fechaDeMovimientoOIncidencia2"          type="int"     /> <!-- length="8" -->
+            <element name="folioDeIncapacidad2"                    type="string"  /> <!-- length="8" -->
+            <element name="diasDeIncidencia2"                      type="int"     /> <!-- length="2" -->
+            <element name="salarioDiarioIntegrado2">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element> <!-- length="7"   decimales: 2 -->
+            <element name="numeroDeSeguridadSocialDelTrabajador3"  type="long"    /> <!-- length="11" -->
+            <element name="tipoDeMovimientoOIncidencia3"           type="int"     /> <!-- length="2" -->
+            <element name="fechaDeMovimientoOIncidencia3"          type="int"     /> <!-- length="8" -->
+            <element name="folioDeIncapacidad3"                    type="string"  /> <!-- length="8" -->
+            <element name="diasDeIncidencia3"                      type="int"     /> <!-- length="2" -->
+            <element name="salarioDiarioIntegrado3">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element> <!-- length="7"   decimales: 2 -->
+            <element name="numeroDeSeguridadSocialDelTrabajador4"  type="long"    /> <!-- length="11" -->
+            <element name="tipoDeMovimientoOIncidencia4"           type="int"     /> <!-- length="2" -->
+            <element name="fechaDeMovimientoOIncidencia4"          type="int"     /> <!-- length="8" -->
+            <element name="folioDeIncapacidad4"                    type="string"  /> <!-- length="8" -->
+            <element name="diasDeIncidencia4"                      type="int"     /> <!-- length="2" -->
+            <element name="salarioDiarioIntegrado4">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element> <!-- length="7"   decimales: 2 -->
+            <element name="numeroDeSeguridadSocialDelTrabajador5"  type="long"    /> <!-- length="11" -->
+            <element name="tipoDeMovimientoOIncidencia5"           type="int"     /> <!-- length="2" -->
+            <element name="fechaDeMovimientoOIncidencia5"          type="int"     /> <!-- length="8" -->
+            <element name="folioDeIncapacidad5"                    type="string"  /> <!-- length="8" -->
+            <element name="diasDeIncidencia5"                      type="int"     /> <!-- length="2" -->
+            <element name="salarioDiarioIntegrado5">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element> <!-- length="7"   decimales: 2 -->
+            <element name="numeroDeSeguridadSocialDelTrabajador6"  type="long"    /> <!-- length="11" -->
+            <element name="tipoDeMovimientoOIncidencia6"           type="int"     /> <!-- length="2" -->
+            <element name="fechaDeMovimientoOIncidencia6"          type="int"     /> <!-- length="8" -->
+            <element name="folioDeIncapacidad6"                    type="string"  /> <!-- length="8" -->
+            <element name="diasDeIncidencia6"                      type="int"     /> <!-- length="2" -->
+            <element name="salarioDiarioIntegrado6">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element> <!-- length="7"   decimales: 2 -->
+            <element name="numeroDeSeguridadSocialDelTrabajador7"  type="long"    /> <!-- length="11" -->
+            <element name="tipoDeMovimientoOIncidencia7"           type="int"     /> <!-- length="2" -->
+            <element name="fechaDeMovimientoOIncidencia7"          type="int"     /> <!-- length="8" -->
+            <element name="folioDeIncapacidad7"                    type="string"  /> <!-- length="8" -->
+            <element name="diasDeIncidencia7"                      type="int"     /> <!-- length="2" -->
+            <element name="salarioDiarioIntegrado7">
+                <simpleType>
+                    <restriction base="decimal">
+                        <minInclusive value="0.0"/>
+                        <maxExclusive value="100000.0"/>
+                    </restriction>
+                </simpleType>
+            </element> <!-- length="7"   decimales: 2 -->
+            <element name="filler"                                 type="string"  /> <!-- length="16" -->
+        </sequence>
+    </complexType>
+    <complexType name="SUAPagoType">
+        <sequence>
+            <element name="Patron" type="tns:Patron"/>
+            <element name="SumarioPatronal" type="tns:SumarioPatronal"/>
+            <element name="RegistroValidacion" type="tns:RegistroValidacion"/>
+        </sequence>
+    </complexType>
+   <element name="SUAPago" type="tns:SUAPagoType"/> 
+</schema>
+

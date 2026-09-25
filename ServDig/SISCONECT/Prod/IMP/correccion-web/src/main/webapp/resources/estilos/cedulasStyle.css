@@ -1,0 +1,72 @@
+.header {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: capitalize;
+	color: #FFFFFF;
+	text-decoration: none;
+	background-color: #949230;
+	text-align: center;
+}
+
+.subHeader {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: capitalize;
+	color: #000000;
+	text-decoration: none;
+	background-color: #D5D27B;
+	text-align: center;
+}
+
+.txtTablaNone {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #000000;
+	text-decoration: none;
+	background-color: #ECEBC4;
+}
+.txtTablaPar {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #000000;
+	text-decoration: none;
+	background-color: #FFFFCC;
+}
+
+.txt {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #000000;
+	text-decoration: none;
+
+}
+
+.fondoGeneralTabla {
+	background-color: #A5A234;
+}
+.fondoGris {
+	background-color: #CCCCCC;
+}

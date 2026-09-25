@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. --><xs:schema xmlns:tns="http://impl.service.admonusuarios.sso.ctirss.imss.gob.mx/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://impl.service.admonusuarios.sso.ctirss.imss.gob.mx/">
+  
+  <xs:element name="consultaDatosUsuario" type="tns:consultaDatosUsuario"/>
+  
+  <xs:element name="consultaDatosUsuarioResponse" type="tns:consultaDatosUsuarioResponse"/>
+  
+  <xs:element name="recuperaResponsablesDelegacion" type="tns:recuperaResponsablesDelegacion"/>
+  
+  <xs:element name="recuperaResponsablesDelegacionResponse" type="tns:recuperaResponsablesDelegacionResponse"/>
+  
+  <xs:complexType name="consultaDatosUsuario">
+    <xs:sequence>
+      <xs:element name="curp" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="consultaDatosUsuarioResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:usuarioInfoDTO" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="usuarioInfoDTO">
+    <xs:sequence>
+      <xs:element name="apellidoMaterno" type="xs:string" minOccurs="0"/>
+      <xs:element name="apellidoPaterno" type="xs:string" minOccurs="0"/>
+      <xs:element name="correoElectronico" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="recuperaResponsablesDelegacion">
+    <xs:sequence>
+      <xs:element name="cveDelegacion" type="xs:int"/>
+      <xs:element name="cveSubdelegacion" type="xs:int"/>
+      <xs:element name="roles" type="xs:string" minOccurs="0"/>
+      <xs:element name="modulo" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="recuperaResponsablesDelegacionResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:responsablesDelegacionDTO" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="responsablesDelegacionDTO">
+    <xs:sequence>
+      <xs:element name="clave" type="xs:int"/>
+      <xs:element name="mensaje" type="xs:string" minOccurs="0"/>
+      <xs:element name="responsables" type="tns:responsableDTO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="responsableDTO">
+    <xs:sequence>
+      <xs:element name="correoElectronico" type="xs:string" minOccurs="0"/>
+      <xs:element name="curp" type="xs:string" minOccurs="0"/>
+      <xs:element name="matricula" type="xs:long"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="primerApellido" type="xs:string" minOccurs="0"/>
+      <xs:element name="puesto" type="xs:string" minOccurs="0"/>
+      <xs:element name="segundoApellido" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

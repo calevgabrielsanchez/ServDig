@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    
+    <context:annotation-config />
+    
+    <aop:aspectj-autoproxy/>
+     <bean id="simpleUrlMapping" class=" org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+		<props>
+			<prop key="/captcha.htm">captchaController</prop>
+		</props>
+		
+         
+        
+		
+		</property>
+    </bean>
+     <bean id="captchaController" class="mx.imss.ctirss.web.controller.registro.CaptchaController">
+        <property name="captchaService">
+                <ref bean="captchaService"/>
+        </property>
+    </bean>
+     <!-- SERVICIO PARA LA ADMINISTRACION DE CATALOGOS -->
+	<bean id="catalogoServiceDictamenT" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="catalogoServiceDictamenT#mx.imss.ctirss.service.ejb.CatalogoServiceRemote"/>
+  		<property name="businessInterface" value="mx.imss.ctirss.service.interfaces.ICatalogoService"/>
+	</bean>
+	
+	 <!-- SERVICIO PARA LA GENERACION DEL MENU APLICATIVO -->
+	<bean id="menuServiceDictamenT" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="menuServiceDictamenT#mx.imss.ctirss.menu.service.ejb.MenuServiceRemote"/>
+  		<property name="businessInterface" value="mx.imss.ctirss.menu.service.interfaces.MenuService"/>
+	</bean>
+	
+	<!-- SERVICIO PARA LA VALIDAR CREDECIALES DEL APLICATIVO -->
+	<bean id="loginServiceDL" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="loginServiceDL#mx.gob.imss.ctirss.login.service.ejb.LoginServiceRemote"/>
+  		<property name="businessInterface" value="mx.imss.ctirss.login.service.interfaces.LoginService"/>
+	</bean>			
+		<!-- SERVICIO PARA LA RECUPERAR LOS PERFILES DEL USUARIO DENTRO APLICATIVO -->
+	<bean id="perfilServiceDL" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="perfilServiceDL#mx.gob.imss.ctirss.login.service.ejb.PerfilServiceRemote"/>
+  		<property name="businessInterface" value="mx.imss.ctirss.login.service.interfaces.PerfilService"/>
+	</bean>	
+	
+	<bean id="denunciaServiceDL" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+  		<property name="jndiName" value="denunciaServiceDL#mx.imss.ctirss.denuncia.service.ejb.DenunciaServiceRemote"/>
+  		<property name="businessInterface" value="mx.imss.ctirss.login.service.interfaces.IDenunciaService"/>
+	</bean>
+	
+	<bean id="captchaService" class="com.octo.captcha.service.multitype.GenericManageableCaptchaService">
+        <constructor-arg index="0">
+            <ref bean="imageEngine" />
+        </constructor-arg>
+        <constructor-arg index="1">
+            <value>180</value>
+        </constructor-arg>
+        <constructor-arg index="2">
+            <value>180000</value>
+        </constructor-arg>
+        <constructor-arg type="int" index="3" value="75000"/>
+    </bean>
+    
+    <bean id="imageEngine" class="com.octo.captcha.engine.GenericCaptchaEngine">
+        <constructor-arg index="0">
+            <list>
+                <ref bean="CaptchaFactory" />
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="CaptchaFactory" class="com.octo.captcha.image.gimpy.GimpyFactory">
+        <constructor-arg>
+            <ref bean="wordgen" />
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="wordtoimage" />
+        </constructor-arg>
+    </bean>	
+
+    <bean id="wordgen" class="com.octo.captcha.component.word.wordgenerator.DictionaryWordGenerator">
+        <constructor-arg>
+            <ref bean="filedict" />
+        </constructor-arg>
+    </bean> 
+
+    <bean id="filedict"    class="com.octo.captcha.component.word.FileDictionary">
+        <constructor-arg index="0">
+            <value>toddlist</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="wordtoimage" class="com.octo.captcha.component.image.wordtoimage.ComposedWordToImage">
+        <constructor-arg index="0">
+            <ref bean="fontGenRandom" />
+        </constructor-arg>
+        <constructor-arg index="1">
+            <ref bean="backGenUni" />
+        </constructor-arg>
+        <constructor-arg index="2">
+            <ref bean="simpleWhitePaster" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="fontGenRandom" class="com.octo.captcha.component.image.fontgenerator.RandomFontGenerator">
+        <constructor-arg index="0">
+            <value>40</value>
+        </constructor-arg>
+        <constructor-arg index="1">
+            <value>50</value>
+        </constructor-arg>
+        <constructor-arg index="2">
+            <list>
+                <ref bean="fontArial" />
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="fontArial" class="java.awt.Font">
+        <constructor-arg index="0">
+            <value>Arial</value>
+        </constructor-arg>
+        <constructor-arg index="1">
+            <value>0</value>
+        </constructor-arg>
+        <constructor-arg index="2">
+            <value>10</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="backGenUni" class="com.octo.captcha.component.image.backgroundgenerator.UniColorBackgroundGenerator">
+        <constructor-arg index="0">
+            <value>300</value>
+        </constructor-arg>
+        <constructor-arg index="1">
+            <value>100</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="simpleWhitePaster" class="com.octo.captcha.component.image.textpaster.SimpleTextPaster">
+        <constructor-arg type="java.lang.Integer" index="0">
+            <value>3</value>
+        </constructor-arg>
+        <constructor-arg type="java.lang.Integer" index="1">
+            <value>5</value>
+        </constructor-arg>
+        <constructor-arg type="java.awt.Color" index="2">
+            <ref bean="colorGreen" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="colorGreen" class="java.awt.Color" >
+        <constructor-arg index="0" type="int">
+            <value>0</value>
+        </constructor-arg>
+        <constructor-arg index="1" type="int">
+            <value>255</value>
+        </constructor-arg>
+        <constructor-arg index="2" type="int">
+            <value>0</value>
+        </constructor-arg>
+    </bean>
+    
+</beans>

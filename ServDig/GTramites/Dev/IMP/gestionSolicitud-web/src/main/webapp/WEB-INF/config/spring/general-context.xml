@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+
+
+	
+<!-- Scans the classpath of this application for @Components to deploy as beans -->
+<!-- 	<context:component-scan base-package="mx.gob.imss.ctirss.delta.gestion.solicitud.web" /> -->
+<!-- 	<context:component-scan base-package="mx.gob.imss.ctirss.delta.gestion.solicitud.web.controller" /> -->
+
+	<!-- Configuracion del filtro  -->
+	<bean id="filtroDelta" class="mx.gob.imss.ctirss.delta.gestion.solicitud.web.filter.FiltroDelta"/>
+ 
+	<!-- Properties of the Spring configuration -->
+    <bean
+        id="propertyConfigurer"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property
+            name="locations">
+            <list>
+                <value>WEB-INF/config/spring/config.properties
+                </value>
+            </list>
+        </property>
+    </bean>
+
+	<!-- Configuracion de un  DataSource  
+    <bean
+        id="dataSource"
+        class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property
+            name="jndiName"
+            value="${jndi.datasource}" />
+    </bean>
+	-->
+
+    <import
+        resource="service-context.xml" />
+</beans>

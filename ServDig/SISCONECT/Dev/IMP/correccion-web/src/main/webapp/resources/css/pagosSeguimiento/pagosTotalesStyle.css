@@ -1,0 +1,35 @@
+.txPagosTotales {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #000000;
+	text-decoration: none;
+	background-color: #F4FBF4;
+	background-repeat: repeat;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.txPagosHeaders {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #000000;
+	text-decoration: none;
+	background-color: #DBF1D9;
+	background-repeat: repeat;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.pagosTotalGrayBG {
+	background-color: #CCCCCC;
+}

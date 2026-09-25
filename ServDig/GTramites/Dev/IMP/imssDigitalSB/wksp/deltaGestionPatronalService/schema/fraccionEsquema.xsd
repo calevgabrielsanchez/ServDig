@@ -1,0 +1,52 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.model.gestion.patronal" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://mx.gob.imss.delta.clasificacion/" xmlns:WL5G3N2="java:mx.gob.imss.ctirss.delta.framework.base.exception" xmlns:WL5G3N3="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:mx.gob.imss.ctirss.delta.framework.base.model" schemaLocation="modeloTypes.xsd"/>
+      <xs:complexType name="Grupo">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Id" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Division" nillable="true" type="java1:Division" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.gestion.patronal"/>
+              <xs:element minOccurs="1" name="NumGrupo" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Division">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Activo" nillable="true" type="xs:boolean"/>
+              <xs:element minOccurs="1" name="Id" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="NumDivision" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Fraccion">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="PrimaSRT" nillable="true" type="xs:decimal"/>
+              <xs:element minOccurs="1" name="Id" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="DescripcionDetallada" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Grupo" nillable="true" type="java1:Grupo" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.gestion.patronal"/>
+              <xs:element minOccurs="1" name="Clase" nillable="true" type="java1:Clase" xmlns:java1="java:mx.gob.imss.ctirss.delta.model.gestion.patronal"/>
+              <xs:element minOccurs="1" name="NumFraccion" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Clase">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractModel" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Clave" nillable="true" type="xs:long"/>
+              <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SecccionVI" pageWidth="612" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="592" leftMargin="0" rightMargin="20" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.8181818181818261"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Titulo Aviso" hAlign="Left" lineSpacing="Single" fontSize="13" isBold="true" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="base" lineSpacing="Single" fontSize="7" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="fondo" backcolor="#00CCFF" lineSpacing="Single"/>
+	<style name="fondoEncabezado" backcolor="#0000FF" lineSpacing="Single"/>
+	<style name="Titulo Encabezado" lineSpacing="Single" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="baseBold" lineSpacing="Single" fontSize="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+	<style name="vineta" lineSpacing="Single" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="Crosstab Data Text" hAlign="Center" lineSpacing="Single"/>
+	<parameter name="P_REGPATRONAL" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[descripcion]]></fieldDescription>
+	</field>
+	<columnHeader>
+		<band height="48">
+			<staticText>
+				<reportElement style="base" mode="Opaque" x="23" y="28" width="528" height="20" backcolor="#F2F2F2"/>
+				<box>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Soberana Sans Light" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Principales productos elaborados o servicios prestados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Titulo Encabezado" mode="Opaque" x="23" y="0" width="528" height="20" forecolor="#000000" backcolor="#F2F2F2"/>
+				<box>
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single" markup="html">
+					<font fontName="Soberana Sans Light" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Datos de la actividad que declara de acuerdo con la modificaci&oacute;n que da origen a este aviso]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="baseBold" stretchType="RelativeToTallestObject" x="23" y="0" width="528" height="20"/>
+				<box leftPadding="3">
+					<topPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<leftPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<bottomPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+					<rightPen lineWidth="0.75" lineStyle="Solid" lineColor="#AFB1B1"/>
+				</box>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Soberana Sans Light" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

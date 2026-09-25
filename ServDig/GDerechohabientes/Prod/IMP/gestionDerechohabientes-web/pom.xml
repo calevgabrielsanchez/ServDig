@@ -1,0 +1,942 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<groupId>mx.gob.imss.ctirss.delta.derechohabientes</groupId>
+	<artifactId>${mvn.project.artifactId}</artifactId>
+	<version>2.2</version>
+	<packaging>war</packaging>
+	<name>Modulo Web DELTA</name>
+	<url>http://maven.apache.org</url>
+	
+	<parent>
+        <artifactId>gestionDerechohabientes</artifactId>
+        <groupId>mx.gob.imss.ctirss.delta.derechohabientes</groupId>
+		<version>2.2</version>
+    	</parent>
+	
+	
+	<properties>
+		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+		<project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+		<org.springframework.version>3.0.5.RELEASE</org.springframework.version>
+		<org.slf4j.version>1.6.1</org.slf4j.version>
+		<tiles.framework.version>2.2.1</tiles.framework.version>
+		<spring.security.version>2.0.4</spring.security.version>
+		<delta.cliente.webservice.subdelegacion>2.2</delta.cliente.webservice.subdelegacion>
+	</properties>
+	
+	<dependencies>
+	
+		<!-- INICIO DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+
+		
+		
+		<!-- Dependencia del Framework DELTA BASE IMSS -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-framework-base</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>	
+		
+
+	<!-- Dependencia del Proyecto de Objetos de modelo DELTA IMSS -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-modelo-negocio</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>
+
+		<!-- Dependencia de las Interfaces de Negocio de DELTA IMSS -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-interfaces-negocio</artifactId>
+			<version>${delta.framework.version}</version>
+			<type>jar</type>
+		</dependency>
+		
+		<!--  Dependencia del JaxbUtils -->
+		<dependency>
+			<groupId>mx.gob.imss.distss.digital</groupId>
+        	<artifactId>jaxb-utils</artifactId>
+        	<version>1.0</version>
+		</dependency>
+		
+		<!-- FIN DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+	
+		<!-- Inicio de las dependencias Internas del proyecto  -->
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.derechohabientes</groupId>
+			<artifactId>gestionDerechohabientes-modelo</artifactId>
+			<version>${delta.derechohabientes.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.derechohabientes</groupId>
+			<artifactId>gestionDerechohabientes-interfaces-negocio</artifactId>
+			<version>${delta.derechohabientes.version}</version>
+		</dependency>
+		
+		     <!-- Dependencia del Framework del IMSS  delta modelo de entidades de negocio persona-->
+    	<dependency>
+    	
+			<groupId>mx.gob.imss.ctirss.delta.gestion.individuo.service.interface</groupId>
+			<artifactId>gestionIndividuo-service-business-interface</artifactId>
+			<version>${delta.personas}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.domicilio</groupId>
+			<artifactId>gestionDomicilios-interfaces-negocio</artifactId>
+			<version>${delta.domicilios}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.solicitud</groupId> 
+		    <artifactId>gestionSolicitud-interfaces-negocio</artifactId> 
+		    <version>${gestion.solicitud.version}</version> 
+		</dependency>
+		 
+		<!-- Dependencia con otros proyectos. Medios de Contacto -->           
+        <dependency>
+            <groupId>mx.gob.imss.ctirss.delta.gestion.medio.contacto</groupId>
+            <artifactId>gestionMediosContacto-interfaces-negocio</artifactId>
+            <version>${delta.medioscontacto}</version>
+            <exclusions>
+		      		<exclusion>
+		        		<groupId>net.sf.jasperreports</groupId>
+						<artifactId>jasperreports</artifactId>
+		      		</exclusion>
+		      		<exclusion>
+						<groupId>xml-apis</groupId>
+						<artifactId>xml-apis</artifactId>
+					</exclusion>
+		      		
+	    	</exclusions>
+        </dependency>
+        
+        <dependency>
+			<groupId>mx.gob.imss.ctirss.delta.gestion.documento.probatorio</groupId>
+			<artifactId>gestionDocumentoProbatorio-interfaces-negocio</artifactId>
+			<version>${delta.documentos.probatorios}</version>
+		</dependency>
+		
+		<!--<dependency>
+        	<artifactId>AdmonUsuariosDelta-remote</artifactId>
+			<groupId>mx.gob.imss.ctirss.sso</groupId>
+			<version>${delta.sauadmin}</version>
+        </dependency>-->
+        
+        <dependency>
+	        <groupId>mx.gob.imss.ctirss.clienteswebservices.responsables.subdelegacion</groupId>
+			<artifactId>ClientesWebservices-responsables-subdelegacion</artifactId>
+			<version>${delta.cliente.webservice.subdelegacion}</version>
+        </dependency>
+		
+		
+		<!-- Fin -->
+	
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+
+	
+		<dependency>
+	    	<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2</version>
+	    </dependency>
+		
+
+
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework.version}</version>
+			<exclusions>
+				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.webflow</groupId>
+			<artifactId>spring-js</artifactId>
+			<version>2.0.9.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+<!-- Integracion con Open AM - Spring Security  -->
+		
+		
+<!-- 		<dependency> -->
+<!--       <groupId>org.springframework.security</groupId> -->
+<!--       <artifactId>spring-security-config</artifactId> -->
+<!--       <version>${spring.security.version}</version> -->
+<!--     </dependency> -->
+   
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>${spring.security.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    
+    <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-dao</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+    
+<!--     <dependency> -->
+<!--       <groupId>org.springframework.security</groupId> -->
+<!--       <artifactId>spring-security-ldap</artifactId> -->
+<!--       <version>${spring.security.version}</version> -->
+<!--     </dependency> -->
+<!--   <dependency> -->
+<!--     <groupId>org.springframework.security</groupId> -->
+<!--     <artifactId>spring-security-openid</artifactId> -->
+<!--     <version>${spring.security.version}</version> -->
+<!--     <scope>compile</scope> -->
+<!--   </dependency> -->
+<!--     <dependency> -->
+<!--       <groupId>org.springframework.security</groupId> -->
+<!--       <artifactId>spring-security-taglibs</artifactId> -->
+<!--       <version>${spring.security.version}</version> -->
+<!--     </dependency> -->
+<!--     <dependency> -->
+<!--       <groupId>org.springframework.security</groupId> -->
+<!--       <artifactId>spring-security-web</artifactId> -->
+<!--       <version>${spring.security.version}</version> -->
+<!-- </dependency> -->
+		<dependency>
+            <groupId>com.sun.identity.provider</groupId>
+            <artifactId>opensso-springsecurity</artifactId>
+            <version>0.2</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.forgerock.openam</groupId>
+            <artifactId>clientsdk</artifactId>
+            <version>10.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+
+		<!-- JSR 303 with Hibernate Validator -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.0.0.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.0.1.GA</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>jaxb-impl</artifactId>
+					<groupId>com.sun.xml.bind</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Joda Time -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>1.6.2</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- Jackson JSON Mapper -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Tiles -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-core</artifactId>
+			<version>${tiles.framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-api</artifactId>
+			<version>${tiles.framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>${tiles.framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-template</artifactId>
+			<version>${tiles.framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-servlet</artifactId>
+			<version>${tiles.framework.version}</version>
+		</dependency>
+
+		<!-- Jasper -->
+		 
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>4.1.2</version>
+			 <exclusions>
+	      		<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+	      		<exclusion>
+					<groupId>org.apache.xmlbeans</groupId>
+					<artifactId>xmlbeans</artifactId>
+				</exclusion>
+	    	</exclusions>
+		</dependency>
+		
+
+		<!-- iText -->
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+
+
+		<dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-core</artifactId>
+            <version>2.0.5.RELEASE</version>
+        </dependency>
+
+		<!-- Quartz dependencia para ejecucion de jobs -->
+		<dependency>
+			<groupId>opensymphony</groupId>
+			<artifactId>quartz</artifactId>
+			<version>1.6.3</version>
+		</dependency>
+		
+
+
+	</dependencies>
+
+	<repositories>
+		<!-- For Hibernate Validator -->
+		<repository>
+			<id>org.jboss.repository.release</id>
+			<name>JBoss Maven Release Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<compilerArguments>
+						<endorseddirs>${endorsed.dir}</endorseddirs>
+					</compilerArguments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<webResources>
+						<resource>
+							<filtering>true</filtering>
+							<directory>src/main/webapp</directory>
+							<includes>
+								<include>**/AMConfig.properties</include>
+								<include>**/web.xml</include>
+								<include>**/weblogic.xml</include>
+								<include>**/config.properties</include>
+								<include>**/ruta.properties</include>
+								<include>**/general-context.xml</include>
+								<include>**/quartz-context.xml</include>
+								<include>**/*.js</include>
+								<include>**/*.jsp</include>
+								<!-- include any other file types you want to filter -->
+								<include>**/log4j.xml</include>
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${endorsed.dir}</outputDirectory>
+							<silent>true</silent>
+							<artifactItems>
+								<artifactItem>
+									<groupId>javax</groupId>
+									<artifactId>javaee-endorsed-api</artifactId>
+									<version>6.0</version>
+									<type>jar</type>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+				<!-- Habilita los facets y natures para que el eclipse
+			     reconoza el proyecto como de tipo de Dynamic Web.
+			 -->
+			
+			      <plugin>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <configuration>
+                    <additionalBuildcommands>
+                        <buildCommand>
+                            <name>org.eclipse.jdt.core.javabuilder</name>
+                        </buildCommand>
+                        <buildCommand>
+                            <name>org.eclipse.wst.common.project.facet.core.builder</name>
+                        </buildCommand>
+                        <buildCommand>
+                            <name>org.eclipse.wst.validation.validationbuilder</name>
+                        </buildCommand>
+                        
+                    </additionalBuildcommands>
+                    <additionalProjectnatures>
+                        <projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+                        <projectnature>org.eclipse.jdt.core.javanature</projectnature>
+                        <projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+                        <projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+		                <projectnature>org.eclipse.wst.jsdt.core.jsNature</projectnature>
+                        
+                    </additionalProjectnatures>
+                    <additionalConfig>
+                        <file>
+                            <name>.settings/org.eclipse.wst.common.project.facet.core.xml</name>
+                            <content>
+                                <![CDATA[<faceted-project>
+  <runtime name="Weblogic Runtime"/>
+  <fixed facet="java"/>
+  <fixed facet="jst.web"/>
+  <fixed facet="wst.jsdt.web"/>
+  <installed facet="java" version="1.6"/>
+  <installed facet="jst.web" version="2.5"/>
+  <installed facet="wls.web" version="10.3.4"/>
+  <installed facet="wst.jsdt.web" version="1.0"/>
+</faceted-project>]]>
+
+
+	
+
+                            </content>
+                        </file>
+                        <file>
+                            <name>.settings/org.eclipse.wst.common.component</name>
+                            <content>
+                                <![CDATA[
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="dynamic">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/" source-path="/src/main/java" />
+        <wb-resource deploy-path="/" source-path="/src/main/resources" />
+        <property name="context-root" value="${project.artifactId}"/>
+       	<property name="java-output-path" value="target/classes" />
+    </wb-module>
+</project-modules>]]>
+                            </content>
+                        </file>
+                        
+                        
+                    </additionalConfig>
+                </configuration>
+            </plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+	
+	<profiles>
+		<!-- Perfil por default para derechohabientes -->
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>compile-desarrollo</id>  
+			<properties>	
+			    <mvn.project.artifactId>gestionDerechohabientes-web</mvn.project.artifactId>
+			    <mvn.url.imssdigital>desarrollo.imss.gob.mx</mvn.url.imssdigital>
+				<mvn.url.openam>ssoimssdigd.imss.gob.mx:8001</mvn.url.openam>
+				<mvn.url.static.logout>http://ssoimssdigd.imss.gob.mx:8001/openam_10.0.0/UI/Logout?realm=ventanilla&amp;amp;goto=http://desarrollo.imss.gob.mx/gestionDerechohabientes-web/j_spring_security_check</mvn.url.static.logout>
+				<mvn.web.app.root>gestionDerechohabientes-web</mvn.web.app.root>
+				<mvn.web.app.service.provider.url>t3://localhost:7001</mvn.web.app.service.provider.url>
+				<mvn.web.app.service.provider.principal>weblogic</mvn.web.app.service.provider.principal>
+				<mvn.web.app.service.provider.credentials>weblogic1</mvn.web.app.service.provider.credentials>
+				<mvn.ruta.properties>file:c:/opciones.properties</mvn.ruta.properties>
+				<mvn.weblogic.coherence.web.spi.start>&lt;!--</mvn.weblogic.coherence.web.spi.start>
+				<mvn.weblogic.coherence.web.spi.end>--&gt;</mvn.weblogic.coherence.web.spi.end>
+				<mvn.url.openam.realm> </mvn.url.openam.realm>
+				<mvn.log.level.info>info</mvn.log.level.info>
+				<mvn.log.level.warn>warn</mvn.log.level.warn>
+				<mvn.log.level.trace>trace</mvn.log.level.trace>
+				<mvn.log.level.debug>debug</mvn.log.level.debug>
+                <mvn.service.provider.url.sauadmin>t3://vzapma02.imss.gob.mx:8013,vzapma03.imss.gob.mx:8015</mvn.service.provider.url.sauadmin>
+                <mvn.service.security.principal.sauadmin>wloperator</mvn.service.security.principal.sauadmin>
+                <mvn.service.security.credentials.sauadmin>53rv4p%wl%1p1r1t1r$.</mvn.service.security.credentials.sauadmin>
+                <mvn.web.app.personal.subdelegacion.wsdl>http://saudigital-stage.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService?wsdl</mvn.web.app.personal.subdelegacion.wsdl>
+				<mvn.quartz.context.comment.start>&lt;!--</mvn.quartz.context.comment.start>
+				<mvn.quartz.context.comment.end>--&gt;</mvn.quartz.context.comment.end>
+			</properties>
+		</profile>
+		<profile>
+			<id>compile-admon</id>  
+			<properties>	
+			    <mvn.project.artifactId>gestionDerechohabientes-web-admon</mvn.project.artifactId>
+			    <mvn.url.imssdigital>desarrollo.imss.gob.mx</mvn.url.imssdigital>
+				<mvn.url.openam>ssoimssdigd.imss.gob.mx:8001</mvn.url.openam>
+				<mvn.url.static.logout>http://ssoimssdigd.imss.gob.mx:8001/openam_10.0.0/UI/Logout?realm=ventanilla&amp;amp;goto=http://desarrollo.imss.gob.mx/gestionDerechohabientes-web-admon/j_spring_security_check</mvn.url.static.logout>
+				<mvn.web.app.root>gestionDerechohabientes-web-admon</mvn.web.app.root>
+				<mvn.web.app.service.provider.url>t3://localhost:7001</mvn.web.app.service.provider.url>
+				<mvn.web.app.service.provider.principal>weblogic</mvn.web.app.service.provider.principal>
+				<mvn.web.app.service.provider.credentials>weblogic1</mvn.web.app.service.provider.credentials>
+				<mvn.ruta.properties>file:c:/opciones.properties</mvn.ruta.properties>
+				<mvn.weblogic.coherence.web.spi.start>&lt;!--</mvn.weblogic.coherence.web.spi.start>
+				<mvn.weblogic.coherence.web.spi.end>--&gt;</mvn.weblogic.coherence.web.spi.end>
+				<mvn.url.openam.realm> </mvn.url.openam.realm>
+				<mvn.log.level.info>info</mvn.log.level.info>
+				<mvn.log.level.warn>warn</mvn.log.level.warn>
+				<mvn.log.level.trace>trace</mvn.log.level.trace>
+				<mvn.log.level.debug>debug</mvn.log.level.debug>
+                <mvn.service.provider.url.sauadmin>t3://vzapma02.imss.gob.mx:8013,vzapma03.imss.gob.mx:8015</mvn.service.provider.url.sauadmin>
+                <mvn.service.security.principal.sauadmin>wloperator</mvn.service.security.principal.sauadmin>
+                <mvn.service.security.credentials.sauadmin>53rv4p%wl%1p1r1t1r$.</mvn.service.security.credentials.sauadmin>
+                <mvn.web.app.personal.subdelegacion.wsdl>http://saudigital-stage.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService?wsdl</mvn.web.app.personal.subdelegacion.wsdl>
+				<mvn.quartz.context.comment.start> </mvn.quartz.context.comment.start>
+				<mvn.quartz.context.comment.end> </mvn.quartz.context.comment.end>
+			</properties>
+		</profile>
+		<profile>
+			<id>compile-stage-externo</id> 
+			<properties>	
+			    <mvn.project.artifactId>gestionDerechohabientes-web</mvn.project.artifactId>
+				<mvn.url.imssdigital>serviciosdigitales-stage.imss.gob.mx</mvn.url.imssdigital>
+				<mvn.url.openam>ssoadmin-stage.imss.gob.mx</mvn.url.openam>
+				<mvn.url.static.logout>http://ssoadmin-stage.imss.gob.mx/openam_10.0.0/UI/Logout?realm=ventanilla&amp;amp;goto=http://serviciosdigitalesinterno-stage.imss.gob.mx/gestionDerechohabientes-web/j_spring_security_check</mvn.url.static.logout>
+				<mvn.web.app.root>gestionDerechohabientes-web</mvn.web.app.root>
+				<mvn.web.app.service.provider.url>t3://vzapma07.imss.gob.mx:8001,vzapma07.imss.gob.mx:8003,vzapma12.imss.gob.mx:8001,vzapma12.imss.gob.mx:8003,vzapmb09.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8003</mvn.web.app.service.provider.url>
+				<mvn.web.app.service.provider.principal>wloperator</mvn.web.app.service.provider.principal>
+				<mvn.web.app.service.provider.credentials>53rv4p%wl%1p1r1t1r$.</mvn.web.app.service.provider.credentials>
+				<mvn.ruta.properties>file:/share/oracle/zapdir01_domain/zapdir_cluster1/properties/opciones.properties</mvn.ruta.properties>
+				<mvn.weblogic.coherence.web.spi.start> </mvn.weblogic.coherence.web.spi.start>
+				<mvn.weblogic.coherence.web.spi.end> </mvn.weblogic.coherence.web.spi.end>
+				<mvn.url.openam.realm>?realm=ventanilla</mvn.url.openam.realm>
+				<mvn.log.level.info>info</mvn.log.level.info>
+				<mvn.log.level.warn>warn</mvn.log.level.warn>
+				<mvn.log.level.trace>trace</mvn.log.level.trace>
+				<mvn.log.level.debug>debug</mvn.log.level.debug>
+                <mvn.service.provider.url.sauadmin>t3://vzapma02.imss.gob.mx:8013,vzapma03.imss.gob.mx:8015</mvn.service.provider.url.sauadmin>
+                <mvn.service.security.principal.sauadmin>wloperator</mvn.service.security.principal.sauadmin>
+                <mvn.service.security.credentials.sauadmin>53rv4p%wl%1p1r1t1r$.</mvn.service.security.credentials.sauadmin>
+                <mvn.web.app.personal.subdelegacion.wsdl>http://saudigital-stage.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService?wsdl</mvn.web.app.personal.subdelegacion.wsdl>
+				<mvn.quartz.context.comment.start>&lt;!--</mvn.quartz.context.comment.start>
+				<mvn.quartz.context.comment.end>--&gt;</mvn.quartz.context.comment.end>
+			</properties>
+		</profile>
+		<profile>
+			<id>compile-prod-externo-intranet</id>
+			<properties>
+			    <mvn.project.artifactId>gestionDerechohabientes-web</mvn.project.artifactId> 
+				<mvn.url.imssdigital>serviciosdigitales.imss.gob.mx</mvn.url.imssdigital>
+				<mvn.url.openam>ssoadmin.imss.gob.mx</mvn.url.openam>
+				<mvn.url.static.logout>http://ssoadmin.imss.gob.mx/openam_10.0.0/UI/Logout</mvn.url.static.logout>
+				<mvn.web.app.root>gestionDerechohabientes-web</mvn.web.app.root>
+				<mvn.web.app.service.provider.url>t3://vzapma07.imss.gob.mx:8001,vzapma12.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8001</mvn.web.app.service.provider.url>
+				<mvn.web.app.service.provider.principal>wloperator</mvn.web.app.service.provider.principal>
+				<mvn.web.app.service.provider.credentials>53rv4p%wl%1p1r1t1r$.</mvn.web.app.service.provider.credentials>
+				<mvn.ruta.properties>file:/share/oracle/zapdir01_domain/zapdir_cluster1/properties/opciones.properties</mvn.ruta.properties>
+				<mvn.weblogic.coherence.web.spi.start> </mvn.weblogic.coherence.web.spi.start>
+				<mvn.weblogic.coherence.web.spi.end> </mvn.weblogic.coherence.web.spi.end>
+				<mvn.url.openam.realm>?realm=ventanilla</mvn.url.openam.realm>
+				<mvn.log.level.info>error</mvn.log.level.info>
+				<mvn.log.level.warn>error</mvn.log.level.warn>
+				<mvn.log.level.trace>error</mvn.log.level.trace>
+				<mvn.log.level.debug>error</mvn.log.level.debug>
+                <mvn.service.provider.url.sauadmin>t3://vzapma02.imss.gob.mx:8013,vzapma03.imss.gob.mx:8015</mvn.service.provider.url.sauadmin>
+                <mvn.service.security.principal.sauadmin>wloperator</mvn.service.security.principal.sauadmin>
+                <mvn.service.security.credentials.sauadmin>53rv4p%wl%1p1r1t1r$.</mvn.service.security.credentials.sauadmin>
+                <mvn.web.app.personal.subdelegacion.wsdl>http://saudigital.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService?wsdl</mvn.web.app.personal.subdelegacion.wsdl>
+				<mvn.quartz.context.comment.start>&lt;!--</mvn.quartz.context.comment.start>
+				<mvn.quartz.context.comment.end>--&gt;</mvn.quartz.context.comment.end>
+			</properties>
+		</profile>	
+		<profile>
+			<id>compile-prod-externo-internet</id>
+			<properties>
+			    <mvn.project.artifactId>gestionDerechohabientes-web</mvn.project.artifactId>
+				<mvn.url.imssdigital>serviciosdigitales.imss.gob.mx</mvn.url.imssdigital>
+				<mvn.url.openam>ssoadmin.imss.gob.mx</mvn.url.openam>
+				<mvn.url.static.logout>http://ssoadmin.imss.gob.mx/openam_10.0.0/UI/Logout</mvn.url.static.logout>
+				<mvn.web.app.root>gestionDerechohabientes-web</mvn.web.app.root>
+				<mvn.web.app.service.provider.url>t3://vzapma12.imss.gob.mx:8003,vzapma12.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8001,vzapma07.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8003,vzapma07.imss.gob.mx:8003</mvn.web.app.service.provider.url>
+				<mvn.web.app.service.provider.principal>wloperator</mvn.web.app.service.provider.principal>
+				<mvn.web.app.service.provider.credentials>53rv4p%wl%1p1r1t1r$.</mvn.web.app.service.provider.credentials>
+				<mvn.ruta.properties>file:/share/oracle/zapdir01_domain/zapdir_cluster1/properties/opciones.properties</mvn.ruta.properties>
+				<mvn.weblogic.coherence.web.spi.start> </mvn.weblogic.coherence.web.spi.start>
+				<mvn.weblogic.coherence.web.spi.end> </mvn.weblogic.coherence.web.spi.end>
+				<mvn.url.openam.realm>?realm=ventanilla</mvn.url.openam.realm>
+				<mvn.log.level.info>error</mvn.log.level.info>
+				<mvn.log.level.warn>error</mvn.log.level.warn>
+				<mvn.log.level.trace>error</mvn.log.level.trace>
+				<mvn.log.level.debug>error</mvn.log.level.debug>
+                <mvn.service.provider.url.sauadmin>t3://vzapma02.imss.gob.mx:8013,vzapma03.imss.gob.mx:8015</mvn.service.provider.url.sauadmin>
+                <mvn.service.security.principal.sauadmin>wloperator</mvn.service.security.principal.sauadmin>
+                <mvn.service.security.credentials.sauadmin>53rv4p%wl%1p1r1t1r$.</mvn.service.security.credentials.sauadmin>
+                <mvn.web.app.personal.subdelegacion.wsdl>http://saudigital.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService?wsdl</mvn.web.app.personal.subdelegacion.wsdl>
+				<mvn.quartz.context.comment.start>&lt;!--</mvn.quartz.context.comment.start>
+				<mvn.quartz.context.comment.end>--&gt;</mvn.quartz.context.comment.end>
+			</properties>
+		</profile>
+
+		<!-- Perfil para aplicacion externa - PORTAL CIUDADANO -->
+		<profile>
+			<id>compile-stage-ciudadano</id>
+			<properties>	
+			    <mvn.project.artifactId>gestionDerechohabientes-web</mvn.project.artifactId>
+				<mvn.url.imssdigital>serviciosdigitales-stage.imss.gob.mx</mvn.url.imssdigital>
+				<mvn.url.openam>ssoadmin-stage.imss.gob.mx</mvn.url.openam>
+				<mvn.url.static.logout>http://ssoadmin-stage.imss.gob.mx/openam_10.0.0/UI/Logout?realm=ventanilla&amp;amp;goto=http://serviciosdigitalesinterno-stage.imss.gob.mx/gestionDerechohabientes-web/j_spring_security_check</mvn.url.static.logout>
+				<mvn.web.app.root>gestionDerechohabientes-web</mvn.web.app.root>
+				<mvn.web.app.service.provider.url>t3://vzapma07.imss.gob.mx:8001,vzapma07.imss.gob.mx:8003,vzapma12.imss.gob.mx:8001,vzapma12.imss.gob.mx:8003,vzapmb09.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8003</mvn.web.app.service.provider.url>
+				<mvn.web.app.service.provider.principal>wloperator</mvn.web.app.service.provider.principal>
+				<mvn.web.app.service.provider.credentials>53rv4p%wl%1p1r1t1r$.</mvn.web.app.service.provider.credentials>
+				<mvn.ruta.properties>file:/share/oracle/zapdir01_domain/zapdir_cluster1/properties/opciones.properties</mvn.ruta.properties>
+				<mvn.weblogic.coherence.web.spi.start> </mvn.weblogic.coherence.web.spi.start>
+				<mvn.weblogic.coherence.web.spi.end> </mvn.weblogic.coherence.web.spi.end>
+				<mvn.url.openam.realm>?realm=ventanilla</mvn.url.openam.realm>
+				<mvn.log.level.info>info</mvn.log.level.info>
+				<mvn.log.level.warn>warn</mvn.log.level.warn>
+				<mvn.log.level.trace>trace</mvn.log.level.trace>
+				<mvn.log.level.debug>debug</mvn.log.level.debug>
+                <mvn.service.provider.url.sauadmin>t3://vzapma02.imss.gob.mx:8013,vzapma03.imss.gob.mx:8015</mvn.service.provider.url.sauadmin>
+                <mvn.service.security.principal.sauadmin>wloperator</mvn.service.security.principal.sauadmin>
+                <mvn.service.security.credentials.sauadmin>53rv4p%wl%1p1r1t1r$.</mvn.service.security.credentials.sauadmin>
+                <mvn.web.app.personal.subdelegacion.wsdl>http://saudigital-stage.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService?wsdl</mvn.web.app.personal.subdelegacion.wsdl>
+				<mvn.quartz.context.comment.start>&lt;!--</mvn.quartz.context.comment.start>
+				<mvn.quartz.context.comment.end>--&gt;</mvn.quartz.context.comment.end>
+			</properties>
+		</profile>
+		<profile>
+			<id>compile-prod-ciudadano-intranet</id>
+			<properties>
+			    <mvn.project.artifactId>gestionDerechohabientes-web</mvn.project.artifactId> 
+				<mvn.url.imssdigital>serviciosdigitales.imss.gob.mx</mvn.url.imssdigital>
+				<mvn.url.openam>ssoadmin.imss.gob.mx</mvn.url.openam>
+				<mvn.url.static.logout>http://ssoadmin.imss.gob.mx/openam_10.0.0/UI/Logout</mvn.url.static.logout>
+				<mvn.web.app.root>gestionDerechohabientes-web</mvn.web.app.root>
+				<mvn.web.app.service.provider.url>t3://vzapma07.imss.gob.mx:8001,vzapma12.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8001</mvn.web.app.service.provider.url>
+				<mvn.web.app.service.provider.principal>wloperator</mvn.web.app.service.provider.principal>
+				<mvn.web.app.service.provider.credentials>53rv4p%wl%1p1r1t1r$.</mvn.web.app.service.provider.credentials>
+				<mvn.ruta.properties>file:/share/oracle/zapdir01_domain/zapdir_cluster1/properties/opciones.properties</mvn.ruta.properties>
+				<mvn.weblogic.coherence.web.spi.start> </mvn.weblogic.coherence.web.spi.start>
+				<mvn.weblogic.coherence.web.spi.end> </mvn.weblogic.coherence.web.spi.end>
+				<mvn.url.openam.realm>?realm=ventanilla</mvn.url.openam.realm>
+				<mvn.log.level.info>error</mvn.log.level.info>
+				<mvn.log.level.warn>error</mvn.log.level.warn>
+				<mvn.log.level.trace>error</mvn.log.level.trace>
+				<mvn.log.level.debug>error</mvn.log.level.debug>
+                <mvn.service.provider.url.sauadmin>t3://vzapma02.imss.gob.mx:8013,vzapma03.imss.gob.mx:8015</mvn.service.provider.url.sauadmin>
+                <mvn.service.security.principal.sauadmin>wloperator</mvn.service.security.principal.sauadmin>
+                <mvn.service.security.credentials.sauadmin>53rv4p%wl%1p1r1t1r$.</mvn.service.security.credentials.sauadmin>
+                <mvn.web.app.personal.subdelegacion.wsdl>http://saudigital.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService?wsdl</mvn.web.app.personal.subdelegacion.wsdl>
+				<mvn.quartz.context.comment.start>&lt;!--</mvn.quartz.context.comment.start>
+				<mvn.quartz.context.comment.end>--&gt;</mvn.quartz.context.comment.end>
+			</properties>
+		</profile>	
+		<profile>
+			<id>compile-prod-ciudadano-internet</id>
+			<properties>
+			    <mvn.project.artifactId>gestionDerechohabientes-web</mvn.project.artifactId>
+				<mvn.url.imssdigital>serviciosdigitales.imss.gob.mx</mvn.url.imssdigital>
+				<mvn.url.openam>ssoadmin.imss.gob.mx</mvn.url.openam>
+				<mvn.url.static.logout>http://ssoadmin.imss.gob.mx/openam_10.0.0/UI/Logout</mvn.url.static.logout>
+				<mvn.web.app.root>gestionDerechohabientes-web</mvn.web.app.root>
+				<mvn.web.app.service.provider.url>t3://vzapma12.imss.gob.mx:8003,vzapma12.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8001,vzapma07.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8003,vzapma07.imss.gob.mx:8003</mvn.web.app.service.provider.url>
+				<mvn.web.app.service.provider.principal>wloperator</mvn.web.app.service.provider.principal>
+				<mvn.web.app.service.provider.credentials>53rv4p%wl%1p1r1t1r$.</mvn.web.app.service.provider.credentials>
+				<mvn.ruta.properties>file:/share/oracle/zapdir01_domain/zapdir_cluster1/properties/opciones.properties</mvn.ruta.properties>
+				<mvn.weblogic.coherence.web.spi.start> </mvn.weblogic.coherence.web.spi.start>
+				<mvn.weblogic.coherence.web.spi.end> </mvn.weblogic.coherence.web.spi.end>
+				<mvn.url.openam.realm>?realm=ventanilla</mvn.url.openam.realm>
+				<mvn.log.level.info>error</mvn.log.level.info>
+				<mvn.log.level.warn>error</mvn.log.level.warn>
+				<mvn.log.level.trace>error</mvn.log.level.trace>
+				<mvn.log.level.debug>error</mvn.log.level.debug>
+                <mvn.service.provider.url.sauadmin>t3://vzapma02.imss.gob.mx:8013,vzapma03.imss.gob.mx:8015</mvn.service.provider.url.sauadmin>
+                <mvn.service.security.principal.sauadmin>wloperator</mvn.service.security.principal.sauadmin>
+                <mvn.service.security.credentials.sauadmin>53rv4p%wl%1p1r1t1r$.</mvn.service.security.credentials.sauadmin>
+                <mvn.web.app.personal.subdelegacion.wsdl>http://saudigital.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService?wsdl</mvn.web.app.personal.subdelegacion.wsdl>
+				<mvn.quartz.context.comment.start>&lt;!--</mvn.quartz.context.comment.start>
+				<mvn.quartz.context.comment.end>--&gt;</mvn.quartz.context.comment.end>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>compile-stage-ventanilla</id>
+			<properties>	
+			    <mvn.project.artifactId>gestionDerechohabientes-web</mvn.project.artifactId>
+				<mvn.url.imssdigital>serviciosdigitales-stage.imss.gob.mx</mvn.url.imssdigital>
+				<mvn.url.openam>ssoadmin-stage.imss.gob.mx</mvn.url.openam>
+				<mvn.url.static.logout>http://ssoadmin-stage.imss.gob.mx/openam_10.0.0/UI/Logout?realm=ventanilla&amp;amp;goto=http://serviciosdigitalesinterno-stage.imss.gob.mx/gestionDerechohabientes-web/j_spring_security_check</mvn.url.static.logout>
+				<mvn.web.app.root>gestionDerechohabientes-web</mvn.web.app.root>
+				<mvn.web.app.service.provider.url>t3://vzapma07.imss.gob.mx:8001,vzapma07.imss.gob.mx:8003,vzapma12.imss.gob.mx:8001,vzapma12.imss.gob.mx:8003,vzapmb09.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8003</mvn.web.app.service.provider.url>
+				<mvn.web.app.service.provider.principal>wloperator</mvn.web.app.service.provider.principal>
+				<mvn.web.app.service.provider.credentials>53rv4p%wl%1p1r1t1r$.</mvn.web.app.service.provider.credentials>
+				<mvn.ruta.properties>file:/share/oracle/zapdir01_domain/zapdir_cluster1/properties/opciones.properties</mvn.ruta.properties>
+				<mvn.weblogic.coherence.web.spi.start> </mvn.weblogic.coherence.web.spi.start>
+				<mvn.weblogic.coherence.web.spi.end> </mvn.weblogic.coherence.web.spi.end>
+				<mvn.url.openam.realm>?realm=ventanilla</mvn.url.openam.realm>
+				<mvn.log.level.info>info</mvn.log.level.info>
+				<mvn.log.level.warn>warn</mvn.log.level.warn>
+				<mvn.log.level.trace>trace</mvn.log.level.trace>
+				<mvn.log.level.debug>debug</mvn.log.level.debug>
+                <mvn.service.provider.url.sauadmin>t3://vzapma02.imss.gob.mx:8013,vzapma03.imss.gob.mx:8015</mvn.service.provider.url.sauadmin>
+                <mvn.service.security.principal.sauadmin>wloperator</mvn.service.security.principal.sauadmin>
+                <mvn.service.security.credentials.sauadmin>53rv4p%wl%1p1r1t1r$.</mvn.service.security.credentials.sauadmin>
+                <mvn.web.app.personal.subdelegacion.wsdl>http://saudigital-stage.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService?wsdl</mvn.web.app.personal.subdelegacion.wsdl>
+				<mvn.quartz.context.comment.start>&lt;!--</mvn.quartz.context.comment.start>
+				<mvn.quartz.context.comment.end>--&gt;</mvn.quartz.context.comment.end>
+			</properties>
+		</profile>
+		<profile>
+			<id>compile-prod-ventanilla-intranet</id>
+			<properties>
+			    <mvn.project.artifactId>gestionDerechohabientes-web</mvn.project.artifactId> 
+				<mvn.url.imssdigital>serviciosdigitales.imss.gob.mx</mvn.url.imssdigital>
+				<mvn.url.openam>ssoadmin.imss.gob.mx</mvn.url.openam>
+				<mvn.url.static.logout>http://ssoadmin.imss.gob.mx/openam_10.0.0/UI/Logout</mvn.url.static.logout>
+				<mvn.web.app.root>gestionDerechohabientes-web</mvn.web.app.root>
+				<mvn.web.app.service.provider.url>t3://vzapma07.imss.gob.mx:8001,vzapma12.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8001</mvn.web.app.service.provider.url>
+				<mvn.web.app.service.provider.principal>wloperator</mvn.web.app.service.provider.principal>
+				<mvn.web.app.service.provider.credentials>53rv4p%wl%1p1r1t1r$.</mvn.web.app.service.provider.credentials>
+				<mvn.ruta.properties>file:/share/oracle/zapdir01_domain/zapdir_cluster1/properties/opciones.properties</mvn.ruta.properties>
+				<mvn.weblogic.coherence.web.spi.start> </mvn.weblogic.coherence.web.spi.start>
+				<mvn.weblogic.coherence.web.spi.end> </mvn.weblogic.coherence.web.spi.end>
+				<mvn.url.openam.realm>?realm=ventanilla</mvn.url.openam.realm>
+				<mvn.log.level.info>error</mvn.log.level.info>
+				<mvn.log.level.warn>error</mvn.log.level.warn>
+				<mvn.log.level.trace>error</mvn.log.level.trace>
+				<mvn.log.level.debug>error</mvn.log.level.debug>
+                <mvn.service.provider.url.sauadmin>t3://vzapma02.imss.gob.mx:8013,vzapma03.imss.gob.mx:8015</mvn.service.provider.url.sauadmin>
+                <mvn.service.security.principal.sauadmin>wloperator</mvn.service.security.principal.sauadmin>
+                <mvn.service.security.credentials.sauadmin>53rv4p%wl%1p1r1t1r$.</mvn.service.security.credentials.sauadmin>
+                <mvn.web.app.personal.subdelegacion.wsdl>http://saudigital.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService?wsdl</mvn.web.app.personal.subdelegacion.wsdl>
+				<mvn.quartz.context.comment.start>&lt;!--</mvn.quartz.context.comment.start>
+				<mvn.quartz.context.comment.end>--&gt;</mvn.quartz.context.comment.end>
+			</properties>
+		</profile>	
+		<profile>
+			<id>compile-prod-ventanilla-internet</id>
+			<properties>
+			    <mvn.project.artifactId>gestionDerechohabientes-web</mvn.project.artifactId>
+				<mvn.url.imssdigital>serviciosdigitales.imss.gob.mx</mvn.url.imssdigital>
+				<mvn.url.openam>ssoadmin.imss.gob.mx</mvn.url.openam>
+				<mvn.url.static.logout>http://ssoadmin.imss.gob.mx/openam_10.0.0/UI/Logout</mvn.url.static.logout>
+				<mvn.web.app.root>gestionDerechohabientes-web</mvn.web.app.root>
+				<mvn.web.app.service.provider.url>t3://vzapma12.imss.gob.mx:8003,vzapma12.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8001,vzapma07.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8003,vzapma07.imss.gob.mx:8003</mvn.web.app.service.provider.url>
+				<mvn.web.app.service.provider.principal>wloperator</mvn.web.app.service.provider.principal>
+				<mvn.web.app.service.provider.credentials>53rv4p%wl%1p1r1t1r$.</mvn.web.app.service.provider.credentials>
+				<mvn.ruta.properties>file:/share/oracle/zapdir01_domain/zapdir_cluster1/properties/opciones.properties</mvn.ruta.properties>
+				<mvn.weblogic.coherence.web.spi.start> </mvn.weblogic.coherence.web.spi.start>
+				<mvn.weblogic.coherence.web.spi.end> </mvn.weblogic.coherence.web.spi.end>
+				<mvn.url.openam.realm>?realm=ventanilla</mvn.url.openam.realm>
+				<mvn.log.level.info>error</mvn.log.level.info>
+				<mvn.log.level.warn>error</mvn.log.level.warn>
+				<mvn.log.level.trace>error</mvn.log.level.trace>
+				<mvn.log.level.debug>error</mvn.log.level.debug>
+                <mvn.service.provider.url.sauadmin>t3://vzapma02.imss.gob.mx:8013,vzapma03.imss.gob.mx:8015</mvn.service.provider.url.sauadmin>
+                <mvn.service.security.principal.sauadmin>wloperator</mvn.service.security.principal.sauadmin>
+                <mvn.service.security.credentials.sauadmin>53rv4p%wl%1p1r1t1r$.</mvn.service.security.credentials.sauadmin>
+                <mvn.web.app.personal.subdelegacion.wsdl>http://saudigital.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService?wsdl</mvn.web.app.personal.subdelegacion.wsdl>
+				<mvn.quartz.context.comment.start>&lt;!--</mvn.quartz.context.comment.start>
+				<mvn.quartz.context.comment.end>--&gt;</mvn.quartz.context.comment.end>
+			</properties>
+		</profile>
+		<profile>
+			<id>compile-stage-ventanilla-admon</id>
+			<properties>	
+			    <mvn.project.artifactId>gestionDerechohabientes-web-admon</mvn.project.artifactId>
+				<mvn.url.imssdigital>serviciosdigitales-stage.imss.gob.mx</mvn.url.imssdigital>
+				<mvn.url.openam>ssoadmin-stage.imss.gob.mx</mvn.url.openam>
+				<mvn.url.static.logout>http://ssoadmin-stage.imss.gob.mx/openam_10.0.0/UI/Logout?realm=ventanilla&amp;amp;goto=http://serviciosdigitalesinterno-stage.imss.gob.mx/gestionDerechohabientes-web-admon/j_spring_security_check</mvn.url.static.logout>
+				<mvn.web.app.root>gestionDerechohabientes-web-admon</mvn.web.app.root>
+				<mvn.web.app.service.provider.url>t3://vzapma07.imss.gob.mx:8001,vzapma07.imss.gob.mx:8003,vzapma12.imss.gob.mx:8001,vzapma12.imss.gob.mx:8003,vzapmb09.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8003</mvn.web.app.service.provider.url>
+				<mvn.web.app.service.provider.principal>wloperator</mvn.web.app.service.provider.principal>
+				<mvn.web.app.service.provider.credentials>53rv4p%wl%1p1r1t1r$.</mvn.web.app.service.provider.credentials>
+				<mvn.ruta.properties>file:/share/oracle/zapdir01_domain/zapdir_cluster1/properties/opciones.properties</mvn.ruta.properties>
+				<mvn.weblogic.coherence.web.spi.start> </mvn.weblogic.coherence.web.spi.start>
+				<mvn.weblogic.coherence.web.spi.end> </mvn.weblogic.coherence.web.spi.end>
+				<mvn.url.openam.realm>?realm=ventanilla</mvn.url.openam.realm>
+				<mvn.log.level.info>info</mvn.log.level.info>
+				<mvn.log.level.warn>warn</mvn.log.level.warn>
+				<mvn.log.level.trace>trace</mvn.log.level.trace>
+				<mvn.log.level.debug>debug</mvn.log.level.debug>
+                <mvn.service.provider.url.sauadmin>t3://vzapma02.imss.gob.mx:8013,vzapma03.imss.gob.mx:8015</mvn.service.provider.url.sauadmin>
+                <mvn.service.security.principal.sauadmin>wloperator</mvn.service.security.principal.sauadmin>
+                <mvn.service.security.credentials.sauadmin>53rv4p%wl%1p1r1t1r$.</mvn.service.security.credentials.sauadmin>
+                <mvn.web.app.personal.subdelegacion.wsdl>http://saudigital-stage.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService?wsdl</mvn.web.app.personal.subdelegacion.wsdl>
+				<mvn.quartz.context.comment.start> </mvn.quartz.context.comment.start>
+				<mvn.quartz.context.comment.end> </mvn.quartz.context.comment.end>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>compile-prod-ventanilla-admon</id>
+			<properties>
+			    <mvn.project.artifactId>gestionDerechohabientes-web-admon</mvn.project.artifactId> 
+				<mvn.url.imssdigital>serviciosdigitales.imss.gob.mx</mvn.url.imssdigital>
+				<mvn.url.openam>ssoadmin.imss.gob.mx</mvn.url.openam>
+				<mvn.url.static.logout>http://ssoadmin.imss.gob.mx/openam_10.0.0/UI/Logout?realm=ventanilla&amp;amp;goto=http://serviciosdigitalesinterno.imss.gob.mx/gestionDerechohabientes-web-admon/j_spring_security_check</mvn.url.static.logout>
+				<mvn.web.app.root>gestionDerechohabientes-web-admon</mvn.web.app.root>
+				<mvn.web.app.service.provider.url>t3://vzapma07.imss.gob.mx:8001,vzapma12.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8001</mvn.web.app.service.provider.url>
+				<mvn.web.app.service.provider.principal>wloperator</mvn.web.app.service.provider.principal>
+				<mvn.web.app.service.provider.credentials>53rv4p%wl%1p1r1t1r$.</mvn.web.app.service.provider.credentials>
+				<mvn.ruta.properties>file:/share/oracle/zapdir01_domain/zapdir_cluster1/properties/opciones.properties</mvn.ruta.properties>
+				<mvn.weblogic.coherence.web.spi.start> </mvn.weblogic.coherence.web.spi.start>
+				<mvn.weblogic.coherence.web.spi.end> </mvn.weblogic.coherence.web.spi.end>
+				<mvn.url.openam.realm>?realm=ventanilla</mvn.url.openam.realm>
+				<mvn.log.level.info>error</mvn.log.level.info>
+				<mvn.log.level.warn>error</mvn.log.level.warn>
+				<mvn.log.level.trace>error</mvn.log.level.trace>
+				<mvn.log.level.debug>error</mvn.log.level.debug>
+                <mvn.service.provider.url.sauadmin>t3://vzapma02.imss.gob.mx:8013,vzapma03.imss.gob.mx:8015</mvn.service.provider.url.sauadmin>
+                <mvn.service.security.principal.sauadmin>wloperator</mvn.service.security.principal.sauadmin>
+                <mvn.service.security.credentials.sauadmin>53rv4p%wl%1p1r1t1r$.</mvn.service.security.credentials.sauadmin>
+                <mvn.web.app.personal.subdelegacion.wsdl>http://saudigital.imss.gob.mx/Sauimssdigital/WSPersonalSubdelegacionService?wsdl</mvn.web.app.personal.subdelegacion.wsdl>
+				<mvn.quartz.context.comment.start> </mvn.quartz.context.comment.start>
+				<mvn.quartz.context.comment.end> </mvn.quartz.context.comment.end>
+			</properties>
+		</profile>
+		
+		
+		
+	</profiles>
+</project>

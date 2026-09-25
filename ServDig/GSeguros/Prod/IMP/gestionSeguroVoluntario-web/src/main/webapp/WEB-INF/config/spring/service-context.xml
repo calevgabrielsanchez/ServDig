@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/util 
+                           http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <context:annotation-config />
+
+    <bean id="serviceRepositoryRemoto" class="org.springframework.jndi.JndiTemplate">
+        <property name="environment">
+            <props>
+                <prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+                <prop key="java.naming.provider.url">${service.provider.url}</prop>
+                <prop key="java.naming.security.principal">${service.security.principal}</prop>
+                <prop key="java.naming.security.credentials">${service.security.credentials}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <context:property-placeholder location="WEB-INF/config/spring/config.properties" />
+    <!-- Servicio para conectar los webservices con la logica de IVRO -->
+    <bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory"/>
+
+
+
+    <!--IVRO Individual mod 35,43,44-->
+
+    <bean id="webServiceConsultaSeguroIvro" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Ivro/ConsultaSeguroIvro?wsdl"/>
+    </bean>
+
+    <bean id="webServiceDatosCotizacionIndividual" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Ivro/ValidaPersonaServices?wsdl"/>
+    </bean>
+
+    <bean id="webServiceDatosCotizacionIndividualRenova" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Ivro/ValidaPersonaRenovaServices?wsdl"/>
+    </bean>
+
+    <bean id="webServiceCotizaSeguroServices" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Ivro/CotizaSeguroServices?wsdl"/>
+    </bean>
+
+
+
+    <!--Domestico mod 34-->
+
+    <bean id="webServiceConsultaSeguroDomestico" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Ivro/ConsultaSeguroDomestico?wsdl"/>
+    </bean>
+
+    <bean id="webServiceValidaRenovacionPatronDomestico" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Ivro/ValidaRenovacionPatronDomestico?wsdl"/>
+    </bean>
+
+    <bean id="webServiceCotizaSeguroTrabajadorServices" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Ivro/proxys/CotizaSeguroTrabajadorServices?wsdl"/>
+    </bean>
+
+    <bean id="webServiceValidaCompraPatronDomestico" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Ivro/ValidaCompraPatronDomestico?wsdl"/>
+    </bean>
+
+    <bean id="webServicePersonaDetalle" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Patrones/proxys/ObtenerDetalleNrp34?wsdl"/>
+    </bean>
+
+    <bean id="webServiceNRPDomesticoXDomicilio" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Patrones/proxys/ObtenerNRPDomesticoXDomicilio?wsdl"/>
+    </bean>
+
+
+
+
+    <!--CVRO mod 40-->
+
+    <bean id="webServiceConsultaSeguroCvro" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Ivro/ConsultaSeguroCvro?wsdl"/>
+    </bean>
+
+    <bean id="webServiceValidaPersonaContVoluntaria" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory" />
+        <property name="defaultUri"
+                  value="${service.ws.osb.url}/Afiliacion/Ivro/ValidaPersonaContVoluntariaServices?wsdl" />
+    </bean>
+
+    <bean id="webServiceValidaPersonaContVoluntariaRenova" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory" />
+        <property name="defaultUri"
+                  value="${service.ws.osb.url}/Afiliacion/Ivro/ValidaPersonaContVoluntariaServicesRenova?wsdl" />
+    </bean>
+
+    <bean id="webServiceCotizaCompraPersonaContVoluntaria" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory" />
+        <property name="defaultUri"
+                  value="${service.ws.osb.url}/Afiliacion/Ivro/CotizaContinuacionVoluntariaServices?wsdl" />
+    </bean>
+
+    <bean id="webServiceValidaCompraPersonaContVoluntaria" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory" />
+        <property name="defaultUri"
+                  value="${service.ws.osb.url}/Afiliacion/Ivro/ValidaCompraContinuacionVoluntaria?wsdl" />
+    </bean>
+
+
+
+    <!--SSF Familiar mod 33-->
+
+    <bean id="webServiceConsultaSeguroFamiliar" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Ivro/ConsultaSeguroFamiliar?wsdl"/>
+    </bean>
+
+    <bean id="webServiceValidaPersonaSeguroFamiliar" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory" />
+        <property name="defaultUri"
+                  value="${service.ws.osb.url}/Afiliacion/Ivro/ValidaPersonaSeguroFamiliarServices?wsdl" />
+    </bean>
+
+    <bean id="webServiceValidaPersonaSeguroFamiliarRenova" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory" />
+        <property name="defaultUri"
+                  value="${service.ws.osb.url}/Afiliacion/Ivro/ValidaPersonaSeguroFamiliarServicesRenova?wsdl" />
+    </bean>
+
+    <bean id="webServiceCotizaSeguroFamiliar" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory" />
+        <property name="defaultUri"
+                  value="${service.ws.osb.url}/Afiliacion/Ivro/CotizaSeguroFamiliarServices?wsdl" />
+    </bean>
+
+    <bean id="webServiceValidaCompraSeguroFamiliar" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory" />
+        <property name="defaultUri"
+                  value="${service.ws.osb.url}/Afiliacion/Ivro/ValidaCompraSeguroFamiliar?wsdl" />
+    </bean>
+
+
+
+    <!--Comunes entre las modalidades-->
+
+    <bean id="webServiceSolicitudSeguroIvro" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Ivro/SolicitudSeguroIvro?wsdl"/>
+    </bean>
+
+    <!-- Obtener Comprobante  Seguros -->
+    <bean id="webServiceComprobanteSeguro" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Ivro/GeneraComprobanteSeguro?wsdl"/>
+    </bean>
+
+    <bean id="webServiceValidaCorreoPersona" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Comun/Persona/ValidaCorreoPersona?wsdl"/>
+    </bean>
+
+    <bean id="webServiceValidaIncorporacionBeneficioRiss" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Ivro/ValidaIncorporacionBeneficioRissServices?wsdl"/>
+    </bean>
+
+    <bean id="webServiceObtenerCurpPersona" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Comun/Persona/ObtenerCurpPersona?wsdl"/>
+    </bean>
+
+    <bean id="webServiceObtenerZonaSalarial" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Cobranza/Compras/ObtenerSalarioMinimo?wsdl"/>
+    </bean>
+
+    <bean id="webServiceObtenerSalarioMinimoDfPorFecha" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory" />
+        <property name="defaultUri"
+                  value="${service.ws.osb.url}/Cobranza/Compras/ObtenerSalarioMinimoDfPorFecha?WSDL" />
+    </bean>
+
+    <bean id="webServiceObtenerUma" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Cobranza/Compras/proxys/ObtenerUma?wsdl"/>
+    </bean>
+
+    <bean id="webServiceCuestionarioSeguro" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Afiliacion/Ivro/GeneraReporteCuestionario?wsdl"/>
+    </bean>
+
+    <bean id="webServiceDomicilio" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Comun/Domicilios/consultaServices?wsdl"/>
+    </bean>
+
+    <bean id="webServiceMediosContacto" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Comun/PersonaContactoProxyService?wsdl"/>
+    </bean>
+
+    <!-- Obtener lineas de captura -->
+    <bean id="webServiceLineasCaptura" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${service.ws.osb.url}/Cobranza/Compras/LineaCaptura?wsdl"/>
+    </bean>
+
+
+
+    <!--inyeccion de servicio de back-end-->
+
+    <bean id="cancelarBeneficioServiceBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="cancelarBeneficioServiceBusiness#mx.gob.imss.ctirss.delta.gestion.beneficio.service.interfaces.CancelarBeneficioServiceBusinessRemote" />
+        <property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.beneficio.service.interfaces.CancelarBeneficioServiceBusinessRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+
+    <bean id="vigenciaIvroServiceRemote"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName"
+                  value="vigenciaIvroServiceBusiness#mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.VigenciaIvroServiceRemote" />
+        <property name="businessInterface"
+                  value="mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.VigenciaIvroServiceRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+
+    <bean id="serviceBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName"
+                  value="serviceBusiness#mx.gob.imss.ctirss.delta.gestion.asegurado.service.interfaces.ServiceBusinessRemote" />
+        <property name="businessInterface"
+                  value="mx.gob.imss.ctirss.delta.gestion.asegurado.service.interfaces.ServiceBusinessRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+
+    <bean id="consultaSeguroIvroServiceBusiness"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName"
+                  value="consultaSeguroIvroServiceBusiness#mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.ConsultaSeguroIvroServiceRemote" />
+        <property name="businessInterface"
+                  value="mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.ConsultaSeguroIvroServiceRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+    <!--Se agrega definicion de Bean para envio de correo -->
+    <bean id="eMailService"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="eMailService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.EmailServiceRemote" />
+        <property name="businessInterface" value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.EmailServiceRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+    <!--Se agrega definicion de Bean para de domicilios -->
+    <bean id="domicilioExternosServiceBusiness"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="domicilioExternosServiceBusiness#mx.gob.imss.ctirss.delta.gestion.domicilio.service.interfaces.domicilio.DomicilioServiceBussinessExternosRemote" />
+        <property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.domicilio.service.interfaces.domicilio.DomicilioServiceBussinessExternosRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+    <bean id="domicilioServiceBusiness"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="domicilioServiceBusiness#mx.gob.imss.ctirss.delta.gestion.domicilio.service.interfaces.domicilio.DomicilioServiceBusinessRemote" />
+        <property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.domicilio.service.interfaces.domicilio.DomicilioServiceBusinessRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+
+    <bean id="solicitudServiciosExpuestos"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="solicitudServiciosExpuestos#mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.SolicitudServiciosExpuestosRemote" />
+        <property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.SolicitudServiciosExpuestosRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+
+	<bean id="validaVigenciaBusinesss"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="validaVigenciaBusinesss#mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.ValidaVigenciaRemote" />
+        <property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.ValidaVigenciaRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+
+    <bean id="registroPatronalServiceBusiness"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="registroPatronalServiceBusiness#mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.afiliacion.baja.RegistroPatronalServiceBusinessRemote" />
+        <property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.afiliacion.baja.RegistroPatronalServiceBusinessRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+
+    <bean id="notificacionSegurosBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="notificacionSegurosBusiness#mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.NotificacionSegurosRemote" />
+        <property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.NotificacionSegurosRemote" />
+        ${mvn.web.app.repository.service}
+
+    </bean>
+
+    <bean id="grupoFamiliarService"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName"
+                  value="grupoFamiliarService#mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.GrupoFamiliarServiceRemote" />
+        <property name="businessInterface"
+                  value="mx.gob.imss.ctirss.delta.derechohabientes.service.utility.interfaces.GrupoFamiliarServiceRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+
+    <bean id="seguroIvroServiceBusiness"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName"
+                  value="seguroIvroServiceBusiness#mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.SeguroIvroServiceRemote" />
+        <property name="businessInterface"
+                  value="mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.SeguroIvroServiceRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+    <bean id="compraServiceBusiness"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName"
+                  value="compraServiceBusiness#mx.gob.imss.ctirss.delta.gestion.motorCalculo.service.interfaces.CompraServiceRemote" />
+        <property name="businessInterface"
+                  value="mx.gob.imss.ctirss.delta.gestion.motorCalculo.service.interfaces.CompraServiceRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+    <bean id="personaBusiness"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName"
+                  value="personaBusiness#mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusinessRemote" />
+        <property name="businessInterface"
+                  value="mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusinessRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+
+    <bean id="parametrosServiceBusiness"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName"
+                  value="parametrosServiceBusiness#mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.ParametrosServiceBusinessRemote" />
+        <property name="businessInterface"
+                  value="mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.ParametrosServiceBusinessRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+
+    <bean id="beneficioRissServiceBusiness"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName"
+                  value="beneficioRissServiceBusiness#mx.gob.imss.ctirss.delta.gestion.beneficio.service.interfaces.BeneficioRissServiceBusinessRemote" />
+        <property name="businessInterface"
+                  value="mx.gob.imss.ctirss.delta.gestion.beneficio.service.interfaces.BeneficioRissServiceBusinessRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+
+    <!--Servicios Web para consulta de situacion aseguramiento de las diferentes modalidades-->
+
+    <!--WSConsultaSituacionAseguramiento se puede utlizar para consultar la situacion de modalidad 34(Domesticos) y 35,43,44(IVRO)-->
+    <bean id="wsConsultaSituacionAseguramiento"
+          class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+        <property name="serviceInterface"
+                  value="mx.gob.imss.ws.estatusvigencia.individual.cliente.WSConsultaSituacionAseguramiento" />
+        <property name="wsdlDocumentUrl"
+                  value="${ws.consulta.estatus.vigencia.ivro.url}" />
+        <property name="namespaceUri" value="http://situacionAseguramiento.imss.gob.mx/" />
+        <property name="serviceName" value="WSConsultaSituacionAseguramiento" />
+        <property name="portName" value="WSConsultaSituacionAseguramientoPort" />
+        <property name="lookupServiceOnStartup" value="false" />
+    </bean>
+
+    <!--WSConsultaMod33 se puede utlizar para consultar la situacion de modalidad 33(SSF)-->
+    <bean id="modalidad33VO"
+          class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+        <property name="serviceInterface"
+                  value="mx.gob.imss.ws.vo.Modalidad33VO" />
+        <property name="wsdlDocumentUrl"
+                  value="${ws.consulta.estatus.vigencia.ssf.url}" />
+        <property name="namespaceUri" value="http://vo.ws.imss.gob.mx/" />
+        <property name="serviceName" value="WSConsultaMod33" />
+        <property name="portName" value="Modalidad33VOPort" />
+        <property name="lookupServiceOnStartup" value="false" />
+        <property name="customProperties" ref="jaxwsCustomProperties" />
+    </bean>
+
+    <!--wSConsultaMod40 se puede utlizar para consultar la situacion de modalidad 40(CVRO)-->
+    <bean id="wSConsultaMod40"
+          class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+        <property name="serviceInterface"
+                  value="mx.gob.imss.consultamod40.WSConsultaMod40" />
+        <property name="wsdlDocumentUrl"
+                  value="${ws.consulta.estatus.vigencia.cvro.url}" />
+        <property name="namespaceUri" value="http://consultaMod40.imss.gob.mx/" />
+        <property name="serviceName" value="WSConsultaMod40" />
+        <property name="portName" value="WSConsultaMod40Port" />
+        <property name="lookupServiceOnStartup" value="false" />
+        <property name="customProperties" ref="jaxwsCustomProperties" />
+    </bean>
+
+    <util:map id="jaxwsCustomProperties">
+        <entry key="com.sun.xml.ws.request.timeout">
+            <value type="java.lang.Integer">${ws.consulta.request.timeout}</value>
+        </entry>
+        <entry key="com.sun.xml.ws.connect.timeout">
+            <value type="java.lang.Integer">${ws.consulta.connect.timeout}</value>
+        </entry>
+    </util:map>
+
+</beans>

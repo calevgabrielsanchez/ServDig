@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:comun="http://mx.gob.imss.digital.modelo.comun" targetNamespace="http://mx.gob.imss.digital.modelo.comun" version="1.0">
+
+  <xs:element name="modalidad" type="comun:modalidad"/>
+
+  <xs:complexType name="modalidad">
+    <xs:sequence>
+      <xs:element name="idModalidad" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+      <xs:element minOccurs="0" name="numModalidad" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

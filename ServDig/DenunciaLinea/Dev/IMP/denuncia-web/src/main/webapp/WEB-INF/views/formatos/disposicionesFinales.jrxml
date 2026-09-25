@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="disposicionesFinales" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.2396694214876032"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="38"/>
+	<parameter name="numFolioDenuncia" class="java.lang.String"/>
+	<parameter name="rutaImagen" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:\\Mis Documentos\\projects\\denunciaEnLinea\\denuncia-web\\src\\main\\webapp\\resources\\images\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nombreDenunciante" class="java.lang.String"/>
+	<parameter name="tipoDenunciante" class="java.lang.String"/>
+	<parameter name="observaciones" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="679" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="98" width="555" height="579"/>
+				<textField>
+					<reportElement x="1" y="66" width="550" height="26"/>
+					<textElement textAlignment="Justified">
+						<font fontName="DejaVu Sans" size="9"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Para dar trámite a su denuncia, deberá presentarse con este acuse ante la Subdelegación más cercana a su domicilio a fin de ratificarla dentro de los 10 días hábiles siguientes a la fecha de envío de la presente, con el número de folio " + $P{numFolioDenuncia} + "."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="43" width="137" height="20"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="DejaVu Sans" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DISPOSICIONES FINALES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="95" width="550" height="480"/>
+					<textElement textAlignment="Justified" markup="html">
+						<font fontName="DejaVu Sans" size="9" isBold="false" isItalic="false"/>
+					</textElement>
+					<text><![CDATA[Si la denuncia la realiza el representante legal, para su ratificación deberá acudir obligatoriamente éste  con carta poder o poder notarial y las identificaciones oficiales del trabajdor y del representante legal; si es un beneficiario, deberá acudir con las identificaciones oficiales del denunciante y beneficiario.
+
+Para el caso de que no realice la ratificación de su denuncia dentro del período de 10 días posteriores a la fecha de envío de la presente, ésta se tendrá por no presentada, en cuyo caso podrá presentar una nueva por este medio,o acudir directamente a la Subdelegación correspondiente.
+
+Para la ratificación correspondiente, deberá acudir a la Subdelegación con los documentos en original y copia que se le solicitaron durante el requisitado de la denuncia a través de internet, y demás documentación comprobatoria que considere necesaria para acreditar la relación laboral (ejemplo; comprobantes de pago recientes y de años anteriores, estados de cuenta en donde se registren los depósitos por concepto de sueldo, copia de contrato laboral en su caso, laudo favorable, etcétera).
+
+Una vez la ratificada la denuncia ante la Subdelegación correspondiente, se analizará el contenido de la misma así como de la documentación presentada, y se le informará, en su caso, sobre la procedencia del ejercicio de las facultades de comprobación de este instituto, conforme a la disposiciones legales vigentes.
+
+El ejercicio de facultades de comprobación, está condicionado a la verificación entre otras,  de las siguientes situaciones que se precisan a continuación:
+
+1.- El patrón no sea localizado.
+
+2.- En caso de que las facultades de comprobación por parte del IMSS,hayan caducado(5 años) en términos de los artículos 297 de la Ley del Seguro Social y 67 del Código Fiscal de la Federación.
+
+3.- Patrones Personas Físicas que hayan fallecido.
+
+4.- Patrones Personas Morales liquidadas y disueltas conforme a las disposiciones legales aplicables.
+
+5.- Por Ley, el Patrón no se encuentre obligado a proporcionar seguro social, salvo que exista celebrado un convenio de incorporación voluntaria al régimen obligatorio, de acuerdo con lo establecido por los articulos 13 fracción V y 14 de la Ley del Seguro Social.
+
+6.- Contar con laudo desfavorable que desconozca la relación laboral.
+
+Ratificada la denuncia en el supuesto de que no se encuadre en una o varias de las situaciones antes descritas, el Instituto ejercerá las facultades de fiscalización y una vez iniciado el acto de fiscalización contará con un plazo máximo legal de 18 meses para informar al denunciante,  el resultado de las mismas, el cual podrá ampliarse en caso de inconformidad o medio de defensa legal promovido por el patrón.
+
+Se hace de su conocimiento que el IMSS cuenta con los datos personales que usted proporcionó en la presente solicitud, los cuales serán protegidos y confidenciales en términos de los artículos 22 de la Ley del Seguro Social; 14 y 15 de la Ley Federal de Transparencia y Acceso a la información Pública Gubernamental, por lo que se le comunica que la falsedad de declaraciones, y la falsificación de documentos, constituyen la comisión de Delitos castigados por la Ley, por lo que se recomienda tener plena certeza de los hechos que se relatan en la denuncia y de la autenticidad de los documentos que adjuntan en la misma.
+
+Para mayor información, consulte www.imss.gob.mx o llame al 01-800-623-23-23.]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="1" y="24" width="550" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{tipoDenunciante}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="1" y="2" width="550" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{nombreDenunciante}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField>
+				<reportElement x="1" y="25" width="550" height="73"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{observaciones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="5" width="137" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observaciones:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

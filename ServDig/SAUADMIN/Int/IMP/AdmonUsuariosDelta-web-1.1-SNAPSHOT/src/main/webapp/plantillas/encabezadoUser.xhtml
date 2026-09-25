@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--inicia Encabezado -->
+    
+		<div id="encabezado">
+			
+			<div class="wp-caption-text">
+				<h:panelGrid id="botonesModuloEncUsr" columns="3"  width="100%">
+					<h:panelGrid id="botonesModuloAdd" columns="1" width="70%">
+						<!--inicio logo-->
+						<img height="83" src="../imagenes/banner.gif" title="Portal IMSS" width="471" />
+					</h:panelGrid>
+					<h:panelGrid id="botonesModuloDel" columns="1" width="28%">
+						<!--inicio busqueda-->
+						<div class="top_search">
+							<form id="cse-search-box" action="http://www.imss.gob.mx/buscador/resultado.html">
+								<input name="cx" type="hidden" value="002360038649913767611:zxhajmgbjye" />
+								<input name="cof" type="hidden" value="FORID:11" />
+								<input name="ie" type="hidden" value="ISO-8859-1" />
+								<div  class="wp-caption-text" >
+									<table>
+										<tr>
+											<td>
+												<input id="s" name="q" size="15" type="text" />
+											</td>
+											<td>
+												<input id="searchsubmit" type="submit" value="Buscar"/>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</form>					
+						</div>
+					</h:panelGrid>
+					<h:panelGrid  id="botonesHome" columns="1" width="2%">
+						<h:form id="head">
+							<h:commandLink	action="${login.logoutSistema}">
+								<h:graphicImage value="../imagenes/system-log-out.png"/>
+							</h:commandLink>
+						</h:form>
+					</h:panelGrid>
+				</h:panelGrid>
+			</div>
+
+			
+			<div id="subencabezado">
+				<div style="border-bottom: 3px solid #0F78A9;margin-bottom: 20px;margin-top: 0;padding-bottom: 10px;font-size: 16px;margin: 25px 0 15px;font-weight: 700;">
+					<span> Portal de Servicios IMSS Digital </span>
+				</div>
+			</div>
+			<div id="subencabezado">
+				<div>
+					<h:panelGrid id="pnUser" columns="1" width="100%" style="text-align:right;">
+						<h:outputLabel value="#{usuarioMB.aprobadorSession.datos}" id="lbUserName" style="font-size: 16px;font-weight: 700;"/>						
+					</h:panelGrid>
+				</div>
+			</div>
+					
+		</div>
+		
+</ui:composition>

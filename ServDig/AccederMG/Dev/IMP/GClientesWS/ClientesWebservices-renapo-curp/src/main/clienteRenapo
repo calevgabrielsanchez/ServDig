@@ -1,0 +1,8 @@
+#NOTA: Cuando el parámetro sea texto y contega comas, es necesario escaparlas
+
+#URL en filesystem
+url_archivo = /share/oracle/servapdir01_domain/servapdir_cluster1/properties
+##url_archivo = d:/clienteRenapo.properties
+timeOutClienteRenapo=40000
+timeOutConnection=10000
+timeOutResponse=20000

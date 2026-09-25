@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:file="http://www.bea.com/wli/sb/transports/file" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/publish/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con5="http://www.bea.com/wli/sb/pipeline/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description/>
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:request type="XML">
+        <con6:schema ref="Movimiento06SINDOProject/schemas/movimiento06Sindo" element="MovimientoPatronal" xmlns:con6="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:request>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>jms</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>jms://172.24.116.37:15051,172.24.116.37:15052/jms.GeneralConnectionFactory/jms.SindoSendFileDistributedQueue</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific xsi:type="jms:JmsEndPointConfiguration">
+      <jms:is-queue>true</jms:is-queue>
+      <jms:is-secure>false</jms:is-secure>
+      <jms:inbound-properties>
+        <jms:response-required>false</jms:response-required>
+        <jms:XA-required>true</jms:XA-required>
+      </jms:inbound-properties>
+      <jms:jms-service-account ref="Movimiento06SINDOProject/DeltaSindoAccount"/>
+      <jms:request-encoding>UTF-8</jms:request-encoding>
+      <jms:jndi-timeout>0</jms:jndi-timeout>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con5:pipeline type="request" name="Movimiento5_request">
+      <con5:stage name="stage1">
+        <con5:context>
+          <con1:varNsDecl namespace="http://www.mx.gob.imss.ctirss.delta/movimiento06Sindo" prefix="mov"/>
+        </con5:context>
+        <con5:actions>
+          <con2:assign varName="movimientoPatronalToMFL05">
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7f71</con1:id>
+            <con2:expr>
+              <con1:xqueryTransform>
+                <con1:resource ref="Movimiento06SINDOProject/xquery/Movimiento05NombreXML_MFL"/>
+                <con1:param name="movimientoPatronal1">
+                  <con1:path>$body/mov:MovimientoPatronal</con1:path>
+                </con1:param>
+              </con1:xqueryTransform>
+            </con2:expr>
+          </con2:assign>
+          <con3:log>
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7f53</con1:id>
+            <con3:logLevel>warning</con3:logLevel>
+            <con3:expr>
+              <con1:xqueryText>$movimientoPatronalToMFL05</con1:xqueryText>
+            </con3:expr>
+            <con3:message>transformacion</con3:message>
+          </con3:log>
+          <con2:replace varName="body" contents-only="true">
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7f30</con1:id>
+            <con2:location>
+              <con1:xpathText>.</con1:xpathText>
+            </con2:location>
+            <con2:expr>
+              <con1:xqueryText>$movimientoPatronalToMFL05</con1:xqueryText>
+            </con2:expr>
+          </con2:replace>
+          <con2:mflTransform>
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7f16</con1:id>
+            <con2:type>XML-To-nonXML</con2:type>
+            <con2:sourceExpr>
+              <con1:xqueryText>$body/PatronCambioNombre</con1:xqueryText>
+            </con2:sourceExpr>
+            <con2:mfl-resource ref="Movimiento06SINDOProject/mfl/Mov05PatronCambioNombre"/>
+            <con2:assign-variable>trama</con2:assign-variable>
+          </con2:mflTransform>
+          <con3:log>
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7ef2</con1:id>
+            <con3:logLevel>warning</con3:logLevel>
+            <con3:expr>
+              <con1:xqueryText>$trama</con1:xqueryText>
+            </con3:expr>
+            <con3:message>Valor transformado</con3:message>
+          </con3:log>
+          <con2:replace varName="body" contents-only="true">
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7ed4</con1:id>
+            <con2:location>
+              <con1:xpathText>.</con1:xpathText>
+            </con2:location>
+            <con2:expr>
+              <con1:xqueryText>$trama</con1:xqueryText>
+            </con2:expr>
+          </con2:replace>
+          <con3:log>
+            <con1:id>_ActionId-767232260839065236-4b572da7.13e9ec45a9c.-7f1a</con1:id>
+            <con3:logLevel>warning</con3:logLevel>
+            <con3:expr>
+              <con1:xqueryText>$body</con1:xqueryText>
+            </con3:expr>
+            <con3:message>El body modificado</con3:message>
+          </con3:log>
+          <con2:javaCallout varName="responseString">
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7eb5</con1:id>
+            <con2:archive ref="Movimiento06SINDOProject/jar/layout-callout"/>
+            <con2:className>mx.gob.imss.ctirss.delta.gestion.clasificacion.callouts.LayoutCallOut</con2:className>
+            <con2:method>public static java.lang.String generateLayout(java.lang.String, [B)</con2:method>
+            <con2:expr>
+              <con1:xqueryText>if ($ciz_value eq "1") then      '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/AYPENT_CIZ01.txt'
+else if ($ciz_value eq "2") then '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/AYPENT_CIZ02.txt'
+else if ($ciz_value eq "3") then '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/AYPENT_CIZ03.txt'
+else                       '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/cizdefault/movimientos.txt'</con1:xqueryText>
+            </con2:expr>
+            <con2:expr>
+              <con1:xqueryText>$trama</con1:xqueryText>
+            </con2:expr>
+            <con2:return-param-as-ref>false</con2:return-param-as-ref>
+          </con2:javaCallout>
+        </con5:actions>
+      </con5:stage>
+    </con5:pipeline>
+    <con5:pipeline type="response" name="PipelinePairNode3_response"/>
+    <con5:pipeline type="request" name="PipelinePairNode2_request">
+      <con5:stage name="stage1">
+        <con5:context/>
+        <con5:actions>
+          <con3:log>
+            <con1:id>_ActionId-767232260839065236-4b572da7.13e9ec45a9c.-7fc8</con1:id>
+            <con3:logLevel>warning</con3:logLevel>
+            <con3:expr>
+              <con1:xqueryText>$body</con1:xqueryText>
+            </con3:expr>
+            <con3:message>Body recibido</con3:message>
+          </con3:log>
+        </con5:actions>
+      </con5:stage>
+    </con5:pipeline>
+    <con5:pipeline type="request" name="PipelinePairNode4_request">
+      <con5:stage name="stage1">
+        <con5:context>
+          <con1:varNsDecl namespace="http://www.mx.gob.imss.ctirss.delta/movimiento06Sindo" prefix="mov"/>
+        </con5:context>
+        <con5:actions>
+          <con2:assign varName="movPatronal01toMFL">
+            <con1:id>_ActionId-1949892307976169314--1fd606ee.13f867d207b.-7fcd</con1:id>
+            <con2:expr>
+              <con1:xqueryTransform>
+                <con1:resource ref="Movimiento06SINDOProject/xquery/Movimiento01AltaXML_mfl"/>
+                <con1:param name="movimientoPatronal1">
+                  <con1:path>$body/mov:MovimientoPatronal</con1:path>
+                </con1:param>
+              </con1:xqueryTransform>
+            </con2:expr>
+          </con2:assign>
+          <con2:replace contents-only="true" varName="body">
+            <con1:id>_ActionId-1949892307976169314--1fd606ee.13f867d207b.-7f93</con1:id>
+            <con2:location>
+              <con1:xpathText>.</con1:xpathText>
+            </con2:location>
+            <con2:expr>
+              <con1:xqueryText>$movPatronal01toMFL</con1:xqueryText>
+            </con2:expr>
+          </con2:replace>
+          <con3:log>
+            <con1:id>_ActionId-1949892307976169314--1fd606ee.13f867d207b.-7eed</con1:id>
+            <con3:logLevel>warning</con3:logLevel>
+            <con3:expr>
+              <con1:xqueryText>$body</con1:xqueryText>
+            </con3:expr>
+            <con3:message>Body despues de xquery</con3:message>
+          </con3:log>
+          <con2:mflTransform>
+            <con1:id>_ActionId-1949892307976169314--1fd606ee.13f867d207b.-7f77</con1:id>
+            <con2:type>XML-To-nonXML</con2:type>
+            <con2:sourceExpr>
+              <con1:xqueryText>$body/AltaPatronal</con1:xqueryText>
+            </con2:sourceExpr>
+            <con2:mfl-resource ref="Movimiento06SINDOProject/mfl/Mov01AltaPatronal"/>
+            <con2:assign-variable>trama</con2:assign-variable>
+          </con2:mflTransform>
+          <con3:log>
+            <con1:id>_ActionId-1949892307976169314--1fd606ee.13f867d207b.-7f60</con1:id>
+            <con3:logLevel>warning</con3:logLevel>
+            <con3:expr>
+              <con1:xqueryText>$trama</con1:xqueryText>
+            </con3:expr>
+            <con3:message>Trama generada</con3:message>
+          </con3:log>
+          <con2:replace contents-only="true" varName="body">
+            <con1:id>_ActionId-1949892307976169314--1fd606ee.13f867d207b.-7f37</con1:id>
+            <con2:location>
+              <con1:xpathText>.</con1:xpathText>
+            </con2:location>
+            <con2:expr>
+              <con1:xqueryText>$trama</con1:xqueryText>
+            </con2:expr>
+          </con2:replace>
+          <con3:log>
+            <con1:id>_ActionId-1949892307976169314--1fd606ee.13f867d207b.-7f1c</con1:id>
+            <con3:logLevel>debug</con3:logLevel>
+            <con3:expr>
+              <con1:xqueryText>$body</con1:xqueryText>
+            </con3:expr>
+            <con3:message>Body modificado</con3:message>
+          </con3:log>
+          <con2:javaCallout varName="responseString">
+            <con1:id>_ActionId-1949892307976169314--1fd606ee.13f867d207b.-7f07</con1:id>
+            <con2:archive ref="Movimiento06SINDOProject/jar/layout-callout"/>
+            <con2:className>mx.gob.imss.ctirss.delta.gestion.clasificacion.callouts.LayoutCallOut</con2:className>
+            <con2:method>public static java.lang.String generateLayout(java.lang.String, [B)</con2:method>
+            <con2:expr>
+              <con1:xqueryText>if ($ciz_value eq "1") then      '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/AYPENT_CIZ01.txt'
+else if ($ciz_value eq "2") then '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/AYPENT_CIZ02.txt'
+else if ($ciz_value eq "3") then '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/AYPENT_CIZ03.txt'
+else                       '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/cizdefault/movimientos.txt'</con1:xqueryText>
+            </con2:expr>
+            <con2:expr>
+              <con1:xqueryText>$trama</con1:xqueryText>
+            </con2:expr>
+            <con2:return-param-as-ref>false</con2:return-param-as-ref>
+          </con2:javaCallout>
+          <con2:javaCallout varName="responseStringTemp">
+            <con1:id>_ActionId-7325684022443190987-5c74518.144aac50620.-7ff3</con1:id>
+            <con2:archive ref="Movimiento06SINDOProject/jar/layout-callout"/>
+            <con2:className>mx.gob.imss.ctirss.delta.gestion.clasificacion.callouts.LayoutCallOut</con2:className>
+            <con2:method>public static java.lang.String generateLayout(java.lang.String, [B)</con2:method>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'/ctirss/w/servicios4/srvs04/domains/d_osb/temp/AYPENT_TEMP.txt'</con:xqueryText>
+            </con2:expr>
+            <con2:expr>
+              <con1:xqueryText>$trama</con1:xqueryText>
+            </con2:expr>
+            <con2:return-param-as-ref>false</con2:return-param-as-ref>
+          </con2:javaCallout>
+        </con5:actions>
+      </con5:stage>
+    </con5:pipeline>
+    <con5:pipeline type="response" name="PipelinePairNode1_response"/>
+    <con5:pipeline type="response" name="PipelinePairNode4_response"/>
+    <con5:pipeline type="response" name="Movimiento5_response"/>
+    <con5:pipeline type="response" name="PipelinePairNode2_response"/>
+    <con5:pipeline type="request" name="PipelinePairNode1_request">
+      <con5:stage name="stage1">
+        <con5:context>
+          <con1:varNsDecl namespace="http://www.mx.gob.imss.ctirss.delta/movimiento06Sindo" prefix="mov"/>
+        </con5:context>
+        <con5:actions>
+          <con2:assign varName="movPatronalToMLF04">
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7e5c</con1:id>
+            <con2:expr>
+              <con1:xqueryTransform>
+                <con1:resource ref="Movimiento06SINDOProject/xquery/Movimiento04DomicilioXML_mfl"/>
+                <con1:param name="movimientoPatronal1">
+                  <con1:path>$body/mov:MovimientoPatronal</con1:path>
+                </con1:param>
+              </con1:xqueryTransform>
+            </con2:expr>
+          </con2:assign>
+          <con3:log>
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7e37</con1:id>
+            <con3:logLevel>warning</con3:logLevel>
+            <con3:expr>
+              <con1:xqueryText>$movPatronalToMLF04</con1:xqueryText>
+            </con3:expr>
+            <con3:message>transformacion</con3:message>
+          </con3:log>
+          <con2:replace varName="body" contents-only="true">
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7e05</con1:id>
+            <con2:location>
+              <con1:xpathText>.</con1:xpathText>
+            </con2:location>
+            <con2:expr>
+              <con1:xqueryText>$movPatronalToMLF04</con1:xqueryText>
+            </con2:expr>
+          </con2:replace>
+          <con2:mflTransform>
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7de1</con1:id>
+            <con2:type>XML-To-nonXML</con2:type>
+            <con2:sourceExpr>
+              <con1:xqueryText>$body/MovPatronalCambioDomicilio</con1:xqueryText>
+            </con2:sourceExpr>
+            <con2:mfl-resource ref="Movimiento06SINDOProject/mfl/Mov04CambioDomicilioPatrones"/>
+            <con2:assign-variable>trama</con2:assign-variable>
+          </con2:mflTransform>
+          <con3:log>
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7dcb</con1:id>
+            <con3:logLevel>warning</con3:logLevel>
+            <con3:expr>
+              <con1:xqueryText>$trama</con1:xqueryText>
+            </con3:expr>
+            <con3:message>Valor transformado</con3:message>
+          </con3:log>
+          <con2:replace varName="body" contents-only="true">
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7da7</con1:id>
+            <con2:location>
+              <con1:xpathText>.</con1:xpathText>
+            </con2:location>
+            <con2:expr>
+              <con1:xqueryText>$trama</con1:xqueryText>
+            </con2:expr>
+          </con2:replace>
+          <con3:log>
+            <con1:id>_ActionId-767232260839065236-4b572da7.13e9ec45a9c.-7eff</con1:id>
+            <con3:logLevel>debug</con3:logLevel>
+            <con3:expr>
+              <con1:xqueryText>$body</con1:xqueryText>
+            </con3:expr>
+            <con3:message>El body modificado</con3:message>
+          </con3:log>
+          <con2:javaCallout varName="responseString">
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7d8a</con1:id>
+            <con2:archive ref="Movimiento06SINDOProject/jar/layout-callout"/>
+            <con2:className>mx.gob.imss.ctirss.delta.gestion.clasificacion.callouts.LayoutCallOut</con2:className>
+            <con2:method>public static java.lang.String generateLayout(java.lang.String, [B)</con2:method>
+            <con2:expr>
+              <con1:xqueryText>if ($ciz_value eq "1") then      '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/AYPENT_CIZ01.txt'
+else if ($ciz_value eq "2") then '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/AYPENT_CIZ02.txt'
+else if ($ciz_value eq "3") then '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/AYPENT_CIZ03.txt'
+else                       '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/cizdefault/movimientos.txt'</con1:xqueryText>
+            </con2:expr>
+            <con2:expr>
+              <con1:xqueryText>$trama</con1:xqueryText>
+            </con2:expr>
+            <con2:return-param-as-ref>false</con2:return-param-as-ref>
+          </con2:javaCallout>
+        </con5:actions>
+      </con5:stage>
+    </con5:pipeline>
+    <con5:pipeline type="request" name="PipelinePairNode3_request">
+      <con5:stage name="stage1">
+        <con5:context>
+          <con1:varNsDecl namespace="http://www.mx.gob.imss.ctirss.delta/movimiento06Sindo" prefix="mov"/>
+        </con5:context>
+        <con5:actions>
+          <con2:assign varName="ciz_value">
+            <con1:id>_ActionId-767232260839065236-4b572da7.13e9ec45a9c.-7f84</con1:id>
+            <con2:expr>
+              <con1:xqueryText>$body/mov:MovimientoPatronal/mov:ciz/text()</con1:xqueryText>
+            </con2:expr>
+          </con2:assign>
+          <con3:log>
+            <con1:id>_ActionId-767232260839065236-4b572da7.13e9ec45a9c.-7f82</con1:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con1:xqueryText>$ciz_value</con1:xqueryText>
+            </con3:expr>
+            <con3:message>Numero de CIZ</con3:message>
+          </con3:log>
+        </con5:actions>
+      </con5:stage>
+    </con5:pipeline>
+    <con5:pipeline type="request" name="Movimiento6_request">
+      <con5:stage name="stage1">
+        <con5:context>
+          <con1:varNsDecl namespace="http://www.mx.gob.imss.ctirss.delta/movimiento06Sindo" prefix="mov"/>
+        </con5:context>
+        <con5:actions>
+          <con2:assign varName="movimientoPatronalToMFL">
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7fd8</con1:id>
+            <con2:expr>
+              <con1:xqueryTransform>
+                <con1:resource ref="Movimiento06SINDOProject/xquery/MovimientoPatronalXML_MFL"/>
+                <con1:param name="movimientoPatronal1">
+                  <con1:path>$body/mov:MovimientoPatronal</con1:path>
+                </con1:param>
+              </con1:xqueryTransform>
+            </con2:expr>
+          </con2:assign>
+          <con3:log>
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7fd7</con1:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con1:xqueryText>$movimientoPatronalToMFL/Movimiento</con1:xqueryText>
+            </con3:expr>
+            <con3:message>MOvimiento convertido de XML de entrada al de MFL</con3:message>
+          </con3:log>
+          <con2:replace varName="body" contents-only="true">
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7fd4</con1:id>
+            <con2:location>
+              <con1:xpathText>.</con1:xpathText>
+            </con2:location>
+            <con2:expr>
+              <con1:xqueryText>$movimientoPatronalToMFL</con1:xqueryText>
+            </con2:expr>
+          </con2:replace>
+          <con2:mflTransform>
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7fd3</con1:id>
+            <con2:type>XML-To-nonXML</con2:type>
+            <con2:sourceExpr>
+              <con1:xqueryText>$body/MovimientoPatronal</con1:xqueryText>
+            </con2:sourceExpr>
+            <con2:mfl-resource ref="Movimiento06SINDOProject/mfl/MovimientoPatronalXML_txt"/>
+            <con2:assign-variable>trama</con2:assign-variable>
+          </con2:mflTransform>
+          <con1:log xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config">
+            <con6:id xmlns:con6="http://www.bea.com/wli/sb/stages/config">_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7fd2</con6:id>
+            <con1:logLevel>error</con1:logLevel>
+            <con1:expr>
+              <con4:xqueryText xmlns:con4="http://www.bea.com/wli/sb/stages/config">$trama</con4:xqueryText>
+            </con1:expr>
+            <con1:message>Trama generada:e</con1:message>
+          </con1:log>
+          <con2:replace varName="body" contents-only="true">
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7fd1</con1:id>
+            <con2:location>
+              <con1:xpathText>.</con1:xpathText>
+            </con2:location>
+            <con2:expr>
+              <con1:xqueryText>$trama</con1:xqueryText>
+            </con2:expr>
+          </con2:replace>
+          <con3:log>
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7fd0</con1:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con1:xqueryText>$body</con1:xqueryText>
+            </con3:expr>
+            <con3:message>El body modificado:</con3:message>
+          </con3:log>
+          <con2:javaCallout varName="responseString">
+            <con1:id>_ActionId-3578164057933693004-122fae0a.13e8a974f51.-7fcf</con1:id>
+            <con2:archive ref="Movimiento06SINDOProject/jar/layout-callout"/>
+            <con2:className>mx.gob.imss.ctirss.delta.gestion.clasificacion.callouts.LayoutCallOut</con2:className>
+            <con2:method>public static java.lang.String generateLayout(java.lang.String, [B)</con2:method>
+            <con2:expr>
+              <con1:xqueryText>if ($ciz_value eq "1") then      '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/AYPENT_CIZ01.txt'
+else if ($ciz_value eq "2") then '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/AYPENT_CIZ02.txt'
+else if ($ciz_value eq "3") then '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/AYPENT_CIZ03.txt'
+else                       '/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/cizdefault/movimientos.txt'</con1:xqueryText>
+            </con2:expr>
+            <con2:expr>
+              <con1:xqueryText>$trama</con1:xqueryText>
+            </con2:expr>
+            <con2:return-param-as-ref>false</con2:return-param-as-ref>
+          </con2:javaCallout>
+        </con5:actions>
+      </con5:stage>
+    </con5:pipeline>
+    <con5:pipeline type="response" name="Movimiento6_response"/>
+    <con:flow xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:pipeline-node name="PipelinePairNode3">
+        <con:request>PipelinePairNode3_request</con:request>
+        <con:response>PipelinePairNode3_response</con:response>
+      </con:pipeline-node>
+      <con:branch-node type="condition" name="TipoMovimiento">
+        <con:context>
+          <con1:varNsDecl namespace="http://www.mx.gob.imss.ctirss.delta/movimiento06Sindo" prefix="mov"/>
+        </con:context>
+        <con:branch-table variable="body">
+          <con:xpath>
+            <con1:xpathText>./mov:MovimientoPatronal/mov:tipoMovimiento/text()</con1:xpathText>
+          </con:xpath>
+          <con:branch name="Movimiento6">
+            <con:operator>equals</con:operator>
+            <con:value>'6'</con:value>
+            <con:flow>
+              <con:pipeline-node name="Movimiento6">
+                <con:request>Movimiento6_request</con:request>
+                <con:response>Movimiento6_response</con:response>
+              </con:pipeline-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="Movimiento5">
+            <con:operator>equals</con:operator>
+            <con:value>'5'</con:value>
+            <con:flow>
+              <con:pipeline-node name="Movimiento5">
+                <con:request>Movimiento5_request</con:request>
+                <con:response>Movimiento5_response</con:response>
+              </con:pipeline-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="Movimiento4">
+            <con:operator>equals</con:operator>
+            <con:value>'4'</con:value>
+            <con:flow>
+              <con:pipeline-node name="PipelinePairNode1">
+                <con:request>PipelinePairNode1_request</con:request>
+                <con:response>PipelinePairNode1_response</con:response>
+              </con:pipeline-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="Movimiento1">
+            <con:operator>equals</con:operator>
+            <con:value>'1'</con:value>
+            <con:flow>
+              <con:pipeline-node name="PipelinePairNode4">
+                <con:request>PipelinePairNode4_request</con:request>
+                <con:response>PipelinePairNode4_response</con:response>
+              </con:pipeline-node>
+            </con:flow>
+          </con:branch>
+          <con:default-branch>
+            <con:flow>
+              <con:pipeline-node name="PipelinePairNode2">
+                <con:request>PipelinePairNode2_request</con:request>
+                <con:response>PipelinePairNode2_response</con:response>
+              </con:pipeline-node>
+            </con:flow>
+          </con:default-branch>
+        </con:branch-table>
+      </con:branch-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>

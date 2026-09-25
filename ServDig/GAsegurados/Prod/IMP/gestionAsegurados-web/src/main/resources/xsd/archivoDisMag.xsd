@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--Created with Liquid XML Studio - FREE Community Edition 7.0.2.746 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="EMPLEADOS_EMPRESA">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="EMPLEADO" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EMPLEADO">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="TRAMITE"/>
+				<xs:element ref="NSS"/>
+				<xs:element ref="DIGITO_VERIFICADOR"/>
+				<xs:element ref="CURP"/>
+				<xs:element ref="NOMBRE"/>
+				<xs:element ref="APELLIDO_PATERNO"/>
+				<xs:element ref="APELLIDO_MATERNO"/>
+				<xs:element ref="SEXO"/>
+				<xs:element ref="LUGAR_NACIMIENTO"/>
+				<xs:element ref="DIA_NACIMIENTO"/>
+				<xs:element ref="MES_NACIMIENTO"/>
+				<xs:element ref="ANIO_NACIMIENTO"/>
+				<xs:element ref="NOMBRE_PADRE"/>
+				<xs:element ref="APELLIDO_PATERNO_PADRE"/>
+				<xs:element ref="APELLIDO_MATERNO_PADRE"/>
+				<xs:element ref="NOMBRE_MADRE"/>
+				<xs:element ref="APELLIDO_PATERNO_MADRE"/>
+				<xs:element ref="APELLIDO_MATERNO_MADRE"/>
+				<xs:element ref="DIA_INGRESO"/>
+				<xs:element ref="MES_INGRESO"/>
+				<xs:element ref="ANIO_INGRESO"/>
+				<xs:element ref="SALARIO_BASE"/>
+				<xs:element ref="JORNADA_SEMANA"/>
+				<xs:element ref="TIPO_SALARIO"/>
+				<xs:element ref="OCUPACION"/>
+				<xs:element ref="DESCRIPCION_OCUPACION"/>
+				<xs:element ref="TIPO_TRABAJO"/>
+				<xs:element ref="CODIGO_POSTAL"/>
+				<xs:element ref="TRAMITADO"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TRAMITE">
+		<xs:simpleType>
+			<xs:restriction base="trataEspacios">
+				<xs:length value="1"/>
+				<xs:pattern value="0|1|2"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="NSS" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="trataEspacios">
+				<xs:minLength value="0"/>
+				<xs:maxLength value="10"/>
+				<xs:pattern value="[0-9]*"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="DIGITO_VERIFICADOR" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="trataEspacios">
+				<xs:minLength value="0"/>
+				<xs:maxLength value="1"/>
+				<xs:pattern value="[0-9]*"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="CURP">
+		<xs:simpleType>
+			<xs:restriction base="trataEspacios">
+				<xs:length value="18"/>
+				<xs:pattern value="[A-Z]{4}[0-9]{6}[A-Z]{6}[A-Z0-9]{2}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="NOMBRE">
+		<xs:simpleType>
+			<xs:restriction base="exp_reg_client">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="35"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="APELLIDO_PATERNO">
+		<xs:simpleType>
+			<xs:restriction base="exp_reg_client">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="27"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="APELLIDO_MATERNO" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="exp_reg_client">
+				<xs:minLength value="0"/>
+				<xs:maxLength value="27"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="SEXO">
+		<xs:simpleType>
+			<xs:restriction base="trataEspacios">
+				<xs:length value="1"/>
+				<xs:pattern value="1|2"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="LUGAR_NACIMIENTO">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{2}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="DIA_NACIMIENTO">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="2"/>
+				<xs:pattern value="[0-9]{2}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="MES_NACIMIENTO">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="2"/>
+				<xs:pattern value="[0-9]{2}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ANIO_NACIMIENTO">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="4"/>
+				<xs:pattern value="[0-9]{4}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="NOMBRE_PADRE" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="exp_reg_client">
+				<xs:minLength value="0"/>
+				<xs:maxLength value="35"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="APELLIDO_PATERNO_PADRE" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="exp_reg_client">
+				<xs:minLength value="0"/>
+				<xs:maxLength value="27"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="APELLIDO_MATERNO_PADRE" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="exp_reg_client">
+				<xs:minLength value="0"/>
+				<xs:maxLength value="27"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="NOMBRE_MADRE" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="exp_reg_client">
+				<xs:minLength value="0"/>
+				<xs:maxLength value="35"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="APELLIDO_PATERNO_MADRE" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="exp_reg_client">
+				<xs:minLength value="0"/>
+				<xs:maxLength value="27"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="APELLIDO_MATERNO_MADRE" nillable="true">
+		<xs:simpleType>
+			<xs:restriction base="exp_reg_client">
+				<xs:minLength value="0"/>
+				<xs:maxLength value="27"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="DIA_INGRESO">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="2"/>
+				<xs:pattern value="[0-9]{2}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="MES_INGRESO">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="2"/>
+				<xs:pattern value="[0-9]{2}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ANIO_INGRESO">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="4"/>
+				<xs:pattern value="[0-9]{4}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="SALARIO_BASE">
+		<xs:simpleType>
+			<xs:restriction base="trataEspacios">	
+				<xs:minLength value="1"/>
+				<xs:maxLength value="7"/>
+				<xs:pattern value="[0-9]{4}.[0-9]{2}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="JORNADA_SEMANA">
+		<xs:simpleType>
+			<xs:restriction base="trataEspacios">
+				<xs:length value="1"/>
+				<xs:pattern value="0|1|2|3|4|5|6"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="TIPO_SALARIO">
+		<xs:simpleType>
+			<xs:restriction base="trataEspacios">
+				<xs:length value="1"/>
+				<xs:pattern value="1|2|3"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="OCUPACION">
+		<xs:simpleType>
+			<xs:restriction base="trataEspacios">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="40"/>
+				<xs:pattern value="[A-Z# Ñ]+"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="DESCRIPCION_OCUPACION">
+		<xs:simpleType>
+			<xs:restriction base="trataEspacios">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="40"/>
+				<xs:pattern value="[A-Z# Ñ]+"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="TIPO_TRABAJO">
+		<xs:simpleType>
+			<xs:restriction base="trataEspacios">
+				<xs:length value="1"/>
+				<xs:pattern value="0|1|2|3"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="CODIGO_POSTAL">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{5}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="TRAMITADO">
+		<xs:simpleType>
+			<xs:restriction base="trataEspacios">
+				<xs:length value="1"/>
+				<xs:pattern value="0|1|2"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:simpleType name="trataEspacios">
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="exp_reg_client">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z#]+([ ]{1}[A-Z#]+)*|[A-Z#]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

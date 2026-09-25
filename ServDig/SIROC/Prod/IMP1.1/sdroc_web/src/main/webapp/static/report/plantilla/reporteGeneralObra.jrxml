@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteRegistroObra" pageWidth="1500" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="0.9090909090909114"/>
+	<property name="ireport.x" value="19"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="datosTabla" class="java.util.List"/>
+	<parameter name="subReport" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="intermediario" class="java.lang.Boolean"/>
+	<parameter name="razonSocial" class="java.lang.String"/>
+	<parameter name="rfc" class="java.lang.String"/>
+	<parameter name="ejercicio" class="java.lang.String"/>
+	<parameter name="rutaPlantilla" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="495" splitType="Stretch">
+			<staticText>
+				<reportElement x="51" y="21" width="230" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre, Denominación o Razón Social: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="41" width="230" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RFC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="61" width="230" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ejercicio consultado:]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="1" y="121" width="1500" height="20"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{datosTabla})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{subReport}]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="0" y="81" width="50" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="81" width="150" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número de registro de obra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="81" width="150" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Antecedente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="81" width="60" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Clase de obra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="560" y="81" width="80" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de patrón]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="640" y="81" width="300" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Asentamiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="940" y="81" width="140" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Periodo de ejecución]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="940" y="101" width="70" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1010" y="101" width="70" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Término]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1150" y="101" width="70" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Término]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1080" y="81" width="140" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vigencia del contrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1080" y="101" width="70" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1220" y="81" width="120" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto de la obra]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="281" y="21" width="800" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{razonSocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="41" width="800" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{rfc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="50" y="81" width="150" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Registro patronal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1340" y="81" width="120" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto del contrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="1" width="1030" height="20"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte General de Obras]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="51" height="81"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{rutaPlantilla}+"/../../images/logoIMSS.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="281" y="61" width="799" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{ejercicio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

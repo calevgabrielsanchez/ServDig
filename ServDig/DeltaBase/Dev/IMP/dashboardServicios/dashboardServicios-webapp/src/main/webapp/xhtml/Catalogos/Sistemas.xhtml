@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/xhtml/templeates/layoutMenu.xhtml">
+	<ui:define name="content">
+		<p:growl id="growl" showDetail="true" life="6000" autoUpdate="true" />
+		<h:form id="formSistema">
+			<!-- PANEL DE FILTRO DE BUSQUEDA -->
+			<p:fieldset id="filtroBusqueda" legend="Filtro de búsqueda">
+				<h:panelGrid columns="3">
+					<h:outputLabel for="filtroDesc" value="Descripción" />
+					<p:inputText id="filtroDesc"
+						value="#{sistemaMB.sistemaDTO.descripcionSistema}" />
+					<p:message for="filtroDesc" />
+				</h:panelGrid>
+			</p:fieldset>
+			<div style="text-align: right">
+				<p:commandButton value="Buscar"
+					actionListener="#{sistemaMB.buscaSistemas}"
+					process="@this,filtroDesc"
+					update=":formSistema:resultadoSistemas,:formSistema:resultadoSis" />
+			</div>
+			<br></br>
+
+			<!-- PANEL DE TABLA DE RESULTADOS -->
+			<p:outputPanel id="resultadoSis">
+				<p:fieldset legend="Resultados" id="resultadoSistemas"
+					rendered="#{sistemaMB.muestraResultado}">
+					<p:dataTable var="sistemaRes"
+						value="#{sistemaMB.sistemaDTO.lstResultados}" scrollable="true"
+						scrollWidth="850" resizableColumns="true"
+						sortBy="#{sistemaRes.cveSistema}" paginator="true"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginatorPosition="bottom" rows="5"
+						rowsPerPageTemplate="5,25,50,100">
+
+						<p:column sortBy="#{sistemaRes.cveSistema}" style="width:300px">
+							<f:facet name="header">
+							Clave
+		            	</f:facet>
+						#{sistemaRes.cveSistema}
+	 				</p:column>
+						<p:column style="width:450px">
+							<f:facet name="header">  
+	                 	Descripción
+		            	</f:facet>
+						#{sistemaRes.desSistema}
+	 				</p:column>
+						<p:column style="width:50px">
+							<f:facet name="header">
+							</f:facet>
+							<p:commandButton icon="ui-icon-pencil" iconPos="center"
+								process="@this" update=":formSistema:editaSistema"
+								oncomplete="editarSistema.show()">
+								<f:setPropertyActionListener value="#{sistemaRes}"
+									target="#{sistemaMB.detalleSeleccionado}" />
+							</p:commandButton>
+						</p:column>
+						<p:column style="width:50px">
+							<f:facet name="header">
+							</f:facet>
+							<p:commandButton icon="ui-icon-trash" iconPos="center"
+								process="@this" oncomplete="confirmaEliminar.show()">
+								<f:setPropertyActionListener value="#{sistemaRes}"
+									target="#{sistemaMB.eliminaDetalle}" />
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+					<div style="text-align: right">
+						<p:commandButton id="btnAgregar" value="Agregar"
+							rendered="#{sistemaMB.muestraResultado}" type="button"
+							onclick="dlg.show()" />
+					</div>
+				</p:fieldset>
+			</p:outputPanel>
+
+
+			<!-- VENTANA DE DIALOGO PARA AGREGAR UN NUEVO SISTEMA -->
+			<p:dialog header="Agregar sistema" widgetVar="dlg"
+				position="center" modal="true" showEffect="fade" hideEffect="fade">
+				<p:fieldset legend="Datos del sistema" id="agregaSistema">
+					<h:panelGrid columns="3" id="agregaSis">
+						<h:outputLabel for="idSis" value="Clave:" />
+						<p:inputText id="idSis"
+							value="#{sistemaMB.sistemaDTO.sistemaTemp.cveSistema}"
+							required="true"
+							requiredMessage="Se nececista insertar una clave de sistema" />
+						<p:message id="errorIdSis" for="idSis" />
+						<h:outputLabel for="descSis" value="Descripcion:" />
+						<p:inputText id="descSis"
+							value="#{sistemaMB.sistemaDTO.sistemaTemp.desSistema}"
+							required="true"
+							requiredMessage="Se nececista insertar una descripcion de sistema" />
+						<p:message id="errorDescSis" for="descSis" />
+						<h:outputLabel for="descLargaSis" value="Notas:" />
+						<p:editor id="descLargaSis"
+							value="#{sistemaMB.sistemaDTO.sistemaTemp.notaSistema}"
+							width="300" />
+					</h:panelGrid>
+				</p:fieldset>
+				<div style="text-align: right">
+					<p:commandButton id="agregarBtn" value="Aceptar"
+						update="formSistema:resultadoSistemas,:formSistema:resultadoSis,formSistema:filtroBusqueda"
+						process="@this,agregaSistema"
+						actionListener="#{sistemaMB.agregaSistema}"
+						oncomplete="handleValidaCamposRequest(xhr, status, args,dlg)" />
+					<p:spacer width="30px" />
+					<p:commandButton id="cancelarBtn" value="Cancelar" type="button"
+						onclick="dlg.hide()" />
+				</div>
+			</p:dialog>
+
+			<!-- VENTANA DE DIALOGO PARA EDICION -->
+			<p:dialog modal="true" position="center" header="Editar sistema" widgetVar="editarSistema">
+				<p:fieldset id="editaSistema" legend="Editar sistema">
+					<h:panelGrid columns="3" id="editaSis">
+						<h:outputLabel for="eIdSis" value="Clave:" />
+						<p:inputText id="eIdSis" readonly="true"
+							value="#{sistemaMB.detalleSeleccionado.cveSistema}"
+							required="true"
+							requiredMessage="Se nececista insertar una clave de sistema" />
+						<p:message id="erroreIdSis" for="eIdSis" />
+						<h:outputLabel for="eDescSis" value="Descripcion:" />
+						<p:inputText id="eDescSis"
+							value="#{sistemaMB.detalleSeleccionado.desSistema}"
+							required="true"
+							requiredMessage="Se nececista insertar una descripcion de sistema" />
+						<p:message id="erroreDescSis" for="eDescSis" />
+						<h:outputLabel for="descLargaSis" value="Notas:" />
+						<p:editor id="eDescLargaSis"
+							value="#{sistemaMB.detalleSeleccionado.notaSistema}"
+							width="300" />
+					</h:panelGrid>
+				</p:fieldset>
+				<div style="text-align: right">
+					<p:commandButton id="btnEditar" value="Aceptar"
+						process="@this,editaSistema"
+						update="formSistema:resultadoSistemas,:formSistema:resultadoSis,formSistema:filtroBusqueda"
+						actionListener="#{sistemaMB.editaSistema}"
+						oncomplete="handleValidaCamposRequest(xhr, status, args,editarSistema)" />
+					<p:spacer width="30px" />
+					<p:commandButton id="btnCancelarEdicion" value="Cancelar" type="button"
+						onclick="editarSistema.hide()" />
+				</div>
+			</p:dialog>
+
+			<!-- VENTANA DE DIALOGO PARA ELIMINACION -->
+			<p:confirmDialog message="¿Realmente desea eleminar este sistema?"
+				severity="alert" header="Confirmación" widgetVar="confirmaEliminar">
+				<p:commandButton id="btnConfirmaEliminar" process="@this"
+					update=":formSistema:resultadoSistemas,:formSistema:resultadoSis"
+					value="Si" actionListener="#{sistemaMB.eliminaSistema}"
+					oncomplete="confirmaEliminar.hide()" />
+				<p:spacer width="30px" />
+				<p:commandButton id="btnCancelaEliminar" value="No" type="button"
+					onclick="confirmaEliminar.hide()" />
+			</p:confirmDialog>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

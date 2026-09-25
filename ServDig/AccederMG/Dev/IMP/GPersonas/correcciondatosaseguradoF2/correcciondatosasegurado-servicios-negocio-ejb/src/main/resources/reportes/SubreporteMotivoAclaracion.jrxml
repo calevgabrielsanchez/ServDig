@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubreporteMotivoAclaracion" pageWidth="554" pageHeight="802" columnWidth="554" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="81"/>
+	<parameter name="MOTIVOS_ACLARACION_IMSS" class="java.util.List"/>
+	<parameter name="CREDITO_DESCONTADO" class="java.lang.String"/>
+	<parameter name="MOTIVOS_ACLARACION_INFONAVIT" class="java.util.List"/>
+	<parameter name="MOTIVOS_ACLARACION_AFORE" class="java.util.List"/>
+	<parameter name="OTRO" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="283" splitType="Stretch">
+			<staticText>
+				<reportElement x="25" y="49" width="110" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Cobro de incapacidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="69" width="110" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Pensión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="89" width="310" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Autorización permanente para recibir servicios en circunscripción foránea]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="69" width="121" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Registro de beneficiarios]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="49" width="121" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Retiro por desempleo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="69" width="95" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Cambio de UMF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="49" width="100" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Gastos de matrimonio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="89" width="95" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Adscripción a UMF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="22" width="526" height="20"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[A) Señale con una "X" el trámite que necesita realizar ante el IMSS:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="122" width="526" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[B) Señale con una "X" el trámite que necesita realizar en la AFORE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="153" width="234" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Aclaración de saldo de subcuenta de vivienda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="153" width="110" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Registro en la AFORE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="187" width="526" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[C) Señale con una "X" el trámite que necesita realizar en INFONAVIT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="219" width="121" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Conclusión de crédito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="219" width="168" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Prórroga o reestructura de crédito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="219" width="110" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Obtener un crédito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="250" width="154" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Descuento indebido de crédito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="187" y="250" width="201" height="32"/>
+				<textElement textAlignment="Left">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Señale el número de crédito que le están descontando:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="473" y="49" width="79" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Gastos de funeral]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="49" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MOTIVOS_ACLARACION_IMSS}.contains("1")?"[X]":"[  ]"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="69" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MOTIVOS_ACLARACION_IMSS}.contains("2")?"[X]":"[  ]"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="49" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MOTIVOS_ACLARACION_IMSS}.contains("3")?"[X]":"[  ]"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="69" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MOTIVOS_ACLARACION_IMSS}.contains("4")?"[X]":"[  ]"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="49" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MOTIVOS_ACLARACION_IMSS}.contains("7")?"[X]":"[  ]"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="69" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MOTIVOS_ACLARACION_IMSS}.contains("6")?"[X]":"[  ]"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="49" width="13" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MOTIVOS_ACLARACION_IMSS}.contains("8")?"[X]":"[  ]"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="89" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MOTIVOS_ACLARACION_IMSS}.contains("5")?"[X]":"[  ]"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="89" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[[  ]]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="153" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MOTIVOS_ACLARACION_AFORE}.contains("1")?"[X]":"[  ]"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="187" y="153" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MOTIVOS_ACLARACION_AFORE}.contains("2")?"[X]":"[  ]"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="219" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MOTIVOS_ACLARACION_INFONAVIT}.contains("1")?"[X]":"[  ]"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="9" y="250" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MOTIVOS_ACLARACION_INFONAVIT}.contains("4")?"[X]":"[  ]"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="187" y="219" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MOTIVOS_ACLARACION_INFONAVIT}.contains("2")?"[X]":"[  ]"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="345" y="219" width="15" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{MOTIVOS_ACLARACION_INFONAVIT}.contains("3")?"[X]":"[  ]"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="245" y="262" width="283" height="20"/>
+				<textElement textAlignment="Justified">
+					<font size="9" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{CREDITO_DESCONTADO}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="29">
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="9" y="9" width="526" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[D) Otro. Especifique: ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="102" y="9" width="434" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="9" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{OTRO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AcuseVentanilla" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="409"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["reportes/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGENES_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["reportes/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="folioSolicitud" class="java.lang.String">
+		<parameterDescription><![CDATA[folioSolicitud]]></parameterDescription>
+	</parameter>
+	<parameter name="fechaReporte" class="java.lang.String">
+		<parameterDescription><![CDATA[fechaReporte]]></parameterDescription>
+	</parameter>
+	<parameter name="descripcionTramite" class="java.lang.String"/>
+	<parameter name="nombreRS" class="java.lang.String"/>
+	<parameter name="rfc" class="java.lang.String"/>
+	<parameter name="curp" class="java.lang.String"/>
+	<parameter name="nss" class="java.lang.String"/>
+	<parameter name="usuarioVentanilla" class="java.lang.String"/>
+	<parameter name="subdelegacion" class="java.lang.String"/>
+	<parameter name="rfcFirmante" class="java.lang.String"/>
+	<parameter name="nombreFirmante" class="java.lang.String"/>
+	<parameter name="curpFirmante" class="java.lang.String"/>
+	<parameter name="cadenaOriginal" class="java.lang.String"/>
+	<parameter name="selloDigital" class="java.lang.String"/>
+	<parameter name="secuenciaNotaria" class="java.lang.String"/>
+	<parameter name="numeroSerie" class="java.lang.String"/>
+	<parameter name="esFisica" class="java.lang.String">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="125" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="49" width="572" height="22"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Folio: "+($P{folioSolicitud}==null ? " " : $P{folioSolicitud})]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="1" y="0" width="185" height="49"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "presidencia-bottom.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="523" y="0" width="50" height="49"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "imss_logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="71" width="572" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[ACUSE DE RECIBO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="103" width="30" height="22"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="30" y="103" width="542" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{fechaReporte}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="134" splitType="Stretch">
+			<elementGroup/>
+			<staticText>
+				<reportElement x="0" y="49" width="572" height="25"/>
+				<textElement textAlignment="Justified" verticalAlignment="Bottom">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Datos generales:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="572" height="49"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Mediante el presente se hace constar la realización del trámite de " +$P{descripcionTramite}+ " correspondiente a:"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="74" width="160" height="15"/>
+				<textElement textAlignment="Justified" verticalAlignment="Bottom">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Nombre o Razón Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="89" width="160" height="15"/>
+				<textElement textAlignment="Justified" verticalAlignment="Bottom">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Registro Federal de Contribuyentes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="104" width="160" height="15">
+					<printWhenExpression><![CDATA[$P{esFisica}.equals("1")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Bottom">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Clave Única de Registro de Población]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="119" width="160" height="15">
+					<printWhenExpression><![CDATA[$P{esFisica}.equals("1")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Bottom">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Número de Seguridad Social]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="161" y="74" width="411" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nombreRS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="161" y="89" width="411" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{rfc}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="161" y="104" width="411" height="15">
+					<printWhenExpression><![CDATA[$P{esFisica}.equals("1")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{curp}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="161" y="119" width="411" height="15">
+					<printWhenExpression><![CDATA[$P{esFisica}.equals("1")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nss}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="55" splitType="Immediate">
+			<staticText>
+				<reportElement x="0" y="0" width="572" height="25"/>
+				<textElement textAlignment="Justified" verticalAlignment="Bottom">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Lugar en que se llevó a cabo  el trámite:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="25" width="160" height="15"/>
+				<textElement textAlignment="Justified" verticalAlignment="Bottom">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Usuario Ventanilla]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="160" height="15"/>
+				<textElement textAlignment="Justified" verticalAlignment="Bottom">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Subdelegación]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="161" y="25" width="411" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{usuarioVentanilla}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="161" y="40" width="411" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{subdelegacion}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="123" splitType="Immediate">
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="40" width="160" height="15"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Registro Federal de Contribuyentes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="25" width="160" height="15"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Nombre o Razón Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="55" width="160" height="15">
+					<printWhenExpression><![CDATA[!($P{curpFirmante}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Clave Única de Registro de Población]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement x="15" y="70" width="557" height="53"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["\n" + "\n" + "\n" +
+"_____________________________" + "\n" + "                Firma Autógrafa"+ "\n"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="572" height="25"/>
+				<textElement textAlignment="Justified" verticalAlignment="Bottom">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Mismo que es firmado por:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="161" y="40" width="411" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{rfcFirmante}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="161" y="25" width="411" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nombreFirmante}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="161" y="55" width="411" height="15">
+					<printWhenExpression><![CDATA[!($P{curpFirmante}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{curpFirmante}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="121" splitType="Prevent">
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="93" width="572" height="15"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{numeroSerie}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="83" width="572" height="10"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Número de Serie: ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="73" width="572" height="10"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{secuenciaNotaria}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="63" width="572" height="10"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Secuencia notarial: ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="43" width="572" height="20"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{selloDigital}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="33" width="572" height="10"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Sello digital: ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="13" width="572" height="20"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{cadenaOriginal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="572" height="13"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Cadena original: ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement x="450" y="0" width="80" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="530" y="0" width="42" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="450" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="false" isItalic="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[ESTE DOCUMENTO ES UNA REPRESENTACIÓN IMPRESA DE UN COMPROBANTE]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

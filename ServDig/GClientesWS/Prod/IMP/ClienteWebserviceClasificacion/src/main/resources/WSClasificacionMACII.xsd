@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. -->
+<xs:schema xmlns:tns="http://ws.macii.imss.gob.mx/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.macii.imss.gob.mx/">
+
+	<xs:element name="EntradaMACII" type="tns:entradaMACII"/>
+	<xs:element name="getInfoMACII" type="tns:getInfoMACII"/>
+	<xs:element name="getInfoMACIIResponse" type="tns:getInfoMACIIResponse"/>
+
+	<xs:complexType name="getInfoMACII">
+		<xs:sequence>
+			<xs:element name="arg0" type="tns:entradaMACII" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="entradaMACII">
+		<xs:sequence>
+			<xs:element name="NRP" type="xs:string" minOccurs="0"/>
+			<xs:element name="Fec_Ini_Registro" type="xs:string"/>
+			<xs:element name="Fec_Fin_Registro" type="xs:string"/>
+			<xs:element name="Cve_Tipo_Persona" type="xs:string" minOccurs="0"/>
+			<xs:element name="Clase_Rectificada" type="xs:string" minOccurs="0"/>
+			<xs:element name="Tipo_Registro" type="xs:string" minOccurs="0"/>
+			<xs:element name="Cve_Estatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="Cve_Delegacion" type="xs:string" minOccurs="0"/>
+			<xs:element name="Cve_Subdelegacion" type="xs:string" minOccurs="0"/>
+			<xs:element name="Tipo_Movimiento" type="xs:string"/>
+			<xs:element name="Tipo_Tramite" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="getInfoMACIIResponse">
+		<xs:sequence>
+			<xs:element name="return" type="tns:respuestaMACII" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="respuestaMACII">
+		<xs:complexContent>
+			<xs:extension base="tns:respuestaWS">
+				<xs:sequence>
+					<xs:element name="infoMACIIVO" type="tns:infoMACIIVO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="respuestaWS">
+		<xs:sequence>
+			<xs:element name="CODIGO_ERROR" type="xs:int" nillable="true" minOccurs="0"/>
+			<xs:element name="MENSAJE_ERROR" type="xs:string" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="infoMACIIVO">
+		<xs:sequence>
+			<xs:element name="NRP" type="xs:string" minOccurs="0"/>
+			<xs:element name="Nombre_Rs" type="xs:string" minOccurs="0"/>
+			<xs:element name="Cve_Delegacion" type="xs:int" minOccurs="0"/>
+			<xs:element name="Cve_Subdelegacion" type="xs:int" minOccurs="0"/>
+			<xs:element name="Cve_Municipio" type="xs:string" minOccurs="0"/>
+			<xs:element name="Fec_Registro" type="xs:string" minOccurs="0"/>
+			<xs:element name="Fec_Revision" type="xs:string" minOccurs="0"/>
+			<xs:element name="Fec_Movimiento" type="xs:string" minOccurs="0"/>
+			<xs:element name="Cve_Tipo_Persona" type="xs:int" minOccurs="0"/>
+			<xs:element name="Tipo_Persona" type="xs:string" minOccurs="0"/>
+			<xs:element name="Tipo_Registro" type="xs:string" minOccurs="0"/>
+			<xs:element name="Cve_Estatus" type="xs:int" minOccurs="0"/>
+			<xs:element name="Estatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="Clase_Declarada" type="xs:string" minOccurs="0"/>
+			<xs:element name="Fraccion_Declarada" type="xs:int" minOccurs="0"/>
+			<xs:element name="Prima_Declarada" type="xs:string" minOccurs="0"/>
+			<xs:element name="Clase_Rectificada" type="xs:string" minOccurs="0"/>
+			<xs:element name="Fraccion_Rectificada" type="xs:string" minOccurs="0"/>
+			<xs:element name="Prima_Rectificada" type="xs:string" minOccurs="0"/>
+			<xs:element name="Folio_Resolucion" type="xs:string" minOccurs="0"/>
+			<xs:element name="Cve_Ciz" type="xs:int" minOccurs="0"/>
+			<xs:element name="Sistema_Origen" type="xs:string" minOccurs="0"/>
+			<xs:element name="Fec_Extraccion" type="xs:string" minOccurs="0"/>
+			<xs:element name="Tipo_Movimiento" type="xs:string" minOccurs="0"/>
+			<xs:element name="Tipo_Tramite" type="xs:int" minOccurs="0"/>
+			<xs:element name="Desc_Tipo_Tramite" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

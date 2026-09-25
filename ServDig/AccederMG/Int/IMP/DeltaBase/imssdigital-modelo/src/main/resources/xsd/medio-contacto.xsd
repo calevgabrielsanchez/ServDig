@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:contacto="http://mx.gob.imss.digital.modelo.medio.contacto" targetNamespace="http://mx.gob.imss.digital.modelo.medio.contacto" version="1.0">
+
+  <xs:element name="correoElectronico" type="contacto:correoElectronico"/>
+
+  <xs:element name="facebook" type="contacto:facebook"/>
+
+  <xs:element name="medioContacto" type="contacto:medioContacto"/>
+
+  <xs:element name="telefonoFijo" type="contacto:telefonoFijo"/>
+
+  <xs:element name="telefonoMovil" type="contacto:telefonoMovil"/>
+
+  <xs:element name="tipoMedioContacto" type="contacto:tipoMedioContacto"/>
+
+  <xs:element name="twitter" type="contacto:twitter"/>
+
+  <xs:complexType name="facebook">
+    <xs:complexContent>
+      <xs:extension base="contacto:medioContacto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cuenta" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="medioContacto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clave" type="xs:long"/>
+      <xs:element minOccurs="0" ref="contacto:tipoMedioContacto"/>
+      <xs:element minOccurs="0" name="desFormaContacto" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoMedioContacto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idTipoMedioContacto" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="telefonoFijo">
+    <xs:complexContent>
+      <xs:extension base="contacto:medioContacto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="numero" type="xs:string"/>
+          <xs:element minOccurs="0" name="claveLada" type="xs:string"/>
+          <xs:element minOccurs="0" name="extension" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="telefonoMovil">
+    <xs:complexContent>
+      <xs:extension base="contacto:medioContacto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="numero" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="correoElectronico">
+    <xs:complexContent>
+      <xs:extension base="contacto:medioContacto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="correo" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="twitter">
+    <xs:complexContent>
+      <xs:extension base="contacto:medioContacto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cuenta" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

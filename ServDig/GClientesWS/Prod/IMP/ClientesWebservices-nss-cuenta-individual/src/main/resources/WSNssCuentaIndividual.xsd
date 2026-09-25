@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. --><xs:schema xmlns:tns="http://cuentaIndividual.imss.gob.mx/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://cuentaIndividual.imss.gob.mx/">
+  
+  <xs:element name="getCuentaIndividual" type="tns:getCuentaIndividual"/>
+  
+  <xs:element name="getCuentaIndividualResponse" type="tns:getCuentaIndividualResponse"/>
+  
+  <xs:complexType name="getCuentaIndividual">
+    <xs:sequence>
+      <xs:element name="nss" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="getCuentaIndividualResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:respuestaCuentaIndividual" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="respuestaCuentaIndividual">
+    <xs:complexContent>
+      <xs:extension base="tns:respuestaWS">
+	<xs:sequence>
+	  <xs:element name="cuentaIndividual" type="tns:CuentaIndividualVo" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:complexType name="respuestaWS">
+    <xs:sequence>
+      <xs:element name="clave" type="xs:string" nillable="true" minOccurs="0"/>
+      <xs:element name="mensaje" type="xs:string" nillable="true" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="CuentaIndividualVo">
+    <xs:sequence>
+      <xs:element name="nss" type="xs:string" minOccurs="0"/>
+      <xs:element name="registroPatronal" type="xs:string" minOccurs="0"/>
+      <xs:element name="claveModalidad" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaInicioMovimiento" type="xs:string" minOccurs="0"/>
+      <xs:element name="numeroConsecutivoPeriodos" type="xs:int"/>
+      <xs:element name="curp" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaFinalMovimiento" type="xs:string" minOccurs="0"/>
+      <xs:element name="origenMovimientoInicial" type="xs:string" minOccurs="0"/>
+      <xs:element name="origenMovimientoFinal" type="xs:string" minOccurs="0"/>
+      <xs:element name="tipoMovimientoIniintcial" type="xs:int"/>
+      <xs:element name="tipoMovimientoFinal" type="xs:int"/>
+      <xs:element name="fechaRecepcionMovimiento" type="xs:string" minOccurs="0"/>
+      <xs:element name="salarioBase" type="xs:double" minOccurs="0"/>
+      <xs:element name="tipoSalario" type="xs:string" minOccurs="0"/>
+      <xs:element name="jornadaSemanal" type="xs:string" minOccurs="0"/>
+      <xs:element name="eventual" type="xs:string" minOccurs="0"/>
+      <xs:element name="subrogacionServicio" type="xs:string" minOccurs="0"/>
+      <xs:element name="huelga" type="xs:string" minOccurs="0"/>
+      <xs:element name="extemporaneoConvenioSuspencion" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechaActualizacion" type="xs:string" minOccurs="0"/>
+      <xs:element name="claveDelegacionOrigen" type="xs:int"/>
+      <xs:element name="claveCiz" type="xs:int"/>
+      <xs:element name="fechaCarga" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

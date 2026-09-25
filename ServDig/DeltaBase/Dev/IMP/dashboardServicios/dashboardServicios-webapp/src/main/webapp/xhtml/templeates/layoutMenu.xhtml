@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css">
+	<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+	</style>
+	<script type="text/javascript">
+	 function handleValidaCamposRequest(xhr, status, args,nombreComponente) {
+		 var componente=nombreComponente
+	        if(args.validationFailed || !args.ejecucionProceso) {  
+	        } else {  
+	        	componente.hide();  
+	        }  
+	    }  
+	</script>
+	<title>Gestion patronal</title>
+</h:head>
+<h:body>
+	<a id="top"> </a>
+
+	<div class="site_position_center">
+	<div class="main_wrap">
+		<div class="header_top">
+			<div class="top_nav">
+				<ul>
+					<li><a href="http://www.imss.gob.mx" title="Portal IMSS">Visita
+							el portal oficial del Instituto Mexicano del Seguro Social </a></li>
+				</ul>
+			</div>
+		</div>
+		<h:graphicImage library="images" name="banner.gif"  width="471" height="83" title="Portal IMSS"/>
+			<div class="top_search">
+			</div>
+					<h:form>
+					<div>
+						<p:menubar model="#{menuMb.menu}" autoSubmenuDisplay="true" />
+					</div>
+					</h:form>	
+			<div id="content" class="page_holder_no_height">
+				<div class="post_entry_wide no-border">
+					<div class="form-comment">
+						<ui:insert name="content">Bitacora </ui:insert>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="copyright">
+			<p align="center">
+				Reforma 476, Col. Juárez, México DF - Tel 01 800 623 23 23 - <br />
+				ALGUNOS DERECHOS RESERVADOS © IMSS - 2011 <br /> <br />
+			</p>
+			<div align="center">
+				<h:graphicImage library="images" name="pie.jpg"/>
+			</div>
+			<a class="go_top" href="#top" title="Arriba">↑</a>
+		</div>
+	</div>
+</h:body>
+</html>

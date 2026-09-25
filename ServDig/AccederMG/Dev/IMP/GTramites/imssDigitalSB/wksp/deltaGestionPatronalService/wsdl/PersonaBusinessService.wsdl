@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<WL5G3N0:definitions name="JwsServiceDefinitions" targetNamespace="http://delta.global.services/" xmlns="" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://delta.global.services/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N3="java:mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N4="mx.gob.imss.ctirss.delta.exception.individuo" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://delta.global.services/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://delta.global.services/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N3="java:mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N4="mx.gob.imss.ctirss.delta.exception.individuo" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="finalizarSolicitudActualizacionDatos">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="arg0" nillable="true" type="xs:long"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="finalizarSolicitudActualizacionDatosResponse">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://delta.global.services/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N3="java:mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N4="mx.gob.imss.ctirss.delta.exception.individuo" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="string" type="xs:string"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="mx.gob.imss.ctirss.delta.exception.individuo" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://delta.global.services/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N3="java:mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N4="mx.gob.imss.ctirss.delta.exception.individuo" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="string" type="xs:string"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.framework.base.exception" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://delta.global.services/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N3="java:mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N4="mx.gob.imss.ctirss.delta.exception.individuo" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="AbstractException"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.exception.individuo" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://delta.global.services/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N3="java:mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N4="mx.gob.imss.ctirss.delta.exception.individuo" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+      <xs:complexType name="AfectacionDatosPersonaException">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="AfectacionDatosPersonaException" type="java:AfectacionDatosPersonaException" xmlns:java="java:mx.gob.imss.ctirss.delta.exception.individuo"/>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://delta.global.services/" xmlns:WL5G3N2="mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N3="java:mx.gob.imss.ctirss.delta.framework.exceptions" xmlns:WL5G3N4="mx.gob.imss.ctirss.delta.exception.individuo" xmlns:WL5G3N5="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+      <xs:complexType name="SolicitudNoValidaException">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SolicitudNoEncontradaException">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PersonaNoEncontradaException">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TramiteNoEncontradoException">
+        <xs:complexContent>
+          <xs:extension base="java:AbstractException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.base.exception"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SolicitudNoValidaException" type="java:SolicitudNoValidaException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.exceptions"/>
+      <xs:element name="SolicitudNoEncontradaException" type="java:SolicitudNoEncontradaException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.exceptions"/>
+      <xs:element name="PersonaNoEncontradaException" type="java:PersonaNoEncontradaException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.exceptions"/>
+      <xs:element name="TramiteNoEncontradoException" type="java:TramiteNoEncontradoException" xmlns:java="java:mx.gob.imss.ctirss.delta.framework.exceptions"/>
+    </xs:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="finalizarSolicitudActualizacionDatos">
+    <WL5G3N0:part element="WL5G3N1:finalizarSolicitudActualizacionDatos" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="finalizarSolicitudActualizacionDatosResponse">
+    <WL5G3N0:part element="WL5G3N1:finalizarSolicitudActualizacionDatosResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SolicitudNoValidaException">
+    <WL5G3N0:part element="WL5G3N2:string" name="SolicitudNoValidaException"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="SolicitudNoEncontradaException">
+    <WL5G3N0:part element="WL5G3N3:SolicitudNoEncontradaException" name="SolicitudNoEncontradaException"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="PersonaNoEncontradaException">
+    <WL5G3N0:part element="WL5G3N3:PersonaNoEncontradaException" name="PersonaNoEncontradaException"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="TramiteNoEncontradoException">
+    <WL5G3N0:part element="WL5G3N3:TramiteNoEncontradoException" name="TramiteNoEncontradoException"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="AfectacionDatosPersonaException">
+    <WL5G3N0:part element="WL5G3N4:string" name="AfectacionDatosPersonaException"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="Jws">
+    <WL5G3N0:operation name="finalizarSolicitudActualizacionDatos" parameterOrder="parameters">
+      <WL5G3N0:input message="WL5G3N1:finalizarSolicitudActualizacionDatos"/>
+      <WL5G3N0:output message="WL5G3N1:finalizarSolicitudActualizacionDatosResponse"/>
+      <WL5G3N0:fault message="WL5G3N1:SolicitudNoValidaException" name="SolicitudNoValidaException"/>
+      <WL5G3N0:fault message="WL5G3N1:SolicitudNoEncontradaException" name="SolicitudNoEncontradaException"/>
+      <WL5G3N0:fault message="WL5G3N1:PersonaNoEncontradaException" name="PersonaNoEncontradaException"/>
+      <WL5G3N0:fault message="WL5G3N1:TramiteNoEncontradoException" name="TramiteNoEncontradoException"/>
+      <WL5G3N0:fault message="WL5G3N1:AfectacionDatosPersonaException" name="AfectacionDatosPersonaException"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="JwsServiceSoapBinding" type="WL5G3N1:Jws">
+    <WL5G3N5:binding style="document" transport="http://www.bea.com/soap/transport/local"/>
+    <WL5G3N0:operation name="finalizarSolicitudActualizacionDatos">
+      <WL5G3N5:operation soapAction="http://delta.global.services/finalizarSolicitudActualizacionDatos" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N5:body parts="parameters" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N5:body use="literal"/>
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="SolicitudNoEncontradaException">
+        <WL5G3N5:fault name="SolicitudNoEncontradaException" use="literal"/>
+      </WL5G3N0:fault>
+      <WL5G3N0:fault name="TramiteNoEncontradoException">
+        <WL5G3N5:fault name="TramiteNoEncontradoException" use="literal"/>
+      </WL5G3N0:fault>
+      <WL5G3N0:fault name="PersonaNoEncontradaException">
+        <WL5G3N5:fault name="PersonaNoEncontradaException" use="literal"/>
+      </WL5G3N0:fault>
+      <WL5G3N0:fault name="SolicitudNoValidaException">
+        <WL5G3N5:fault name="SolicitudNoValidaException" use="literal"/>
+      </WL5G3N0:fault>
+      <WL5G3N0:fault name="AfectacionDatosPersonaException">
+        <WL5G3N5:fault name="AfectacionDatosPersonaException" use="literal"/>
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+</WL5G3N0:definitions>

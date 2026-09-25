@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:request type="XML">
+        <con5:schema ref="Movimiento06SINDOProject/schemas/movimientoReingreso" element="MovimientoReingreso" xmlns:con5="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:request>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>jms</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>jms://172.24.116.37:15051,172.24.116.37:15052/jms.GeneralConnectionFactory/jms.ReingresoNSScanaseDistributedQueue</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific xsi:type="jms:JmsEndPointConfiguration">
+      <jms:is-queue>true</jms:is-queue>
+      <jms:is-secure>false</jms:is-secure>
+      <jms:inbound-properties>
+        <jms:response-required>false</jms:response-required>
+        <jms:XA-required>false</jms:XA-required>
+      </jms:inbound-properties>
+      <jms:jms-service-account ref="Movimiento06SINDOProject/DeltaSindoAccount"/>
+      <jms:request-encoding>UTF-8</jms:request-encoding>
+      <jms:jndi-timeout>0</jms:jndi-timeout>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con1:pipeline type="request" name="PipelinePairNode1_request">
+      <con1:stage name="stage1">
+        <con1:context>
+          <con2:varNsDecl namespace="http://wwww.mx.gob.imss.ctirss.delta/integracion_reingreso" prefix="int"/>
+          <con2:varNsDecl namespace="http://www.mx.gob.imss.ctirss.delta/integracion_reingreso" prefix="int1"/>
+        </con1:context>
+        <con1:actions>
+          <con4:log>
+            <con2:id>_ActionId-2467420181882772796-375e79f4.13fceac1e01.-7fe8</con2:id>
+            <con4:logLevel>warning</con4:logLevel>
+            <con4:expr>
+              <con2:xqueryText>$body</con2:xqueryText>
+            </con4:expr>
+            <con4:message>Mensaje recibido 
+-----></con4:message>
+          </con4:log>
+          <con3:assign varName="reingreso">
+            <con2:id>_ActionId-5193187726642440242--1fe285c0.13fc9369164.-7fdd</con2:id>
+            <con3:expr>
+              <con2:xqueryTransform>
+                <con2:resource ref="Movimiento06SINDOProject/xquery/MovimientoReingresoXML_MFL"/>
+                <con2:param name="movimientoReingreso1">
+                  <con2:path>$body/int1:MovimientoReingreso</con2:path>
+                </con2:param>
+              </con2:xqueryTransform>
+            </con3:expr>
+          </con3:assign>
+          <con3:replace varName="body" contents-only="true">
+            <con2:id>_ActionId-5193187726642440242--1fe285c0.13fc9369164.-7fbe</con2:id>
+            <con3:location>
+              <con2:xpathText>.</con2:xpathText>
+            </con3:location>
+            <con3:expr>
+              <con2:xqueryText>$reingreso</con2:xqueryText>
+            </con3:expr>
+          </con3:replace>
+          <con4:log>
+            <con2:id>_ActionId-5193187726642440242--1fe285c0.13fc9369164.-7f99</con2:id>
+            <con4:logLevel>warning</con4:logLevel>
+            <con4:expr>
+              <con2:xqueryText>$body</con2:xqueryText>
+            </con4:expr>
+            <con4:message>Body modificado</con4:message>
+          </con4:log>
+          <con3:mflTransform>
+            <con2:id>_ActionId-5193187726642440242--1fe285c0.13fc9369164.-7f75</con2:id>
+            <con3:type>XML-To-nonXML</con3:type>
+            <con3:sourceExpr>
+              <con2:xqueryText>$body/MovimientoReingreso</con2:xqueryText>
+            </con3:sourceExpr>
+            <con3:mfl-resource ref="Movimiento06SINDOProject/mfl/MovimientoReingreso"/>
+            <con3:assign-variable>trama</con3:assign-variable>
+          </con3:mflTransform>
+          <con3:javaCallout varName="result">
+            <con2:id>_ActionId-5193187726642440242--1fe285c0.13fc9369164.-7f4e</con2:id>
+            <con3:archive ref="Movimiento06SINDOProject/jar/layout-callout"/>
+            <con3:className>mx.gob.imss.ctirss.delta.gestion.clasificacion.callouts.LayoutCallOut</con3:className>
+            <con3:method>public static java.lang.String generateLayout(java.lang.String, [B)</con3:method>
+            <con3:expr>
+              <con2:xqueryText>'/ctirss/w/servicios4/srvs04/domains/d_osb/delta/sindo/reingreso/reingreso.txt'</con2:xqueryText>
+            </con3:expr>
+            <con3:expr>
+              <con2:xqueryText>$trama</con2:xqueryText>
+            </con3:expr>
+            <con3:return-param-as-ref>false</con3:return-param-as-ref>
+          </con3:javaCallout>
+          <con4:log>
+            <con2:id>_ActionId-5193187726642440242--1fe285c0.13fc9369164.-7f39</con2:id>
+            <con4:logLevel>warning</con4:logLevel>
+            <con4:expr>
+              <con2:xqueryText>$result</con2:xqueryText>
+            </con4:expr>
+            <con4:message>Result del java callout</con4:message>
+          </con4:log>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline type="response" name="PipelinePairNode1_response"/>
+    <con1:flow>
+      <con1:pipeline-node name="PipelinePairNode1">
+        <con1:request>PipelinePairNode1_request</con1:request>
+        <con1:response>PipelinePairNode1_response</con1:response>
+      </con1:pipeline-node>
+    </con1:flow>
+  </ser:router>
+</xml-fragment>

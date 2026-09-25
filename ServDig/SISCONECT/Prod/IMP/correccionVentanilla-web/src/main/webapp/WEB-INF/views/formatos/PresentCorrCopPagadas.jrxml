@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PresentCorrCopPagadas" pageWidth="560" pageHeight="792" columnWidth="560" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.1269722013523664"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="rutaImagen" class="java.lang.String"/>
+	<field name="cuotasImss" class="java.lang.String"/>
+	<field name="cuotasImssActualizacion" class="java.lang.String"/>
+	<field name="cuotasImssRecargos" class="java.lang.String"/>
+	<field name="cuotasImssTotal" class="java.lang.String"/>
+	<field name="rcv" class="java.lang.String"/>
+	<field name="rcvActualizacion" class="java.lang.String"/>
+	<field name="rcvRecargos" class="java.lang.String"/>
+	<field name="rcvTotal" class="java.lang.String"/>
+	<field name="totalCuotasRcv" class="java.lang.String"/>
+	<field name="totalActualizacion" class="java.lang.String"/>
+	<field name="totalRecargos" class="java.lang.String"/>
+	<field name="granTotal" class="java.lang.String"/>
+	<field name="calle" class="java.lang.String"/>
+	<field name="numExt" class="java.lang.String"/>
+	<field name="numInt" class="java.lang.String"/>
+	<field name="colonia" class="java.lang.String"/>
+	<field name="municipio" class="java.lang.String"/>
+	<field name="localidad" class="java.lang.String"/>
+	<field name="entidadFederativa" class="java.lang.String"/>
+	<field name="codigoPostal" class="java.lang.String"/>
+	<field name="digitoVerificador" class="java.lang.String"/>
+	<field name="registroPatronal" class="java.lang.String"/>
+	<field name="numTrabajadoresRegularizados" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="69">
+			<image>
+				<reportElement x="19" y="8" width="67" height="55"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{rutaImagen}.concat("logo_imss.JPG")]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement x="86" y="3" width="471" height="60"/>
+				<staticText>
+					<reportElement x="80" y="0" width="262" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[INSTITUTO MEXICANO DEL SEGURO SOCIAL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="61" y="21" width="291" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[COORDINACION DE CORRECCIÓN Y DICTAMEN]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="172" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="8" width="557" height="156"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="147" y="9" width="281" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE C.O.P. PAGADAS EN LA CORRECCIÓN]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="0" y="7" width="557" height="157"/>
+				<staticText>
+					<reportElement x="12" y="91" width="66" height="20"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[  CUOTAS IMSS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="12" y="111" width="66" height="20"/>
+					<box>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[  R.C.V]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="12" y="130" width="66" height="20"/>
+					<box>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL  ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="145" y="91" width="69" height="20"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ACTUALIZACIÓN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="280" y="91" width="66" height="20"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ RECARGOS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="414" y="91" width="66" height="20"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ TOTAL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="414" y="111" width="66" height="20"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ TOTAL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="414" y="131" width="66" height="19"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[GRAN TOTAL ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="145" y="111" width="69" height="20"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ACTUALIZACIÓN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="145" y="130" width="69" height="20"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="280" y="111" width="66" height="20"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ RECARGOS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="280" y="131" width="66" height="19"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<leftPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL ]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="79" y="91" width="66" height="20"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{cuotasImss}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="79" y="111" width="66" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{rcv}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="79" y="131" width="66" height="19"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{totalCuotasRcv}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="214" y="91" width="66" height="20"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{cuotasImssActualizacion}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="214" y="111" width="66" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{rcvActualizacion}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="214" y="131" width="66" height="19"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{totalActualizacion}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="347" y="91" width="66" height="20"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{cuotasImssRecargos}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="347" y="110" width="66" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{rcvRecargos}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="347" y="131" width="66" height="19"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{totalRecargos}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="481" y="91" width="66" height="20"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{cuotasImssTotal}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="481" y="111" width="66" height="20"/>
+					<box>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{rcvTotal}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="481" y="131" width="66" height="19"/>
+					<box>
+						<topPen lineWidth="1.5"/>
+						<bottomPen lineWidth="1.5"/>
+						<rightPen lineWidth="1.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{granTotal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="12" y="55" width="221" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[REGISTRO PATRONAL CORREGIDO]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="12" y="35" width="221" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{registroPatronal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="262" y="55" width="60" height="20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DIGITO VERIFICADOR]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="262" y="35" width="60" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{digitoVerificador}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

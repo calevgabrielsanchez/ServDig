@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:conv="http://www.openuri.org/2002/04/soap/conversation/" xmlns:cw="http://www.openuri.org/2002/04/wsdl/conversation/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:jms="http://www.openuri.org/2002/04/wsdl/jms/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.openuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://www.openuri.org/">
+  <types>
+    <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:ope="http://www.openuri.org/" elementFormDefault="qualified" targetNamespace="http://www.openuri.org/">
+      <s:element name="consultaCURP">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="entrada" type="ope:ParametrosConsulta" minOccurs="0"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultaCURPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="consultaCURPResult" type="ope:CurpKioscosBean" minOccurs="0"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaDatosCURP">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="entrada" type="s:string" minOccurs="0"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaDatosCURPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="ConsultaDatosCURPResult" type="ope:CurpKioscosBean" minOccurs="0"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurpKioscosBean" nillable="true" type="ope:CurpKioscosBean"/>
+      <s:complexType name="ParametrosConsulta">
+        <s:sequence>
+          <s:element name="Curp" type="s:string" minOccurs="0"/>
+          <s:element name="ApellidoPaterno" type="s:string" minOccurs="0"/>
+          <s:element name="ApellidoMaterno" type="s:string" minOccurs="0"/>
+          <s:element name="Nombres" type="s:string" minOccurs="0"/>
+          <s:element name="Sexo" type="s:string" minOccurs="0"/>
+          <s:element name="FechNac" type="s:string" minOccurs="0"/>
+          <s:element name="CveEntidadNac" type="s:string" minOccurs="0"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CurpKioscosBean">
+        <s:sequence>
+          <s:element name="AnioReg" type="s:int"/>
+          <s:element name="Apellido1" type="s:string" minOccurs="0"/>
+          <s:element name="Apellido2" type="s:string" minOccurs="0"/>
+          <s:element name="CodigoError" type="s:int"/>
+          <s:element name="CRIP" type="s:int"/>
+          <s:element name="Curp" type="s:string" minOccurs="0"/>
+          <s:element name="CveEntidadEmisora" type="s:string" minOccurs="0"/>
+          <s:element name="CveEntidadNac" type="s:string" minOccurs="0"/>
+          <s:element name="CveMunicipioReg" type="s:int"/>
+          <s:element name="DocProbatorio" type="s:int"/>
+          <s:element name="FechNac" type="s:string" minOccurs="0"/>
+          <s:element name="Foja" type="s:int"/>
+          <s:element name="FolioCarta" type="s:int"/>
+          <s:element name="Libro" type="s:int"/>
+          <s:element name="Message" type="s:string" minOccurs="0"/>
+          <s:element name="Nacionalidad" type="s:string" minOccurs="0"/>
+          <s:element name="Nombres" type="s:string" minOccurs="0"/>
+          <s:element name="NumEntidadReg" type="s:int"/>
+          <s:element name="NumRegExtranjeros" type="s:int"/>
+          <s:element name="Sexo" type="s:string" minOccurs="0"/>
+          <s:element name="StatusOper" type="s:string" minOccurs="0"/>
+          <s:element name="TipoError" type="s:int"/>
+          <s:element name="Tomo" type="s:int"/>
+          <s:element name="EstatusCURP" type="s:string" minOccurs="0"/>
+          <s:element name="NumActa" type="s:int"/>
+          <s:element name="DesMunicipio" type="s:string" minOccurs="0"/>
+          <s:element name="DesEntidadNac" type="s:string" minOccurs="0"/>
+          <s:element name="DesEntidadRegistro" type="s:string" minOccurs="0"/>
+          <s:element name="DesEstatusCURP" type="s:string" minOccurs="0"/>
+          <s:element name="CurpsHistoricas" type="s:string" minOccurs="0"/>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+
+  </types>
+  <message name="consultaCURPSoapIn">
+    <part name="parameters" element="s0:consultaCURP"/>
+  </message>
+  <message name="consultaCURPSoapOut">
+    <part name="parameters" element="s0:consultaCURPResponse"/>
+  </message>
+  <message name="ConsultaDatosCURPSoapIn">
+    <part name="parameters" element="s0:ConsultaDatosCURP"/>
+  </message>
+  <message name="ConsultaDatosCURPSoapOut">
+    <part name="parameters" element="s0:ConsultaDatosCURPResponse"/>
+  </message>
+  <message name="ConsultaDatosCURPHttpGetIn">
+    <part name="entrada" type="s:string"/>
+  </message>
+  <message name="ConsultaDatosCURPHttpGetOut">
+    <part name="Body" element="s0:CurpKioscosBean"/>
+  </message>
+  <message name="ConsultaDatosCURPHttpPostIn">
+    <part name="entrada" type="s:string"/>
+  </message>
+  <message name="ConsultaDatosCURPHttpPostOut">
+    <part name="Body" element="s0:CurpKioscosBean"/>
+  </message>
+  <portType name="wsimsscurpSoap">
+    <operation name="consultaCURP">
+      <input message="s0:consultaCURPSoapIn"/>
+      <output message="s0:consultaCURPSoapOut"/>
+    </operation>
+    <operation name="ConsultaDatosCURP">
+      <input message="s0:ConsultaDatosCURPSoapIn"/>
+      <output message="s0:ConsultaDatosCURPSoapOut"/>
+    </operation>
+  </portType>
+  <portType name="wsimsscurpHttpGet">
+    <operation name="ConsultaDatosCURP">
+      <input message="s0:ConsultaDatosCURPHttpGetIn"/>
+      <output message="s0:ConsultaDatosCURPHttpGetOut"/>
+    </operation>
+  </portType>
+  <portType name="wsimsscurpHttpPost">
+    <operation name="ConsultaDatosCURP">
+      <input message="s0:ConsultaDatosCURPHttpPostIn"/>
+      <output message="s0:ConsultaDatosCURPHttpPostOut"/>
+    </operation>
+  </portType>
+  <binding name="wsimsscurpSoap" type="s0:wsimsscurpSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="consultaCURP">
+      <soap:operation soapAction="http://www.openuri.org/consultaCURP" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ConsultaDatosCURP">
+      <soap:operation soapAction="http://www.openuri.org/ConsultaDatosCURP" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <binding name="wsimsscurpHttpGet" type="s0:wsimsscurpHttpGet">
+    <http:binding verb="GET"/>
+    <operation name="ConsultaDatosCURP">
+      <http:operation location="/ConsultaDatosCURP"/>
+      <input>
+        <http:urlEncoded/>
+      </input>
+      <output>
+        <mime:mimeXml part="Body"/>
+      </output>
+    </operation>
+  </binding>
+  <binding name="wsimsscurpHttpPost" type="s0:wsimsscurpHttpPost">
+    <http:binding verb="POST"/>
+    <operation name="ConsultaDatosCURP">
+      <http:operation location="/ConsultaDatosCURP"/>
+      <input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </input>
+      <output>
+        <mime:mimeXml part="Body"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="wsimsscurp">
+    <port name="wsimsscurpSoap" binding="s0:wsimsscurpSoap">
+        <soap:address location="http://${mvn.server.ws.renapo}/ServiciosPerifericos/ConsultaCURPHistorica.ws"/>
+    </port>
+    <port name="wsimsscurpHttpGet" binding="s0:wsimsscurpHttpGet">
+        <http:address location="http://${mvn.server.ws.renapo}/ServiciosPerifericos/ConsultaCURPHistorica.ws"/>
+    </port>
+    <port name="wsimsscurpHttpPost" binding="s0:wsimsscurpHttpPost">
+        <http:address location="http://${mvn.server.ws.renapo}/ServiciosPerifericos/ConsultaCURPHistorica.ws"/>
+        
+    </port>
+  </service>
+</definitions>
+

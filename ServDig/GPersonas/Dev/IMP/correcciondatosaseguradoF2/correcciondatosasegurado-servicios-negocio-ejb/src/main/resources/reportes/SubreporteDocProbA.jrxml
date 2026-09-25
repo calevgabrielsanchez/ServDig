@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubreporteDocumentosProbatoriosNew" pageWidth="555" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" isIgnorePagination="true">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="DOC_PROB_ACTA_NAC" class="java.lang.String"/>
+	<parameter name="DOC_PROB_IFE" class="java.lang.String"/>
+	<parameter name="DOC_PROB_PASAPORTE" class="java.lang.String"/>
+	<parameter name="DOC_PROB_CARTILLA" class="java.lang.String"/>
+	<parameter name="DOC_PROB_CEDULA" class="java.lang.String"/>
+	<parameter name="DOC_PROB_MATRICULA_CONSULAR" class="java.lang.String"/>
+	<parameter name="DOC_PROB_IDENTIDAD_EXTRANJERO" class="java.lang.String"/>
+	<parameter name="DOC_PROB_DOCTO_MIGRATORIO" class="java.lang.String"/>
+	<parameter name="DOC_PROB_LIST" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="22" width="554" height="38" forecolor="#000000" backcolor="#E7E8E7"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="11" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[VII. Indicar en el recuadro los documentos probatorios que presenta el asegurado o solicitante en copia simple y original para su cotejo]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="224" splitType="Stretch">
+			<staticText>
+				<reportElement x="16" y="104" width="302" height="16"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[d) Cédula profesional]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="234" height="16"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Identificación oficial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="72" width="302" height="16"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[b) Pasaporte vigente, mexicano o extranjero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="151" width="495" height="27"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[g) Documento migratorio vigente que corresponda, emitido por autoridad competente (en su caso prórroga o refrendo migratorio)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="120" width="487" height="16"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[e) Matrícula consular (documento de identidad que expide una oficina consular a favor de un connacional)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="88" width="302" height="16"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[c) Cartilla del servicio militar nacional]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1" width="234" height="16"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Para ser llenado por el IMSS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="192" width="323" height="16"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Clave Única de Registro de Población CURP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="135" width="487" height="17"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[f) Tarjeta/cédula/carnet de identidad para extranjeros (en caso de extranjeros)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="56" width="255" height="16"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[a) Credencial para votar vigente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="24" width="234" height="16"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Acta de nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="208" width="520" height="16"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Comprobante de domicilio de reciente expedición, no mayor de tres meses a la fecha de presentación de la solicitud.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="527" y="208" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[[  ]]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="527" y="24" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "1" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="52" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "36" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="68" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "38" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="84" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "37" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="100" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "35" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="116" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "130" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="132" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "47" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="158" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "28" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="192" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "34" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+</jasperReport>

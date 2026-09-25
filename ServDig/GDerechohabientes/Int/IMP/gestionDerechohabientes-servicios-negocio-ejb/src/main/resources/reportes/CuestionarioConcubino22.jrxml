@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CuestionarioConcubino12" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1"/>
+	<parameter name="BENEFICIARIO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="39" splitType="Stretch">
+			<rectangle>
+				<reportElement x="437" y="2" width="62" height="37" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="437" y="2" width="62" height="37"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Uso exclusivo del IMSS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="532" splitType="Stretch">
+			<rectangle>
+				<reportElement x="437" y="0" width="62" height="529" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="11" y="7" width="13" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[13]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="20" width="183" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[1.-Si]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="207" y="20" width="180" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[2.-No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="387" y="20" width="50" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="437" y="20" width="50" height="17" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="437" y="54" width="50" height="17" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="11" y="41" width="13" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[14]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="387" y="54" width="50" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="437" y="87" width="50" height="17" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="87" width="181" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[1.-Si]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="11" y="74" width="13" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[15]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="387" y="87" width="50" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="205" y="87" width="182" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[2.-No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="387" y="120" width="50" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="11" y="107" width="13" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[16]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="437" y="120" width="50" height="17" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="174" width="363" height="13"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<text><![CDATA[¿Hace cuánto tiempo que viven juntos usted y su pareja?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="187" width="105" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[1.-Menos de un año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="129" y="187" width="136" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[2.-Entre uno y cuatro años.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="11" y="174" width="13" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[18]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="387" y="187" width="50" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="437" y="187" width="50" height="17" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="11" y="141" width="13" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[17]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="387" y="154" width="50" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="437" y="154" width="50" height="17" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="387" y="220" width="50" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="11" y="207" width="13" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[19]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="437" y="220" width="50" height="17" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="387" y="253" width="50" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="11" y="240" width="13" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[20]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="437" y="253" width="50" height="17" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="253" width="363" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="11" y="272" width="13" height="28"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[21]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="437" y="285" width="50" height="15" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="387" y="285" width="50" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="387" y="411" width="50" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="11" y="398" width="13" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[22]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="411" width="363" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="437" y="411" width="50" height="17" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="444" width="181" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[1.-Si ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="11" y="431" width="13" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[23]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="437" y="444" width="50" height="17" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="205" y="444" width="182" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[2.-No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="387" y="444" width="50" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="318" width="153" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ Alimentación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="11" y="305" width="13" height="88"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[24]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="437" y="378" width="50" height="15" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="387" y="378" width="50" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="333" width="153" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ Vestido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="348" width="153" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ Calzado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="177" y="318" width="105" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ Si(    )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="177" y="348" width="105" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ Si(    )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="177" y="333" width="105" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ Si(    )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="378" width="153" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ Diversión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="177" y="363" width="105" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ Si(    )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="177" y="378" width="105" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ Si(    )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="363" width="153" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ Atención médica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="207" y="54" width="180" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[2.-No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="54" width="183" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[1.-Si]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="205" y="154" width="182" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[2.-No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="154" width="181" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[1.-Si]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="265" y="187" width="122" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[3.-Cinco años o mas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="220" width="181" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[1.-Si ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="205" y="220" width="182" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[2.-No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="282" y="363" width="105" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ No(    )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="282" y="333" width="105" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ No(    )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="282" y="318" width="105" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ No(    )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="282" y="348" width="105" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ No(    )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="282" y="378" width="105" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ No(    )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="437" y="478" width="50" height="17" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="205" y="478" width="182" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[2.-No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="11" y="465" width="13" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[23]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="387" y="478" width="50" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="478" width="181" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[1.-Si ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="204" y="512" width="182" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[2.-No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="386" y="512" width="50" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="436" y="512" width="50" height="17" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="10" y="499" width="13" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[23]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="23" y="512" width="181" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[1.-Si ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="7" width="363" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[  ¿Actualmente está casada(o) por el civil?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="41" width="363" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[ ¿Usted se prepara usualmente su desayuno?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="74" width="363" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[ ¿Usted Fuma?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="107" width="363" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[ ¿ En que año se conocieron usted y su pareja?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="141" width="363" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[¿Su pareja ha sido derechohabiente del IMSS anteriormente ? ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="207" width="363" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[¿A usted le han practicado alguna cirugía (operación), en  los últimos cinco años?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="240" width="363" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[¿En donde trabaja usted actualmente?]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="24" y="305" width="363" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Usted aporta recursos a su pareja para el pago de su…?"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="398" width="363" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[ ¿Cuándo su pareja se enferma, quien le lleva al doctor y le compra sus medicinas?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="431" width="363" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[¿Su pareja trabaja actualmente?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="465" width="363" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[¿Su pareja necesita de su ayuda económica para mantenerse (cubrir sus gastos)?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="23" y="499" width="363" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[¿Su pareja solamente recibe ayuda económica de usted?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="272" width="363" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[En su familia, ¿Quién hace la mayor aportación económica al gasto familiar? ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="205" y="120" width="182" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[2.-No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="120" width="181" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[1.-Si]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="24" y="285" width="88" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[1.- Usted]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="112" y="285" width="88" height="15" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[2.- Su pareja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="200" y="285" width="100" height="15" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[3.- Su hijo(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="300" y="285" width="88" height="15" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[4.- Otra persona]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="65" splitType="Stretch">
+			<rectangle>
+				<reportElement x="6" y="4" width="544" height="53" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="11" y="3" width="134" height="14"/>
+				<textElement/>
+				<text><![CDATA[Uso exclusivo personal IMSS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="22" width="43" height="13"/>
+				<textElement/>
+				<text><![CDATA[Filtro 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="38" width="43" height="13"/>
+				<textElement/>
+				<text><![CDATA[Filtro 2]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="54" y="22" width="91" height="13"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="54" y="38" width="91" height="13"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="454" y="22" width="91" height="13"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="414" y="42" width="131" height="13"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Transparent" x="263" y="22" width="154" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Total beneficiario concubina(rio)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="246" y="42" width="171" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Resultado beneficiario concubina(rio)]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

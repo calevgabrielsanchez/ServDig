@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cuestinario="http://mx.gob.imss.digital.modelo.cuestionario" targetNamespace="http://mx.gob.imss.digital.modelo.cuestionario" version="1.0">
+
+  <xs:element name="opcion" type="cuestinario:opcion"/>
+
+  <xs:element name="personaCuestionario" type="cuestinario:personaCuestionario"/>
+
+  <xs:element name="respuesta" type="cuestinario:respuesta"/>
+
+  <xs:element name="respuestasCuestionario" type="cuestinario:respuestasCuestionario"/>
+
+  <xs:complexType name="respuesta">
+    <xs:sequence>
+      <xs:element name="cvePregunta" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="valores" nillable="true" type="cuestinario:opcion"/>
+      <xs:element minOccurs="0" name="numPregunta" type="xs:string"/>
+      <xs:element name="numSeccion" type="xs:int"/>
+      <xs:element minOccurs="0" name="errorFormGeneral" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="opcion">
+    <xs:sequence>
+      <xs:element name="clave" type="xs:int"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+      <xs:element name="valor" type="xs:int"/>
+      <xs:element name="habilitarDependencia" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="errorFormGeneral" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="personaCuestionario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idPersona" type="xs:long"/>
+      <xs:element minOccurs="0" ref="cuestinario:respuestasCuestionario"/>
+      <xs:element minOccurs="0" name="cuestionarioValido" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="errorFormGeneral" type="xs:string"/>
+      <xs:element minOccurs="0" name="nssPersona" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="respuestasCuestionario">
+    <xs:sequence>
+      <xs:element name="tipoCuestionario" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="respuestas" nillable="true" type="cuestinario:respuesta"/>
+      <xs:element name="sumatoriaRespuestas" type="xs:int"/>
+      <xs:element minOccurs="0" name="errorFormGeneral" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

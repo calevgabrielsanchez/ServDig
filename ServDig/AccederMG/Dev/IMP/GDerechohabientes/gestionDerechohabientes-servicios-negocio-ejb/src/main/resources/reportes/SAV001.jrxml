@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SAV001" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="170"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#CC8F8F">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="curp" class="java.lang.String"/>
+	<parameter name="nss" class="java.lang.String"/>
+	<parameter name="aPaterno" class="java.lang.String"/>
+	<parameter name="aMaterno" class="java.lang.String"/>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="modalidad" class="java.lang.String"/>
+	<field name="nombreCompleto" class="java.lang.String"/>
+	<field name="agregadoIdentidad" class="java.lang.String"/>
+	<field name="mesNacimiento" class="java.lang.String"/>
+	<field name="vencimiento" class="java.lang.String"/>
+	<field name="autorizado" class="java.lang.String"/>
+	<field name="consultorio" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="91" splitType="Stretch">
+			<staticText>
+				<reportElement x="56" y="15" width="250" height="20" forecolor="#003399"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTITUTO MEXICANO DEL SEGURO SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="35" width="250" height="31" forecolor="#003399"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SERVICIOS DE AFILIACION VIGENCIA DE DERECHOS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="311" y="16" width="261" height="51"/>
+			</rectangle>
+			<line>
+				<reportElement x="311" y="42" width="261" height="1"/>
+			</line>
+			<line>
+				<reportElement x="445" y="16" width="1" height="51"/>
+			</line>
+			<textField>
+				<reportElement x="353" y="42" width="48" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[C.U.R.P]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="43" width="127" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[No. DE SEGURIDAD SOCIAL]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="186" y="70" width="209" height="20" forecolor="#003399"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TARJETA DE ADSCRIPCION A CLINICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="514" y="1" width="57" height="20" forecolor="#003399"/>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[S.A.V. 001]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="311" y="16" width="134" height="27"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{curp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="16" width="125" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nss}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="102" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="13" width="571" height="49"/>
+			</rectangle>
+			<line>
+				<reportElement x="1" y="37" width="571" height="1"/>
+			</line>
+			<line>
+				<reportElement x="419" y="14" width="1" height="48"/>
+			</line>
+			<textField>
+				<reportElement x="3" y="40" width="122" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[APELLIDO PATERNO]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="40" width="117" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[APELLIDO MATERNO]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="242" y="40" width="178" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[NOMBRE (S)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="40" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[MODALIDAD]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="0" y="62" width="225" height="39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[                    DERECHOHABIENTES                       APELLIDO PATERNO MATERNO NOMBRE (S)]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="225" y="62" width="58" height="39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[AGREGADO DE IDENTIDAD]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="283" y="62" width="58" height="39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[MES DE NACIMIENTO]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="341" y="62" width="78" height="39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[VENCIMIENTO BAJA O EXCEPCIONES]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="419" y="62" width="76" height="39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[PERSONAL AUTORIZADO A REGISTRAR]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Transparent" x="495" y="62" width="76" height="39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[CONSULTORIO Y TURNO]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="534" y="13" width="1" height="24"/>
+			</line>
+			<line>
+				<reportElement x="496" y="13" width="1" height="24"/>
+			</line>
+			<line>
+				<reportElement x="457" y="13" width="1" height="24"/>
+			</line>
+			<textField>
+				<reportElement x="3" y="14" width="122" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{aPaterno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="125" y="14" width="116" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{aMaterno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="242" y="14" width="177" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="458" y="14" width="37" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{modalidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement style="table" mode="Opaque" x="0" y="0" width="225" height="31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombreCompleto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="225" y="0" width="58" height="31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{agregadoIdentidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="283" y="0" width="58" height="31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{mesNacimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="341" y="0" width="78" height="31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{vencimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="419" y="0" width="76" height="31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{autorizado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" mode="Opaque" x="495" y="0" width="76" height="31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{consultorio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="451" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="1" width="181" height="37"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="14" y="10" width="129" height="20"/>
+				<textElement/>
+				<text><![CDATA[U.M.F. DE ADSCRIPCION]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="541" y="1" width="30" height="37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="511" y="1" width="30" height="37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="481" y="1" width="30" height="37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="451" y="1" width="30" height="37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="421" y="1" width="30" height="37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="391" y="1" width="30" height="37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="361" y="1" width="30" height="37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="331" y="1" width="30" height="37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="301" y="1" width="30" height="37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="271" y="1" width="30" height="37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="241" y="1" width="30" height="37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="211" y="1" width="30" height="37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="181" y="1" width="30" height="37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="60" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="286" y="60" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="83" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="286" y="83" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="106" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="286" y="106" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="129" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="286" y="129" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="152" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="286" y="152" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="175" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="286" y="175" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="198" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="286" y="198" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="221" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="286" y="221" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="286" y="244" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="244" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="286" y="267" width="285" height="23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="267" width="285" height="23"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="63" width="283" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[OBSERVACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="63" width="286" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DOMICILIO DEL ASEGURADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="0" y="312" width="380" height="128"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[                  EXCEPCIONES PARA EL OTORGAMIENTO DE SERVICIOS
+ S.D.S.M.         SIN DERECHO A SERVICIOS DE MATERNIDAD
+ S.D.S.M.H.      SIN DERECHO A SERVICIOS DE MATERNIDAD Y HOSPITALIZACION
+ S.D.S.H.         SIN DERECHO A SERVICIOS DE HOSPITALIZACION
+ S.D.E.I.          SIN DERECHO A EXPEDICION DE INCAPACIDADES
+ S.D.S.M.H.C   SIN DERECHO A SERVICIOS DE MATERNIDAD Y HOSPITALIZACION
+                       POR ENFERMEDAD CRONICA
+ S.D.S.H.C.      SIN DERECHO A SERVS. DE HOSP. POR ENFERMEDAD CRONICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="391" y="312" width="180" height="128"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[SELLO DE AFILIACION VIGENCIA]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

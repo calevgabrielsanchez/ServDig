@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:doc="http://mx.gob.imss.digital.modelo.documento.probatorio" targetNamespace="http://mx.gob.imss.digital.modelo.documento.probatorio" version="1.0">
+
+  <xs:element name="documento" type="doc:documento"/>
+
+  <xs:element name="documentoPorTipo" type="doc:documentoPorTipo"/>
+
+  <xs:element name="documentoProbatorio" type="doc:documentoProbatorio"/>
+
+  <xs:element name="tipoDocumentoProbatorio" type="doc:tipoDocumentoProbatorio"/>
+
+  <xs:complexType name="documento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cveIdDocumento" type="xs:long"/>
+      <xs:element minOccurs="0" name="desDocumento" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="documentoPorTipo">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="doc:tipoDocumentoProbatorio"/>
+      <xs:element minOccurs="0" ref="doc:documento"/>
+      <xs:element minOccurs="0" name="idDocumentoPorTipo" type="xs:long"/>
+      <xs:element minOccurs="0" name="idDocumentoPorTipoHashed" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoDocumentoProbatorio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idTipoDocumentoProbatorio" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="documentoProbatorio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idDocumentoProbatorio" type="xs:int"/>
+      <xs:element minOccurs="0" name="fechaExpedicion" type="xs:dateTime"/>
+      <xs:element minOccurs="0" ref="doc:documentoPorTipo"/>
+      <xs:element minOccurs="0" name="digitalizacion" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="cifrado" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

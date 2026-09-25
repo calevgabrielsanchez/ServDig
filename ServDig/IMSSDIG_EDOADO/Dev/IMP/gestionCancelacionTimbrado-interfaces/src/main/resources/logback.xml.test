@@ -1,0 +1,28 @@
+<configuration><!-- debug="true" is attribute -->
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36}.%line - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+	<logger name="mx">
+		<level value="TRACE" />
+	</logger>
+	<logger name="org.hibernate.type.descriptor.sql.BasicBinder">
+		<level value="TRACE" />
+	</logger>
+	<logger name="org.hibernate.SQL">
+		<level value="TRACE" />
+	</logger>
+	<logger name="org">
+		<level value="WARN" />
+	</logger>
+	<logger name="com">
+		<level value="WARN" />
+	</logger>
+
+  <root level="WARN">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>

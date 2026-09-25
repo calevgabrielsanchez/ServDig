@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SecccionVI-c60" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Titulo Aviso" hAlign="Left" fontSize="13" isBold="true" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="base" fontSize="7" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="fondo" backcolor="#00CCFF"/>
+	<style name="fondoEncabezado" backcolor="#0000FF"/>
+	<style name="Titulo Encabezado" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="baseBold" fontSize="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold"/>
+	<style name="vineta" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<parameter name="DESCRIPCION" class="java.lang.String"/>
+	<columnHeader>
+		<band height="31">
+			<rectangle>
+				<reportElement x="1" y="15" width="553" height="16"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="baseBold" x="8" y="19" width="329" height="12"/>
+				<textElement/>
+				<text><![CDATA[60. Procesos Iniciales (Descripción):]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement style="fondo" x="1" y="0" width="553" height="15"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement style="baseBold" x="151" y="3" width="274" height="12"/>
+				<textElement/>
+				<text><![CDATA[VI.c. Procesos de trabajo de la actividad del patrón o sujeto obligado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<rectangle>
+				<reportElement x="1" y="0" width="553" height="20"/>
+			</rectangle>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="baseBold" x="8" y="1" width="544" height="15"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{DESCRIPCION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

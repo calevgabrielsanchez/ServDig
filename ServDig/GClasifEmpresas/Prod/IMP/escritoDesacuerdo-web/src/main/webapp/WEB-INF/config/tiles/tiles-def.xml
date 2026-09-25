@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="simple.base.definition" template="/WEB-INF/views/layout/main-simple.jsp">
+
+	</definition>
+
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title" value=" Corrección Datos CURP " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="breadcrumbs" value="" />
+		<put-attribute name="navegacion" value=""/>
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition.embebed" template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title" value=" Corrección Datos CURP " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="wizard.base.definition" template="/WEB-INF/views/layout/main-wizard.jsp">
+		<put-attribute name="pie" value="" />
+	</definition>
+	
+	<definition name="wizard.base.definition.consulta" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title" value=" Portal de servicios" />
+		<put-attribute name="navegacion" value="/WEB-INF/views/layout/navegacion.jsp"/>
+	</definition>
+
+	<!-- Definicion de la pantalla del gestionasegurados -->
+	<definition name="portal" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/portal/portal.jsp " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="databaseError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="internalError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="500" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="404" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+	
+	<!-- Consulta riesgo trabajo -->
+	
+	<definition name="consultaRiesgosTrabajo" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/rtt/consulta/consultaRiesgos.jsp" />
+	</definition>	
+        
+        <definition name="errorRiesgostrabajo" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/rtt/consulta/errorRiesgostrabajo.jsp" />
+	</definition>	
+	
+         <!-- Tabla riesgos trabajo-->
+	<definition name="tablaRiesgosTrabajo" extends="simple.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/rtt/common/tablaRiesgosTrabajo.jsp" />
+	</definition>	
+	     
+        <!-- Historial riegos de Trabajo -->
+	<definition name="historialRiesgoTrabajo" extends="wizard.base.definition.consulta">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/rtt/historial/inicioHistorial.jsp" />
+	</definition>
+	
+	<definition name="consultaHistorialRiesgosTrabajo" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/rtt/historial/consultaHistRiesgos.jsp" />
+	</definition>	
+	
+	<definition name="logoutRiesgoTrabajo" extends="wizard.base.definition.consulta">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/common/logout.jsp" />
+	</definition>
+	
+	<definition name="errorHistorial" extends="simple.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/rtt/historial/errorHistorial.jsp" />
+	</definition>
+	
+	<definition name="historialRTTNombres" extends="simple.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/rtt/historial/listaNRS.jsp" />
+	</definition>
+	
+<!-- 	Terminos y Condiciones 	 -->
+	<definition name="terminosCondiciones" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/rtt/tyc/terminos.jsp" />
+	</definition>
+	
+	
+	<definition name="inicialEscrito" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/desacuerdo/inicialEscrito.jsp" />
+	</definition>
+	
+	<definition name="contenidoEscrito" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/desacuerdo/contenidoEscrito.jsp" />
+	</definition>
+	
+	<definition name="inicioEscritoVentanilla" extends="wizard.base.definition.consulta">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/desacuerdo/ventanilla/inicialVentanilla.jsp" />
+	</definition>
+	
+	<definition name="contenidoEscritoVentanilla" extends="wizard.base.definition.consulta">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/desacuerdo/ventanilla/contenidoVentanilla.jsp" />
+	</definition>
+	
+	<definition name="finalizacionVentanilla" extends="wizard.base.definition.consulta">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/desacuerdo/ventanilla/finalizacionVentanilla.jsp" />
+	</definition>
+	
+	<definition name="solicitudEscritoEncontrada" extends="wizard.base.definition.consulta">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/desacuerdo/ventanilla/solicitudEncontrada.jsp" />
+	</definition>
+	
+	<definition name="consultaEscritoDesacuerdo" extends="wizard.base.definition.consulta">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/desacuerdo/consulta/consultaEscritoDesacuerdo.jsp" />
+	</definition>	
+	
+	<definition name="listaEscritoDesacuerdo" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/desacuerdo/consulta/listaEscritoDesacuerdo.jsp" />
+	</definition>
+	
+	<definition name="escritoDesacuerdoDetalle" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/desacuerdo/consulta/escritoDesacuerdoDetalle.jsp" />
+	</definition>
+	
+	<definition name="homeDesacuerdo" extends="wizard.base.definition.consulta">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/desacuerdo/ventanilla/home.jsp" />
+	</definition>
+
+	<definition name="logoutEscritoDesacuerdo" extends="wizard.base.definition.consulta">
+		<put-attribute name="contenido"
+					   value="/WEB-INF/views/common/logout.jsp" />
+	</definition>
+	
+</tiles-definitions>

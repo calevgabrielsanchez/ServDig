@@ -1,0 +1,39 @@
+# IDE and local workspace files
+.metadata/
+.classpath
+.project
+.settings/
+.recommenders/
+
+# Maven and build output
+target/
+bin/
+out/
+
+# Compiled and packaged artifacts
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+hs_err_pid*.log
+
+# Local deployment and runtime folders
+servers/
+stage/
+cache/
+tmp/
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Local environment files
+.env
+*.local.properties

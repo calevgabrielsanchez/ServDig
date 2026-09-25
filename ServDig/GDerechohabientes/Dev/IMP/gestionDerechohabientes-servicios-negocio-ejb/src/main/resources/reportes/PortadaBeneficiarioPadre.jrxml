@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PortadaAseguradoPadre" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="717"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="57" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="0" width="553" height="41"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="63" y="0" width="281" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[INSTITUTO MEXICANO DEL SEGURO SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="21" width="281" height="20"/>
+				<textElement/>
+				<text><![CDATA[SEGURIDAD SOLIDARIDAD SOCIAL]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="724" splitType="Stretch">
+			<staticText>
+				<reportElement x="-1" y="339" width="555" height="14"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Cuestionario para beneficiario madre o padre SAV 003-2]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="1" width="1" height="723"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement x="554" y="1" width="1" height="723"/>
+			</line>
+			<staticText>
+				<reportElement x="-1" y="353" width="555" height="13"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Anexo 6]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch">
+			<line>
+				<reportElement x="0" y="-1" width="554" height="1"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="435" y="0" width="120" height="20"/>
+				<textElement/>
+				<text><![CDATA[Clave: 9220-003-301]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

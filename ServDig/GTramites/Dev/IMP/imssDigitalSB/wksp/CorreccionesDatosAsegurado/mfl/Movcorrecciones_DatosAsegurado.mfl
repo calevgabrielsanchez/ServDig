@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF8'?>
+<!DOCTYPE MessageFormat SYSTEM 'mfl.dtd'>
+<MessageFormat name="AseguradoCorreccion" version='2.01.01'>
+    <StructFormat name="MovCorreccionesDatosAsegurado" delim='\n' sharedDelim='y' delimOptional='n' repeat='*'>
+        <FieldFormat name='delOrig'       type='Numeric'  delimOptional='y'  length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='subOrig'       type='Numeric'  delimOptional='y'  length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='cveAplic'      type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='tpMovto'       type='Numeric'  delimOptional='y'  length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='origenMov'     type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='numFolio'      type='Numeric'  delimOptional='y'  length='5'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='argumento'     type='Numeric'  delimOptional='y'  length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='regPatron'     type='String'   delimOptional='y'  length='10'  strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='digVrPat'      type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='fMovto'        type='Numeric'  delimOptional='y'  length='8'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='fRecepMovi'    type='Numeric'  delimOptional='y'  length='8'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='cveUnica'      type='String'   delimOptional='y'  length='18'  strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='idSubrServ'    type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='idEventual'    type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='numSegSoc'     type='Numeric'  delimOptional='y'  length='10'  strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='digVrNss'      type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='nomAseg'       type='String'   delimOptional='y'  length='50'  strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='idExtemp'      type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='reducPago'     type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='extODel'       type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='salBase'       type='Numeric'  delimOptional='y'  length='6'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='salInfonavit'  type='Numeric'  delimOptional='y'  length='6'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='tpSalario'     type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='sexo'          type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='mesNac'        type='Numeric'  delimOptional='y'  length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='lugarNac'      type='Numeric'  delimOptional='y'  length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='umf'           type='Numeric'  delimOptional='y'  length='3'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='autPerm'       type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='delDest'       type='Numeric'  delimOptional='y'  length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='subDest'       type='Numeric'  delimOptional='y'  length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='tpDerech'      type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='aaNac'         type='Numeric'  delimOptional='y'  length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='situacion'     type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='tsalODel'      type='String'   delimOptional='y'  length='1'   strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='nombreDh'      type='String'   delimOptional='y'  length='50'  strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='mesNacAp'      type='Numeric'  delimOptional='y'  length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='nssCorr'       type='Numeric'  delimOptional='y'  length='10'  strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='digVrNssCorr'  type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='nomAsegC'      type='String'   delimOptional='y'  length='50'  strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='tpPens'        type='Numeric'  delimOptional='y'  length='2'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='alfGuar'       type='String'   delimOptional='y'  length='1'   strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='numGuar'       type='Numeric'  delimOptional='y'  length='3'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='condicion'     type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='locMpio'       type='String'   delimOptional='y'  length='50'  strlenInChars='y' codepage='UTF-8'    defaultValue=' ' pad=' '/>
+        <FieldFormat name='tpProrroga'    type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='fecTerProrr'   type='Numeric'  delimOptional='y'  length='8'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+        <FieldFormat name='idPd'          type='Numeric'  delimOptional='y'  length='1'   strlenInChars='y' codepage='Default'  defaultValue='0' pad='0'/>
+    </StructFormat>
+</MessageFormat>

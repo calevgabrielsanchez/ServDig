@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="simple.base.definition" template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title"
+			value=" Gestión de domicilios - Portal DELTA. " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title"
+			value=" Gestión de domicilios - Portal DELTA. " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />
+
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<definition name="base.definition.embebed" template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title"
+			value=" Gestión de Estado de Adeudo - Portal DELTA. " />
+	</definition>
+
+	<definition name="base.definition.embebed.test"
+		template="/WEB-INF/views/layout/main-embebed-simple.jsp">
+		<put-attribute name="title" value="IMSS Digital" />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition.embebed.firma"
+		template="/WEB-INF/views/layout/main-embebed-firma-digital.jsp">
+		<put-attribute name="titulo" value=" Proceso de Firma Digital" />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado-simple.jsp" />
+	</definition>
+
+	<definition name="componente.simple.base.definition"
+		template="/WEB-INF/views/layout/simple-embebed.jsp">
+	</definition>
+
+	<!-- Definicion de la pantalla del gestionCobranza -->
+	<definition name="gestionCobranza" extends="simple.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/gestionCobranza/gestionCobranza.jsp " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de logeo -->
+	<definition name="login" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/login.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla de bienvenida de la aplicacion -->
+	<definition name="welcome" extends="simple.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/general/welcome.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="home" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/home.jsp " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-home.jsp" />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de espera de solicitud en proceso -->
+	<definition name="solicitudEnproceso" extends="base.definition.embebed">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/enproceso.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla de cnsulta de solicitudes por Persona -->
+	<definition name="solicitudesPersonaFisica" extends="componente.simple.base.definition">
+		<put-attribute name="title" value="RESUMEN DE SOLICITUDES (FISICA)" />
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/solicitudesPersonaFisica.jsp" />
+	</definition>
+
+	<definition name="solicitudesPersonaMoral" extends="componente.simple.base.definition">
+		<put-attribute name="title" value="RESUMEN DE SOLICITUDES (MORAL)" />
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/solicitudesPersonaMoral.jsp" />
+	</definition>
+
+	<definition name="wizard.base.definition" template="/WEB-INF/views/layout/main-wizard.jsp">
+		<put-attribute name="title" value=" Portal de Servicios DELTA " />
+		<put-attribute name="pie"
+			value="/WEB-INF/views/layout/pie-empty.jsp" />
+	</definition>
+
+	<!-- Definiciones para el modulo de Firma Digital -->
+	<definition name="initFirmaDigitalTest" extends="simple.base.definition">
+		<put-attribute name="title" value="FIRMA DIGITAL TEST" />
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/firma-digital/initFirmaDigitalTest.jsp" />
+	</definition>
+
+	<definition name="initFirmaDigital" extends="base.definition.embebed.firma">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/firma-digital/initFirmaDigital.jsp" />
+	</definition>
+
+	<definition name="seleccionTipoFirma" extends="base.definition.embebed.firma">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/firma-digital/seleccionarTipoFirmaDigital.jsp" />
+	</definition>
+
+	<definition name="initFirmaConFIEL" extends="base.definition.embebed.firma">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/firma-digital/fiel/firmaDigitalFiel.jsp" />
+	</definition>
+
+	<definition name="initFirmaConIMSS" extends="base.definition.embebed.firma">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/firma-digital/imss/firmaDigitalIMSS.jsp" />
+	</definition>
+
+	<definition name="resultadoFirmaDigital" extends="base.definition.embebed.firma">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/firma-digital/resultadoFirmaDigital.jsp" />
+	</definition>
+	<!-- Definiciones para el modulo de Firma Digital -->
+
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="databaseError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="internalError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="500" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="404" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+
+	<definition name="errorReporte" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/error.jsp" />
+	</definition>
+
+	<!-- WIZARD ESTADO DE ADEUDO -->
+	<definition name="wizardGraficas" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/graficas/contenido.jsp" />
+	</definition>
+	<definition name="prepararEdoAdeudo" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/graficas/preparar.jsp" />
+	</definition>
+	
+	<!-- WIZARD CFDI -->
+	<definition name="wizardComprobanteFiscalInit" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/comprobanteFiscal/inicial.jsp" />
+	</definition>
+
+	<definition name="wizardComprobanteFiscalContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/comprobanteFiscal/contenido.jsp" />
+	</definition>
+
+	<!-- Definicion de la pantalla de captura de domicilio -->
+	<definition name="ingresarDatosPatronTest" extends="base.definition.embebed.test">
+		<put-attribute name="title" value="IMSS Digital" />
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/comprobanteFiscal/inicioTest.jsp" />
+		<put-attribute name="pie" value="" />
+	</definition>
+
+	<definition name="obtenerListaComprobanteFiscal" extends="base.definition.embebed.test">
+		<put-attribute name="title" value="IMSS Digital" />
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/comprobanteFiscal/descargaComprobante.jsp" />
+		<put-attribute name="pie" value="" />
+	</definition>
+
+	<!-- WIZARD CARTA NO ADEUDO -->
+	<definition name="prepararCartaNoAdeudo" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/cartaNoAdeudo/preparar.jsp" />
+	</definition>
+	<definition name="errorCartaNoAdeudo" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/cartaNoAdeudo/error.jsp" />
+	</definition>
+
+</tiles-definitions>

@@ -1,0 +1,166 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>ClientesWebservices</artifactId>
+		<groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+		<version>2.2-SNAPSHOT</version>
+	</parent>
+
+	<groupId>mx.gob.imss.cit</groupId>
+	<artifactId>ClienteWebService-BovedaDocumental-V3</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>ClienteWebService-BovedaDocumental-V3</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<skipTests>true</skipTests>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
+		
+		 <dependency>
+			 <groupId>org.glassfish.jersey.media</groupId>
+			 <artifactId>jersey-media-json-jackson</artifactId>
+			 <version>2.6</version>
+		 </dependency>
+		 
+		 <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-client -->
+		 <dependency>
+			 <groupId>org.glassfish.jersey.core</groupId>
+			 <artifactId>jersey-client</artifactId>
+			 <version>2.6</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>javax.ws.rs</groupId>
+		    <artifactId>javax.ws.rs-api</artifactId>
+		    <version>2.0</version>
+		</dependency>
+
+		
+	</dependencies>
+
+	<repositories>
+
+		<repository>
+			<id>central</id>
+			<name>CTIRSS repository</name>
+			<layout>default</layout>
+			<url>http://172.16.5.134:8080/repository/repo/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<profiles>
+		<profile>
+			<id>compile-dev</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.url.boveda}" value="http://172.16.162.64/boveda_personal_qa" dir="target/classes">
+											<include name="**/*.wsdl" />
+											<include name="**/enviromentConfig.properties" />
+										</replace>
+										<replace token="${mvn.perfil.activo}" value="stage" dir="target/classes">
+											<include name="**/enviromentConfig.properties" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>compile-stage</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.url.boveda}" value="http://s5vqwsahbope01.imss.gob.mx/boveda_personal_qa" dir="target/classes">
+											<include name="**/*.wsdl" />
+											<include name="**/enviromentConfig.properties" />
+										</replace>
+										<replace token="${mvn.perfil.activo}" value="stage" dir="target/classes">
+											<include name="**/enviromentConfig.properties" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>compile-prod</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.url.boveda}" value="http://gdocserv.imss.gob.mx/boveda_personal" dir="target/classes">
+											<include name="**/*.wsdl" />
+											<include name="**/enviromentConfig.properties" />
+										</replace>
+										<replace token="${mvn.perfil.activo}" value="prod" dir="target/classes">
+											<include name="**/enviromentConfig.properties" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

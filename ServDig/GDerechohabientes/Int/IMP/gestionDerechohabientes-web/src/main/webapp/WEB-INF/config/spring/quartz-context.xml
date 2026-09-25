@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="mx.gob.imss.ctirss.delta.derechohabientes.web.jobs"/>
+
+    <!-- Invoke a method on a specific object -->
+    <bean id="estatusArchivosJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="estatusArchivosJobService"/>
+        <property name="targetMethod" value="estatusArchivosJob"/>
+    </bean>
+
+    <!-- Run the job every days at at 23 o'clock -->
+    <bean id="estatusArchivosCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="estatusArchivosJob"/>
+        <property name="cronExpression" value="0 0 23 * * ? *" /> <!--Todos los dias a las 23-->
+        <!--<property name="cronExpression" value="0 0/10 * * * ?" /> Cada 10mins-->
+        <!--<property name="cronExpression" value="0 0 0/1 * * ?" /> Cada hora-->
+    </bean>
+
+    <!-- Scheduler factory bean to glue together jobDetails and triggers to Configure Quartz Scheduler -->
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobDetails">
+            <list>
+                <ref bean="estatusArchivosJob"/>
+            </list>
+        </property>
+
+        <property name="triggers">
+            <list>
+                <ref bean="estatusArchivosCronTrigger"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>

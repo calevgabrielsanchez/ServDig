@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:annotation-config />
+
+	<!-- SERVICIO PARA PRUEBA DE ARQUETIPO -->
+   <bean id="registroNotificacionServiceB" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">  																	  	
+  		<property name="jndiName" value="registroNotificacionServiceB#mx.imss.estrados.service.interfaces.RegistroNotificacionServiceRemote"/>
+  		<property name="businessInterface" value="mx.imss.estrados.service.interfaces.RegistroNotificacionServiceRemote"/>
+	</bean>
+	
+	<!-- SERVICIO DE CONSULTA EXTERNA DE NOTIFICACIONES -->
+	<bean id="consultaExternaServiceBean" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">  																	  	
+  		<property name="jndiName" value="consultaExternaServiceBean#mx.imss.estrados.service.interfaces.ConsultaExternaServiceRemote"/>
+  		<property name="businessInterface" value="mx.imss.estrados.service.interfaces.ConsultaExternaServiceRemote"/>
+	</bean>
+	
+	<!-- SERVICIO DE CONSULTA INTERNA DE NOTIFICACIONES -->
+	<bean id="consultaInternaServiceBean" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">  																	  	
+  		<property name="jndiName" value="consultaInternaServiceBean#mx.imss.estrados.service.interfaces.ConsultaInternaServiceRemote"/>
+  		<property name="businessInterface" value="mx.imss.estrados.service.interfaces.ConsultaInternaServiceRemote"/>
+	</bean>
+	
+	<!-- SERVICIO PARA GENERAR REPORTES DE UNA NOTIFICACION -->
+	<bean id="reporteNotificacionServiceBean" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">  																	  	
+  		<property name="jndiName" value="reporteNotificacionServiceBean#mx.imss.estrados.service.interfaces.ReporteNotificacionServiceRemote"/>
+  		<property name="businessInterface" value="mx.imss.estrados.service.interfaces.ReporteNotificacionServiceRemote"/>
+	</bean>
+
+	<!-- SERVICIO QUE EJECUTA LAS TAREAS DEL CRON -->
+	<bean id="ejecutaTareasCron" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="ejecutaTareasCronServiceBean#mx.imss.estrados.cron.EjecutaTareasCronServiceRemote"/>
+		<property name="businessInterface" value="mx.imss.estrados.cron.EjecutaTareasCronServiceRemote"/>
+	</bean>
+	
+	
+	<!-- CONFIGURACION NECESARIA PARA EJECUTAR EL CRON -->
+	<bean id="runMeTask" class="mx.imss.estrados.web.cron.RunMeTask" />
+	
+	<bean id="schedulerService" class="mx.imss.estrados.web.cron.SchedulerService">        
+		<property name="runMeTask" ref="runMeTask" />        
+	</bean> 
+ 
+	<!-- Spring Quartz -->
+	<bean id="FirstTaskJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="schedulerService" />    
+		<property name="targetMethod" value="executeFirstTask" />
+	</bean>
+ 
+ 	<bean id="SecondTaskJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="schedulerService" />    
+		<property name="targetMethod" value="executeSecondTask" />
+	</bean>
+	
+ 
+	<!-- Cron Trigger -->
+	<!-- PUBLICACION -->
+	<bean id="cronTrigger1" 
+                class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="FirstTaskJobDetail" />
+		<property name="cronExpression" value="0 1 0 1/1 * ? *" />
+		
+		<!-- Cron Trigger, run every 5 seconds -->
+<!-- 		<property name="cronExpression" value="*/3 * * 1/1 * ? *" /> -->
+	</bean>
+	
+	<!-- RETIRO -->
+	<bean id="cronTrigger2" 
+                class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="SecondTaskJobDetail" />
+		<property name="cronExpression" value="0 1 0 1/1 * ? *" />
+		
+		<!-- Cron Trigger, run every 5 seconds -->
+<!-- 		<property name="cronExpression" value="*/3 * * 1/1 * ? *" /> -->
+	</bean>
+ 
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean="FirstTaskJobDetail" />
+				<ref bean="SecondTaskJobDetail" />
+			</list>
+		</property>
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger1" />
+				<ref bean="cronTrigger2" />
+			</list>
+		</property>
+	</bean>
+	
+</beans>

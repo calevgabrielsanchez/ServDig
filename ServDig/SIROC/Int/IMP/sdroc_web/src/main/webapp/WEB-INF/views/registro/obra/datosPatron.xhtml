@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="pageDatosPatron">
+	
+	<form class="form-horizontal small">
+		<input type="hidden" id="patronRPC" th:value="${session.patronRPC}"/>
+		<div class="row" id="pnlRazonSocial">
+			<div class="col-sm-4 text-left">
+				<label class="control-label small" th:text="#{escritorio.header.rs}"/>
+			</div>
+			<div class="col-sm-8 text-left">
+				<label id="lblRazonSocialPatron" class="control-label small" style="font-weight: normal !important;" th:text="${session.rs}"/>
+			</div>
+		</div>
+		
+		<div class="row hidden" id="pnlDomicilioFiscal">	
+			<div  class="col-sm-4 text-left">
+				<label class="control-label small" th:text="#{escritorio.header.domicilio.fis}"/>
+			</div>
+			<div class="col-sm-8 text-left">
+				<label id="lblDomicioFiscal" class="control-label small" style="font-weight: normal !important;" th:text="${session.domicilioFiscal}"/>
+			</div>
+		</div>
+
+		<div class="row hidden" id="pnlDatosUbicacionObra">
+			<div class="col-sm-4 text-left">
+				<label class="control-label small" th:text="#{escritorio.header.ubicacion}"/>
+			</div>
+			<div class="col-sm-8 text-left">
+				<label id="lblUbicacionObraCap" class="control-label small" style="font-weight: normal !important;" />
+			</div>
+		</div>
+		
+		<div class="row" >
+			<div id="pnlRFC" class="col-sm-4 text-left">
+				<strong>
+					<label class="control-label small" for="txtRazonSocial" th:text="#{escritorio.header.rfc}"/>
+				</strong>
+				<label id="lblRFCPatron" class="control-label small" style="font-weight: normal !important;" th:text="${session.rfc}" />
+			</div>
+			<div id="pnlRegistroPatronal" class="col-sm-8 text-left">
+				<label class="control-label small" for="txtRazonSocial" th:text="#{escritorio.header.rp}"/> 
+				<label id="lblRegPatron" class="control-label small" style="font-weight: normal !important;" th:text="${session.rp}" />
+			</div>
+			<div id="pnlRegistroPatronalPatron" class="col-sm-8 text-left hidden">
+				<label class="control-label small" for="txtRazonSocial" th:text="#{escritorio.header.rp}"/> 
+				<label id="lblRegPatron" class="control-label small" style="font-weight: normal !important;" th:text="${session.cveRegPatronalSubcontrato}" />
+			</div>
+		</div>
+		
+		<div class="row">
+			<div id="pnlNoRegistroObra" class="col-sm-4 text-left hidden">
+				<label class="control-label small" th:text="#{escritorio.header.num.registro}"/>
+				<label id="lblNoRegistroObra" class="control-label small" style="font-weight: normal !important;" />
+			</div>
+			<div id="pnlFecha" class="col-sm-8 text-left hidden">
+				<label class="control-label small" th:text="#{escritorio.header.fecha}"/> 
+				<label id="lblFecha" class="control-label small" style="font-weight: normal !important;" th:text="${#calendars.format(#dates.createNow(),'dd/MM/yyyy HH:mm:ss')}" />
+			</div>
+		</div>
+		
+	</form>
+
+</div>
+</html>

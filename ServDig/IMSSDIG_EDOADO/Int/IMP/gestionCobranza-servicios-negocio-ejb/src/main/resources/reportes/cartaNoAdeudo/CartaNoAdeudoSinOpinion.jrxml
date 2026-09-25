@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CartaNoAdeudo" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.771561000000011"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="DatasetTablaPatrones">
+		<field name="numeroRegistroPatronal" class="java.lang.String"/>
+		<field name="subdelegacion" class="mx.gob.imss.ctirss.delta.model.domicilio.Subdelegacion"/>
+		<field name="descSituacionBaja" class="java.lang.String"/>
+		<field name="modalidad" class="mx.gob.imss.ctirss.delta.model.gestion.patronal.Modalidad"/>
+		<field name="digVerificador" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["reportes/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGENES_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["reportes/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="imagenQR" class="java.lang.Object"/>
+	<parameter name="cadenaOriginal" class="java.lang.String"/>
+	<parameter name="selloDigital" class="java.lang.String"/>
+	<parameter name="fechaSolicitud" class="java.lang.String">
+		<parameterDescription><![CDATA[fechaReporte]]></parameterDescription>
+	</parameter>
+	<parameter name="horaSolicitud" class="java.lang.String"/>
+	<parameter name="folioSolicitud" class="java.lang.String">
+		<parameterDescription><![CDATA[folioSolicitud]]></parameterDescription>
+	</parameter>
+	<parameter name="rfc" class="java.lang.String"/>
+	<parameter name="nombreRS" class="java.lang.String"/>
+	<parameter name="numTrabajadores" class="java.lang.Integer"/>
+	<parameter name="fechaInicioVigencia" class="java.lang.String"/>
+	<parameter name="fechaFinVigencia" class="java.lang.String"/>
+	<parameter name="secuenciaNotaria" class="java.lang.String"/>
+	<parameter name="numSerialCertificado" class="java.lang.String"/>
+	<parameter name="numAcuerdo" class="java.lang.String"/>
+	<parameter name="fechaAcuerdo" class="java.lang.String"/>
+	<parameter name="respuestaOpinion" class="java.lang.String"/>
+	<parameter name="patrones" class="java.util.List"/>
+	<parameter name="leyendaJuicio" class="java.lang.String"/>
+	<parameter name="leyendaAuditoria" class="java.lang.String"/>
+	<parameter name="leyendaConvenio" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<title>
+		<band height="93" splitType="Stretch">
+			<image>
+				<reportElement x="472" y="2" width="79" height="72"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "Mujer.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="165" y="17" width="221" height="40"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "LogoIMSS.PNG"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="11" y="11" width="123" height="41"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "GobiernoMexico.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="22" width="569" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Opinión del Cumplimiento de Obligaciones Fiscales en materia de Seguridad Social]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="571" height="22"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["FECHA: " + $P{fechaSolicitud}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="92" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="165" y="44" width="405" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nombreRS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="22" width="165" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Clave de R.F.C.:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="44" width="165" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Nombre, Denominación o Razón Social:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="165" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Folio:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="165" y="0" width="405" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{folioSolicitud}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="165" y="22" width="405" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{rfc}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="66" width="570" height="26"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Estimado Patrón:"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="72" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="12" y="0" width="560" height="72" backcolor="#FFFFFF"/>
+				<box topPadding="5" leftPadding="5" bottomPadding="5" rightPadding="5">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["<br>"+"Respuesta de opinión:" + "<br><br>" +
+
+"En atención a su consulta sobre el cumplimiento de obligaciones fiscales en materia de seguridad social, se le informa lo siguiente:"+ "<br><br>" +
+
+"En los controles electrónicos del Instituto Mexicano del Seguro Social, " +
+(
+   $P{respuestaOpinion}.equals("5") ? "se detectó que usted tiene Registro(s) Patronal(es) vigente(s), y no tiene registrados trabajadores activos ante el Instituto, " :
+   (
+      $P{respuestaOpinion}.equals("7") ? "se detectó que su(s) Registro(s) Patronal(es) se encuentra(n) dado(s) de baja, " :
+      (
+          $P{respuestaOpinion}.equals( "8") ? "no se localizó ningún Registro Patronal  asociado a su RFC, " : ""
+      )
+   )
+)+
+"por lo que no se puede emitir una opinión de cumplimiento de obligaciones fiscales en materia de seguridad social. Por lo anterior, se emite opinión Sin Opinión."+
+"<br><br>"+
+"Esta carta opinión del cumplimiento de obligaciones fiscales tiene una vigencia hasta el <style isBold=\"true\" isUnderline=\"true\">" + $P{fechaFinVigencia} + "</style>."+
+"<br>"+
+($P{leyendaJuicio}.isEmpty()? "":"<br>"+$P{leyendaJuicio}+"<br>")+
+		($P{leyendaAuditoria}.isEmpty()? "":"<br>"+$P{leyendaAuditoria}+"<br>")+
+            ($P{leyendaConvenio}.isEmpty()? "":"<br>"+$P{leyendaConvenio}+"<br>")]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="27" splitType="Stretch">
+			<componentElement>
+				<reportElement key="tablaPatrones" style="table" positionType="Float" x="12" y="10" width="560" height="17" isRemoveLineWhenBlank="true" forecolor="#FFFFFF">
+					<printWhenExpression><![CDATA[$P{respuestaOpinion}.equals("PATRON_SIN_TRABAJADORES") ||  $P{respuestaOpinion}.equals("NEGATIVA_SIN_ADEUDOS_BAJA")]]></printWhenExpression>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="DatasetTablaPatrones">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{patrones})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="560">
+						<jr:tableHeader height="21" rowSpan="1">
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="560" height="21"/>
+								<box leftPadding="7"/>
+								<textElement>
+									<font size="8"/>
+								</textElement>
+								<text><![CDATA[El (los) Registro(s) Patronal(es) localizado(s) es(son) el(los) siguiente(s):]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:column width="116">
+							<jr:columnHeader style="table 1" height="12" rowSpan="1">
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="116" height="12"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="8"/>
+									</textElement>
+									<text><![CDATA[Situación]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table" height="12" rowSpan="1">
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textField>
+									<reportElement x="0" y="0" width="116" height="12"/>
+									<box leftPadding="7"/>
+									<textElement verticalAlignment="Middle">
+										<font size="8"/>
+									</textElement>
+									<textFieldExpression class="java.lang.String"><![CDATA[$F{descSituacionBaja}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="62">
+							<jr:columnHeader height="12" rowSpan="1">
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="62" height="12"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="8"/>
+									</textElement>
+									<text><![CDATA[Deleg.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table" height="12" rowSpan="1">
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textField>
+									<reportElement x="0" y="0" width="62" height="12"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="8"/>
+									</textElement>
+									<textFieldExpression class="java.lang.String"><![CDATA[$F{subdelegacion}.getDelegacion().getClave()]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="273">
+							<jr:columnHeader height="12" rowSpan="1">
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="273" height="12"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="8"/>
+									</textElement>
+									<text><![CDATA[Subdelegación]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table" height="12" rowSpan="1">
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textField>
+									<reportElement x="0" y="0" width="273" height="12"/>
+									<box leftPadding="7"/>
+									<textElement verticalAlignment="Middle">
+										<font size="8"/>
+									</textElement>
+									<textFieldExpression class="java.lang.String"><![CDATA[$F{subdelegacion}.getDescripcion()]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="109">
+							<jr:columnHeader height="12" rowSpan="1">
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="109" height="12"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="8"/>
+									</textElement>
+									<text><![CDATA[Registro Patronal]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table" height="12" rowSpan="1">
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textField>
+									<reportElement x="0" y="0" width="109" height="12"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="8"/>
+									</textElement>
+									<textFieldExpression class="java.lang.String"><![CDATA[$F{numeroRegistroPatronal} + " " + $F{modalidad}.getNumModalidad() + " " + $F{digVerificador}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="104" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="1" y="0" width="570" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["NOTA:"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="3" y="32" width="566" height="48"/>
+				<box topPadding="7"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Este servicio es gratuito. " + "<br>" +
+"El IMSS es el instrumento básico de seguridad social para todos los trabajadores y sus familias." + "<br><br>" +
+"Sus datos personales son incorporados y protegidos en los sistemas del IMSS, de conformidad con los Lineamientos de Protección de Datos Personales y con las diversas disposiciones fiscales y legales sobre confidencialidad y protección de datos, a fin de ejercer las facultades conferidas a la autoridad fiscal." + "<br><br>" +
+"Si desea modificar o corregir sus datos personales, puede acudir a la Subdelegación competente."]]></textFieldExpression>
+			</textField>
+			<elementGroup/>
+			<elementGroup/>
+			<elementGroup/>
+			<elementGroup/>
+			<elementGroup/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="12" y="16" width="559" height="8"/>
+				<box bottomPadding="1"/>
+				<textElement markup="none">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["En caso de estar inconforme, podrá usted promover una aclaración ante la Subdelegación " +
+
+(
+   $P{respuestaOpinion}.equals("PATRON_SIN_TRABAJADORES") ? "que controla el(los) Registro(s) Patronal(es)" :
+   (
+      $P{respuestaOpinion}.equals("NEGATIVA_SIN_ADEUDOS_BAJA") ? "que controló el(los) Registro(s) Patronal(es)" :
+      (
+          $P{respuestaOpinion}.equals( "SIN_PATRONES") ? "en la que, en su caso, hubiere realizado su registro" : ""
+      )
+   )
+) +
+" y adjuntar este documento, así como los documentos que soporten su aclaración."]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="107" splitType="Prevent">
+			<staticText>
+				<reportElement x="121" y="7" width="452" height="7" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="570" height="7"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+			</textField>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="121" y="14" width="54" height="17"/>
+					<box bottomPadding="0"/>
+					<textElement verticalAlignment="Top" markup="none">
+						<font size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cadena Original:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="175" y="14" width="396" height="17"/>
+					<box bottomPadding="0"/>
+					<textElement markup="styled">
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{cadenaOriginal}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="121" y="31" width="54" height="17"/>
+					<box topPadding="5"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Sello digital: ]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="175" y="31" width="396" height="17"/>
+					<box topPadding="5"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{selloDigital}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<elementGroup>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="175" y="48" width="396" height="17"/>
+					<box topPadding="5"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{secuenciaNotaria}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="121" y="48" width="54" height="17"/>
+					<box topPadding="5"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Secuencia Notarial:]]></text>
+				</staticText>
+			</elementGroup>
+			<elementGroup>
+				<staticText>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="121" y="65" width="54" height="17"/>
+					<box topPadding="5"/>
+					<textElement verticalAlignment="Top">
+						<font size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Número de Serie:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="175" y="65" width="396" height="17"/>
+					<box topPadding="5"/>
+					<textElement>
+						<font size="5"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{numSerialCertificado}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<staticText>
+				<reportElement x="3" y="7" width="8" height="100" forecolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<image>
+				<reportElement x="12" y="7" width="100" height="100"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{imagenQR}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="1" y="6" width="569" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement x="450" y="3" width="80" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Hoja "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="530" y="3" width="40" height="15"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

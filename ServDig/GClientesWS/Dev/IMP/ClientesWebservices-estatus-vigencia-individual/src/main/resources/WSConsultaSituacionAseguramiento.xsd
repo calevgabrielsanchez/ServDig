@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. -->
+<xs:schema xmlns:tns="http://situacionAseguramiento.imss.gob.mx/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           version="1.0" targetNamespace="http://situacionAseguramiento.imss.gob.mx/">
+
+    <xs:element name="getSituacionAseguramientoXAsginacionNSS" type="tns:getSituacionAseguramientoXAsginacionNSS"/>
+
+    <xs:element name="getSituacionAseguramientoXAsginacionNSSResponse"
+                type="tns:getSituacionAseguramientoXAsginacionNSSResponse"/>
+
+    <xs:complexType name="getSituacionAseguramientoXAsginacionNSS">
+        <xs:sequence>
+            <xs:element name="idAsignacionNSS" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="getSituacionAseguramientoXAsginacionNSSResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:respuestaSituacionAseguramiento" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="respuestaSituacionAseguramiento">
+        <xs:complexContent>
+            <xs:extension base="tns:respuestaWS">
+                <xs:sequence>
+                    <xs:element name="resultado" type="tns:SituacionAseguramientoVO" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="respuestaWS">
+        <xs:sequence>
+            <xs:element name="claveError" type="xs:string" minOccurs="0"/>
+            <xs:element name="mensajeError" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="SituacionAseguramientoVO">
+        <xs:sequence>
+            <xs:element name="indicadorVigente" type="xs:boolean"/>
+            <xs:element name="modalidadesFechaVigente" type="tns:modalidadFecha" nillable="true" minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element name="modalidadesFechaBaja" type="tns:modalidadFecha" nillable="true" minOccurs="0"
+                        maxOccurs="unbounded"/>
+            <xs:element name="tipoAseguradoBaja" type="xs:int" nillable="true" minOccurs="0"/>
+            <xs:element name="nrpBaja" type="xs:string" nillable="true" minOccurs="0"/>
+            <xs:element name="numeroSemanaAseguramientoBaja" type="xs:int" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="modalidadFecha">
+        <xs:sequence>
+            <xs:element name="modalidad" type="xs:string" minOccurs="0"/>
+            <xs:element name="fecha" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

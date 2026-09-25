@@ -1,0 +1,58 @@
+.titulo{
+color: #FFFFFF;
+text-align: center;
+padding: .5em;
+border-top: 1px solid #eee;
+background-color: #464646;
+}
+
+.filaPar{
+color: #000;
+text-align: left;
+padding: .5em;
+border: 1px solid #eee;
+background-color: #EFFAEF;
+}
+
+.filaImpar{
+	color: #000;
+text-align: left;
+padding: .5em;
+border: 1px solid #eee;
+background-color: #FFFFFF;
+}
+
+table.compare {
+border: 1px solid #999;
+margin: 0 auto 1em auto;
+}
+
+table.compare thead th {
+color: #000;
+text-align: left;
+padding: .5em;
+background-color: #FFFFE1;
+}
+
+table.compare tbody th {
+color: #000;
+text-align: left;
+padding: .5em;
+border-top: 1px solid #eee;
+background-color: #f9f9f9;
+}
+
+table.compare tfoot td {
+color: #000;
+text-align: left;
+padding: .5em;
+border-top: 1px solid #eee;
+background-color: #f9f9f9;
+}
+
+table.compare tbody td {
+color: #666;
+text-align: left;
+border-top: 1px solid #eee;
+padding: .5em;
+}

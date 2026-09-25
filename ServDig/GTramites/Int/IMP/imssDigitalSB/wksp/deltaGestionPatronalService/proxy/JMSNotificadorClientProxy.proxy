@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con4="http://www.bea.com/wli/sb/pipeline/config" xmlns:con5="http://www.bea.com/wli/sb/stages/publish/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description/>
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:request type="XML">
+        <con6:schema ref="deltaGestionPatronalService/schema/ServiceContract/NotificacionGlobalSchema" element="notificacionRequest" xmlns:con6="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:request>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:transactions isRequired="true" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>jms</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>jms://172.24.116.37:15051,172.24.116.37:15052/jms.SolicitudConnectionFactory/jms.SolicitudNotificacionDistributedQueue</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>true</tran:all-headers>
+    <tran:provider-specific>
+      <jms:is-queue>true</jms:is-queue>
+      <jms:is-secure>false</jms:is-secure>
+      <jms:inbound-properties>
+        <jms:response-required>false</jms:response-required>
+        <jms:XA-required>false</jms:XA-required>
+      </jms:inbound-properties>
+      <jms:request-encoding>UTF-8</jms:request-encoding>
+      <jms:jndi-timeout>0</jms:jndi-timeout>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con4:pipeline name="PipelinePairNode1_request" type="request">
+      <con4:stage name="Notificar y refrescar">
+        <con4:comment/>
+        <con4:context>
+          <con2:userNsDecl prefix="m" namespace="http://delta.global.services.utility/"/>
+          <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con4:context>
+        <con4:actions>
+          <con1:assign varName="folio">
+            <con2:id>_ActionId-4611628466107087791--4c167a6e.1414cd7ff8f.-7f26</con2:id>
+            <con1:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:notificacionRequest/mx:folioSolicitud/text()</con:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con1:assign varName="mensajeNotificacion">
+            <con2:id>_ActionId-4611628466107087791--4c167a6e.1414cd7ff8f.-7f25</con2:id>
+            <con1:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:notificacionRequest/mx:mensaje/text()</con:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con1:assign varName="idTipoSolicitud">
+            <con2:id>_ActionId-1885080524488304425-60ce6354.1415c673a50.-7fef</con2:id>
+            <con1:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:notificacionRequest/mx:idTipoSolicitud/text()</con:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con1:assign varName="correoNotificacion">
+            <con2:id>_ActionId-8866979866420801002--7395172d.141a2ce8dbb.-7ff2</con2:id>
+            <con1:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:notificacionRequest/mx:correoNotificacion/text()</con:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con1:assign varName="idPersona">
+            <con2:id>_ActionId-3897249119195727735-7c6c34f3.141bce52591.-7ff1</con2:id>
+            <con1:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:notificacionRequest/mx:idPersona/text()</con:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con1:assign varName="idTipoPersona">
+            <con2:id>_ActionId-3897249119195727735-7c6c34f3.141bce52591.-7ff0</con2:id>
+            <con1:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:notificacionRequest/mx:idTipoPersona/text()</con:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con1:assign varName="nrp">
+            <con2:id>_ActionId-3897249119195727735-7c6c34f3.141bce52591.-7fef</con2:id>
+            <con1:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:notificacionRequest/mx:numeroRegistroPatronal/text()</con:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con3:log>
+            <con2:id>_ActionId-8866979866420801002--7395172d.141a2ce8dbb.-7fee</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$correoNotificacion</con:xqueryText>
+            </con3:expr>
+            <con3:message>correoNotificacion:::</con3:message>
+          </con3:log>
+          <con3:log>
+            <con2:id>_ActionId-1885080524488304425-60ce6354.1415c673a50.-7fee</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$idTipoSolicitud</con:xqueryText>
+            </con3:expr>
+            <con3:message>idTipoSolicitud en notificacion:::</con3:message>
+          </con3:log>
+          <con1:ifThenElse>
+            <con2:id>_ActionId-1885080524488304425-60ce6354.1415c673a50.-7fec</con2:id>
+            <con1:case>
+              <con1:condition>
+                <con2:xqueryConditionExpr>
+                  <con2:compExpr operator="!=">
+                    <con2:leftPath>$idTipoSolicitud</con2:leftPath>
+                    <con2:rightPath>"17"</con2:rightPath>
+                  </con2:compExpr>
+                </con2:xqueryConditionExpr>
+              </con1:condition>
+              <con1:actions>
+                <con3:log>
+                  <con2:id>_ActionId-1885080524488304425-60ce6354.1415c673a50.-7feb</con2:id>
+                  <con3:logLevel>error</con3:logLevel>
+                  <con3:message>Se notifica al cometd::::::</con3:message>
+                </con3:log>
+                <con1:wsCallout>
+                  <con2:id>_ActionId-1885080524488304425-60ce6354.1415c673a50.-7fea</con2:id>
+                  <con1:service ref="deltaGestionPatronalService/businessService/SolicitudNotificadorBusinessService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                  <con1:operation>publicarComet</con1:operation>
+                  <con1:request>
+                    <con1:body wrapped="false">$requestNotificacion</con1:body>
+                    <con1:header/>
+                  </con1:request>
+                  <con1:response>
+                    <con1:body wrapped="false">responseNotificacion</con1:body>
+                    <con1:header/>
+                  </con1:response>
+                  <con1:requestTransform>
+                    <con1:assign varName="requestNotificacion">
+                      <con2:id>_ActionId-1885080524488304425-60ce6354.1415c673a50.-7fe9</con2:id>
+                      <con1:expr>
+                        <con:xqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                          <con:resource ref="deltaGestionPatronalService/XQuery/RequestNotificacionXQT"/>
+                          <con:param name="notificacionRequest1">
+                            <con:path>$body/mx:notificacionRequest</con:path>
+                          </con:param>
+                        </con:xqueryTransform>
+                      </con1:expr>
+                    </con1:assign>
+                    <con1:replace varName="body" contents-only="true">
+                      <con2:id>_ActionId-1885080524488304425-60ce6354.1415c673a50.-7fe8</con2:id>
+                      <con1:location>
+                        <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                      </con1:location>
+                      <con1:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$requestNotificacion</con:xqueryText>
+                      </con1:expr>
+                    </con1:replace>
+                    <con1:routing-options>
+                      <con2:id>_ActionId-1885080524488304425-60ce6354.1415c673a50.-7fe7</con2:id>
+                      <con1:qualityOfService>exactly-once</con1:qualityOfService>
+                    </con1:routing-options>
+                    <con3:log>
+                      <con2:id>_ActionId-1885080524488304425-60ce6354.1415c673a50.-7fe6</con2:id>
+                      <con3:logLevel>error</con3:logLevel>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+                      </con3:expr>
+                      <con3:message>Se invocará refresh de componentes de vista</con3:message>
+                    </con3:log>
+                  </con1:requestTransform>
+                  <con1:responseTransform/>
+                </con1:wsCallout>
+              </con1:actions>
+            </con1:case>
+          </con1:ifThenElse>
+          <con1:wsCallout>
+            <con2:id>_ActionId-4611628466107087791--4c167a6e.1414cd7ff8f.-7f1f</con2:id>
+            <con1:service ref="deltaGestionPatronalService/businessService/NotificadorProcesamientoBusinessService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con1:operation>publicarFinProcesamientoSolicitud</con1:operation>
+            <con1:request>
+              <con1:body wrapped="false">$requestFinProcesamiento</con1:body>
+              <con1:header/>
+            </con1:request>
+            <con1:response>
+              <con1:body wrapped="false">responseFinProcesamiento</con1:body>
+              <con1:header/>
+            </con1:response>
+            <con1:requestTransform>
+              <con1:assign varName="requestFinProcesamiento">
+                <con2:id>_ActionId-4611628466107087791--4c167a6e.1414cd7ff8f.-7f1e</con2:id>
+                <con1:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<mx:publicarFinProcesamientoSolicitud xmlns:mx="http://mx.gob.imss.delta.global.service/">
+    <mx:arg0>{$folio}</mx:arg0>
+    <mx:arg1>true</mx:arg1>
+    <mx:arg2>{$mensajeNotificacion}</mx:arg2>
+</mx:publicarFinProcesamientoSolicitud>]]></con:xqueryText>
+                </con1:expr>
+              </con1:assign>
+              <con1:replace varName="body" contents-only="true">
+                <con2:id>_ActionId-4611628466107087791--4c167a6e.1414cd7ff8f.-7f1d</con2:id>
+                <con1:location>
+                  <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                </con1:location>
+                <con1:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$requestFinProcesamiento</con:xqueryText>
+                </con1:expr>
+              </con1:replace>
+              <con3:log>
+                <con2:id>_ActionId-4611628466107087791--4c167a6e.1414cd7ff8f.-7f1c</con2:id>
+                <con3:logLevel>error</con3:logLevel>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+                </con3:expr>
+                <con3:message>Se invoca la notificacion del fin de procesamiento</con3:message>
+              </con3:log>
+              <con1:routing-options>
+                <con2:id>_ActionId-4611628466107087791--4c167a6e.1414cd7ff8f.-7f1b</con2:id>
+                <con1:qualityOfService>exactly-once</con1:qualityOfService>
+              </con1:routing-options>
+            </con1:requestTransform>
+            <con1:responseTransform/>
+          </con1:wsCallout>
+          <con1:ifThenElse>
+            <con2:id>_ActionId-2135561953508824038-423f4dec.141c1f87b60.-7ff1</con2:id>
+            <con1:case>
+              <con1:condition>
+                <con2:xqueryConditionExpr>
+                  <con2:boolExpr operator="or">
+                    <con2:compExpr operator="=">
+                      <con2:leftPath>$idTipoSolicitud</con2:leftPath>
+                      <con2:rightPath>"11"</con2:rightPath>
+                    </con2:compExpr>
+                    <con2:compExpr operator="=">
+                      <con2:leftPath>$idTipoSolicitud</con2:leftPath>
+                      <con2:rightPath>"14"</con2:rightPath>
+                    </con2:compExpr>
+                    <con2:compExpr operator="=">
+                      <con2:leftPath>$idTipoSolicitud</con2:leftPath>
+                      <con2:rightPath>"15"</con2:rightPath>
+                    </con2:compExpr>
+                  </con2:boolExpr>
+                </con2:xqueryConditionExpr>
+              </con1:condition>
+              <con1:actions>
+                <con1:wsCallout>
+                  <con2:id>_ActionId-2135561953508824038-423f4dec.141c1f87b60.-7ff0</con2:id>
+                  <con1:service ref="deltaGestionPatronalService/businessService/BusinessUtility" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                  <con1:operation>obtenerCorreoDeNotificacion</con1:operation>
+                  <con1:request>
+                    <con1:body wrapped="false">$mailRequest</con1:body>
+                    <con1:header/>
+                  </con1:request>
+                  <con1:response>
+                    <con1:body wrapped="false">mailResponse</con1:body>
+                    <con1:header/>
+                  </con1:response>
+                  <con1:requestTransform>
+                    <con1:assign varName="mailRequest">
+                      <con2:id>_ActionId-2135561953508824038-423f4dec.141c1f87b60.-7fef</con2:id>
+                      <con1:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">&lt;del:obtenerCorreoDeNotificacion xmlns:del="http://delta.global.services.utility/">
+    &lt;del:arg0>{$nrp}&lt;/del:arg0>
+&lt;/del:obtenerCorreoDeNotificacion></con:xqueryText>
+                      </con1:expr>
+                    </con1:assign>
+                    <con1:replace varName="body" contents-only="true">
+                      <con2:id>_ActionId-2135561953508824038-423f4dec.141c1f87b60.-7fee</con2:id>
+                      <con1:location>
+                        <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                      </con1:location>
+                      <con1:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$mailRequest</con:xqueryText>
+                      </con1:expr>
+                    </con1:replace>
+                  </con1:requestTransform>
+                  <con1:responseTransform>
+                    <con1:assign varName="correoNotificacion">
+                      <con2:id>_ActionId-2135561953508824038-423f4dec.141c1f87b60.-7fed</con2:id>
+                      <con1:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$mailResponse/m:return/text()</con:xqueryText>
+                      </con1:expr>
+                    </con1:assign>
+                    <con3:log>
+                      <con2:id>_ActionId-2135561953508824038-423f4dec.141c1f87b60.-7fec</con2:id>
+                      <con3:logLevel>error</con3:logLevel>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$mailResponse</con:xqueryText>
+                      </con3:expr>
+                      <con3:message>mailResponse</con3:message>
+                    </con3:log>
+                    <con3:log>
+                      <con2:id>_ActionId-2135561953508824038-423f4dec.141c1f87b60.-7feb</con2:id>
+                      <con3:logLevel>error</con3:logLevel>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$mailResponse/m:return</con:xqueryText>
+                      </con3:expr>
+                      <con3:message>return::::</con3:message>
+                    </con3:log>
+                    <con3:log>
+                      <con2:id>_ActionId-2135561953508824038-423f4dec.141c1f87b60.-7fea</con2:id>
+                      <con3:logLevel>error</con3:logLevel>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$correoNotificacion</con:xqueryText>
+                      </con3:expr>
+                      <con3:message>correo obtenido</con3:message>
+                    </con3:log>
+                  </con1:responseTransform>
+                </con1:wsCallout>
+              </con1:actions>
+            </con1:case>
+          </con1:ifThenElse>
+          <con1:ifThenElse>
+            <con2:id>_ActionId-8345971156372367006--1ae659cd.141cc7c4128.-7fe9</con2:id>
+            <con1:case>
+              <con1:condition>
+                <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">($idTipoSolicitud != "17")</con:xqueryText>
+              </con1:condition>
+              <con1:actions>
+                <con1:ifThenElse>
+                  <con2:id>_ActionId-4366873648349435189--4066ca8.14259056932.-7ff5</con2:id>
+                  <con1:case>
+                    <con1:condition>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">exists($correoNotificacion)</con:xqueryText>
+                    </con1:condition>
+                    <con1:actions>
+                      <con1:assign varName="htmlContent">
+                        <con2:id>_ActionId-4366873648349435189--4066ca8.14259056932.-7ff2</con2:id>
+                        <con1:expr>
+                          <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<html>
+
+  <body>
+<div style="width: 95%; background-color: lightgray; padding: 40px;"> 
+<div style="background-color: white; margin: 0px auto; height: auto;">
+
+	<table align="center" style="width: 80%">
+		<tr>
+			<td align="center">
+				<h2 style="font-size:30px;">Instituto Mexicano del Seguro Social</h2>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<a style="line-height:40px;
+					font-size:11px;
+					display:inline;
+					margin-left:5px;
+					color:#999;"
+	 				href="http://www.imss.gob.mx" title="Portal IMSS">Visita 
+						el portal oficial del Instituto Mexicano del Seguro Social
+				</a>
+			</td>
+		</tr>
+	 	<tr>
+			<td>
+				<p style="font-size: 16px !important; ">        
+					Este correo es enviado por el Instituto Mexicano del Seguro Social en referencia a la solicitud con folio: {$folio}.<br/> 
+Le informamos que su solicitud ha sido atendida. Le pedimos por favor verificar los cambios a través de su portal <b>IMSS Digital</b>.<br/><br/>
+      
+				</p>
+<br/><h3>{$mensajeNotificacion }</h3>
+			</td>
+		</tr>
+		<tfoot style="width: 90%">
+			<tr>
+				<th width="50%">
+						<div style="text-align: center; padding-bottom: 30px;"> 
+<h4 style="font-size: 14px !important; ">Gracias por usar los servicios digitales creados para usted por el Instituto Mexicano del Seguro Social.</h4>
+<img title="Portal IMSS" src="http://deltadev.imss.gob.mx/delta/resources/imagenes/header70.jpg"/> 
+<p style="text-align: center; font-size: 10px;"> Reforma 476, Col. Juárez, México DF - Tel 01 800 623 23 23 - <br/> ALGUNOS DERECHOS RESERVADOS IMSS - 2012 
+</p> 
+</div>
+				</th>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+</div>
+   </body>
+
+</html>]]></con:xqueryText>
+                        </con1:expr>
+                      </con1:assign>
+                      <con5:route>
+                        <con2:id>_ActionId-4366873648349435189--4066ca8.14259056932.-7ff1</con2:id>
+                        <con5:service ref="deltaGestionPatronalService/proxy/mail/DynamicProxyServer" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                        <con5:outboundTransform>
+                          <con1:replace varName="body" contents-only="true">
+                            <con2:id>_ActionId-4366873648349435189--4066ca8.14259056932.-7ff0</con2:id>
+                            <con1:location>
+                              <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                            </con1:location>
+                            <con1:expr>
+                              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<mx:EmailPayload xmlns:mx="http://mx.gob.imss.email.model">
+    <mx:FromAccountName>Portal IMSS Digital</mx:FromAccountName>
+    <mx:To>{$correoNotificacion}</mx:To>
+    <mx:ReplyToAddress></mx:ReplyToAddress>
+    <mx:Subject>Solicitud {$folio} finalizada</mx:Subject>
+    <mx:Content>{$htmlContent}</mx:Content>
+    <mx:ContentType>text/html</mx:ContentType>
+    <mx:Cc></mx:Cc>
+    <mx:Bcc></mx:Bcc>
+</mx:EmailPayload>]]></con:xqueryText>
+                            </con1:expr>
+                          </con1:replace>
+                          <con3:log>
+                            <con2:id>_ActionId-4366873648349435189--4066ca8.14259056932.-7fef</con2:id>
+                            <con3:logLevel>error</con3:logLevel>
+                            <con3:expr>
+                              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+                            </con3:expr>
+                            <con3:message>Request del correo de notificacion:::</con3:message>
+                          </con3:log>
+                        </con5:outboundTransform>
+                      </con5:route>
+                    </con1:actions>
+                  </con1:case>
+                </con1:ifThenElse>
+              </con1:actions>
+            </con1:case>
+          </con1:ifThenElse>
+        </con4:actions>
+      </con4:stage>
+    </con4:pipeline>
+    <con4:pipeline name="PipelinePairNode1_response" type="response"/>
+    <con:flow xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+      <con:pipeline-node name="PipelinePairNode1">
+        <con:request>PipelinePairNode1_request</con:request>
+        <con:response>PipelinePairNode1_response</con:response>
+      </con:pipeline-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>

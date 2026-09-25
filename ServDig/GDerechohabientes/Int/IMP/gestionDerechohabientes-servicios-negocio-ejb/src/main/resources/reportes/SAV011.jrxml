@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SAV0011" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1205"/>
+	<parameter name="LOGO" class="java.lang.String"/>
+	<parameter name="UMF" class="java.lang.String"/>
+	<field name="nombreAsegurado" class="java.lang.String"/>
+	<field name="nss" class="java.lang.String"/>
+	<field name="curp" class="java.lang.String"/>
+	<field name="fechaHoy" class="java.lang.String"/>
+	<field name="lugar" class="java.lang.String"/>
+	<field name="apellidoPaterno" class="java.lang.String"/>
+	<field name="apellidoMaterno" class="java.lang.String"/>
+	<field name="nombreBeneficiario" class="java.lang.String"/>
+	<field name="enfermedad" class="java.lang.String"/>
+	<field name="calidad" class="java.lang.String"/>
+	<field name="cadenaOriginal" class="java.lang.String"/>
+	<field name="selloDigital" class="java.lang.String"/>
+	<field name="secuenciaNotarial" class="java.lang.String"/>
+	<field name="numeroSerie" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement x="88" y="0" width="403" height="40"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[INSTITUTO MEXICANO DEL SEGURO SOCIAL
+SERVICIOS DE AFILIACIÓN VIGENCIA DE DERECHOS
+CERTIFICADO DE SITUACIÓN CLÍNICA DE DERECHOHABIENTE
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="506" y="0" width="49" height="14"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[SAV 011
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="24" y="0" width="50" height="43"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{LOGO}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="759" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="221" y="3" width="332" height="92"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="3" y="341" width="552" height="416"/>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement x="179" y="695" width="197" height="20"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="3" y="101" width="552" height="234"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="226" y="5" width="321" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[DATOS DEL ASEGURADO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="28" width="114" height="20"/>
+				<textElement/>
+				<text><![CDATA[No. DE SEG. SOCIAL:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="340" y="43" width="207" height="1"/>
+			</line>
+			<line>
+				<reportElement x="340" y="64" width="207" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="226" y="49" width="114" height="20"/>
+				<textElement/>
+				<text><![CDATA[NOMBRE:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="72" width="114" height="20"/>
+				<textElement/>
+				<text><![CDATA[C.U.R.P.:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="340" y="87" width="207" height="1"/>
+			</line>
+			<line>
+				<reportElement x="38" y="43" width="174" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="3" y="20" width="35" height="20"/>
+				<textElement/>
+				<text><![CDATA[FECHA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="65" width="134" height="20"/>
+				<textElement/>
+				<text><![CDATA[C. DIRECTOR DE LA U.M.F. No.
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="148" y="83" width="64" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="4" y="137" width="131" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ESTADO DE EMBARAZO
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="135" y="137" width="20" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="325" y="137" width="20" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="194" y="131" width="131" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[INCAPACIDAD FÍSICA
+O PSÍQUICA
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="515" y="137" width="20" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="384" y="137" width="131" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[TRATAMIENTO MÉDICO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="160" width="131" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[DERECHOHABIENTE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="127" y="177" width="411" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="134" y="172" width="131" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[APELLIDO PATERNO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="172" width="131" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[MATERNO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="422" y="172" width="131" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NOMBRE(S)
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="194" width="131" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[EN SU CALIDAD DE:
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="130" y="209" width="20" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="54" y="209" width="73" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ASEGURADO
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="231" y="209" width="20" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="166" y="209" width="61" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ESPOSA(O)
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="209" width="61" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[CONCUBINA(RIO)
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="336" y="209" width="20" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="427" y="209" width="20" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="376" y="209" width="45" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[PADRES
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="467" y="209" width="45" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[HIJOS
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="518" y="209" width="20" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="148" y="272" width="252" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[A T E N T A M E N T E
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="3" y="308" width="550" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="148" y="312" width="252" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NOMBRE, CARGO Y FIRMA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="342" width="252" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CERTIFICACIÓN
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="355" width="207" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[CERTIFICÓ QUE EL DERECHOHABIENTE:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="371" width="207" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[SE ENCUENTRA EN ESTADO DE:
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="153" y="392" width="20" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="24" y="392" width="73" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[EMBARAZO
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="193" y="392" width="20" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="153" y="410" width="23" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[SI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="193" y="410" width="23" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="392" width="202" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[* FECHA PROBABLE DE CONCEPCIÓN
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="408" width="202" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[* FECHA PROBABLE DE PARTO
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="445" y="408" width="108" height="1"/>
+			</line>
+			<line>
+				<reportElement x="415" y="429" width="138" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="244" y="473" width="202" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[*FECHA PROBABLE DE INICIO:
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="150" y="433" width="20" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="24" y="433" width="73" height="48"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[INCAPACIDAD
+FÍSICA O
+PSÍQUICA
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="415" y="505" width="138" height="1"/>
+			</line>
+			<rectangle>
+				<reportElement x="190" y="433" width="20" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="150" y="451" width="23" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[SI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="451" width="23" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="445" y="489" width="108" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="244" y="491" width="202" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[* FECHA PROBABLE DE TÉRMINO:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="433" width="87" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[* DIAGNÓSTICO:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="335" y="449" width="218" height="1"/>
+			</line>
+			<line>
+				<reportElement x="244" y="469" width="309" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="24" y="514" width="83" height="35"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[TRATAMIENTO
+MÉDICO
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="190" y="514" width="20" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="150" y="531" width="23" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[SI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="531" width="23" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="150" y="514" width="20" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="244" y="514" width="87" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[* DIAGNÓSTICO:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="527" width="87" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[* DIAGNÓSTICO:
+]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="453" y="532" width="38" height="10"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="453" y="546" width="38" height="10"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="334" y="541" width="111" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[FIEBRE REUMÁTICA
+]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="453" y="559" width="38" height="10"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="334" y="554" width="111" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[TUBERCULOSIS
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="415" y="604" width="138" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="244" y="571" width="202" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[*FECHA PROBABLE DE INICIO:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="589" width="202" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[* FECHA PROBABLE DE TÉRMINO:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="445" y="587" width="108" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="24" y="612" width="103" height="38"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[HIJO DE 16 AÑOS
+EN TRATAMIENTO
+MÉDICO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="629" width="23" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[SI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="629" width="23" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="190" y="612" width="20" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="150" y="612" width="20" height="20"/>
+			</rectangle>
+			<line>
+				<reportElement x="244" y="648" width="309" height="1"/>
+			</line>
+			<line>
+				<reportElement x="335" y="628" width="218" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="244" y="611" width="87" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[* DIAGNÓSTICO:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="669" width="202" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[* FECHA PROBABLE DE TÉRMINO:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="415" y="685" width="138" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="244" y="651" width="202" height="23"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[*FECHA PROBABLE DE INICIO:
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="445" y="668" width="108" height="1"/>
+			</line>
+			<line>
+				<reportElement x="5" y="739" width="188" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="6" y="734" width="188" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NOMBRE
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="208" y="739" width="113" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="209" y="735" width="112" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[MATRÍCULA
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="338" y="739" width="100" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="341" y="735" width="97" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="445" y="739" width="100" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="448" y="735" width="97" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="695" width="186" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DATOS DEL MÉDICO
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="345" y="45" width="202" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombreAsegurado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement stretchType="RelativeToBandHeight" x="41" y="28" width="175" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fechaHoy}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="347" y="26" width="200" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nss} != null  ? $F{nss}.format("%s - %s", $F{nss}.substring(0, $F{nss}.length()-1), $F{nss}.charAt($F{nss}.length()-1)) : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="346" y="69" width="199" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{curp}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="7" y="104" width="546" height="17"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[EN CUMPLIMIENTO A LAS DISPOSICIONES EMITIDAS POR EL H. CONSEJO TECNICO DEL INSTITUTO, EN SUS ACUERDOS 331980 (02/02/72), 431114 (14/05/74) Y 11924 (11/06/75), RELATIVOS A LA PRÓRROGA DE LAS PRESTACIONES DEL SEGURO DE ENFERMEDADES Y MATERNIDAD, SOLICITO A USTED SE CERTIFIQUE LA  SITUACIÓN CLÍNICA CON RESPECTO A:   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="242" width="549" height="30"/>
+				<textElement textAlignment="Justified">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[LO ANTERIOR CON OBJETO DE ESTAR EN POSIBILIDAD DE AUTORIZAR O NEGAR LA SOLICITUD DE PRÓRROGA DE SERVICIOS MÉDICOS SOLICITADA. ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="42" y="14" width="174" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{lugar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="63" width="68" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{UMF}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="148" y="157" width="117" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{apellidoPaterno}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="284" y="158" width="131" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{apellidoMaterno}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="422" y="157" width="125" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombreBeneficiario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="135" y="138" width="20" height="18">
+					<printWhenExpression><![CDATA[$F{enfermedad}.equals( "obstetrico" )]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[x]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="326" y="138" width="20" height="18">
+					<printWhenExpression><![CDATA[$F{enfermedad}.equals( "enfermedad" )]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[x]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="515" y="138" width="20" height="18">
+					<printWhenExpression><![CDATA[$F{enfermedad}.equals( "tratamiento" )]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[x]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="210" width="20" height="18">
+					<printWhenExpression><![CDATA[$F{calidad}.equals( "asegurado" )]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[x]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="209" width="20" height="18">
+					<printWhenExpression><![CDATA[$F{calidad}.equals( "esposa" )]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[x]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="336" y="209" width="20" height="18">
+					<printWhenExpression><![CDATA[$F{calidad}.equals( "concubina" )]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[x]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="210" width="20" height="18">
+					<printWhenExpression><![CDATA[$F{calidad}.equals( "padre" )]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[x]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="518" y="210" width="20" height="18">
+					<printWhenExpression><![CDATA[$F{calidad}.equals( "hijo" )]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[x]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="193" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="91" y="138" width="460" height="20"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{secuenciaNotarial}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="4" y="164" width="80" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número de serie:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="91" y="113" width="460" height="20"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{selloDigital}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="4" y="113" width="80" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello digital:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="91" y="88" width="460" height="20"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cadenaOriginal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="4" y="88" width="80" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena original:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="91" y="164" width="460" height="20"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numeroSerie}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="4" y="138" width="80" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Secuencia notarial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="3" y="23" width="548" height="59"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Declaro y manifiesto bajo protesta de decir verdad que lo datos asentados en cada requisito son correctos y corresponden a la verdad, apercibido que de conformidad con el artículo 314 de la Ley del Seguro Social, se me reputará como fraude y se me sancionará como tal, en los términos del Código Penal Federal, el obtener, así como el propiciar la obtención, de los seguros, prestaciones y servicios que esta Ley establece, sin tener el carácter de derechohabiente, mediante cualquier engaño o aprovechamiento de error, ya sea en virtud de simulación, sustitución de personas o cualquier otro acto, lo cual podrá ser verificado por el Instituto en cualquier momento, en uso de sus facultades de comprobación como organismo fiscal autónomo.]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

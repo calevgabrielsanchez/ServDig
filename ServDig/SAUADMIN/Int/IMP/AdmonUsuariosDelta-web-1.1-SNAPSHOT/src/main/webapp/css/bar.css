@@ -1,0 +1,35 @@
+@CHARSET "ISO-8859-1";
+
+/*Estilo para mostrar el nombre del sistema*/
+.titulo_sistema {
+	background: url("../imagenes/fondo_menu.jpg") right bottom repeat-x;
+	display: block;
+	height: 2.8em;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 25px;
+	overflow: hidden;
+	z-index: 800;
+	color: white;
+	font-weight: bold;
+}
+
+
+/*Estilo para centar el texto*/
+.texto-centrado {
+	text-align: center;
+}
+
+.wp-caption-text {
+	font-size: 11px;
+	line-height: 16px;
+	text-align: center;
+	margin: 0;
+	padding: 6px 3px 2px;
+}
+
+button .ui-button {
+  color: white;
+  background-color: #1a79a7;
+  border-color: #1a79a7;
+}

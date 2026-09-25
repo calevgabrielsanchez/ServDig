@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="simple.base.definition" template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title" value=" Visor de Solicitudes " />
+	</definition>
+
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title" value=" Visor de Solicitudes " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition.embebed" template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title" value=" Visor de Solicitudes " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<!-- Para mostrar el detalle externo con el estilo del portal -->
+	<definition name="base.definition.externo" template="/WEB-INF/views/layout/externo/main.jsp">
+		<put-attribute name="title" value=" Portal de Servicios IMSS Digital " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/externo/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/externo/sub-encabezado.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/layout/externo/menu.jsp" />
+		<put-attribute name="submenu"
+			value="/WEB-INF/views/layout/externo/submenu.jsp" />
+		<put-attribute name="breadcrumbs" value="" />
+		<put-attribute name="navegacion"
+			value="/WEB-INF/views/layout/externo/navegacion-simple.jsp" />
+		<put-attribute name="pie"
+			value="/WEB-INF/views/layout/externo/pie.jsp" />
+	</definition>
+
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="home" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/home.jsp " />
+	</definition>
+
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="databaseError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="internalError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="500" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="404" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+
+</tiles-definitions>

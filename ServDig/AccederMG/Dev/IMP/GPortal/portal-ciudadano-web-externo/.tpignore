@@ -1,0 +1,6 @@
+\Q/.externalToolBuilders/\E.*
+\Q/target/\E.*
+\Q/.settings/\E.*
+\Q/.classpath\E
+\Q/.project\E
+\Q/src/main/resources/rebel.xml\E

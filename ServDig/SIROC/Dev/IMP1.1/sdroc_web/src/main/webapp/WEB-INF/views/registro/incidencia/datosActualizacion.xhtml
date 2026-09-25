@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="header.xhtml">
+
+<div id="pageResumenDatosActualizacion"
+	th:fragment="pageDatosActualizacion">
+
+	<div id="pnlIncActualizacion" class="panel panel-default">
+		<div class="panel-heading">
+			<label class="small" th:text="#{registro.incidencia.anuncio}"/> 
+			<label class="small" th:text="${accion}" /> 
+			<label class="small" th:text="#{registro.incidencia.anuncio.obra}"/>
+		</div>
+		<div class="panel-body">
+			<div th:if="${obra.numActualiza == 2}" class="row">
+				<div class="alert alert-danger" role="alert">
+					<label class="small" th:text="#{reg.incidencia.ultima.actualizacion}"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="panel col-sm-12 text-left">
+					<label class="control-label col-sm-3 small" for="fecTerminoActualiza" th:text="#{reg.incidencia.fecha.termino}"></label>
+					<div class="col-sm-6">
+						<div class="form-group datepicker-group">
+							<input class="form-control input-sm" id="fecTerminoActualiza" type="text" readonly="readonly" style="background: white; cursor: default !important;">
+								<span class="glyphicon glyphicon-calendar" aria-hidden="true"/>
+							</input>
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<p id="msgeFecTermino" class="red small"/>
+					</div>
+				</div>
+			</div>
+			<div class="alert alert-info small" th:text="#{info.cantidadesobrasuperficie}">
+			</div>
+			<div class="row">
+				<div class="panel col-sm-12 text-left">
+					<label th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron != 4}" class="small control-label col-sm-3" for="txtMontoEjercido" th:text="#{reg.incidencia.monto}"/> 
+					<label th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron == 4}" class="small control-label col-sm-3" for="txtMontoEjercido" th:text="#{reg.incidencia.monto.contrato}"/>
+					<div class="col-sm-6">
+						<div id="divMonto" class="input-group">
+							<span class="input-group-addon small" th:text="#{reg.obra.currency}"/> 
+							<input th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron != 4}" id="txtMonto" type="text" class="form-control input-sm" aria-label="Amount (to the nearest dollar)"	placeholder="Monto de la obra" maxlength="15" /> 
+							<input th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron == 4}" id="txtMonto" type="text" class="form-control input-sm"	aria-label="Amount (to the nearest dollar)" placeholder="Monto del contrato" maxlength="15" /> 
+							<span class="input-group-addon small" th:text="#{reg.obra.mxn}"/> 
+						</div>
+						<span id="msgeMonto" class="red small hidden"></span>
+					</div>
+				</div>
+				
+			</div>
+			<div class="row" th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron != 4}">
+				<div id="pnlSuperficie" class="panel col-sm-12 text-left">
+						<label class="control-label col-sm-3 text-left small" for="superficie" th:text="#{reg.incidencia.superficie}" />
+					<div class="col-sm-6">
+						<div class="input-group">
+							<input id="txtSuperficie" type="text" class="form-control input-sm" aria-label="Amount (to the nearest dollar)" placeholder="Superficie de construcci&oacute;n" maxlength="13"/>
+							<span class="input-group-addon" th:text="#{reg.obra.m2}"/>
+						</div>
+						<span id="msgeSuperficie" class="red small hidden"></span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div id="pnlObjetoContrato" class="panel col-sm-12 text-left">
+						<label class="control-label col-sm-3 small" for="motivo" th:text="#{reg.incidencia.actualizacion.motivo}"/>
+					<div class="col-sm-6">
+						<div class="input-group">
+							<select id="motivo" class="form-control input-sm">
+								<option value="0" th:text="#{reg.obra.default.select}"/>
+								<option th:each="motivo : ${motivos}" th:value="${motivo.cveMotivo}" th:text="${motivo.desMotivo}"/>
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-12 text-left">
+					<p id="msgeMotivoActualiza" class="red small"/>
+				</div>
+				<div class="col-sm-12 text-left">
+					<p id="msgeMotivoActualiza" class="red small"/>
+				</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class="panel-footer"></div>
+	</div>
+</div>
+
+</html>

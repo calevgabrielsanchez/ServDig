@@ -1,0 +1,61 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.imss.gob.mx/boveda/ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.imss.gob.mx/boveda/ws" targetNamespace="http://www.imss.gob.mx/boveda/ws">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.imss.gob.mx/boveda/ws">
+<xs:element name="getEstatusDocRequest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="docId" type="xs:string"/>
+<xs:element name="folio" type="xs:string"/>
+<xs:element name="tipoDocumental" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="getEstatusDocResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="codigo" type="xs:string"/>
+<xs:element name="descripcion" type="xs:string"/>
+<xs:element maxOccurs="10" minOccurs="0" name="documentos" type="tns:documentos"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="documentos">
+<xs:sequence>
+<xs:element name="uuid" type="xs:string"/>
+<xs:element name="nombre" type="xs:string"/>
+<xs:element name="creado" type="xs:string"/>
+<xs:element name="folio" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="getEstatusDocResponse">
+<wsdl:part element="tns:getEstatusDocResponse" name="getEstatusDocResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getEstatusDocRequest">
+<wsdl:part element="tns:getEstatusDocRequest" name="getEstatusDocRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="bovedaPort">
+<wsdl:operation name="getEstatusDoc">
+<wsdl:input message="tns:getEstatusDocRequest" name="getEstatusDocRequest"> </wsdl:input>
+<wsdl:output message="tns:getEstatusDocResponse" name="getEstatusDocResponse"> </wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="bovedaPortSoap11" type="tns:bovedaPort">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="getEstatusDoc">
+<soap:operation soapAction=""/>
+<wsdl:input name="getEstatusDocRequest">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getEstatusDocResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="bovedaPortService">
+<wsdl:port binding="tns:bovedaPortSoap11" name="bovedaPortSoap11">
+<soap:address location="${mvn.cliente.boveda.wsdl.url.adress.location}"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

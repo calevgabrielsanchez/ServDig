@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:comun="http://mx.gob.imss.digital.modelo.comun" xmlns:domicilio="http://mx.gob.imss.digital.modelo.domicilio" xmlns:patron="http://mx.gob.imss.digital.modelo.patron" targetNamespace="http://mx.gob.imss.digital.modelo.patron" version="1.0">
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.comun" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/comun.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.domicilio" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/domicilio.xsd"/>
+
+  <xs:element name="registroPatronal" type="patron:registroPatronal"/>
+
+  <xs:element name="registroPatronales" type="patron:registroPatronales"/>
+
+  <xs:complexType name="registroPatronales">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="registrosPatronal" nillable="true" type="patron:registroPatronal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="registroPatronal">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="numeroRegistroPatronal" type="xs:string"/>
+      <xs:element minOccurs="0" ref="comun:modalidad"/>
+      <xs:element minOccurs="0" name="digitoVerificador" type="xs:string"/>
+      <xs:element minOccurs="0" name="municipioImss" type="domicilio:municipioIMSS"/>
+      <xs:element minOccurs="0" name="centrotrabajo" type="domicilio:domicilio"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

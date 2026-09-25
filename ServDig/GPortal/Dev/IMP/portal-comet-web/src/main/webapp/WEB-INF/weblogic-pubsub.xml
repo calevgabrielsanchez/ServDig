@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wlps:weblogic-pubsub
+    xmlns:wlps="http://xmlns.oracle.com/weblogic/weblogic-pubsub">
+
+	<wlps:server-config>
+		<wlps:name>DeltaPubSubServer</wlps:name>
+		<wlps:work-manager>WorkManagerHttpPubSub</wlps:work-manager>
+		<wlps:publish-without-connect-allowed>true</wlps:publish-without-connect-allowed>
+		<wlps:supported-transport/>
+		<wlps:client-timeout-secs>100</wlps:client-timeout-secs>
+		<wlps:persistent-client-timeout-secs>400</wlps:persistent-client-timeout-secs>
+		<wlps:interval-millisecs>1000</wlps:interval-millisecs>
+		<wlps:multi-frame-interval-millisecs>20000</wlps:multi-frame-interval-millisecs>
+	</wlps:server-config>
+
+	
+	<wlps:jms-handler-mapping>
+		<wlps:jms-handler-name>DeltaJmsHandler</wlps:jms-handler-name>
+		<wlps:jms-handler>
+			<wlps:jms-provider-url>t3://vzapma06.imss.gob.mx:8005,vzapma05.imss.gob.mx:8005,vzapmb08.imss.gob.mx:8005</wlps:jms-provider-url>
+			<wlps:connection-factory-jndi-name>jms/GeneralConnectionFactory</wlps:connection-factory-jndi-name>
+			<wlps:topic-jndi-name>jms/MessageCometDistributedTopic</wlps:topic-jndi-name>
+		</wlps:jms-handler>
+	</wlps:jms-handler-mapping>
+	
+
+	<wlps:channel>
+		<wlps:channel-pattern>/comet/delta/general</wlps:channel-pattern>
+		<wlps:jms-handler-name>DeltaJmsHandler</wlps:jms-handler-name>
+	</wlps:channel>
+	<wlps:channel>
+		<wlps:channel-pattern>/comet/delta/channel/afectar/menus/**</wlps:channel-pattern>
+		<wlps:jms-handler-name>DeltaJmsHandler</wlps:jms-handler-name>
+	</wlps:channel>
+	<wlps:channel>
+		<wlps:channel-pattern>/comet/delta/persona/modificacion/**</wlps:channel-pattern>
+		<wlps:jms-handler-name>DeltaJmsHandler</wlps:jms-handler-name>
+	</wlps:channel>
+	<wlps:channel>
+		<wlps:channel-pattern>/comet/delta/portlets/modificacion/**</wlps:channel-pattern>
+		<wlps:jms-handler-name>DeltaJmsHandler</wlps:jms-handler-name>
+	</wlps:channel>
+	<wlps:channel>
+		<wlps:channel-pattern>/comet/delta/solicitud/modificacion/**</wlps:channel-pattern>
+		<wlps:jms-handler-name>DeltaJmsHandler</wlps:jms-handler-name>
+	</wlps:channel>
+
+	<wlps:channel>
+		<wlps:channel-pattern>/comet/delta/channels/server/session/**</wlps:channel-pattern>
+		<wlps:jms-handler-name>DeltaJmsHandler</wlps:jms-handler-name>
+	</wlps:channel>
+
+	<wlps:channel-constraint>
+		<wlps:channel-resource-collection>
+			<wlps:channel-resource-name>all-permissions</wlps:channel-resource-name>
+			<wlps:description>Grant all permissions for everything by everyone</wlps:description>
+			<wlps:channel-pattern>/comet/delta/**</wlps:channel-pattern>
+		</wlps:channel-resource-collection>
+	</wlps:channel-constraint>
+</wlps:weblogic-pubsub>  

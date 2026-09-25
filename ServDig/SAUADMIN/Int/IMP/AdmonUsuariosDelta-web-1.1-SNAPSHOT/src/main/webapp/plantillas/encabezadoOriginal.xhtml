@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core">
+<h:form>
+	<table width="100%" align="center" cellpadding="0" cellspacing="0">
+		<tr align="center">
+			<td valign="top"><img width="100%" src="../imagenes/encabezado.jpg" /></td>
+		</tr>
+	</table>
+	<ace:menuBar id="menuBar" autoSubmenuDisplay="true">
+		<ace:submenu label="Administración">
+			<ace:submenu label="Usuarios">
+				<ace:menuItem value="Aprobación" action="#{aprobadorBean.obtenerAprobadores}" />
+				<ace:menuItem value="Actualización" action="update" />
+				<ace:menuItem value="Desactivar/Activar" action="delete" />
+				<ace:menuItem value="Consulta" action="consulta" />
+			</ace:submenu>
+			<ace:submenu label="Roles">
+				<ace:menuItem value="Altas" id="nuevoRol" action="altaRol" />
+				<ace:menuItem value="Consulta" id="consultaRol" action="busquedaRol" />
+			</ace:submenu>
+			<ace:submenu label="Solicitud">
+				<ace:menuItem value="Registro de Usuarios" id="registroSol" action="regSolicitud"></ace:menuItem>
+				<ace:menuItem value="Aprobador" id="regAprobador" action="registroAprobador"></ace:menuItem>
+			</ace:submenu>
+			<ace:menuItem value="Administración de Perfiles" id="perfiles" action="perfiles">
+				<ace:ajax event="activate" execute="@this" render="message" />
+			</ace:menuItem>
+		</ace:submenu>
+
+	</ace:menuBar>
+</h:form>
+</html>

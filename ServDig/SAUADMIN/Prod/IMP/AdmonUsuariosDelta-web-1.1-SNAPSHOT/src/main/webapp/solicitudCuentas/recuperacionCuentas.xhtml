@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c ="http://java.sun.com/jsp/jstl/core">
+    
+    <ui:composition template="../plantillas/plantilla.xhtml">
+    <ui:define name="body">
+      <div id ="titulo" align="center">
+  		  <h3>Recuperación de Cuentas</h3>
+   	 </div>
+     <h:form id="selectForm">
+           <style type="text/css">
+             /* Important required because row */
+             .ui-datatable-odd {
+               background-color:lightgray !important;
+               background-position-y: -1400px; /* IE7 hack */
+               }
+           </style>
+           
+           <fieldset style="border: 1px solid silver; margin: 0; padding: 10px;">
+              <h:panelGrid id="pnRegSolicitudCuentaCrPre3" columns="6">
+				        <h:outputLabel value="Area Normativa:" id="lbAreaNormRegSolicitudCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco1.png" style="width: 130px; "/>
+				        <h:outputLabel value="Departamento:" id="lbDepRegSolicitudCuenta"/>
+				        <h:graphicImage value="../imagenes/blanco1.png" style="width: 136px; "/>
+				        <h:outputLabel value="Grupo:" id="lbPuestoRegSolicitudCuenta"/>	
+				        <h:graphicImage value="../imagenes/blanco1.png" />
+				    </h:panelGrid>
+					
+					<h:panelGrid id="pnRegSolicitudCuentaC" columns="9">				
+                	<h:selectOneMenu id="slAreaNormRegSolicitudCuenta"
+                	disabled="#{recuperaSolicitudMB.solicitudMB.flagEliminacion}" value="#{recuperaSolicitudMB.solicitudMB.claveAreaNormativa}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+				        <f:selectItems value="${recuperaSolicitudMB.solicitudMB.lstAreaNormativa}" />											
+					</h:selectOneMenu>
+					<h:message for="slAreaNormRegSolicitudCuenta" id="msgAreaNormRegSolicitudCuenta"  errorClass="error"/>							
+										
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+													
+                	<h:selectOneMenu id="slDepRegSolicitudCuenta"
+                	  disabled="#{recuperaSolicitudMB.solicitudMB.flagEliminacion}" value="#{recuperaSolicitudMB.solicitudMB.claveDepartamento}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+						<f:selectItems value="${recuperaSolicitudMB.solicitudMB.lstDepartamento}" />
+						<f:ajax event="change" render="slPuestoRegSolicitudCuenta" />					
+					</h:selectOneMenu>
+					<h:message for="slDepRegSolicitudCuenta" id="msgDepRegSolicitudCuenta"  errorClass="error"/>
+					
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+					
+                	<h:selectOneMenu id="slPuestoRegSolicitudCuenta"
+                	disabled="#{recuperaSolicitudMB.solicitudMB.flagEliminacion}" value="#{recuperaSolicitudMB.solicitudMB.clavePuesto}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+						<f:selectItems value="${recuperaSolicitudMB.solicitudMB.lstPuesto}" />
+					</h:selectOneMenu>
+					<h:message for="slPuestoRegSolicitudCuenta" errorClass="error"/>										
+					<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>		
+					</h:panelGrid>
+           
+               <h:panelGrid id="pnRegSolicitudCuentaCrPre1" columns="6">
+			    	<h:outputLabel value="Delegacion:" id="lbDelegacion"/>
+				    <h:graphicImage value="../imagenes/blanco2.png" style="width: 182px; "/>
+				    <h:outputLabel value="Subdelegacion:" id="lbSubdelegacion"/>
+				    <h:graphicImage value="../imagenes/blanco1.png" style="width: 132px; "/>
+				    <h:outputLabel value="UMF:" id="lbUmf"/>
+				    <h:graphicImage value="../imagenes/blanco2.png" />
+				</h:panelGrid>
+				
+				<h:panelGrid id="pnRegSolicitudCuentaQ" columns="9">  
+					    <h:selectOneMenu id="slDelRegSolicitudCuenta"
+					    disabled="#{recuperaSolicitudMB.solicitudMB.flagEliminacion}" value="#{recuperaSolicitudMB.solicitudMB.claveDelegacion}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+						<f:selectItems value="${recuperaSolicitudMB.solicitudMB.lstDelegacion}" />						
+						</h:selectOneMenu>
+					    <h:message for="slDelRegSolicitudCuenta" id="msgDelRegSolicitudCuenta"  errorClass="error"/>
+					
+					    <h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/> 
+					
+					    <h:selectOneMenu id="slSubRegSolicitudCuenta"
+					    disabled="#{recuperaSolicitudMB.solicitudMB.flagEliminacion}" value="#{recuperaSolicitudMB.solicitudMB.claveSubDelegacion}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+                        <f:selectItems value="${recuperaSolicitudMB.solicitudMB.lstSubDelegacion}" var="s"
+							itemValue="${s.SubdelegacionDTO.cveSubelegacion}"
+							itemLabel="${s.SubdelegacionDTO.nombreSubelegacion}" />					
+						</h:selectOneMenu>
+					    <h:message for="slSubRegSolicitudCuenta" errorClass="error"/>
+													
+						<h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>							
+													
+					    <h:selectOneMenu  id="slUMFRegSolicitudCuenta" 
+					    disabled="#{recuperaSolicitudMB.solicitudMB.flagEliminacion}" value="#{recuperaSolicitudMB.solicitudMB.claveUMF}">
+						<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+				         <f:selectItems value="${recuperaSolicitudMB.solicitudMB.lstUMF}" var="v"
+							itemValue="${v.UmfDTO.cveUmf}"
+							itemLabel="${v.UmfDTO.nombreUmf}" />						
+						</h:selectOneMenu>	
+						<h:message for="slUMFRegSolicitudCuenta" errorClass="error"></h:message>											    			    								
+					    <h:graphicImage value="../imagenes/blanco1.png" style="width: 25px; "/>
+					</h:panelGrid>
+				</fieldset>
+            <ace:dataTable value="${recuperaSolicitudMB.usuarios}" 
+            		var="solicitud" id="solicitudes"
+            		stateMap="${recuperaSolicitudMB.stateMap}" 
+            		selectionMode="single"
+            		rowSelectListener="#{recuperaSolicitudMB.handleSelectUsuario}">
+                    <ace:ajax event="select" render="@this selectForm:datosFromTable" execute="@this" />
+                
+                <ace:column>
+                	<f:facet name="header">Matricula</f:facet>
+                    ${solicitud.cveMatricula}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Nombre
+                    </f:facet>
+                    ${solicitud.nomNombre}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Apellido Paterno
+                    </f:facet>
+                    ${solicitud.nomPaterno}
+                </ace:column>
+                <ace:column>
+                    <f:facet name="header">
+                        Apellido Materno
+                    </f:facet>
+                    ${solicitud.nomMaterno}
+                </ace:column>
+                <ace:column>
+                	<f:facet name="header">CURP</f:facet>
+                    ${solicitud.desUsrCurp}
+                </ace:column>
+                 <ace:column>
+                	<f:facet name="header">Correo Electronico</f:facet>
+                       ${solicitud.refCorreoElectronico}
+                </ace:column>
+                <ace:column>
+                	<f:facet name="header">Delegacion</f:facet>
+                       ${solicitud.delDTO.nombreDelegacion}
+                </ace:column>
+                <ace:column>
+                	<f:facet name="header">SubDelegacion</f:facet>
+                       ${solicitud.subdelDTO.nombreSubelegacion}
+                </ace:column>
+                 <ace:column>
+                	<f:facet name="header">UMF</f:facet>
+                       ${solicitud.umfDTO.nombreUmf}
+                </ace:column>  
+            </ace:dataTable>
+            <br/>
+            <div id ="actualizar" align="center">
+             <h:commandButton action="#{recuperaSolicitudMB.consultaSolicitudes}" value= "Refrescar" styleClass="mboton"/>
+             <h:graphicImage value="../imagenes/blanco.png" />
+             <h:commandButton action="#{recuperaSolicitudMB.recuperarCuenta}" onclick="return confirm('¿Deseas recuperar esta cuenta de usuario?')" value= "Recuperar Cuenta" styleClass="mboton"/>
+            </div>          
+    </h:form>
+    </ui:define>
+    </ui:composition>
+    
+</html>    
+    

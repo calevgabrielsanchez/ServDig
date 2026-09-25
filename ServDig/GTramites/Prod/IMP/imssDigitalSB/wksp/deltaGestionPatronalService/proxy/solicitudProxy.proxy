@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description/>
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:request type="XML">
+        <con3:schema ref="deltaGestionPatronalService/schema/cancelarSolicitudType" element="cancelarSolicitudReques" xmlns:con3="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:request>
+      <con:response type="XML">
+        <con3:schema ref="deltaGestionPatronalService/schema/cancelarSolicitudType" element="cancelarSolicitudResponse" xmlns:con3="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:response>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:largeMessageSupport isEnabled="true">
+      <ser:persistToFile>false</ser:persistToFile>
+      <ser:enableCompression>true</ser:enableCompression>
+    </ser:largeMessageSupport>
+    <ser:pageAttachments isEnabled="false"/>
+    <ser:transactions isRequired="true" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/deltaGestionPatronalService/proxy/solicitudProxy</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific xsi:type="http:HttpEndPointConfiguration" xmlns:http="http://www.bea.com/wli/sb/transports/http">
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con1:pipeline name="PipelinePairNode1_request" type="request">
+      <con1:stage name="stage1">
+        <con1:context>
+          <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.solicitud/"/>
+        </con1:context>
+        <con1:actions>
+          <con:assign varName="csreq" xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id xmlns:con1="http://www.bea.com/wli/sb/stages/config">_ActionId-437815093207181374--60624ad5.13f3a590d41.-7fe1</con1:id>
+            <con:expr>
+              <con:dynamicXqueryTransform xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                <con:resourceExpr>$body/mx:cancelarSolicitudReques</con:resourceExpr>
+              </con:dynamicXqueryTransform>
+            </con:expr>
+          </con:assign>
+          <con:wsCallout xmlns:con="http://www.bea.com/wli/sb/stages/transform/config">
+            <con1:id xmlns:con1="http://www.bea.com/wli/sb/stages/config">_ActionId-437815093207181374--60624ad5.13f3a590d41.-7fe0</con1:id>
+            <con:service ref="deltaGestionPatronalService/BSTest/solicitudServiceBusines" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con:operation>cancelarSolicitud</con:operation>
+            <con:request>
+              <con:body wrapped="false">$csreq</con:body>
+              <con:header/>
+            </con:request>
+            <con:response>
+              <con:body wrapped="false">csresp</con:body>
+              <con:header/>
+            </con:response>
+            <con:requestTransform/>
+            <con:responseTransform/>
+          </con:wsCallout>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline name="PipelinePairNode1_response" type="response"/>
+    <con1:flow>
+      <con1:pipeline-node name="PipelinePairNode1">
+        <con1:request>PipelinePairNode1_request</con1:request>
+        <con1:response>PipelinePairNode1_response</con1:response>
+      </con1:pipeline-node>
+    </con1:flow>
+  </ser:router>
+</xml-fragment>

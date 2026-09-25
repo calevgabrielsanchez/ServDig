@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Semanas_cotizadas_notas" language="groovy" pageWidth="572" pageHeight="792" columnWidth="572" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="203" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="21" width="558" height="182"/>
+				<textElement textAlignment="Justified">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Las semanas cotizadas son contabilizadas como los periodos comprendidos entre las fechas de alta y baja del asegurado ante el IMSS con uno o varios patrones. Un año completo de aseguramiento equivale a 52 semanas cotizadas.
+
+El nombre o razón social del patrón puede diferir del nombre comercial por el que el patrón es conocido.
+
+El salario base de cotización se integra con los pagos hechos en efectivo por cuota diaria, gratificaciones, percepciones, alimentación, habitación, primas, comisiones, prestaciones en especie y cualquiera otra cantidad o prestación que se entregue al trabajador por su trabajo, exceptuando los conceptos a que hace referencia el artículo 27 de la Ley del Seguro Social.
+
+Para aclaración o consulta respecto a este Reporte deberá acudir a cualquier Subdelegación del IMSS.
+
+Para mayor información llame al centro de contacto IMSS al teléfono 01800 6232323.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="1" width="153" height="20"/>
+				<textElement>
+					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[NOTAS IMPORTANTES:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

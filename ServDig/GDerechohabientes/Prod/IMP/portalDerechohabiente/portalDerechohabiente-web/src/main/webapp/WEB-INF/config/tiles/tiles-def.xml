@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="simple.base.definition" template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title"
+			value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title"
+			value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<!-- <put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" /> -->
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition.embebed" template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title"
+			value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="portal.base.definition" template="/WEB-INF/views/layout/portal-template.jsp">
+		<put-attribute name="title"
+			value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+	</definition>
+
+	<!--Definicion de la pantalla del portalDerechohabiente -->
+	<definition name="portalDerechohabiente" extends="simple.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/portalDerechohabiente/portalDerechohabiente.jsp " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<!-- Definicion de la pantalla de logeo -->
+	<definition name="login" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/login.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla de bienvenida de la aplicacion -->
+	<definition name="welcome" extends="simple.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/general/welcome.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="home" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/home.jsp " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-home.jsp" />
+	</definition>
+
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="databaseError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="internalError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="500" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="404" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+
+	<!-- WIZARDS -->
+	<definition name="wizard.base.definition" template="/WEB-INF/views/layout/main-wizard.jsp">
+		<put-attribute name="title" value=" Portal de Servicios DELTA " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-empty.jsp" />
+		<put-attribute name="nameComScore" value="" />
+	</definition>
+
+	<definition name="tramiteDummyInicio" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/dummy/inicial.jsp" />
+	</definition>
+
+	<definition name="tramiteDummyContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/dummy/contenido.jsp" />
+	</definition>
+	
+	<definition name="wizardDetalleDerechohabienteContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/detalleDerechohabiente/contenido.jsp" />
+	</definition>
+	
+	<definition name="listadoCandidatos" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/listadoCandidatos/listado.jsp" />
+	</definition>
+	
+	<definition name="wizardCorreccionDerechohabienteInit" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/correccionDerechohabiente/inicial.jsp" />
+	</definition>
+	
+	<definition name="wizardCorreccionDerechohabienteContent" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/correccionDerechohabiente/contenido.jsp" />
+	</definition>
+	
+	<definition name="wizardBajaDerechohabienteInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/bajaDerechohabiente/inicial.jsp" />
+		<put-attribute name="nameComScore" value=".baja.inicio" />
+	</definition>
+	
+	<definition name="wizardBajaDerechohabienteCiudadanoInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/bajaDerechohabiente/inicialCiudadano.jsp" />
+		<put-attribute name="nameComScore" value=".baja.inicioCiudadano" />
+	</definition>
+	
+	<definition name="wizardBajaDerechohabienteContent" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/bajaDerechohabiente/contenido.jsp" />
+		<put-attribute name="nameComScore" value=".baja.datosBaja" />
+	</definition>
+	
+	<definition name="wizardRegistroDerechohabienteInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/registroDerechohabiente/inicial.jsp" />
+		<put-attribute name="nameComScore" value=".registro.inicio" />
+	</definition>
+	
+	<definition name="wizardRegistroCapturaPersona" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/registroDerechohabiente/datosPersonales.jsp" />
+		<put-attribute name="nameComScore" value=".registro.datosPersonales" />
+	</definition>
+	
+	<definition name="wizardRegistroCapturaDomicilio" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/registroDerechohabiente/datosDomicilio.jsp" />
+		<put-attribute name="nameComScore" value=".registro.domicilio" />
+	</definition>
+	
+	<definition name="wizardRegistroCapturaUmf" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/registroDerechohabiente/datosUmf.jsp" />
+		<put-attribute name="nameComScore" value=".registro.datosAdscripcion" />
+	</definition>
+	
+	<definition name="wizardProrrogaDerechohabienteInit" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/prorrogaDerechohabiente/inicial.jsp" />
+	</definition>
+	
+	<definition name="wizardProrrogaDerechohabienteCiudadanoInit" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/prorrogaDerechohabiente/inicialCiudadano.jsp" />
+	</definition>
+	
+	<definition name="wizardProrrogaDerechohabienteContent" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/prorrogaDerechohabiente/contenido.jsp" />
+	</definition>
+	
+	<definition name="errorReporteVigencia" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/comprobanteVigencia/error.jsp"/>
+	</definition>
+
+	<!-- Wizard para la asignacion, cambio de domicilio y cambio de clinica -->
+	<definition name="wizardDomicilioClinicaDerechohabienteInit" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/domicilioClinicaDerechohabiente/inicial.jsp" />
+	</definition>
+	
+	<definition name="wizardDomicilioClinicaDerechohabienteContent" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/domicilioClinicaDerechohabiente/datosDomicilio.jsp" />
+	</definition>
+	
+	<definition name="initReporteVigencia" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/comprobanteVigencia/inicial.jsp"/>
+	</definition>
+</tiles-definitions>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="DeltaUsuariosPU"
+		transaction-type="JTA">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>jdbc/DeltaUsuariosDS</jta-data-source>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.DicDelegacion</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.DicModulo</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.DicSubdelegacion</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.DicUmf</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.SsoAccesomodulo</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.SsoAprobador</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.SsoCatareanormativa</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.SsoCatdepartamento</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.SsoCatdeptomodulo</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.SsoCatestatus</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.SsoCatpuesto</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.SsoPerfilessol</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.SsoSolicitud</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.SsoNotificacion</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.SsoUserExternos</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.SsoUsrMovimientos</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entidad.SsoActivaCuenta</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.AccesoModulo</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.Aprobador</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.Aprobadores</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.AreaNormativa</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.Delegacion</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.Departamento</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.DeptoModulo</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.DgCatEstado</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.Estatus</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.Modulo</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.Notificacion</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.PerfilesSolicitud</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.Puesto</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.Solicitudes</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.SolicitudesExternos</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.Subdelegacion</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.UnidadMedicaFamiliar</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.Usuario</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.UsuarioFuncionario</class>
+		<class>mx.gob.imss.ctirss.admonusuarios.entities.UsuarioMovimientos</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+		<validation-mode>NONE</validation-mode>
+		<shared-cache-mode>NONE</shared-cache-mode>
+
+<!-- 		<properties> -->
+<!-- 			<property name="hibernate.query.factory_class" value="org.hibernate.hql.classic.ClassicQueryTranslatorFactory" /> -->
+<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" /> -->
+<!-- 			<property name="hibernate.show_sql" value="true" /> -->
+<!-- 			<property name="hibernate.format_sql" value="true" /> -->
+<!-- 			<property name="hibernate.use_sql_comments" value="true" /> -->
+<!-- 			<property name="hibernate.transaction.manager_lookup_class"	value="org.hibernate.transaction.WeblogicTransactionManagerLookup" /> -->
+<!-- 			<property name="hibernate.max_fetch_depth" value="1" /> -->
+			<!-- <property name="hibernate.default_schema" value="PROP_BDTU_DIDT"/> -->
+<!-- 			<property name="eclipselink.logging.file"        value="/workspace/logs/JPA.log" /> -->
+<!-- 			<property name="eclipselink.logging.level"       value="ALL" /> -->
+<!-- 			<property name="eclipselink.logging.level.sql"   value="ALL" /> -->
+<!-- 			<property name="eclipselink.logging.logger"      value="JavaLogger"/> -->
+<!-- 			<property name="eclipselink.logging.parameters"  value="true"/> -->
+<!-- 		</properties> -->
+	</persistence-unit>
+</persistence>

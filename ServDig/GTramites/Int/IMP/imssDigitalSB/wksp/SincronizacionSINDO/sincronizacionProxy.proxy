@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/publish/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con4="http://www.bea.com/wli/sb/typesystem/config" xmlns:con5="http://www.bea.com/wli/sb/stages/transform/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:binding type="Mixed" xsi:type="con4:MixedBindingType" xmlns:con4="http://www.bea.com/wli/sb/services/bindings/config">
+      <con4:request type="XML">
+        <con6:schema ref="SincronizacionSINDO/schemas/movtoPatSujetoObligado" element="MovtoPatSujetoObligadoType" xmlns:con6="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con4:request>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>warning</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:transactions isRequired="false" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>jms</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>jms://172.24.116.37:15051,172.24.116.37:15052/jms.GeneralConnectionFactory/jms.MovPatronalesDistributedQueue</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific xsi:type="jms:JmsEndPointConfiguration">
+      <jms:is-queue>true</jms:is-queue>
+      <jms:is-secure>false</jms:is-secure>
+      <jms:inbound-properties>
+        <jms:response-required>false</jms:response-required>
+        <jms:XA-required>false</jms:XA-required>
+      </jms:inbound-properties>
+      <jms:request-encoding>UTF-8</jms:request-encoding>
+      <jms:jndi-timeout>0</jms:jndi-timeout>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con:pipeline type="request" name="PipelinePairNode1_request">
+      <con:stage name="service">
+        <con:context>
+          <con2:varNsDecl namespace="http://www.mx.gob.imss.ctirss.delta/movtoPatSujetoObligado" prefix="mov"/>
+        </con:context>
+        <con:actions>
+          <con1:log>
+            <con2:id>_ActionId-2095239447355428916-7c1b0a03.13d83d358f4.-7e7f</con2:id>
+            <con1:logLevel>warning</con1:logLevel>
+            <con1:expr>
+              <con2:xqueryText>$body</con2:xqueryText>
+            </con1:expr>
+            <con1:message>Body recibido</con1:message>
+          </con1:log>
+          <con5:assign varName="wsCall">
+            <con2:id>_ActionId-2095239447355428916-7c1b0a03.13d83d358f4.-7e7e</con2:id>
+            <con5:expr>
+              <con2:xqueryText>&lt;mx:crearSolicitudAltaPatronal xmlns:mx="http://mx.gob.imss.ctirss.delta.gestion.patronal.service.business.clasificacion.actividad.economica">
+    &lt;!--Optional:-->
+    &lt;arg0>{$body/mov:MovtoPatSujetoObligadoType/mov:registroPatronal/text()}&lt;/arg0>
+&lt;/mx:crearSolicitudAltaPatronal></con2:xqueryText>
+            </con5:expr>
+          </con5:assign>
+          <con1:log>
+            <con2:id>_ActionId-2095239447355428916-7c1b0a03.13d83d358f4.-7e7d</con2:id>
+            <con1:logLevel>warning</con1:logLevel>
+            <con1:expr>
+              <con2:xqueryText>$wsCall</con2:xqueryText>
+            </con1:expr>
+            <con1:message>Llamada webservice</con1:message>
+          </con1:log>
+          <con5:wsCallout>
+            <con2:id>_ActionId-2095239447355428916-7c1b0a03.13d83d358f4.-7e7c</con2:id>
+            <con5:service xsi:type="ref:BusinessServiceRef" ref="SincronizacionSINDO/wsClasificacionActividadEconomicaCall" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con5:operation>crearSolicitudAltaPatronal</con5:operation>
+            <con5:request>
+              <con5:body wrapped="false">$wsCall</con5:body>
+            </con5:request>
+            <con5:response>
+              <con5:body wrapped="false">wsResponse</con5:body>
+            </con5:response>
+            <con5:requestTransform/>
+            <con5:responseTransform/>
+          </con5:wsCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="response" name="PipelinePairNode1_response"/>
+    <con:pipeline type="request" name="PipelinePairNode2_request">
+      <con:stage name="Default">
+        <con:context>
+          <con2:varNsDecl namespace="http://www.mx.gob.imss.ctirss.delta/movtoPatSujetoObligado" prefix="mov"/>
+        </con:context>
+        <con:actions>
+          <con1:log>
+            <con2:id>_ActionId-2095239447355428916-7c1b0a03.13d83d358f4.-7dce</con2:id>
+            <con1:logLevel>warning</con1:logLevel>
+            <con1:expr>
+              <con2:xqueryText>$body</con2:xqueryText>
+            </con1:expr>
+            <con1:message>Peticion descartada</con1:message>
+          </con1:log>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="response" name="PipelinePairNode2_response"/>
+    <con:pipeline type="request" name="PipelinePairNode3_request">
+      <con:stage name="stage1">
+        <con:context>
+          <con2:varNsDecl namespace="http://www.mx.gob.imss.ctirss.delta/movtoPatSujetoObligado" prefix="mov"/>
+        </con:context>
+        <con:actions>
+          <con1:log>
+            <con2:id>_ActionId-5462385309542589355-6a38b42.13da409616d.-7fa3</con2:id>
+            <con1:logLevel>warning</con1:logLevel>
+            <con1:expr>
+              <con2:xqueryText>$body</con2:xqueryText>
+            </con1:expr>
+            <con1:message>Body recibido</con1:message>
+          </con1:log>
+          <con5:assign varName="wsCall">
+            <con2:id>_ActionId-5462385309542589355-6a38b42.13da409616d.-7f88</con2:id>
+            <con5:expr>
+              <con2:xqueryText>&lt;mx:bajaPatronal xmlns:mx="http://mx.gob.imss.ctirss.delta.gestion.patronal.service.business.clasificacion.actividad.economica">
+    &lt;arg0>{$body/mov:MovtoPatSujetoObligadoType/mov:registroPatronal/text()}&lt;/arg0>
+&lt;/mx:bajaPatronal></con2:xqueryText>
+            </con5:expr>
+          </con5:assign>
+          <con1:log>
+            <con2:id>_ActionId-5462385309542589355-6a38b42.13da409616d.-7f3a</con2:id>
+            <con1:logLevel>warning</con1:logLevel>
+            <con1:expr>
+              <con2:xqueryText>$wsCall</con2:xqueryText>
+            </con1:expr>
+            <con1:message>Llamada al webservice</con1:message>
+          </con1:log>
+          <con5:wsCallout>
+            <con2:id>_ActionId-5462385309542589355-6a38b42.13da409616d.-7f6a</con2:id>
+            <con5:service xsi:type="ref:BusinessServiceRef" ref="SincronizacionSINDO/wsClasificacionActividadEconomicaCall" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con5:operation>bajaPatronal</con5:operation>
+            <con5:request>
+              <con5:body>$wsCall</con5:body>
+            </con5:request>
+            <con5:response>
+              <con5:body>wsResponse</con5:body>
+            </con5:response>
+            <con5:requestTransform/>
+            <con5:responseTransform/>
+          </con5:wsCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline type="response" name="PipelinePairNode3_response"/>
+    <con:flow>
+      <con:branch-node type="condition" name="branch_tipo_movimiento">
+        <con:context>
+          <con2:varNsDecl namespace="http://www.mx.gob.imss.ctirss.delta/movtoPatSujetoObligado" prefix="mov"/>
+        </con:context>
+        <con:branch-table variable="body">
+          <con:xpath>
+            <con2:xpathText>./mov:MovtoPatSujetoObligadoType/mov:cveIdTipoMovto/text()</con2:xpathText>
+          </con:xpath>
+          <con:branch name="movimiento1">
+            <con:operator>equals</con:operator>
+            <con:value>'1'</con:value>
+            <con:flow>
+              <con:pipeline-node name="PipelinePairNode1">
+                <con:request>PipelinePairNode1_request</con:request>
+                <con:response>PipelinePairNode1_response</con:response>
+              </con:pipeline-node>
+            </con:flow>
+          </con:branch>
+          <con:branch name="branch1">
+            <con:operator>equals</con:operator>
+            <con:value>2</con:value>
+            <con:flow>
+              <con:pipeline-node name="PipelinePairNode3">
+                <con:request>PipelinePairNode3_request</con:request>
+                <con:response>PipelinePairNode3_response</con:response>
+              </con:pipeline-node>
+            </con:flow>
+          </con:branch>
+          <con:default-branch>
+            <con:flow>
+              <con:pipeline-node name="PipelinePairNode2">
+                <con:request>PipelinePairNode2_request</con:request>
+                <con:response>PipelinePairNode2_response</con:response>
+              </con:pipeline-node>
+            </con:flow>
+          </con:default-branch>
+        </con:branch-table>
+      </con:branch-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>

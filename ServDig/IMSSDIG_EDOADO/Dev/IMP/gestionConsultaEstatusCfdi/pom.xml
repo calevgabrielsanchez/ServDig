@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>mx.gob.imss.dacvass.scheduler</groupId>
+	<artifactId>scheduler-consulta-cfdi</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Modulo Consulta Estatus CFDI</name>
+	
+	<properties>
+		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+	</properties>
+
+	<build>
+		<plugins>
+			
+			<!-- Maven Compiler Plug-In for use JVM 1.6 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<compilerArguments>
+						<endorseddirs>${endorsed.dir}</endorseddirs>
+					</compilerArguments>
+				</configuration>
+			</plugin>
+			
+			<!-- PLUGIN PARA QUE SE PUEDAN SUSTITUIR LAS VARIABLES DE MAVEN QUE SE DECLARAN EN LOS PERFILES -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<!-- EN CASO DE QUE LOS ARCHIVOS NO SE ENCUENTREN EN src/main/resources SE DECLARAN AQUI -->
+					<webResources>
+						<resource>
+							<filtering>true</filtering>
+							<directory>src/main/resources</directory>
+							<includes>
+								<include>**/config.properties</include>
+							</includes>
+						</resource>
+						<resource>
+							<filtering>true</filtering>
+							<directory>src/main/webapp</directory>
+							<includes>
+								<include>**/*.jsp</include>
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+		</plugins>
+		
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+	
+	<profiles>
+		<profile>
+			<id>compile-stage</id>
+			<activation>
+        		<activeByDefault>true</activeByDefault>
+    		</activation>
+			<properties>
+				<rfc_imss_mvn>WAL99092955A</rfc_imss_mvn>
+			</properties>
+		</profile>
+		<profile>
+			<id>compile-prod</id>
+			<properties>
+				<rfc_imss_mvn>IMS421231I45</rfc_imss_mvn>
+			</properties>
+		</profile>
+	</profiles>
+	
+	<modules>
+		<module>scheduler-consulta-cfdi-packing</module>
+		<module>scheduler-consulta-cfdi-interfaces-negocio</module>
+		<module>scheduler-consulta-cfdi-modelo</module>
+		<module>scheduler-consulta-cfdi-servicios-negocio-ejb</module>
+		<module>scheduler-consulta-cfdi-web</module>
+	</modules>
+</project>

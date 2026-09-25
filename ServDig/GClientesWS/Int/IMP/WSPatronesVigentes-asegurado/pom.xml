@@ -1,0 +1,165 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+		<artifactId>ClientesWebservices</artifactId>
+		<version>2.2-SNAPSHOT</version>
+	</parent>
+	
+  <groupId>mx.gob.imss.cit.clienteswebservices.asegurado</groupId>
+	<artifactId>WSPatronesVigentes-asegurado</artifactId>
+	<name>WSPatronesVigentes-asegurado</name>
+  <version>${mvn.project.version}</version>
+  <packaging>jar</packaging>
+  <url>http://maven.apache.org</url>
+
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+        <skipTests>true</skipTests>
+        <junit.version>4.8.2</junit.version>
+	<org.log4j.version>1.2.16</org.log4j.version>
+  </properties>
+  
+  
+ 
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+   		 <dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		   <groupId>com.sun.xml.ws</groupId>
+		   <artifactId>jaxws-rt</artifactId>
+		   <version>2.2.6</version><!-- <version>2.1.3</version> -->
+		   <scope>provided</scope>		
+		</dependency>
+			<!--
+		    <dependency>
+		      <groupId>org.codehaus.mojo</groupId>
+		       <artifactId>jaxws-maven-plugin</artifactId>
+		      <version>2.4.1</version>
+		    </dependency>
+		    -->
+  </dependencies>
+	<!--
+    <build>
+	<plugins>
+		<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>jaxws-maven-plugin</artifactId>
+			<version>1.9</version>
+			<executions>
+				<execution>
+					<goals>
+						<goal>wsimport</goal>
+					</goals>
+					<phase>generate-sources</phase>
+				</execution>
+			</executions>
+			<configuration>
+				 <keep>true</keep> 
+				<packageName>mx.gob.imss.cit.clientes.webServices.asegurado.patronesVigentes</packageName>
+				<sourceDestDir>src/main/java</sourceDestDir>
+				<wsdlUrls>
+                        	<wsdlUrl>
+                            		http://172.16.23.206/WSPatronesVigentes/WSPatronesVigentesService?wsdl
+                        	</wsdlUrl>
+                    </wsdlUrls>
+			</configuration>
+		</plugin>
+		<plugin>
+			<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+		</plugin>
+	</plugins>
+ </build>
+	-->
+ <repositories>
+
+	<repository>
+		      <id>ctirss</id>
+		      <name>CTIRSS repository</name>
+		      <layout>default</layout>
+		      <url>http://172.16.5.134:8080/repository/repo/</url>
+		      <snapshots>
+		        <enabled>true</enabled>
+		      </snapshots>
+	</repository>
+	
+	<repository>
+		<id>maven2-repository.dev.java.net</id>
+		<name>Java.net Repository for Maven</name>
+		<url>http://download.java.net/maven/2</url>
+	</repository>
+</repositories>
+
+<pluginRepositories>
+  	  <pluginRepository>
+    	  <id>ctirss</id>
+    	  <name>CTIRSS repository</name>
+    	  <url>http://172.16.5.134:8080/repository/repo/</url>
+    	  <layout>default</layout>
+    	  <snapshots> </snapshots>
+    	  <releases>
+    	    <updatePolicy>never</updatePolicy>
+    	  </releases>
+   	 </pluginRepository>
+</pluginRepositories>
+	<profiles>
+		<profile>
+			<id>compile-desa</id>
+			<activation>
+        		<activeByDefault>true</activeByDefault>
+    		</activation>
+			<properties>
+				<mvn.project.version>1.0-SNAPSHOT</mvn.project.version>
+				<mvn.servicios.externos.ws.service.url>http://adodigital.imss.gob.mx/WSPatronesVigentes/WSPatronesVigentesService</mvn.servicios.externos.ws.service.url>
+				<mvn.servicios.externos.ws.service.timeOut.connection>3000</mvn.servicios.externos.ws.service.timeOut.connection>
+				<mvn.servicios.externos.ws.service.response>10000</mvn.servicios.externos.ws.service.response>
+			</properties>
+		</profile>
+			<profile>
+			<id>compile-qa</id>
+			<activation>
+        		<activeByDefault>false</activeByDefault>
+    		</activation>
+			<properties>
+				<mvn.project.version>1.0-SNAPSHOT</mvn.project.version>
+				<mvn.servicios.externos.ws.service.url>http://adodigital.imss.gob.mx/WSPatronesVigentes/WSPatronesVigentesService</mvn.servicios.externos.ws.service.url>
+				<mvn.servicios.externos.ws.service.timeOut.connection>3000</mvn.servicios.externos.ws.service.timeOut.connection>
+				<mvn.servicios.externos.ws.service.response>10000</mvn.servicios.externos.ws.service.response>
+			</properties>
+		</profile>
+		<profile>
+			<id>compile-prod</id>
+			<activation>
+        		<activeByDefault>false</activeByDefault>
+    		</activation>
+			<properties>
+				<mvn.project.version>1.0</mvn.project.version>
+				<mvn.servicios.externos.ws.service.url>http://adodigital.imss.gob.mx/WSPatronesVigentes/WSPatronesVigentesService</mvn.servicios.externos.ws.service.url>
+				<mvn.servicios.externos.ws.service.timeOut.connection>3000</mvn.servicios.externos.ws.service.timeOut.connection>
+				<mvn.servicios.externos.ws.service.response>10000</mvn.servicios.externos.ws.service.response>
+			</properties>
+		</profile>
+	</profiles>
+</project>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fontFamilies>
+
+    <fontFamily name="Soberana Sans Light">
+        <normal><![CDATA[fonts/SoberanaSans-Light.ttf]]></normal>
+        <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+    </fontFamily>
+
+    <fontFamily name="Soberana Sans Light Italic">
+        <normal><![CDATA[fonts/SoberanaSans-LightItalic.ttf]]></normal>
+        <pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+    </fontFamily>
+
+
+</fontFamilies>

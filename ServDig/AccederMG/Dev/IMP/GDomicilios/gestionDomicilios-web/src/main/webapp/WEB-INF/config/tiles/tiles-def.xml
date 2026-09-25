@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="simple.base.definition"
+		template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title" value=" Gestión de domicilios - Portal DELTA. " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<definition name="base.definition"
+		template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title" value=" Gestión de domicilios - Portal DELTA. " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />
+		
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<definition name="base.definition.embebed"
+		template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title" value=" Gestión de domicilios - Portal DELTA. " />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+	
+	<definition name="base.definition.embebed.simple"
+		template="/WEB-INF/views/layout/main-embebed-simple.jsp">
+	</definition>
+
+<!-- Definicion de la pantalla del gestionDomicilios -->
+	<definition name="gestionDomicilios" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/gestionDomicilios/gestionDomicilios.jsp "/>
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de logeo -->
+	<definition name="login" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/login.jsp "/>
+	</definition>
+	
+		<!-- Definicion de la pantalla de bienvenida de la aplicacion -->
+	<definition name="welcome" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/welcome.jsp "/>
+	</definition>
+	
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="home" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/home.jsp "/>
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-home.jsp" />
+	</definition>
+	
+	
+	<!-- Definicion de la pantalla de captura de domicilio -->
+	<definition name="domicilioRegistro" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/registro.jsp "/>
+	</definition>
+	
+	
+	<!-- Definicion de la pantalla de captura de domicilio -->
+	<definition name="domicilioRegistroEmbebed" extends="base.definition.embebed">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/registro.jsp "/>
+		<put-attribute name="funciones" value="/WEB-INF/views/domicilio/embebed/funciones.jsp" />
+	</definition>
+	
+	
+		
+	<!-- Definicion de la pantalla de captura de domicilio -->
+	<definition name="domicilioNacional" extends="base.definition.embebed">
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="funciones" value="/WEB-INF/views/domicilio/embebed/funciones.jsp" />
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/inicio.jsp "/>
+		<put-attribute name="pie" value=""/>
+	</definition>
+	
+	<!-- Definicion de la pantalla de captura de domicilio cuando es buscado por delegacion-->
+	<definition name="domicilioNacionalDelegacion" extends="base.definition.embebed">
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/inicioBusquedaPorDelegacion.jsp "/>
+		<put-attribute name="funciones" value="/WEB-INF/views/domicilio/embebed/funciones.jsp" />
+		<put-attribute name="pie" value=""/>
+	</definition>
+	
+	<!-- Definicion de la pantalla de captura de domicilio cuando es buscado por Umf-->
+	<definition name="domicilioNacionalUmf" extends="base.definition.embebed">
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/inicioBusquedaPorUmf.jsp "/>
+		<put-attribute name="funciones" value="/WEB-INF/views/domicilio/embebed/funciones.jsp" />
+		<put-attribute name="pie" value=""/>
+	</definition>
+	
+	<!-- Definicion de la pantalla de captura de datos complementarios de domicilio -->
+	<definition name="domicilioNacionalComp" extends="base.definition.embebed">
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="funciones" value="/WEB-INF/views/domicilio/embebed/funciones.jsp" />
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/datosComplementarios.jsp "/>
+		<put-attribute name="pie" value=""/>
+	</definition>
+	
+	<!-- Definicion de la pantalla de captura de datos complementarios de domicilio -->
+	<definition name="domicilioComplementoTerminar" extends="base.definition.embebed">
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="funciones" value="/WEB-INF/views/domicilio/embebed/funciones.jsp" />
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/terminar.jsp "/>
+		<put-attribute name="pie" value=""/>
+	</definition>
+	
+	<!-- Definicion de la pantalla de captura de un domicilio -->
+	<definition name="domicilioCaptura" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/capturar.jsp "/>
+	</definition>
+	
+	
+	<!-- Definicion de la pantalla de Inicio de tramite-->
+	<definition name="tramiteinicio" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/tramite/inicio.jsp "/>
+	</definition>
+	
+	<!-- Definicion de la pantalla de Captura de tramite-->
+	<definition name="tramitecapturar" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/tramite/capturar.jsp "/>
+	</definition>
+	
+	
+	<!-- Administración de domicilios particulares -->
+	<definition name="initAdmonDomicilios" extends="base.definition.embebed.simple">
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="funciones" value="/WEB-INF/views/domicilio/embebed/funciones.jsp" />
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/administrar/initAdmonDomicilios.jsp "/>
+		<put-attribute name="pie" value=""/>
+	</definition>
+	
+	<definition name="admonDomicilioNacionalComp" extends="base.definition.embebed">
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/administrar/datosComplementarios.jsp "/>
+		<put-attribute name="funciones" value="/WEB-INF/views/domicilio/embebed/funciones.jsp" />
+		<put-attribute name="pie" value=""/>
+	</definition>
+	
+	<definition name="consultaDetalleDomicilio" extends="base.definition.embebed">
+		<put-attribute name="encabezado" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/administrar/detalleConsultaDomicilio.jsp"/>
+		<put-attribute name="funciones" value="/WEB-INF/views/domicilio/embebed/funciones.jsp" />
+		<put-attribute name="pie" value=""/>
+	</definition>
+	<!-- Administración de domicilios particulares -->
+	
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	
+	<definition name="domicilioMap" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/test.jsp "/>
+	</definition>
+	
+	<!-- WIZARDS -->
+	<definition name="wizard.base.definition" template="/WEB-INF/views/layout/main-wizard.jsp">
+		<put-attribute name="title" value=" Portal de Servicios DELTA " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-empty.jsp" />
+		<put-attribute name="nameComScore" value="" />
+	</definition>
+	
+	<definition name="wizardModifDomParticularFisicaInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/wizard/modificacion/particular/inicial.jsp"/>
+		<put-attribute name="nameComScore" value=".mod.particular.inicial" />
+	</definition>
+	<definition name="wizardModifDomParticularFisicaContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/wizard/modificacion/particular/contenido.jsp"/>
+		<put-attribute name="nameComScore" value=".particular.contenido" />
+	</definition>
+	
+	<definition name="wizardRegistrarDomParticularFisicaInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/wizard/registrar/particular/inicial.jsp"/>
+		<put-attribute name="nameComScore" value=".reg.particular.inicial" />
+	</definition>
+	<definition name="wizardRegistrarDomParticularFisicaInitUbicar" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/wizard/registrar/particular/inicioUbicarDomicilio.jsp"/>
+		<put-attribute name="nameComScore" value=".reg.particular.ubicarDomicilio" />
+	</definition>
+	<definition name="wizardRegistrarDomParticularFisicaContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/wizard/registrar/particular/contenido.jsp"/>
+		<put-attribute name="nameComScore" value=".reg.particular.contenido" />
+	</definition>
+	<definition name="wizardRegistrarDomParticularFisicaExistente" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/wizard/registrar/particular/domicilioExistente.jsp"/>
+		<put-attribute name="nameComScore" value=".reg.particular.domicilioExistente" />
+	</definition>
+	
+	<!-- Wizard para la asignacion, cambio de domicilio y cambio de clinica -->
+	<definition name="wizardDomicilioGeneralInit" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/wizard/general/inicial.jsp" />
+		<put-attribute name="nameComScore" value=".wizard.inicial" />
+	</definition>
+	<definition name="wizardDomicilioTipoActualizacion" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/wizard/general/elegirTipoActualizacion.jsp" />
+		<put-attribute name="nameComScore" value=".wizard.tipoActualizacion" />
+	</definition>
+	<definition name="wizardDomicilioGeneralContent" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/domicilio/wizard/general/iniciarTramite.jsp" />
+		<put-attribute name="nameComScore" value=".wizard.iniciarTramite" />
+	</definition>
+	<!--  -->
+	
+	<!-- 
+	<definition name="abrirDireccionWizard" extends="base.definition.embebed.simple">
+		<put-attribute name="title" value="" />
+		<put-attribute name="funciones" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/wizard/general/abrirDireccionWizard.jsp"/>
+		<put-attribute name="nameComScore" value=".wizard.abrirDireccion" />
+	</definition>
+	
+	 -->
+	 
+	 <definition name="abrirDireccionWizard" extends="base.definition.embebed.simple">
+		<put-attribute name="title" value="" />
+		<put-attribute name="funciones" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/wizard/general/abrirDireccionDomRecortadoWizard.jsp"/>
+		<put-attribute name="nameComScore" value=".wizard.abrirDireccion" />
+	</definition>
+	
+	
+	<definition name="databaseError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="internalError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="500" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+	
+	<definition name="404" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+
+	<definition name="pruebaDomicilioRecortado" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/domicilio/recortado/prueba.jsp"/>
+	</definition>
+</tiles-definitions>

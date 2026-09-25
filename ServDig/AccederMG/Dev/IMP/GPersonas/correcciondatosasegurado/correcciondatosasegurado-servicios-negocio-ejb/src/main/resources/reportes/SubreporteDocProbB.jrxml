@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubreporteDocumentosProbatoriosNew" pageWidth="555" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="DOC_PROB_LIST" class="java.util.List"/>
+	<parameter name="BNF_SOLICITANTE" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Immediate"/>
+	</columnHeader>
+	<detail>
+		<band height="279" splitType="Immediate">
+			<staticText>
+				<reportElement x="16" y="247" width="407" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[i) Comprobantes SAR-03, SAR-04 o estado de cuenta de la AFORE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="263" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[j) Otros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="231" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[h) Carta de renuncia o finiquito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="215" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[g) Comprobantes de pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="199" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[f) Liquidaciones pagadas]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="527" y="198" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "171" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="215" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "148" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="231" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "172" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="527" y="247" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "149" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="81" width="431" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[No es necesario que el comprobante esté a nombre del solicitante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="65" width="431" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[e) Certificación de la presidencia municipal (anual) o boleta predial (bimestral o anual del ejercicio vigente).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="118" width="431" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[a) Avisos Afiliatorios (Forma 2-A, AFIL-02, AFIL-03, AFIL-04, IDSE-03, AFIL-06 y DST-002).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="134" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[b) Tarjeta de afiliación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="33" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[c) Teléfono (excepto celular)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="49" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[d) Recibo de Gas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="97" width="447" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Documento expedido por el IMSS que contenga el Número de Seguridad Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="527" y="33" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[[  ]]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="527" y="49" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[[  ]]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="527" y="64" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[[  ]]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="527" y="80" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[[  ]]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="527" y="118" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "176" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="134" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "177" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="16" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[b) Luz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="527" y="16" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[[  ]]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="166" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[d) Cartilla de citas médicas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="150" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[c) Certificado de incapacidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="182" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[e) Credencial ADIMSS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="527" y="150" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "178" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="166" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "170" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="182" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "179" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="0" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[a) Derechos de agua]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="527" y="0" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[[  ]]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement x="527" y="263" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "173" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="206">
+			<staticText>
+				<reportElement x="1" y="4" width="510" height="26"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[En caso de que el asegurado autorice que el trámite lo realice un tercero, éste deberá presentar además de los documentos señalados en los puntos del 1 al 5:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="36" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Poder notarial que lo acredite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="52" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Identificación oficial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="158" width="302" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Padres: Identificación oficial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="174" width="494" height="32"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Concubina / Concubinario: Constancia testimonial con que acredite el concubinato expedida por la autoridad judicial competente e Identificación oficial.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="141" width="340" height="17"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Hijos: Acta de nacimiento e identificación oficial.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="125" width="340" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Esposa: Acta de matrimonio e identificación oficial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="109" width="510" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Tratándose de:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="73" width="510" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[En caso de fallecimiento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="89" width="369" height="16"/>
+				<textElement textAlignment="Justified">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[- Acta de defunción del asegurado en copia simple y original para su cotejo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="527" y="36" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "174" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="89" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "167" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="527" y="174" width="28" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "180" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="121" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "2" )? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="52" width="28" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{DOC_PROB_LIST}.contains( "174" ) ? "[X]" : "[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="136" width="28" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{BNF_SOLICITANTE}.contains("3") ? "[X]":"[  ]")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="527" y="152" width="28" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($P{BNF_SOLICITANTE}.contains("4") ? "[X]":"[  ]")]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AcuseModificacionDatosPatronales" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="663"/>
+	<subDataset name="dataset1"/>
+	<subDataset name="dataset2"/>
+	<parameter name="IMAGENES_DIR" class="java.lang.String"/>
+	<parameter name="p_det_titulo" class="java.lang.String"/>
+	<parameter name="p_det_fechaHora" class="java.lang.String"/>
+	<parameter name="p_det_noSolicitud" class="java.lang.String"/>
+	<parameter name="p_det_presenta" class="java.lang.String"/>
+	<parameter name="p_det_tituloPresenta" class="java.lang.String"/>
+	<parameter name="p_det_razonSocial" class="java.lang.String"/>
+	<parameter name="p_det_rfc" class="java.lang.String"/>
+	<parameter name="p_det_fechaPresenta" class="java.lang.String"/>
+	<parameter name="p_det_cadenaOriginal" class="java.lang.String"/>
+	<parameter name="p_det_charAutenticidad" class="java.lang.String"/>
+	<parameter name="p_det_serialCertificado" class="java.lang.String"/>
+	<parameter name="p_flagDatosGen" class="java.lang.String"/>
+	<parameter name="p_flagDatosContacto" class="java.lang.String"/>
+	<parameter name="p_flagSocios" class="java.lang.String"/>
+	<parameter name="p_flagRepLegal" class="java.lang.String"/>
+	<parameter name="p_flagCentroTrabajo" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Proyectos\\IMSS\\gestionPatronal\\04IMP\\delta-gestionPatronal-servicios-negocio-ejb\\src\\main\\resources\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_dg_rfc" class="java.lang.String"/>
+	<parameter name="p_dg_curp" class="java.lang.String"/>
+	<parameter name="p_dg_nombre" class="java.lang.String"/>
+	<parameter name="p_dg_primerApe" class="java.lang.String"/>
+	<parameter name="p_dg_segundoApe" class="java.lang.String"/>
+	<parameter name="p_dc_datosContacto" class="java.lang.String"/>
+	<parameter name="p_dc_domicilioPar" class="java.lang.String"/>
+	<parameter name="p_rl_tipoMov" class="java.lang.String"/>
+	<parameter name="p_rl_rfc" class="java.lang.String"/>
+	<parameter name="p_rl_curp" class="java.lang.String"/>
+	<parameter name="p_rl_nombre" class="java.lang.String"/>
+	<parameter name="p_rl_primerApe" class="java.lang.String"/>
+	<parameter name="p_rl_segundoApe" class="java.lang.String"/>
+	<parameter name="p_rl_datosContacto" class="java.lang.String"/>
+	<parameter name="p_rl_conPoder" class="java.lang.String"/>
+	<parameter name="p_ct_regPatronal" class="java.lang.String"/>
+	<parameter name="p_ct_delControl" class="java.lang.String"/>
+	<parameter name="p_ct_subDelControl" class="java.lang.String"/>
+	<parameter name="p_ct_domicilioCT" class="java.lang.String"/>
+	<parameter name="p_ct_datosContacto" class="java.lang.String"/>
+	<parameter name="p_det_finParrafo" class="java.lang.String"/>
+	<parameter name="p_flagFirmaDig" class="java.lang.String"/>
+	<parameter name="p_flagTipoPersona" class="java.lang.String"/>
+	<parameter name="p_listSociosFi" class="java.util.List"/>
+	<parameter name="p_flagSociosFi" class="java.lang.String"/>
+	<parameter name="p_flagSociosMo" class="java.lang.String"/>
+	<parameter name="p_listSociosMo" class="java.util.List"/>
+	<parameter name="p_listRepLegal" class="java.util.List"/>
+	<parameter name="p_flagActaCons" class="java.lang.String"/>
+	<parameter name="p_flagRegSindicato" class="java.lang.String"/>
+	<parameter name="p_ac_NoEscritura" class="java.lang.String"/>
+	<parameter name="p_ac_NoNotaria" class="java.lang.String"/>
+	<parameter name="p_ac_entidadFed" class="java.lang.String"/>
+	<parameter name="p_ac_municipio" class="java.lang.String"/>
+	<parameter name="p_ac_fechaExp" class="java.lang.String"/>
+	<parameter name="p_ac_folioMercantil" class="java.lang.String"/>
+	<parameter name="p_ac_seccion" class="java.lang.String"/>
+	<parameter name="p_ac_partida" class="java.lang.String"/>
+	<parameter name="p_ac_volumen" class="java.lang.String"/>
+	<parameter name="p_ac_foja" class="java.lang.String"/>
+	<parameter name="p_rs_NoReferencia" class="java.lang.String"/>
+	<parameter name="p_rs_autoridad" class="java.lang.String"/>
+	<parameter name="p_rs_fechaDoc" class="java.lang.String"/>
+	<parameter name="pFlagCentroTrabajo" class="java.lang.String"/>
+	<parameter name="p_centro_trabajo_descripcion" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="curp" class="java.lang.String">
+		<fieldDescription><![CDATA[curpSocio]]></fieldDescription>
+	</field>
+	<field name="rfc" class="java.lang.String">
+		<fieldDescription><![CDATA[rfcSocio]]></fieldDescription>
+	</field>
+	<field name="nombres" class="java.lang.String">
+		<fieldDescription><![CDATA[nombresSocio]]></fieldDescription>
+	</field>
+	<field name="nombreRazonSocial" class="java.lang.String">
+		<fieldDescription><![CDATA[nombreRazonSocialSocio]]></fieldDescription>
+	</field>
+	<field name="primerApellido" class="java.lang.String">
+		<fieldDescription><![CDATA[primerApellidoSocio]]></fieldDescription>
+	</field>
+	<field name="segundoApellido" class="java.lang.String">
+		<fieldDescription><![CDATA[segundoApellidoSocio]]></fieldDescription>
+	</field>
+	<field name="denominacionRazonSocial" class="java.lang.String">
+		<fieldDescription><![CDATA[denominacionRazonSocialSocio]]></fieldDescription>
+	</field>
+	<field name="domicilioFiscal" class="mx.gob.imss.ctirss.delta.model.domicilio.DomicilioFiscal">
+		<fieldDescription><![CDATA[domicilioFiscal]]></fieldDescription>
+	</field>
+	<field name="registroPatronal" class="java.lang.String">
+		<fieldDescription><![CDATA[registroPatronalSocio]]></fieldDescription>
+	</field>
+	<field name="cveIdTipoPoder" class="java.lang.Long">
+		<fieldDescription><![CDATA[cveIdTipoPoder_RepLeg]]></fieldDescription>
+	</field>
+	<field name="personaFisica" class="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica">
+		<fieldDescription><![CDATA[personaFisica]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="88" splitType="Stretch">
+			<staticText>
+				<reportElement x="103" y="0" width="452" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTITUTO MEXICANO DEL SEGURO SOCIAL]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="103" height="68"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{IMAGENES_DIR} + "imss2.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="391" y="40" width="160" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_det_fechaHora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="60" width="137" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_det_noSolicitud}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="103" y="20" width="452" height="20"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_det_titulo} + " DE RECIBO DE MODIFICACIÓN DE DATOS PATRONALES"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="186">
+			<textField>
+				<reportElement x="10" y="2" width="147" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_det_presenta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="22" width="181" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_det_tituloPresenta}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="42" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[PRESENTE :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="72" width="555" height="50"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["EN TÉRMINOS DEL ARTÍCULO 6 DEL REGLAMENTO DE LA LEY DEL SEGURO SOCIAL EN MATERIA DE AFILIACIÓN, CLASIFICACIÓN DE EMPRESAS, RECAUDACIÓN Y FISCALIZACIÓN, INCISOS Q, R Y S, EL INSTITUTO MEXICANO DEL SEGURO SOCIAL EXTIENDE EL PRESENTE ACUSE DE RECEPCIÓN DE MOVIMIENTOS DE ACTUALIZACIÓN DE DATOS, DEL PATRÓN O SUJETO OLBIGADO CON NOMBRE O RAZÓN SOCIAL " + $P{p_det_razonSocial} + ". EL CUAL HAN SIDO PRESENTADOS " + $P{p_det_finParrafo} +"."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="131" width="136" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NUMERO DE SOLICITUD:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="144" width="136" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[RFC: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="155" width="136" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NOMBRE O RAZON SOCIAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="167" width="136" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FECHA Y HORA DE RECEPCIÓN:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="157" y="131" width="234" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_det_noSolicitud}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="144" width="234" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_det_rfc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="156" width="234" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_det_razonSocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="167" width="234" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_det_fechaPresenta}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="44">
+			<printWhenExpression><![CDATA[$P{p_flagFirmaDig}.equals( "1" )]]></printWhenExpression>
+			<staticText>
+				<reportElement x="12" y="0" width="82" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CADENA ORIGINAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="12" width="136" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CARACTERES DE AUTENTICIDAD DEL DOCUMENTO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="25" width="112" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SERIAL DEL CERTIFICADO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="96" y="0" width="419" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_det_cadenaOriginal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="12" width="367" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_det_charAutenticidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="25" width="391" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_det_serialCertificado}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="27">
+			<staticText>
+				<reportElement x="12" y="10" width="105" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS MODIFICADOS]]></text>
+			</staticText>
+		</band>
+		<band height="91" splitType="Stretch">
+			<printWhenExpression><![CDATA[$P{p_flagDatosGen}.equals( "1" ) && $P{p_flagTipoPersona}.equals( "f" )]]></printWhenExpression>
+			<staticText>
+				<reportElement x="30" y="5" width="165" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS GENERALES DEL PATRON]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="26" width="100" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[RFC - HOMOCLAVE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="38" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[CURP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="49" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[NOMBRE(S):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="60" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[PRIMER APELLIDO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="71" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[SEGUNDO APELLIDO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="175" y="26" width="260" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_dg_rfc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="38" width="260" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_dg_curp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="49" width="260" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_dg_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="60" width="260" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_dg_primerApe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="71" width="260" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_dg_segundoApe}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="70">
+			<printWhenExpression><![CDATA[$P{p_flagDatosGen}.equals( "1" ) && $P{p_flagTipoPersona}.equals( "m" )]]></printWhenExpression>
+			<staticText>
+				<reportElement x="42" y="29" width="100" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[RFC - HOMOCLAVE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="176" y="29" width="260" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_dg_rfc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="42" y="42" width="100" height="21">
+					<printWhenExpression><![CDATA[$P{p_flagTipoPersona}.equals( "m" )]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[DENOMINACIÓN O RAZON SOCIAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="8" width="165" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS GENERALES DEL PATRON]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="176" y="52" width="260" height="11">
+					<printWhenExpression><![CDATA[$P{p_flagTipoPersona}.equals( "m" )]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_dg_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="69">
+			<printWhenExpression><![CDATA[$P{p_flagDatosContacto}.equals( "1" )]]></printWhenExpression>
+			<staticText>
+				<reportElement x="31" y="7" width="164" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS DE CONTACTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="29" width="100" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[MEDIOS DE CONTACTO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="175" y="29" width="356" height="33"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_dc_datosContacto}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="105">
+			<printWhenExpression><![CDATA[$P{p_flagSocios}.equals( "1" )]]></printWhenExpression>
+			<staticText>
+				<reportElement x="30" y="9" width="164" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SOCIOS]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="41" y="28" width="490" height="30">
+					<printWhenExpression><![CDATA[$P{p_flagSociosFi}.equals( "1" )]]></printWhenExpression>
+				</reportElement>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{p_listSociosFi})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "AcuseModificacionDatosPatronales_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="41" y="66" width="490" height="30">
+					<printWhenExpression><![CDATA[$P{p_flagSociosMo}.equals( "1" )]]></printWhenExpression>
+				</reportElement>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{p_listSociosMo})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "AcuseModificacionDatosPatronales_subreport2.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="57">
+			<printWhenExpression><![CDATA[$P{p_flagRepLegal}.equals( "1" )]]></printWhenExpression>
+			<staticText>
+				<reportElement x="31" y="7" width="164" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPRESENTANTE LEGAL]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="41" y="23" width="490" height="28"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{p_listRepLegal})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "AcuseModificacionDatosPatronales_subreport3.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="110">
+			<printWhenExpression><![CDATA[$P{p_flagCentroTrabajo}.equals( "1" )]]></printWhenExpression>
+			<staticText>
+				<reportElement x="41" y="27" width="116" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[REGISTRO PATRONAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="39" width="116" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[DELEGACIÓN DE CONTROL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="50" width="116" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[SUBDELEGACIÓN DE CONTROL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="61" width="116" height="21"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[DOMICILIO DEL CENTRO DE TRABAJO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="83" width="116" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[DATOS DE CONTACTO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="8" width="164" height="11"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE TRABAJO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="174" y="63" width="358" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_centro_trabajo_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="27" width="357" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_ct_regPatronal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="39" width="357" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_ct_delControl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="50" width="357" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_ct_subDelControl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="83" width="357" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_ct_datosContacto}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="166">
+			<printWhenExpression><![CDATA[$P{p_flagActaCons}.equals( "1" )]]></printWhenExpression>
+			<staticText>
+				<reportElement x="30" y="8" width="164" height="11"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACTA CONSTITUTIVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="61" width="116" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[MUNICIPIO O DELEGACION:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="50" width="116" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[ENTIDAD FEDERATIVA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="39" width="116" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[No. DE NOTARIA O CORREDURIA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="72" width="116" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[FECHA DE EXPEDICION:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="27" width="116" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[No. DE ESCRITURA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="84" width="116" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[FOLIO MERCANTIL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="135" width="116" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[FOJA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="101" width="116" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[SECCIÓN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="112" width="116" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[PARTIDA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="123" width="116" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[VOLUMEN:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="176" y="50" width="260" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_ac_entidadFed}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="61" width="260" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_ac_municipio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="72" width="260" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_ac_fechaExp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="39" width="260" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_ac_NoNotaria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="27" width="260" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_ac_NoEscritura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="84" width="260" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_ac_folioMercantil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="101" width="260" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_ac_seccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="135" width="260" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_ac_foja}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="123" width="260" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_ac_volumen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="112" width="260" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_ac_partida}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="111">
+			<printWhenExpression><![CDATA[$P{p_flagRegSindicato}.equals( "1" )]]></printWhenExpression>
+			<staticText>
+				<reportElement x="30" y="6" width="164" height="11"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REGISTRO DE SINDICATO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="49" width="116" height="22"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[AUTORIDAD LABORAL QUE OTORGO EL REGISTRO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="25" width="116" height="22"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[NUMERO DE REFERENCIA DEL DOCUMENTO DE REGISTRO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="73" width="116" height="22"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[FECHA DEL DOCUMENTO DE REGISTRO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="176" y="25" width="260" height="22"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_rs_NoReferencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="49" width="260" height="22"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_rs_autoridad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="73" width="260" height="22"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{p_rs_fechaDoc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="27">
+			<textField>
+				<reportElement x="435" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="0" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

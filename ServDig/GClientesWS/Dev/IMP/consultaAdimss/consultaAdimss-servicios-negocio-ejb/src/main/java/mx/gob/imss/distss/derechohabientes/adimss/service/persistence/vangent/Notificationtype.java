@@ -1,0 +1,122 @@
+package mx.gob.imss.distss.derechohabientes.adimss.service.persistence.vangent;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+
+/**
+ * The persistent class for the NOTIFICATIONTYPES database table.
+ * 
+ */
+@Entity
+@Table(name="NOTIFICATIONTYPES")
+@NamedQuery(name="Notificationtype.findAll", query="SELECT n FROM Notificationtype n")
+public class Notificationtype implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	private long idnotificationtype;
+
+	private BigDecimal createdby;
+
+	@Temporal(TemporalType.DATE)
+	private Date createdon;
+
+	private String notificationtypedescription;
+
+	private String notificationtypename;
+
+	private BigDecimal updatedby;
+
+	@Temporal(TemporalType.DATE)
+	private Date updatedon;
+
+	//bi-directional many-to-one association to Enrollmentnotification
+	@OneToMany(mappedBy="notificationtype")
+	private List<Enrollmentnotification> enrollmentnotifications;
+
+	public Notificationtype() {
+	}
+
+	public long getIdnotificationtype() {
+		return this.idnotificationtype;
+	}
+
+	public void setIdnotificationtype(long idnotificationtype) {
+		this.idnotificationtype = idnotificationtype;
+	}
+
+	public BigDecimal getCreatedby() {
+		return this.createdby;
+	}
+
+	public void setCreatedby(BigDecimal createdby) {
+		this.createdby = createdby;
+	}
+
+	public Date getCreatedon() {
+		return this.createdon;
+	}
+
+	public void setCreatedon(Date createdon) {
+		this.createdon = createdon;
+	}
+
+	public String getNotificationtypedescription() {
+		return this.notificationtypedescription;
+	}
+
+	public void setNotificationtypedescription(String notificationtypedescription) {
+		this.notificationtypedescription = notificationtypedescription;
+	}
+
+	public String getNotificationtypename() {
+		return this.notificationtypename;
+	}
+
+	public void setNotificationtypename(String notificationtypename) {
+		this.notificationtypename = notificationtypename;
+	}
+
+	public BigDecimal getUpdatedby() {
+		return this.updatedby;
+	}
+
+	public void setUpdatedby(BigDecimal updatedby) {
+		this.updatedby = updatedby;
+	}
+
+	public Date getUpdatedon() {
+		return this.updatedon;
+	}
+
+	public void setUpdatedon(Date updatedon) {
+		this.updatedon = updatedon;
+	}
+
+	public List<Enrollmentnotification> getEnrollmentnotifications() {
+		return this.enrollmentnotifications;
+	}
+
+	public void setEnrollmentnotifications(List<Enrollmentnotification> enrollmentnotifications) {
+		this.enrollmentnotifications = enrollmentnotifications;
+	}
+
+	public Enrollmentnotification addEnrollmentnotification(Enrollmentnotification enrollmentnotification) {
+		getEnrollmentnotifications().add(enrollmentnotification);
+		enrollmentnotification.setNotificationtype(this);
+
+		return enrollmentnotification;
+	}
+
+	public Enrollmentnotification removeEnrollmentnotification(Enrollmentnotification enrollmentnotification) {
+		getEnrollmentnotifications().remove(enrollmentnotification);
+		enrollmentnotification.setNotificationtype(null);
+
+		return enrollmentnotification;
+	}
+
+}

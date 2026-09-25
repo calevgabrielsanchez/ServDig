@@ -1,0 +1,23 @@
+.error {
+	color: red;
+}
+
+button[disabled] {
+	cursor: not-allowed;
+}
+
+.btn {
+	margin-right: 5px
+}
+
+hr.red:before {
+    width: 35px;
+    height: 5px;
+    background-color: #a22244;
+    position: absolute;
+}
+
+#paginadorObras td,
+#paginadorObras th {
+	text-align: center;
+}

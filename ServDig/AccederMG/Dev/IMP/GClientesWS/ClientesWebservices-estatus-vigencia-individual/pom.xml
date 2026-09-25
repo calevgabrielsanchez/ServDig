@@ -1,0 +1,127 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>mx.gob.imss.ctirss.clienteswebservices</groupId>
+		<artifactId>ClientesWebservices</artifactId>
+		<version>2.2-SNAPSHOT</version>
+	</parent>
+  <groupId>mx.gob.imss.ws.estatusvigencia.individual</groupId>
+  <artifactId>ClientesWebservices-estatus-vigencia-individual</artifactId>
+  <name>ClientesWebservices-estatus-vigencia-individual</name>
+  <url>http://maven.apache.org</url>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>mx.gob.imss.ctirss.delta</groupId>
+      <artifactId>imssdigital-modelo</artifactId>
+      <version>${delta.framework.version}</version>
+      <type>jar</type>
+    </dependency>
+    <!-- Logger -->
+    <dependency>
+	    <groupId>log4j</groupId>
+	    <artifactId>log4j</artifactId>
+	    <version>${org.log4j.version}</version>
+	    <scope>provided</scope>			
+    </dependency>
+    
+    <!-- Dependencia del Proyecto Base DELTA - Framework Base -->
+    <dependency>
+	    <groupId>mx.gob.imss.ctirss.delta</groupId>
+	    <artifactId>delta-framework-base</artifactId>
+	    <version>${delta.framework.version}</version>
+	    <type>jar</type>
+	    <scope>provided</scope>	
+    </dependency>
+    
+    <!-- Dependencia del Proyecto Base DELTA - Modelo Negocio -->
+    <dependency>
+	    <groupId>mx.gob.imss.ctirss.delta</groupId>
+	    <artifactId>delta-modelo-negocio</artifactId>
+	    <version>${delta.framework.version}</version>
+	    <type>jar</type>
+	    <scope>provided</scope>				
+    </dependency>
+  </dependencies>
+  
+  <!-- <profiles>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>compile-stage</id>
+			<properties>
+				<mvn.estatus.vigencia.individual.web.service.url>http://11.254.13.146:7001/WSConsultaSituacionAseguramiento/WSConsultaSituacionAseguramiento?WSDL</mvn.estatus.vigencia.individual.web.service.url>
+			</properties>
+		</profile>
+		<profile>
+			<id>compile-prod</id>
+			<properties>
+				<mvn.estatus.vigencia.individual.web.service.url>http://adodigital.imss.gob.mx/WSConsultaSituacionAseguramiento/WSConsultaSituacionAseguramiento?WSDL</mvn.estatus.vigencia.individual.web.service.url>
+			</properties>
+		</profile>
+	</profiles> -->
+	 <profiles>
+		<profile>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<id>compile-stage</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.url.situacion}" value="http://11.254.13.146:7001/WSConsultaSituacionAseguramiento/WSConsultaSituacionAseguramiento" dir="target/classes">
+											<include name="**/*.wsdl" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>compile-prod</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>prepare-package</phase>
+								<configuration>
+									<tasks>
+										<replace token="${mvn.url.situacion}" value="http://adodigital.imss.gob.mx/WSConsultaSituacionAseguramiento/WSConsultaSituacionAseguramiento" dir="target/classes">
+											<include name="**/*.wsdl" />
+										</replace>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ace="http://www.icefaces.org/icefaces/components"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+<title> Portal de Servicios IMSS Digital </title>
+<link rel="icon" href="http://serviciosdigitales.imss.gob.mx/delta/resources/iconos/favicon.ico" />
+<!-- Bootstrap -->
+<link type="text/css" href="http://serviciosdigitales.imss.gob.mx/delta/resources/estilos/bootstrap/bootstrap.min.css" rel="stylesheet" />
+<!-- IMSS -->
+<link type="text/css" href="http://serviciosdigitales.imss.gob.mx/delta/resources/estilos/imss/reset.css" rel="stylesheet" />
+<link type="text/css" href="http://serviciosdigitales.imss.gob.mx/delta/resources/estilos/imss/style.css" rel="stylesheet" /> 
+<link href="../css/bar.css" rel="stylesheet" type="text/css"/>
+<meta http-equiv="refresh" content="${pageContext.session.maxInactiveInterval};url=index.jsp"></meta>
+<script type="text/javascript" src="http://serviciosdigitales.imss.gob.mx/delta/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://serviciosdigitales.imss.gob.mx/delta/resources/js/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="../js/jquery/blockUI/jquery.blockUI.js"></script>
+
+<!--Scripts para el cerrado de la sesssion -->
+		
+						<!-- Cometd -->
+				<script type="text/javascript" src="/delta/resources/js/org/cometd.js"></script>
+				<script type="text/javascript" src="/delta/resources/js/org/cometd/AckExtension.js"></script>
+				<script type="text/javascript" src="/delta/resources/js/org/cometd/ReloadExtension.js"></script>
+				<script type="text/javascript" src="/delta/resources/js/org/cometd/TimeStampExtension.js"></script>
+				<script type="text/javascript" src="/delta/resources/js/org/cometd/TimeSyncExtension.js"></script>
+				
+				<!-- Cometd and Jquery-->
+				<script type="text/javascript" src="/delta/resources/js/jquery/comet/jquery.cookie.js"></script>
+				<script type="text/javascript" src="/delta/resources/js/jquery/comet/jquery.cometd.js"></script>
+				<script type="text/javascript" src="/delta/resources/js/jquery/comet/jquery.cometd-ack.js"></script>
+				<script type="text/javascript" src="/delta/resources/js/jquery/comet/jquery.cometd-reload.js"></script>
+				<script type="text/javascript" src="/delta/resources/js/jquery/comet/jquery.cometd-timestamp.js"></script>
+				<script type="text/javascript" src="/delta/resources/js/jquery/comet/jquery.cometd-timesync.js"></script>
+				<script type="text/javascript" src="/delta/resources/js/delta/CometConector.js"></script>		
+
+
+
+<!--Scripts para el cerrado de la sesssion -->
+
+
+<script language="JavaScript" type="text/javascript">  
+var test = <h:outputText value="#{formBean.searchValue}" />;  
+</script> 
+
+<script>
+var closure_force_logout = function(event, ui) {
+	
+	document.location.href = '/Sauimssdigital/j_spring_security_logout';
+}
+
+
+
+
+
+$(document).ready(function(){
+
+	setInterval(Error,10000);
+	
+	CometCtrl.prototype.addSubscriber = function(subscription) {
+		this.listInitialSubscription.push(subscription);
+	};
+
+	setTimeout(function() {
+		
+		
+		var user = $("#sUidUsurio").val();
+		
+
+		var timeout_subscriber = {
+			channel : [ '/channels/server/session/', user ].join(''),
+			action : function(message) {
+				
+
+				if (message.data.session_finished === true) {
+
+					$('#dialogEndOfSession').dialog({
+						resizable : false,
+						height : 'auto',
+						modal : true,
+						close : closure_force_logout,
+						buttons : {
+							"ACEPTAR" : closure_force_logout
+						}
+					});
+				}
+			}
+		};
+
+
+		var conector = new CometCtrl();
+		conector.addSubscriber(timeout_subscriber);
+		conector.init(false);
+		
+
+	}, 1100);
+
+  }); 
+
+</script>
+
+<script language="javascript">
+function setFocus(){
+    document.getElementById("correoElectronico").focus();
+    return true;
+}
+
+function waiting(){
+	setTimeout(Error(), 600000000000);
+}
+
+function Error(){
+	document.getElementById('general:hiddenBtn').onclick() 
+}
+
+function desbloquear(){
+	wait.hide();
+}
+
+function bloquea(){
+	wait.show();
+}
+
+function baja(){
+	
+	if(confirm('¿Deseas dar de baja definitiva el usuario?'))
+	{
+		bloquea();
+		return true;
+	}
+	else
+	{
+		return false;	
+	}
+}
+
+function bajaCurp(){
+	if(confirm('¿Deseas dar de baja por cambio de CURP?'))
+	{
+		bloquea();
+		return true;
+	}
+	else
+	{
+		return false;	
+	}
+}
+
+
+</script>
+
+ 
+ 
+<script type="text/javascript">
+   jsf.ajax.addOnError(function(data) {
+ if (data.responseText.indexOf("SessionExpiredException") > 0) {
+	 document.location.href = "../admonUsuarios/logout.xhtml";
+        }
+   });
+</script>
+
+</h:head>
+
+<h:body>
+<!-- 
+ <div id="dialogEndOfSession" style="display: none" title="Sesion terminada por inactividad">
+		    <span>Su sesion se ha desactivado debido a inactividad en el portal</span>
+		</div>
+ -->
+	<div class="site_position_center_fixed">
+		<div>
+			
+		    <ui:insert name="encabezado">
+		    	<ui:include src="encabezadoUser.xhtml"/>
+		    </ui:insert>
+			<h:form id="general">
+					
+					<h:commandButton value="+" id="hiddenBtn" style="display:none">
+						<f:ajax  listener="#{login.validaSession}" render="@all" execute="@all" event="click" immediate="true"/>
+					</h:commandButton>
+					<ace:menuBar id="menuBar" autoSubmenuDisplay="true" styleClass="iceMnuBar">
+						<ace:submenu label="Administración de Usuarios">
+							<ace:submenu label="Registro de cuentas de usuario">
+								<c:if test="#{usuarioMB.aprobadorSession.tipoAprobador eq 1}">
+									<ace:menuItem value="Generico" id="registroSolAdmon" action="#{registraSolicitudAdmonMB.inicializaSolicitud}" onclick="bloquea();" styleClass="iceMnuBarItem"></ace:menuItem>
+								</c:if>
+								
+								<c:if test="#{usuarioMB.aprobadorSession.tipoAprobador eq 0}">
+									<ace:menuItem value="En esta zona de adscripción" id="registroSolAl" action="#{registraSolicitudMB.inicializaSolicitud}" onclick="bloquea();"></ace:menuItem>
+									<ace:menuItem value="En otras áreas de adscripción" id="registroSolAds" action="#{registraSolicitudAdsMB.inicializaSolicitud}"  onclick="bloquea();"></ace:menuItem>
+								</c:if>
+								<c:if test="#{usuarioMB.aprobadorSession.tipoAprobador eq 2 or usuarioMB.aprobadorSession.tipoAprobadorDpes eq 11332}">
+									<ace:menuItem value="En esta zona de adscripción" id="registroSolAl" action="#{registraSolicitudMB.inicializaSolicitud}" onclick="bloquea();"></ace:menuItem>
+									<ace:menuItem value="En otras áreas de adscripción" id="registroSolAds" action="#{registraSolicitudAdsMB.inicializaSolicitud}"  onclick="bloquea();"></ace:menuItem>
+									<ace:menuItem value="En hospitales de 2do y 3er nivel" id="registroSolAdsDel" action="#{registraSolicitudDelegacionMB.inicializaSolicitud}"  onclick="bloquea();"></ace:menuItem>
+								</c:if>
+							</ace:submenu>
+
+							<ace:submenu label="Aprobacion de cuentas de usuario" >
+								<c:if test="#{usuarioMB.aprobadorSession.tipoAprobador eq 1}">
+									<ace:menuItem value="Generica " id="aprobSolAdmon" action="#{solicitudAdmonMB.inicializaAprobarSolicitud}" onclick="bloquea();"></ace:menuItem> 
+								</c:if>
+								
+								<c:if test="#{usuarioMB.aprobadorSession.tipoAprobador eq 0}">
+									<ace:menuItem value="En esta zona de adscripción" id="aprobSol" action="#{solicitudMB.inicializaAprobarSolicitud}" onclick="bloquea();"></ace:menuItem>
+								</c:if>
+								<c:if test="#{usuarioMB.aprobadorSession.tipoAprobador eq 2 or usuarioMB.aprobadorSession.tipoAprobadorDpes eq 11332}">
+									<ace:menuItem value="En esta zona de adscripción" id="aprobSol" action="#{solicitudMB.inicializaAprobarSolicitud}" onclick="bloquea();"></ace:menuItem>
+									<ace:menuItem value="En hospitales de 2do y 3er nivel" id="aprobSolDel" action="#{solicitudDelegMB.inicializaAprobarSolicitud}" onclick="bloquea();"></ace:menuItem>
+								</c:if>
+							</ace:submenu>
+							
+							<ace:menuItem value="Modificación de cuenta de usuario" id="modPerfil" action="#{modificarSolicitudMB.inicializaModificarPerfil}" onclick="bloquea();"></ace:menuItem>
+						    <ace:menuItem value="Baja de cuenta de usuario" id="cambiaCurp" action="#{registraSolicitudMB.bajaDefinitivaUsuario}" onclick="bloquea();"></ace:menuItem> 
+							<ace:menuItem value="Recuperación de cuenta de usuario" id="recuperaCuenta" action="#{recuperaSolicitudMB.consultaSolicitudes}" onclick="bloquea();"></ace:menuItem>
+
+							<ace:submenu label="Consulta de notificaciones pendientes" >
+								<ace:menuItem value="En esta zona de adscripción" id="recuperaNotificacion" action="#{notificarSolicitudMB.inicializaConsultaNotificaciones}" onclick="bloquea();"></ace:menuItem>
+								<c:if test="#{usuarioMB.aprobadorSession.tipoAprobador eq 2 or usuarioMB.aprobadorSession.tipoAprobadorDpes eq 11332}">
+									<ace:menuItem value="En hospitales de 2do y 3er nivel." id="recuperaNotificacionHosp" action="#{notificarSolicitudHospMB.inicializaConsultaNotificaciones}" onclick="bloquea();"></ace:menuItem>
+								</c:if>
+							</ace:submenu>
+
+						</ace:submenu>
+						<ace:submenu label="Administración de Aprobadores">
+							<ace:menuItem value="Registro de Aprobadores" id="mantoAprob" action="#{mantenimientoAprobadores.inicializaConsultaAprobadores}" onclick="bloquea();"></ace:menuItem>
+							<c:if test="#{usuarioMB.aprobadorSession.tipoAprobador eq 2 or usuarioMB.aprobadorSession.tipoAprobadorDpes eq 11332}">
+								<ace:menuItem value="Registro de Aprobadores en hospitales de 2do y 3er nivel" id="mantoAprobHos" action="#{mantenimientoAprobadoresHosp.inicializaConsultaAprobadores}" onclick="bloquea();"></ace:menuItem>
+							</c:if>
+						</ace:submenu>																						
+						<c:if test="#{usuarioMB.aprobadorSession.tipoAprobador eq 1}">
+							<td>
+								<ace:submenu label="Administración de Catálogos">
+									<ace:menuItem value="Matenimiento de puestos" action="#{mantenimientoCatalogos.inicializaConsultaPuestos}" onclick="bloquea();" />
+									<ace:menuItem value="Matenimiento de Modulos" id="mantenimientoCat" action="#{mantenimientoCatModulosController.inicializaDatosMantenimieto}" onclick="bloquea();"></ace:menuItem>
+									<ace:menuItem value="Recuperación Contraseña" id="contrasena" action="#{recuperacionController.inicializaRecuperacion}" onclick="bloquea();"></ace:menuItem>
+								</ace:submenu>
+								</td>	
+							<td>
+								<ace:submenu label="Auditoría">
+									<ace:menuItem value="Consulta de cuentas de usuarios" />
+									<ace:menuItem value="Consulta de movimientos de usuarios" />
+								</ace:submenu>
+							</td>	
+						</c:if>
+						<c:if test="#{usuarioMB.aprobadorSession.tipoAprobador eq 0 }">
+							<td>
+								<ace:submenu label="Administración de Catálogos">
+									<ace:menuItem value="Recuperación Contraseña" id="contrasena" action="#{recuperacionController.inicializaRecuperacion}"></ace:menuItem>
+								</ace:submenu>
+							</td>	
+						</c:if>
+						<c:if test="#{usuarioMB.aprobadorSession.tipoAprobador eq 2 or usuarioMB.aprobadorSession.tipoAprobadorDpes eq 11332}">
+							<td>
+								<ace:submenu label="Administración de Catálogos">
+									<ace:menuItem value="Recuperación Contraseña" id="contrasena" action="#{recuperacionController.inicializaRecuperacion}"></ace:menuItem>
+								</ace:submenu>
+							</td>	
+						</c:if>
+						<!--
+							<ace:menuItem url="/j_spring_security_logout" value="Salir" id="Cerrar" action="#{login.cerrarSession}"/> 
+						 -->
+						<ace:menuItem value="Salir" id="Cerrar" action="#{login.logoutSistema}"/>
+					</ace:menuBar>	
+			</h:form>	
+
+        <ace:dialog id="wait"
+                           header="Mensaje del sistema"
+                           widgetVar="wait"
+                           closable="false"
+                           modal="true"
+                           draggable="false"
+                           showEffect="clip"
+                           hideEffect="fade"
+                           width="300"
+                           visible="false"
+                           resizable="false">
+            
+            <h:form id="inputFormWait">
+                <h:panelGrid columns="1" width="100%">
+                    <h:outputLabel id="lbWait" value="Su petición se está procesando... Espere un momento"/>
+                </h:panelGrid>
+            </h:form>
+            
+        </ace:dialog>					
+			
+        <ace:dialog id="mensaje"
+                           header="Alerta"
+                           widgetVar="mensaje"
+                           closable="false"
+                           modal="true"
+                           draggable="false"
+                           showEffect="clip"
+                           hideEffect="fade"
+                           width="400"
+                           visible="#{consultaGenerica.msg}"
+                           onShow="desbloquear();"
+                           resizable="false">
+            
+            <h:form id="inputForm">
+                <h:panelGrid columns="2" width="100%">
+                    <h:outputLabel id="labelMsg" value="#{consultaGenerica.desc}"/>
+                </h:panelGrid>
+
+                <h:panelGrid width="100%" style="text-align: center;">
+                    <!-- <h:commandButton id="submit" value="Aceptar" onclick="sampleDialog.hide();desbloquear();" actionListener="#{consultaGenerica.hide}" /> -->
+                    
+                    <h:commandButton value="Aceptar" id="btnSuccess" onclick="desbloquear();mensaje.hide();">
+                    	<f:ajax  listener="#{consultaGenerica.hide}" execute="inputForm" render="@all" />
+					</h:commandButton>
+                    
+                </h:panelGrid>
+            </h:form>
+            
+        </ace:dialog>			
+			
+        <ace:dialog id="mensajeAds"
+                           header="Alerta"
+                           widgetVar="mensajeAds"
+                           closable="false"
+                           modal="true"
+                           draggable="false"
+                           showEffect="clip"
+                           hideEffect="fade"
+                           width="400"
+                           visible="#{consultaGenerica2.msg}"
+                           onShow="desbloquear();"
+                           resizable="false">
+            
+            <h:form id="inputFormAds">
+                <h:panelGrid columns="2" width="100%">
+                    <h:outputLabel id="labelMsgAds" value="#{consultaGenerica2.desc}"/>
+                </h:panelGrid>
+
+                <h:panelGrid width="100%" style="text-align: center;">
+                    <!-- <h:commandButton id="submit" value="Aceptar" onclick="sampleDialog.hide();desbloquear();" actionListener="#{consultaGenerica.hide}" /> -->
+                    
+                    <h:commandButton value="Aceptar" id="btnSuccessAds" onclick="desbloquear();mensajeAds.hide();">
+                    	<f:ajax  listener="#{consultaGenerica2.hide}" execute="inputFormAds" render="@all" />
+					</h:commandButton>
+                    
+                </h:panelGrid>
+            </h:form>
+            
+        </ace:dialog>			
+
+        <ace:dialog id="mensajeAdmon"
+                           header="Alerta"
+                           widgetVar="mensajeAdmon"
+                           closable="false"
+                           modal="true"
+                           draggable="false"
+                           showEffect="clip"
+                           hideEffect="fade"
+                           width="400"
+                           visible="#{consultaGenericaAdmon.msg}"
+                           onShow="desbloquear();"
+                           resizable="false">
+            
+            <h:form id="inputFormAdmon">
+                <h:panelGrid columns="2" width="100%">
+                    <h:outputLabel id="labelMsgAdmon" value="#{consultaGenericaAdmon.desc}"/>
+                </h:panelGrid>
+
+                <h:panelGrid width="100%" style="text-align: center;">
+                    
+                    <h:commandButton value="Aceptar" id="btnSuccessAdmon" onclick="desbloquear();mensajeAdmon.hide();">
+                    	<f:ajax  listener="#{consultaGenericaAdmon.hide}" execute="inputFormAdmon" render="@all" />
+					</h:commandButton>
+                    
+                </h:panelGrid>
+            </h:form>
+            
+        </ace:dialog>			
+
+        <ace:dialog id="mensajeDeleg"
+                           header="Alerta"
+                           widgetVar="mensajeDeleg"
+                           closable="false"
+                           modal="true"
+                           draggable="false"
+                           showEffect="clip"
+                           hideEffect="fade"
+                           width="400"
+                           visible="#{consultaGenericaDeleg.msg}"
+                           onShow="desbloquear();"
+                           resizable="false">
+            
+            <h:form id="inputFormDeleg">
+                <h:panelGrid columns="2" width="100%">
+                    <h:outputLabel id="labelMsgAdmon" value="#{consultaGenericaDeleg.desc}"/>
+                </h:panelGrid>
+
+                <h:panelGrid width="100%" style="text-align: center;">
+                    
+                    <h:commandButton value="Aceptar" id="btnSuccessDeleg" onclick="desbloquear();mensajeDeleg.hide();">
+                    	<f:ajax  listener="#{consultaGenericaDeleg.hide}" execute="inputFormDeleg" render="@all" />
+					</h:commandButton>
+                    
+                </h:panelGrid>
+            </h:form>
+            
+        </ace:dialog>			
+
+        <ace:dialog id="mensajeError"
+                           header="Alerta"
+                           widgetVar="mensajeAdmon"
+                           closable="false"
+                           modal="true"
+                           draggable="false"
+                           showEffect="clip"
+                           hideEffect="fade"
+                           width="400"
+                           visible="false"
+                           onShow="desbloquear();"
+                           resizable="false">
+            
+            <h:form id="inputFormError">
+                <h:panelGrid columns="2" width="100%">
+                    <h:outputLabel id="labelMsgAdmon" value="Error de comunicación favir de intentarlo nuevamente"/>
+                </h:panelGrid>
+
+                <h:panelGrid width="100%" style="text-align: center;">
+                    
+                    <h:commandButton value="Aceptar" id="btnSuccessError" onclick="desbloquear();mensajeError.hide();">
+					</h:commandButton>
+                    
+                </h:panelGrid>
+            </h:form>
+        </ace:dialog>			
+	
+        <ace:dialog id="mensajeRenovacion"
+                           header="Alerta"
+                           widgetVar="mensajeRen"
+                           closable="false"
+                           modal="true"
+                           draggable="false"
+                           showEffect="clip"
+                           hideEffect="fade"
+                           width="400"
+                           visible="#{login.renovacion}"
+                           onShow="desbloquear();"
+                           resizable="false">
+            
+            <h:form id="inputFormRen">
+                <h:panelGrid columns="2" width="100%">
+                    <h:outputLabel id="labelMsgRen" value="¿La session esta por vencer desea renovarla?"/>
+                </h:panelGrid>
+
+                <h:panelGrid width="100%" style="text-align: center;" columns="2">
+                    <h:commandButton value="Si" id="btnSuccessRenYes" onclick="desbloquear();">
+                    	<f:ajax  listener="#{login.renovarSession}" execute="inputFormRen" render="@all" />
+					</h:commandButton>
+                    <h:commandButton value="No" id="btnCancelRenNo" onclick="desbloquear();">
+                    	<f:ajax  listener="#{login.logoutSistema}" execute="inputFormRen" render="@all" />
+					</h:commandButton>
+                </h:panelGrid>
+            </h:form>
+        </ace:dialog>			
+
+        <ace:dialog id="mensajeSession"
+                           header="Alerta"
+                           widgetVar="mensajeSes"
+                           closable="false"
+                           modal="true"
+                           draggable="false"
+                           showEffect="clip"
+                           hideEffect="fade"
+                           width="400"
+                           visible="#{login.finSession}"
+                           onShow="desbloquear();"
+                           resizable="false">
+            
+            <h:form id="inputFormSes">
+                <h:panelGrid columns="2" width="100%">
+                    <h:outputLabel id="labelMsgRen" value="La session ha vecido es necesario volver a autentificarse!"/>
+                </h:panelGrid>
+
+                <h:panelGrid width="100%" style="text-align: center;" columns="2">
+                    <h:commandButton value="Aceptar" id="btnCancelSes" onclick="desbloquear();">
+                    	<f:ajax  listener="#{login.logoutSistema}" execute="inputFormSes" render="@all" />
+					</h:commandButton>
+                </h:panelGrid>
+            </h:form>
+        </ace:dialog>			
+			    				
+			<div>
+				<div class="contenedor">
+					<div class="row">
+						<ui:insert name="body" />
+					</div>
+				</div>
+			</div>
+			
+			<ui:insert name="footer">
+				<ui:include src="pie.xhtml"/>
+			</ui:insert>						
+		</div>
+</div>
+</h:body>
+</html>

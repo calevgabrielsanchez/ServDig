@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--DOCTYPE log4j:configuration SYSTEM "log4j.dtd" -->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[siconet] %p [%d{dd-MM-yy HH:mm:ss}] (%C{1}.%M:%L)| %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="delta" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="${delta.root}/../logs/delta/delta_app.log" />
+		<param name="MaxFileSize" value="5000KB" />
+		<param name="MaxBackupIndex" value="9" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[siconet] %p [%d{dd-MM-yy HH:mm:ss}] (%C{1}.%M:%L)| %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="mx.gob.imss" additivity="true">
+		<level value="debug" />
+		<appender-ref ref="delta" />
+	</logger>
+	<logger name="org.apache">
+		<level value="warn" />
+	</logger>
+
+	<logger name="org.hibernate">
+		<level value="debug" />
+	</logger>
+
+	<logger name="org.hibernate.sql">
+		<level value="warn" />
+	</logger>
+
+	<logger name="org.springframework.web.servlet">
+		<level value="warn" />
+	</logger>
+	<logger name="org.springframework.core.convert">
+		<level value="warn" />
+	</logger>
+	<logger name="org.springframework.context.support">
+		<level value="warn" />
+	</logger>
+
+	<logger name="mx.gob.imss.ctirss">
+		<level value="debug" />
+	</logger>
+
+
+	<root>
+		<level value="debug" />
+		<appender-ref ref="console" />
+	</root>
+
+</log4j:configuration>

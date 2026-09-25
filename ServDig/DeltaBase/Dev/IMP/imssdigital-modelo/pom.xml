@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>mx.gob.imss.ctirss.delta</groupId>
+  <artifactId>imssdigital-modelo</artifactId>
+  <version>2.6-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>Modulo de Modelo de Negocio DELTA</name>
+  <url>http://maven.apache.org</url>
+
+  <parent>
+    <artifactId>delta</artifactId>
+    <groupId>mx.gob.imss.ctirss.delta</groupId>
+    <version>2.6-SNAPSHOT</version>
+  </parent>
+
+  <properties>
+    <project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+    <org.hibernate.version>3.6.9.Final</org.hibernate.version>
+  </properties>
+
+  <dependencies>
+
+    <!-- INICIO DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+    <!-- Dependencia del Framework DELTA BASE IMSS -->
+    <!-- <dependency> -->
+    <!-- <groupId>mx.gob.imss.ctirss.delta</groupId> -->
+    <!-- <artifactId>delta-framework-base</artifactId> -->
+    <!-- <version>${delta.framework.version}</version> -->
+    <!-- <type>jar</type> -->
+    <!-- </dependency> -->
+    <!-- FIN DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+
+<!--     <dependency> -->
+<!--       <groupId>javax.xml.bind</groupId> -->
+<!--       <artifactId>jaxb-api</artifactId> -->
+<!--       <version>2.2.11</version> -->
+<!--     </dependency> -->
+<!--     <dependency> -->
+<!--       <groupId>com.sun.xml.bind</groupId> -->
+<!--       <artifactId>jaxb-impl</artifactId> -->
+<!--       <version>2.2.7</version> -->
+<!--     </dependency> -->
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.5</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>jaxb2-maven-plugin</artifactId>
+          <version>1.6</version>
+        </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jaxb2-maven-plugin</artifactId>
+        <dependencies>
+        </dependencies>
+        <executions>
+          <execution>
+            <id>schemagen</id>
+            <goals>
+              <goal>schemagen</goal>
+            </goals>
+            <phase>generate-resources</phase>
+          </execution>
+        </executions>
+        <configuration>
+          <transformSchemas>
+            <transformSchema>
+              <uri>http://mx.gob.imss.digital.modelo.sindo</uri>
+              <toPrefix>sindo</toPrefix>
+              <toFile>${project.basedir}/src/main/resources/xsd/sindo.xsd</toFile>
+            </transformSchema>
+            <transformSchema>
+              <uri>http://mx.gob.imss.digital.modelo.comun</uri>
+              <toPrefix>comun</toPrefix>
+              <toFile>${project.basedir}/src/main/resources/xsd/comun.xsd</toFile>
+            </transformSchema>
+            <transformSchema>
+              <uri>http://mx.gob.imss.digital.modelo.cuestionario</uri>
+              <toPrefix>cuestinario</toPrefix>
+              <toFile>${project.basedir}/src/main/resources/xsd/cuestinario.xsd</toFile>
+            </transformSchema>
+            <transformSchema>
+              <uri>http://mx.gob.imss.digital.modelo.cobranza</uri>
+              <toPrefix>cobranza</toPrefix>
+              <toFile>${project.basedir}/src/main/resources/xsd/cobranza.xsd</toFile>
+            </transformSchema>
+            <transformSchema>
+              <uri>http://mx.gob.imss.digital.modelo.documento.probatorio</uri>
+              <toPrefix>doc</toPrefix>
+              <toFile>${project.basedir}/src/main/resources/xsd/documento-probatorio.xsd</toFile>
+            </transformSchema>
+            <transformSchema>
+              <uri>http://mx.gob.imss.digital.modelo.domicilio</uri>
+              <toPrefix>domicilio</toPrefix>
+              <toFile>${project.basedir}/src/main/resources/xsd/domicilio.xsd</toFile>
+            </transformSchema>
+            <transformSchema>
+              <uri>http://mx.gob.imss.digital.modelo.medio.contacto</uri>
+              <toPrefix>contacto</toPrefix>
+              <toFile>${project.basedir}/src/main/resources/xsd/medio-contacto.xsd</toFile>
+            </transformSchema>
+            <transformSchema>
+              <uri>http://mx.gob.imss.digital.modelo.persona</uri>
+              <toPrefix>persona</toPrefix>
+              <toFile>${project.basedir}/src/main/resources/xsd/persona.xsd</toFile>
+            </transformSchema>
+            <transformSchema>
+              <uri>http://mx.gob.imss.digital.modelo.seguros</uri>
+              <toPrefix>seguros</toPrefix>
+              <toFile>${project.basedir}/src/main/resources/xsd/seguros.xsd</toFile>
+            </transformSchema>
+            <transformSchema>
+              <uri>http://mx.gob.imss.digital.modelo.solicitud</uri>
+              <toPrefix>solicitud</toPrefix>
+              <toFile>${project.basedir}/src/main/resources/xsd/solicitud.xsd</toFile>
+            </transformSchema>
+            <transformSchema>
+              <uri>http://mx.gob.imss.digital.modelo.tramite</uri>
+              <toPrefix>tramite</toPrefix>
+              <toFile>${project.basedir}/src/main/resources/xsd/tramite.xsd</toFile>
+            </transformSchema>
+            <transformSchema>
+              <uri>http://mx.gob.imss.digital.modelo.patron</uri>
+              <toPrefix>patron</toPrefix>
+              <toFile>${project.basedir}/src/main/resources/xsd/patron.xsd</toFile>
+            </transformSchema>
+          </transformSchemas>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+          <excludes>
+            <exclude>**/interfaces/*.java</exclude>
+            <exclude>**/util/*.java</exclude>
+          </excludes>
+          <schemaDirectory>${project.basedir}/src/main/resources/xsd/</schemaDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+    </pluginManagement>
+  </build>
+</project>

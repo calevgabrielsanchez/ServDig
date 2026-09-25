@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="pageComponenteUbicacion">
+
+
+	<div id="pnlUbicacion" class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading" id="idTituloUbicacion">
+					<strong>Paso 3.</strong> <small class="text-muted">En caso
+						de tenerlos proporcione los datos de la obra principal.</small>
+				</div>
+				<div class="panel-body">
+					<div id="pnlRegistroUbicacion" class="row hidden">
+						<div class="col-sm-12">
+							<div class="row"  id="pnlNumRegObra">
+								<label class="col-sm-4 control-label small" for="txtNumRegistro">N&uacute;mero de Registro de Obra:</label>
+								<div class="col-sm-6">
+									<div class="input-group">
+										<input id="txtNumRegistro" type="text"
+												class="form-control clearDeleteOption input-sm"
+												aria-label="Amount (to the nearest dollar)"
+												placeholder="N&uacute;mero de Registro de Obra" maxlength="8"></input><span
+												class="input-group-addon"><small>#</small></span> <input
+												id="idCveRegistroObraPrincipal" type="hidden" />
+									</div>
+									<p id="msgNumRegistro" class="hidden small red">El n&uacute;mero de registro de obra no se encuentra registrado. Favor de verificar.</p>
+									<p id="msgErrorAjax" class="hidden small red" >Error en la consulta.</p>
+									<p id="msgSinSeleccion" class="hidden small red" >Especifique si cuenta con el n&uacute;mero de registro de obra.</p>
+									<p id="msgSinCoincidencias" class="red hidden small">El N&uacute;mero de Registro de Obra, no se encuentra registrado en la base de datos, favor de verificar.</p>
+									<p id="msgLongitudIncorrecta" class="red hidden small">Se deben ingresar 8 caracteres.</p>
+									<p id="msgValAlfanum" class="red hidden small">&Uacute;nicamente se admiten caracteres alfanum&eacute;ricos.</p>
+								</div>
+								<div class="col-sm-2">
+									<button id="btnValidarRegObra" class="btn btn-primary btn-sm" type="button">
+										Verificar
+									</button>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-sm-12 text-left" id="idchkSinRegistro">
+									<div class="checkbox">
+										<label class="small"><input id="chkSinRegistro"
+											type="checkbox" value="1"></input>
+												Solicit&oacute; y no le fue proporcionado el N&uacute;mero de
+												Registro de Obra por parte <span id="idContra">del
+													Propietario.</span> <span id="idSubContra">del Contratista.</span> <span
+													id="idInter">de quien lo Contrat&oacute;.</span>
+										</label>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+									<div id="pnlDatosPatron" class="col-sm-12 text-left hidden">
+										<div class="row">
+											<div class="col-sm-12">
+												<h6>Datos del patr&oacute;n</h6>
+												<hr class="red" style="margin-bottom:15px"/>
+											</div>
+										</div>
+			
+										<div class="row">
+											<div class="col-sm-4">
+												<label class="control-label small" for="txtFRCCon">Registro
+													Federal de Contribuyentes :</label>
+											</div>
+											<div class="col-sm-6">
+												<input id="rfcSinNumReg" type="text"
+													class="form-control input-sm" maxlength="13" />
+												<p id="msgRFC" class="red text-left hidden small">
+													El RFC <span id="idContraRFC">del Propietario</span> <span
+														id="idSubContraRFC">del Contratista</span> <span
+														id="idInterRFC">de quien lo Contrat&oacute;</span> es
+													inv&aacute;lido o no existe, favor de verificar.
+												</p>
+											</div>
+											<div class="col-sm-2">
+												<button id="btnValidarRFC" class="btn btn-primary btn-sm" type="button">Verificar</button>
+											</div>
+										</div>
+										<div id="lblRazonSocial" class="row hidden small">
+											<div class="col-sm-12 text-left">
+												<p>
+													<strong id="texRazonSocial"></strong>
+												</p>
+											</div>
+										</div>
+									</div>
+							</div>
+							
+							<div class="row">
+								<div id="pnlDatosObraRegistrado" class="col-sm-12 text-left hidden">
+									<form class="form-horizontal small">
+											<div class="row">
+												<div class="col-sm-3 text-left small">
+													<label class="control-label">Ubicaci&oacute;n de la obra:</label>
+												</div>
+												<div class="col-sm-9 text-left small">
+													<label id="lblUbicacionObraRes" class="control-label" style="font-weight: normal !important;"></label>
+												</div>
+											</div>
+											<div class="row hidden small" id="txtObervacionesUbicacion">
+												<div class="col-sm-12 text-left">
+													<textarea class="form-control" id="commentUbicacion"
+														placeholder="Opcionalmente agregue observaciones de la ubicaci&oacute;n de obra"
+														maxlength="300"></textarea>
+												</div>
+											</div>
+									</form>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<div id="numeroRegistroModal">
+						<div>
+							<div>
+
+								<div class="hidden" id="idContratista">
+									<p>Recuerde que para concluir satisfactoriamente con el
+										registro de la obra como Contratista, es necesario contar con
+										el n&uacute;mero de registro de obra del Propietario, el cual
+										debe ser proporcionado por &eacute;ste, por lo que debe
+										solicitarlo.</p>
+								</div>
+								<div class="hidden" id="idSubContratista">
+									<p>Recuerde que para concluir satisfactoriamente con el
+										registro de obra como Subcontratista, es necesario contar con
+										el n&uacute;mero de registro de obra del Contratista, el cual
+										debe ser proporcionado por &eacute;ste, por lo que debe
+										solicitarlo.</p>
+								</div>
+								<div class="hidden" id="idIntermediario">
+									<p>Recuerde que para concluir satisfactoriamente con el
+										registro de obra como Intermediario, es necesario contar con
+										el n&uacute;mero de registro de obra de quien lo
+										contrat&oacute;, el cual debe ser proporcionado por
+										&eacute;ste, por lo que debe solicitarlo.</p>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+
+					<div id="subEspecializado">
+						<div class="hidden" id="idSubEspecializado">
+							<p>&iquest;Confirma que es subcontratista de ejecuci&oacute;n de obra especializada&#63;</p>
+						</div>
+					</div>
+
+					<div id="obraSinRegistroModal">
+						<div>
+							<div>
+								<div>
+									<label id="lblMsgObraNE"></label>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div id="errorCodigoPostalPatron" style="display: none">
+						<label class="small">La ubicaci&oacute;n de la obra no
+							corresponde a la Subdelegaci&oacute;n: <span id="desSubdelegacionText" />, seleccione o solicite un Registro
+							Patronal correspondiente a la ubicaci&oacute;n de la obra.
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+			<div class="col-sm-12 text-right">
+				<button class="btn btn-default btn-sm" id="btnRegresarEscritorio" onclick="reiniciarValores();uid_call('imss.patrones.registro_obra.ubicacion.btn_cancelar','clickin')">Cancelar</button>
+				
+				<button id="btnUbicacion" class="btn btn-primary btn-sm" type="button" onclick="uid_call('imss.patrones.registro_obra.ubicacion.btn_siguiente','clickin')">Siguiente</button>
+			</div>
+			</div>
+			<div id="componenteDom" height="100%" width="100%"></div>
+		</div>
+
+	</div>
+
+	<input id="cpValidar" type="hidden" />
+</div>
+</html>

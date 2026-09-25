@@ -1,0 +1,8 @@
+/DeltaBase/Dev/IMP/delta-framework-base/src/main/java/mx/gob/imss/ctirss/delta/framework/base/controller/AbstractController.java
+
+pom.xml_delta_frameworkbase    Quitar el _delta_frameworkbase
+/DeltaBase/Dev/IMP/delta-framework-base/pom.xml_delta_frameworkbase
+
+pom.xml_delta_persistencia   quitar _delta_persistencia
+/DeltaBase/Dev/IMP/delta-persistencia/pom.xml_delta_persistencia
+

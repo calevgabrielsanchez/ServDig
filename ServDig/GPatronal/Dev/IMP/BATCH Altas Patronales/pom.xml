@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.8</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>mx.gob.imss.dsdir.altapff</groupId>
+	<artifactId>batchaltas</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>batchaltasApp</name>
+	<description>Cancelar solicitudes que quedaron en proceso</description>
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-batch</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.4</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+	
+
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>local</id>
+
+			<activation>
+				<activeByDefault>true</activeByDefault>				
+			</activation>
+			
+			<properties>
+				<spring.profiles.active>default</spring.profiles.active>
+				<db1.driver>org.h2.Driver</db1.driver>
+				<db1url>jdbc:h2:mem:batchdb;DB_CLOSE_DELAY=-1</db1url>
+				<db1.jdbc.username>sa</db1.jdbc.username>
+				<db1.jdbc.password>sa</db1.jdbc.password>
+				
+				
+				<db2.driver>oracle.jdbc.OracleDriver</db2.driver>
+				<db2url>jdbc:oracle:thin:@172.16.8.166:1630:bdtu2</db2url>
+				<db2.jdbc.username>MGPBDTU1</db2.jdbc.username>
+				<db2.jdbc.password>T3mp0ra1</db2.jdbc.password>
+				
+			</properties>
+		</profile>
+		<profile>
+			<id>qa</id>
+			<properties>
+				
+				<db1.driver>oracle.jdbc.OracleDriver</db1.driver>
+				<db1url>jdbc:oracle:thin:@172.16.8.166:1630:bdtu2</db1url>
+				<db1.jdbc.username>MGPNDIC1</db1.jdbc.username>
+				<db1.jdbc.password>MGPnd1cI</db1.jdbc.password>
+				
+				
+				<db2.driver>oracle.jdbc.OracleDriver</db2.driver>
+				<db2url>jdbc:oracle:thin:@172.16.8.166:1630:bdtu2</db2url>
+				<db2.jdbc.username>MGPBDTU1</db2.jdbc.username>
+				<db2.jdbc.password>T3mp0ra1</db2.jdbc.password>
+				
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				
+				<db1.driver>org.h2.Driver</db1.driver>
+				<db1url>jdbc:h2:mem:batchdb;DB_CLOSE_DELAY=-1</db1url>
+				<db1.jdbc.username>sa</db1.jdbc.username>
+				<db1.jdbc.password>sa</db1.jdbc.password>
+
+				<db2.driver>oracle.jdbc.OracleDriver</db2.driver>
+				<db2url>jdbc:oracle:thin:@172.16.8.166:1630:bdtu2</db2url>
+				<db2.jdbc.username>MGPBDTU1</db2.jdbc.username>
+				<db2.jdbc.password>T3mp0ra1</db2.jdbc.password>
+				
+			</properties>
+		</profile>
+	</profiles>
+
+
+</project>

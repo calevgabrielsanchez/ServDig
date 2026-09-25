@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="header :: head">
+<meta name="tipo_contenido" content="text/html;"
+	http-equiv="content-type" charset="utf-8"></meta>
+</head>
+<body>
+	<div class="container">
+	<input id="pasoConsulta" value="1" class="hidden"/>
+		<div th:substituteby="header :: pageHeader"></div>
+		<div id="pnlDatosResumen" class="panel panel-default">
+			<div class="panel-heading" >
+				<div class="row">
+					<div class="col-sm-6 text-left">
+						<small th:text="#{escritorio.titulo}" />
+					</div>
+					<div class="col-sm-6 text-right">	
+						<a class="accordion-toggle text-right" data-toggle="collapse"
+							data-parent="#accordion" href="#collapseOne"> 
+							<img id="imgCollapsable"
+								src="/sdroc_web/static/images/panel-collapsed.png"
+								style="width: 25px">
+							</img>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div id="collapseOne" class="panel-collapse collapse in">
+				<div id="pnlInformation" class="panel-body text-center">
+					<div th:substituteby="registro/obra/datosPatron :: pageDatosPatron"></div>
+					
+					<div class="panel text-left small">
+						<div class="row">
+							<div class="col-sm-4 text-left">
+								<label class="control-label small" for="txtOpinionCumplimiento">Opini&oacute;n
+									de cumplimiento:</label>
+							</div>
+							<div class="col-sm-8 text-left">
+								<img id="imgSemaforo" src="" width="20px;" height="20px;" style="display:none"></img>
+								<label id="lblSemaforo" class="small" text="">Consultanto opini&oacute;, espere por favor ...</label>
+							</div>
+						</div>
+					</div>
+						
+				</div>
+	
+				<!-- <div class="panel-body text-center"> -->
+					
+				<!-- </div> -->
+	
+			</div>
+			
+
+		</div>
+
+		<div id="pnlConsultaObra" class="panel panel-default small">
+			<div class="panel-heading">
+				Resultado de la consulta de obra por Registro Federal
+					de Contribuyentes.
+			</div>
+			<div class="panel-body text-center">
+				<table id="tblConsultaObraRFC"
+					class="table table-striped table-responsive">
+					<thead>
+						<tr>
+							<th class="small">No.</th>
+							<th th:text="#{consulta.obra.registro.patronal}" class="small"></th>
+							<th th:text="#{consulta.obra.delegacion}"  class="small"/>
+							<th th:text="#{consulta.obra.subdelegacion}" class="small" />
+							<th th:text="#{consulta.obras.numero.obras}" class="small" />
+						</tr>
+					</thead>
+					<tbody class="searchable">
+						<tr th:each="rp, status : ${listaRegistrosPatronales}"
+							class="text-left">
+							<td th:text="${status.count}" class="small"/>
+							<td class="small"><a th:with="var=*{rp.cveRegPatronal}"
+								th:href="@{|/registroPatronal/${var}|}"
+								th:text="${rp.cveRegPatronal}"> </a></td>
+							<td th:text="${rp.nomDelegacion}" class="small"/>
+							<td th:text="${rp.nomSubdelegacion}" class="small" />
+							<td th:text="${rp.numObrasRegistradas}" class="small"/>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+		
+			
+				<form action="/">
+					<button class="btn btn-primary pull-right btn-sm" id="btnReporteAvisos"
+						formaction="/sdroc_web/avisosUbicacion">Reporte de
+						Avisos de Ubicaci&oacute;n de Obra</button>
+				</form>
+			
+				<button class="btn btn-primary pull-right btn-sm" style="margin-right: 5px;" id="btnReporteGeneral">Reporte
+					General de Obras</button>
+					
+				<form action="/">
+					<button class="btn btn-default pull-right btn-sm" style="margin-right: 5px;" id="btnRegresarConsulta"
+						formaction="/sdroc_web/escritorio">Regresar</button>
+				</form>	
+			</div>
+		</div>
+		<br />
+		<!-- <div class="row">
+			<div class="col-md-12">
+				<div class="col-md-4 text-right">
+					<button class="btn btn-default pull-right" id="btnReporteGeneral">Reporte
+						General de Obras</button>
+				</div>
+			</div>
+		</div> -->
+		<br></br>
+
+	</div>
+</body>
+</html>
+
+

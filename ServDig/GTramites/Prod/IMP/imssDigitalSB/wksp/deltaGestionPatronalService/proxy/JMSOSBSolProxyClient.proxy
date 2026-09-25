@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/typesystem/config" xmlns:con5="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con6="http://www.bea.com/wli/sb/stages/routing/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description/>
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:request type="XML">
+        <con4:schema ref="deltaGestionPatronalService/schema/ServiceContract/JMSConcluirSolicitudConsumer" element="JMSProducer_Input"/>
+      </con:request>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:largeMessageSupport isEnabled="true">
+      <ser:persistToFile>false</ser:persistToFile>
+      <ser:enableCompression>true</ser:enableCompression>
+    </ser:largeMessageSupport>
+    <ser:transactions isRequired="true" sameTxForResponse="true"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>jms</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>jms://172.24.116.37:15051,172.24.116.37:15052/jms.SolicitudConnectionFactory/jms.SolicitudDistributedQueue</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>true</tran:all-headers>
+    <tran:provider-specific>
+      <jms:is-queue>true</jms:is-queue>
+      <jms:is-secure>false</jms:is-secure>
+      <jms:inbound-properties>
+        <jms:response-required>false</jms:response-required>
+        <jms:XA-required>true</jms:XA-required>
+      </jms:inbound-properties>
+      <jms:request-encoding>UTF-8</jms:request-encoding>
+      <jms:jndi-timeout>0</jms:jndi-timeout>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con:pipeline type="response" name="Read JMS QUEUE_response"/>
+    <con:pipeline type="request" name="Read JMS QUEUE_request">
+      <con:stage name="Read Request">
+        <con:context>
+          <con2:varNsDecl namespace="http://mx.gob.imss.delta.global.services/" prefix="mx"/>
+        </con:context>
+        <con:actions>
+          <con1:assign varName="folioSolicitudAConcluir">
+            <con2:id>_ActionId-6430619412027184305--56d3ccdf.13f624717e5.-7cd2</con2:id>
+            <con1:expr>
+              <con2:xqueryText>$body/mx:JMSProducer_Input/mx:FolioSolicitud/text()</con2:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con3:log>
+            <con2:id>_ActionId-6430619412027184305--56d3ccdf.13f624717e5.-7c85</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con2:xqueryText>$folioSolicitudAConcluir</con2:xqueryText>
+            </con3:expr>
+            <con3:message>Mensaje de entrada del Queue</con3:message>
+          </con3:log>
+          <con1:assign varName="initialRequest">
+            <con2:id>_ActionId-5335437791448829625-3e47340b.13f7d0486e3.-7fa7</con2:id>
+            <con1:expr>
+              <con2:xqueryText>&lt;mx:consultarDatosGeneralesRequest xmlns:mx="http://mx.gob.imss.delta.global.service/">
+    &lt;mx:solicitudId>{$folioSolicitudAConcluir}&lt;/mx:solicitudId>
+&lt;/mx:consultarDatosGeneralesRequest></con2:xqueryText>
+            </con1:expr>
+          </con1:assign>
+          <con3:log>
+            <con2:id>_ActionId-5335437791448829625-3e47340b.13f7d0486e3.-7ed5</con2:id>
+            <con3:logLevel>error</con3:logLevel>
+            <con3:expr>
+              <con2:xqueryText>$initialRequest</con2:xqueryText>
+            </con3:expr>
+            <con3:message>initialRequest:</con3:message>
+          </con3:log>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:flow>
+      <con:pipeline-node name="Read JMS QUEUE">
+        <con:request>Read JMS QUEUE_request</con:request>
+        <con:response>Read JMS QUEUE_response</con:response>
+      </con:pipeline-node>
+      <con:route-node name="RouteToFinalizarSolicitud">
+        <con:context/>
+        <con:actions>
+          <con6:route>
+            <con2:id>_ActionId-5335437791448829625-3e47340b.13f7d0486e3.-7f56</con2:id>
+            <con6:service ref="deltaGestionPatronalService/proxy/DeltaFinalizarSolicitudService" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con6:outboundTransform>
+              <con1:replace varName="body" contents-only="true">
+                <con2:id>_ActionId-5335437791448829625-3e47340b.13f7d0486e3.-7f54</con2:id>
+                <con1:location>
+                  <con2:xpathText>.</con2:xpathText>
+                </con1:location>
+                <con1:expr>
+                  <con2:xqueryText>$initialRequest</con2:xqueryText>
+                </con1:expr>
+              </con1:replace>
+              <con3:log>
+                <con2:id>_ActionId-5335437791448829625-3e47340b.13f7d0486e3.-7f0a</con2:id>
+                <con3:logLevel>error</con3:logLevel>
+                <con3:expr>
+                  <con2:xqueryText>$body</con2:xqueryText>
+                </con3:expr>
+                <con3:message>Documento de Petición para FinalizarSolicitudServiceProxy:</con3:message>
+              </con3:log>
+              <con1:routing-options>
+                <con2:id>_ActionId-5335437791448829625-3e47340b.13f7d0486e3.-7d4b</con2:id>
+                <con1:qualityOfService>exactly-once</con1:qualityOfService>
+              </con1:routing-options>
+            </con6:outboundTransform>
+            <con6:responseTransform/>
+          </con6:route>
+        </con:actions>
+      </con:route-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>

@@ -1,0 +1,350 @@
+package mx.gob.imss.ctirss.delta.portal.derechohabiente.web.utils;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+/**
+ * @author Alguien muy cabr\u00F3n
+ * @since 07/10/2011
+ *
+ */
+public class ComboTag extends SimpleTagSupport{
+
+	private String entidad 			= "";
+	private String idHtml			= "";
+	private String entidadPadre		= "";
+	private String idHtmlPadre		= "";
+	private String idHtmlContenedor	= "";
+	private String idHtmlValor	= "";
+	private String regEspecial = "";
+	private String actor = "";
+	
+
+	public void doTag() throws JspException {
+
+		PageContext pageContext = (PageContext) getJspContext();
+		JspWriter out = pageContext.getOut();
+
+		try {
+			if(!(entidad!=null && !entidad.equals("") && idHtml!=null && !idHtml.equals("") &&
+				 idHtmlContenedor!=null && !idHtmlContenedor.equals(""))){
+//				System.out.println("El combo no se ha podido generar, el parametro 'entidad'/'idHtml'/'idHtmlContenedor' es obligatorio");
+			}
+			else{
+				boolean bValidado	= false;
+				boolean bComboSimple= false;
+				if(entidadPadre!=null && !entidadPadre.equals("")){
+				  if(idHtmlPadre!=null && !idHtmlPadre.equals("")){//					 
+					  bValidado = true;
+				  }				  
+				}
+				else{
+				  bValidado 	= true;
+				  bComboSimple 	= true;
+				}
+				if(bValidado){
+				  if(bComboSimple){
+					  if(regEspecial!=null && !regEspecial.equals("")){							  
+						  out.println(procesaComboSpecial(entidad, idHtml, idHtmlContenedor, idHtmlValor, regEspecial));						 
+					  }else{						  
+						  out.println(procesaComboSimple(entidad, idHtml, idHtmlContenedor, idHtmlValor));
+					  }
+				  }
+				  else{
+					  if(actor !=null && !actor.equals("")){						  
+						  out.println(procesaComboDepRazon(entidad, idHtml, idHtmlContenedor,idHtmlValor, actor,idHtmlPadre, regEspecial));						  
+					  }else{
+						  out.println(procesaComboDependiente(entidad, idHtml, idHtmlContenedor, entidadPadre, idHtmlPadre, idHtmlValor));
+					  }
+				  }
+				}//if(bValidado){
+			}//fin else if(entidadPadre!=null && !entidadPadre.equals("")){
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}//doTag()
+
+	/**
+	 * 
+	 * @param sNombreTabla
+	 * @param sNombreAtributoTabla
+	 * @param sNombreContenedor
+	 * @param idHtmlValor
+	 * @return
+	 */
+	private String procesaComboSimple(String sNombreTabla, String sNombreAtributoTabla, String sNombreContenedor,String idHtmlValor){
+		System.out.println("************************* "+idHtmlValor+" *********************************");
+		StringBuffer sbRes 				= new StringBuffer();
+		String sNombreTablaSinPaquetes 	= this.getNombreTablaSinPaquetes(sNombreTabla);
+		String sNombreAtributoTabCEscape= this.getCadenaPuntosConEscape(sNombreAtributoTabla);
+		
+			//Genera el elemento select
+			sbRes.append("<select id='").append(sNombreAtributoTabla).append("' name='").append(sNombreAtributoTabla).append("'>")
+				 .append("<option value=''>--Selecciona por favor--</option>")
+				 .append("</select>\n");
+			//Genera la funcion  que realizara la consulta asincrona
+			sbRes.append("<script languaje='JavaScript'>\n")
+				 .append("var url = \"\"+context_path+\"/combo/simple.do\";\n")
+				 .append("cmb").append(sNombreContenedor).append(sNombreTablaSinPaquetes.toLowerCase())
+				 		.append(" = new comboCtrlSimple(url, '").append(sNombreTabla).append("', '#").append(sNombreContenedor)
+				 		.append(" select#").append(sNombreAtributoTabCEscape).append("' ,'").append(idHtmlValor ).append("');\n")
+				 .append("$(document).ready(function() {\n")
+				 .append("cmb").append(sNombreContenedor).append(sNombreTablaSinPaquetes.toLowerCase()).append(".cargar();\n")
+				 .append("});\n")
+				 .append("</script>\n");
+		return sbRes.toString();
+	}//procesaComboSimple	
+	
+	/**
+	 * 
+	 * @param sNombreTabla
+	 * @param sNombreAtributoTabla
+	 * @param sNombreContenedor
+	 * @param idHtmlValor
+	 * @param regEspecial
+	 * @return
+	 */
+	private String procesaComboSpecial(String sNombreTabla, String sNombreAtributoTabla, String sNombreContenedor,
+			String idHtmlValor, String regEspecial){
+//		System.out.println("************************* "+idHtmlValor+" *********************************");
+		StringBuffer sbRes 				= new StringBuffer();
+		String sNombreTablaSinPaquetes 	= this.getNombreTablaSinPaquetes(sNombreTabla);
+		String sNombreAtributoTabCEscape= this.getCadenaPuntosConEscape(sNombreAtributoTabla);
+		
+			//Genera el elemento select
+			sbRes.append("<select ");		
+//			if(regEspecial.equals("1") && sNombreTabla.equals("mx.gob.imss.ctirss.delta.persistence.DicCalidadParentesco")){
+//				sbRes.append(" onchange='rn();' ");
+//			}
+			sbRes.append(" id='").append(sNombreAtributoTabla).append("' name='").append(sNombreAtributoTabla).append("'>");
+			if(!sNombreTabla.equals("mx.gob.imss.ctirss.delta.persistence.DicRazonRegistro2")){	 
+				sbRes.append("<option value=''>--Selecciona por favor--</option>");
+			}
+			sbRes.append("</select>\n");
+			//Genera la funcion  que realizara la consulta asincrona
+			sbRes.append("<script languaje='JavaScript'>\n")
+				 .append(" var url = \"\"+context_path+\"/combo/special.do\";\n")
+				 .append("cmb").append(sNombreContenedor).append(sNombreTablaSinPaquetes.toLowerCase())
+				 		.append(" = new comboCtrlSpecial(url, '").append(sNombreTabla).append("', '#").append(sNombreContenedor)
+				 		.append(" select#").append(sNombreAtributoTabCEscape).append("' ,'")
+				 		.append(idHtmlValor ).append("' , '").append(regEspecial).append("');\n")
+				 .append("$(document).ready(function() {\n")
+				 .append("cmb").append(sNombreContenedor).append(sNombreTablaSinPaquetes.toLowerCase()).append(".cargar();\n")
+				 .append("});\n")
+				 .append("</script>\n");
+		return sbRes.toString();
+	}//procesaComboSpecial	
+	
+	/**
+	 * 
+	 * @param sNombreTabla
+	 * @param sNombreAtributoTabla
+	 * @param sNombreContenedor
+	 * @param sNombreTablaPadre
+	 * @param sNombreAtributoTablaPadre
+	 * @param idHtmlValor
+	 * @return
+	 */
+	private String procesaComboDependiente(	String sNombreTabla, String sNombreAtributoTabla, String sNombreContenedor,
+											String sNombreTablaPadre, String sNombreAtributoTablaPadre, String idHtmlValor){
+		StringBuffer sbRes 				= new StringBuffer();
+		String sNombreTablaSinPaquetes 	= this.getNombreTablaSinPaquetes(sNombreTabla);
+		String sNombreAtributoTabCEscape= this.getCadenaPuntosConEscape(sNombreAtributoTabla);
+	//	String sNombreTabPadSinPaquetes	= this.getNombreTablaSinPaquetes(sNombreTablaPadre);
+		String sNombreAtrTabPadCEscape	= this.getCadenaPuntosConEscape(sNombreAtributoTablaPadre);
+		String sNombreAtrTabPadSinHijo	= sNombreTablaPadre;
+		
+			sbRes.append("<select id='").append(sNombreAtributoTabla).append("' name='").append(sNombreAtributoTabla).append("'>\n")
+//				 .append("<option value=''>--Por favor seleccione--</option>\n")
+				 .append("</select>\n");
+			sbRes.append("<script languaje='JavaScript'>\n")
+				 .append("			var url = \"\"+context_path+\"/combo/dependiente.do\";\n")			
+				 .append("cmb").append(sNombreContenedor).append(sNombreTablaSinPaquetes.toLowerCase())
+				 		.append(" = new comboCtrlDependiente(url, '").append(sNombreTabla).append("', 'form#").append(sNombreContenedor)
+				 		.append(" select#").append(sNombreAtributoTabCEscape).append("','").append(sNombreAtrTabPadSinHijo).append("','form#").append(sNombreContenedor)
+				 		.append(" select#").append(sNombreAtrTabPadCEscape).append("' ,'").append(idHtmlValor ).append("');\n")	
+				 .append("$(function(){\n")
+				 .append("  $('form#").append(sNombreContenedor).append(" select#").append(sNombreAtrTabPadCEscape).append("').change(function(){\n")
+				 .append("	  try{\n")
+				 .append("	    cmb").append(sNombreContenedor).append(sNombreTablaSinPaquetes.toLowerCase()).append(".cargardep();\n")	 				 
+				 .append("	  }catch (e) {\n")
+				 .append("		alert(e);\n")
+				 .append("	  }\n")
+				 .append("  })\n")
+				 .append("})\n")
+				 .append("</script>\n");
+		return sbRes.toString();
+	}//procesaComboDependiente
+	
+	/**
+	 * 
+	 * @param sNombreTabla
+	 * @param sNombreAtributoTabla
+	 * @param sNombreContenedor
+	 * @param sNombreTablaPadre
+	 * @param sNombreAtributoTablaPadre
+	 * @param idHtmlValor
+	 * @return
+	 */
+	private String procesaComboDepRazon(String sNombreTabla, String sNombreAtributoTabla, 
+			String sNombreContenedor,String idHtmlValor, String actor, 
+			String sNombreAtributoTablaPadre, String regEspecial){
+		StringBuffer sbRes 				= new StringBuffer();
+		String sNombreTablaSinPaquetes 	= this.getNombreTablaSinPaquetes(sNombreTabla);
+		String sNombreAtributoTabCEscape= this.getCadenaPuntosConEscape(sNombreAtributoTabla);
+		String sNombreAtrTabPadCEscape	= this.getCadenaPuntosConEscape(sNombreAtributoTablaPadre);
+		
+		//Genera el elemento select
+		sbRes.append("<select ");
+//			if(!sNombreTabla.equals("mx.gob.imss.ctirss.delta.persistence.DicEstadoCivil")){
+//				sbRes.append(" onchange='rn();' ");
+//			}
+			 sbRes.append(" id='").append(sNombreAtributoTabla).append("' name='").append(sNombreAtributoTabla).append("'>");
+//			 if(regEspecial.equals(Constants.CON_ASEGURADO_EXTERNO) || regEspecial.equals(Constants.CON_ASEGURADO_INTERNO)){
+//				 sbRes.append("<option value=''>--Por favor seleccione--</option>");
+//			 }
+			 
+			 sbRes.append("</select>\n");
+		//Genera la funcion  que realizara la consulta asincrona
+		sbRes.append("<script languaje='JavaScript'>\n")		
+			 .append("var url = \"\"+context_path+\"/combo/dep2.do\";\n")
+			 .append("cmb").append(sNombreContenedor).append(sNombreTablaSinPaquetes.toLowerCase())
+			 		.append(" = new comboCtrlDep2(url, '").append(sNombreTabla).append("', 'form#").append(sNombreContenedor)
+			 		.append(" select#").append(sNombreAtributoTabCEscape).append("' ,'form#").append(sNombreContenedor)
+			 		.append(" select#").append(sNombreAtrTabPadCEscape).append("','")			 		
+			 		.append(idHtmlValor ).append("' , '").append(regEspecial).append("' , '")
+			 		.append(actor).append("');\n")
+			 .append("$(document).ready(function() {\n")
+			 .append("  $('form#").append(sNombreContenedor).append(" select#").append(sNombreAtrTabPadCEscape).append("').change(function(){\n")
+				 .append("	  try{\n")								 
+			 .append("	    cmb").append(sNombreContenedor).append(sNombreTablaSinPaquetes.toLowerCase()).append(".cargardep();\n")
+			 .append("	  }catch (e) {\n")
+			 .append("		alert(e);\n")
+			 .append("	  }\n")
+			 .append("  })\n")
+			 .append("})\n")
+			 .append("</script>\n");
+	return sbRes.toString();
+	}//procesaComboDepRazon
+	
+	
+	private String getNombreTablaSinPaquetes(String sNombreTabla){
+		return (sNombreTabla.lastIndexOf(".")!=-1)?sNombreTabla.substring(sNombreTabla.lastIndexOf(".")+1):sNombreTabla;
+	}
+	
+	private String getCadenaPuntosConEscape(String sCadena){
+		return sCadena.replaceAll("\\.", "\\\\\\\\.");
+	}	
+	
+	@SuppressWarnings("unused")
+	private String getCadenaAntesPrimerPunto(String sCadena){
+		return (sCadena.indexOf(".")!=-1)?sCadena.substring(0,sCadena.indexOf(".")):sCadena;
+	}		
+	
+	@SuppressWarnings("unused")
+	private String getCadenaSinPadre(String sCadena, String sCadenaPadre){
+		return (sCadena.toLowerCase().indexOf(sCadenaPadre.toLowerCase())!=-1)?sCadena.substring(sCadena.toLowerCase().indexOf(sCadenaPadre.toLowerCase())):sCadena;
+	}	
+
+	/**
+	 * @return the entidad
+	 */
+	public String getEntidad() {
+		return entidad;
+	}
+
+	/**
+	 * @param entidad the entidad to set
+	 */
+	public void setEntidad(String entidad) {
+		this.entidad = entidad;
+	}
+
+	/**
+	 * @return the idHtml
+	 */
+	public String getIdHtml() {
+		return idHtml;
+	}
+
+	/**
+	 * @param idHtml the idHtml to set
+	 */
+	public void setIdHtml(String idHtml) {
+		this.idHtml = idHtml;
+	}
+
+	/**
+	 * @return the entidadPadre
+	 */
+	public String getEntidadPadre() {
+		return entidadPadre;
+	}
+
+	/**
+	 * @param entidadPadre the entidadPadre to set
+	 */
+	public void setEntidadPadre(String entidadPadre) {
+		this.entidadPadre = entidadPadre;
+	}
+
+	/**
+	 * @return the idHtmlPadre
+	 */
+	public String getIdHtmlPadre() {
+		return idHtmlPadre;
+	}
+
+	/**
+	 * @param idHtmlPadre the idHtmlPadre to set
+	 */
+	public void setIdHtmlPadre(String idHtmlPadre) {
+		this.idHtmlPadre = idHtmlPadre;
+	}
+
+	/**
+	 * @return the idHtmlContenedor
+	 */
+	public String getIdHtmlContenedor() {
+		return idHtmlContenedor;
+	}
+
+	/**
+	 * @param idHtmlContenedor the idHtmlContenedor to set
+	 */
+	public void setIdHtmlContenedor(String idHtmlContenedor) {
+		this.idHtmlContenedor = idHtmlContenedor;
+	}
+	
+	/**
+	 * @return the regEspecial
+	 */
+	public String getRegEspecial() {
+		return regEspecial;
+	}
+
+	/**
+	 * @param regEspecial the regEspecial to set
+	 */
+	public void setRegEspecial(String regEspecial) {
+		this.regEspecial = regEspecial;
+	}
+
+	public String getActor() {
+		return actor;
+	}
+
+	public void setActor(String actor) {
+		this.actor = actor;
+	}
+
+	public String getIdHtmlValor() {
+		return idHtmlValor;
+	}
+
+	public void setIdHtmlValor(String idHtmlValor) {
+		this.idHtmlValor = idHtmlValor;
+	}	}

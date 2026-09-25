@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BeneficiariosVigenciaDerechos" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="2.0490403660952117"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="nombreBen" class="java.lang.String"/>
+	<field name="primerApellidoBen" class="java.lang.String"/>
+	<field name="curpBen" class="java.lang.String"/>
+	<field name="parentescoBen" class="java.lang.String"/>
+	<field name="fechaNacimientoBen" class="java.util.Date"/>
+	<field name="edadBen" class="java.lang.Long"/>
+	<field name="sexoBen" class="java.lang.String"/>
+	<field name="delegacionBen" class="java.lang.String"/>
+	<field name="umfBen" class="java.lang.String"/>
+	<field name="situacionBen" class="java.lang.String"/>
+	<field name="segundoApellidoBen" class="java.lang.String"/>
+	<field name="detalleSituacionBen" class="java.lang.String"/>
+	<field name="vencimientoVigenciaBen" class="java.util.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="115" splitType="Stretch">
+			<staticText>
+				<reportElement x="7" y="28" width="49" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="48" width="49" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Primer apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="68" width="49" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Segundo apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="88" width="49" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[CURP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="127" y="88" width="61" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="127" y="68" width="61" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Edad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="127" y="48" width="61" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Fecha de nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="127" y="28" width="61" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Parentesco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="252" y="29" width="78" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Delegación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="252" y="49" width="78" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[UMF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="252" y="69" width="78" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Vencimiento de la vigencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="49" width="64" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Situación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="69" width="64" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Detalle de la situación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="7" y="11" width="250" height="17" backcolor="#CCCCCC"/>
+				<textElement/>
+				<text><![CDATA[Datos personales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="257" y="11" width="290" height="17" backcolor="#CCCCCC"/>
+				<textElement/>
+				<text><![CDATA[Datos de adscripción y vigencia]]></text>
+			</staticText>
+			<line>
+				<reportElement x="7" y="11" width="541" height="1"/>
+			</line>
+			<line>
+				<reportElement x="7" y="27" width="540" height="1"/>
+			</line>
+			<line>
+				<reportElement x="7" y="107" width="540" height="1"/>
+			</line>
+			<line>
+				<reportElement x="547" y="11" width="1" height="96"/>
+			</line>
+			<line>
+				<reportElement x="249" y="11" width="1" height="96"/>
+			</line>
+			<line>
+				<reportElement x="6" y="12" width="1" height="96"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="56" y="28" width="70" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombreBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="56" y="48" width="70" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{primerApellidoBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="56" y="88" width="70" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{curpBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="330" y="29" width="215" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{delegacionBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="330" y="49" width="79" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{umfBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="189" y="28" width="60" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{parentescoBen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="189" y="48" width="61" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{fechaNacimientoBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="189" y="68" width="60" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{edadBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="189" y="88" width="60" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sexoBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="473" y="49" width="72" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{situacionBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="56" y="68" width="70" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{segundoApellidoBen}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="473" y="69" width="72" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{detalleSituacionBen}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="330" y="69" width="79" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{vencimientoVigenciaBen}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

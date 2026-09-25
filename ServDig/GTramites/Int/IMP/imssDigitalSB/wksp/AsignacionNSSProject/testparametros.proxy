@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false">
+    <ser:description/>
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:response type="Text"/>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:pageAttachments isEnabled="false"/>
+    <ser:transactions isRequired="false" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/AsignacionNSSProject/testparametros</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific xsi:type="http:HttpEndPointConfiguration" xmlns:http="http://www.bea.com/wli/sb/transports/http">
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con:pipeline name="PipelinePairNode1_request" type="request">
+      <con:stage name="stage1">
+        <con:context>
+          <con2:userNsDecl prefix="m" namespace="http://imss.gob.mx/sistema/"/>
+        </con:context>
+        <con:actions>
+          <con1:wsCallout>
+            <con2:id>_ActionId-8708624879794242620-179b3cb7.1437924279e.-7fe1</con2:id>
+            <con1:service ref="AsignacionNSSProject/JavaBusinessService/ParametrosProxy" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con1:operation>obtenerParametroDeConfiguracion</con1:operation>
+            <con1:request>
+              <con1:body wrapped="false">$request</con1:body>
+              <con1:header/>
+            </con1:request>
+            <con1:response>
+              <con1:body wrapped="false">response</con1:body>
+              <con1:header/>
+            </con1:response>
+            <con1:requestTransform>
+              <con1:assign varName="request">
+                <con2:id>_ActionId-8708624879794242620-179b3cb7.1437924279e.-7fdf</con2:id>
+                <con1:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">&lt;sis:obtenerParametroDeConfiguracion xmlns:sis="http://imss.gob.mx/sistema/">
+    &lt;sis:arg0>EMAIL_NOTIF_SIE&lt;/sis:arg0>
+&lt;/sis:obtenerParametroDeConfiguracion></con:xqueryText>
+                </con1:expr>
+              </con1:assign>
+              <con1:replace varName="body" contents-only="true">
+                <con2:id>_ActionId-8708624879794242620-179b3cb7.1437924279e.-7fde</con2:id>
+                <con1:location>
+                  <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                </con1:location>
+                <con1:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$request</con:xqueryText>
+                </con1:expr>
+              </con1:replace>
+            </con1:requestTransform>
+            <con1:responseTransform>
+              <con3:log>
+                <con2:id>_ActionId-8708624879794242620-179b3cb7.1437924279e.-7fe0</con2:id>
+                <con3:logLevel>error</con3:logLevel>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$response</con:xqueryText>
+                </con3:expr>
+                <con3:message>RESPONSE</con3:message>
+              </con3:log>
+              <con1:assign varName="correo">
+                <con2:id>_ActionId-8708624879794242620-179b3cb7.1437924279e.-7fdd</con2:id>
+                <con1:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$response/m:return/text()</con:xqueryText>
+                </con1:expr>
+              </con1:assign>
+              <con3:log>
+                <con2:id>_ActionId-8708624879794242620-179b3cb7.1437924279e.-7fdc</con2:id>
+                <con3:logLevel>error</con3:logLevel>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$correo</con:xqueryText>
+                </con3:expr>
+                <con3:message>Correo:::</con3:message>
+              </con3:log>
+            </con1:responseTransform>
+          </con1:wsCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode1_response" type="response"/>
+    <con:flow>
+      <con:pipeline-node name="PipelinePairNode1">
+        <con:request>PipelinePairNode1_request</con:request>
+        <con:response>PipelinePairNode1_response</con:response>
+      </con:pipeline-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>

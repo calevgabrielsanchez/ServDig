@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="SISCOBPersistenceUnit" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>		
+		<jta-data-source>jdbc/delta</jta-data-source>
+		 
+		<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.siscob.HCopEstadoCuenta</class>
+		<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.siscob.HCopEstadoCuentaPK</class>
+		<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.siscob.HRcvEstadoCuenta</class>
+		<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.siscob.HRcvEstadoCuentaPK</class>		
+		<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.siscob.HistPatronesConvenioImssrcv</class>
+		<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.siscob.CptCreinc14ImssRcv</class> 
+		<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.vigencia.MgtInfincasegvig</class>
+		 
+		<properties>
+			<property name="hibernate.query.factory_class"
+				value="org.hibernate.hql.classic.ClassicQueryTranslatorFactory" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="true" />
+			<property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WeblogicTransactionManagerLookup" />
+			<property name="hibernate.max_fetch_depth" value="1"/>
+			<!-- <property name="hibernate.default_schema" value="MGPBDTU9X"/> -->  
+		</properties>
+	</persistence-unit>
+	<persistence-unit name="PersistenceUnitCatalogosCache" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>		
+		<jta-data-source>jdbc/delta</jta-data-source>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.AccNivelAtencion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgAsentamiento</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgAsentamientoPK</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatAdministracion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatAmbito</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatDerechosTransito</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatEstado</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatEstadoCp</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatLocalidad</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatLocalidadPK</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatMargen</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatMunicipio</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatMunicipioPK</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatPeriodo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatTermGen</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatTipoAsen</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatTipoDom</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCatVialidad</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCodigosPostale</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgCodigosPostalePK</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgDomicilioGeografico</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgDomiciliosCamino</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgDomiciliosCarretera</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DgVialidad</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicAccion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicActividadUsuario</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicAreaGeografica</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicAreaSistema</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicArticulo155</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicBeneficioCancelacion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicBiene</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicBodega</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicBodegaPK</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicCalidadCaracMigrat</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicCalidadParentesco</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicCaracter</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicCausa</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicCausaBajaAseg</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicCausaDesacuerdo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicCausaIncapacidad</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicCiclo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicClase</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicClasePrima</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicClaveMovto</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicClavePresupuestal</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicConsultorioUmf</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicConvenio</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicCuestionario</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicCuestionarioMedico</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicCuestionarioPregunta</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicCuestionarioRespuesta</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicDelegacion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicDependenciaOpcPregunta</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicDepositariaAjenaBienEmb</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicDepositariaAjenaBienEmbPK</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicDescripBaja</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicDescuentoRiss</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicDiasFestivo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicDivision</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicDoctoOrigSolicitanteCda</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicDocumento</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEjecutore</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEjecutorePK</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEspecialidadMedico</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEstadoAcuerdoDH</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEstadoBeneficio</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEstadoCivil</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEstadoDerechohabiente</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEstadoMovEnviadoSindo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEstadoPersona</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEstadoProrroga</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEstadoSeguro</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEstadoSolicitud</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEstadoTramite</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEstatusAnalisisCe</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEstatusRecibo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEstatusRolOperacionCe</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicEstatusRolOperacionCePK</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicFactorCostosMod33</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicFactorModalidadRama</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicFacultad</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicFechaCierre</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicFolioNss</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicFolioNssPK</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicFraccion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicFraccionClase</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicGradoParentesco</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicGrupo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicGrupoAnalisisCe</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicGrupoEstadoTramite</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicGuarderia</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicInstitucion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicLey</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicMandato</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicMateriaDesacuerdo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicMedico</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicMedioDistribucion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicMenu</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicMenuAccion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicModalidad</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicModulo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicMotivoAclaracion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicMovCorrecCtaIndCda</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicMunicipioImss</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicNivelEducativo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicOpcionPregunta</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicOrigenCapturaNssCda</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicOrigenCtaIndCda</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicOrigenMovtoAjuste</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicOrigenMovtoAsegurado</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicOrigenSolicitud</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicOrigMovtoPatSujoblig</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicPai</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicParametros</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicParentesco</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicPatronInstEdu</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicPerfilUsuario</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicPersonaCalificacion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicPregunta</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicPrestacion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicPrestacionDerechohab</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicPrestacionModDerechohab</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicRama</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicRangoCuotaSsf</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicRazonCancelacion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicRazonRegistro</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicRazonResultado</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicRegimen</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicRegPatConvencional</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicRegPatConvencionalPK</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicRolCe</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicSeccion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicSeguro</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicSeriesNss</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicServicio</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicServicioPrestDerechohab</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicSexo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicSubdelCompatible</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicSubdelCompatiblePK</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicSubdelegacion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicSubdelegacionRimss</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicSubestadoDerechohabiente</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTiemposMovtosEjec</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTiemposMovtosEjecPK</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoAmbito</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoAportacion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoAsegurado</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoBajaDerechohabiente</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoBeneficio</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoCausaAnalisis</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoCombustible</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoContratacion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoContribucion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoConvenio</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoCuestionario</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoDoctoAnalisisCe</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoDocumentoProbatorio</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoDomicilio</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoFacultad</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoForma</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoIdentificador</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoIncapacidad</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoIndPatSujOblig</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoInteresado</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoJornada</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoMaquinariaEquipo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoMovtoAsegurado</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoMovtoPatSujoblig</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoNaturaleza</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoNivelEducativo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoNssAclaracion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoNssCorreccion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoOperacionCe</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoPago</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoPagoModalidad</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoParentesco</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoPension</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoPerInteresadaSol</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoPersona</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoPoder</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoPrestacion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoProrroga</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoRegPatron</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoRegulacionCorreccionAsegurado</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoRespuesta</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoRetiro</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoSalario</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoSeguro</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTiposEjecutor</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoSemana</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoSerie</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoSociedad</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoSolicitud</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoTrabajador</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoTramCorreccionNss</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoTramite</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTipoUmf</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTramiteInfo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTramiteModalidad</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicTurno</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicUmf</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DicUmfCodigoPostal</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DitMedicoEspecialidad</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DitMunicipioImssInegi</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DitMunicipioSubdelegacion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DitPerfilAccion</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DitUmfCodPo</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DitUmfConsTurnoMedico</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DitUmfConsultorioTurno</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DitUmfTurno</class>
+			<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.DitUmfTurnoPK</class>
+		<properties>
+			<property name="hibernate.query.factory_class"
+				value="org.hibernate.hql.classic.ClassicQueryTranslatorFactory" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="true" />
+			<property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WeblogicTransactionManagerLookup" />
+			<property name="hibernate.max_fetch_depth" value="1"/>
+			<property name="hibernate.cache.use_query_cache" value="true"/>
+			<property name="hibernate.cache.use_second_level_cache" value="true"/>
+    		<property name="hibernate.cache.region.factory_class" 
+      				value="net.sf.ehcache.hibernate.EhCacheRegionFactory"/>		   
+      		<property name="net.sf.ehcache.configurationResourceName" value="/ehcache-serviciosDigitales.xml"/>
+			<property name="hibernate.default_schema" value="MGPBDTU1"/>   
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="PersistenceUnitCatComunCache" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>		
+		<jta-data-source>jdbc/catComun</jta-data-source>
+		<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.catComun.CatUmf</class>
+		<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.catComun.CatDelegacion</class>
+		<class>mx.gob.imss.cit.dacvass.servicios.externos.persistence.cache.catalogo.catComun.CatEntidadFederativa</class>
+	
+	<properties>
+			<property name="hibernate.query.factory_class"
+				value="org.hibernate.hql.classic.ClassicQueryTranslatorFactory" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="true" />
+			<property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.WeblogicTransactionManagerLookup" />
+			<property name="hibernate.max_fetch_depth" value="1"/>
+			
+			<property name="hibernate.cache.use_query_cache" value="true"/>
+			<property name="hibernate.cache.use_second_level_cache" value="true"/>
+    		<property name="hibernate.cache.region.factory_class" 
+      				value="net.sf.ehcache.hibernate.EhCacheRegionFactory"/>		   
+      		<property name="net.sf.ehcache.configurationResourceName" value="/ehcache-cat-comunes.xml"/>
+			 
+			<property name="hibernate.default_schema" value="CATCOMUN"/>   
+		</properties>
+	</persistence-unit>
+	
+
+</persistence>

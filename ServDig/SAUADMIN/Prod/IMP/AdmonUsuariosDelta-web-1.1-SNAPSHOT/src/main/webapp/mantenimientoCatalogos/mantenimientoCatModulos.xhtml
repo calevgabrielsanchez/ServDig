@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="../plantillas/plantilla.xhtml">
+	<ui:define name="body">
+		<div class="wp-caption-text">
+			<h3>Mantenimiento de Catálogos - Módulos</h3>
+		</div>
+		<h:form id="selectForm">
+			<style type="text/css">
+/* Important required because row */
+.ui-datatable-odd {
+	background-color: lightgray !important;
+	background-position-y: -1400px; /* IE7 hack */
+}
+</style>
+			<fieldset style="border: 1px solid silver; margin: 0; padding: 10px;">
+				<ace:panel header="Datos Generales">
+
+					<h:panelGrid id="pnRegSolicitudCuentaCrPre3" columns="6"
+						width="100%">
+
+						<h:outputLabel value="Area Normativa:"
+							id="lbAreaNormRegSolicitudCuenta" />
+						<h:selectOneMenu id="slAreaNormRegSolicitudCuenta"
+							required="false" requiredMessage="SELECCIONE EL AREA NORMATIVA"
+							disabled="#{consultaGenerica.flag}"
+							value="#{consultaGenerica.claveAreaNormativa}" style="width:200px">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenerica.lstAreaNormativa}" />
+						</h:selectOneMenu>
+
+						<h:outputLabel value="Departamento:" id="lbDepRegSolicitudCuenta" />
+						<h:selectOneMenu id="slDepRegSolicitudCuenta" required="false"
+							requiredMessage="SELECCIONE EL DEPARTAMENTO"
+							disabled="#{consultaGenerica.flag}"
+							value="#{consultaGenerica.claveDepartamento}" style="width:200px">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenerica.lstDepartamento}" />
+						</h:selectOneMenu>
+
+						<h:outputLabel value="Puesto:" id="lbPuestoRegSolicitudCuenta" />
+						<h:selectOneMenu id="slPuestoRegSolicitudCuenta" required="false"
+							requiredMessage="SELECCIONE EL PUESTO"
+							disabled="#{consultaGenerica.flag}"
+							value="#{consultaGenerica.clavePuesto}" style="width:200px">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenerica.lstPuesto}" />
+						</h:selectOneMenu>
+
+						<h:outputLabel value="Delegación:   " id="lbDelRegSolicitudCuenta" />
+						<h:selectOneMenu id="slDelRegSolicitudCuenta" required="false"
+							requiredMessage="SELECCIONE LA DELEGACION"
+							disabled="#{consultaGenerica.flag}"
+							value="#{consultaGenerica.claveDelegacion}" style="width:200px">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenerica.lstDelegacion}" />
+						</h:selectOneMenu>
+
+						<h:outputLabel value="SubDelegación:" id="lbSubRegSolicitudCuenta" />
+						<h:selectOneMenu id="slSubRegSolicitudCuenta" required="false"
+							requiredMessage="SELECCIONE LA SUBDELEGACION"
+							disabled="#{consultaGenerica.flag}"
+							value="#{consultaGenerica.claveSubdelegacion}" style="width:200px">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenerica.lstSubDelegacion}" />
+						</h:selectOneMenu>
+
+						<h:outputLabel value="UMF: " id="lbUMFRegSolicitudCuenta" />
+						<h:selectOneMenu id="slUMFRegSolicitudCuenta"
+							disabled="#{consultaGenerica.flag}"
+							value="#{consultaGenerica.claveUMF}" style="width:200px">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenerica.lstUMF}" />
+						</h:selectOneMenu>
+
+					</h:panelGrid>
+
+					<h:panelGrid id="pnRegSolicitudCuentaC" columns="1" width="100%">
+						<h:message for="slAreaNormRegSolicitudCuenta"
+							id="msgAreaNormRegSolicitudCuenta" errorClass="error" />
+						<h:message for="slDepRegSolicitudCuenta"
+							id="msgDepRegSolicitudCuenta" errorClass="error" />
+						<h:message for="slPuestoRegSolicitudCuenta" errorClass="error" />
+						<h:message for="slDelRegSolicitudCuenta"
+							id="msgDelRegSolicitudCuenta" errorClass="error" />
+						<h:message for="slSubRegSolicitudCuenta" errorClass="error" />
+						<h:message for="slUMFRegSolicitudCuenta" errorClass="error"></h:message>
+					</h:panelGrid>
+
+				</ace:panel>
+
+				<h:panelGrid id="regs" columns="2" width="100%">
+
+					<h:panelGrid id="modEx" columns="1" width="50%" style="text-align: center">
+						<ace:panel header="Modulos existentes" style="width:480px">
+							<ace:dataTable
+								value="${mantenimientoCatModulosController.modulosTodos}"
+								var="modulost" id="modulost" selectionMode="single"
+								stateMap="${mantenimientoCatModulosController.stateMapFromModulosTodos}"
+								rowSelectListener="#{mantenimientoCatModulosController.handleSelectUsuarioFromModulosTodos}">
+								<ace:ajax event="select"
+									render="@this selectForm:datosFromModulosTodos" execute="@this" />
+
+								<ace:column>
+									<f:facet name="header">
+					                        Clave
+					                    </f:facet>
+					                    ${modulost.cveIdModulo}
+					                </ace:column>
+								<ace:column>
+									<f:facet name="header">
+					                        Descripcion
+					                    </f:facet>
+					                    ${modulost.desModulo}
+					                </ace:column>
+							</ace:dataTable>
+						</ace:panel>
+					</h:panelGrid>
+
+					<h:panelGrid id="modRel" columns="1" width="50%" style="text-align: center">
+						<ace:panel header="Modulos relacionados al departamento"
+							style="width:480px">
+							<ace:dataTable
+								value="${mantenimientoCatModulosController.modulosPertenecientes}"
+								var="modulosp" id="modulosp" selectionMode="single"
+								stateMap="${mantenimientoCatModulosController.stateMapFromModulosPertenecientes}"
+								rowSelectListener="#{mantenimientoCatModulosController.handleSelectUsuarioFromModulosPertenecientes}">
+								<ace:ajax event="select"
+									render="@this selectForm:datosFromModulosPertenecientes"
+									execute="@this" />
+	
+	
+								<ace:column>
+									<f:facet name="header">
+					                        Clave
+					                    </f:facet>
+					                    ${modulosp.cveIdModulo}
+					                </ace:column>
+								<ace:column>
+									<f:facet name="header">
+					                        Descripcion
+					                    </f:facet>
+					                    ${modulosp.desModulo}
+					                </ace:column>
+							</ace:dataTable>
+						</ace:panel>
+					</h:panelGrid>
+				</h:panelGrid>
+			</fieldset>
+
+			<br />
+			<h:outputLabel
+				value="#{mantenimientoCatModulosController.catalogoMB.errorAviso}"
+				id="lbAviso" style="color: blue" />
+			<h:outputLabel
+				value="#{mantenimientoCatModulosController.catalogoMB.errorGeneralDatos}"
+				id="lbErrorGeneral" style="color: red" />
+			<br />
+
+			<div class="wp-caption-text">
+				<!--  <h:commandButton action="#{mantenimientoCatModulosController.inicializaDatosMantenimieto}" value= "Refrescar" styleClass="mboton"/>-->
+				<h:graphicImage value="../imagenes/blanco.png" />
+				<h:commandButton
+					action="#{mantenimientoCatModulosController.agregarModuloAlDep}"
+					onclick="return confirm('¿Deseas agregar el módulo al departamento?')"
+					value="Agregar Módulo al Departamento" styleClass="mboton" />
+				<h:graphicImage value="../imagenes/blanco.png" />
+				<h:commandButton
+					action="#{mantenimientoCatModulosController.eliminarModuloDelDep}"
+					onclick="return confirm('¿Deseas eliminar el módulo del departamento?')"
+					value="Eliminar Módulo del Departamento" styleClass="mboton" />
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

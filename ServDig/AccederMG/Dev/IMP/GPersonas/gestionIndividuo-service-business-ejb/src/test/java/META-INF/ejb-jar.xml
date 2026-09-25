@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd"
+    version="3.0">
+
+    <enterprise-beans>
+        
+        
+        <session>
+            <ejb-name>consultaPersonaFisicaServiceBusiness</ejb-name>
+            <mapped-name>consultaPersonaFisicaServiceBusiness</mapped-name>  
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.individuo.service.business.ConsultaPersonaFisicaServiceBusinessRemote</business-remote>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.individuo.service.business.ConsultaPersonaFisicaServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        
+          <session>
+            <ejb-name>personaBusiness</ejb-name>
+            <mapped-name>personaBusiness</mapped-name>  
+            <business-remote>mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusinessRemote</business-remote>   
+            <ejb-class>mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusiness</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        
+          <session>
+            <ejb-name>calculoPorcentajeProbabilidadUtility</ejb-name>
+            <mapped-name>calculoPorcentajeProbabilidadUtility</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.delta.gestion.individuo.service.utility.CalculoPorcentajeProbabilidadUtilityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.individuo.service.utility.CalculoPorcentajeProbabilidadUtility</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        
+         <session>
+            <ejb-name>componentesExternosBusiness</ejb-name>
+            <mapped-name>componentesExternosBusiness</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.gestionpersonas.servicios.business.ComponentesExternosBusinessLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.gestionpersonas.servicios.business.ComponentesExternosBusiness</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        
+         <session>
+            <ejb-name>personaEntity</ejb-name>
+            <mapped-name>personaEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.gestionpersonas.servicios.entity.PersonaEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.gestionpersonas.servicios.entity.PersonaEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+        
+         <session>
+            <ejb-name>personaMoralEntity</ejb-name>
+            <mapped-name>personaMoralEntity</mapped-name>  
+            <business-local>mx.gob.imss.ctirss.gestionpersonas.servicios.entity.PersonaMoralEntityLocal</business-local>   
+            <ejb-class>mx.gob.imss.ctirss.gestionpersonas.servicios.entity.PersonaMoralEntity</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+       	
+       	 <session>
+            <ejb-name>personaFisicaServiceBusiness</ejb-name>
+            <mapped-name>personaFisicaServiceBusiness</mapped-name>  
+            <business-remote>mx.gob.imss.ctirss.delta.gestion.individuo.service.business.PersonaFisicaServiceBusinessRemote</business-remote>   
+            <ejb-class>mx.gob.imss.ctirss.delta.gestion.individuo.service.business.PersonaFisicaServiceBusiness</ejb-class>   
+            <session-type>Stateless</session-type>
+        </session>
+        
+    </enterprise-beans> 
+
+</ejb-jar>

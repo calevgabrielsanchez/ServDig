@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:sdrocrest.properties" />
+	</bean>
+
+	<bean id="serviceRepository" class="org.springframework.jndi.JndiTemplate">
+		<property name="environment">
+			<props>
+				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+				<prop key="java.naming.provider.url">${service.provider.url}</prop>
+				<prop key="java.naming.security.principal">${service.security.principal}</prop>
+				<prop key="java.naming.security.credentials">${service.security.credentials}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="tipoObraServiceEjb"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="ejb/TipoObraServiceEJB#mx.gob.imss.csdiss.sdroc.service.interfaces.TipoObraService" />
+		<property name="businessInterface"
+			value="mx.gob.imss.csdiss.sdroc.service.interfaces.TipoObraService" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+
+	<bean id="tipoPatronServiceEjb"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="ejb/TipoPatronServiceEJB#mx.gob.imss.csdiss.sdroc.service.interfaces.TipoPatronService" />
+		<property name="businessInterface"
+			value="mx.gob.imss.csdiss.sdroc.service.interfaces.TipoPatronService" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+
+	<bean id="tipoPersonaServiceEjb"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="ejb/TipoPersonaServiceEJB#mx.gob.imss.csdiss.sdroc.service.interfaces.TipoPersonaService" />
+		<property name="businessInterface"
+			value="mx.gob.imss.csdiss.sdroc.service.interfaces.TipoPersonaService" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+
+	<bean id="tipoRegistroServiceEjb"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="ejb/TipoRegistroServiceEJB#mx.gob.imss.csdiss.sdroc.service.interfaces.TipoRegistroService" />
+		<property name="businessInterface"
+			value="mx.gob.imss.csdiss.sdroc.service.interfaces.TipoRegistroService" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>
+	
+	<bean id="tipoIncidenciaServiceEjb"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="ejb/TipoIncidenciaServiceEJB#mx.gob.imss.csdiss.sdroc.service.interfaces.TipoIncidenciaService" />
+		<property name="businessInterface"
+			value="mx.gob.imss.csdiss.sdroc.service.interfaces.TipoIncidenciaService" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	
+
+	<bean id="objetoContratoServiceEjb"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="ejb/ObjetoContratoServiceEJB#mx.gob.imss.csdiss.sdroc.service.interfaces.ObjetoContratoService" />
+		<property name="businessInterface"
+			value="mx.gob.imss.csdiss.sdroc.service.interfaces.ObjetoContratoService" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	
+
+	<bean id="motivoServiceEjb"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="ejb/MotivoServiceEJB#mx.gob.imss.csdiss.sdroc.service.interfaces.MotivoService" />
+		<property name="businessInterface"
+			value="mx.gob.imss.csdiss.sdroc.service.interfaces.MotivoService" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	
+
+	<bean id="informacionObraServiceEjb"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="ejb/InformacionObraServiceEJB#mx.gob.imss.csdiss.sdroc.service.interfaces.InformacionObraService" />
+		<property name="businessInterface"
+			value="mx.gob.imss.csdiss.sdroc.service.interfaces.InformacionObraService" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	
+	
+	<bean id="informacionIncidenciaServiceEjb"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="ejb/InformacionIncidenciaServiceEJB#mx.gob.imss.csdiss.sdroc.service.interfaces.InformacionIncidenciaService" />
+		<property name="businessInterface"
+			value="mx.gob.imss.csdiss.sdroc.service.interfaces.InformacionIncidenciaService" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>		
+
+	<bean id="avisoObraServiceEjb"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="ejb/AvisoObraServiceEJB#mx.gob.imss.csdiss.sdroc.service.interfaces.AvisoObraService" />
+		<property name="businessInterface"
+			value="mx.gob.imss.csdiss.sdroc.service.interfaces.AvisoObraService" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	
+
+	<bean id="ubicacionObraServiceEjb"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="ejb/UbicacionObraServiceEJB#mx.gob.imss.csdiss.sdroc.service.interfaces.UbicacionObraService" />
+		<property name="businessInterface"
+			value="mx.gob.imss.csdiss.sdroc.service.interfaces.UbicacionObraService" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	
+
+	<bean id="subdelegacionServiceEJB"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+		<property name="jndiName"
+			value="ejb/SubdelegacionServiceEJB#mx.gob.imss.csdiss.sdroc.service.interfaces.SubdelegacionService" />
+		<property name="businessInterface"
+			value="mx.gob.imss.csdiss.sdroc.service.interfaces.SubdelegacionService" />
+		<property name="jndiTemplate" ref="serviceRepository" />
+	</bean>	
+
+</beans>

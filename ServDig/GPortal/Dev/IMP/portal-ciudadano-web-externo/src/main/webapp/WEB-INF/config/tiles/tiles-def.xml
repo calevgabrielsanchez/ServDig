@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="simple.base.definition" template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title"
+			value="Portal ciudadano" />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title" value="Portal ciudadano" />
+		<put-attribute name="encabezado" value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />
+		<put-attribute name="navegacion" value="/WEB-INF/views/layout/navegacion.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+		<put-attribute name="nameComScore" value="" />
+	</definition>
+
+	<definition name="base.definition.embebed" template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title"
+			value="Portal ciudadano" />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="home" extends="base.definition">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="navegacion" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/general/home.jsp" />
+	</definition>
+
+	<!-- WIZARDS -->
+	<definition name="wizard.base.definition" template="/WEB-INF/views/layout/main-wizard.jsp">
+		<put-attribute name="title" value=" Portal de servicios DELTA " />
+		<put-attribute name="pie"
+			value="/WEB-INF/views/layout/pie-empty.jsp" />
+	</definition>
+	
+	<definition name="simple.wizard.definition" template="/WEB-INF/views/layout/wizard.jsp">
+		<put-attribute name="title" value=" Portal de servicios DELTA " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie-empty.jsp" />
+	</definition>
+
+	<definition name="tramiteDummyInicio" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/dummy/inicial.jsp" />
+	</definition>
+
+	<definition name="tramiteDummyContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/dummy/contenido.jsp" />
+	</definition>
+
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="databaseError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="internalError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="500" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="404" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+
+	<definition name="registro" extends="base.definition">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/registroderechohabiente/registro.jsp" />
+	</definition>
+	
+	<definition name="principal" extends="base.definition">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/general/principal.jsp" />
+	</definition>
+	
+	<!-- CLINICA -->
+	<definition name="inicialClinica" extends="simple.wizard.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/clinica/inicial.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/wizard/clinica/pie.jsp" />
+	</definition>
+	
+	<definition name="beneficiariosClinica" extends="simple.wizard.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/clinica/beneficiarios.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/wizard/clinica/pie.jsp" />
+	</definition>
+	
+	
+	<definition name="solicitudExistente" extends="simple.wizard.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/clinica/solicitudExistente.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/wizard/clinica/pie.jsp" />
+	</definition>
+	
+	
+	<definition name="datosPersonalesRegistro" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/registroDerechohabiente/datosPersonales.jsp" />
+	</definition>
+	
+	<definition name="inicioRegistroBeneficiario" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/registroDerechohabiente/inicial.jsp" />
+	</definition>
+	
+	<definition name="errorReporteVigencia" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/comprobanteVigencia/error.jsp"/>
+	</definition>
+	
+	<definition name="wizardRegistroCapturaDomicilioUMF" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/registroDerechohabiente/datosDomicilio.jsp" />
+	</definition>
+	
+	<definition name="initReporteVigencia" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/comprobanteVigencia/inicial.jsp"/>
+	</definition>
+	
+	<definition name="viewCartaTerminos" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/common/cartaTerminos/cartaTerminos.jsp"/>
+	</definition>
+	
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="seleccionUmf" extends="base.definition">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="navegacion" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/common/seleccionUmf.jsp" />
+	</definition>
+	
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="seleccionUmfConDomicilio" extends="base.definition">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="navegacion" value="" />
+		<put-attribute name="nameComScore" value=".registro.capturaDomicilio" />
+		<put-attribute name="contenido" value="/WEB-INF/views/common/seleccionUmfDomcilio.jsp" />
+	</definition>
+	
+	<definition name="detalleSolicitud" extends="base.definition">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="navegacion" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/common/detalleSolicitud.jsp" />
+	</definition>
+
+	<!-- Definicion comun de ingreso a los tramites de derechohabientes -->
+	<definition name="derechohabientes" extends="base.definition">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="navegacion" value="" />
+		<put-attribute name="nameComScore" value=".registro.inicio" />
+		<put-attribute name="contenido" value="/WEB-INF/views/general/derechohabientes.jsp" />
+	</definition>
+
+    <!-- Definicion comun de aviso de privacidad -->
+    <definition name="avisoPrivacidad" extends="base.definition">
+        <put-attribute name="menu" value="" />
+        <put-attribute name="navegacion" value="" />
+        <put-attribute name="contenido" value="/WEB-INF/views/general/avisoPrivacidad.jsp" />
+    </definition>
+
+	<definition name="tramite" extends="base.definition">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="navegacion" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/common/tramite.jsp" />
+	</definition>
+	
+	<!-- Definicion comun de ingreso a los tramites de derechohabientes -->
+	<definition name="inicioActualizacionCURP" extends="base.definition">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="navegacion" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/tramite/actualizacionCurp/inicioActualizacion.jsp" />
+	</definition>
+	
+	<!-- Definicion comun de ingreso a los tramites de derechohabientes -->
+	<definition name="confirmacionActualizacionCURP" extends="base.definition">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="navegacion" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/tramite/actualizacionCurp/confirmacionActualizacion.jsp" />
+	</definition>
+	
+	<!-- Definicion comun de ingreso a los tramites de derechohabientes -->
+	<definition name="solicitudActualizacionCURP" extends="base.definition">
+		<put-attribute name="menu" value="" />
+		<put-attribute name="navegacion" value="" />
+		<put-attribute name="contenido" value="/WEB-INF/views/tramite/actualizacionCurp/detalleSolicitudActualizacion.jsp" />
+	</definition>
+</tiles-definitions>

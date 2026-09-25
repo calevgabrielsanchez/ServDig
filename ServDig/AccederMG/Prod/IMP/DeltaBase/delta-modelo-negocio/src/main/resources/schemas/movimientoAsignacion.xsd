@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.mx.gob.imss.ctirss.delta/movimientoasignacion"
+    xmlns:tns="http://www.mx.gob.imss.ctirss.delta/movimientoasignacion"
+    elementFormDefault="qualified">
+    <complexType name="MovimientoAsignacionType">
+        <sequence>
+            <element name="cizOrigen"      type="int"></element>
+            <element name="delOrigen"      type="int"></element>
+            <element name="subdelOrigen"   type="int"></element>
+            <element name="codEnvio"       type="int"></element>
+            <element name="codRetorno"     type="int"></element>
+            <element name="condicion"      type="int"></element>
+            <element name="tpMovto"        type="int"></element>
+            <element name="opcionMovto44"  type="int"></element>
+            <element name="nss"            type="string"></element>
+            <element name="digver"         type="int"></element>
+            <element name="nombre"         type="string"></element>
+            <element name="sexo"           type="int"></element>
+            <element name="mesNac"         type="int"></element>
+            <element name="lugarNac"       type="int"></element>
+            <element name="nssC"           type="string"></element>
+            <element name="digverC"        type="int"></element>
+            <element name="idUsuario"      type="string"></element>
+            <element name="nombreCond"     type="string"></element>
+            <element name="tpError"        type="string"></element>
+            <element name="umf"            type="int"></element>
+            <element name="origen"         type="int"></element>
+            <element name="fechaMovto"     type="date"></element>
+            <element name="curp"           type="string"></element>
+        </sequence>
+    </complexType>
+
+    <element name="MovimientoAsignacion" type="tns:MovimientoAsignacionType">
+    </element>
+</schema>
+
+
+

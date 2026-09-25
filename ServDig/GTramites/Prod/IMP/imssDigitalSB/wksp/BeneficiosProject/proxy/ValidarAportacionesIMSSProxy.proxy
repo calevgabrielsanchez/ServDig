@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false">
+    <ser:description/>
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:wsdl ref="BeneficiosProject/wsdl/ValidarAportacionesIMSS"/>
+      <con:port>
+        <con:name>ValidarAportacionesImssServicePort</con:name>
+        <con:namespace>http://mx.gob.imss.delta.global.service/</con:namespace>
+      </con:port>
+      <con:selector type="SOAP body"/>
+      <con:WSI-compliant>false</con:WSI-compliant>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:ws-policy>
+      <ser:binding-mode>wsdl-policy-attachments</ser:binding-mode>
+    </ser:ws-policy>
+    <ser:pageAttachments isEnabled="false"/>
+    <ser:transactions isRequired="false" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/Beneficios/proxy/ValidarAportacionesIMSSProxy</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific xsi:type="http:HttpEndPointConfiguration" xmlns:http="http://www.bea.com/wli/sb/transports/http">
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con:pipeline name="PipelinePairNode1_request" type="request">
+      <con:stage name="validarAportacionesImss">
+        <con:comment/>
+        <con:context>
+          <con1:userNsDecl prefix="m" namespace="http://servicios.imss.gob.mx/asegurados/cveAsignacionNss"/>
+          <con1:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con:context>
+        <con:actions>
+          <con2:log>
+            <con1:id>_ActionId-8906604340824846064-676f598e.14648614502.-7feb</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+            </con2:expr>
+            <con2:message>Documento de entrada -></con2:message>
+          </con2:log>
+          <con3:assign varName="nss">
+            <con1:id>_ActionId-8906604340824846064-676f598e.14648614502.-7fea</con1:id>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:validarAportacionesImssRequest/nss/text()</con:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:wsCallout>
+            <con1:id>_ActionId-8906604340824846064-676f598e.14648614502.-7fe9</con1:id>
+            <con3:service ref="BeneficiosProject/businessService/ObtenerIdAsignacionNssBusinessService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con3:operation>obtenerCveAsignacionNss</con3:operation>
+            <con3:request>
+              <con3:body wrapped="false">$obtenerIdAsignacionRequest</con3:body>
+              <con3:header/>
+            </con3:request>
+            <con3:response>
+              <con3:body wrapped="false">obtenerIdAsignacionResponse</con3:body>
+              <con3:header/>
+            </con3:response>
+            <con3:requestTransform>
+              <con3:assign varName="obtenerIdAsignacionRequest">
+                <con1:id>_ActionId-8906604340824846064-676f598e.14648614502.-7fe8</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">&lt;cve:obtenerCveAsignacionNss xmlns:cve="http://servicios.imss.gob.mx/asegurados/cveAsignacionNss">
+    &lt;cve:nss>{$nss}&lt;/cve:nss>
+&lt;/cve:obtenerCveAsignacionNss></con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+            </con3:requestTransform>
+            <con3:responseTransform>
+              <con2:log>
+                <con1:id>_ActionId-8906604340824846064-676f598e.14648614502.-7fe7</con1:id>
+                <con2:logLevel>error</con2:logLevel>
+                <con2:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$obtenerIdAsignacionResponse/m:cveIdAsignacionNss/text()</con:xqueryText>
+                </con2:expr>
+                <con2:message>Respuesta al obtener la clave de asignacionNss</con2:message>
+              </con2:log>
+              <con3:assign varName="cveAsignacionNss">
+                <con1:id>_ActionId-8906604340824846064-676f598e.14648614502.-7fde</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$obtenerIdAsignacionResponse/m:cveIdAsignacionNss/text()</con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+              <con3:ifThenElse>
+                <con1:id>_ActionId-8906604340824846064-676f598e.14648614502.-7fe4</con1:id>
+                <con3:case>
+                  <con3:condition>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$cveAsignacionNss != ''</con:xqueryText>
+                  </con3:condition>
+                  <con3:actions>
+                    <con2:log>
+                      <con1:id>_ActionId-8906604340824846064-676f598e.14648614502.-7fdf</con1:id>
+                      <con2:logLevel>error</con2:logLevel>
+                      <con2:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat('El NSS ', $nss, ' fue localizado en el IMSS y el cveAsignacionNss es ', $cveAsignacionNss)</con:xqueryText>
+                      </con2:expr>
+                      <con2:message/>
+                    </con2:log>
+                    <con3:assign varName="indicadorNSSValido">
+                      <con1:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ed6</con1:id>
+                      <con3:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'true'</con:xqueryText>
+                      </con3:expr>
+                    </con3:assign>
+                    <con4:wsCallout xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                      <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ee7</con2:id>
+                      <con4:service ref="BeneficiosProject/proxy/ValidacionImssSinCotizar24MesesProxy" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                      <con4:request>
+                        <con4:payload wrapped="false">$validarSinCotizar24MesesRequest</con4:payload>
+                      </con4:request>
+                      <con4:response>
+                        <con4:payload wrapped="false">validarSinCotizar24MesesResponse</con4:payload>
+                      </con4:response>
+                      <con4:requestTransform>
+                        <con4:assign varName="validarSinCotizar24MesesRequest">
+                          <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ee6</con2:id>
+                          <con4:expr>
+                            <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">&lt;mx:validarSinCotizar24MesesRequest xmlns:mx="http://mx.gob.imss.delta.global.service/">
+    &lt;mx:cveAsignacion>{$cveAsignacionNss}&lt;/mx:cveAsignacion>
+  &lt;/mx:validarSinCotizar24MesesRequest></con:xqueryText>
+                          </con4:expr>
+                        </con4:assign>
+                      </con4:requestTransform>
+                      <con4:responseTransform>
+                        <con3:log>
+                          <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ee5</con2:id>
+                          <con3:logLevel>error</con3:logLevel>
+                          <con3:expr>
+                            <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarSinCotizar24MesesResponse</con:xqueryText>
+                          </con3:expr>
+                          <con3:message>Respuesta validar cotización 24 meses desde validarAportacionesImss</con3:message>
+                        </con3:log>
+                        <con4:assign varName="indCotizado24Meses">
+                          <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ee4</con2:id>
+                          <con4:expr>
+                            <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarSinCotizar24MesesResponse/mx:indicadorCotizado24Meses/text()</con:xqueryText>
+                          </con4:expr>
+                        </con4:assign>
+                        <con4:assign varName="indError">
+                          <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ee3</con2:id>
+                          <con4:expr>
+                            <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarSinCotizar24MesesResponse/mx:error/text()</con:xqueryText>
+                          </con4:expr>
+                        </con4:assign>
+                        <con4:ifThenElse>
+                          <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ee2</con2:id>
+                          <con4:case>
+                            <con4:condition>
+                              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indError != "0"</con:xqueryText>
+                            </con4:condition>
+                            <con4:actions>
+                              <con3:log>
+                                <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ee1</con2:id>
+                                <con3:logLevel>error</con3:logLevel>
+                                <con3:expr>
+                                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indError</con:xqueryText>
+                                </con3:expr>
+                                <con3:message>La respuesta del servicio ValidacionImssSinCotizar24MesesProxy, no fue exitosa, codigoError -></con3:message>
+                              </con3:log>
+                              <con4:assign varName="exitoResp">
+                                <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ee0</con2:id>
+                                <con4:expr>
+                                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indError</con:xqueryText>
+                                </con4:expr>
+                              </con4:assign>
+                              <con4:assign varName="cveErrorResp">
+                                <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7edf</con2:id>
+                                <con4:expr>
+                                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarSinCotizar24MesesResponse/mx:claveError/text()</con:xqueryText>
+                                </con4:expr>
+                              </con4:assign>
+                              <con4:assign varName="descErrorResp">
+                                <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ede</con2:id>
+                                <con4:expr>
+                                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$validarSinCotizar24MesesResponse/mx:descripcion/text()</con:xqueryText>
+                                </con4:expr>
+                              </con4:assign>
+                            </con4:actions>
+                          </con4:case>
+                          <con4:default>
+                            <con3:log>
+                              <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7edd</con2:id>
+                              <con3:logLevel>error</con3:logLevel>
+                              <con3:expr>
+                                <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indCotizado24Meses</con:xqueryText>
+                              </con3:expr>
+                              <con3:message>Ha cotizado en el IMSS los últimos 24 meses:</con3:message>
+                            </con3:log>
+                            <con4:assign varName="exitoResp">
+                              <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ed1</con2:id>
+                              <con4:expr>
+                                <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'0'</con:xqueryText>
+                              </con4:expr>
+                            </con4:assign>
+                            <con4:ifThenElse>
+                              <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7edc</con2:id>
+                              <con4:case>
+                                <con4:condition>
+                                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$indCotizado24Meses = "true"</con:xqueryText>
+                                </con4:condition>
+                                <con4:actions>
+                                  <con3:log>
+                                    <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7edb</con2:id>
+                                    <con3:logLevel>error</con3:logLevel>
+                                    <con3:expr>
+                                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$nss</con:xqueryText>
+                                    </con3:expr>
+                                    <con3:message>No tiene derecho a beneficio</con3:message>
+                                  </con3:log>
+                                  <con4:assign varName="indDerechoBeneficioResp">
+                                    <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7eda</con2:id>
+                                    <con4:expr>
+                                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">"false"</con:xqueryText>
+                                    </con4:expr>
+                                  </con4:assign>
+                                </con4:actions>
+                              </con4:case>
+                              <con4:default>
+                                <con3:log>
+                                  <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ed8</con2:id>
+                                  <con3:logLevel>error</con3:logLevel>
+                                  <con3:expr>
+                                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$nss</con:xqueryText>
+                                  </con3:expr>
+                                  <con3:message>Tiene derecho a beneficio</con3:message>
+                                </con3:log>
+                                <con4:assign varName="indDerechoBeneficioResp">
+                                  <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ed7</con2:id>
+                                  <con4:expr>
+                                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">"true"</con:xqueryText>
+                                  </con4:expr>
+                                </con4:assign>
+                              </con4:default>
+                            </con4:ifThenElse>
+                          </con4:default>
+                        </con4:ifThenElse>
+                      </con4:responseTransform>
+                    </con4:wsCallout>
+                  </con3:actions>
+                </con3:case>
+                <con3:default>
+                  <con2:log>
+                    <con1:id>_ActionId-8906604340824846064-676f598e.14648614502.-7fe0</con1:id>
+                    <con2:logLevel>error</con2:logLevel>
+                    <con2:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat('El NSS ', $nss, ' no fue localizado en el IMSS')</con:xqueryText>
+                    </con2:expr>
+                    <con2:message/>
+                  </con2:log>
+                  <con3:assign varName="indicadorNSSValido">
+                    <con1:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ed5</con1:id>
+                    <con3:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'false'</con:xqueryText>
+                    </con3:expr>
+                  </con3:assign>
+                  <con4:assign varName="indDerechoBeneficioResp" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                    <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ed0</con2:id>
+                    <con4:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">"false"</con:xqueryText>
+                    </con4:expr>
+                  </con4:assign>
+                  <con4:assign varName="exitoResp" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                    <con2:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ecf</con2:id>
+                    <con4:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'10'</con:xqueryText>
+                    </con4:expr>
+                  </con4:assign>
+                  <con3:assign varName="descErrorResp">
+                    <con1:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f2d</con1:id>
+                    <con3:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:concat('El NSS ', $nss, ' no fue localizado en el IMSS')</con:xqueryText>
+                    </con3:expr>
+                  </con3:assign>
+                  <con3:assign varName="cveErrorResp">
+                    <con1:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f2c</con1:id>
+                    <con3:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">'10'</con:xqueryText>
+                    </con3:expr>
+                  </con3:assign>
+                </con3:default>
+              </con3:ifThenElse>
+            </con3:responseTransform>
+          </con3:wsCallout>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode1_response" type="response">
+      <con:stage name="prepararRespuestaStage" xmlns:http="http://www.bea.com/wli/sb/transports/http">
+        <con:comment/>
+        <con:context>
+          <con1:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con:context>
+        <con:actions>
+          <con3:ifThenElse>
+            <con1:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f3c</con1:id>
+            <con3:case>
+              <con3:condition>
+                <con:xqueryConditionExpr xmlns:con="http://www.bea.com/wli/sb/stages/config">
+                  <con:compExpr operator="!=">
+                    <con:leftPath>$exitoResp</con:leftPath>
+                    <con:rightPath>'0'</con:rightPath>
+                  </con:compExpr>
+                </con:xqueryConditionExpr>
+              </con3:condition>
+              <con3:actions>
+                <con3:assign varName="respuesta">
+                  <con1:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f3b</con1:id>
+                  <con3:expr>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<validarAportacionesImssResponse>
+	<indicadorNSSValido>{$indicadorNSSValido}</indicadorNSSValido>
+	<indicadorDerechoBeneficio>{$indDerechoBeneficioResp}</indicadorDerechoBeneficio>
+	<exito>{$exitoResp}</exito>
+	<claveError>{$cveErrorResp}</claveError>
+	<descripcion>{$descErrorResp}</descripcion>
+</validarAportacionesImssResponse>]]></con:xqueryText>
+                  </con3:expr>
+                </con3:assign>
+              </con3:actions>
+            </con3:case>
+            <con3:default>
+              <con3:assign varName="respuesta">
+                <con1:id>_ActionId-2718038593477788971-55c8536f.145fcd232d2.-7f3a</con1:id>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<validarAportacionesImssResponse>
+	<indicadorNSSValido>{$indicadorNSSValido}</indicadorNSSValido>
+	<indicadorDerechoBeneficio>{$indDerechoBeneficioResp}</indicadorDerechoBeneficio>
+	<exito>{$exitoResp}</exito>
+</validarAportacionesImssResponse>]]></con:xqueryText>
+                </con3:expr>
+              </con3:assign>
+            </con3:default>
+          </con3:ifThenElse>
+          <con3:replace varName="body" contents-only="true">
+            <con1:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ed3</con1:id>
+            <con3:location>
+              <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+            </con3:location>
+            <con3:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$respuesta</con:xqueryText>
+            </con3:expr>
+          </con3:replace>
+          <con2:log>
+            <con1:id>_ActionId-8906604340824846064-676f598e.14648614502.-7ed2</con1:id>
+            <con2:logLevel>error</con2:logLevel>
+            <con2:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+            </con2:expr>
+            <con2:message>La respuesta generada desde ValidarAportacionesIMSSProxy es</con2:message>
+          </con2:log>
+        </con:actions>
+      </con:stage>
+    </con:pipeline>
+    <con:flow>
+      <con:pipeline-node name="PipelinePairNode1">
+        <con:request>PipelinePairNode1_request</con:request>
+        <con:response>PipelinePairNode1_response</con:response>
+      </con:pipeline-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>

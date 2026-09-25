@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SAV002" pageWidth="612" pageHeight="792" columnWidth="532" leftMargin="40" rightMargin="40" topMargin="10" bottomMargin="10">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="563"/>
+	<style name="table" mode="Opaque" radius="10">
+		<pen lineStyle="Solid" lineColor="#FFFFFF"/>
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF" radius="10">
+		<pen lineColor="#FFFFFF"/>
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<pen lineWidth="1.0"/>
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1">
+		<field name="nombre" class="java.lang.String"/>
+		<field name="agregadoMedico" class="java.lang.String"/>
+		<field name="mesNacimiento" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="LOGO" class="java.lang.String"/>
+	<parameter name="lugar" class="java.lang.String"/>
+	<parameter name="fecha" class="java.lang.String"/>
+	<parameter name="clave" class="java.lang.String"/>
+	<parameter name="nombreEmpleado" class="java.lang.String"/>
+	<field name="consultorio" class="java.lang.String"/>
+	<field name="curp" class="java.lang.String"/>
+	<field name="calleNumero" class="java.lang.String"/>
+	<field name="colonia" class="java.lang.String"/>
+	<field name="municipio" class="java.lang.String"/>
+	<field name="umf" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="nss" class="java.lang.String"/>
+	<field name="entidadFederativaNacimiento" class="java.lang.String"/>
+	<field name="edad" class="java.lang.String"/>
+	<field name="dia" class="java.lang.String"/>
+	<field name="mes" class="java.lang.String"/>
+	<field name="anio" class="java.lang.String"/>
+	<field name="agregadoMedico" class="java.lang.String"/>
+	<field name="clinica" class="java.lang.String"/>
+	<field name="mesNacimiento" class="java.lang.String"/>
+	<field name="modalidad" class="java.lang.String"/>
+	<field name="nombreAsegurado" class="java.lang.String"/>
+	<field name="documentos" class="java.lang.String"/>
+	<field name="cadenaOriginal" class="java.lang.String"/>
+	<field name="selloDigital" class="java.lang.String"/>
+	<field name="secuenciaNotarial" class="java.lang.String"/>
+	<field name="numeroSerie" class="java.lang.String"/>
+	<field name="beneficiarios" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="151" splitType="Stretch">
+			<staticText>
+				<reportElement x="66" y="6" width="375" height="48" forecolor="#003399"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTITUTO MEXICANO DEL SEGURO SOCIAL
+SERVICIOS DE AFILIACIÓN VIGENCIA DE DERECHOS
+SOLICITUD DE REGISTRO O AVISO DE BAJA DE BENEFICIARIO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="457" y="6" width="55" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[SAV 002
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="5" y="6" width="55" height="48"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{LOGO}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="2" y="90" width="92" height="17"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{modalidad}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="10">
+				<reportElement x="208" y="65" width="318" height="75"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="2" y="65" width="200" height="75"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="8" y="68" width="35" height="13"/>
+				<textElement/>
+				<text><![CDATA[CLAVE
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="100" width="66" height="13"/>
+				<textElement/>
+				<text><![CDATA[MODALIDAD
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="43" y="82" width="159" height="1"/>
+			</line>
+			<line>
+				<reportElement x="67" y="113" width="58" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="131" y="68" width="66" height="13"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CLÍNICA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="218" y="71" width="296" height="13"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[DATOS DEL ASEGURADO
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="90" width="164" height="13"/>
+				<textElement/>
+				<text><![CDATA[NÚMERO DE SEGURIDAD SOCIAL
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="104" width="59" height="13"/>
+				<textElement/>
+				<text><![CDATA[C.U.R.P.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="120" width="59" height="13"/>
+				<textElement/>
+				<text><![CDATA[NOMBRE
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="383" y="101" width="131" height="1"/>
+			</line>
+			<line>
+				<reportElement x="279" y="118" width="235" height="1"/>
+			</line>
+			<line>
+				<reportElement x="279" y="133" width="232" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="383" y="84" width="128" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nss} != null  ? $F{nss}.format("%s - %s", $F{nss}.substring(0, $F{nss}.length()-1), $F{nss}.charAt($F{nss}.length()-1)) : ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="285" y="104" width="166" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{curp}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="125" y="65" width="1" height="74"/>
+			</line>
+			<textField>
+				<reportElement x="74" y="68" width="51" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{clave}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="131" y="98" width="68" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clinica}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="284" y="119" width="229" height="14"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombreAsegurado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="73" y="94" width="52" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{modalidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="538">
+			<rectangle radius="10">
+				<reportElement positionType="Float" x="2" y="63" width="523" height="217"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="6" y="64" width="504" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DOCUMENTOS QUE PRESENTA PARA COMPROBAR EL PARENTESCO O BAJA
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="5" y="217" width="520" height="63"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[Los datos personales recabados serán protegidos y serán incorporados y tratados en el Sistema de Datos Personales denominado Sistema de Registro de Beneficiarios, con
+fundamento en los artículos 84 de la Ley del Seguro Social y, 67 y 68 del Reglamento de la Ley del Seguro Social en Materia de Afiliación, Clasificación de Empresas,
+Recaudación y Fiscalización y cuya finalidad es contener, proteger, ordenar y clasificar los datos de los derechohabientes del Instituto (asegurados y sus beneficiarios), el cual
+fue registrado en el Listado de Sistemas de Datos Personales ante el Instituto Federal de Acceso a la Información Pública (www.ifai.org.mx). La Unidad Administrativa
+responsable del Sistema de Datos Personales es la Dirección de Incorporación y Recaudación del Seguro Social en coordinación con la Dirección de Innovación y Desarrollo
+Tecnológico del IMSS y la dirección donde el interesado podrá ejercer los derechos de acceso y corrección ante la misma es la Unidad de Medicina Familiar o la
+Subdelegación de control del domicilio del asegurado. Lo anterior se informa en cumplimiento del Decimoséptimo de los Lineamientos de Protección de Datos Personales,
+publicados en el Diario Oficial de la Federación el 30 de septiembre de 2005.
+]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="2" y="81" width="524" height="1"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="2" y="213" width="524" height="1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="8" y="86" width="517" height="127"/>
+				<textElement markup="html"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{documentos}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="38" y="344" width="123" height="1"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="39" y="347" width="122" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FIRMA DEL ASEGURADO
+]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="179" y="344" width="173" height="1"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="210" y="347" width="122" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[LUGAR Y FECHA
+]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="370" y="344" width="154" height="1"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="370" y="347" width="154" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NOMBRE Y FIRMA DEL EMPLEADO
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="181" y="303" width="171" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{lugar}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement positionType="Float" x="181" y="318" width="171" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{fecha}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="370" y="303" width="154" height="41"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nombreEmpleado}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement key="table 2" style="table" stretchType="RelativeToTallestObject" x="0" y="0" width="524" height="50"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 1">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{beneficiarios})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="329">
+						<jr:columnHeader style="table" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="5" width="329" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[APELLIDO(S) Y NOMBRE(S) DEL BENEFICIARIO
+]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2" height="24" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="11" y="0" width="308" height="20"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle"/>
+								<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre}.toUpperCase()]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="97">
+						<jr:columnHeader style="table" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="97" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[AGREGADO DE
+IDENTIDAD
+]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2" height="24" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="97" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression class="java.lang.String"><![CDATA[$F{agregadoMedico}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="100">
+						<jr:columnHeader style="table" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="100" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[MES DE
+NACIMIENTO
+]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2" height="24" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="100" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression class="java.lang.String"><![CDATA[$F{mesNacimiento}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement positionType="Float" x="7" y="515" width="98" height="17"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número de serie:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="105" y="494" width="421" height="16"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{secuenciaNotarial}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="7" y="494" width="98" height="16"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Secuencia notarial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="7" y="432" width="98" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena original:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="105" y="515" width="421" height="17"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numeroSerie}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="105" y="432" width="421" height="31"/>
+				<textElement textAlignment="Justified">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cadenaOriginal}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="105" y="465" width="421" height="26"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{selloDigital}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="7" y="465" width="98" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello digital:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="8" y="366" width="518" height="59"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Declaro y manifiesto bajo protesta de decir verdad que lo datos asentados en cada requisito son correctos y corresponden a la verdad, apercibido que de conformidad con el artículo 314 de la Ley del Seguro Social, se me reputará como fraude y se me sancionará como tal, en los términos del Código Penal Federal, el obtener, así como el propiciar la obtención, de los seguros, prestaciones y servicios que esta Ley establece, sin tener el carácter de derechohabiente, mediante cualquier engaño o aprovechamiento de error, ya sea en virtud de simulación, sustitución de personas o cualquier otro acto, lo cual podrá ser verificado por el Instituto en cualquier momento, en uso de sus facultades de comprobación como organismo fiscal autónomo.]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

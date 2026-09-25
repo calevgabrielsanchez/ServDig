@@ -1,0 +1,93 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+
+<ace:dialog id="dialogAds" widgetVar="dialogRegistroAds" modal="true"
+	draggable="false" showEffect="slide" hideEffect="blind" width="950"
+	resizable="false"
+	header="Registro de cuenta de usuario en otra área de adscripción"
+	onHide="refresh();">
+	<ui:include
+		src="../solicitudCuentas/registroSolicitudCuentaAdscripcion2.xhtml" />
+</ace:dialog>
+
+<ace:dialog id="dialog" widgetVar="dialogRegistro" modal="true"
+	draggable="false" showEffect="slide" hideEffect="blind" width="950"
+	resizable="false" header="Registro de cuenta de usuario"
+	onHide="refresh();">
+	<ui:include src="../solicitudCuentas/registroSolicitudCuenta2.xhtml" />
+</ace:dialog>
+
+<ace:dialog id="dialogHosp" widgetVar="dialogRegistroHos" modal="true"
+	draggable="false" showEffect="slide" hideEffect="blind" width="950"
+	resizable="false"
+	header="Registro de cuenta de usuario en Hospitales de 2do y 3er nivel"
+	onHide="refresh();">
+	<ui:include
+		src="../solicitudCuentas/registroSolicitudCuentaDelegacion2.xhtml" />
+</ace:dialog>
+
+<ace:dialog id="dialogAdmon" widgetVar="dialogRegistroAdmon"
+	modal="true" draggable="false" showEffect="slide" hideEffect="blind"
+	resizable="false" width="950"
+	header="Registro de cuenta de usuario generico" onHide="refresh();">
+	<ui:include
+		src="../solicitudCuentas/registroSolicitudCuentaAdmon2.xhtml" />
+</ace:dialog>
+
+<ace:dialog id="recuperaCuenta" widgetVar="recuperaCuenta" modal="true"
+	draggable="false" showEffect="slide" hideEffect="blind"
+	resizable="false" width="950"
+	header="Recuperación de cuenta de usuario" onHide="refresh();">
+	<ui:include src="../solicitudCuentas/recuperacionSolicitud2.xhtml" />
+</ace:dialog>
+
+<ace:dialog id="recuperaCuentaOtraAdscripcion" widgetVar="recuperaCuentaOtraAdscripcion" modal="true"
+	draggable="false" showEffect="slide" hideEffect="blind"
+	resizable="false" width="950"
+	header="Recuperación de cuenta de usuario en otra área de adscripción" onHide="refresh();">
+	<ui:include src="../solicitudCuentas/recuperacionSolicitudOtraAdscripcion.xhtml" />
+</ace:dialog>
+
+<ace:dialog id="dialogAuto" widgetVar="autorizacion" modal="true"
+	draggable="false" showEffect="slide" hideEffect="blind"
+	resizable="false" width="800"
+	header="Autorización de cuenta de usuario" onHide="refresh();">
+	<ui:include src="../aprobadores/solicitudAprobadores2.xhtml" />
+</ace:dialog>
+
+<ace:dialog id="dialogMod" widgetVar="dialogMod" modal="true"
+	draggable="false" showEffect="slide" hideEffect="blind"
+	resizable="false" width="800" rendered="true" onShow="desbloquear();"
+	header="Modificación de cuenta de usuario" onHide="refresh();">
+	<ui:include src="../aprobadores/solicitudAprobadoresMod2.xhtml" />
+</ace:dialog>
+
+<ace:dialog id="dialogAdminis" widgetVar="dialogAdminis" modal="true"
+	draggable="false" showEffect="slide" hideEffect="blind"
+	resizable="false" width="800" rendered="true" onShow="desbloquear();"
+	header="Registro de administradores" onHide="refresh();">
+	<ui:include src="../aprobadores/mantenimientoAprobadores2.xhtml" />
+</ace:dialog>
+
+<ace:dialog id="dialogNotif" widgetVar="dialogNotif" modal="true"
+	draggable="false" showEffect="slide" hideEffect="blind"
+	resizable="false" width="900" rendered="true" onShow="desbloquear();"
+	header="Consulta de notificaciones pendientes" onHide="refresh();">
+	<ui:include src="../notificaciones/solicitudNotificaciones2.xhtml" />
+</ace:dialog>
+
+<ace:dialog id="dialogNotf" widgetVar="dialogDetailNotif" modal="true"
+	draggable="false" showEffect="slide" hideEffect="blind"
+	resizable="false" width="900" rendered="true" onShow="desbloquear();">
+	<ui:include src="../notificaciones/solicitudNotificacionesDetail.xhtml" />
+</ace:dialog>
+
+
+</html>

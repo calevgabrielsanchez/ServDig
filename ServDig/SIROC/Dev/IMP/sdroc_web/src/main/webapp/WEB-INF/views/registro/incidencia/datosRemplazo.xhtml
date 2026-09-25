@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="header.xhtml">
+
+<div id="pageResumenDatosRemplazo"
+	th:fragment="pageDatosRemplazo">
+
+	<div id="pnlIncRemplazo" class="panel panel-default">
+		<div class="panel-heading">
+			<label class="small" th:text="#{registro.incidencia.anuncio.remplazo}"/>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-12">
+									<h6 id="fechasEjecucion" class="text-center" th:text="#{reg.obra.periodo}"></h6>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-6">
+									<label class="control-label col-md-3 text-left small"
+										   for="fecInicioRemplazo">Fecha de inicio *:</label>
+									<div class="form-group datepicker-group">
+										<input class="form-control input-sm" id="fecInicioRemplazo"
+											   th:value="${#calendars.format(obra.fecIniObra,'dd/MM/yyyy')}"
+											   type="text" readonly="readonly"
+											   style="cursor: default !important;">
+											<span class="glyphicon glyphicon-calendar" aria-hidden="true"/>
+										</input>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label class="control-label col-md-3 small"
+											   for="fecTerminoRemplazo">Fecha de t&eacute;rmino *:</label>
+										<div class="form-group datepicker-group">
+											<input class="form-control input-sm" id="fecTerminoRemplazo"
+												   th:value="${#calendars.format(obra.fecFinObra,'dd/MM/yyyy')}"
+												   type="text" readonly="readonly"
+												   style="cursor: default !important;">
+												<span class="glyphicon glyphicon-calendar" aria-hidden="true"/>
+											</input>
+										</div>
+									</div>
+									<div class="col-sm-12">
+										<p id="msgeFecTermino" class="red small"/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="alert alert-info small" th:text="#{info.cantidadesobrasuperficie}">
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+				<!--Campo para objeto del contrato para obra especializada a ejecutar-->
+					<div id="pnlObjetoContratoSubEsp" class="form-group">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="row">
+									<div class="col-sm-12">
+										<label class="control-label text-left small" for="txtObjetoContratoSubEsp">Objeto de la obra especializada a ejecutar*:</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<input class="form-control input-sm" id="txtObjetoContratoSubEsp" placeholder="Objeto del contrato" maxlength="300"></input>
+								<p id="msgeObjetoContratoSubEsp" class="red hidden small text-left" th:text="#{reg.obra.error.otro.objeto.contrato}" />
+							</div>
+						</div>
+					</div>
+					<div id="infoObjetoContratoSE" class="form-group">
+						<div class="col-sm-12">
+							<div class="row">
+								<p id="msgeCapturaOCSubEsp" class="control-label text-left small"
+								   th:text="#{reg.obra.error.objeto.CapturaOCSubEsp}"/>
+							</div>
+						</div>
+					</div>
+
+					<!--Campo para monto del contrato-->
+					<div class="row">
+						<div class="col-sm-6">
+							<label th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron == 4}" class="small control-label" for="divMonto" th:text="#{reg.incidencia.monto.contrato.remplazo} + '*:' "/>
+						</div>
+						<div class="col-sm-6">
+							<div id="divMonto" class="input-group">
+								<span class="input-group-addon small" th:text="#{reg.obra.currency}"/>
+								<input th:if="${obra.informacionPatronDTO.tipoPatronDTO.cveTipoPatron == 4}" id="txtMontoRemplazo" type="text" readonly="readonly" class="form-control input-sm"	aria-label="Amount (to the nearest dollar)" th:value="${new java.text.DecimalFormat('#,##0;-#,##0').format(obra.impObra)}"  placeholder="Monto de la obra" maxlength="15" />
+								<span class="input-group-addon small" th:text="#{reg.obra.mxn}"/>
+							</div>
+							<span id="msgeMonto" class="red small hidden"></span>
+						</div>
+					</div>
+					<!--Campo para numero aproximado de trabajadores-->
+
+					<div id="pnlNumTrabajadores" class="form-group">
+						<div class="row">
+							<div class="col-sm-6">
+								<label class="control-label text-left small" for="txtNumTrabajadores">N&uacute;mero aproximado de trabajadores que participar&aacute;n en la ejecuci&oacute;n de la obra especializada*:</label>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<input id="txtNumTrabajadores" type="text" class="form-control input-sm" aria-label="Amount (to the nearest dollar)" value="" placeholder="N&uacute;mero de trabajadores" maxlength="13"></input>
+								</div>
+							<p id="msgeNumTrabajadores" class="text-left red hidden small">Capture el n&uacute;mero aproximado de trabajadores.</p>
+							</div>
+						</div>
+					</div>
+
+					<!--Campo para numero REPSE-->
+					<div id="pnlNumRegSTPS" class="form-group">
+						<div class="row">
+							<div class="col-sm-6">
+								<label class="control-label text-left small" for="txtNumRegSTPS" id="idLabRepse">N&uacute;mero de REPSE*:</label>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-group">
+								<input id="txtNumRegSTPS" type="text" class="form-control input-sm" aria-label="Amount (to the nearest dollar)" placeholder="N&uacute;mero de REPSE" maxlength="50"></input>
+								</div>
+							<p id="msgeNumRegSTPS" class="text-left red hidden small">Capture n&uacute;mero de REPSE.</p>
+							</div>
+						</div>
+					</div>
+
+					<!--Campo para numero de aviso de ubicacion de obra-->
+					<div id="numAviso" class="form-group">
+						<div class="row">
+							<div class="col-sm-6">
+								<label class="control-label small text-left" for="txtNumAviso" th:text="#{reg.obra.num.aviso.ubicacion}"></label>
+							</div>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<input id="txtNumAviso" type="text" readonly="readonly" class="form-control input-sm" th:value="${obra.numProcedimiento}" aria-label="Amount (to the nearest dollar)" placeholder="N&uacute;mero de aviso" maxlength="8"/>
+									<span class="input-group-addon"><small>#</small></span>
+								</div>
+							</div>
+					</div>
+					</div>
+
+					<!--Campo para observaciones de la obra-->
+					<div id="pnlObservaciones" class="form-group">
+						<div class="row">
+							<div class="col-sm-6">
+								<label class="control-label text-left small" for="comment">
+								Observaciones del registro de obra :
+								</label>
+							</div>
+							<div class="col-sm-6">
+								<textarea class="form-control" id="comment" readonly="readonly" placeholder="Observaciones del registro de obra" maxlength="300" th:text="@{${obra.refObservacion}}"></textarea>
+								<p id="msgeObervaciones" class="red hidden small" style="text-align:left">Error de formato</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+		</div>
+		<div class="panel-footer"></div>
+	</div>
+</div>
+
+</html>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="simple.base.definition" template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title" value=" Corrección Datos del asegurado " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title" value=" Corrección Datos del asegurado " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado" value="" />
+		<put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="breadcrumbs" value="" />
+		<put-attribute name="navegacion" value="" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<definition name="base.definition.embebed" template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title" value=" Corrección Datos del asegurado " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="wizard.base.definition" template="/WEB-INF/views/layout/main-wizard.jsp">
+		<put-attribute name="title" value=" Portal de servicios" />
+		<put-attribute name="pie" value="" />
+	</definition>
+
+	<!-- Definicion de la pantalla del gestionasegurados -->
+	<definition name="portal" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/portal/portal.jsp " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+
+	<!-- Definicion de la pantalla de logeo -->
+	<definition name="login" extends="simple.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/login.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla de bienvenida de la aplicacion -->
+	<definition name="welcome" extends="simple.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/general/welcome.jsp " />
+	</definition>
+
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="home" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/home.jsp " />
+	</definition>
+
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="databaseError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="internalError" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="500" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="404" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+
+	<!-- Home registo vigencia -->
+	<definition name="loginRegistro" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/inicio.jsp" />
+	</definition>
+
+	<!-- Consulta Informacion RENAPO -->
+	<definition name="obtenerInformacionRenapo" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/consultaRenapoPorCurp.jsp" />
+	</definition>
+
+
+	<!-- Seguimiento Tramites -->
+	<definition name="seguimientoTramite" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/seguimientoTramite.jsp" />
+	</definition>
+
+	<!-- Generar folios -->
+	<definition name="folioTramite" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/folioTramite.jsp" />
+	</definition>
+
+	<!-- Registrar Solicitud CDA Responsable -->
+	<definition name="registroSolicitudCDAResponsable" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/responsable/registroSolicitudCDAResponsable.jsp" />
+	</definition>
+	
+	<!-- Correccion de Datos de Asegurado -->
+	<definition name="correccionDatosAseguradoAltaInit" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/solicitud/inicio.jsp" />
+	</definition>
+	
+	<definition name="domicilioAclaracion" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/solicitud/busquedaDomicilio.jsp" />
+	</definition>
+	
+	<definition name="respuesta" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/respuesta.jsp" />
+	</definition>
+	
+	<definition name="datosHistoriaLaboral" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/datosHistoriaLaboral.jsp" />
+	</definition>
+	
+	<definition name="informacionHistoriaLaboral" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/informacionhistoriaLaboral.jsp" />
+	</definition>		
+	
+	<definition name="datosAdicionalesHistoriaLaboral" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/datosAdicionalesHistoriaLaboral.jsp" />
+	</definition>
+	
+	<definition name="confirmarDatosSolicitud" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/confirmarDatosSolicitud.jsp" />
+	</definition>
+	
+	<definition name="capturarDomicilio" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/solicitud/busquedaDomicilio.jsp" />
+	</definition>
+	
+	<definition name="cancelarSolicitud" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/inicio.jsp" />
+	</definition>
+	
+  <definition name="bandejaSolicitudes" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/bandejaSolicitudes/main.jsp " />
+	</definition>
+	
+	<definition name="recursoNoDisponible" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/recursoNoDisponible.jsp" />
+	</definition>
+        
+    <definition name="datosNSS" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/datosNSSDocumentos.jsp" />
+	</definition>
+        
+    <definition name="requeridaInfoAdicional" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/requerimientoInfoAdicional.jsp" />
+	</definition>
+	
+	<definition name="correcionInfoAdicional" extends="base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/solicitud/informacionAdicionalSolicitud.jsp" />
+	</definition>
+</tiles-definitions>

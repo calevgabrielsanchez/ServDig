@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://www.mx.gob.imss.ctirss.delta/movimiento06Sindo"
+xmlns:tns="http://www.mx.gob.imss.ctirss.delta/movimiento06Sindo" elementFormDefault="qualified">
+
+    <complexType name="MovimientoPatronalType">
+    	<sequence>
+    		<element name="ciz" type="int"></element>
+    		<element name="delegacionOrigen" type="int"></element>
+    		<element name="subdelegacionOrigen" type="int"></element>
+    		<element name="claveAplicacion" type="int"></element>
+    		<element name="tipoMovimiento" type="int"></element>
+    		<element name="origenMovimiento" type="int"></element>
+    		<element name="numeroFolio" type="string"></element>
+    		<element name="registroPatronal" type="string"></element>
+    		<element name="digitoVerificador" type="int"></element>
+    		<element name="fechaMovimiento" type="date"></element>
+            <element name="rfc" type="string"></element>
+    		<element name="giro" type="string"></element>
+    		<element name="clase" type="int"></element>
+    		<element name="fraccion" type="int"></element>
+    		<element name="division" type="int"></element>
+    		<element name="grupo" type="int"></element>
+        	<element name="prima" type="double"></element>
+        	<element name="causa" type="int"></element>
+            <element name="nombrePatron" type="string"></element>
+            <element name="nombrePatronalC" type="string"></element>
+    		<element name="claveMunicipio" type="string"></element>
+    		<element name="domicilioPatron" type="string"></element>
+    		<element name="codigoPostal" type="string"></element>
+    		<element name="localidad" type="string"></element>
+            <element name="curp" type="string"></element>
+            <element name="fechaRecepcion" type="date"></element>
+            <element name="subrogacionServicio" type="int"></element>
+            <element name="fechaCambioCla" type="int"></element>
+            <element name="tipoPago" type="int"></element>
+            <element name="mesEmi" type="int"></element>
+        </sequence>
+    </complexType>
+
+    <element name="MovimientoPatronal"
+    	type="tns:MovimientoPatronalType">
+    </element>
+</schema>

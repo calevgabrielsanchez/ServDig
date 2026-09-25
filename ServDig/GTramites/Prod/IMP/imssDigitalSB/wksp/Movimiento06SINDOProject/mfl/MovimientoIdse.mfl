@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE MessageFormat SYSTEM 'mfl.dtd'>
+<MessageFormat name='MovimientoIdse' version='2.01.01'>
+    <StructFormat name='IdseReingresoBaja' delim='\n' sharedDelim='y' delimOptional='n' repeat='*'>
+        <FieldFormat name='registroPatronal'         type='String'   delimOptional='y' length='10' strlenInChars='y' codepage='UTF-8'   defaultValue=' ' pad=' '/>
+        <FieldFormat name='digitoVerificadorRP'      type='Numeric'  delimOptional='y' length='1'  strlenInChars='y' codepage='Default' defaultValue='0' pad='0'/>
+        <FieldFormat name='nSS'                      type='Numeric'  delimOptional='y' length='10' strlenInChars='y' codepage='Default' defaultValue='0' pad='0'/>
+        <FieldFormat name='digitoVerificadorNSS'     type='Numeric'  delimOptional='y' length='1'  strlenInChars='y' codepage='Default' defaultValue='0' pad='0'/>
+        <FieldFormat name='primerApellido'           type='String'   delimOptional='y' length='27' strlenInChars='y' codepage='UTF-8'   defaultValue=' ' pad=' '/>
+        <FieldFormat name='segundoApellido'          type='String'   delimOptional='y' length='27' strlenInChars='y' codepage='UTF-8'   defaultValue=' ' pad=' '/>
+        <FieldFormat name='nombreDelEstudiante'      type='String'   delimOptional='y' length='27' strlenInChars='y' codepage='UTF-8'   defaultValue=' ' pad=' '/>
+        <FieldFormat name='salarioDiarioIntegrado'   type='Numeric'  delimOptional='y' length='6'  strlenInChars='y' codepage='Default' defaultValue='0' pad='0'/>
+        <FieldFormat name='campoEnBlanco'            type='String'   delimOptional='y' length='6'  strlenInChars='y' codepage='UTF-8'   defaultValue=' ' pad=' '/>
+        <FieldFormat name='tipoDeTrabajador'         type='Numeric'  delimOptional='y' length='1'  strlenInChars='y' codepage='Default' defaultValue='0' pad='0'/>
+        <FieldFormat name='tipoDeSalario'            type='Numeric'  delimOptional='y' length='1'  strlenInChars='y' codepage='Default' defaultValue='0' pad='0'/>
+        <FieldFormat name='semanaOJornadaReducida'   type='Numeric'  delimOptional='y' length='1'  strlenInChars='y' codepage='Default' defaultValue='0' pad='0'/>
+        <FieldFormat name='fechaDelMovimiento'       type='Numeric'  delimOptional='y' length='8'  strlenInChars='y' codepage='Default' defaultValue='0' pad='0'/>
+        <FieldFormat name='unidadDeMedicinaFamiliar' type='Numeric'  delimOptional='y' length='3'  strlenInChars='y' codepage='Default' defaultValue='0' pad='0'/>
+        <FieldFormat name='campoEnBlanco2'           type='String'   delimOptional='y' length='2'  strlenInChars='y' codepage='UTF-8'   defaultValue=' ' pad=' '/>
+        <FieldFormat name='tipoDeMovimiento'         type='Numeric'  delimOptional='y' length='2'  strlenInChars='y' codepage='Default' defaultValue='0' pad='0'/>
+        <FieldFormat name='campoEnBlanco3'           type='String'   delimOptional='y' length='5'  strlenInChars='y' codepage='UTF-8'   defaultValue=' ' pad=' '/>
+        <FieldFormat name='claveTrabajador'          type='String'   delimOptional='y' length='10' strlenInChars='y' codepage='UTF-8'   defaultValue=' ' pad=' '/>
+        <FieldFormat name='causaDebaja'              type='String'   delimOptional='y' length='1'  strlenInChars='y' codepage='UTF-8'   defaultValue=' ' pad=' '/>
+        <FieldFormat name='curp_o_Rfc'               type='String'   delimOptional='y' length='18' strlenInChars='y' codepage='UTF-8'   defaultValue=' ' pad=' '/>
+        <FieldFormat name='idFormato'                type='Numeric'  delimOptional='y' length='1'  strlenInChars='y' codepage='Default' defaultValue='0' pad='0'/>
+    </StructFormat>
+</MessageFormat>

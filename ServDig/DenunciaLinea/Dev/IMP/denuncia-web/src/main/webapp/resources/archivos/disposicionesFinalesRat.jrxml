@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="disposicionesFinales" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.2396694214876032"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="292"/>
+	<parameter name="numFolioDenuncia" class="java.lang.String"/>
+	<parameter name="rutaImagen" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:\\Mis Documentos\\projects\\denunciaEnLinea\\denuncia-web\\src\\main\\webapp\\resources\\images\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="denunciante" class="java.lang.String"/>
+	<parameter name="nombreDenunciante" class="java.lang.String"/>
+	<parameter name="nombreFuncionario" class="java.lang.String"/>
+	<parameter name="cargoFuncionario" class="java.lang.String"/>
+	<parameter name="observaciones" class="java.lang.String"/>
+	<parameter name="aclaraciones" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="679" splitType="Stretch">
+			<frame>
+				<reportElement x="29" y="10" width="520" height="666"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textField>
+					<reportElement x="0" y="328" width="516" height="39"/>
+					<textElement textAlignment="Justified">
+						<font fontName="Arial" size="9"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Su denuncia ha sido ratificada con el número de FOLIO " + $P{numFolioDenuncia} + ", la Subdelegación correspondiente, analizará el contenido de la misma así como de la documentación presentada, y se le informará, en su caso, sobre la procedencia del ejercicio de las facultadas de comprobación de este Instituto, conforme a las disposiciones legales vigentes."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="303" width="137" height="20"/>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DISPOSICIONES FINALES]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="31" y="273" width="200" height="20"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{denunciante}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="290" y="253" width="200" height="20"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{nombreFuncionario}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="31" y="253" width="200" height="20"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{nombreDenunciante}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="290" y="273" width="200" height="20"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{cargoFuncionario}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="16" width="520" height="77"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{observaciones}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="1" width="277" height="15"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Observaciones Generales:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="112" width="520" height="69"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{aclaraciones}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="97" width="277" height="15"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Aclaraciones:]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement x="30" y="382" width="516" height="291"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[El ejercicio de facultades de comprobación, está condicionado a la verificación entre otras,  de las siguientes situaciones que se precisan a continuación:
+
+1.- El patrón no sea localizado.
+
+2.- En caso de que las facultades de comprobación por parte del IMSS,hayan caducado(5 años) en términos de los artículos 297 de la Ley del Seguro Social y 67 del Código Fiscal de la Federación.
+
+3.- Patrones Personas Físicas que hayan fallecido.
+
+4.- Patrones Personas Morales liquidadas a disueltas conforme a las disposiciones legales aplicables.
+
+5.- Por Ley, el Patrón no se encuentre obligado a proporcionar seguro social, salvo que exista celebrado un convenio de incorporación voluntaria al régimen obligatorio, de acuerdo con lo establecido por los articulos 13 fracción V y 14 de la Ley del Seguro Social.
+
+6.- Contar con laudo desfavorable que desconozca la relación laboral.
+
+En el supuesto de que su denuncia no se encuadre en una o varias de las situaciones descritas arriba, el Instituto ejercerá las facultades de fiscalización y contará con un plazo máximo legal de 18 meses para informar el resultado de las mismas, una vez iniciado el acto de fiscalización, el cual podrá ampliarse en caso de inconformidad o medio de defensa legal promovido por el patrón.
+
+Se hace de su conocimiento que el IMSS cuenta con los datos personales que usted proporcionó en la presente solicitud, los cuales serán protegidos y confidenciales en términos de los artículos 22 de la Ley del Seguro Social; 14 y 15 de la Ley Federal de Transparencia y Acceso a la información Pública Gubernamental, por lo que se le comunica que la falsedad de declaraciones, y la falsificación de documentos, constituyen la comisión de Delitos castigados por la Ley, por lo que se recomienda tener plena certeza de los hechos que se relatan en la denuncia y de la autenticidad de los documentos que adjuntan en la misma.
+]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

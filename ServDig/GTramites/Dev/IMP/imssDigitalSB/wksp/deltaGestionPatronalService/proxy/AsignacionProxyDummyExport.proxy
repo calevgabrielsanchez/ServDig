@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/pipeline/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description/>
+    <ser:binding type="abstract XML"/>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/deltaGestionPatronalService/proxy/AsignacionProxyDummyExport</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific xsi:type="http:HttpEndPointConfiguration" xmlns:http="http://www.bea.com/wli/sb/transports/http">
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con:pipeline name="PipelinePairNode1_request" type="request">
+      <con1:stage name="stage1" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con5="http://www.bea.com/wli/sb/stages/logging/config" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:con6="http://www.bea.com/wli/sb/stages/publish/config">
+        <con1:context>
+          <con2:varNsDecl prefix="sol" namespace="solicitud:mx.gob.imss.ctirss.delta.model.gestion.solicitud"/>
+          <con2:varNsDecl prefix="gbl" namespace="gblModel:mx.gob.imss.ctirss.delta.global.model"/>
+          <con2:varNsDecl prefix="fwbm" namespace="fwbm:mx.gob.imss.ctirss.delta.framework.base.model"/>
+          <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.delta.global.service/"/>
+        </con1:context>
+        <con1:actions>
+          <con4:assign varName="nssRequest">
+            <con2:id>_ActionId-4440833354280238858-41507ebc.14132f80727.-7ff2</con2:id>
+            <con4:expr>
+              <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">&lt;del:procesarSolicitudAsignacionNSS xmlns:del="http://delta.global.services/">
+    &lt;del:arg0>{$varIdSolicitud}&lt;/del:arg0>
+&lt;/del:procesarSolicitudAsignacionNSS></con:xqueryText>
+            </con4:expr>
+          </con4:assign>
+          <con4:wsCallout>
+            <con2:id>_ActionId-4440833354280238858-41507ebc.14132f80727.-7ff1</con2:id>
+            <con4:service ref="deltaGestionPatronalService/businessService/AsignacionNssService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con4:operation>procesarSolicitudAsignacionNSS</con4:operation>
+            <con4:request>
+              <con4:body wrapped="false">$nssRequest</con4:body>
+              <con4:header/>
+            </con4:request>
+            <con4:response>
+              <con4:body wrapped="false">nssResponse</con4:body>
+              <con4:header/>
+            </con4:response>
+            <con4:requestTransform>
+              <con4:replace varName="body" contents-only="true">
+                <con2:id>_ActionId-4440833354280238858-41507ebc.14132f80727.-7ff0</con2:id>
+                <con4:location>
+                  <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                </con4:location>
+                <con4:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$nssRequest</con:xqueryText>
+                </con4:expr>
+              </con4:replace>
+              <con4:routing-options>
+                <con2:id>_ActionId-4440833354280238858-41507ebc.14132f80727.-7fef</con2:id>
+                <con4:qualityOfService>exactly-once</con4:qualityOfService>
+              </con4:routing-options>
+            </con4:requestTransform>
+            <con4:responseTransform/>
+          </con4:wsCallout>
+          <con7:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:jms="http://www.bea.com/wli/sb/transports/jms" xmlns:con4="http://www.bea.com/wli/sb/pipeline/config" xmlns:con5="http://www.bea.com/wli/sb/stages/publish/config" xmlns:con7="http://www.bea.com/wli/sb/stages/transform/config">
+            <con2:id>_ActionId-4440833354280238858-41507ebc.14132f80727.-7fee</con2:id>
+            <con7:service ref="deltaGestionPatronalService/businessService/NotificadorProcesamientoBusinessService" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con7:operation>publicarFinProcesamientoSolicitud</con7:operation>
+            <con7:request>
+              <con7:body wrapped="false">$requestFinProcesamiento</con7:body>
+              <con7:header/>
+            </con7:request>
+            <con7:response>
+              <con7:body wrapped="false">responseFinProcesamiento</con7:body>
+              <con7:header/>
+            </con7:response>
+            <con7:requestTransform>
+              <con7:assign varName="requestFinProcesamiento">
+                <con2:id>_ActionId-4440833354280238858-41507ebc.14132f80727.-7fed</con2:id>
+                <con7:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<mx:publicarFinProcesamientoSolicitud xmlns:mx="http://mx.gob.imss.delta.global.service/">
+    <mx:arg0>{$numeroFolio}</mx:arg0>
+    <mx:arg1>true</mx:arg1>
+    <mx:arg2></mx:arg2>
+</mx:publicarFinProcesamientoSolicitud>]]></con:xqueryText>
+                </con7:expr>
+              </con7:assign>
+              <con7:replace varName="body" contents-only="true">
+                <con2:id>_ActionId-4440833354280238858-41507ebc.14132f80727.-7fec</con2:id>
+                <con7:location>
+                  <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                </con7:location>
+                <con7:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$requestFinProcesamiento</con:xqueryText>
+                </con7:expr>
+              </con7:replace>
+              <con8:log xmlns:con8="http://www.bea.com/wli/sb/stages/logging/config">
+                <con2:id>_ActionId-4440833354280238858-41507ebc.14132f80727.-7feb</con2:id>
+                <con8:logLevel>error</con8:logLevel>
+                <con8:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+                </con8:expr>
+                <con8:message>Se invoca la notificacion del fin de procesamiento</con8:message>
+              </con8:log>
+              <con7:routing-options>
+                <con2:id>_ActionId-4440833354280238858-41507ebc.14132f80727.-7fea</con2:id>
+                <con7:qualityOfService>exactly-once</con7:qualityOfService>
+              </con7:routing-options>
+            </con7:requestTransform>
+            <con7:responseTransform/>
+          </con7:wsCallout>
+        </con1:actions>
+      </con1:stage>
+    </con:pipeline>
+    <con:pipeline name="PipelinePairNode1_response" type="response"/>
+    <con:flow>
+      <con:pipeline-node name="PipelinePairNode1">
+        <con:request>PipelinePairNode1_request</con:request>
+        <con:response>PipelinePairNode1_response</con:response>
+      </con:pipeline-node>
+    </con:flow>
+  </ser:router>
+</xml-fragment>

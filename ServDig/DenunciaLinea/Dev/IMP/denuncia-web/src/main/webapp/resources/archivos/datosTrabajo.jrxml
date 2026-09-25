@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="datosTrabajo" pageWidth="555" pageHeight="802" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="comprobantePago">
+		<parameter name="numFolioDenuncia" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[select tfp.DESC_FORMAPAGO
+from DLT_DENUNCIA den, dlt_infotrabajo t, dlt_formapago fp, dlc_tiposformapago tfp
+where
+
+den.num_foliodenuncia=$P{numFolioDenuncia}
+and tfp.cve_concepto=2
+and den.CVE_FOLIODENUNCIA=t.CVE_FOLIODENUNCIA(+)
+and t.cve_infotrabajo=fp.cve_infotrabajo(+)
+and fp.cve_formapago=tfp.cve_formapago(+)]]>
+		</queryString>
+		<field name="DESC_FORMAPAGO" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="formaPago">
+		<parameter name="numFolioDenuncia" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[select tfp.DESC_FORMAPAGO
+from DLT_DENUNCIA den, dlt_infotrabajo t, dlt_formapago fp, dlc_tiposformapago tfp
+where
+
+den.num_foliodenuncia=$P{numFolioDenuncia}
+and tfp.cve_concepto=3
+and den.CVE_FOLIODENUNCIA=t.CVE_FOLIODENUNCIA(+)
+and t.cve_infotrabajo=fp.cve_infotrabajo(+)
+and fp.cve_formapago=tfp.cve_formapago(+)]]>
+		</queryString>
+		<field name="DESC_FORMAPAGO" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="identificacionAdjunta">
+		<parameter name="numFolioDenuncia" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[select td.DES_DOCUMENTO
+from DLT_DENUNCIA den, dlt_persona p, dlc_tipodocumento td
+where
+
+den.num_foliodenuncia=$P{numFolioDenuncia}
+and den.CVE_FOLIODENUNCIA=p.CVE_FOLIODENUNCIA(+)
+and p.cve_tipodocumento=td.cve_tipodocumento(+)]]>
+		</queryString>
+		<field name="DES_DOCUMENTO" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="formaPagoAdjuntos">
+		<parameter name="numFolioDenuncia" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[select fp.ref_documento
+from DLT_DENUNCIA den, dlt_infotrabajo t, dlt_formapago fp
+where
+
+den.num_foliodenuncia=$P{numFolioDenuncia}
+and den.CVE_FOLIODENUNCIA=t.CVE_FOLIODENUNCIA(+)
+and t.cve_infotrabajo=fp.cve_infotrabajo(+)]]>
+		</queryString>
+		<field name="REF_DOCUMENTO" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="numFolioDenuncia" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select
+        t.fec_fechaInicio as "fecIni",
+        t.fec_fechafin as "fecTer",
+        t.des_laboresdesemp as "labores",
+        t.des_nomjefeinmediato as "jefeInmediato",
+        t.des_numcontrato as "contrato",
+        t.des_horariolabores as "horario",
+        t.imp_salariopercibido as "salario",
+        t.imp_vacaciones as "vacaciones",
+        t.num_diasvacaciones as "diasVacaciones",--dg_cat_estado
+        null as "salarioReal",
+        t.imp_aguinaldo as "aguinaldo",
+        null as "diasAguinaldo",
+
+  tfp.desc_formapago as "periodoPago",
+        null as "gratificacion",
+        t.imp_comision_otros as "comisiones",
+        null as "otorgamiento",
+        null as "riesgoTrabajo",
+        t.fec_fechariesgotrab as "fecRiesgo",
+        t.des_observaciones as "observaciones"
+
+
+        from dlt_denuncia den, dlt_infotrabajo t, dlt_formapago fp, DLC_TIPOSFORMAPAGO tfp
+where
+den.num_foliodenuncia = $P{numFolioDenuncia}
+and fp.cve_concepto=1
+and den.CVE_FOLIODENUNCIA= t.CVE_FOLIODENUNCIA(+)
+and t.cve_infotrabajo = fp.cve_infotrabajo(+)
+and fp.cve_formapago = tfp.cve_formapago(+)]]>
+	</queryString>
+	<field name="fecIni" class="java.lang.String"/>
+	<field name="fecTer" class="java.lang.String"/>
+	<field name="labores" class="java.lang.String"/>
+	<field name="jefeInmediato" class="java.lang.String"/>
+	<field name="contrato" class="java.lang.String"/>
+	<field name="horario" class="java.lang.String"/>
+	<field name="salario" class="java.lang.String"/>
+	<field name="vacaciones" class="java.lang.String"/>
+	<field name="diasVacaciones" class="java.lang.String"/>
+	<field name="salarioReal" class="java.lang.String"/>
+	<field name="aguinaldo" class="java.lang.String"/>
+	<field name="diasAguinaldo" class="java.lang.String"/>
+	<field name="periodoPago" class="java.lang.String"/>
+	<field name="gratificacion" class="java.lang.String"/>
+	<field name="comisiones" class="java.lang.String"/>
+	<field name="otorgamiento" class="java.lang.String"/>
+	<field name="riesgoTrabajo" class="java.lang.String"/>
+	<field name="fecRiesgo" class="java.lang.String"/>
+	<field name="observaciones" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="343" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="555" height="343"/>
+				<frame>
+					<reportElement x="0" y="0" width="555" height="102"/>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="125" y="69" width="411" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{jefeInmediato}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement positionType="Float" x="0" y="0" width="342" height="14"/>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8" isBold="true"/>
+						</textElement>
+						<text><![CDATA[INFORMACIÓN DEL TRABAJO QUE DESEMPEÑA Y PRESTACIONES DEL TRABAJADOR]]></text>
+					</staticText>
+					<textField isBlankWhenNull="true">
+						<reportElement x="349" y="88" width="100" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{horario}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="0" y="19" width="145" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Periodo en el que trabajó para el patrón:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="264" y="88" width="85" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Horario de labores:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement positionType="Float" x="164" y="19" width="100" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Fecha de inicio:]]></text>
+					</staticText>
+					<textField isBlankWhenNull="true">
+						<reportElement x="125" y="88" width="100" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{contrato}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+						<reportElement x="264" y="19" width="85" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{fecIni}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="24" y="88" width="100" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[¿Cuenta con contrato?]]></text>
+					</staticText>
+					<staticText>
+						<reportElement positionType="Float" x="349" y="19" width="100" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Fecha de terminación:]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+						<reportElement x="449" y="19" width="87" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{fecTer}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="0" y="38" width="125" height="26"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Labores que desempeña o desempeñaba con el patrón:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement positionType="Float" x="0" y="69" width="124" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Nombre de su jefe inmediato:]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="124" y="50" width="412" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{labores}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement x="0" y="113" width="555" height="230"/>
+					<staticText>
+						<reportElement x="0" y="0" width="323" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Sueldo o salario que percibe o percibía u otro tipo de remuneraciones por su trabajo]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="0" y="19" width="124" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Salario:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="225" y="19" width="62" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Vacaciones:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="362" y="19" width="122" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Días de vacaciones por año:]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="125" y="19" width="100" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{salario}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="287" y="19" width="75" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{vacaciones}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="484" y="19" width="52" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{diasVacaciones}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="124" y="38" width="100" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Left" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{salarioReal}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="287" y="38" width="75" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Left" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{aguinaldo}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="484" y="38" width="52" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement textAlignment="Left" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{diasAguinaldo}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="0" y="38" width="124" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Salario real:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="225" y="38" width="62" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Aguinaldo:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="362" y="38" width="122" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Días de aguinaldo:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="0" y="57" width="124" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Periodo de pago de salarios:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="287" y="57" width="100" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Gratificación u otros:]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="125" y="57" width="162" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{periodoPago}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="387" y="57" width="149" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{gratificacion}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="0" y="76" width="124" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Comisiones, mediaciones, otros:]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="287" y="76" width="100" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Base para su otorgamiento:]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="125" y="76" width="162" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{comisiones}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="387" y="76" width="149" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{otorgamiento}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="0" y="95" width="124" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Comprobante de pago:]]></text>
+					</staticText>
+					<componentElement>
+						<reportElement key="table" style="table" x="124" y="95" width="163" height="14"/>
+						<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+							<datasetRun subDataset="comprobantePago">
+								<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+							</datasetRun>
+							<jr:column width="117">
+								<jr:detailCell style="table_TD" height="20" rowSpan="1">
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement x="0" y="0" width="117" height="20"/>
+										<textElement/>
+										<textFieldExpression class="java.lang.String"><![CDATA[$F{DESC_FORMAPAGO}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:table>
+					</componentElement>
+					<staticText>
+						<reportElement x="0" y="114" width="124" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Forma de pago:]]></text>
+					</staticText>
+					<componentElement>
+						<reportElement key="table 1" style="table 1" x="124" y="114" width="163" height="14"/>
+						<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+							<datasetRun subDataset="formaPago">
+								<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+							</datasetRun>
+							<jr:column width="170">
+								<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement x="0" y="0" width="170" height="20"/>
+										<textElement/>
+										<textFieldExpression class="java.lang.String"><![CDATA[$F{DESC_FORMAPAGO}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:table>
+					</componentElement>
+					<staticText>
+						<reportElement x="0" y="133" width="124" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[¿Sufrio algún riesgo de trabajo?]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="124" y="133" width="163" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{riesgoTrabajo}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="287" y="133" width="100" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[¿En que fecha?:]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+						<reportElement x="387" y="133" width="149" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{fecRiesgo}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="0" y="152" width="124" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Observaciones:]]></text>
+					</staticText>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement x="125" y="152" width="411" height="14"/>
+						<box>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textElement verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{observaciones}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="0" y="171" width="100" height="14"/>
+						<textElement textAlignment="Right" verticalAlignment="Bottom">
+							<font fontName="Arial" size="8"/>
+						</textElement>
+						<text><![CDATA[Documentación adjunta:]]></text>
+					</staticText>
+					<componentElement>
+						<reportElement key="table 2" style="table 2" positionType="Float" x="100" y="171" width="187" height="14"/>
+						<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+							<datasetRun subDataset="identificacionAdjunta">
+								<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+							</datasetRun>
+							<jr:column width="124">
+								<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+									<staticText>
+										<reportElement mode="Opaque" x="0" y="0" width="123" height="30"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Arial" size="9"/>
+										</textElement>
+										<text><![CDATA[DOCUMENTO]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement x="0" y="0" width="123" height="20"/>
+										<textElement>
+											<font fontName="Arial" size="8"/>
+										</textElement>
+										<textFieldExpression class="java.lang.String"><![CDATA[$F{DES_DOCUMENTO}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:table>
+					</componentElement>
+					<componentElement>
+						<reportElement key="table 3" style="table 3" x="100" y="196" width="187" height="14"/>
+						<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+							<datasetRun subDataset="formaPagoAdjuntos">
+								<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+							</datasetRun>
+							<jr:column width="358">
+								<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+									<staticText>
+										<reportElement mode="Opaque" x="0" y="0" width="358" height="30"/>
+										<textElement textAlignment="Center" verticalAlignment="Bottom">
+											<font fontName="Arial" size="9"/>
+										</textElement>
+										<text><![CDATA[DOCUMENTO]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement x="0" y="0" width="358" height="20"/>
+										<textElement>
+											<font fontName="Arial" size="8"/>
+										</textElement>
+										<textFieldExpression class="java.lang.String"><![CDATA[$F{REF_DOCUMENTO}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:table>
+					</componentElement>
+				</frame>
+			</frame>
+		</band>
+	</summary>
+</jasperReport>

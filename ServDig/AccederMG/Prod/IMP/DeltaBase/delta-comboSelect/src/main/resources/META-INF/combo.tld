@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.1</jsp-version>
+	<short-name>combo</short-name>
+	<uri>http://www.serviciosdigitales.imss.gob.mx/tags/comboSelect</uri>
+	<description>Taglib para la creacion dinamica de combos</description>
+	<tag>
+		<name>creaCombo</name>
+		<tag-class>
+			mx.gob.imss.ctirss.delta.utils.ComboTag
+		</tag-class>
+		<body-content>empty</body-content>
+		<description>
+			<![CDATA[Taglib para la creación dinámica de combos.]]>
+         </description>
+		
+		<attribute>
+			<name>entidad</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<name>idHtml</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<name>entidadPadre</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<name>idHtmlPadre</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<name>idHtmlContenedor</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<name>idHtmlValor</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<name>idHtmlValorPadre</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<name>mostrarSoloActivos</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>Atributo para indicar que se cheque que el atributo
+				fecRegistroBaja no sea nulo, en caso de que la entidad no contenga
+				el atributo, esta propiedad se debe indicar como false</description>
+		</attribute>
+		
+		<attribute>
+			<name>campoVigencia</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>Si se quiere verificar que sea vigente, pero el campo de
+				vigencia no es fecRegistroBaja aqui se debe indicar el campo a
+				verificar</description>
+		</attribute>
+
+		<attribute>
+			<name>mostrarSoloEntidades</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>Atributo para indicar que se cheque que el atributo
+				indEdoGeografico</description>
+		</attribute>
+		
+		<attribute>
+			<name>cssClassname</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

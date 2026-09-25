@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="header :: head">
+<meta name="tipo_contenido" content="text/html;"
+	http-equiv="content-type" charset="utf-8"></meta>
+</head>
+<body>
+	<div class="container">
+	<input id="cveRP" type="hidden" th:value="${cveRegPatronal}" />
+	<input id="pasoConsulta" value="2" class="hidden"/>
+		<div th:substituteby="header :: pageHeader"></div>
+		<!-- 		<input th:value="${type}"></input> -->
+
+			<div id="pnlAcusesRO" class="panel panel-default">
+				<div class="panel-heading" >
+					<div class="row">
+						<div class="col-sm-6 text-left">
+							<small th:text="#{escritorio.titulo}" />
+						</div>
+						<div class="col-sm-6 text-right">	
+							<a class="accordion-toggle text-right" data-toggle="collapse"
+								data-parent="#accordion" href="#collapseOne"> 
+								<img id="imgCollapsable"
+									src="/sdroc_web/static/images/panel-collapsed.png"
+									style="width: 25px">
+								</img>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse in">
+					<div class="panel-body text-center">
+						<div th:substituteby="registro/obra/datosPatron :: pageDatosPatron"></div>
+					</div>
+		
+				</div>
+			</div>
+
+
+
+		<!-- <div id="pnlDatosResumen" class="panel panel-default">
+			<div class="panel-heading">
+				<small th:text="#{escritorio.titulo.consulta.obra}"/>
+			</div>
+			<div class="panel-body text-center">
+				<div th:substituteby="registro/obra/datosPatron :: pageDatosPatron"></div>
+			</div>
+		</div> -->
+
+		<div id="pnlAcusesRO" class="panel panel-default small">
+			<div class="panel-heading">
+				<b>Acuse de Registro de Obra</b>
+			</div>
+			<div class="panel-body text-center">
+				<a th:with="var=${numSeqNotaria}" th:href="@{|javascript:mostrarAcusesNotaria('${var}')|}">Acuse</a>
+			</div>
+		</div>
+		<div id="pnlConsultaObra" class="panel panel-default small">
+			<div class="panel-heading">
+				<b>Acuses de Incidencias</b>
+			</div>
+			<div class="panel-body text-center">
+
+				<table id="tblRegistrosPatronales"
+					class="table table-striped table-responsive">
+					<thead>
+						<tr>
+							<th class="small">No.</th>
+							<th class="small">Tipo de Incidencia</th>
+							<th class="small">Fecha de Registro</th>
+							<th class="small">Acuses</th>
+						</tr>
+					</thead>
+					<tbody class="searchable">
+						<tr th:each="ro, status : ${listaIncidencias}"
+							class="text-left">
+							<td th:text="${status.count}" class="small"/>
+							<td th:text="${#strings.replace(#strings.replace(#strings.replace(ro.motivoTipoIncidenciaDTO.tipoIncidenciaDTO.desTipoIncidencia,'Suspencion','Suspension'), 'ion', 'i&oacute;n'), '_', ' ')}" class="small"/>
+							<td th:text="${#dates.format(ro.stpRegIncidencia, 'dd-MM-yyyy HH:mm')}" class="small"/>
+							<td class="small"><a
+								th:with="var=*{ro.numSeqNotaria}"
+								th:href="@{|javascript:mostrarAcusesNotaria('${var}')|}">Acuse</a></td>
+						</tr>
+					</tbody>
+
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<form action="/">
+					<button id="btnRegresarResumen" class="btn btn-primary pull-left btn-sm"
+						type="submit" formaction="javascript:regresarAcuses()"
+						value="submit">Regresar</button>
+				</form>
+			</div>
+		</div>
+
+		<br></br>
+		<div id="modalVisorAcuses"></div>
+		<br></br>
+	</div>
+</body>
+</html>

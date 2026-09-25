@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:ejb="http://www.bea.com/wli/sb/transports/ejb">
+  <ser:coreEntry isProxy="false" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description>Servicios de negocio relacionados a beneficio RISS</ser:description>
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" transport-typed="true" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:binding>
+        <con:name>JwsServiceSoapBinding</con:name>
+        <con:namespace>http://servicios.imss.gob.mx/beneficio/riss</con:namespace>
+      </con:binding>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+    </ser:monitoring>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:throttling enabled="false">
+      <ser:capacity>0</ser:capacity>
+      <ser:maxQueueLength>0</ser:maxQueueLength>
+      <ser:timeToLive>0</ser:timeToLive>
+    </ser:throttling>
+    <ser:result-caching isEnabled="true" isSupported="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>ejb</tran:provider-id>
+    <tran:inbound>false</tran:inbound>
+    <tran:URI weight="0">
+      <env:value>ejb:deltaJNDIProvider:beneficioRissServiceBusiness#mx.gob.imss.ctirss.delta.gestion.beneficio.service.interfaces.BeneficioRissServiceBusinessRemote</env:value>
+    </tran:URI>
+    <tran:outbound-properties>
+      <tran:load-balancing-algorithm>round-robin</tran:load-balancing-algorithm>
+      <tran:retry-count>0</tran:retry-count>
+      <tran:retry-interval>30</tran:retry-interval>
+      <tran:retry-application-errors>true</tran:retry-application-errors>
+      <tran:delay-interval-configuration isEnabled="false">
+        <tran:delay-interval>0</tran:delay-interval>
+      </tran:delay-interval-configuration>
+    </tran:outbound-properties>
+    <tran:provider-specific>
+      <ejb:security>
+        <ejb:passClientIdentity>false</ejb:passClientIdentity>
+      </ejb:security>
+      <ejb:service>
+        <ejb:clientJar ref="libraries/APP-INF/lib/gestionBeneficio-interfaces-negocio-1.0-SNAPSHOT"/>
+        <ejb:ejbBizService classname="mx.gob.imss.ctirss.delta.gestion.beneficio.service.interfaces.BeneficioRissServiceBusinessRemote">
+          <ejb:method name="cancelarSolicitudRiss" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud cancelarSolicitudRiss(java.lang.Long,java.lang.String) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException" exclude="true">
+            <ejb:operation>cancelarSolicitudRiss</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="java.lang.String"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="cancelarSolicitudRiss" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud cancelarSolicitudRiss(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud,java.lang.String) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException" exclude="true">
+            <ejb:operation>cancelarSolicitudRiss</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:param name="arg1" type="java.lang.String"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="crearSolicitudRiss" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud crearSolicitudRiss(mx.gob.imss.ctirss.delta.model.beneficio.Beneficio,mx.gob.imss.ctirss.delta.model.Usuario,java.lang.Long) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException" exclude="true">
+            <ejb:operation>crearSolicitudRiss</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.beneficio.Beneficio"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:param name="arg2" type="java.lang.Long"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="encolarSolicitudRiss" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud encolarSolicitudRiss(java.lang.Long,mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException,mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException" exclude="true">
+            <ejb:operation>encolarSolicitudRiss</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="guardarBeneficio" signature="mx.gob.imss.ctirss.delta.model.beneficio.Beneficio guardarBeneficio(mx.gob.imss.ctirss.delta.model.beneficio.Beneficio,java.util.Date,java.util.Date) throws mx.gob.imss.ctirss.delta.exception.beneficio.BeneficioRissException" exclude="true">
+            <ejb:operation>guardarBeneficio</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.beneficio.Beneficio"/>
+            <ejb:param name="arg1" type="java.util.Date"/>
+            <ejb:param name="arg2" type="java.util.Date"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.beneficio.Beneficio"/>
+          </ejb:method>
+          <ejb:method name="obtenerBeneficioPorNRP" signature="mx.gob.imss.ctirss.delta.model.beneficio.Beneficio obtenerBeneficioPorNRP(java.lang.String,java.util.Date,java.util.Date) throws mx.gob.imss.ctirss.delta.exception.beneficio.BeneficioRissException" exclude="true">
+            <ejb:operation>obtenerBeneficioPorNRP</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:param name="arg1" type="java.util.Date"/>
+            <ejb:param name="arg2" type="java.util.Date"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.beneficio.Beneficio"/>
+          </ejb:method>
+          <ejb:method name="obtenerBeneficioPorNSS" signature="mx.gob.imss.ctirss.delta.model.beneficio.Beneficio obtenerBeneficioPorNSS(java.lang.String,java.util.Date,java.util.Date) throws mx.gob.imss.ctirss.delta.exception.beneficio.BeneficioRissException" exclude="true">
+            <ejb:operation>obtenerBeneficioPorNSS</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:param name="arg1" type="java.util.Date"/>
+            <ejb:param name="arg2" type="java.util.Date"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.beneficio.Beneficio"/>
+          </ejb:method>
+          <ejb:method name="obtenerBeneficiosPersonaPorEstado" signature="java.util.List obtenerBeneficiosPersonaPorEstado(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica,java.util.List) throws mx.gob.imss.ctirss.delta.exception.beneficio.BeneficioRissException" exclude="true">
+            <ejb:operation>obtenerBeneficiosPersonaPorEstado</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:param name="arg1" type="java.util.List"/>
+            <ejb:return name="return" type="java.util.List"/>
+          </ejb:method>
+          <ejb:method name="obtenerBeneficiosPorIdPersona" signature="java.util.List obtenerBeneficiosPorIdPersona(java.lang.Long,boolean)" exclude="true">
+            <ejb:operation>obtenerBeneficiosPorIdPersona</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="boolean"/>
+            <ejb:return name="return" type="java.util.List"/>
+          </ejb:method>
+          <ejb:method name="obtenerBeneficiosPorNRP" signature="java.util.List obtenerBeneficiosPorNRP(java.lang.String,boolean) throws mx.gob.imss.ctirss.delta.exception.beneficio.BeneficioRissException" exclude="true">
+            <ejb:operation>obtenerBeneficiosPorNRP</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:param name="arg1" type="boolean"/>
+            <ejb:return name="return" type="java.util.List"/>
+          </ejb:method>
+          <ejb:method name="obtenerBeneficiosSujetoObligadoPorEstado" signature="java.util.List obtenerBeneficiosSujetoObligadoPorEstado(mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado,java.util.List) throws mx.gob.imss.ctirss.delta.exception.beneficio.BeneficioRissException" exclude="true">
+            <ejb:operation>obtenerBeneficiosSujetoObligadoPorEstado</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.SujetoObligado"/>
+            <ejb:param name="arg1" type="java.util.List"/>
+            <ejb:return name="return" type="java.util.List"/>
+          </ejb:method>
+          <ejb:method name="obtenerPersonaBeneficio" signature="mx.gob.imss.ctirss.delta.model.beneficio.Beneficio obtenerPersonaBeneficio(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica) throws mx.gob.imss.ctirss.delta.exception.beneficio.PersonaNoValidaBeneficioRissException" exclude="true">
+            <ejb:operation>obtenerPersonaBeneficio</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.beneficio.Beneficio"/>
+          </ejb:method>
+          <ejb:method name="obtenerPersonaFisicaParaBeneficio" signature="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica obtenerPersonaFisicaParaBeneficio(java.lang.String,java.lang.Long) throws mx.gob.imss.ctirss.delta.exception.beneficio.PersonaNoValidaBeneficioRissException" exclude="true">
+            <ejb:operation>obtenerPersonaFisicaParaBeneficio</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:param name="arg1" type="java.lang.Long"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+          </ejb:method>
+          <ejb:method name="obtenerSujetosObligadosParaBeneficio" signature="java.util.List obtenerSujetosObligadosParaBeneficio(java.lang.String) throws mx.gob.imss.ctirss.delta.exception.beneficio.PersonaNoValidaBeneficioRissException" exclude="true">
+            <ejb:operation>obtenerSujetosObligadosParaBeneficio</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.String"/>
+            <ejb:return name="return" type="java.util.List"/>
+          </ejb:method>
+          <ejb:method name="procesarSolicitudRiss" signature="void procesarSolicitudRiss(java.lang.Long) throws mx.gob.imss.ctirss.delta.exception.beneficio.BeneficioRissException" exclude="false">
+            <ejb:operation>procesarSolicitudRiss</ejb:operation>
+            <ejb:param name="idSolicitud" type="java.lang.Long"/>
+          </ejb:method>
+          <ejb:method name="validarAltaRissVentanilla" signature="java.util.Map validarAltaRissVentanilla(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica,java.util.List,mx.gob.imss.ctirss.delta.model.Usuario) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException,mx.gob.imss.ctirss.delta.exception.beneficio.BeneficioRissException" exclude="true">
+            <ejb:operation>validarAltaRissVentanilla</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:param name="arg1" type="java.util.List"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:return name="return" type="java.util.Map"/>
+          </ejb:method>
+          <ejb:method name="validarSolicitudRiss" signature="mx.gob.imss.ctirss.delta.model.beneficio.Beneficio validarSolicitudRiss(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud,mx.gob.imss.ctirss.delta.model.beneficio.Beneficio) throws mx.gob.imss.ctirss.delta.exception.beneficio.BeneficioRissException" exclude="true">
+            <ejb:operation>validarSolicitudRiss</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.beneficio.Beneficio"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.beneficio.Beneficio"/>
+          </ejb:method>
+          <ejb:method name="validarSolicitudRissEnProceso" signature="boolean validarSolicitudRissEnProceso(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica)" exclude="true">
+            <ejb:operation>validarSolicitudRissEnProceso</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+            <ejb:return name="return" type="boolean"/>
+          </ejb:method>
+        </ejb:ejbBizService>
+        <ejb:targetNamespace>http://servicios.imss.gob.mx/beneficio/riss</ejb:targetNamespace>
+        <ejb:style>Document Wrapped</ejb:style>
+        <ejb:encoding>Literal</ejb:encoding>
+      </ejb:service>
+      <ejb:ejb30>true</ejb:ejb30>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+</xml-fragment>

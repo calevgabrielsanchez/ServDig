@@ -1,0 +1,181 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Tramite de Derechohabientes</title>
+
+<style type="text/css">
+
+<![CDATA[
+.ReadMsgBody
+{
+width:
+100%;
+}
+.ExternalClass {
+	width: 100%;
+}
+
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font,
+	.ExternalClass td, .ExternalClass div {
+	line-height: 100%;
+}
+
+table, td {
+	mso-table-lspace: 0pt;
+	mso-table-rspace: 0pt;
+}
+
+#outlook a {
+	padding: 0;
+}
+
+img {
+	-ms-interpolation-mode: bicubic;
+}
+
+@media only screen and (max-width: 480px) {
+	td[id="introductionContainer"], td[id="callToActionContainer"], td[id="eventContainer"],
+		td[id="merchandiseContainer"], td[id="footerContainer"] {
+		padding-right: 10px !important;
+		padding-left: 10px !important;
+	}
+	table[id="introductionBlock"], table[id="callToActionBlock"], table[id="eventBlock"],
+		table[id="merchandiseBlock"], table[id="footerBlock"] {
+		max-width: 480px !important;
+		width: 100% !important;
+	}
+	body {
+		width: 100% !important;
+		min-width: 100% !important;
+	} /* Force iOS Mail to render the email at full width. */
+}
+}
+]]>
+</style>
+</head>
+<body style="height: 100% !important; margin: 0; padding: 0; width: 100% !important; font-family: Helvetica, Arial; font-size: 16px !important; text-align: justify; color: #5A5A5A">
+	<div style="width: 100%; background-color: #F3F3F3; display: table;">
+		<div id="encabezado" style="background-color: #393C3E; color:#fff; width: 560px; height: 76px; margin: 76px auto 0px;">
+			<div class="container" style="padding: 18px 27px 0px;">
+				<div>
+					<div>
+						<a href="//www.gob.mx/"> <img alt="gob.mx"
+							src="http://framework-gb.cdn.gob.mx/qa/assets/images/gobmxlogo.svg"/>
+						</a>
+					</div>
+					<div id="navbarMainCollapse">IMSS - PORTAL CIUDADANO</div>
+				</div>
+			</div>
+		</div>
+		<div id="cuerpo" style="background-color: white; width: 560px; height: auto; margin: 0px auto;">
+			<div style="padding: 76px 27px;">
+				<div style="text-align: center;">
+					<h4 style="font-size: 24px;">${descripcionTipoTramite}</h4>
+				</div>
+				<div style="text-align: center;">
+					<p>A ${fechaOperacion}</p>
+					<p>
+						Folio de Solicitud: <strong>${folio}</strong>
+					</p>
+				</div>
+				Estimado(a): <strong>${nombreCompleto}</strong>
+				<p>
+					En atención a la solicitud de <em>${descripcionTipoTramite}</em> que llevaste a cabo
+					mediante tu portal IMSS Digital, te informamos que tu solicitud ha
+					sido atendida. Te pedimos por favor verificar los cambios a
+					través de tu portal IMSS Digital, a continuación
+					encontrarás los detalles de tu solicitud.
+				</p>
+
+				<br />
+				<center>
+					<table class="nssDataWrapper"
+						style="clear: both; font-size: 12px !important; margin-bottom: 6px !important; max-width: none !important;">
+						<tbody>
+							<tr>
+								<td>
+									<table
+										style="font-size: 12px !important; margin-bottom: 6px !important;"
+										class="table table-bordered table-striped" cellpadding="0"
+										cellspacing="0" border="0">
+										<tbody>
+											<tr>
+												<td style="font-weight: 700">Fecha y hora</td>
+												<td>${fechaSolicitud}</td>
+											</tr>
+											<tr>
+												<td style="font-weight: 700">Clínica asignada</td>
+												<td>${clinicaAsignada}</td>
+											</tr>
+											<tr>
+												<td style="font-weight: 700">Dirección de la Clínica o
+													UMF</td>
+												<td>${direccionClinica}</td>
+											</tr>
+											<tr>
+												<td style="font-weight: 700">Turno</td>
+												<td>${turno}</td>
+											</tr>
+											<tr>
+												<td style="font-weight: 700">Consultorio</td>
+												<td>${consultorio}</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</center>
+				<br />
+				<div>
+					<p>Gracias por hacer uso de los servicios digitales que el
+						Instituto Mexicano del Seguro Social pone a tu disposición.</p>
+				</div>
+				<div style="font-size: 12px !important; font-style: italic;">
+					<p>Esta dirección de correo electrónico no puede recibir
+						respuestas</p>
+				</div>
+				<div style="font-size: 12px !important; font-style: italic;">
+					<p>
+						<strong>AVISO IMPORTANTE:</strong> Este correo electrónico y/o el
+						material adjunto es para uso exclusivo de la persona o la entidad
+						a la que expresamente se le ha enviado, el cual contiene
+						información confidencial. Si no es el destinatario legítimo del
+						mismo, por favor repórtelo inmediatamente a la cuenta del
+						remitente y elimínelo. Cualquier revisión, almacenamiento,
+						retransmisión, difusión o cualquier otro uso de este correo, por
+						personas o entidades distintas a las del destinatario legítimo,
+						queda expresamente prohibida. Este correo electrónico no pretende
+						ni debe ser considerado como constitutivo de ninguna relación
+						legal, contractual o de otra índole similar.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="pie-principal" style="background-color: #393C3E; width: 560px; height: 76px; margin: 0px auto 10px;">
+			<div class="container" style="padding: 18px 27px 0px;">
+				<div>
+					<div>
+						<img width="54" height="19" alt="gob.mx"
+							src="http://framework-gb.cdn.gob.mx/qa/assets/images/gobmxlogo.svg"/>
+					</div>
+					<div>
+						<img width="86" height="35" alt="gob.mx"
+							src="http://framework-gb.cdn.gob.mx/qa/assets/images/logo_mexico.svg"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="pie" style="width: 560px; margin: 0px auto 76px; padding-top: 13px;">
+			<div style="text-align: center; width: 100%; font-size: 80% !important; text-transform: uppercase; color: #929292; text-decoration: none;"
+				id="footer">
+				IMSS, México - Algunos derechos reservados 2015<br />
+				<a href="http://www.imss.gob.mx/pages/privacidad.aspx">POLÍTICA DE
+					PRIVACIDAD Y MANEJO DE DATOS PERSONALES </a> - <a target="_parent"
+					href="http://www.imss.gob.mx/Pages/avisolegal.aspx">Aviso LEGAL</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration
+	xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[SauDigital] %p [%d{dd-MM-yy HH:mm:ss}] (%C{1}.%M:%L) | %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="AdmonUsuariosDelta-cliente" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="SauDigital/logs/AdmonUsuariosDelta-cliente.log"/>
+        <param name="MaxFileSize" value="50000KB"/>
+        <param name="MaxBackupIndex" value="9"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[SauDigital] %p [%d{dd-MM-yy HH:mm:ss}] (%C{1}.%M:%L) | %m%n"/>
+        </layout>
+    </appender>
+    
+    <logger name="org.apache">
+		<level value="error" />
+	</logger>
+
+    <logger name="mx.gob.imss.ctirss" additivity="true">
+        <level value="info"/>
+        <appender-ref ref="AdmonUsuariosDelta-cliente"/> 	
+    </logger>
+
+    <root>
+        <level value="info"/>
+        <appender-ref ref="console"/>
+    </root>
+    
+</log4j:configuration>

@@ -1,0 +1,112 @@
+<xs:schema targetNamespace="http://mx.gob.imss.ctirss.delta.gestion.asegurado.serie.service/" xmlns:tns="http://mx.gob.imss.ctirss.delta.gestion.asegurado.serie.service/" xmlns:ns1="http://mx.gob.imss.ctirss.delta.model.asegurado" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:import namespace="http://mx.gob.imss.ctirss.delta.model.asegurado" schemaLocation="asignacionSerieService2.xsd"/>
+
+	<xs:element name="generarAsegurado" type="tns:generarAsegurado"/>
+
+	<xs:element name="generarAseguradoResponse" type="tns:generarAseguradoResponse"/>
+
+	<xs:element name="publicarDetalleResultadoAsignacion" type="tns:publicarDetalleResultadoAsignacion"/>
+
+	<xs:element name="publicarDetalleResultadoAsignacionResponse" type="tns:publicarDetalleResultadoAsignacionResponse"/>
+
+	<xs:element name="publicarFinProcesamiento" type="tns:publicarFinProcesamiento"/>
+
+	<xs:element name="publicarFinProcesamientoResponse" type="tns:publicarFinProcesamientoResponse"/>
+
+	<xs:element name="publicarResultadoAsignacion" type="tns:publicarResultadoAsignacion"/>
+
+	<xs:element name="publicarResultadoAsignacionResponse" type="tns:publicarResultadoAsignacionResponse"/>
+
+	<xs:complexType name="publicarResultadoAsignacion">
+		<xs:sequence>
+			<xs:element name="arg0" type="xs:int" minOccurs="0"/>
+			<xs:element name="arg1" type="xs:int" minOccurs="0"/>
+			<xs:element name="arg2" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="publicarResultadoAsignacionResponse">
+		<xs:sequence>
+			<xs:element ref="ns1:publicarResultadoAsignacionResponse" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="generarAsegurado">
+		<xs:sequence>
+			<xs:element name="arg0" type="tns:AltaDatosAsignacionNSSType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AltaDatosAsignacionNSSType">
+		<xs:sequence>
+			<xs:element name="nombre" type="xs:string"/>
+			<xs:element name="apellidoPaterno" type="xs:string"/>
+			<xs:element name="apellidoMaterno" type="xs:string" nillable="true"/>
+			<xs:element name="sexo" type="xs:int"/>
+			<xs:element name="lugarNacimiento" type="xs:int"/>
+			<xs:element name="diaNacimiento" type="xs:int"/>
+			<xs:element name="mesNacimiento" type="xs:int"/>
+			<xs:element name="anioNacimiento" type="xs:int"/>
+			<xs:element name="curp" type="xs:string"/>
+			<xs:element name="codigoPostal" type="xs:string"/>
+			<xs:element name="registroPatronal" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="generarAseguradoResponse">
+		<xs:sequence>
+			<xs:element ref="ns1:generarAseguradoResponse" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="estadoAsignacion">
+		<xs:complexContent>
+			<xs:extension base="tns:abstractModel">
+				<xs:sequence>
+					<xs:element name="apellidoMaterno" type="xs:string" minOccurs="0"/>
+					<xs:element name="apellidoPaterno" type="xs:string" minOccurs="0"/>
+					<xs:element name="curp" type="xs:string" minOccurs="0"/>
+					<xs:element name="errorNoControlado" type="xs:boolean"/>
+					<xs:element name="exitoAlta" type="xs:boolean"/>
+					<xs:element name="fechaAlta" type="xs:dateTime" minOccurs="0"/>
+					<xs:element name="idAsegurado" type="xs:long" minOccurs="0"/>
+					<xs:element name="mensajeError" type="xs:string" minOccurs="0"/>
+					<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+					<xs:element name="nssAsignado" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="abstractModel" abstract="true">
+		<xs:sequence>
+			<xs:element name="errorFormGeneral" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="publicarFinProcesamiento">
+		<xs:sequence>
+			<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="publicarFinProcesamientoResponse">
+		<xs:sequence>
+			<xs:element ref="ns1:publicarFinProcesamientoResponse" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="publicarDetalleResultadoAsignacion">
+		<xs:sequence>
+			<xs:element name="arg0" type="tns:estadoAsignacion" minOccurs="0"/>
+			<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="publicarDetalleResultadoAsignacionResponse">
+		<xs:sequence>
+			<xs:element ref="ns1:publicarDetalleResultadoAsignacionResponse" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

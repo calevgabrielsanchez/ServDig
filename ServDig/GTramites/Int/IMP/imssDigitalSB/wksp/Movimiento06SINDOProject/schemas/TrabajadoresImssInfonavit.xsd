@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://www.mx.gob.imss.ctirss.delta/trabajadoresImssInfonavit"
+xmlns:tns="http://www.mx.gob.imss.ctirss.delta/trabajadoresImssInfonavit" elementFormDefault="qualified">
+
+    <complexType name="TrabajadoresImssInfonavitType">
+    	<sequence>
+
+		<element name='tipPatPerFis'          type='string'  />
+		<element name='nss'                   type='string' />
+		<element name='curp'                  type='string'  />
+		<element name='rfc'                   type='string'  />
+		<element name='marcaBeneficio'        type='int' />
+
+        </sequence>
+    </complexType>
+
+    <element name="TrabajadoresImssInfonavit"
+    	type="tns:TrabajadoresImssInfonavitType">
+    </element>
+</schema>

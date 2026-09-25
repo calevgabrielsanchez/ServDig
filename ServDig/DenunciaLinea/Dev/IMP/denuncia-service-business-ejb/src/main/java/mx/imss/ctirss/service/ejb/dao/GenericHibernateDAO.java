@@ -1,0 +1,92 @@
+package mx.imss.ctirss.service.ejb.dao;
+
+import java.io.Serializable;
+import java.util.List;
+
+import mx.imss.ctirss.framework.base.repository.AbstractRespository;
+
+import org.hibernate.Criteria;
+import org.hibernate.LockOptions;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Example;
+
+
+public abstract class GenericHibernateDAO<T, ID extends Serializable> extends AbstractRespository implements GenericDAO<T, ID>{
+	
+	
+	private Class<T> persistentClass;
+	
+	public Class<T> getPersistentClass() {
+        return persistentClass;
+    }
+	
+	public void setPersistentClass(Class<T> p){
+		this.persistentClass = p;
+	}
+
+	@SuppressWarnings("unchecked")
+    public T findById(ID id, boolean lock) {
+        T entity;
+        if (lock)
+        	entity = (T) getSession().load(getPersistentClass(), id, LockOptions.UPGRADE);
+        else
+            entity = (T) getSession().load(getPersistentClass(), id);
+
+        return entity;
+    }
+
+    public List<T> findAll() {
+        return findByCriteria();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<T> findByExample(T exampleInstance, String... excludeProperty) {
+        Criteria crit = getSession().createCriteria(getPersistentClass());
+        Example example =  Example.create(exampleInstance);
+        for (String exclude : excludeProperty) {
+            example.excludeProperty(exclude);
+        }
+        crit.add(example);
+        return crit.list();
+    }
+
+    public T makePersistent(T entity) {
+        getSession().saveOrUpdate(entity);
+        flush();
+        return entity;
+    }
+
+    public void makeTransient(T entity) {
+        getSession().delete(entity);
+        flush();
+    }
+
+    public void flush() {
+        getSession().flush();
+    }
+
+    public void clear() {
+        getSession().clear();
+    }
+
+    /**
+     * Use this inside subclasses as a convenience method.
+     */
+    @SuppressWarnings("unchecked")
+    public List<T> findByCriteria(Criterion... criterion) {
+        Criteria crit = getSession().createCriteria(getPersistentClass());
+        for (Criterion c : criterion) {
+            crit.add(c);
+        }
+        return crit.list();
+   }
+    
+    @SuppressWarnings("unchecked")
+	public T findConcreteByCriteria(Criterion... criterion) {
+    	Criteria crit = getSession().createCriteria(getPersistentClass());
+        for (Criterion c : criterion) {
+            crit.add(c);
+        }
+        return (T) crit.uniqueResult();
+    }
+}

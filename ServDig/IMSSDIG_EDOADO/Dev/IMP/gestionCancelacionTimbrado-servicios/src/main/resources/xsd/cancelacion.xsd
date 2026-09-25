@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/cancelacion" xmlns:tns="http://www.example.org/cancelacion" elementFormDefault="qualified">
+
+    <complexType name="Folios">
+    	<sequence>
+    		<element name="UUID" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Cancelacion">
+    	<sequence>
+    		<element name="Folios" type="tns:Folios"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="Signature" type="string"></element>
+</schema>

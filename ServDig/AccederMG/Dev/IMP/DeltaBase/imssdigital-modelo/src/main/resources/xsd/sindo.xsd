@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sindo="http://mx.gob.imss.digital.modelo.sindo" targetNamespace="http://mx.gob.imss.digital.modelo.sindo" version="1.0">
+
+  <xs:element name="modalidadTrabajador" type="sindo:modalidadTrabajador"/>
+
+  <xs:element name="movimientoTrabajadorSindo" type="sindo:movimientoTrabajadorSindo"/>
+
+  <xs:element name="movimientosTrabajadorSindo" type="sindo:movimientosTrabajadorSindo"/>
+
+  <xs:element name="respuestaValidacionTrabajador" type="sindo:respuestaValidacionTrabajador"/>
+
+  <xs:element name="resultadoVigenciaContVoluntaria" type="sindo:resultadoVigenciaContVoluntaria"/>
+
+  <xs:element name="resultadoVigenciaSeguroFamiliar" type="sindo:resultadoVigenciaSeguroFamiliar"/>
+
+  <xs:element name="resultadoVigenciaTrabajdor" type="sindo:resultadoVigenciaTrabajdor"/>
+
+  <xs:element name="vigenciaContVoluntaria" type="sindo:vigenciaContVoluntaria"/>
+
+  <xs:element name="vigenciaSeguroFamiliar" type="sindo:vigenciaSeguroFamiliar"/>
+
+  <xs:element name="vigenciaTrabajdor" type="sindo:vigenciaTrabajdor"/>
+
+  <xs:complexType name="respuestaValidacionTrabajador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="valido" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="aplicaCuestionario" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="mensajeValidacion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultadoVigenciaTrabajdor">
+    <xs:sequence>
+      <xs:element name="indicadorVigente" type="xs:boolean"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="modalidadesFechaVigente" nillable="true" type="sindo:modalidadTrabajador"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="modalidadesFechaBaja" nillable="true" type="sindo:modalidadTrabajador"/>
+      <xs:element minOccurs="0" name="tipoAseguradoBaja" type="xs:int"/>
+      <xs:element minOccurs="0" name="nrpBaja" type="xs:string"/>
+      <xs:element minOccurs="0" name="numeroSemanaAseguramientoBaja" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="modalidadTrabajador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="modalidad" type="xs:string"/>
+      <xs:element minOccurs="0" name="fecha" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vigenciaSeguroFamiliar">
+    <xs:sequence>
+      <xs:element name="claveError" type="xs:int"/>
+      <xs:element minOccurs="0" name="mensajeError" type="xs:string"/>
+      <xs:element minOccurs="0" name="resultado" type="sindo:resultadoVigenciaSeguroFamiliar"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultadoVigenciaSeguroFamiliar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="estadoVigencia" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listModVigentes" nillable="true" type="sindo:modalidadTrabajador"/>
+      <xs:element minOccurs="0" name="indPension" type="xs:string"/>
+      <xs:element minOccurs="0" name="indTrabajadorIMSS" type="xs:string"/>
+      <xs:element minOccurs="0" name="fecUltimaBajaObligatorio" type="xs:string"/>
+      <xs:element minOccurs="0" name="fecUltimaBajaMod33" type="xs:string"/>
+      <xs:element minOccurs="0" name="semanasCotizadas" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vigenciaTrabajdor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="claveError" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensajeError" type="xs:string"/>
+      <xs:element minOccurs="0" name="resultado" type="sindo:resultadoVigenciaTrabajdor"/>
+      <xs:element minOccurs="0" name="modalidadSolicitada" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="movimientoTrabajadorSindo">
+    <xs:sequence>
+      <xs:element name="delOrig" type="xs:int"/>
+      <xs:element name="subOrig" type="xs:int"/>
+      <xs:element name="cveAplic" type="xs:int"/>
+      <xs:element name="tpMovto" type="xs:int"/>
+      <xs:element name="origenMov" type="xs:int"/>
+      <xs:element name="numFolio" type="xs:int"/>
+      <xs:element name="argumento" type="xs:int"/>
+      <xs:element minOccurs="0" name="regPatron" type="xs:string"/>
+      <xs:element name="digVrPat" type="xs:int"/>
+      <xs:element minOccurs="0" name="fMovto" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fRecepMovi" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="cveUnica" type="xs:string"/>
+      <xs:element name="idSubrServ" type="xs:int"/>
+      <xs:element name="idEventual" type="xs:int"/>
+      <xs:element minOccurs="0" name="numSegSoc" type="xs:string"/>
+      <xs:element name="digVrNss" type="xs:int"/>
+      <xs:element minOccurs="0" name="nomAseg" type="xs:string"/>
+      <xs:element name="idExtemp" type="xs:int"/>
+      <xs:element name="reducPago" type="xs:int"/>
+      <xs:element name="extODel" type="xs:int"/>
+      <xs:element minOccurs="0" name="salBase" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="salInfonavit" type="xs:decimal"/>
+      <xs:element name="tpSalario" type="xs:int"/>
+      <xs:element name="sexo" type="xs:int"/>
+      <xs:element name="mesNac" type="xs:int"/>
+      <xs:element name="lugarNac" type="xs:int"/>
+      <xs:element name="umf" type="xs:int"/>
+      <xs:element name="autPerm" type="xs:int"/>
+      <xs:element name="delDest" type="xs:int"/>
+      <xs:element name="subDest" type="xs:int"/>
+      <xs:element name="tpDerech" type="xs:int"/>
+      <xs:element name="aaNac" type="xs:int"/>
+      <xs:element name="situacion" type="xs:int"/>
+      <xs:element minOccurs="0" name="tsalODel" type="xs:string"/>
+      <xs:element minOccurs="0" name="nombreDh" type="xs:string"/>
+      <xs:element name="mesNacAp" type="xs:int"/>
+      <xs:element name="nssCorr" type="xs:int"/>
+      <xs:element name="digVrNssCorr" type="xs:int"/>
+      <xs:element minOccurs="0" name="nomAsegC" type="xs:string"/>
+      <xs:element name="tpPens" type="xs:int"/>
+      <xs:element minOccurs="0" name="alfGuar" type="xs:string"/>
+      <xs:element name="numGuar" type="xs:int"/>
+      <xs:element name="condicion" type="xs:int"/>
+      <xs:element minOccurs="0" name="locMpio" type="xs:string"/>
+      <xs:element name="tpProrroga" type="xs:int"/>
+      <xs:element name="fecTerProrr" type="xs:int"/>
+      <xs:element name="idPd" type="xs:int"/>
+      <xs:element name="ciz" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultadoVigenciaContVoluntaria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="regPatUltimoMov" type="xs:string"/>
+      <xs:element minOccurs="0" name="modUltimoMov" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoUltimoMov" type="xs:string"/>
+      <xs:element minOccurs="0" name="fecUltimoMov" type="xs:string"/>
+      <xs:element name="estadoVigencia" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="listModVigentes" nillable="true" type="sindo:modalidadTrabajador"/>
+      <xs:element minOccurs="0" name="tipoPension" type="xs:string"/>
+      <xs:element name="indTrabajadorIMSS" type="xs:int"/>
+      <xs:element name="indPension" type="xs:int"/>
+      <xs:element minOccurs="0" name="semanasCotizadas" type="xs:int"/>
+      <xs:element minOccurs="0" name="regPatUltimoObligatorio" type="xs:string"/>
+      <xs:element minOccurs="0" name="modUltimoObligatorio" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoMovObligatorio" type="xs:string"/>
+      <xs:element minOccurs="0" name="fecMovObligatorio" type="xs:string"/>
+      <xs:element minOccurs="0" name="salarioObligatorio" type="xs:float"/>
+      <xs:element minOccurs="0" name="regPatUltimoMod40" type="xs:string"/>
+      <xs:element minOccurs="0" name="modUltimoMod40" type="xs:string"/>
+      <xs:element minOccurs="0" name="tipoMovMod40" type="xs:string"/>
+      <xs:element minOccurs="0" name="fecMovMod40" type="xs:string"/>
+      <xs:element minOccurs="0" name="salarioMod40" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vigenciaContVoluntaria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="claveError" type="xs:string"/>
+      <xs:element minOccurs="0" name="mensajeError" type="xs:string"/>
+      <xs:element minOccurs="0" name="modalidad40" type="sindo:resultadoVigenciaContVoluntaria"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="movimientosTrabajadorSindo">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="movimientoTrabajadorSindo" nillable="true" type="sindo:movimientoTrabajadorSindo"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="movimientoTrabajadorSindoFuturo" nillable="true" type="sindo:movimientoTrabajadorSindo"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

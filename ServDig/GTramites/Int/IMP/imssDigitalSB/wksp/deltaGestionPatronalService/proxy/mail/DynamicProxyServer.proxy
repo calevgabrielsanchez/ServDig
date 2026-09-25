@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description/>
+    <ser:binding type="Mixed" xsi:type="con:MixedBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:request type="XML">
+        <con1:schema ref="deltaGestionPatronalService/schema/ServiceContract/EmailRequestSchema" element="EmailPayload" xmlns:con1="http://www.bea.com/wli/sb/typesystem/config"/>
+      </con:request>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>true</ser:reporting>
+    <ser:logging isEnabled="true">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:largeMessageSupport isEnabled="true">
+      <ser:persistToFile>false</ser:persistToFile>
+      <ser:enableCompression>true</ser:enableCompression>
+    </ser:largeMessageSupport>
+    <ser:pageAttachments isEnabled="false"/>
+    <ser:transactions isRequired="true" sameTxForResponse="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:URI>
+      <env:value>/deltaGestionPatronalService/proxy/mail/DynamicProxyServer</env:value>
+    </tran:URI>
+    <tran:inbound-properties/>
+    <tran:all-headers>false</tran:all-headers>
+    <tran:provider-specific xsi:type="http:HttpEndPointConfiguration" xmlns:http="http://www.bea.com/wli/sb/transports/http">
+      <http:inbound-properties/>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+  <ser:router>
+    <con1:flow xmlns:con1="http://www.bea.com/wli/sb/pipeline/config">
+      <con1:route-node name="EMailBusinessService">
+        <con1:comment/>
+        <con1:context>
+          <con2:varNsDecl prefix="mx" namespace="http://mx.gob.imss.email.model"/>
+        </con1:context>
+        <con1:actions>
+          <con2:route xmlns:con2="http://www.bea.com/wli/sb/stages/routing/config">
+            <con3:id xmlns:con3="http://www.bea.com/wli/sb/stages/config">_ActionId-2255104134350464044-42e7d5da.13fd3d790bf.-7fe9</con3:id>
+            <con2:service ref="deltaGestionPatronalService/businessService/mail/MailSenderBusiness" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con2:outboundTransform>
+              <con3:log>
+                <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-2646264800620754715--697d0109.1408264f643.-7f90</con4:id>
+                <con3:logLevel>error</con3:logLevel>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+                </con3:expr>
+                <con3:message>Request para correo</con3:message>
+              </con3:log>
+              <con3:log>
+                <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-2646264800620754715--697d0109.1408264f643.-7f8f</con4:id>
+                <con3:logLevel>error</con3:logLevel>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:EmailPayload/mx:To/text()</con:xqueryText>
+                </con3:expr>
+                <con3:message>To:::</con3:message>
+              </con3:log>
+              <con4:ifThenElse xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fcc</con5:id>
+                <con4:case>
+                  <con4:condition>
+                    <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">fn:exists($body/mx:EmailPayload/mx:Attachment)</con:xqueryText>
+                  </con4:condition>
+                  <con4:actions>
+                    <con4:insert varName="attachments">
+                      <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-2698253971106577746--3ca74642.142b493cbc7.-7fcb</con5:id>
+                      <con4:location>
+                        <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                      </con4:location>
+                      <con4:where>first-child</con4:where>
+                      <con4:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config"><![CDATA[<con:attachment xmlns:con="http://www.bea.com/wli/sb/context"> 
+  <con:Content-Type>{$body/mx:EmailPayload/mx:Attachment/mx:Content-Type/text()}</con:Content-Type> 
+  <con:Content-Disposition>attachment; filename="{$body/mx:EmailPayload/mx:Attachment/mx:Content-Disposition/text()}"</con:Content-Disposition> 
+  <con:body>{$body/mx:EmailPayload/mx:Attachment/mx:textBody/text()}</con:body> 
+</con:attachment>]]></con:xqueryText>
+                      </con4:expr>
+                    </con4:insert>
+                  </con4:actions>
+                </con4:case>
+              </con4:ifThenElse>
+              <con3:transport-headers copy-all="true" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+                <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-2255104134350464044-42e7d5da.13fd3d790bf.-7fe8</con4:id>
+                <con3:header-set>outbound-request</con3:header-set>
+                <con3:header name="To" value="expression">
+                  <con4:xqueryText xmlns:con4="http://www.bea.com/wli/sb/stages/config">$body/mx:EmailPayload/mx:To/text()</con4:xqueryText>
+                </con3:header>
+              </con3:transport-headers>
+              <con3:transport-headers copy-all="true" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+                <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-2255104134350464044-42e7d5da.13fd3d790bf.-7fe7</con4:id>
+                <con3:header-set>outbound-request</con3:header-set>
+                <con3:header name="Subject" value="expression">
+                  <con4:xqueryText xmlns:con4="http://www.bea.com/wli/sb/stages/config">$body/mx:EmailPayload/mx:Subject/text()</con4:xqueryText>
+                </con3:header>
+              </con3:transport-headers>
+              <con3:transport-headers copy-all="true" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+                <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-2255104134350464044-42e7d5da.13fd3d790bf.-7fe3</con4:id>
+                <con3:header-set>outbound-request</con3:header-set>
+                <con3:header name="Cc" value="expression">
+                  <con4:xqueryText xmlns:con4="http://www.bea.com/wli/sb/stages/config">$body/mx:EmailPayload/mx:Cc/text()</con4:xqueryText>
+                </con3:header>
+              </con3:transport-headers>
+              <con3:transport-headers copy-all="true" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+                <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-2255104134350464044-42e7d5da.13fd3d790bf.-7fe2</con4:id>
+                <con3:header-set>outbound-request</con3:header-set>
+                <con3:header name="Bcc" value="expression">
+                  <con4:xqueryText xmlns:con4="http://www.bea.com/wli/sb/stages/config">$body/mx:EmailPayload/mx:Bcc/text()</con4:xqueryText>
+                </con3:header>
+              </con3:transport-headers>
+              <con3:transport-headers copy-all="true" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+                <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-6012751377136740108-59da95dc.13fe872e203.-7fec</con4:id>
+                <con3:header-set>outbound-request</con3:header-set>
+                <con3:header name="Content-Type" value="expression">
+                  <con4:xqueryText xmlns:con4="http://www.bea.com/wli/sb/stages/config">$body/mx:EmailPayload/mx:ContentType/text()</con4:xqueryText>
+                </con3:header>
+              </con3:transport-headers>
+              <con3:log>
+                <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-5881513508774492999-aa6e45c.14011494270.-7ff4</con4:id>
+                <con3:logLevel>error</con3:logLevel>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:EmailPayload/mx:ContentType/text()</con:xqueryText>
+                </con3:expr>
+                <con3:message>Content Type del correo</con3:message>
+              </con3:log>
+              <con3:log>
+                <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-5881513508774492999-aa6e45c.14011494270.-7ff1</con4:id>
+                <con3:logLevel>error</con3:logLevel>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:EmailPayload/mx:Content</con:xqueryText>
+                </con3:expr>
+                <con3:message>Contenido Correo</con3:message>
+              </con3:log>
+              <con4:ifThenElse xmlns:con4="http://www.bea.com/wli/sb/stages/transform/config">
+                <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-8641061989934859533-7c4e9fff.1407e377f9d.-7ff4</con5:id>
+                <con4:case>
+                  <con4:condition>
+                    <con4:xqueryConditionExpr xmlns:con4="http://www.bea.com/wli/sb/stages/config">
+                      <con4:compExpr operator="=">
+                        <con4:leftPath>$body/mx:EmailPayload/mx:ContentType/text()</con4:leftPath>
+                        <con4:rightPath>"text/html"</con4:rightPath>
+                      </con4:compExpr>
+                    </con4:xqueryConditionExpr>
+                  </con4:condition>
+                  <con4:actions>
+                    <con4:replace varName="body" contents-only="true">
+                      <con5:id xmlns:con5="http://www.bea.com/wli/sb/stages/config">_ActionId-8641061989934859533-7c4e9fff.1407e377f9d.-7ff3</con5:id>
+                      <con4:location>
+                        <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                      </con4:location>
+                      <con4:expr>
+                        <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:EmailPayload/mx:Content/html</con:xqueryText>
+                      </con4:expr>
+                    </con4:replace>
+                  </con4:actions>
+                </con4:case>
+                <con4:default>
+                  <con3:replace varName="body" contents-only="true" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+                    <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-8641061989934859533-7c4e9fff.1407e377f9d.-7ff1</con4:id>
+                    <con3:location>
+                      <con:xpathText xmlns:con="http://www.bea.com/wli/sb/stages/config">.</con:xpathText>
+                    </con3:location>
+                    <con3:expr>
+                      <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body/mx:EmailPayload/mx:Content/text()</con:xqueryText>
+                    </con3:expr>
+                  </con3:replace>
+                </con4:default>
+              </con4:ifThenElse>
+              <con3:log>
+                <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-5881513508774492999-aa6e45c.14011494270.-7ff2</con4:id>
+                <con3:logLevel>error</con3:logLevel>
+                <con3:expr>
+                  <con:xqueryText xmlns:con="http://www.bea.com/wli/sb/stages/config">$body</con:xqueryText>
+                </con3:expr>
+                <con3:message>Curpo del correo:</con3:message>
+              </con3:log>
+            </con2:outboundTransform>
+            <con2:responseTransform>
+              <con3:transport-headers copy-all="true" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+                <con4:id xmlns:con4="http://www.bea.com/wli/sb/stages/config">_ActionId-5881513508774492999-aa6e45c.14011494270.-7ff3</con4:id>
+                <con3:header-set>outbound-request</con3:header-set>
+                <con3:header name="Content-Type" value="expression">
+                  <con4:xqueryText xmlns:con4="http://www.bea.com/wli/sb/stages/config">$body/mx:EmailPayload/mx:ContentType/text()</con4:xqueryText>
+                </con3:header>
+              </con3:transport-headers>
+            </con2:responseTransform>
+          </con2:route>
+        </con1:actions>
+      </con1:route-node>
+    </con1:flow>
+  </ser:router>
+</xml-fragment>

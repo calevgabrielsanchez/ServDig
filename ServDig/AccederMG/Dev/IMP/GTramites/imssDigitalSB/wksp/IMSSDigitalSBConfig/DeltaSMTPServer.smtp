@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:con="http://www.bea.com/wli/sb/resources/config">
+  <con:serverURL>11.254.12.85</con:serverURL>
+  <con:description>Servidor SMTP del proyecto Delta</con:description>
+  <con:portNumber>25</con:portNumber>
+  <con:username>aseg53.caro</con:username>
+  <con:password>aseg53</con:password>
+</xml-fragment>

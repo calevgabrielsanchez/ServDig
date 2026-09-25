@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>mx.gob.imss.cit.dacvass.servicios.externos</groupId>
+	<artifactId>serviciosDigitales-rest</artifactId>
+	<packaging>pom</packaging>
+	<version>${revision}</version>
+	<name>Modulo de servicios externos REST</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+		<org.springframework.version>3.0.5.RELEASE</org.springframework.version>
+		<org.slf4j.version>1.6.1</org.slf4j.version>
+		<org.hibernate.version>3.6.9.Final</org.hibernate.version>
+		<delta.framework.version>${mvn.delta.framework.version}</delta.framework.version>
+		<delta.medioscontacto>${mvn.delta.medioscontacto}</delta.medioscontacto>
+		<delta.documentos.probatorios>${mvn.delta.documentos.probatorios}</delta.documentos.probatorios>
+		<delta.domicilios>${mvn.delta.domicilios}</delta.domicilios>
+		<delta.personas>${mvn.delta.personas}</delta.personas>
+		<gestion.solicitud.version>${mvn.gestion.solicitud.version}</gestion.solicitud.version>
+		<gestion.patronal.version>${mvn.gestion.patronal.version}</gestion.patronal.version>
+		<delta.clasificacion.empr>${mvn.delta.clasificacion.empr}</delta.clasificacion.empr>
+		<delta.asegurados>${mvn.delta.asegurados}</delta.asegurados>
+		<delta.derechohabientes>${mvn.delta.derechohabientes}</delta.derechohabientes>
+		<!--<serviciosDigitales.rest.version>${mvn.serviciosDigitales.rest.version}</serviciosDigitales.rest.version>-->
+		<revision>${mvn.serviciosDigitales.rest.version}</revision>
+		<delta.sdroc.version>${mvn.delta.sdroc.version}</delta.sdroc.version>
+		<delta.semanascotizadas.version>${mvn.delta.semanascotizadas.version}</delta.semanascotizadas.version>
+		<delta.clientes.ws.version>${mvn.delta.clientes.ws.version}</delta.clientes.ws.version>
+		<delta.clientes.ws.version.patrones.asegurado>${mvn.delta.clientes.ws.version.patrones.asegurado}</delta.clientes.ws.version.patrones.asegurado>
+		<clienteWebservice.PersonalSubdelegacion.version>${mvn.ClienteWebservice.PersonalSubdelegacion.version}</clienteWebservice.PersonalSubdelegacion.version>
+		<delta.clientes.ws.renapo.version>${mvn.delta.clientes.ws.renapo.version}</delta.clientes.ws.renapo.version>
+	</properties>
+
+	<build>
+
+		<!-- To define the plugin version in your parent POM -->
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<skipTests>true</skipTests>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<!-- for use JVM 1.6 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+
+			<!-- Relase Plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<tagBase>http://11.254.16.21/svn/base_arquitectura_delta/codigo/tags/</tagBase>
+					<tag>${project.artifactId}-${project.version}</tag>
+				</configuration>
+			</plugin>
+
+
+		</plugins>
+
+
+
+		<!--Extension necesaria para el deploy (instalacion) de los componentes 
+			en el repositorio central -->
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+			</extension>
+		</extensions>
+	</build>
+
+		<repositories>
+			<repository>
+				<id>ctirss</id>
+				<name>CTIRSS repository</name>
+				<layout>default</layout>
+				<url>http://172.16.5.134:8080/repository/repo/</url>
+				<snapshots>
+					<enabled>true</enabled>
+				</snapshots>
+			</repository>
+			
+			<repository>
+				<id>java.net</id>
+				<url>http://download.java.net/maven/2</url>
+			</repository>
+		</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>ctirss</id>
+			<name>CTIRSS repository</name>
+			<url>http://172.16.5.134:8080/repository/repo/</url>
+			<layout>default</layout>
+			<snapshots>
+			</snapshots>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<distributionManagement>
+		<!-- use the following if you're not using a snapshot version. -->
+		<repository>
+			<id>ctirss-archiva</id>
+			<name>CTIRSS Repository Name</name>
+			<url>dav:http://172.16.5.134:8080/repository/repo/</url>
+		</repository>
+		<snapshotRepository>
+			<id>ctirss-archiva</id>
+			<name>CTIRSS Repository Name</name>
+			<url>dav:http://172.16.5.134:8080/repository/repo/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<modules>
+		<module>serviciosDigitales-rest-modelo</module>
+		<module>serviciosDigitales-rest-interfaces-negocio</module>
+		<module>serviciosDigitales-rest-persistencia</module>
+		<module>serviciosDigitales-rest-servicios-negocio-ejb</module>
+		<module>serviciosDigitales-rest-web</module>
+		<module>serviciosDigitales-rest-packing</module>	
+	</modules>
+
+	<profiles>
+		<profile>
+			<id>compile-desa</id>
+			<activation>
+        		<activeByDefault>true</activeByDefault>
+    		</activation>
+			<properties>
+				<mvn.serviciosDigitales.rest.version>1.0-SNAPSHOT</mvn.serviciosDigitales.rest.version>
+				<mvn.delta.framework.version>2.6-SNAPSHOT</mvn.delta.framework.version>
+				<mvn.delta.medioscontacto>2.3-SNAPSHOT</mvn.delta.medioscontacto>
+				<mvn.delta.documentos.probatorios>2.4-SNAPSHOT</mvn.delta.documentos.probatorios>
+				<mvn.delta.domicilios>2.4-SNAPSHOT</mvn.delta.domicilios>
+				<mvn.delta.personas>2.4-SNAPSHOT</mvn.delta.personas>
+				<mvn.gestion.solicitud.version>2.2-SNAPSHOT</mvn.gestion.solicitud.version>
+				<mvn.gestion.patronal.version>2.4-SNAPSHOT</mvn.gestion.patronal.version>
+				<mvn.delta.clasificacion.empr>2.4-SNAPSHOT</mvn.delta.clasificacion.empr>
+				<mvn.delta.asegurados>2.2-SNAPSHOT</mvn.delta.asegurados>
+				<mvn.delta.derechohabientes>2.2-SNAPSHOT</mvn.delta.derechohabientes>
+				<mvn.delta.sdroc.version>1.1-SNAPSHOT</mvn.delta.sdroc.version>
+				<mvn.delta.semanascotizadas.version>0.0.1-SNAPSHOT</mvn.delta.semanascotizadas.version>
+				<mvn.delta.clientes.ws.version>2.2-SNAPSHOT</mvn.delta.clientes.ws.version>
+				<mvn.delta.clientes.ws.version.patrones.asegurado>1.0-SNAPSHOT</mvn.delta.clientes.ws.version.patrones.asegurado>
+				
+				<mvn.service.provider.url>t3://desarrollo.imss.gob.mx:7001</mvn.service.provider.url>
+				<mvn.service.security.principal>deltaconsulta</mvn.service.security.principal>
+				<mvn.service.security.credentials>weblogic1</mvn.service.security.credentials>
+				
+				<mvn.service.provider.url.original>t3://desarrollo.imss.gob.mx:7001</mvn.service.provider.url.original>
+				<mvn.service.security.principal.original>deltaconsulta</mvn.service.security.principal.original>
+				<mvn.service.security.credentials.original>weblogic1</mvn.service.security.credentials.original>
+				<mvn.ClienteWebservice.PersonalSubdelegacion.version>2.3-SNAPSHOT</mvn.ClienteWebservice.PersonalSubdelegacion.version>
+				<mvn.delta.clientes.ws.renapo.version>2.3-QA</mvn.delta.clientes.ws.renapo.version>
+				<!--
+				<mvn.service.provider.url.original>t3://172.16.5.11:8003,172.16.5.11:8001,172.16.5.16:8001,172.16.5.133:8001,172.16.5.16:8003,172.16.5.133:8003</mvn.service.provider.url.original>
+				<mvn.service.security.principal.original>wloperator</mvn.service.security.principal.original>
+				<mvn.service.security.credentials.original><![CDATA[53rv4p%wl%1p1r1t1r$.]]></mvn.service.security.credentials.original>
+				-->
+				<mvn.url.service.catalogo.empleado.siap><![CDATA[http://siap.imss.gob.mx/servicioswebjuridicos/wsCatalogoEmpleados.asmx/ConsultaCatalogoEmpleadosNacional?OOAD=&Apellido_Paterno=&Apellido_Materno=&Nombre=&Matr%C3%ADcula=#####&RFC=&CURP=&NSS=]]></mvn.url.service.catalogo.empleado.siap>
+				<mvn.timeOut.coneccion.servicios.externos.default.milis>15000</mvn.timeOut.coneccion.servicios.externos.default.milis>
+				<mvn.timeOut.respuesta.servicios.externos.default.milis>45000</mvn.timeOut.respuesta.servicios.externos.default.milis>
+				<mvn.ulr.directorio.activo.imss><![CDATA[ldap://172.16.0.31:3268]]></mvn.ulr.directorio.activo.imss>
+				<mvn.user.directorio.activo.imss><![CDATA[usuario.bitacora]]></mvn.user.directorio.activo.imss>
+				<mvn.credentials.user.directorio.activo.imss><![CDATA[31+4cor@_u53r*]]></mvn.credentials.user.directorio.activo.imss>
+				<mvn.base.dc.directorio.activo.imss><![CDATA[dc=metro,dc=imss,dc=gob,dc=mx]]></mvn.base.dc.directorio.activo.imss>
+				<mvn.userSearchFilter.directorio.activo.imss>uid</mvn.userSearchFilter.directorio.activo.imss>
+				
+				<mvn.basegc.metro.directorio.activo.imss><![CDATA[OU=Centro Usuarios,DC=metro,DC=imss,DC=gob,DC=mx]]></mvn.basegc.metro.directorio.activo.imss>
+				<mvn.basegc.metro1.directorio.activo.imss><![CDATA[OU=Nivel Central Usuarios,DC=metro,DC=imss,DC=gob,DC=mx]]></mvn.basegc.metro1.directorio.activo.imss>
+				<mvn.basegc.metro2.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=metro,DC=imss,DC=gob,DC=mx]]></mvn.basegc.metro2.directorio.activo.imss>
+				<mvn.basegc.norte.directorio.activo.imss><![CDATA[OU=Norte Usuarios,DC=nte,DC=imss,DC=gob,DC=mx]]></mvn.basegc.norte.directorio.activo.imss>
+				<mvn.basegc.sur.directorio.activo.imss><![CDATA[OU=Sur Usuarios,DC=sur,DC=imss,DC=gob,DC=mx]]></mvn.basegc.sur.directorio.activo.imss>
+				<mvn.basegc.centro.directorio.activo.imss><![CDATA[OU=Centro Usuarios,DC=cto,DC=imss,DC=gob,DC=mx]]></mvn.basegc.centro.directorio.activo.imss>
+				<mvn.basegc.occidente.directorio.activo.imss><![CDATA[OU=Occidente Usuarios,DC=occ,DC=imss,DC=gob,DC=mx]]></mvn.basegc.occidente.directorio.activo.imss>	
+				<mvn.basegc.norte1.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=nte,DC=imss,DC=gob,DC=mx]]></mvn.basegc.norte1.directorio.activo.imss>
+				<mvn.basegc.sur1.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=sur,DC=imss,DC=gob,DC=mx]]></mvn.basegc.sur1.directorio.activo.imss>
+				<mvn.basegc.centro1.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=cto,DC=imss,DC=gob,DC=mx]]></mvn.basegc.centro1.directorio.activo.imss>
+				<mvn.basegc.occidente1.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=occ,DC=imss,DC=gob,DC=mx]]></mvn.basegc.occidente1.directorio.activo.imss>	
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>compile-qa</id>
+			<activation>
+        		<activeByDefault>false</activeByDefault>
+    		</activation>
+			<properties>
+				<mvn.serviciosDigitales.rest.version>1.0-SNAPSHOT</mvn.serviciosDigitales.rest.version>
+				<mvn.delta.framework.version>2.6</mvn.delta.framework.version>
+				<mvn.delta.medioscontacto>2.3</mvn.delta.medioscontacto>
+				<mvn.delta.documentos.probatorios>2.4</mvn.delta.documentos.probatorios>
+				<mvn.delta.domicilios>2.4</mvn.delta.domicilios>
+				<mvn.delta.personas>2.4</mvn.delta.personas>
+				<mvn.gestion.solicitud.version>2.2</mvn.gestion.solicitud.version>
+				<mvn.gestion.patronal.version>2.4</mvn.gestion.patronal.version>
+				<mvn.delta.clasificacion.empr>2.4</mvn.delta.clasificacion.empr>
+				<mvn.delta.asegurados>2.2</mvn.delta.asegurados>
+				<mvn.delta.derechohabientes>2.2</mvn.delta.derechohabientes>
+				<mvn.delta.sdroc.version>1.1</mvn.delta.sdroc.version>
+				<mvn.delta.semanascotizadas.version>0.0.1</mvn.delta.semanascotizadas.version>
+				<mvn.delta.clientes.ws.version>2.2</mvn.delta.clientes.ws.version>
+				<mvn.service.provider.url>t3://vzapma07.imss.gob.mx:8001</mvn.service.provider.url>
+				<mvn.service.security.principal>serviciosrest</mvn.service.security.principal>
+				<mvn.service.security.credentials><![CDATA[serviciosrest1]]></mvn.service.security.credentials>
+				<mvn.delta.clientes.ws.version.patrones.asegurado>1.0-SNAPSHOT</mvn.delta.clientes.ws.version.patrones.asegurado>
+				<mvn.ClienteWebservice.PersonalSubdelegacion.version>2.3-SNAPSHOT</mvn.ClienteWebservice.PersonalSubdelegacion.version>
+				<mvn.delta.clientes.ws.renapo.version>2.3</mvn.delta.clientes.ws.renapo.version>
+				
+				<mvn.service.provider.url.original>t3://172.16.5.176:8001</mvn.service.provider.url.original>
+				<mvn.service.security.principal.original>serviciosrest</mvn.service.security.principal.original>
+				<mvn.service.security.credentials.original><![CDATA[serviciosrest1]]></mvn.service.security.credentials.original>
+				<mvn.url.service.catalogo.empleado.siap><![CDATA[http://siap.imss.gob.mx/servicioswebjuridicos/wsCatalogoEmpleados.asmx/ConsultaCatalogoEmpleadosNacional?OOAD=&Apellido_Paterno=&Apellido_Materno=&Nombre=&Matr%C3%ADcula=#####&RFC=&CURP=&NSS=]]></mvn.url.service.catalogo.empleado.siap>
+				<mvn.timeOut.coneccion.servicios.externos.default.milis>15000</mvn.timeOut.coneccion.servicios.externos.default.milis>
+				<mvn.timeOut.respuesta.servicios.externos.default.milis>45000</mvn.timeOut.respuesta.servicios.externos.default.milis>
+				<mvn.ulr.directorio.activo.imss><![CDATA[ldap://172.16.0.31:3268]]></mvn.ulr.directorio.activo.imss>
+				<mvn.user.directorio.activo.imss><![CDATA[usuario.bitacora]]></mvn.user.directorio.activo.imss>
+				<mvn.credentials.user.directorio.activo.imss><![CDATA[31+4cor@_u53r*]]></mvn.credentials.user.directorio.activo.imss>
+				<mvn.base.dc.directorio.activo.imss><![CDATA[dc=metro,dc=imss,dc=gob,dc=mx]]></mvn.base.dc.directorio.activo.imss>
+				<mvn.userSearchFilter.directorio.activo.imss>uid</mvn.userSearchFilter.directorio.activo.imss>
+				
+				<mvn.basegc.metro.directorio.activo.imss><![CDATA[OU=Centro Usuarios,DC=metro,DC=imss,DC=gob,DC=mx]]></mvn.basegc.metro.directorio.activo.imss>
+				<mvn.basegc.metro1.directorio.activo.imss><![CDATA[OU=Nivel Central Usuarios,DC=metro,DC=imss,DC=gob,DC=mx]]></mvn.basegc.metro1.directorio.activo.imss>
+				<mvn.basegc.metro2.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=metro,DC=imss,DC=gob,DC=mx]]></mvn.basegc.metro2.directorio.activo.imss>
+				<mvn.basegc.norte.directorio.activo.imss><![CDATA[OU=Norte Usuarios,DC=nte,DC=imss,DC=gob,DC=mx]]></mvn.basegc.norte.directorio.activo.imss>
+				<mvn.basegc.sur.directorio.activo.imss><![CDATA[OU=Sur Usuarios,DC=sur,DC=imss,DC=gob,DC=mx]]></mvn.basegc.sur.directorio.activo.imss>
+				<mvn.basegc.centro.directorio.activo.imss><![CDATA[OU=Centro Usuarios,DC=cto,DC=imss,DC=gob,DC=mx]]></mvn.basegc.centro.directorio.activo.imss>
+				<mvn.basegc.occidente.directorio.activo.imss><![CDATA[OU=Occidente Usuarios,DC=occ,DC=imss,DC=gob,DC=mx]]></mvn.basegc.occidente.directorio.activo.imss>	
+				<mvn.basegc.norte1.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=nte,DC=imss,DC=gob,DC=mx]]></mvn.basegc.norte1.directorio.activo.imss>
+				<mvn.basegc.sur1.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=sur,DC=imss,DC=gob,DC=mx]]></mvn.basegc.sur1.directorio.activo.imss>
+				<mvn.basegc.centro1.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=cto,DC=imss,DC=gob,DC=mx]]></mvn.basegc.centro1.directorio.activo.imss>
+				<mvn.basegc.occidente1.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=occ,DC=imss,DC=gob,DC=mx]]></mvn.basegc.occidente1.directorio.activo.imss>	
+
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>compile-prod</id>
+			<activation>
+        		<activeByDefault>false</activeByDefault>
+    		</activation>
+			<properties>
+				<mvn.serviciosDigitales.rest.version>1.0</mvn.serviciosDigitales.rest.version>
+				<mvn.delta.framework.version>2.6</mvn.delta.framework.version>
+				<mvn.delta.medioscontacto>2.3</mvn.delta.medioscontacto>
+				<mvn.delta.documentos.probatorios>2.4</mvn.delta.documentos.probatorios>
+				<mvn.delta.domicilios>2.4</mvn.delta.domicilios>
+				<mvn.delta.personas>2.4</mvn.delta.personas>
+				<mvn.gestion.solicitud.version>2.2</mvn.gestion.solicitud.version>
+				<mvn.gestion.patronal.version>2.4</mvn.gestion.patronal.version>
+				<mvn.delta.clasificacion.empr>2.4</mvn.delta.clasificacion.empr>
+				<mvn.delta.asegurados>2.2</mvn.delta.asegurados>
+				<mvn.delta.derechohabientes>2.2</mvn.delta.derechohabientes>
+				<mvn.delta.sdroc.version>1.1</mvn.delta.sdroc.version>
+				<mvn.delta.semanascotizadas.version>0.0.1</mvn.delta.semanascotizadas.version>
+				<mvn.delta.clientes.ws.version>2.2</mvn.delta.clientes.ws.version>
+				<mvn.service.provider.url>t3://vzapma18.imss.gob.mx:9103,vzapma18.imss.gob.mx:9105,vzapma17.imss.gob.mx:9103,vzapma17.imss.gob.mx:9105,vzapmb24.imss.gob.mx:9103,vzapmb24.imss.gob.mx:9105</mvn.service.provider.url>
+				<mvn.service.security.principal>wloperator</mvn.service.security.principal>
+				<mvn.service.security.credentials><![CDATA[53rv4p%wl%1p1r1t1r$.]]></mvn.service.security.credentials>
+				<mvn.delta.clientes.ws.version.patrones.asegurado>1.0</mvn.delta.clientes.ws.version.patrones.asegurado>
+				<mvn.ClienteWebservice.PersonalSubdelegacion.version>2.3</mvn.ClienteWebservice.PersonalSubdelegacion.version>
+				<mvn.delta.clientes.ws.renapo.version>2.3</mvn.delta.clientes.ws.renapo.version>
+				<mvn.service.provider.url.original>t3://vzapma07.imss.gob.mx:8001,vzapma07.imss.gob.mx:8003,vzapma12.imss.gob.mx:8001,vzapma12.imss.gob.mx:8003,vzapmb09.imss.gob.mx:8001,vzapmb09.imss.gob.mx:8003</mvn.service.provider.url.original>
+				<mvn.service.security.principal.original>wloperator</mvn.service.security.principal.original>
+				<mvn.service.security.credentials.original><![CDATA[53rv4p%wl%1p1r1t1r$.]]></mvn.service.security.credentials.original>
+				<mvn.url.service.catalogo.empleado.siap><![CDATA[http://siap.imss.gob.mx/servicioswebjuridicos/wsCatalogoEmpleados.asmx/ConsultaCatalogoEmpleadosNacional?OOAD=&Apellido_Paterno=&Apellido_Materno=&Nombre=&Matr%C3%ADcula=#####&RFC=&CURP=&NSS=]]></mvn.url.service.catalogo.empleado.siap>
+				<mvn.timeOut.coneccion.servicios.externos.default.milis>15000</mvn.timeOut.coneccion.servicios.externos.default.milis>
+				<mvn.timeOut.respuesta.servicios.externos.default.milis>45000</mvn.timeOut.respuesta.servicios.externos.default.milis>
+				<mvn.ulr.directorio.activo.imss><![CDATA[ldap://172.16.0.31:3268]]></mvn.ulr.directorio.activo.imss>
+				<mvn.user.directorio.activo.imss><![CDATA[usuario.bitacora]]></mvn.user.directorio.activo.imss>
+				<mvn.credentials.user.directorio.activo.imss><![CDATA[31+4cor@_u53r*]]></mvn.credentials.user.directorio.activo.imss>
+				<mvn.base.dc.directorio.activo.imss><![CDATA[dc=metro,dc=imss,dc=gob,dc=mx]]></mvn.base.dc.directorio.activo.imss>
+				<mvn.userSearchFilter.directorio.activo.imss>uid</mvn.userSearchFilter.directorio.activo.imss>
+				
+				<mvn.basegc.metro.directorio.activo.imss><![CDATA[OU=Centro Usuarios,DC=metro,DC=imss,DC=gob,DC=mx]]></mvn.basegc.metro.directorio.activo.imss>
+				<mvn.basegc.metro1.directorio.activo.imss><![CDATA[OU=Nivel Central Usuarios,DC=metro,DC=imss,DC=gob,DC=mx]]></mvn.basegc.metro1.directorio.activo.imss>
+				<mvn.basegc.metro2.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=metro,DC=imss,DC=gob,DC=mx]]></mvn.basegc.metro2.directorio.activo.imss>
+				<mvn.basegc.norte.directorio.activo.imss><![CDATA[OU=Norte Usuarios,DC=nte,DC=imss,DC=gob,DC=mx]]></mvn.basegc.norte.directorio.activo.imss>
+				<mvn.basegc.sur.directorio.activo.imss><![CDATA[OU=Sur Usuarios,DC=sur,DC=imss,DC=gob,DC=mx]]></mvn.basegc.sur.directorio.activo.imss>
+				<mvn.basegc.centro.directorio.activo.imss><![CDATA[OU=Centro Usuarios,DC=cto,DC=imss,DC=gob,DC=mx]]></mvn.basegc.centro.directorio.activo.imss>
+				<mvn.basegc.occidente.directorio.activo.imss><![CDATA[OU=Occidente Usuarios,DC=occ,DC=imss,DC=gob,DC=mx]]></mvn.basegc.occidente.directorio.activo.imss>	
+				<mvn.basegc.norte1.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=nte,DC=imss,DC=gob,DC=mx]]></mvn.basegc.norte1.directorio.activo.imss>
+				<mvn.basegc.sur1.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=sur,DC=imss,DC=gob,DC=mx]]></mvn.basegc.sur1.directorio.activo.imss>
+				<mvn.basegc.centro1.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=cto,DC=imss,DC=gob,DC=mx]]></mvn.basegc.centro1.directorio.activo.imss>
+				<mvn.basegc.occidente1.directorio.activo.imss><![CDATA[OU=Sitios_usuario_sin_asignacion,DC=occ,DC=imss,DC=gob,DC=mx]]></mvn.basegc.occidente1.directorio.activo.imss>	
+			</properties>
+		</profile>
+		
+		
+	</profiles>
+</project>

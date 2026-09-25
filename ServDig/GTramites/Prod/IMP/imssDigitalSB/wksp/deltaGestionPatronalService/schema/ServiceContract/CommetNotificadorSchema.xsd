@@ -1,0 +1,12 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://mx.gob.imss.delta.global.service/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="publicarComet">
+	  <xs:complexType>
+	    <xs:sequence>
+	      <xs:element minOccurs="0" name="arg0" nillable="true" type="xs:int"/>
+	      <xs:element minOccurs="0" name="arg1" nillable="true" type="xs:long"/>
+	      <xs:element minOccurs="0" name="arg2" nillable="true" type="xs:long"/>
+	      <xs:element name="arg3" type="xs:string"/>
+	    </xs:sequence>
+	  </xs:complexType>
+	</xs:element>
+</xs:schema>

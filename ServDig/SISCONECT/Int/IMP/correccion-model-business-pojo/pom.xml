@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+ <parent>
+    <groupId>mx.gob.imss.ctirss.correccion</groupId>  
+	<artifactId>correccion</artifactId>
+    <version>1.0</version>
+  </parent>
+  
+  <groupId>mx.gob.imss.ctirss.correccion.pojo</groupId>
+  <artifactId>correccion-model-business-pojo</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>correccion-model-business-pojo</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    
+    <!---->    
+    <!-- Produccion -->
+<!--     <mx.gob.imss.ctirss.delta.delta-modelo-negocio>1.6-RELEASE</mx.gob.imss.ctirss.delta.delta-modelo-negocio>  -->
+<!--     <mx.gob.imss.ctirss.delta.delta-framework-base>1.6-RELEASE</mx.gob.imss.ctirss.delta.delta-framework-base> -->
+
+<!-- Stage -->
+<!--      <mx.gob.imss.ctirss.delta.delta-modelo-negocio>2.6</mx.gob.imss.ctirss.delta.delta-modelo-negocio>  -->
+<!--     <mx.gob.imss.ctirss.delta.delta-framework-base>2.6</mx.gob.imss.ctirss.delta.delta-framework-base> -->
+    
+    
+    <!-- Desarrollo -->
+    <mx.gob.imss.ctirss.delta.delta-modelo-negocio>2.6</mx.gob.imss.ctirss.delta.delta-modelo-negocio>
+    <mx.gob.imss.ctirss.delta.delta-framework-base>2.6</mx.gob.imss.ctirss.delta.delta-framework-base> 
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+      <!-- Dependencia del Framework del IMSS -->
+    <dependency>
+	  <groupId>mx.gob.imss.ctirss.correccion.framework</groupId>
+	  <artifactId>correccion-framework-base</artifactId>
+	  <version>1.0</version>
+	  <type>jar</type>
+    </dependency>
+    
+    <!--  Commons BeanUtils -->
+    <dependency>
+    <groupId>commons-beanutils</groupId>
+    <artifactId>commons-beanutils</artifactId>
+    <version>1.7.0</version>
+</dependency>
+    	<!-- Jackson JSON Mapper -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+		
+		
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-modelo-negocio</artifactId>
+			<version>${mx.gob.imss.ctirss.delta.delta-modelo-negocio}</version> 
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>mx.gob.imss.ctirss.delta</groupId>
+			<artifactId>delta-framework-base</artifactId>
+			<version>${mx.gob.imss.ctirss.delta.delta-framework-base}</version>
+		</dependency>
+		
+  </dependencies>
+    
+
+	
+	
+
+
+</project>

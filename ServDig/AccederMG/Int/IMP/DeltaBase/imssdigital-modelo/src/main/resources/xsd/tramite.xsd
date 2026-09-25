@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cobranza="http://mx.gob.imss.digital.modelo.cobranza" xmlns:comun="http://mx.gob.imss.digital.modelo.comun" xmlns:cuestinario="http://mx.gob.imss.digital.modelo.cuestionario" xmlns:doc="http://mx.gob.imss.digital.modelo.documento.probatorio" xmlns:domicilio="http://mx.gob.imss.digital.modelo.domicilio" xmlns:patron="http://mx.gob.imss.digital.modelo.patron" xmlns:persona="http://mx.gob.imss.digital.modelo.persona" xmlns:tramite="http://mx.gob.imss.digital.modelo.tramite" targetNamespace="http://mx.gob.imss.digital.modelo.tramite" version="1.0">
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.persona" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/persona.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.documento.probatorio" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/documento-probatorio.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.domicilio" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/domicilio.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.cobranza" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/cobranza.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.comun" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/comun.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.cuestionario" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/cuestinario.xsd"/>
+
+  <xs:import namespace="http://mx.gob.imss.digital.modelo.patron" schemaLocation="/home/antonio/CDA-TFS/delta/imssdigital-modelo/src/main/resources/xsd/patron.xsd"/>
+
+  <xs:element name="estadoTramite" type="tramite:estadoTramite"/>
+
+  <xs:element name="razon-resultado" type="tramite:razon-resultado"/>
+
+  <xs:element name="tipoTramite" type="tramite:tipoTramite"/>
+
+  <xs:element name="tramite" type="tramite:tramite"/>
+
+  <xs:element name="tramiteFisica" type="tramite:tramiteFisica"/>
+
+  <xs:element name="tramiteMoral" type="tramite:tramiteMoral"/>
+
+  <xs:element name="tramiteSeguroIvro" type="tramite:tramiteSeguroIvro"/>
+
+  <xs:element name="tramiteSeguroIvroMod33" type="tramite:tramiteSeguroIvroMod33"/>
+
+  <xs:element name="tramiteSeguroIvroMod40" type="tramite:tramiteSeguroIvroMod40"/>
+
+  <xs:complexType name="tramiteMoral">
+    <xs:complexContent>
+      <xs:extension base="tramite:tramite">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="persona:moral"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="tramite">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="resultado" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="razonResultado" type="tramite:razon-resultado"/>
+      <xs:element minOccurs="0" ref="tramite:estadoTramite"/>
+      <xs:element minOccurs="0" name="tramiteId" type="xs:long"/>
+      <xs:element minOccurs="0" name="observacion" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaTramite" type="xs:dateTime"/>
+      <xs:element minOccurs="0" ref="tramite:tipoTramite"/>
+      <xs:element minOccurs="0" name="detalleTramiteXml" type="xs:string"/>
+      <xs:element minOccurs="0" name="indRatificado" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="fechaPresentacion" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaPresentacionParse" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaRegistroActualizacion" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaEfecto" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaConclusion" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaConclusionParse" type="xs:string"/>
+      <xs:element minOccurs="0" name="pasoTramite" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="documentoPorTipos" nillable="true" type="doc:documentoPorTipo"/>
+      <xs:element minOccurs="0" name="persona" type="persona:fisica"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="personas" nillable="true" type="persona:fisica"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="documentosProbatorios" nillable="true" type="doc:documentoProbatorio"/>
+      <xs:element minOccurs="0" name="tramiteIdHashed" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="razon-resultado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idRazonResultado" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="estadoTramite">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idEstadoTramitePersona" type="xs:long"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoTramite">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="idTipoTramite" type="xs:int"/>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string"/>
+      <xs:element minOccurs="0" name="guiaRapida" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="guiaDetallada" type="xs:base64Binary"/>
+      <xs:element minOccurs="0" name="documentacionBasica" type="xs:string"/>
+      <xs:element minOccurs="0" name="fundamentoLegal" type="xs:string"/>
+      <xs:element minOccurs="0" name="indTipoConclusion" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="documentos" nillable="true" type="doc:documento"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tramiteSeguroIvroMod40">
+    <xs:complexContent>
+      <xs:extension base="tramite:tramiteSeguroIvro">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="tramiteSeguroIvro">
+    <xs:complexContent>
+      <xs:extension base="tramite:tramite">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="cobranza:compra"/>
+          <xs:element minOccurs="0" ref="cobranza:cotizacion"/>
+          <xs:element minOccurs="0" name="fechaInicio" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="fechaFin" type="xs:dateTime"/>
+          <xs:element minOccurs="0" ref="comun:modalidad"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="beneficiarios" nillable="true" type="persona:fisica"/>
+          <xs:element minOccurs="0" name="renovacion" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="idSeguroAnterior" type="xs:long"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="cuetionarios" nillable="true" type="cuestinario:personaCuestionario"/>
+          <xs:element minOccurs="0" name="aplicaCuestionario" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="nrpFisica" type="xs:string"/>
+          <xs:element minOccurs="0" name="solicitante" type="persona:fisica"/>
+          <xs:element minOccurs="0" name="domicilioSeguro" type="domicilio:domicilio"/>
+          <xs:element name="desdeExtranjero" type="xs:boolean"/>
+          <xs:element name="soloSolicitante" type="xs:boolean"/>
+          <xs:element minOccurs="0" ref="patron:registroPatronal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="tramiteSeguroIvroMod33">
+    <xs:complexContent>
+      <xs:extension base="tramite:tramiteSeguroIvro">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="tramiteFisica">
+    <xs:complexContent>
+      <xs:extension base="tramite:tramite">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="persona:fisica"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

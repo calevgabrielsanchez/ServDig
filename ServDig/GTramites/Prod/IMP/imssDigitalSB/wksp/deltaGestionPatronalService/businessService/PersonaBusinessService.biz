@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:env="http://www.bea.com/wli/config/env" xmlns:ejb="http://www.bea.com/wli/sb/transports/ejb">
+  <ser:coreEntry isProxy="false" isEnabled="true" isAutoPublish="false" isTracingEnabled="false">
+    <ser:description>Contiene los metodos para finalizar una solicitud de personas</ser:description>
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" transport-typed="true" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:binding>
+        <con:name>JwsServiceSoapBinding</con:name>
+        <con:namespace>http://delta.global.services/</con:namespace>
+      </con:binding>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>10</ser:aggregationInterval>
+    </ser:monitoring>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:throttling enabled="false">
+      <ser:capacity>0</ser:capacity>
+      <ser:maxQueueLength>0</ser:maxQueueLength>
+      <ser:timeToLive>0</ser:timeToLive>
+    </ser:throttling>
+    <ser:result-caching isEnabled="true" isSupported="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>ejb</tran:provider-id>
+    <tran:inbound>false</tran:inbound>
+    <tran:URI weight="1">
+      <env:value>ejb:deltaJNDIProvider:solicitudPersonaBusiness#mx.gob.imss.ctirss.gestionpersonas.servicios.business.SolicitudPersonaBusinessRemote</env:value>
+    </tran:URI>
+    <tran:outbound-properties>
+      <tran:load-balancing-algorithm>round-robin</tran:load-balancing-algorithm>
+      <tran:retry-count>0</tran:retry-count>
+      <tran:retry-interval>30</tran:retry-interval>
+      <tran:retry-application-errors>true</tran:retry-application-errors>
+      <tran:delay-interval-configuration isEnabled="false">
+        <tran:delay-interval>0</tran:delay-interval>
+      </tran:delay-interval-configuration>
+    </tran:outbound-properties>
+    <tran:provider-specific>
+      <ejb:security>
+        <ejb:passClientIdentity>false</ejb:passClientIdentity>
+      </ejb:security>
+      <ejb:service>
+        <ejb:clientJar ref="deltaGestionPatronalService/libs/gestionIndividuo-service-business-interface-1.4-SNAPSHOT"/>
+        <ejb:ejbBizService classname="mx.gob.imss.ctirss.gestionpersonas.servicios.business.SolicitudPersonaBusinessRemote">
+          <ejb:method name="actualizaUsuarioEsquemaSeguridad" signature="void actualizaUsuarioEsquemaSeguridad(mx.gob.imss.ctirss.delta.model.Usuario,mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica) throws mx.gob.imss.ctirss.delta.exception.usuario.ActualizaUsuarioEsquemaSeguridadException,mx.gob.imss.ctirss.delta.exception.usuario.EsquemaSegurdiadException" exclude="true">
+            <ejb:operation>actualizaUsuarioEsquemaSeguridad</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica"/>
+          </ejb:method>
+          <ejb:method name="agregarIdentificadores" signature="void agregarIdentificadores(mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica)" exclude="true">
+            <ejb:operation>agregarIdentificadores</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+          </ejb:method>
+          <ejb:method name="alta" signature="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud alta(mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud)" exclude="true">
+            <ejb:operation>alta</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="cancelarSolicitud" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud cancelarSolicitud(java.lang.Long) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException" exclude="true">
+            <ejb:operation>cancelarSolicitud</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="cancelaSolicitudes" signature="void cancelaSolicitudes()" exclude="true">
+            <ejb:operation>cancelaSolicitudes</ejb:operation>
+          </ejb:method>
+          <ejb:method name="creaCuentaUsuararioSSO" signature="void creaCuentaUsuararioSSO(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud,mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica) throws mx.gob.imss.ctirss.delta.exception.domicilio.DomicilioNoValidoException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException,mx.gob.imss.ctirss.delta.exception.individuo.RegistroPersonaFisicaException,mx.gob.imss.ctirss.delta.exception.usuario.UsuarioNoRegistradoEnEsquemaDeSeguridadException,mx.gob.imss.ctirss.delta.framework.exceptions.PersonaNoEncontradaException" exclude="true">
+            <ejb:operation>creaCuentaUsuararioSSO</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica"/>
+          </ejb:method>
+          <ejb:method name="crearTramiteActualizacionDatosPersona" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud crearTramiteActualizacionDatosPersona(mx.gob.imss.ctirss.delta.model.gestion.individuo.ICADatosRespuesta,mx.gob.imss.ctirss.delta.model.Usuario) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException,mx.gob.imss.ctirss.delta.exception.individuo.AfectacionDatosPersonaException,mx.gob.imss.ctirss.delta.framework.exceptions.PersonaNoEncontradaException,mx.gob.imss.ctirss.delta.exception.individuo.RegistroPersonaFisicaException,mx.gob.imss.ctirss.delta.exception.individuo.ComparacionSinDiferenciasException" exclude="true">
+            <ejb:operation>crearTramiteActualizacionDatosPersona</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.ICADatosRespuesta"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="crearTramiteModificacionDatosPersona" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud crearTramiteModificacionDatosPersona(mx.gob.imss.ctirss.delta.model.gestion.individuo.MDMDatosEntrada,mx.gob.imss.ctirss.delta.model.Usuario) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException" exclude="true">
+            <ejb:operation>crearTramiteModificacionDatosPersona</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.MDMDatosEntrada"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.Usuario"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="existenDiferencias" signature="boolean existenDiferencias(java.util.Map)" exclude="true">
+            <ejb:operation>existenDiferencias</ejb:operation>
+            <ejb:param name="arg0" type="java.util.Map"/>
+            <ejb:return name="return" type="boolean"/>
+          </ejb:method>
+          <ejb:method name="finalizarSolicitudActualizacionDatos" signature="void finalizarSolicitudActualizacionDatos(java.lang.Long) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException,mx.gob.imss.ctirss.delta.exception.individuo.AfectacionDatosPersonaException,mx.gob.imss.ctirss.delta.framework.exceptions.PersonaNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException" exclude="false">
+            <ejb:operation>finalizarSolicitudActualizacionDatos</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+          </ejb:method>
+          <ejb:method name="finalizarSolicitudModificacionDatosPersona" signature="void finalizarSolicitudModificacionDatosPersona(java.lang.Long) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException,mx.gob.imss.ctirss.delta.exception.individuo.AfectacionDatosPersonaException,mx.gob.imss.ctirss.delta.framework.exceptions.PersonaNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException,mx.gob.imss.ctirss.delta.exception.individuo.ErrorComparacionDatosRENAPOException,mx.gob.imss.ctirss.delta.exception.individuo.PersonaFisicaNoEncontradaException" exclude="false">
+            <ejb:operation>finalizarSolicitudModificacionDatosPersona</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+          </ejb:method>
+          <ejb:method name="finalizarSolicitudModificacionDatosPersona" signature="void finalizarSolicitudModificacionDatosPersona(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud,mx.gob.imss.ctirss.delta.model.gestion.individuo.MDMDatosEntrada,mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException" exclude="true">
+            <ejb:operation>finalizarSolicitudModificacionDatosPersona</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.MDMDatosEntrada"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.FirmaElectronica"/>
+          </ejb:method>
+          <ejb:method name="generaSolicitudUsuarioSSO" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud generaSolicitudUsuarioSSO(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException,java.lang.IllegalArgumentException" exclude="true">
+            <ejb:operation>generaSolicitudUsuarioSSO</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="getSolicitud" signature="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud getSolicitud(java.lang.Long) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException" exclude="true">
+            <ejb:operation>getSolicitud</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="getTramiteAsociadoByTipoPersona" signature="mx.gob.imss.ctirss.delta.model.gestion.tramite.Tramite getTramiteAsociadoByTipoPersona(boolean,mx.gob.imss.ctirss.delta.model.gestion.individuo.ICADatosRespuesta)" exclude="true">
+            <ejb:operation>getTramiteAsociadoByTipoPersona</ejb:operation>
+            <ejb:param name="arg0" type="boolean"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.ICADatosRespuesta"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.tramite.Tramite"/>
+          </ejb:method>
+          <ejb:method name="guardarSolicitudActualizacionDatos" signature="void guardarSolicitudActualizacionDatos(java.lang.Long,mx.gob.imss.ctirss.delta.model.gestion.individuo.ICADatosRespuesta) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException" exclude="true">
+            <ejb:operation>guardarSolicitudActualizacionDatos</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.ICADatosRespuesta"/>
+          </ejb:method>
+          <ejb:method name="guardarSolicitudModificacionDatosPersona" signature="void guardarSolicitudModificacionDatosPersona(mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud,mx.gob.imss.ctirss.delta.model.gestion.individuo.MDMDatosEntrada) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.TramiteNoEncontradoException" exclude="true">
+            <ejb:operation>guardarSolicitudModificacionDatosPersona</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+            <ejb:param name="arg1" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.MDMDatosEntrada"/>
+          </ejb:method>
+          <ejb:method name="modificar" signature="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud modificar(mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud) throws mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException" exclude="true">
+            <ejb:operation>modificar</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="obtenerSolicitudEnProceso" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud obtenerSolicitudEnProceso(java.lang.Long,java.lang.Long,mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoSolicitudEnum,mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoTramiteEnum) throws mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException" exclude="true">
+            <ejb:operation>obtenerSolicitudEnProceso</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="java.lang.Long"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoSolicitudEnum"/>
+            <ejb:param name="arg3" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoTramiteEnum"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="obtenerSolicitudRegistrada" signature="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud obtenerSolicitudRegistrada(java.lang.Long,java.lang.Long,mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoSolicitudEnum,mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoTramiteEnum) throws mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException" exclude="true">
+            <ejb:operation>obtenerSolicitudRegistrada</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:param name="arg1" type="java.lang.Long"/>
+            <ejb:param name="arg2" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoSolicitudEnum"/>
+            <ejb:param name="arg3" type="mx.gob.imss.ctirss.delta.model.gestion.patronal.TipoTramiteEnum"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.solicitud.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="procesarSolicitudesRegistradas" signature="void procesarSolicitudesRegistradas() throws mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException" exclude="true">
+            <ejb:operation>procesarSolicitudesRegistradas</ejb:operation>
+          </ejb:method>
+          <ejb:method name="procesarSolicitudExistente" signature="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud procesarSolicitudExistente(mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud) throws mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException" exclude="true">
+            <ejb:operation>procesarSolicitudExistente</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="procesarSolicitudNueva" signature="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud procesarSolicitudNueva(mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud) throws mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException" exclude="true">
+            <ejb:operation>procesarSolicitudNueva</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="procesarTramiteSolicitud" signature="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud procesarTramiteSolicitud(mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud) throws mx.gob.imss.ctirss.delta.exception.individuo.SolicitudException" exclude="true">
+            <ejb:operation>procesarTramiteSolicitud</ejb:operation>
+            <ejb:param name="arg0" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud"/>
+            <ejb:return name="return" type="mx.gob.imss.ctirss.delta.model.gestion.individuo.Solicitud"/>
+          </ejb:method>
+          <ejb:method name="retomarSolicitudActualizacionDatos" signature="java.util.Map retomarSolicitudActualizacionDatos(java.lang.Long) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException" exclude="true">
+            <ejb:operation>retomarSolicitudActualizacionDatos</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:return name="return" type="java.util.Map"/>
+          </ejb:method>
+          <ejb:method name="retomarSolicitudModificacionDatosPersona" signature="java.util.Map retomarSolicitudModificacionDatosPersona(java.lang.Long) throws mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoEncontradaException,mx.gob.imss.ctirss.delta.framework.exceptions.SolicitudNoValidaException" exclude="true">
+            <ejb:operation>retomarSolicitudModificacionDatosPersona</ejb:operation>
+            <ejb:param name="arg0" type="java.lang.Long"/>
+            <ejb:return name="return" type="java.util.Map"/>
+          </ejb:method>
+        </ejb:ejbBizService>
+        <ejb:targetNamespace>http://delta.global.services/</ejb:targetNamespace>
+        <ejb:style>Document Wrapped</ejb:style>
+        <ejb:encoding>Literal</ejb:encoding>
+      </ejb:service>
+      <ejb:ejb30>true</ejb:ejb30>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+</xml-fragment>

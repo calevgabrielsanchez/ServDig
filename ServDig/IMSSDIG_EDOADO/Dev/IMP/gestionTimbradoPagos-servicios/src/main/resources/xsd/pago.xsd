@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.mx.gob.imss.ctirss.delta.cobranza"
+	xmlns:tns="http://www.mx.gob.imss.ctirss.delta.cobranza"
+	elementFormDefault="qualified">
+
+	<complexType name="PagoType">
+		<sequence>
+			<element name="rfc" type="string"></element>
+			<element name="nombre" type="string"></element>
+			<element name="periodoPago" type="string"></element>
+			<element name="folioSUA" type="string"></element>
+			<element name="subtotalIMSS" type="string"></element>
+			<element name="recargosIMSS" type="string"></element>
+			<element name="actualizacionIMSS" type="string"></element>
+			<element name="subtotalRCV" type="string"></element>
+			<element name="recargosRCV" type="string"></element>
+			<element name="actualizacionRCV" type="string"></element>
+			<element name="fechaPago" type="string"></element>
+			<element name="enitdadRecaudadora" type="string"></element>
+			<element name="registroPatronal" type="string"></element>
+			<element name="uuid" type="string"></element>
+			<element name="xmlTimbradoSAT" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<element name="pagoRequest" type="tns:PagoType"></element>
+
+
+	<element name="pagoResponse" type="tns:PagoType"></element>
+</schema>

@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>gestionMotorCalculo-servicios-negocio-ejb</artifactId>
+  <name>Modulo Servicios de Negocio Motor Calculo (ejb)</name>
+  <url>http://maven.apache.org</url>
+  <packaging>ejb</packaging>
+
+  <parent>
+    <artifactId>gestionMotorCalculo</artifactId>
+    <groupId>mx.gob.imss.ctirss.delta.gestion.motorCalculo</groupId>
+    <version>1.0</version>
+  </parent>
+
+  <properties>
+    <project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
+    <org.springframework.version>3.0.5.RELEASE</org.springframework.version>
+    <org.slf4j.version>1.6.1</org.slf4j.version>
+    <org.hibernate.version>3.6.9.Final</org.hibernate.version>
+    <powermock.version>1.5.5</powermock.version>
+  </properties>
+
+  <dependencies>
+
+    <!-- INICIO DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+
+    <!-- Dependencia del Proyecto de Objetos de modelo DELTA IMSS -->
+    <dependency>
+      <groupId>mx.gob.imss.ctirss.delta</groupId>
+      <artifactId>imssdigital-modelo</artifactId>
+      <version>${delta.framework.version}</version>
+      <type>jar</type>
+    </dependency>
+
+    <!-- Dependencia del Proyecto de Objetos de Persistencia DELTA IMSS -->
+    <dependency>
+      <groupId>mx.gob.imss.ctirss.delta</groupId>
+      <artifactId>delta-persistencia</artifactId>
+      <version>${delta.framework.version}</version>
+      <type>jar</type>
+    </dependency>
+    <!--  Dependencia del JaxbUtils -->
+	<dependency>
+		<groupId>mx.gob.imss.distss.digital</groupId>
+       	<artifactId>jaxb-utils</artifactId>
+       	<version>1.0</version>
+	</dependency>
+    <dependency>
+      <groupId>mx.gob.imss.ctirss.delta.gestion.motorCalculo</groupId>
+      <artifactId>gestionMotorCalculo-interfaces-negocio</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>mx.gob.imss.ctirss.delta.gestion.individuo.service.interface</groupId>
+      <artifactId>gestionIndividuo-service-business-interface</artifactId>
+      <version>${delta.personas}</version>
+    </dependency>
+    <dependency>
+      <groupId>mx.gob.imss.ctirss.delta.gestion.patronal</groupId>
+      <artifactId>delta-gestionPatronal-interfaces-negocio</artifactId>
+      <version>${delta.patronal}</version>
+    </dependency>
+    <dependency>
+      <groupId>mx.gob.imss.ctirss.delta.gestion.beneficio</groupId>
+      <artifactId>gestionBeneficio-interfaces-negocio</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>mx.gob.imss.ctirss.delta</groupId>
+      <artifactId>delta-interfaces-negocio</artifactId>
+      <version>${delta.framework.version}</version>
+    </dependency>
+    <!-- Servicios Cobranza -->
+	<dependency>
+		<groupId>mx.gob.imss.ctirss.delta.cobranza</groupId>
+		<artifactId>gestionCobranza-interfaces-negocio</artifactId>
+		<version>${delta.cobranza}</version>
+	</dependency>
+    <!-- FIN DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
+
+    <!-- EJB -->
+    <dependency>
+      <groupId>javax.ejb</groupId>
+      <artifactId>ejb-api</artifactId>
+      <version>3.0</version>
+      <scope>provided</scope>
+    </dependency>
+    
+
+    <!-- HIBERNATE CORE -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>${org.hibernate.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>${org.hibernate.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate.javax.persistence</groupId>
+      <artifactId>hibernate-jpa-2.0-api</artifactId>
+      <version>1.0.1.Final</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-commons-annotations</artifactId>
+      <version>3.2.0.Final</version>
+    </dependency>
+
+    <!-- HIBERNATE DEPENDECIES -->
+    <dependency>
+      <groupId>antlr</groupId>
+      <artifactId>antlr</artifactId>
+      <version>2.7.6</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>3.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>dom4j</groupId>
+      <artifactId>dom4j</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.transaction</groupId>
+      <artifactId>jta</artifactId>
+      <version>1.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>cglib</groupId>
+      <artifactId>cglib-nodep</artifactId>
+      <version>2.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>asm</groupId>
+      <artifactId>asm</artifactId>
+      <version>3.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javassist</groupId>
+      <artifactId>javassist</artifactId>
+      <version>3.12.0.GA</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${org.slf4j.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <version>${org.slf4j.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>${org.slf4j.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.16</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.1</version>
+    </dependency>
+    
+
+    <dependency>
+    <groupId>weblogic</groupId>
+    <artifactId>wlfullclient</artifactId>
+    <version>10.3.4</version>
+    <scope>provided</scope>
+    </dependency>
+<!-- <dependency> -->
+<!--   <groupId>javax.jms</groupId> -->
+<!--   <artifactId>jms</artifactId> -->
+<!--   <version>1.1</version> -->
+<!--   <scope>provided</scope> -->
+<!-- </dependency> -->
+    <!-- DEPENDENCIAS DE PRUEBAS -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easymock</groupId>
+      <artifactId>easymock</artifactId>
+      <version>3.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-module-junit4</artifactId>
+      <version>${powermock.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.powermock</groupId>
+      <artifactId>powermock-api-easymock</artifactId>
+      <version>${powermock.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- Joda Time -->
+	<dependency>
+		<groupId>joda-time</groupId>
+		<artifactId>joda-time</artifactId>
+		<version>2.7</version>
+	</dependency>    
+  </dependencies>
+
+  <repositories>
+    <repository>
+      <id>ctirss</id>
+      <name>CTIRSS repository</name>
+      <layout>default</layout>
+      <url>http://172.16.5.134:8080/repository/repo/</url>
+      <snapshots>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ejb-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <ejbVersion>3.0</ejbVersion>
+        </configuration>
+      </plugin>
+
+      <!-- Habilita los facets y natures para que el eclipse reconoza el proyecto como de tipo de EJB. -->
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <configuration>
+          <additionalBuildcommands>
+            <buildCommand>
+              <name>org.eclipse.jdt.core.javabuilder</name>
+            </buildCommand>
+            <buildCommand>
+              <name>org.eclipse.wst.common.project.facet.core.builder</name>
+            </buildCommand>
+            <buildCommand>
+              <name>org.eclipse.wst.validation.validationbuilder</name>
+            </buildCommand>
+          </additionalBuildcommands>
+
+          <additionalProjectnatures>
+            <projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+            <projectnature>org.eclipse.jdt.core.javanature</projectnature>
+            <projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+            <projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+          </additionalProjectnatures>
+
+          <additionalConfig>
+            <file>
+              <name>.settings/org.eclipse.wst.common.project.facet.core.xml</name>
+              <content>&lt;faceted-project&gt;
+                &lt;runtime name="Weblogic Runtime" /&gt;
+                &lt;fixed facet="java" /&gt;
+                &lt;fixed facet="jst.web" /&gt;
+                &lt;fixed facet="wst.jsdt.web" /&gt;
+                &lt;installed facet="java" version="1.6" /&gt;
+                &lt;installed facet="jst.web" version="2.5" /&gt;
+                &lt;installed facet="wls.web" version="10.3.4" /&gt;
+                &lt;installed facet="wst.jsdt.web" version="1.0" /&gt;
+                &lt;/faceted-project&gt;</content>
+            </file>
+            <file>
+              <name>.settings/org.eclipse.wst.common.component</name>
+              <content>&lt;project-modules id="moduleCoreId" project-version="1.5.0"&gt;
+                &lt;wb-module deploy-name="dynamic"&gt;
+                &lt;wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource" /&gt;
+                &lt;wb-resource deploy-path="/" source-path="/src/main/java" /&gt;
+                &lt;wb-resource deploy-path="/" source-path="/src/main/resources" /&gt;
+                &lt;property name="context-root" value="${project.artifactId}" /&gt;
+                &lt;property name="java-output-path" value="target/classes" /&gt;
+                &lt;/wb-module&gt;
+                &lt;/project-modules&gt;</content>
+            </file>
+          </additionalConfig>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <instrumentation>
+            <excludes>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/business/ExpedienteServiceBusiness.class</exclude>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/business/TramiteServiceBusiness.class</exclude>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/business/CompraServiceBusiness.class</exclude>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/business/RecargoIvroServiceBusiness.class</exclude>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/business/CotizacionServiceBusiness.class</exclude>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/business/GeneraLineaCapturaBusiness.class</exclude>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/utility/ExpedienteServiceUtility.class</exclude>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/utility/TramiteServiceUtility.class</exclude>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/entity/ExpedienteServiceEntity.class</exclude>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/entity/PublicaCompraVencidaEntity.class</exclude>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/entity/TramiteServiceEntity.class</exclude>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/ws/GeneradorCompraWsBusiness.class</exclude>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/ws/ActualizaPagoWsBusiness.class</exclude>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/ws/CuotaServiceWsBusiness.class</exclude>
+              <exclude>mx/gob/imss/ctirss/delta/gestion/motorCalculo/service/ws/ActualizaCompraWsBusiness.class</exclude>
+            </excludes>
+          </instrumentation>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

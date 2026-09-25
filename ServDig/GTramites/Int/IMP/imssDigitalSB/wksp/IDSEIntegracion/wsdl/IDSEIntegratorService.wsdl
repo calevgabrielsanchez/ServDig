@@ -1,0 +1,99 @@
+<?xml version='1.0'?>
+<WL5G3N0:definitions name="JwsServiceDefinitions" targetNamespace="http://mx.gob.imss.idse/" xmlns="" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://mx.gob.imss.idse/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://mx.gob.imss.idse/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://mx.gob.imss.idse/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="java:mx.gob.imss.ctirss.idse.model"/>
+      <xs:element name="registrarAltaPatronalIDSE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="iectBean" type="java:RequerimientoIETCBean" xmlns:java="java:mx.gob.imss.ctirss.idse.model"/>
+            <xs:element name="idseBean" type="java:RequerimientoIDSEBean" xmlns:java="java:mx.gob.imss.ctirss.idse.model"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="registrarAltaPatronalIDSEResponse">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:mx.gob.imss.ctirss.idse.model" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://mx.gob.imss.idse/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="RequerimientoIETCBean">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Pkcs7Bean" nillable="true" type="java:Pkcs7IETCBean" xmlns:java="java:mx.gob.imss.ctirss.idse.model"/>
+          <xs:element minOccurs="1" name="RegPatronBean" nillable="true" type="java:RegistroPatronalIETCBean" xmlns:java="java:mx.gob.imss.ctirss.idse.model"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Pkcs7IETCBean">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="ClaveSerial" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="NombreCompleto" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="EstatusFiel" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="CorreoElectronico" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="CurpFiel" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="NombreUsuario" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="RfcAsociado" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="FechaValidaInicio" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="1" name="FechaValidaFin" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="1" name="Telefono" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="IdRol" nillable="false" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RegistroPatronalIETCBean">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="RegistroPatronal" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="FechaRecepcion" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="1" name="FechaActivacion" nillable="true" type="xs:dateTime"/>
+          <xs:element minOccurs="1" name="RazonSocial" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="RfcRegistroPatronal" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="TipoPersona" nillable="false" type="xs:int"/>
+          <xs:element minOccurs="1" name="EstatusRP" nillable="false" type="xs:int"/>
+          <xs:element minOccurs="1" name="UsuarioSubDel" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RequerimientoIDSEBean">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="CveDel" nillable="false" type="xs:int"/>
+          <xs:element minOccurs="1" name="CveSub" nillable="false" type="xs:int"/>
+          <xs:element minOccurs="1" name="RegPatron" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="RegPatronDig" nillable="false" type="xs:int"/>
+          <xs:element minOccurs="1" name="RazonSocial" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Municipio" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Sector" nillable="false" type="xs:int"/>
+          <xs:element minOccurs="1" name="Rfc" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Domicilio" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Localidad" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Actividad" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Fraccion" nillable="false" type="xs:int"/>
+          <xs:element minOccurs="1" name="ClaseRt" nillable="false" type="xs:int"/>
+          <xs:element minOccurs="1" name="Email" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="RepLegal" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="registrarAltaPatronalIDSE">
+    <WL5G3N0:part element="WL5G3N1:registrarAltaPatronalIDSE" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="registrarAltaPatronalIDSEResponse">
+    <WL5G3N0:part element="WL5G3N1:registrarAltaPatronalIDSEResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="Jws">
+    <WL5G3N0:operation name="registrarAltaPatronalIDSE" parameterOrder="parameters">
+      <WL5G3N0:input message="WL5G3N1:registrarAltaPatronalIDSE"/>
+      <WL5G3N0:output message="WL5G3N1:registrarAltaPatronalIDSEResponse"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="JwsServiceSoapBinding" type="WL5G3N1:Jws">
+    <WL5G3N2:binding style="document" transport="http://www.bea.com/soap/transport/local"/>
+    <WL5G3N0:operation name="registrarAltaPatronalIDSE">
+      <WL5G3N2:operation soapAction="http://mx.gob.imss.idse/registrarAltaPatronalIDSE" style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body parts="parameters" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+</WL5G3N0:definitions>

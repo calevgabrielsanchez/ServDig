@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="simple.base.definition" template="/WEB-INF/views/layout/main-simple.jsp">
+		<put-attribute name="title"
+			value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="title"
+			value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="subencabezado"
+			value="/WEB-INF/views/layout/sub-encabezado.jsp" />
+		<!-- <put-attribute name="menu" value="/WEB-INF/views/layout/menu.jsp" 
+			/> -->
+		<put-attribute name="submenu" value="/WEB-INF/views/layout/submenu.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<definition name="base.definition.embebed" template="/WEB-INF/views/layout/main-embebed.jsp">
+		<put-attribute name="title"
+			value=" Título del Sistema o Módulo DELTA " />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado.jsp" />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<!-- Definicion de la pantalla HOME de la aplicacion -->
+	<definition name="home" extends="base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/general/home.jsp " />
+		<put-attribute name="pie" value="/WEB-INF/views/layout/pie.jsp" />
+	</definition>
+
+	<!-- Definiciones de los errores en genertal -->
+	<definition name="error" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="databaseError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="internalError" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="500" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error.jsp" />
+	</definition>
+
+	<definition name="404" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/error/error-404.jsp" />
+	</definition>
+
+	<!--Modificaciones hechas para IVRO personal LEO -->
+	<definition name="wizard.base.definition" template="/WEB-INF/views/layout/main-wizard.jsp">
+		<put-attribute name="title" value=" Portal de Servicios DELTA " />
+		<put-attribute name="pie"
+			value="/WEB-INF/views/layout/pie-empty.jsp" />
+		<put-attribute name="nameComScore" value="" />
+	</definition>
+
+	<!-- <definition name="wizardIVROIndivInit" extends="wizard.base.definition"> -->
+	<!-- <put-attribute name="contenido" value="/WEB-INF/views/wizard/ivro/personal/modalidad/inicial-wizard-ivro-indiv.jsp"/> -->
+	<!-- </definition> -->
+
+	<!-- <definition name="wizardIVROIndivContenido" extends="wizard.base.definition"> -->
+	<!-- <put-attribute name="contenido" value="/WEB-INF/views/wizard/ivro/personal/modalidad/contenido-wizard-ivro-indiv.jsp"/> -->
+	<!-- </definition> -->
+	<!--Fin Modificaciones hechas para IVRO personal LEO -->
+
+	<definition name="wizardDetalleSeguroContenido" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/ivro/seguro/detalle-seguro.jsp" />
+	</definition>
+
+	<!-- ALTA DE SEGURO DOMESTICO - IVRO -->
+	<definition name="seguroDomesticoAltaInit" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/seguroDomestico/alta/init.jsp" />
+		<put-attribute name="nameComScore" value=".domestico.iniciar" />
+	</definition>
+
+	<!-- ALTA DE SEGURO DOMESTICO - IVRO -->
+	<definition name="seguroDomesticoAltaListaTrabajadores"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/seguroDomestico/alta/listaTrabajadores.jsp" />
+		<put-attribute name="nameComScore" value=".domestico.trabajador.listado" />
+	</definition>
+
+	<!-- ALTA DE SEGURO DOMESTICO - IVRO -->
+	<definition name="seguroDomesticoAltaAgregarTrabajador"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/seguroDomestico/alta/agregarTrabajador.jsp" />
+		<put-attribute name="nameComScore" value=".domestico.trabajador.agregar" />
+	</definition>
+
+	<!-- ALTA DE SEGURO DOMESTICO - IVRO -->
+	<definition name="seguroDomesticoAltaCuestionario" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/seguroDomestico/alta/cuestionario.jsp" />
+		<put-attribute name="nameComScore" value=".domestico.cuestionario" />
+	</definition>
+
+	<!-- COMUNES - SEGURO DOMESTICO - IVRO -->
+	<definition name="seguroDomesticoComunSolicitarTipoPago"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/seguroDomestico/comunes/seleccionarTipoPago.jsp" />
+		<put-attribute name="nameComScore" value=".domestico.pago.seleccionar" />
+	</definition>
+
+	<!-- COMUNES - SEGURO DOMESTICO - IVRO -->
+	<definition name="seguroDomesticoComunSolicitarCentroTrabajo"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/seguroDomestico/comunes/seleccionarCentroTrabajo.jsp" />
+		<put-attribute name="nameComScore" value=".domestico.centro.seleccionar" />
+	</definition>
+
+	<!-- COMUNES - SEGURO DOMESTICO - IVRO -->
+	<definition name="seguroDomesticoComunAgregarCentroTrabajo"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/seguroDomestico/comunes/agregarCentroTrabajo.jsp" />
+		<put-attribute name="nameComScore" value=".domestico.centro.agregar" />
+	</definition>
+
+	<!-- COMUNES - SEGURO DOMESTICO - IVRO -->
+	<definition name="seguroDomesticoComunCotizacionTrabajador"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/seguroDomestico/comunes/cotizacionTrabajador.jsp" />
+		<put-attribute name="nameComScore" value=".domestico.trabajador.cotizacion" />
+	</definition>
+
+	<!-- COMUNES - SEGURO DOMESTICO - IVRO -->
+	<definition name="seguroDomesticoComunResumen" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/seguroDomestico/comunes/resumen.jsp" />
+		<put-attribute name="nameComScore" value=".domestico.resumen" />
+	</definition>
+
+	<!-- COMUNES - SEGURO DOMESTICO - IVRO -->
+	<definition name="seguroDomesticoComunFinal" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/seguroDomestico/comunes/final.jsp" />
+		<put-attribute name="nameComScore" value=".domestico.final" />
+	</definition>
+
+	<!-- RENOVACION DE SEGURO DOMESTICO - IVRO -->
+	<definition name="seguroDomesticoRenovacionInit" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/seguroDomestico/renovacion/init.jsp" />
+	</definition>
+
+	<!-- RENOVACION DE SEGURO DOMESTICO - IVRO -->
+	<definition name="seguroDomesticoRenovacionListaTrabajadores"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/seguroDomestico/renovacion/listaTrabajadores.jsp" />
+	</definition>
+
+	<!-- RENOVACION DE SEGURO DOMESTICO - IVRO -->
+	<definition name="seguroDomesticoRenovacionActualizarSalario"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/seguroDomestico/renovacion/actualizarSalario.jsp" />
+	</definition>
+
+	<!-- VENTANILLA - SEGURO DOMESTICO - IVRO -->
+	<definition name="seguroDomesticoVentanillaListaSeguros"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/portlet/seguroDomestico/content.jsp" />
+	</definition>
+
+	<!-- COMPRA y RENOVACION individual -->
+	<definition name="wizardIndividualInit" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/ivro/individual/inicio-wizard-ivro-indiv.jsp" />
+      <put-attribute name="nameComScore" value=".individual.inicio" />
+	</definition>
+
+<!-- COMUNES - SEGURO INDIVIUAL -->
+	<definition name="wizardIndividualComunSolicitarTipoPago" extends="wizard.base.definition">
+		<put-attribute name="contenido" value="/WEB-INF/views/wizard/ivro/individual/comunes/seleccionarTipoPago.jsp" />
+		<put-attribute name="nameComScore" value=".domestico.pago.seleccionar" />
+	</definition>
+	<definition name="wizardIndividualModalidad" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/ivro/individual/modalidad-wizard-ivro.jsp" />
+      <put-attribute name="nameComScore" value=".individual.modalidad" />
+	</definition>
+	<definition name="wizardIndividualCotizacion" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/ivro/individual/cotizacion-wizard-ivro.jsp" />
+	</definition>
+	<definition name="wizardIndividualCotizacionRenovacion" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/ivro/individual/cotizacion-wizard-renovacion-ivro.jsp" />
+	</definition>
+	<definition name="wizardIndividualCuestionario" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/ivro/individual/cuestionario-ivro-indiv.jsp" />
+      <put-attribute name="nameComScore" value=".individual.cuestionario" />
+	</definition>
+	<definition name="wizardIndividualResumen" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/ivro/individual/resumen-ivro-indiv.jsp" />
+      <put-attribute name="nameComScore" value=".individual.resumen" />
+	</definition>
+	<definition name="wizardSeguroIndividualAgregarDomicilio" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/ivro/individual/agregarDomicilio.jsp" />
+	</definition>
+	<definition name="validaIndividualModalidad" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+					   value="/WEB-INF/views/wizard/ivro/individual/modalidad-wizard-ivro.jsp" />
+		<put-attribute name="nameComScore" value=".individual.valida" />
+	</definition>
+	<definition name="validaPagosVentanilla" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+				   value="/WEB-INF/views/wizard/ivro/individual/validaPagosVentanilla.jsp" />
+		<put-attribute name="nameComScore" value=".individual.validapagos.ventanilla" />
+	</definition>
+	<!-- SEGURO FAMILIAR (MODALIDAD 33) -->
+	<definition name="seguroFamiliarAltaInit" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-33/alta/inicial.jsp" />
+		<put-attribute name="nameComScore" value=".familiar.inicio" />
+	</definition>
+
+	<definition name="seguroFamiliarComunSolicitarDomicilio"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-33/comunes/seleccionarDomicilio.jsp" />
+		<put-attribute name="nameComScore" value=".familiar.domicilio.seleccionar" />
+	</definition>
+
+	<definition name="seguroFamiliarComunAgregarDomicilio"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-33/comunes/agregarDomicilio.jsp" />
+		<put-attribute name="nameComScore" value=".familiar.domicilio.agregar" />
+	</definition>
+
+	<definition name="seguroFamiliarAltaCuestionario" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-33/alta/cuestionario.jsp" />
+		<put-attribute name="nameComScore" value=".familiar.cuestionario" />
+	</definition>
+
+	<definition name="seguroFamiliarAltaListaIntegrantes"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-33/alta/listaIntegrantes.jsp" />
+		<put-attribute name="nameComScore" value=".familiar.integrantes" />
+	</definition>
+
+	<definition name="seguroFamiliarComunResumen" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-33/comunes/resumen.jsp" />
+		<put-attribute name="nameComScore" value=".familiar.confirmacion" />
+	</definition>
+
+	<definition name="seguroFamiliarComunFinal" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-33/comunes/final.jsp" />
+		<put-attribute name="nameComScore" value=".familiar.final" />
+	</definition>
+
+	<definition name="seguroFamiliarListaSeguros" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-33/comunes/lista-seguros.jsp" />
+		<put-attribute name="nameComScore" value=".familiar.seguros" />
+	</definition>
+
+	<definition name="seguroFamiliarDetalle" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-33/comunes/detalle-seguro.jsp" />
+		<put-attribute name="nameComScore" value=".familiar.detalle" />
+	</definition>
+
+	<!-- CVRO - CONTINUACION VOLUNTARIA (MODALIDAD 40) -->
+	<definition name="continuacionVoluntariaAltaInit" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/alta/inicial.jsp" />
+		<put-attribute name="nameComScore" value=".mod40.inicio" />
+	</definition>
+
+	<definition name="wizardSeguroCVROComunSolicitarDatosInscripcion"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/comunes/datosInscripcion.jsp" />
+		<put-attribute name="nameComScore" value=".mod40.datosInscripcion" />
+	</definition>
+
+	<definition name="wizardSeguroCVROConfirmarDatos" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/comunes/confirmarDatos.jsp" />
+		<put-attribute name="nameComScore" value=".mod40.confirmarDatos" />
+	</definition>
+
+	<definition name="wizardSeguroCVROImpresionDocumentos"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/comunes/impresionDocumentos.jsp" />
+		<put-attribute name="nameComScore" value=".mod40.impresionDocumentos" />
+	</definition>
+
+	<definition name="wizardSeguroCVROAgregarDomicilio" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/comunes/seleccionarDomicilio.jsp" />
+		<put-attribute name="nameComScore" value=".mod40.seleccionarDomicilio" />
+	</definition>
+
+	<definition name="wizardSeguroContinuacionVoluntariaComunAgregarDomicilio"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/comunes/agregarDomicilio.jsp" />
+		<put-attribute name="nameComScore" value=".mod40.agregarDomicilio" />
+	</definition>
+
+	<definition name="wizardSeguroCVRODetalle" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/comunes/detalle-seguro.jsp" />
+		<put-attribute name="nameComScore" value=".mod40.detalleSeguro" />
+	</definition>
+	
+	<definition name="layout.institucional.ajax"
+		template="/WEB-INF/views/layout/main-institucional.jsp">
+		<put-attribute name="title" value="IMSS Digital" />
+		<put-attribute name="encabezado"
+			value="/WEB-INF/views/layout/encabezado-ajax.jsp" />
+		<put-attribute name="pie"
+			value="/WEB-INF/views/layout/pie-ajax.jsp" />
+	</definition>
+
+	<definition name="confirmacionBajaexpresa"
+		extends="layout.institucional.ajax">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/baja-expresa/confirmacion-baja-expresa.jsp" />
+		<put-attribute name="nameComScore"
+			value=".mod40.detalleSeguro" />
+	</definition>
+
+	<definition name="confirmacionErrorBajaexpresa"
+		extends="layout.institucional.ajax">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/baja-expresa/confirmacion-error.jsp" />
+		<put-attribute name="nameComScore"
+			value=".mod40.detalleSeguro" />
+	</definition>
+
+	<definition name="confirmacionExitosaBajaExpresa"
+		extends="layout.institucional.ajax">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/baja-expresa/confirmacion-exitosa.jsp" />
+		<put-attribute name="nameComScore"
+			value=".mod40.detalleSeguro" />
+	</definition>
+
+    <definition name="wizardSeguroCVROPagos" extends="wizard.base.definition">
+        <put-attribute name="contenido"
+                       value="/WEB-INF/views/wizard/mod-40/comunes/detalle-pagos.jsp" />
+        <put-attribute name="nameComScore" value=".mod40.pagosSeguro" />
+    </definition>
+
+	<definition name="wizardSeguroCVRODetalleRenovacion"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/renovacion/detalle-seguro-renovacion.jsp" />
+	</definition>
+
+	<definition name="wizardSeguroCVROConfirmarDomicilio"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/renovacion/confirmarDomicilio.jsp" />
+	</definition>
+
+	<definition name="wizardSeguroCVRODatosInscripcionRenovacion"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/renovacion/datosInscripcionRenovacion.jsp" />
+	</definition>
+
+	<definition name="wizardSeguroCVROInicioRenovacion" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/renovacion/inicialRenovacion.jsp" />
+	</definition>
+
+	<definition name="wizardCvroAgregarDomicilioRenovacion"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/renovacion/agregarDomicilio.jsp" />
+	</definition>
+
+	<definition name="wizardSeguroCVROConfirmarDatosRenovacion"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/renovacion/confirmarDatosRenovacion.jsp" />
+	</definition>
+
+	<definition name="cartaTerminosIndividual" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/ivro/seguro/cartaTerminos/cartaTerminos.jsp" />
+	</definition>
+
+	<definition name="mensajeRenvExtemporanea" extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/ivro/seguro/mensajeRenExt.jsp" />
+	</definition>
+</tiles-definitions>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd
+		  http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- Localiza los archivos de propiedades de acuerdo a el patron -->
+	<context:property-placeholder location="classpath*:/*.properties" />
+
+	<context:component-scan base-package="mx.gob.imss.cit" />
+
+
+	<util:map id="jaxwsCustomProperties">
+		<entry key="com.sun.xml.ws.connect.timeout">
+			<value type="java.lang.Integer">${common.connect.timeout}</value>
+		</entry>
+		<entry key="com.sun.xml.ws.request.timeout">
+			<value type="java.lang.Integer">${common.request.timeout}</value>
+		</entry>
+	</util:map>
+
+	<bean id="iESServicioSoap"
+		class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+		<property name="serviceInterface"
+			value="mx.gob.imss.cit.clienteServiciosComunes.bovedaPersonal.ws.v2.IESServicioSoap" />
+		<property name="wsdlDocumentUrl" value="${boveda.v2.wsdl}" />
+		<property name="namespaceUri" value="http://www.openuri.org/" />
+		<property name="serviceName" value="IESServicio" />
+		<property name="portName" value="IESServicioSoap" />
+		<property name="lookupServiceOnStartup" value="false" />
+		<property name="customProperties" ref="jaxwsCustomProperties" />
+	</bean>
+	
+	<bean id="iCarpetaWSService"
+		class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+		<property name="serviceInterface"
+			value="mx.gob.imss.cit.clienteServiciosComunes.bovedaPersonal.ws.carpetaws.ICarpetaWSService" />
+		<property name="wsdlDocumentUrl" value="${boveda.carpeta.wsdl}" />
+		<property name="namespaceUri" value="http://carpetaws.ws.bp.cit.imss.gob.mx/" />
+		<property name="serviceName" value="CarpetaWSServiceImplService" />
+		<property name="portName" value="CarpetaWSServiceImplPort" />
+		<property name="lookupServiceOnStartup" value="false" />
+		<property name="customProperties" ref="jaxwsCustomProperties" />
+	</bean>
+
+
+	<bean id="iDocumentoWSService"
+		class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+		<property name="serviceInterface"
+			value="mx.gob.imss.cit.clienteServiciosComunes.bovedaPersonal.ws.documentows.IDocumentoWSService" />
+		<property name="wsdlDocumentUrl" value="${boveda.documento.wsdl}" />
+		<property name="namespaceUri" value="http://documentows.ws.bp.cit.imss.gob.mx/" />
+		<property name="serviceName" value="DocumentoWSServiceImplService" />
+		<property name="portName" value="DocumentoWSServiceImplPort" />
+		<property name="lookupServiceOnStartup" value="false" />
+		<property name="customProperties" ref="jaxwsCustomProperties" />
+	</bean>
+
+	<bean id="bovedaPersonalService"
+		class="mx.gob.imss.cit.clienteServiciosComunes.services.impl.BovedaPersonalServiceImpl">
+		<property name="iCarpetaWSService" ref="iCarpetaWSService" />
+		<property name="iDocumentoWSService" ref="iDocumentoWSService" />
+	</bean>
+	
+	<bean id="bovedaPersonalV2Service"
+		class="mx.gob.imss.cit.clienteServiciosComunes.services.impl.BovedaPersonalV2ServiceImpl">
+		<property name="iESServicioSoap" ref="iESServicioSoap" />
+	</bean>
+	
+	<bean id="sipareService"
+		class="mx.gob.imss.cit.clienteServiciosComunes.services.impl.SipareServiceImpl">
+		<property name="urlSipareService" value="${sipare.wsdl}" />
+	</bean>
+	
+	<bean id="iMediosContactoWSService"
+		class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+		<property name="serviceInterface"
+			value="mx.gob.imss.cit.clienteServiciosComunes.mediosContacto.ws.IMediosContactoWSService" />
+		<property name="wsdlDocumentUrl" value="${medios.contacto.wsdl}" />
+		<property name="namespaceUri" value="http://www.openuri.org/" />
+		<property name="serviceName" value="JwsServiceSoapBindingQSService" />
+		<property name="portName" value="JwsServiceSoapBindingQSPort" />
+		<property name="lookupServiceOnStartup" value="false" />
+		<property name="customProperties" ref="jaxwsCustomProperties" />
+	</bean>
+
+	<!--bean id="mediosContactoService"
+		class="mx.gob.imss.cit.clienteServiciosComunes.services.impl.MediosContactoServiceImpl">
+		<property name="iMediosContactoWSService" ref="iMediosContactoWSService" />
+	</bean-->
+	
+	<bean id="mediosContactoService"
+		class="mx.gob.imss.cit.clienteServiciosComunes.services.impl.MediosContactoServiceMockImpl">
+		<property name="mailNotificar" value="ruben.gutierrezh@softtek.com" />
+	</bean>
+	
+	<bean id="iConsultaPatronWSService"
+		class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+		<property name="serviceInterface"
+			value="mx.gob.imss.cit.clienteServiciosComunes.consultaPatron.ws.IConsultaPatronWSService" />
+		<property name="wsdlDocumentUrl" value="${consulta.patron.wsdl}" />
+		<property name="namespaceUri" value="http://ws" />
+		<property name="serviceName" value="WSConsultaPatronServiceService" />
+		<property name="portName" value="WSConsultaPatronServiceSoapPort" />
+		<property name="lookupServiceOnStartup" value="false" />
+		<property name="customProperties" ref="jaxwsCustomProperties" />
+	</bean>
+
+	<bean id="consultaPatronService"
+		class="mx.gob.imss.cit.clienteServiciosComunes.services.impl.ConsultaPatronServiceImpl">
+		<property name="iConsultaPatronWSService" ref="iConsultaPatronWSService" />
+	</bean>
+	
+	<!--bean id="mediosContactoService"
+		class="mx.gob.imss.cit.clienteServiciosComunes.services.impl.MediosContactoServiceMockImpl">
+		<property name="mailNotificar" value="ruben.gutierrezh@softtek.com" />
+	</bean-->
+
+</beans>

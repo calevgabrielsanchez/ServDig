@@ -1,0 +1,29 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+	
+	
+			<!-- Setting t MySql 
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>-->
+		
+		<!-- Setting to Oracle -->
+		<property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+		<property name="hibernate.bytecode.use_reflection_optimizer">true</property>
+		<property name="show_sql">true</property>
+		<!-- property name="hibernate.query.factory_class">
+			org.hibernate.hql.classic.ClassicQueryTranslatorFactory
+		</property> -->
+
+
+
+		 <mapping class="mx.gob.imss.ctirss.clasificador.model.business.Grupo" />
+        <mapping class="mx.gob.imss.ctirss.clasificador.model.business.Division" />
+        <mapping class="mx.gob.imss.ctirss.clasificador.model.business.Fraccion" />
+        <mapping class="mx.gob.imss.ctirss.clasificador.model.business.Equivalencia" />
+		 
+	</session-factory>
+	
+	
+	
+</hibernate-configuration>

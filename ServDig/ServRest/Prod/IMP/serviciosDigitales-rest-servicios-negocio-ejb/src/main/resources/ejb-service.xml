@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+     xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:jee="http://www.springframework.org/schema/jee"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <context:annotation-config />
+	 
+	 <!-- 
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list><value>classpath:config-externo.properties</value></list>
+		</property>
+	</bean>
+	  -->
+    <!--<context:component-scan base-package=""/>-->
+    <bean id="serviceRepositoryRemoto" class="org.springframework.jndi.JndiTemplate">
+		<property name="environment">
+			<props>
+				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+                <prop key="java.naming.provider.url">${mvn.service.provider.url.original}</prop>
+				<prop key="java.naming.security.principal">${mvn.service.security.principal.original}</prop>
+				<prop key="java.naming.security.credentials">${mvn.service.security.credentials.original}</prop>
+			</props>
+		</property>
+	</bean>
+       
+    <bean id="movimientoPatronalBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="movimientoPatronalBusiness#mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.MovimientoPatronalBusinessRemote" />
+        <property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.MovimientoPatronalBusinessRemote" />
+        <property name="jndiTemplate" ref="serviceRepositoryRemoto" />
+        <property name="lookupHomeOnStartup" value="false" />
+    </bean>
+     
+     <bean id="clasificacionActividadEconomicaServiceBusiness" class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="clasificacionActividadEconomicaServiceBusiness#mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.clasificacion.actividad.economica.ActividadEcServiceRemote" />
+        <property name="businessInterface" value="mx.gob.imss.ctirss.delta.gestion.patronal.service.interfaces.clasificacion.actividad.economica.ActividadEcServiceRemote" />
+        <property name="jndiTemplate" ref="serviceRepositoryRemoto" />
+        <property name="lookupHomeOnStartup" value="false" />
+    </bean>
+           
+           
+</beans> 

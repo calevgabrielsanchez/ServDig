@@ -1,0 +1,44 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="solicitud:mx.gob.imss.ctirss.delta.model.gestion.solicitud" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="fwbm:mx.gob.imss.ctirss.delta.framework.base.model" schemaLocation="fwbm.xsd"/>
+  <xs:complexType name="Certificado">
+        <xs:complexContent>
+          <xs:extension base="fwbm:AbstractModel" xmlns:fwbm="fwbm:mx.gob.imss.ctirss.delta.framework.base.model">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="ClaveSerial" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="NombreCompleto" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="EstatusFiel" nillable="true" type="xs:int"/>
+              <xs:element minOccurs="1" name="CorreoElectronico" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="CurpFiel" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="NombreUsuario" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="RfcAsociado" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="FechaValidaInicio" nillable="true" type="xs:dateTime"/>
+              <xs:element minOccurs="1" name="FechaValidaFin" nillable="true" type="xs:dateTime"/>
+              <xs:element minOccurs="1" name="Telefono" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="IdRol" nillable="true" type="xs:int"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EstadoSolicitud">
+    <xs:complexContent>
+      <xs:extension base="fwbm:AbstractModel" xmlns:fwbm="fwbm:mx.gob.imss.ctirss.delta.framework.base.model">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Activo" nillable="true" type="xs:boolean"/>
+          <xs:element minOccurs="1" name="IdEstadoSolicitud" nillable="true" type="xs:int"/>
+          <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TipoSolicitud">
+    <xs:complexContent>
+      <xs:extension base="fwbm:AbstractModel" xmlns:fwbm="fwbm:mx.gob.imss.ctirss.delta.framework.base.model">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="IdTipoSolicitud" nillable="true" type="xs:long"/>
+          <xs:element minOccurs="1" name="Descripcion" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="Siglas" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

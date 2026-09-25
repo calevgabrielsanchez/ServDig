@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.mx.gob.imss.ctirss.delta/movCorreccionesDatosAsegurado"
+    xmlns:tns="http://www.mx.gob.imss.ctirss.delta/movCorreccionesDatosAsegurado"
+    elementFormDefault="qualified">
+    <complexType name="MovCorreccionesDatosAseguradoType">
+        <sequence>
+            <element name="delOrig" type="int"></element>
+            <element name="subOrig" type="int"></element>
+            <element name="cveAplic" type="int"></element>
+            <element name="tpMovto" type="int"></element>
+            <element name="origenMov" type="int"></element>
+            <element name="numFolio" type="int"></element>
+            <element name="argumento" type="int"></element>
+            <element name="regPatron" type="string"></element>
+            <element name="digVrPat" type="int"></element>
+            <element name="fMovto" type="date"></element>
+            <element name="fRecepMovi" type="date"></element>
+            <element name="cveUnica" type="string"></element>
+            <element name="idSubrServ" type="int"></element>
+            <element name="idEventual" type="int"></element>
+            <element name="numSegSoc" type="int"></element>
+            <element name="digVrNss" type="int"></element>
+            <element name="nomAseg" type="string"></element>
+            <element name="idExtemp" type="int"></element>
+            <element name="reducPago" type="int"></element>
+            <element name="extODel" type="int"></element>
+            <element name="salBase" type="int"></element>
+            <element name="salInfonavit" type="int"></element>
+            <element name="tpSalario" type="int"></element>
+            <element name="sexo" type="int"></element>
+            <element name="mesNac" type="int"></element>
+            <element name="lugarNac" type="int"></element>
+            <element name="umf" type="int"></element>
+            <element name="autPerm" type="int"></element>
+            <element name="delDest" type="int"></element>
+            <element name="subDest" type="int"></element>
+            <element name="tpDerech" type="int"></element>
+            <element name="aaNac" type="int"></element>
+            <element name="situacion" type="int"></element>
+            <element name="tsalODel" type="string"></element>
+            <element name="nombreDh" type="string"></element>
+            <element name="mesNacAp" type="int"></element>
+            <element name="nssCorr" type="int"></element>
+            <element name="digVrNssCorr" type="int"></element>
+            <element name="nomAsegC" type="string"></element>
+            <element name="tpPens" type="int"></element>
+            <element name="alfGuar" type="string"></element>
+            <element name="numGuar" type="int"></element>
+            <element name="condicion" type="int"></element>
+            <element name="locMpio" type="string"></element>
+            <element name="tpProrroga" type="int"></element>
+            <element name="fecTerProrr" type="date"></element>
+            <element name="idPd" type="int"></element>
+        </sequence>
+    </complexType>
+    <element name="MovimientoCorreccionDatosAsegurado"
+        type="tns:MovCorreccionesDatosAseguradoType"></element>
+</schema>

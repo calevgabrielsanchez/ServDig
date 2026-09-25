@@ -1,0 +1,82 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<ace:dataTable id="solExtByModuloRow" style="font-size:9px"
+		value="#{solicitudPrincipalMB.lista}" var="solicitud" rows="10"
+		paginator="true" paginatorPosition="top">
+
+		<ace:column id="curp" headerText="CURP">
+			<h:outputText id="curpCell" value=" #{solicitud.desUsrCurp}" />
+		</ace:column>
+		<ace:column id="nombre" headerText="Nombre">
+			<h:outputText id="nombreCell"
+				value=" #{solicitud.nombreCompleto}" />
+		</ace:column>
+		<ace:column id="estatus" headerText="Estatus">
+			<h:outputText id="estatusCell"
+				value="#{solicitud.estatusDTO.desEstatus}" />
+		</ace:column>
+		<ace:column id="perfiles" headerText="No. Grupos">
+			<h:outputText id="perfilesCell" value="#{solicitud.numPerfiles}" />
+		</ace:column>
+		<ace:column id="modulos" headerText="No. Módulos">
+			<h:outputText id="modulosCell" value="#{solicitud.numModulos}" />
+		</ace:column>
+		<ace:column id="area" headerText="Área Normativa">
+			<h:outputText id="areaCell"
+				value="#{solicitud.areaNorm.desAreanorma}" />
+		</ace:column>
+		<ace:column id="del" headerText="Delegación">
+			<h:outputText id="delCell"
+				value="#{solicitud.delDTO.nombreDelegacion}" />
+		</ace:column>
+		<ace:column id="sub" headerText="Subdelegación">
+			<h:outputText id="subCell"
+				value="#{solicitud.subdelDTO.nombreSubelegacion}" />
+		</ace:column>
+		<ace:column id="dep" headerText="Departamento">
+			<h:outputText id="depCell"
+				value="#{solicitud.dptoDTO.desDepartamento}" />
+		</ace:column>
+		<ace:column id="puesto" headerText="Puesto">
+			<h:outputText id="puestoCell"
+				value="#{solicitud.puestoDTO.nombrePuesto}" />
+		</ace:column>
+		<ace:column id="accion" headerText="Acciones">
+			<ace:menuButton id="acciones" effect="slide" value="Acción">
+				<ace:menuItem id="a" value="Autorizar cuenta"
+					rendered="#{solicitud.estatus == 1}">
+					<f:attribute name="cuenta" value="#{solicitud.desUsrCurp}" />
+					<ace:ajax event="activate" execute="@all" render="@all"
+						onSuccess="autorizacion.show();"
+						listener="#{solicitudPrincipalMB.autorizarCuenta}"
+						immediate="true" />
+				</ace:menuItem>
+				<ace:menuItem id="m" value="Modificar cuenta"
+					rendered="#{solicitud.estatus == 2}">
+					<f:attribute name="cuenta" value="#{solicitud.desUsrCurp}" />
+					<ace:ajax event="activate" execute="@all" render="@all"
+						onSuccess="dialogMod.show();"
+						listener="#{solicitudPrincipalMB.modificarCuenta}"
+						immediate="true" />
+				</ace:menuItem>
+				<ace:menuItem id="b1" value="Baja de cuenta" rendered="#{solicitud.estatus == 2}" onclick="baja.show();">
+					<f:attribute name="cuenta" value="#{solicitud.desUsrCurp}" />
+					<ace:ajax execute="@this" render="@this" listener="#{solicitudPrincipalMB.borraCuenta}" immediate="true"/>
+				</ace:menuItem>
+				<ace:menuItem id="b2" value="Baja cta x cambio CURP" rendered="#{solicitud.estatus == 2}" onclick="bajaCurp.show();">
+					<f:attribute name="cuenta" value="#{solicitud.desUsrCurp}" />
+					<ace:ajax execute="@this" render="@this" event="activate" listener="#{solicitudPrincipalMB.borraCuentaCurp}" 
+					immediate="true"/>
+				</ace:menuItem>
+			</ace:menuButton>
+		</ace:column>
+
+	</ace:dataTable>
+
+</html>

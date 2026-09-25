@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estadoCuentaTrabajoAdeudoTipoCobro_1" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="552" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="2.052632472922827"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="32"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="TITULO" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="FECHA_CONSULTA" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="FECHA_CERRADA" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="TOTAL_CREDITOS" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="TOTAL_MOV" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CLAVE_PAT_SMOD" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CLAVE_PAT_MOD" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="NOMBRE" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="DIRECCION" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="LOCALIDAD" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="RFC" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SECTOR_NOT" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CP" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="TIPO_APORT" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CLAVE_ACT" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="DELEGACION" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SUBDELEGACION" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="GRUPO" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="RIESGO" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="NUM_TRAB" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CLAVE_ULT_MOV" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="FECHA_MOV" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="DESC_ULT_MOV" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SEC_NOT_ESP" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CCONTROL" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="USUARIO" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="DESC_ACT" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="REGISTRO_PATRON" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["D:\\Proyectos\\IMSS HATS\\WS\\Client\\JavaSource\\reportClasses\\jrxml\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SALDOTOTPAT" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SALDOTOTPATACT" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SALDOTOTPATREC" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SALDOTOTPATTOT" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="delegacionRes" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="subdelegacionRes" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="contextPath" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="DESC_MOVPATRONAL" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="DESC_TIP_PAT" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[Descripcion del tipo de patron
+1.- Individual
+2.- RPU
+3.- Corporativo]]></parameterDescription>
+	</parameter>
+	<parameter name="totalEnfermedadesMaternidad" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="totalSalIV" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="totalSalRt" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="totalSalGuar" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="totalSalTot" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="sumaTotales" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="totalAct" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="totalInt" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="piePagina" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[La información contenida solo es de carácter informativo, no es oficial, por lo tanto no será válida para ser utilizada en algún tipo de proceso legal]]></parameterDescription>
+	</parameter>
+	<parameter name="SUBREPORTE_TIPO_COBRO" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="cadenaOriginal" class="java.lang.String"/>
+	<parameter name="selloDigital" class="java.lang.String"/>
+	<parameter name="cadenaOriginal_1" class="java.lang.String"/>
+	<parameter name="selloDigital_1" class="java.lang.String"/>
+	<parameter name="FECHA_CIERRE" class="java.lang.String"/>
+	<parameter name="secuenciaNotaria" class="java.lang.String"/>
+	<parameter name="numeroSerie" class="java.lang.String"/>
+	<parameter name="logoImss" class="java.lang.String"/>
+	<field name="crDoc" class="java.lang.String"/>
+	<field name="tipoCobro" class="java.lang.String"/>
+	<field name="creditos" class="java.util.Collection"/>
+	<field name="subTotalCuotas" class="java.lang.String"/>
+	<field name="subTotalAct" class="java.lang.String"/>
+	<field name="subTotalRec" class="java.lang.String"/>
+	<field name="subTotal" class="java.lang.String"/>
+	<background>
+		<band height="656" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="52" splitType="Stretch">
+			<image>
+				<reportElement key="image-1" x="0" y="1" width="176" height="50"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<imageExpression class="java.lang.String"><![CDATA[$P{logoImss}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement key="staticText-15" x="177" y="0" width="281" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[INSTITUTO MEXICANO DEL SEGURO SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-45" x="479" y="14" width="24" height="10"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[HOJA]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="503" y="14" width="20" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement key="textField-126" x="514" y="25" width="37" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{FECHA_CONSULTA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-183" x="276" y="18" width="0" height="0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Static Text]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-184" x="523" y="14" width="9" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField evaluationTime="Report" isBlankWhenNull="false">
+				<reportElement key="textField-220" x="531" y="14" width="20" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-374" x="214" y="14" width="196" height="11"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[SEGURIDAD Y SOLIDARIDAD SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-375" x="200" y="25" width="221" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="11" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Dirección de Incorporación y Recaudación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-265" x="428" y="25" width="86" height="10"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[FECHA DE CONSULTA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-265" x="427" y="35" width="87" height="10"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[FECHA DE ACTUALIZACIÓN:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement key="textField-126" x="514" y="35" width="37" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{FECHA_CIERRE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="128" splitType="Stretch">
+			<printWhenExpression><![CDATA[new Boolean(($V{PAGE_NUMBER}).intValue() != 1)]]></printWhenExpression>
+			<staticText>
+				<reportElement key="staticText-338" mode="Opaque" x="0" y="70" width="552" height="58" forecolor="#CCCCCC"/>
+				<textElement>
+					<font fontName="Traditional Arabic" size="12" isBold="true" isItalic="true" pdfFontName="Helvetica-BoldOblique"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-339" mode="Opaque" x="0" y="58" width="552" height="12" forecolor="#FFFFFF" backcolor="#004846"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[MOTIVO DE COBRO CUOTAS IMSS]]></text>
+			</staticText>
+			<line direction="BottomUp">
+				<reportElement key="line-7" x="0" y="69" width="552" height="1" forecolor="#000000"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-346" mode="Transparent" x="352" y="70" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-348" mode="Transparent" x="452" y="70" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-364" x="479" y="11" width="24" height="10"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[HOJA]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-250" x="503" y="11" width="20" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement key="textField-251" x="514" y="21" width="37" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{FECHA_CONSULTA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-365" x="276" y="16" width="0" height="0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Static Text]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-366" x="523" y="11" width="9" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField evaluationTime="Report" isBlankWhenNull="false">
+				<reportElement key="textField-252" x="531" y="11" width="20" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-357" mode="Transparent" x="302" y="91" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Importe Actualización (b)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-358" mode="Transparent" x="452" y="91" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-359" mode="Transparent" x="402" y="91" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Importe Recargos (c)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-349" mode="Transparent" x="402" y="70" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-347" mode="Transparent" x="302" y="70" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-345" mode="Transparent" x="202" y="70" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-355" mode="Transparent" x="202" y="91" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Importe Total Cuotas(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-356" mode="Transparent" x="352" y="91" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-354" mode="Transparent" x="252" y="91" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-344" mode="Transparent" x="252" y="70" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-352" mode="Transparent" x="152" y="91" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-342" mode="Transparent" x="152" y="70" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-341" mode="Transparent" x="102" y="70" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-360" mode="Transparent" x="102" y="91" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-351" mode="Transparent" x="52" y="91" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Crédito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-340" mode="Transparent" x="0" y="70" width="102" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-350" mode="Transparent" x="0" y="91" width="52" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Periodo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-376" x="178" y="0" width="281" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[INSTITUTO MEXICANO DEL SEGURO SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-377" x="277" y="19" width="0" height="0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Static Text]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-378" x="211" y="15" width="204" height="11"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[SEGURIDAD Y SOLIDARIDAD SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-379" x="200" y="25" width="220" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Book Antiqua" size="11" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Dirección de Incorporación y Recaudación]]></text>
+			</staticText>
+			<line direction="BottomUp">
+				<reportElement key="line-10" x="0" y="50" width="552" height="1" forecolor="#000000"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-383" mode="Transparent" x="502" y="70" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-384" mode="Transparent" x="502" y="91" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Importe Total (a+b+c)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-265" x="429" y="21" width="85" height="10"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[FECHA DE CONSULTA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-265" x="429" y="31" width="85" height="10"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<text><![CDATA[FECHA DE ACTUALIZACIÓN:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement key="textField-126" x="514" y="31" width="37" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{FECHA_CIERRE}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement key="image-2" x="0" y="0" width="176" height="50"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{logoImss}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="129" splitType="Stretch">
+			<printWhenExpression><![CDATA[new Boolean(($V{PAGE_NUMBER}).intValue() == 1)]]></printWhenExpression>
+			<staticText>
+				<reportElement key="staticText-267" mode="Opaque" x="0" y="13" width="552" height="51" forecolor="#CCCCCC"/>
+				<textElement>
+					<font fontName="Traditional Arabic" size="12" isBold="true" isItalic="true" pdfFontName="Helvetica-BoldOblique"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-87" mode="Transparent" x="252" y="14" width="64" height="10"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Registro Patronal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-88" mode="Transparent" x="252" y="24" width="64" height="10"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[RFC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-89" mode="Transparent" x="252" y="34" width="64" height="10"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Prima de RT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-90" mode="Transparent" x="378" y="14" width="61" height="10"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Delegación IMSS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-91" x="378" y="24" width="64" height="10"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Subdelegación IMSS:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-111" mode="Transparent" x="318" y="14" width="58" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{REGISTRO_PATRON}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-112" mode="Transparent" x="318" y="24" width="58" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{RFC}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-113" mode="Transparent" x="318" y="34" width="58" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{RIESGO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-95" mode="Transparent" x="252" y="54" width="64" height="10"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Cve. Act. Eco:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-118" mode="Transparent" x="318" y="54" width="29" height="10"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{CLAVE_ACT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-101" mode="Transparent" x="252" y="44" width="64" height="10"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Actividad Económica:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-122" mode="Transparent" x="76" y="24" width="176" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{DIRECCION}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-123" mode="Transparent" x="76" y="34" width="176" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{LOCALIDAD}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" mode="Transparent" x="95" y="44" width="44" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{CP}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" mode="Transparent" x="76" y="14" width="176" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<line direction="BottomUp">
+				<reportElement key="line-1" x="0" y="71" width="552" height="1" forecolor="#000000"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-266" mode="Transparent" x="76" y="44" width="19" height="10"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="7" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[C.P:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="442" y="14" width="109" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{delegacionRes}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="442" y="24" width="109" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{subdelegacionRes}]]></textFieldExpression>
+			</textField>
+			<line direction="BottomUp">
+				<reportElement key="line-2" x="0" y="13" width="552" height="1" forecolor="#000000"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-315" mode="Opaque" x="0" y="85" width="552" height="43" forecolor="#CCCCCC"/>
+				<textElement>
+					<font fontName="Traditional Arabic" size="12" isBold="true" isItalic="true" pdfFontName="Helvetica-BoldOblique"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-316" mode="Opaque" x="0" y="71" width="552" height="12" forecolor="#FFFFFF" backcolor="#004846"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[MOTIVO DE COBRO CUOTAS IMSS]]></text>
+			</staticText>
+			<line direction="BottomUp">
+				<reportElement key="line-6" x="0" y="82" width="552" height="1" forecolor="#000000"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-317" mode="Transparent" x="0" y="86" width="102" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-318" mode="Transparent" x="102" y="86" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-319" mode="Transparent" x="152" y="86" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-321" mode="Transparent" x="252" y="86" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-322" mode="Transparent" x="202" y="86" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-323" mode="Transparent" x="352" y="86" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-324" mode="Transparent" x="302" y="86" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-325" mode="Transparent" x="452" y="86" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-326" mode="Transparent" x="402" y="86" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-327" mode="Transparent" x="0" y="107" width="52" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Periodo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-328" mode="Transparent" x="52" y="107" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Crédito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-329" mode="Transparent" x="152" y="107" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-331" mode="Transparent" x="252" y="107" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-332" mode="Transparent" x="202" y="107" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Importe Total Cuotas(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-333" mode="Transparent" x="352" y="107" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-334" mode="Transparent" x="302" y="107" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Importe Actualización (b)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-335" mode="Transparent" x="452" y="107" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-336" mode="Transparent" x="402" y="107" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Importe Recargos (c)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-337" mode="Transparent" x="102" y="107" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<line direction="BottomUp">
+				<reportElement key="line-8" x="0" y="64" width="552" height="1" forecolor="#000000"/>
+			</line>
+			<line direction="BottomUp">
+				<reportElement key="line-9" x="0" y="3" width="552" height="1" forecolor="#000000"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-385" mode="Transparent" x="502" y="107" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Importe Total (a+b+c)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-386" mode="Transparent" x="502" y="86" width="50" height="21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-262" mode="Transparent" x="317" y="44" width="234" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{DESC_ACT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-387" mode="Transparent" x="1" y="14" width="70" height="10"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Nombre o razón social:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-388" mode="Transparent" x="1" y="24" width="70" height="10"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Domicilio:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="56" splitType="Stretch">
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" x="0" y="23" width="552" height="11"/>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{creditos})]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{SUBREPORTE_TIPO_COBRO}]]></subreportExpression>
+			</subreport>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="0" y="10" width="16" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{crDoc}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" mode="Opaque" x="0" y="10" width="552" height="12" backcolor="#FFC000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipoCobro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-371" positionType="Float" mode="Opaque" x="0" y="42" width="552" height="12" forecolor="#CCCCCC" backcolor="#FFC000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Traditional Arabic" size="6" isBold="true" isItalic="true" pdfFontName="Helvetica-BoldOblique"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-372" positionType="Float" mode="Opaque" x="0" y="42" width="102" height="12" backcolor="#FFC000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[SUB TOTAL]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" positionType="Float" x="202" y="42" width="50" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotalCuotas}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" positionType="Float" x="303" y="42" width="50" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotalAct}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" positionType="Float" x="402" y="42" width="49" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotalRec}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" positionType="Float" x="502" y="42" width="49" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subTotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText-382" mode="Transparent" x="20" y="6" width="512" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Este documento es informativo, no tiene efectos legales, cualquier aclaración sobre el mismo deberá acudir a la subdelegación que controla su registro patronal.]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText-371" mode="Opaque" x="0" y="2" width="552" height="12" forecolor="#CCCCCC" backcolor="#FFC000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Traditional Arabic" size="6" isBold="true" isItalic="true" pdfFontName="Helvetica-BoldOblique"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-258" x="202" y="2" width="50" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{totalSalTot}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-259" x="303" y="2" width="50" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{totalAct}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-260" x="401" y="2" width="50" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{totalInt}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-372" mode="Opaque" x="0" y="2" width="102" height="12" backcolor="#FFC000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[TOTALES]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-263" x="502" y="2" width="50" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{sumaTotales}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="59" y="15" width="492" height="14"/>
+				<textElement>
+					<font fontName="Arial" size="4"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{cadenaOriginal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="0" y="31" width="56" height="8"/>
+				<textElement>
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sello Digital:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="59" y="30" width="492" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="4"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{selloDigital}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText" x="0" y="15" width="56" height="8"/>
+				<textElement>
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadena Original:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="0" y="43" width="56" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Secuencia Notaria:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="0" y="56" width="56" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número de Serie:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="59" y="58" width="492" height="8"/>
+				<textElement>
+					<font fontName="Arial" size="4"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{numeroSerie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="59" y="44" width="493" height="10"/>
+				<textElement>
+					<font fontName="Arial" size="4"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{secuenciaNotaria}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

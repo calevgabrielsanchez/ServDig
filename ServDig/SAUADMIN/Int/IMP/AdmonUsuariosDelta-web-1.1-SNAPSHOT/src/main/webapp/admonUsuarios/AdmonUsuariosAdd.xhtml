@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Inicio</title>
+	<link href="styles/style.css" type="text/css" rel="stylesheet" />
+</h:head>
+<ui:composition template="../plantillas/plantilla.xhtml">
+	<ui:define name="body">
+		<h2>Administración de Usuarios</h2>
+
+		<h:form>
+			<div style="width: 98%; padding: 1em;" align="left">
+				<fieldset style="border: 1px solid silver; margin: 0; padding: 10px;">
+					<h:panelGroup style="width: 350px; float: center;" id="seccionDatosGrales">
+						<h4>Datos Generales</h4>
+						
+						<h:panelGrid id="status" columns="3" title="titutlo">             
+	                        <h:outputLabel value="Nombre :"  id="lbNombreAdmUsuarios"/>
+	                        <h:inputText value="${usuarioBean.usuarioActual.nombres}" id="nombre" size="30" required="true" requiredMessage="EL NOMBRE ES REQUERIDO" style="width: 153px;" />									   
+							<h:message for="nombre" errorClass="error"/>
+								
+		                    <h:outputLabel value="Apellido Paterno :" id="lbApPatAdmUsuarios"/>
+	                        <h:inputText value="${usuarioBean.usuarioActual.apellidoPaterno}" id="apellidoPat" required="true" requiredMessage="EL APELLIDO PATERNO ES REQUERIDO" size="60" style="width: 153px; "/>
+							<h:message for="apellidoPat" errorClass="error"/>		
+								
+	                        <h:outputLabel value="Apellido Materno:" id="lbApMatAdmUsuarios"/>
+	                        <h:inputText value="${usuarioBean.usuarioActual.apellidoMaterno}" id="apellidoMat" size="60" required="true" style="width: 153px; "></h:inputText>
+							<h:message for="apellidoMat" errorClass="error"/>		
+								
+	                        <h:outputLabel value="Correo Electronico:" id="lbCorreoAdmUsuarios"/>
+	                        <h:inputText value="${usuarioBean.usuarioActual.correoElectronico}" id="correoElectronico" required="true" validatorMessage="DIRECCION DE CORREO ELECTRONICO NO VALIDA" size="30">
+									<f:validateRegex pattern="[A-Za-z0-9._%+-]+@(?:[A-Za-z0-9-]+\.)+[A-Za-z]{2,4}" for="correoElectronico" />
+									<f:ajax event="blur" />
+					         </h:inputText>
+					        <h:message for="correoElectronico" errorClass="error"/> 
+							
+				            <h:outputLabel value="CURP: " id="lbCurpAdmUsuarios"/>
+	                        <h:inputText value="${usuarioBean.usuarioActual.curp}" id="curp" size="20" required="true" requiredMessage="EL CURP ES REQUERIDO" style="width: 153px; "/>	
+							<h:message for="curp" errorClass="error"/>
+							
+					        <!--  h:outputLabel value="Id. BDTU: " id="lbBDTUAdmUsuarios"/>
+	                        <h:inputText value="${usuarioBean.usuarioActual.idBdtu}" id="idBDTU" size="20" required="true" requiredMessage="EL BDTU ES REQUERIDO" style="width: 153px;" />
+							<h:message for="idBDTU" errorClass="error"/>-->
+						</h:panelGrid>
+						
+						
+						<div style="width: 600px; float: left;">
+							<h4>Datos Perfil</h4>
+							<h:panelGrid id="inner" columns="3">
+				              <h:outputLabel value="Delegación: " id="lbDelegacionAdmUsuarios"/>
+                                <h:selectOneMenu id="delegacion"
+									value="#{usuarioBean.selectDelegacion}" required="true"
+									valueChangeListener="${usuarioBean.listenerDelegacion}">
+									<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+									<f:selectItems value="${usuarioBean.lstDelegacion}" />
+									<f:ajax event="change" render="inner" />
+								</h:selectOneMenu>
+							    <h:message for="delegacion" errorClass="error"/>	
+							    
+							   <h:outputLabel value="SubDelegación: " id="lbSubDelegacionAdmUsuarios"/>
+                                <h:selectOneMenu id="subdelegacion"
+									value="#{usuarioBean.selectSubDelegacion}" required="true"
+									valueChangeListener="${usuarioBean.listenerSubDelegacion}">
+									<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+									<f:selectItems value="${usuarioBean.lstSubDelegacion}" var="v"
+										itemValue="#{v.SubdelegacionTO.cveSubelegacion}"
+										itemLabel="#{v.SubdelegacionTO.nombreSubelegacion}" />
+									<f:ajax event="change" render="inner" />
+								</h:selectOneMenu>
+							   <h:message for="subdelegacion" errorClass="error"/>
+								
+							   <h:outputLabel value="UMF : " id="lbUMFAdmUsuarios"/>
+                                <h:selectOneMenu id="umf"
+									value="#{usuarioBean.selectUMF}" required="true">
+									<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+									<f:selectItems value="${usuarioBean.lstUMF}" var="v"
+										itemValue="${v.UnidadMedicaTO.cveUmf}"
+										itemLabel="${v.UnidadMedicaTO.nombreUmf}" />
+									<f:ajax event="change" render="inner" />
+								</h:selectOneMenu>							
+							 <h:message for="lbUMFAdmUsuarios" errorClass="error"/>	
+							 
+							<h:outputLabel value="Area :" id="perfiles"/>
+							<h:selectOneMenu id="lsPerfiles" value="#{usuarioBean.perfilSeleccionado}" >
+ 		  						<f:selectItems value="${usuarioBean.lstPerfiles}"  />
+   							</h:selectOneMenu>	
+							<h:message for="lsPerfiles" errorClass="error"/>	
+							  						 
+							<h:outputLabel value="Grupos :" id="grupos"/>
+							<h:selectManyListbox id="lsGrupos" value="#{usuarioBean.selectGrupos}" >
+ 		  					<f:selectItem id="si1" itemLabel="Jefe de Departamento" itemValue="JD" />
+  							<f:selectItem id="si2" itemLabel="Jefe de Oficina" itemValue="JO" />
+  							<f:selectItem id="si3" itemLabel="Operador" itemValue="OP" />
+  							<f:selectItem id="si4" itemLabel="Ventanilla" itemValue="VT" />  				
+   							</h:selectManyListbox>							
+							<h:message for="lsGrupos" errorClass="error"/>	                								
+							</h:panelGrid>	
+							<h:outputLabel>Nota:Password generado automáticamente y será enviado por correo electrónico</h:outputLabel>		
+							<h:commandButton action="#{usuarioBean.agregarUsuario}" value="Aprobar" styleClass="mboton" />																		
+						</div>											
+					</h:panelGroup>
+				</fieldset>
+			</div>			
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

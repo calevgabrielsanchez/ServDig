@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wls:weblogic-ejb-jar xmlns:wls="http://xmlns.oracle.com/weblogic/weblogic-ejb-jar" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd http://xmlns.oracle.com/weblogic/weblogic-ejb-jar http://xmlns.oracle.com/weblogic/weblogic-ejb-jar/1.2/weblogic-ejb-jar.xsd">
+    
+    
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>documentosService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    
+    
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>tramitePersonaFisicaService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    
+    
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>domicilioGeograficoService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>reportes</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>usuarioService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    
+     <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>umfService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>cambioMasivoClinicaService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>bajaDerechohabienteService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>guiaTramiteService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>pistasAuditoriaService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>reglasNegocioService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>patronService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>agendarCitaService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>grupoFamiliarService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>catalogosService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>preguntaService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>prorrogaService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>consultaVigenciaService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>gestionDocumental</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>registroDerechohabienteService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>derechohabienteService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>solicitudService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>correccionDerechohabienteService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>consultaDatosAseguradoService</wls:ejb-name>
+        <wls:stateless-session-descriptor></wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>true</wls:enable-call-by-reference>
+    </wls:weblogic-enterprise-bean>
+    
+</wls:weblogic-ejb-jar>

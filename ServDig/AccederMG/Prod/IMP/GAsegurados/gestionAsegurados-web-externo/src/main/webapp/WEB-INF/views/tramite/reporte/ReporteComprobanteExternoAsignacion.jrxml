@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteComprobanteAsignacion" pageWidth="612" pageHeight="792" columnWidth="532" leftMargin="40" rightMargin="40" topMargin="40" bottomMargin="40" isSummaryNewPage="true" isSummaryWithPageHeaderAndFooter="true">
+	<property name="ireport.zoom" value="1.1000000000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="FECHA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["NOW"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="HORA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["12:00"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FOLIO_OPER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[-1L]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FORMATEADOR_REPORTE" class="mx.gob.imss.ctirss.delta.gestion.asegurado.service.utility.ReporteFormatter" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new mx.gob.imss.ctirss.delta.gestion.asegurado.service.utility.ReporteFormatter()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMSS_HEADER_PARAM" class="java.io.InputStream"/>
+	<parameter name="IMSS_HEADER2_PARAM" class="java.lang.String"/>
+	<field name="tramiteId" class="java.lang.Long"/>
+	<field name="fechaTramite" class="java.util.Date"/>
+	<field name="observacion" class="java.lang.String"/>
+	<field name="fisica" class="mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica"/>
+	<pageHeader>
+		<band height="60" splitType="Stretch">
+			<image isUsingCache="true">
+				<reportElement x="0" y="8" width="443" height="52"/>
+				<imageExpression><![CDATA[$P{IMSS_HEADER_PARAM}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="17">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="532" height="17" forecolor="#FFFF99" backcolor="#333333"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comprobante de solicitud de Número de Seguridad Social]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="454">
+			<textField isBlankWhenNull="true">
+				<reportElement x="266" y="119" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fisica} != null ?
+    $F{fisica}.getNombre() :
+    ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="266" y="79" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fisica} != null ?
+    $F{fisica}.getPrimerApellido() :
+    ""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="266" y="99" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fisica} != null ?
+    $F{fisica}.getSegundoApellido() :
+    ""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="119" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<text><![CDATA[Nombre(s):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="99" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<text><![CDATA[Apellido Materno:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="59" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Número de folio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="172" width="532" height="34" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box leftPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Acuda a la subdelegación de su elección con este comprobante en un plazo no mayor a 15 días naturales, llevando consigo la siguiente documentación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="79" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<text><![CDATA[Apellido Paterno:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="266" y="59" width="266" height="20"/>
+				<box leftPadding="5" rightPadding="5">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FOLIO_OPER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="417" y="21" width="115" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FECHA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="380" y="21" width="37" height="20" forecolor="#333300"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="224" width="532" height="31" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box leftPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[   a) Acta de nacimiento de la persona a la que se le va asignar el Número de Seguridad Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="255" width="532" height="79" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box leftPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[   b) Identificación oficial:
+      - Credencial para votar expedida por el Instituto Federal Electoral
+      - Paraporte vigente mexicano o extranjero
+      - Cartilla del servicio militar nacional
+      - Cédula profesional]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="334" width="532" height="29" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box leftPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[   c) Clave única de registro de población (CURP)]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="41"/>
+	</pageFooter>
+</jasperReport>

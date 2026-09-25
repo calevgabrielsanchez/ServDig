@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. --><xs:schema xmlns:tns="http://ivro.pagos.ws.imss.gob.mx/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ivro.pagos.ws.imss.gob.mx/">
+
+    <xs:element name="pagoPorFechas" type="tns:pagoPorFechas"/>
+
+    <xs:element name="pagoPorFechasResponse" type="tns:pagoPorFechasResponse"/>
+
+    <xs:element name="pagoPorPeriodo" type="tns:pagoPorPeriodo"/>
+
+    <xs:element name="pagoPorPeriodoResponse" type="tns:pagoPorPeriodoResponse"/>
+
+    <xs:complexType name="pagoPorFechas">
+        <xs:sequence>
+            <xs:element name="Mensaje" type="tns:msgWSPagosIvroByFec" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="msgWSPagosIvroByFec" final="extension restriction">
+        <xs:sequence>
+            <xs:element name="NSS" type="xs:string"/>
+            <xs:element name="FECHA_INICIO" type="xs:string"/>
+            <xs:element name="FECHA_FIN" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="pagoPorFechasResponse">
+        <xs:sequence>
+            <xs:element name="Respuesta" type="tns:RespWSPagosIvroSimple" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RespWSPagosIvroSimple">
+        <xs:sequence>
+            <xs:element name="CODIGO_ERROR" type="xs:string"/>
+            <xs:element name="MENSAJE_ERROR" type="xs:string"/>
+            <xs:element name="NSS" type="xs:string" nillable="true"/>
+            <xs:element name="PERIODO" type="xs:string" nillable="true"/>
+            <xs:element name="MODALIDAD" type="xs:string" nillable="true"/>
+            <xs:element name="FECHA_INICIO_ASEGURAMIENTO" type="xs:string" nillable="true"/>
+            <xs:element name="FECHA_FIN_ASEGURAMIENTO" type="xs:string" nillable="true"/>
+            <xs:element name="FECHA_PAGO" type="xs:string" nillable="true"/>
+            <xs:element name="IND_PAGO" type="xs:string" nillable="true"/>
+            <xs:element name="IND_PAGOSCOMPLETOS" type="xs:string" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="pagoPorPeriodo">
+        <xs:sequence>
+            <xs:element name="Mensaje" type="tns:msgWSPagosIvroByPeriodo" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="msgWSPagosIvroByPeriodo" final="extension restriction">
+        <xs:sequence>
+            <xs:element name="NSS" type="xs:string"/>
+            <xs:element name="PERIODO" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="pagoPorPeriodoResponse">
+        <xs:sequence>
+            <xs:element name="Respuesta" type="tns:RespWSPagosIvroSimple" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

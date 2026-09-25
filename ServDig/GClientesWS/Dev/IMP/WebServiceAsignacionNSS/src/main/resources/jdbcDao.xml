@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+   "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+  <bean id="datasource" 
+    class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+     <property name="driverClassName">
+      <value>oracle.jdbc.OracleDriver</value>
+     </property>
+     <property name="url">
+       <value>jdbc:oracle:thin:@11.254.14.158:1521/DELTADS</value>
+     </property>
+     <property name="username">
+       <value>BDTU_DIDT</value>
+     </property>
+     <property name="password">
+       <value>BDTU_DIDT</value>
+     </property>
+     <property name="connectionProperties">
+        <props>
+          <prop key="DatabaseName">DELTADS</prop>
+        </props>
+     </property>
+  </bean>
+  <bean id="dao" 
+     class="mx.gob.imss.ctirss.ws.asignacion.implementacion.dao.CuentaMainframeDAOImpl">
+     <property name="dataSource"><ref bean="datasource"/></property>
+  </bean>  
+</beans>

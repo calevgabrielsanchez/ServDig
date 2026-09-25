@@ -1,0 +1,2305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="afil03R" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="15">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="2.5937424601000023"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="PIE" class="java.lang.String"/>
+	<parameter name="IMAGENES_DIR" class="java.lang.String"/>
+	<parameter name="header" class="java.lang.String"/>
+	<field name="actosAdministracionRL" class="java.lang.String">
+		<fieldDescription><![CDATA[actosAdministracionRL]]></fieldDescription>
+	</field>
+	<field name="actosDominioRL" class="java.lang.String">
+		<fieldDescription><![CDATA[actosDominioRL]]></fieldDescription>
+	</field>
+	<field name="apMaterno" class="java.lang.String">
+		<fieldDescription><![CDATA[apMaterno]]></fieldDescription>
+	</field>
+	<field name="apMaternoPA1" class="java.lang.String">
+		<fieldDescription><![CDATA[apMaternoPA1]]></fieldDescription>
+	</field>
+	<field name="apMaternoPA2" class="java.lang.String">
+		<fieldDescription><![CDATA[apMaternoPA2]]></fieldDescription>
+	</field>
+	<field name="apMaternoPA3" class="java.lang.String">
+		<fieldDescription><![CDATA[apMaternoPA3]]></fieldDescription>
+	</field>
+	<field name="apMaternoRL" class="java.lang.String">
+		<fieldDescription><![CDATA[apMaternoRL]]></fieldDescription>
+	</field>
+	<field name="apPaterno" class="java.lang.String">
+		<fieldDescription><![CDATA[apPaterno]]></fieldDescription>
+	</field>
+	<field name="apPaternoPA1" class="java.lang.String">
+		<fieldDescription><![CDATA[apPaternoPA1]]></fieldDescription>
+	</field>
+	<field name="apPaternoPA2" class="java.lang.String">
+		<fieldDescription><![CDATA[apPaternoPA2]]></fieldDescription>
+	</field>
+	<field name="apPaternoPA3" class="java.lang.String">
+		<fieldDescription><![CDATA[apPaternoPA3]]></fieldDescription>
+	</field>
+	<field name="apPaternoRL" class="java.lang.String">
+		<fieldDescription><![CDATA[apPaternoRL]]></fieldDescription>
+	</field>
+	<field name="autoridadLaboral" class="java.lang.String">
+		<fieldDescription><![CDATA[autoridadLaboral]]></fieldDescription>
+	</field>
+	<field name="calle" class="java.lang.String">
+		<fieldDescription><![CDATA[calle]]></fieldDescription>
+	</field>
+	<field name="calleCT" class="java.lang.String">
+		<fieldDescription><![CDATA[calleCT]]></fieldDescription>
+	</field>
+	<field name="calleRL" class="java.lang.String">
+		<fieldDescription><![CDATA[calleRL]]></fieldDescription>
+	</field>
+	<field name="clase" class="java.lang.String">
+		<fieldDescription><![CDATA[clase]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="colonia" class="java.lang.String">
+		<fieldDescription><![CDATA[colonia]]></fieldDescription>
+	</field>
+	<field name="coloniaCT" class="java.lang.String">
+		<fieldDescription><![CDATA[coloniaCT]]></fieldDescription>
+	</field>
+	<field name="comodin1" class="java.lang.String">
+		<fieldDescription><![CDATA[comodin1]]></fieldDescription>
+	</field>
+	<field name="comodin2" class="java.lang.String">
+		<fieldDescription><![CDATA[comodin2]]></fieldDescription>
+	</field>
+	<field name="comodin3" class="java.lang.String">
+		<fieldDescription><![CDATA[comodin3]]></fieldDescription>
+	</field>
+	<field name="conTransportePropio" class="java.lang.String">
+		<fieldDescription><![CDATA[conTransportePropio]]></fieldDescription>
+	</field>
+	<field name="correo" class="java.lang.String">
+		<fieldDescription><![CDATA[correo]]></fieldDescription>
+	</field>
+	<field name="correoCT" class="java.lang.String">
+		<fieldDescription><![CDATA[correoCT]]></fieldDescription>
+	</field>
+	<field name="correoPA1" class="java.lang.String">
+		<fieldDescription><![CDATA[correoPA1]]></fieldDescription>
+	</field>
+	<field name="correoPA2" class="java.lang.String">
+		<fieldDescription><![CDATA[correoPA2]]></fieldDescription>
+	</field>
+	<field name="correoPA3" class="java.lang.String">
+		<fieldDescription><![CDATA[correoPA3]]></fieldDescription>
+	</field>
+	<field name="correoRL" class="java.lang.String">
+		<fieldDescription><![CDATA[correoRL]]></fieldDescription>
+	</field>
+	<field name="cp" class="java.lang.Integer">
+		<fieldDescription><![CDATA[cp]]></fieldDescription>
+	</field>
+	<field name="cp1" class="java.lang.String">
+		<fieldDescription><![CDATA[cp1]]></fieldDescription>
+	</field>
+	<field name="cpCT" class="java.lang.Integer">
+		<fieldDescription><![CDATA[cpCT]]></fieldDescription>
+	</field>
+	<field name="cpCT1" class="java.lang.String">
+		<fieldDescription><![CDATA[cpCT1]]></fieldDescription>
+	</field>
+	<field name="curp" class="java.lang.String">
+		<fieldDescription><![CDATA[curp]]></fieldDescription>
+	</field>
+	<field name="curpPA1" class="java.lang.String">
+		<fieldDescription><![CDATA[curpPA1]]></fieldDescription>
+	</field>
+	<field name="curpPA2" class="java.lang.String">
+		<fieldDescription><![CDATA[curpPA2]]></fieldDescription>
+	</field>
+	<field name="curpPA3" class="java.lang.String">
+		<fieldDescription><![CDATA[curpPA3]]></fieldDescription>
+	</field>
+	<field name="curpRL" class="java.lang.String">
+		<fieldDescription><![CDATA[curpRL]]></fieldDescription>
+	</field>
+	<field name="delegacion" class="java.lang.String">
+		<fieldDescription><![CDATA[delegacion]]></fieldDescription>
+	</field>
+	<field name="divisionClave" class="java.lang.String">
+		<fieldDescription><![CDATA[divisionClave]]></fieldDescription>
+	</field>
+	<field name="divisionDes" class="java.lang.String">
+		<fieldDescription><![CDATA[divisionDes]]></fieldDescription>
+	</field>
+	<field name="domicilio" class="java.lang.String">
+		<fieldDescription><![CDATA[domicilio]]></fieldDescription>
+	</field>
+	<field name="dv" class="java.lang.String">
+		<fieldDescription><![CDATA[dv]]></fieldDescription>
+	</field>
+	<field name="entidadaFederativa" class="java.lang.String">
+		<fieldDescription><![CDATA[entidadaFederativa]]></fieldDescription>
+	</field>
+	<field name="entidadaFederativaCT" class="java.lang.String">
+		<fieldDescription><![CDATA[entidadaFederativaCT]]></fieldDescription>
+	</field>
+	<field name="entrecalle1" class="java.lang.String">
+		<fieldDescription><![CDATA[entrecalle1]]></fieldDescription>
+	</field>
+	<field name="entrecalle1CT" class="java.lang.String">
+		<fieldDescription><![CDATA[entrecalle1CT]]></fieldDescription>
+	</field>
+	<field name="entrecalle2" class="java.lang.String">
+		<fieldDescription><![CDATA[entrecalle2]]></fieldDescription>
+	</field>
+	<field name="entrecalle2CT" class="java.lang.String">
+		<fieldDescription><![CDATA[entrecalle2CT]]></fieldDescription>
+	</field>
+	<field name="eqpTrnCapPot1" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnCapPot1]]></fieldDescription>
+	</field>
+	<field name="eqpTrnCapPot2" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnCapPot2]]></fieldDescription>
+	</field>
+	<field name="eqpTrnCapPot3" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnCapPot3]]></fieldDescription>
+	</field>
+	<field name="eqpTrnCapPot4" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnCapPot4]]></fieldDescription>
+	</field>
+	<field name="eqpTrnCapPot5" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnCapPot5]]></fieldDescription>
+	</field>
+	<field name="eqpTrnNU1" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnNU1]]></fieldDescription>
+	</field>
+	<field name="eqpTrnNU2" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnNU2]]></fieldDescription>
+	</field>
+	<field name="eqpTrnNU3" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnNU3]]></fieldDescription>
+	</field>
+	<field name="eqpTrnNU4" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnNU4]]></fieldDescription>
+	</field>
+	<field name="eqpTrnNU5" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnNU5]]></fieldDescription>
+	</field>
+	<field name="eqpTrnNom1" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnNom1]]></fieldDescription>
+	</field>
+	<field name="eqpTrnNom2" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnNom2]]></fieldDescription>
+	</field>
+	<field name="eqpTrnNom3" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnNom3]]></fieldDescription>
+	</field>
+	<field name="eqpTrnNom4" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnNom4]]></fieldDescription>
+	</field>
+	<field name="eqpTrnNom5" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnNom5]]></fieldDescription>
+	</field>
+	<field name="eqpTrnTpo1" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnTpo1]]></fieldDescription>
+	</field>
+	<field name="eqpTrnTpo2" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnTpo2]]></fieldDescription>
+	</field>
+	<field name="eqpTrnTpo3" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnTpo3]]></fieldDescription>
+	</field>
+	<field name="eqpTrnTpo4" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnTpo4]]></fieldDescription>
+	</field>
+	<field name="eqpTrnTpo5" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnTpo5]]></fieldDescription>
+	</field>
+	<field name="eqpTrnUso1" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnUso1]]></fieldDescription>
+	</field>
+	<field name="eqpTrnUso2" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnUso2]]></fieldDescription>
+	</field>
+	<field name="eqpTrnUso3" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnUso3]]></fieldDescription>
+	</field>
+	<field name="eqpTrnUso4" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnUso4]]></fieldDescription>
+	</field>
+	<field name="eqpTrnUso5" class="java.lang.String">
+		<fieldDescription><![CDATA[eqpTrnUso5]]></fieldDescription>
+	</field>
+	<field name="extencion1" class="java.lang.String">
+		<fieldDescription><![CDATA[extencion1]]></fieldDescription>
+	</field>
+	<field name="extencion1CT" class="java.lang.String">
+		<fieldDescription><![CDATA[extencion1CT]]></fieldDescription>
+	</field>
+	<field name="extencion2" class="java.lang.String">
+		<fieldDescription><![CDATA[extencion2]]></fieldDescription>
+	</field>
+	<field name="extencion2CT" class="java.lang.String">
+		<fieldDescription><![CDATA[extencion2CT]]></fieldDescription>
+	</field>
+	<field name="extencionPA1" class="java.lang.String">
+		<fieldDescription><![CDATA[extencionPA1]]></fieldDescription>
+	</field>
+	<field name="extencionPA2" class="java.lang.String">
+		<fieldDescription><![CDATA[extencionPA2]]></fieldDescription>
+	</field>
+	<field name="extencionPA3" class="java.lang.String">
+		<fieldDescription><![CDATA[extencionPA3]]></fieldDescription>
+	</field>
+	<field name="extencionRL" class="java.lang.String">
+		<fieldDescription><![CDATA[extencionRL]]></fieldDescription>
+	</field>
+	<field name="fecEfecto" class="java.util.Date">
+		<fieldDescription><![CDATA[fecEfecto]]></fieldDescription>
+	</field>
+	<field name="fecPresentacion" class="java.util.Date">
+		<fieldDescription><![CDATA[fecPresentacion]]></fieldDescription>
+	</field>
+	<field name="fechaComodin1" class="java.util.Date">
+		<fieldDescription><![CDATA[fechaComodin1]]></fieldDescription>
+	</field>
+	<field name="fechaComodin2" class="java.util.Date">
+		<fieldDescription><![CDATA[fechaComodin2]]></fieldDescription>
+	</field>
+	<field name="fechaDocumentoRegistro" class="java.util.Date">
+		<fieldDescription><![CDATA[fechaDocumentoRegistro]]></fieldDescription>
+	</field>
+	<field name="fechaExpedicion" class="java.util.Date">
+		<fieldDescription><![CDATA[fechaExpedicion]]></fieldDescription>
+	</field>
+	<field name="fechaRegistroCita" class="java.lang.String">
+		<fieldDescription><![CDATA[fechaRegistroCita]]></fieldDescription>
+	</field>
+	<field name="folioMercantil" class="java.lang.String">
+		<fieldDescription><![CDATA[folioMercantil]]></fieldDescription>
+	</field>
+	<field name="folioNRP" class="java.lang.String">
+		<fieldDescription><![CDATA[folioNRP]]></fieldDescription>
+	</field>
+	<field name="fraccionClave" class="java.lang.String">
+		<fieldDescription><![CDATA[fraccionClave]]></fieldDescription>
+	</field>
+	<field name="fraccionDes" class="java.lang.String">
+		<fieldDescription><![CDATA[fraccionDes]]></fieldDescription>
+	</field>
+	<field name="giro" class="java.lang.String">
+		<fieldDescription><![CDATA[giro]]></fieldDescription>
+	</field>
+	<field name="grupoClave" class="java.lang.String">
+		<fieldDescription><![CDATA[grupoClave]]></fieldDescription>
+	</field>
+	<field name="grupoDes" class="java.lang.String">
+		<fieldDescription><![CDATA[grupoDes]]></fieldDescription>
+	</field>
+	<field name="horaCita" class="java.lang.String">
+		<fieldDescription><![CDATA[horaCita]]></fieldDescription>
+	</field>
+	<field name="localidad" class="java.lang.String">
+		<fieldDescription><![CDATA[localidad]]></fieldDescription>
+	</field>
+	<field name="localidadCT" class="java.lang.String">
+		<fieldDescription><![CDATA[localidadCT]]></fieldDescription>
+	</field>
+	<field name="lugaRegistro" class="java.lang.String">
+		<fieldDescription><![CDATA[lugaRegistro]]></fieldDescription>
+	</field>
+	<field name="lugarExpedicion" class="java.lang.String">
+		<fieldDescription><![CDATA[lugarExpedicion]]></fieldDescription>
+	</field>
+	<field name="maqEqpCapPot1" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpCapPot1]]></fieldDescription>
+	</field>
+	<field name="maqEqpCapPot2" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpCapPot2]]></fieldDescription>
+	</field>
+	<field name="maqEqpCapPot3" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpCapPot3]]></fieldDescription>
+	</field>
+	<field name="maqEqpCapPot4" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpCapPot4]]></fieldDescription>
+	</field>
+	<field name="maqEqpCapPot5" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpCapPot5]]></fieldDescription>
+	</field>
+	<field name="maqEqpNU1" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpNU1]]></fieldDescription>
+	</field>
+	<field name="maqEqpNU2" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpNU2]]></fieldDescription>
+	</field>
+	<field name="maqEqpNU3" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpNU3]]></fieldDescription>
+	</field>
+	<field name="maqEqpNU4" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpNU4]]></fieldDescription>
+	</field>
+	<field name="maqEqpNU5" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpNU5]]></fieldDescription>
+	</field>
+	<field name="maqEqpNom1" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpNom1]]></fieldDescription>
+	</field>
+	<field name="maqEqpNom2" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpNom2]]></fieldDescription>
+	</field>
+	<field name="maqEqpNom3" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpNom3]]></fieldDescription>
+	</field>
+	<field name="maqEqpNom4" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpNom4]]></fieldDescription>
+	</field>
+	<field name="maqEqpNom5" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpNom5]]></fieldDescription>
+	</field>
+	<field name="maqEqpTpo1" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpTpo1]]></fieldDescription>
+	</field>
+	<field name="maqEqpTpo2" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpTpo2]]></fieldDescription>
+	</field>
+	<field name="maqEqpTpo3" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpTpo3]]></fieldDescription>
+	</field>
+	<field name="maqEqpTpo4" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpTpo4]]></fieldDescription>
+	</field>
+	<field name="maqEqpTpo5" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpTpo5]]></fieldDescription>
+	</field>
+	<field name="maqEqpUso1" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpUso1]]></fieldDescription>
+	</field>
+	<field name="maqEqpUso2" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpUso2]]></fieldDescription>
+	</field>
+	<field name="maqEqpUso3" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpUso3]]></fieldDescription>
+	</field>
+	<field name="maqEqpUso4" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpUso4]]></fieldDescription>
+	</field>
+	<field name="maqEqpUso5" class="java.lang.String">
+		<fieldDescription><![CDATA[maqEqpUso5]]></fieldDescription>
+	</field>
+	<field name="materiasPrimas1" class="java.lang.String">
+		<fieldDescription><![CDATA[materiasPrimas1]]></fieldDescription>
+	</field>
+	<field name="materiasPrimas10" class="java.lang.String">
+		<fieldDescription><![CDATA[materiasPrimas10]]></fieldDescription>
+	</field>
+	<field name="materiasPrimas2" class="java.lang.String">
+		<fieldDescription><![CDATA[materiasPrimas2]]></fieldDescription>
+	</field>
+	<field name="materiasPrimas3" class="java.lang.String">
+		<fieldDescription><![CDATA[materiasPrimas3]]></fieldDescription>
+	</field>
+	<field name="materiasPrimas4" class="java.lang.String">
+		<fieldDescription><![CDATA[materiasPrimas4]]></fieldDescription>
+	</field>
+	<field name="materiasPrimas5" class="java.lang.String">
+		<fieldDescription><![CDATA[materiasPrimas5]]></fieldDescription>
+	</field>
+	<field name="materiasPrimas6" class="java.lang.String">
+		<fieldDescription><![CDATA[materiasPrimas6]]></fieldDescription>
+	</field>
+	<field name="materiasPrimas7" class="java.lang.String">
+		<fieldDescription><![CDATA[materiasPrimas7]]></fieldDescription>
+	</field>
+	<field name="materiasPrimas8" class="java.lang.String">
+		<fieldDescription><![CDATA[materiasPrimas8]]></fieldDescription>
+	</field>
+	<field name="materiasPrimas9" class="java.lang.String">
+		<fieldDescription><![CDATA[materiasPrimas9]]></fieldDescription>
+	</field>
+	<field name="matricula" class="java.lang.String">
+		<fieldDescription><![CDATA[matricula]]></fieldDescription>
+	</field>
+	<field name="mesTipExpedicion" class="java.lang.String">
+		<fieldDescription><![CDATA[mesTipExpedicion]]></fieldDescription>
+	</field>
+	<field name="minCita" class="java.lang.String">
+		<fieldDescription><![CDATA[minCita]]></fieldDescription>
+	</field>
+	<field name="municipio" class="java.lang.String">
+		<fieldDescription><![CDATA[municipio]]></fieldDescription>
+	</field>
+	<field name="municipioCT" class="java.lang.String">
+		<fieldDescription><![CDATA[municipioCT]]></fieldDescription>
+	</field>
+	<field name="noCentTrab" class="java.lang.Integer">
+		<fieldDescription><![CDATA[noCentTrab]]></fieldDescription>
+	</field>
+	<field name="noDistribuye" class="java.lang.String">
+		<fieldDescription><![CDATA[noDistribuye]]></fieldDescription>
+	</field>
+	<field name="nomComercial" class="java.lang.String">
+		<fieldDescription><![CDATA[nomComercial]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[nombre]]></fieldDescription>
+	</field>
+	<field name="nombreCompletoRl" class="java.lang.String">
+		<fieldDescription><![CDATA[nombreCompletoRl]]></fieldDescription>
+	</field>
+	<field name="nombrePA1" class="java.lang.String">
+		<fieldDescription><![CDATA[nombrePA1]]></fieldDescription>
+	</field>
+	<field name="nombrePA2" class="java.lang.String">
+		<fieldDescription><![CDATA[nombrePA2]]></fieldDescription>
+	</field>
+	<field name="nombrePA3" class="java.lang.String">
+		<fieldDescription><![CDATA[nombrePA3]]></fieldDescription>
+	</field>
+	<field name="nombreRL" class="java.lang.String">
+		<fieldDescription><![CDATA[nombreRL]]></fieldDescription>
+	</field>
+	<field name="nrp" class="java.lang.String">
+		<fieldDescription><![CDATA[nrp]]></fieldDescription>
+	</field>
+	<field name="numEscritura" class="java.lang.String">
+		<fieldDescription><![CDATA[numEscritura]]></fieldDescription>
+	</field>
+	<field name="numExt" class="java.lang.String">
+		<fieldDescription><![CDATA[numExt]]></fieldDescription>
+	</field>
+	<field name="numExtCT" class="java.lang.String">
+		<fieldDescription><![CDATA[numExtCT]]></fieldDescription>
+	</field>
+	<field name="numInt" class="java.lang.String">
+		<fieldDescription><![CDATA[numInt]]></fieldDescription>
+	</field>
+	<field name="numIntCT" class="java.lang.String">
+		<fieldDescription><![CDATA[numIntCT]]></fieldDescription>
+	</field>
+	<field name="numNotarira" class="java.lang.String">
+		<fieldDescription><![CDATA[numNotarira]]></fieldDescription>
+	</field>
+	<field name="numeroReferencia" class="java.lang.String">
+		<fieldDescription><![CDATA[numeroReferencia]]></fieldDescription>
+	</field>
+	<field name="perNoTrab1" class="java.lang.String">
+		<fieldDescription><![CDATA[perNoTrab1]]></fieldDescription>
+	</field>
+	<field name="perNoTrab10" class="java.lang.String">
+		<fieldDescription><![CDATA[perNoTrab10]]></fieldDescription>
+	</field>
+	<field name="perNoTrab11" class="java.lang.String">
+		<fieldDescription><![CDATA[perNoTrab11]]></fieldDescription>
+	</field>
+	<field name="perNoTrab12" class="java.lang.String">
+		<fieldDescription><![CDATA[perNoTrab12]]></fieldDescription>
+	</field>
+	<field name="perNoTrab2" class="java.lang.String">
+		<fieldDescription><![CDATA[perNoTrab2]]></fieldDescription>
+	</field>
+	<field name="perNoTrab3" class="java.lang.String">
+		<fieldDescription><![CDATA[perNoTrab3]]></fieldDescription>
+	</field>
+	<field name="perNoTrab4" class="java.lang.String">
+		<fieldDescription><![CDATA[perNoTrab4]]></fieldDescription>
+	</field>
+	<field name="perNoTrab5" class="java.lang.String">
+		<fieldDescription><![CDATA[perNoTrab5]]></fieldDescription>
+	</field>
+	<field name="perNoTrab6" class="java.lang.String">
+		<fieldDescription><![CDATA[perNoTrab6]]></fieldDescription>
+	</field>
+	<field name="perNoTrab7" class="java.lang.String">
+		<fieldDescription><![CDATA[perNoTrab7]]></fieldDescription>
+	</field>
+	<field name="perNoTrab8" class="java.lang.String">
+		<fieldDescription><![CDATA[perNoTrab8]]></fieldDescription>
+	</field>
+	<field name="perNoTrab9" class="java.lang.String">
+		<fieldDescription><![CDATA[perNoTrab9]]></fieldDescription>
+	</field>
+	<field name="perOficOcup1" class="java.lang.String">
+		<fieldDescription><![CDATA[perOficOcup1]]></fieldDescription>
+	</field>
+	<field name="perOficOcup10" class="java.lang.String">
+		<fieldDescription><![CDATA[perOficOcup10]]></fieldDescription>
+	</field>
+	<field name="perOficOcup11" class="java.lang.String">
+		<fieldDescription><![CDATA[perOficOcup11]]></fieldDescription>
+	</field>
+	<field name="perOficOcup12" class="java.lang.String">
+		<fieldDescription><![CDATA[perOficOcup12]]></fieldDescription>
+	</field>
+	<field name="perOficOcup2" class="java.lang.String">
+		<fieldDescription><![CDATA[perOficOcup2]]></fieldDescription>
+	</field>
+	<field name="perOficOcup3" class="java.lang.String">
+		<fieldDescription><![CDATA[perOficOcup3]]></fieldDescription>
+	</field>
+	<field name="perOficOcup4" class="java.lang.String">
+		<fieldDescription><![CDATA[perOficOcup4]]></fieldDescription>
+	</field>
+	<field name="perOficOcup5" class="java.lang.String">
+		<fieldDescription><![CDATA[perOficOcup5]]></fieldDescription>
+	</field>
+	<field name="perOficOcup6" class="java.lang.String">
+		<fieldDescription><![CDATA[perOficOcup6]]></fieldDescription>
+	</field>
+	<field name="perOficOcup7" class="java.lang.String">
+		<fieldDescription><![CDATA[perOficOcup7]]></fieldDescription>
+	</field>
+	<field name="perOficOcup8" class="java.lang.String">
+		<fieldDescription><![CDATA[perOficOcup8]]></fieldDescription>
+	</field>
+	<field name="perOficOcup9" class="java.lang.String">
+		<fieldDescription><![CDATA[perOficOcup9]]></fieldDescription>
+	</field>
+	<field name="prestaServPersNo" class="java.lang.String">
+		<fieldDescription><![CDATA[prestaServPersNo]]></fieldDescription>
+	</field>
+	<field name="prestaServPersSi" class="java.lang.String">
+		<fieldDescription><![CDATA[prestaServPersSi]]></fieldDescription>
+	</field>
+	<field name="prima" class="java.lang.String">
+		<fieldDescription><![CDATA[prima]]></fieldDescription>
+	</field>
+	<field name="procesoFinal1" class="java.lang.String">
+		<fieldDescription><![CDATA[procesoFinal1]]></fieldDescription>
+	</field>
+	<field name="procesoInicial1" class="java.lang.String">
+		<fieldDescription><![CDATA[procesoInicial1]]></fieldDescription>
+	</field>
+	<field name="procesoIntermedio1" class="java.lang.String">
+		<fieldDescription><![CDATA[procesoIntermedio1]]></fieldDescription>
+	</field>
+	<field name="productosOServicios1" class="java.lang.String">
+		<fieldDescription><![CDATA[productosOServicios1]]></fieldDescription>
+	</field>
+	<field name="productosOServicios10" class="java.lang.String">
+		<fieldDescription><![CDATA[productosOServicios10]]></fieldDescription>
+	</field>
+	<field name="productosOServicios2" class="java.lang.String">
+		<fieldDescription><![CDATA[productosOServicios2]]></fieldDescription>
+	</field>
+	<field name="productosOServicios3" class="java.lang.String">
+		<fieldDescription><![CDATA[productosOServicios3]]></fieldDescription>
+	</field>
+	<field name="productosOServicios4" class="java.lang.String">
+		<fieldDescription><![CDATA[productosOServicios4]]></fieldDescription>
+	</field>
+	<field name="productosOServicios5" class="java.lang.String">
+		<fieldDescription><![CDATA[productosOServicios5]]></fieldDescription>
+	</field>
+	<field name="productosOServicios6" class="java.lang.String">
+		<fieldDescription><![CDATA[productosOServicios6]]></fieldDescription>
+	</field>
+	<field name="productosOServicios7" class="java.lang.String">
+		<fieldDescription><![CDATA[productosOServicios7]]></fieldDescription>
+	</field>
+	<field name="productosOServicios8" class="java.lang.String">
+		<fieldDescription><![CDATA[productosOServicios8]]></fieldDescription>
+	</field>
+	<field name="productosOServicios9" class="java.lang.String">
+		<fieldDescription><![CDATA[productosOServicios9]]></fieldDescription>
+	</field>
+	<field name="rfc" class="java.lang.String">
+		<fieldDescription><![CDATA[rfc]]></fieldDescription>
+	</field>
+	<field name="rfcPA1" class="java.lang.String">
+		<fieldDescription><![CDATA[rfcPA1]]></fieldDescription>
+	</field>
+	<field name="rfcPA2" class="java.lang.String">
+		<fieldDescription><![CDATA[rfcPA2]]></fieldDescription>
+	</field>
+	<field name="rfcPA3" class="java.lang.String">
+		<fieldDescription><![CDATA[rfcPA3]]></fieldDescription>
+	</field>
+	<field name="rfcRL" class="java.lang.String">
+		<fieldDescription><![CDATA[rfcRL]]></fieldDescription>
+	</field>
+	<field name="serviciosInstalacion" class="java.lang.String">
+		<fieldDescription><![CDATA[serviciosInstalacion]]></fieldDescription>
+	</field>
+	<field name="sinTransportePropio" class="java.lang.String">
+		<fieldDescription><![CDATA[sinTransportePropio]]></fieldDescription>
+	</field>
+	<field name="solRegPatronalClase" class="java.lang.String">
+		<fieldDescription><![CDATA[solRegPatronalClase]]></fieldDescription>
+	</field>
+	<field name="subDelegacion" class="java.lang.String">
+		<fieldDescription><![CDATA[subDelegacion]]></fieldDescription>
+	</field>
+	<field name="telefono1" class="java.lang.String">
+		<fieldDescription><![CDATA[telefono1]]></fieldDescription>
+	</field>
+	<field name="telefono1CT" class="java.lang.String">
+		<fieldDescription><![CDATA[telefono1CT]]></fieldDescription>
+	</field>
+	<field name="telefono1PA1" class="java.lang.String">
+		<fieldDescription><![CDATA[telefono1PA1]]></fieldDescription>
+	</field>
+	<field name="telefono1PA2" class="java.lang.String">
+		<fieldDescription><![CDATA[telefono1PA2]]></fieldDescription>
+	</field>
+	<field name="telefono1PA3" class="java.lang.String">
+		<fieldDescription><![CDATA[telefono1PA3]]></fieldDescription>
+	</field>
+	<field name="telefono1RL" class="java.lang.String">
+		<fieldDescription><![CDATA[telefono1RL]]></fieldDescription>
+	</field>
+	<field name="telefono2" class="java.lang.String">
+		<fieldDescription><![CDATA[telefono2]]></fieldDescription>
+	</field>
+	<field name="telefono2CT" class="java.lang.String">
+		<fieldDescription><![CDATA[telefono2CT]]></fieldDescription>
+	</field>
+	<field name="telefono2PA1" class="java.lang.String">
+		<fieldDescription><![CDATA[telefono2PA1]]></fieldDescription>
+	</field>
+	<field name="telefono2PA2" class="java.lang.String">
+		<fieldDescription><![CDATA[telefono2PA2]]></fieldDescription>
+	</field>
+	<field name="telefono2PA3" class="java.lang.String">
+		<fieldDescription><![CDATA[telefono2PA3]]></fieldDescription>
+	</field>
+	<field name="telefono2RL" class="java.lang.String">
+		<fieldDescription><![CDATA[telefono2RL]]></fieldDescription>
+	</field>
+	<field name="tiempoAlta" class="java.lang.String">
+		<fieldDescription><![CDATA[tiempoAlta]]></fieldDescription>
+	</field>
+	<field name="tipoSociedad" class="java.lang.String">
+		<fieldDescription><![CDATA[tipoSociedad]]></fieldDescription>
+	</field>
+	<field name="LOGO_IMSS_HEADER_PARAM" class="java.lang.String"/>
+	<field name="LOGO_INFO_HEADER_PARAM" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="85" splitType="Stretch">
+			<image>
+				<reportElement key="image-2" x="42" y="-935" width="42" height="30"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<imageExpression class="java.lang.String"><![CDATA[$F{LOGO_IMSS_HEADER_PARAM}]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="1" width="521" height="42" forecolor="#AFB1B1" backcolor="#221E1E"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<image>
+				<reportElement mode="Transparent" x="15" y="12" width="58" height="22"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{header}]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="43" width="521" height="42" forecolor="#AFB1B1" backcolor="#E7E8E7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="43" width="521" height="42" backcolor="#E7E8E7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10"/>
+				</textElement>
+				<text><![CDATA[Instituto Mexicano del Seguro Social - Instituto del Fondo Nacional de la Vivienda para los Trabajadores]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="722" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText-15" mode="Opaque" x="0" y="388" width="521" height="19" backcolor="#E7E8E7"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Maquinaria y equipos utilizados (excepto equipo de transporte)]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="302" width="521" height="75" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-15" mode="Opaque" x="0" y="283" width="521" height="19" backcolor="#E7E8E7"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Principales materias primas y materiales utilizados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-15" mode="Opaque" x="0" y="8" width="521" height="24" backcolor="#E7E8E7"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="9" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Clasificación conforme al Reglamento de la Ley del Seguro Social en materia de Afiliación, Clasificación de Empresas, Recaudación y Fiscalización]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="8" width="521" height="24" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Opaque" x="1" y="661" width="524" height="50" forecolor="#AFB1B1" backcolor="#E7E8E7"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="540" width="521" height="93" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="407" width="521" height="102" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="32" width="521" height="104" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-15" mode="Opaque" x="0" y="174" width="521" height="19" backcolor="#E7E8E7"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Principales productos elaborados o servicios prestados
+]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="174" width="521" height="19" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-15" mode="Opaque" x="0" y="147" width="521" height="19" backcolor="#E7E8E7"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Datos de la actividad económica que declaró]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-109" x="1" y="79" width="520" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-110" x="1" y="92" width="520" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-111" x="1" y="105" width="520" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-282" x="1" y="65" width="520" height="1" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement key="staticText-120" x="1" y="32" width="520" height="33"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Justified">
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[De conformidad con la información que se declara y con fundamento en los artículos 72, 73 y 75 de la Ley del Seguro Social y los artículos 1 fracción IV, 3, 18, 19, 20, 22, 23, 24, 26, 29, 30 y 196 del Reglamento de la Ley del Seguro Social en materia de Afiliación, Clasificación de Empresas, Recaudación y Fiscalización, manifiesto que este registro patronal tiene la siguiente clasificación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-121" x="2" y="66" width="94" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Clasificación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-122" x="98" y="66" width="57" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Clave]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-123" x="157" y="66" width="360" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-124" x="2" y="80" width="94" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[División:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-125" x="2" y="92" width="94" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Grupo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-126" x="2" y="106" width="94" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Fracción:]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-283" x="96" y="66" width="1" height="53" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-284" x="156" y="66" width="1" height="53" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-301" x="1" y="119" width="520" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-11" x="156" y="107" width="364" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fraccionDes}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-12" x="98" y="106" width="54" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fraccionClave}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-13" x="98" y="93" width="54" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{grupoClave}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-14" x="157" y="93" width="363" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{grupoDes}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="98" y="80" width="54" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{divisionClave}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="157" y="79" width="364" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{divisionDes}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-172" x="2" y="120" width="94" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Clase de riesgo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-173" x="278" y="121" width="103" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Prima media del SRT:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="97" y="121" width="83" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{clase}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="390" y="122" width="83" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prima}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-283" x="277" y="120" width="1" height="15" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-283" x="389" y="120" width="1" height="15" forecolor="#AFB1B1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="13" y="193" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{productosOServicios1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="13" y="208" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{productosOServicios2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-3" x="13" y="223" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{productosOServicios3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-4" x="13" y="239" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{productosOServicios4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-5" x="13" y="254" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{productosOServicios5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-41" x="267" y="193" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{productosOServicios6}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-42" x="267" y="208" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{productosOServicios7}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-43" x="267" y="223" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{productosOServicios8}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-44" x="267" y="239" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{productosOServicios9}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-45" x="267" y="254" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{productosOServicios10}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-286" x="0" y="208" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-287" x="0" y="223" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-288" x="0" y="239" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-289" x="0" y="254" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="147" width="521" height="19" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="193" width="521" height="75" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement key="line-284" x="265" y="193" width="1" height="75" forecolor="#AFB1B1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-5" x="13" y="363" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{materiasPrimas5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="13" y="302" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{materiasPrimas1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-43" x="267" y="332" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{materiasPrimas8}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-288" x="0" y="348" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-42" x="267" y="317" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{materiasPrimas7}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="283" width="521" height="19" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement key="line-284" x="265" y="302" width="1" height="75" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-286" x="0" y="317" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="13" y="317" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{materiasPrimas2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-41" x="267" y="302" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{materiasPrimas6}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-289" x="0" y="363" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-3" x="13" y="332" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{materiasPrimas3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-4" x="13" y="348" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{materiasPrimas4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-45" x="267" y="363" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{materiasPrimas10}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-44" x="267" y="348" width="250" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{materiasPrimas9}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-287" x="0" y="332" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-180" x="2" y="407" width="96" height="27"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Número de Unidades]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-183" x="100" y="407" width="99" height="27"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-184" x="200" y="407" width="100" height="26"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Uso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-185" x="302" y="409" width="121" height="26"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="7" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No motorizados / Motorizados no automatizados/ Automatizados / Otros]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-186" x="422" y="409" width="98" height="25"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Capacidad o Potencia]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-286" x="0" y="449" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="2" y="434" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpNU1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-3" x="2" y="464" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpNU3}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="388" width="521" height="19" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement key="line-284" x="99" y="407" width="1" height="101" forecolor="#AFB1B1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="2" y="449" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpNU2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-4" x="2" y="480" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpNU4}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-288" x="0" y="480" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-5" x="2" y="495" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpNU5}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-289" x="0" y="495" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-287" x="0" y="464" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="100" y="448" width="96" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpNom2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="99" y="434" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpNom1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-3" x="99" y="463" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpNom3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-4" x="99" y="479" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpNom4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-5" x="99" y="494" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpNom5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="201" y="448" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpUso2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="201" y="434" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpUso1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-3" x="201" y="463" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpUso3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-4" x="201" y="479" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpUso4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-5" x="201" y="494" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpUso5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="302" y="449" width="119" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpTpo2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="302" y="434" width="119" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpTpo1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-3" x="302" y="464" width="119" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpTpo3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-4" x="302" y="480" width="119" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpTpo4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-5" x="302" y="495" width="119" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpTpo5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="423" y="449" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpCapPot2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="423" y="434" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpCapPot1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-3" x="423" y="464" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpCapPot3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-4" x="423" y="480" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpCapPot4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-5" x="423" y="495" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maqEqpCapPot5}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-284" x="300" y="407" width="1" height="101" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-284" x="199" y="407" width="1" height="102" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-284" x="421" y="407" width="1" height="101" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-286" x="0" y="434" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="302" y="571" width="119" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnTpo2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="2" y="571" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnNU2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="2" y="556" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnNU1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="99" y="556" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnNom1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="423" y="556" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnCapPot1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-185" x="302" y="540" width="121" height="16"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Combustible o energía]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-287" x="0" y="586" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-180" x="2" y="540" width="96" height="16"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Número de Unidades]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-183" x="100" y="540" width="99" height="16"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="100" y="570" width="96" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnNom2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-15" mode="Opaque" x="0" y="521" width="521" height="19" backcolor="#E7E8E7"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Equipo de transporte utilizado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-186" x="422" y="540" width="98" height="16"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Capacidad o Potencia]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="201" y="570" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnUso2}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="521" width="521" height="19" forecolor="#AFB1B1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="303" y="558" width="119" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnTpo1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="201" y="556" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnUso1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-286" x="0" y="571" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="423" y="571" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnCapPot2}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-286" x="1" y="556" width="520" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<staticText>
+				<reportElement key="staticText-184" x="200" y="540" width="100" height="16"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Uso]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="2" y="587" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnNU3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="201" y="587" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnUso3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="423" y="602" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnCapPot4}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-286" x="0" y="602" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="99" y="587" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnNom3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="302" y="602" width="119" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnTpo4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="302" y="587" width="119" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnTpo3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="423" y="587" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnCapPot3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="201" y="601" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnUso4}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-287" x="0" y="617" width="521" height="1" forecolor="#AFB1B1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="100" y="601" width="96" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnNom4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-2" x="2" y="602" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnNU4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="100" y="619" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnNom5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="1" y="619" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnNU5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="200" y="619" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnUso5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="422" y="619" width="97" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnCapPot5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-1" x="304" y="619" width="117" height="14"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="8" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{eqpTrnTpo5}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-284" x="99" y="540" width="1" height="93" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-284" x="198" y="542" width="1" height="91" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-284" x="302" y="540" width="1" height="93" forecolor="#AFB1B1"/>
+			</line>
+			<line>
+				<reportElement key="line-284" x="423" y="540" width="1" height="93" forecolor="#AFB1B1"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="423" y="672" width="87" height="32"/>
+				<textElement>
+					<font fontName="Soberana Sans Light" size="5"/>
+				</textElement>
+				<text><![CDATA[Paseo de la Reforma 476, P.B.
+Col. Juárez, Alcaldía Cuauhtémoc
+C.P. 06600 CDMX
+Tel. 800 623 23 23
+http://www.imss.gob.mx/contacto]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="423" y="712" width="102" height="10"/>
+				<textElement textAlignment="Right">
+					<font fontName="Soberana Sans Light" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página 4 de 6"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="423" y="662" width="28" height="8"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contacto:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="661" width="525" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.5"/>
+				</graphicElement>
+			</line>
+			<image>
+				<reportElement positionType="Float" mode="Transparent" x="14" y="671" width="165" height="33"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{PIE}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="1" y="661" width="524" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

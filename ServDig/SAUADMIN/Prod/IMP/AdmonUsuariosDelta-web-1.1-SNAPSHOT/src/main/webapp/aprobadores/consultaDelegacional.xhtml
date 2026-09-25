@@ -1,0 +1,132 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="../plantillas/plantillaSinMenu.xhtml">
+	<ui:define name="body">
+		<h:form id="SolicitudesPrincipal">
+			<h:commandButton value="+" id="hiddenBtnRefrresh" style="display:none">
+				<f:ajax  listener="#{solicitudPrincipalMB.refreshDel}" render="@all" execute="@all" event="click" immediate="true"/>
+			</h:commandButton>
+
+			<div class="wp-caption-text">
+
+				<ace:panel header="Datos Generales">
+
+					<h:panelGrid id="pnFilterDeleg" columns="6" width="100%" style="margin: 0; padding: 10px; font-size: 10px;">
+
+						<h:outputLabel value="Área Normativa:" id="lbAreaNormRegSolicitudCuenta" style="padding:10px;" />
+						<h:selectOneMenu id="slAreaNormRegSolicitudCuenta"
+							required="false" requiredMessage="SELECCIONE EL AREA NORMATIVA"
+							valueChangeListener="#{consultaGenericaDeleg.listenerArea}"
+							value="#{consultaGenericaDeleg.claveAreaNormativa}"
+							style="width:150px" disabled="true" styleClass="form-control">
+							<f:selectItems value="${consultaGenericaDeleg.lstAreaNormativa}" />
+							<f:ajax event="change"
+								render="slDepRegSolicitudCuenta slPuestoRegSolicitudCuenta slDelRegSolicitudCuenta slSubRegSolicitudCuenta slUMFRegSolicitudCuenta" 
+								execute="@all" immediate="true"/>
+						</h:selectOneMenu>
+
+						<h:outputLabel value="Departamento:" id="lbDepRegSolicitudCuenta" />
+						<h:selectOneMenu id="slDepRegSolicitudCuenta" required="false"
+							requiredMessage="SELECCIONE EL DEPARTAMENTO"
+							value="#{consultaGenericaDeleg.claveDepartamento}"
+							valueChangeListener="#{consultaGenericaDeleg.listenerPuesto}"
+							disabled="true" style="width:150px" styleClass="form-control">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenericaDeleg.lstDepartamento}" />
+							<f:ajax event="change" render="slPuestoRegSolicitudCuenta" execute="@all" immediate="true"/>
+						</h:selectOneMenu>
+
+						<h:outputLabel value="Puesto:" id="lbPuestoRegSolicitudCuenta" />
+						<h:selectOneMenu id="slPuestoRegSolicitudCuenta" required="false"
+							requiredMessage="SELECCIONE EL PUESTO"
+							value="#{consultaGenericaDeleg.clavePuesto}"
+							valueChangeListener="#{consultaGenericaDeleg.listenerPuestoSel}"
+							disabled="true" style="width:150px" styleClass="form-control">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenericaDeleg.lstPuesto}" />
+							<f:ajax event="change" render="slPuestoRegSolicitudCuenta" execute="@all" immediate="true"/>
+						</h:selectOneMenu>
+
+						<h:outputLabel value="Delegación:   " id="lbDelRegSolicitudCuenta" style="padding:10px;"/>
+						<h:selectOneMenu id="slDelRegSolicitudCuenta" required="false"
+							requiredMessage="SELECCIONE LA DELEGACION"
+							disabled="#{consultaGenericaDeleg.fgDeleg}"
+							value="#{consultaGenericaDeleg.claveDelegacion}"
+							valueChangeListener="#{consultaGenericaDeleg.listenerDelegacion}"
+							style="width:150px" styleClass="form-control">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenericaDeleg.lstDelegacion}" />
+							<f:ajax event="change"
+								render="slDelRegSolicitudCuenta slSubRegSolicitudCuenta slUMFRegSolicitudCuenta" execute="@all" immediate="true"/>
+						</h:selectOneMenu>
+
+						<h:outputLabel value="SubDelegación:" id="lbSubRegSolicitudCuenta" />
+						<h:selectOneMenu id="slSubRegSolicitudCuenta" required="false"
+							requiredMessage="SELECCIONE LA SUBDELEGACION"
+							disabled="#{consultaGenericaDeleg.fgSubdele}"
+							value="#{consultaGenericaDeleg.claveSubdelegacion}"
+							valueChangeListener="#{consultaGenericaDeleg.listenerSubdelegacion}"
+							style="width:150px" styleClass="form-control">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenericaDeleg.lstSubDelegacion}" />
+							<f:ajax event="change"
+								render="slSubRegSolicitudCuenta slUMFRegSolicitudCuenta" execute="@all" immediate="true"/>
+						</h:selectOneMenu>
+
+						<h:outputLabel value="UMF: " id="lbUMFRegSolicitudCuenta" />
+						<h:selectOneMenu id="slUMFRegSolicitudCuenta"
+							disabled="#{consultaGenericaDeleg.fgUmf}"
+							value="#{consultaGenericaDeleg.claveUMF}"
+							valueChangeListener="#{consultaGenericaDeleg.listenerUmf}"
+							style="width:150px" styleClass="form-control">
+							<f:selectItem itemValue="#{-99}" itemLabel="Seleccione..." />
+							<f:selectItems value="${consultaGenericaDeleg.lstUMF}" />
+							<f:ajax event="change" render="slUMFRegSolicitudCuenta" execute="@all" immediate="true"/>
+						</h:selectOneMenu>
+					</h:panelGrid>
+
+					<h:panelGrid id="pnFilterDelegBtn" columns="1" width="100%" style="text-align:center;margin: 0; padding: 10px; font-size: 10px;">
+						<h:commandButton id="bValida" styleClass="btn btn-primary btn-sm"
+							action="#{solicitudPrincipalMB.obtenerSolicitudesDelegacional}"
+							onclick="bloquea();" value="Consultar cuentas usuarios"
+							style="margin:10px;"
+							immediate="true">
+						</h:commandButton>
+					</h:panelGrid>
+
+				</ace:panel>
+
+				<BR />
+			</div>
+
+			<div>
+				<ace:panel header="Resultados">
+					<style type="text/css">
+					/* Important required because row */
+					.ui-datatable-odd {
+						background-color: red !important;
+						background-position-y: -1400px; /* IE7 hack */
+					}
+					</style>
+					<ui:include src="../aprobadores/resultados.xhtml" />		
+				</ace:panel>
+			</div>
+			<div class="wp-caption-text">
+				<ui:include src="../aprobadores/acciones.xhtml" />		
+			</div>
+		</h:form>
+
+
+		<div>
+			<ui:include src="../aprobadores/dialogos.xhtml" />		
+		</div>
+
+
+	</ui:define>
+</ui:composition>
+</html>

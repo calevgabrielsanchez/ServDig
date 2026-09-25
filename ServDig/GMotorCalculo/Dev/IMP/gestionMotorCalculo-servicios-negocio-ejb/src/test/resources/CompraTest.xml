@@ -1,0 +1,1166 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<sua:compra xmlns:sua="http://mx.gob.imss.digital.modelo.cobranza">
+  <pagos>
+    
+      <idPago>113</idPago>
+      <fechaInicioPeriodo>2014-12-01T00:00:00-06:00</fechaInicioPeriodo>
+      <fechaFinPeriodo>2014-12-31T00:00:00-06:00</fechaFinPeriodo>
+      <fechaLimitePago>2014-11-28T00:00:00-06:00</fechaLimitePago>
+      <monto>639.66</monto>
+      <suaPago>
+        <patron>
+          <actividadEconomica>COMERCIO</actividadEconomica>
+          <areaGeograficaSalariosMinimos>A</areaGeograficaSalariosMinimos>
+          <calleNoYColonia>SAN ANDRÉS MZ122 LT1</calleNoYColonia>
+          <codigoPostal>0</codigoPostal>
+          <convenioDeReembolsoDeSubsidios>N</convenioDeReembolsoDeSubsidios>
+          <delegacionDelIMSS>13</delegacionDelIMSS>
+          <diasCotizadosPeriodoConIncidencias>31</diasCotizadosPeriodoConIncidencias>
+          <entidadFederativa>13</entidadFederativa>
+          <fechaDeLaPrimaDeRiesgoDeTrabajo>2014-09-12T16:18:36.002-05:00</fechaDeLaPrimaDeRiesgoDeTrabajo>
+          <filler></filler>
+          <folioSUA>550197</folioSUA>
+          <municipio>022</municipio>
+          <nombreORazonSocial>LUCIO DURAN SILVA</nombreORazonSocial>
+          <numeroDeCreditoIMSS>0</numeroDeCreditoIMSS>
+          <numeroDeTrabajadoresCotizantes>1</numeroDeTrabajadoresCotizantes>
+          <periodoDePago>2014-12-31T00:00:00-06:00</periodoDePago>
+          <poblacionYMunicipioODelegacionPolitica>EPAZOYUCAN</poblacionYMunicipioODelegacionPolitica>
+          <porcentajeDeAportacionINFONAVIT>0</porcentajeDeAportacionINFONAVIT>
+          <primaDeRiesgoDeTrabajo>7.5887</primaDeRiesgoDeTrabajo>
+          <registroPatronalIMSS>N4418657107</registroPatronalIMSS>
+          <rfcPatron>DUSL821218LN8</rfcPatron>
+          <subdelegacionDelIMSS>1</subdelegacionDelIMSS>
+          <telefono>0</telefono>
+          <tipoDeCotizacion>3</tipoDeCotizacion>
+          <tipoDocumento>1</tipoDocumento>
+        </patron>
+        <trabajadores>
+          <actualizacionCesantiaYVejez>0</actualizacionCesantiaYVejez>
+          <actualizacionCuatroSegurosIMSS>0</actualizacionCuatroSegurosIMSS>
+          <actualizacionRetiro>0</actualizacionRetiro>
+          <actualizacionYRecargosDeCesantiaYVejez>0</actualizacionYRecargosDeCesantiaYVejez>
+          <actualizacionYRecargosDeLosCuatroSegurosIMSS>0</actualizacionYRecargosDeLosCuatroSegurosIMSS>
+          <actualizacionYRecargosDeRetiro>0</actualizacionYRecargosDeRetiro>
+          <amortizacionDeCreditoINFONAVIT>0</amortizacionDeCreditoINFONAVIT>
+          <apellidoMaternoTrabajador>CRUZ</apellidoMaternoTrabajador>
+          <apellidoPaternoTrabajador>GONZALEZ</apellidoPaternoTrabajador>
+          <aportacionPatronalINFONAVIT>0</aportacionPatronalINFONAVIT>
+          <aportacionVoluntaria>0</aportacionVoluntaria>
+          <cesantiaYVejezCuotaObrera>0br</cesantiaYVejezCuotaObrera>
+          <cesantiaYVejezCuotaObreraN>23.47</cesantiaYVejezCuotaObreraN>
+          <cesantiaYVejezCuotaPatronal>65.71</cesantiaYVejezCuotaPatronal>
+          <cesantiaYVejezCuotaTrabajador>23.47</cesantiaYVejezCuotaTrabajador>
+          <claveUnicaDelRegistroDePoblacion>GOCE470105HTSNRR01</claveUnicaDelRegistroDePoblacion>
+          <cuotaExcedenteCuotaObrera>000</cuotaExcedenteCuotaObrera>
+          <cuotaExcedenteCuotaObreraN>0.00</cuotaExcedenteCuotaObreraN>
+          <cuotaExcedenteDeEnfermedadYMaternidad>0.00</cuotaExcedenteDeEnfermedadYMaternidad>
+          <cuotaFijaDeEnfermedadYMaternidad>425.54</cuotaFijaDeEnfermedadYMaternidad>
+          <diasCotizadosEnElBimestre>31</diasCotizadosEnElBimestre>
+          <diasCotizadosEnElMes>31</diasCotizadosEnElMes>
+          <diasDeAusentismoEnElBimestre>0</diasDeAusentismoEnElBimestre>
+          <diasDeAusentismoEnElMes>0</diasDeAusentismoEnElMes>
+          <diasDeIncapacidadEnElBimestre>0</diasDeIncapacidadEnElBimestre>
+          <diasDeIncapacidadEnElMes>0</diasDeIncapacidadEnElMes>
+          <fechaDeInicioDelDescuentoDeCreditoINFONAVIT>2014-09-12T16:18:36.012-05:00</fechaDeInicioDelDescuentoDeCreditoINFONAVIT>
+          <gastosMedicosPensionadosArt25>29.72</gastosMedicosPensionadosArt25>
+          <gastosMedicosPensionadosCuotaObrera>0Cc</gastosMedicosPensionadosCuotaObrera>
+          <gastosMedicosPensionadosCuotaObreraN>7.82</gastosMedicosPensionadosCuotaObreraN>
+          <guarderiaYPrestacionesSociales>0.00</guarderiaYPrestacionesSociales>
+          <invalidezYVida>49.54</invalidezYVida>
+          <invalidezYVidaCuotaObrera>0L2</invalidezYVidaCuotaObrera>
+          <invalidezYVidaCuotaObreraN>13.04</invalidezYVidaCuotaObreraN>
+          <jornadaPorSemanaReducida>0</jornadaPorSemanaReducida>
+          <movimientos>
+            <diasDeIncidencia>0</diasDeIncidencia>
+            <fechaDeMovimientoOIncidencia>2014-12-01T00:00:00-06:00</fechaDeMovimientoOIncidencia>
+            <folioDeIncapacidad />
+            <nssTrabajador>78684610658</nssTrabajador>
+            <salarioDiarioIntegrado>0</salarioDiarioIntegrado>
+            <tipoDeMovimientoOIncidencia>0</tipoDeMovimientoOIncidencia>
+          </movimientos>
+          <municipio>022</municipio>
+          <nombreTrabajador>ERNESTO</nombreTrabajador>
+          <nssTrabajador>78684610658</nssTrabajador>
+          <numeroDeCreditoINFONAVIT>0</numeroDeCreditoINFONAVIT>
+          <numeroDeMovimientosEnElPeriodo>1</numeroDeMovimientosEnElPeriodo>
+          <prestacionesEnDineroCuotaObrera>01g</prestacionesEnDineroCuotaObrera>
+          <prestacionesEnDineroCuotaObreraN>1.04</prestacionesEnDineroCuotaObreraN>
+          <prestacionesEnDineroDeEnfermedadYMaternidad>3.96</prestacionesEnDineroDeEnfermedadYMaternidad>
+          <recargosCesantiaYVejez>0</recargosCesantiaYVejez>
+          <recargosCuatroSegurosIMSS>0</recargosCuatroSegurosIMSS>
+          <recargosRetiro>0</recargosRetiro>
+          <retiro>41.72</retiro>
+          <rfcDelTrabajador>GOCE470105MP7</rfcDelTrabajador>
+          <riesgosDeTrabajo>0.00</riesgosDeTrabajo>
+          <tipoDeTrabajador>1</tipoDeTrabajador>
+          <ultimoSalarioDiarioIntegradoDelPeriodo>67.29</ultimoSalarioDiarioIntegradoDelPeriodo>
+        </trabajadores>
+        <sumarioPatronal>
+          <actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>0</actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>
+          <actualizacionDeLosCuatroSegurosIMSS>0</actualizacionDeLosCuatroSegurosIMSS>
+          <actualizacionDeRetiroCesantiaYVejez>0</actualizacionDeRetiroCesantiaYVejez>
+          <amortizacionDeCreditoINFONAVIT>0</amortizacionDeCreditoINFONAVIT>
+          <aportacionPatronalINFONAVITParaAmortizacionDeCreditos>0</aportacionPatronalINFONAVITParaAmortizacionDeCreditos>
+          <aportacionPatronalINFONAVITParaCuentaIndividual>0</aportacionPatronalINFONAVITParaCuentaIndividual>
+          <aportacionesComplementarias>0</aportacionesComplementarias>
+          <aportacionesVoluntarias>0</aportacionesVoluntarias>
+          <cesantiaYVejez>89.18</cesantiaYVejez>
+          <cuotaExcedenteDeEnfermedadYMaternidad>0.00</cuotaExcedenteDeEnfermedadYMaternidad>
+          <cuotaFijaDeEnfermedadYMaternidad>425.54</cuotaFijaDeEnfermedadYMaternidad>
+          <donativoFUNDEMEX>0</donativoFUNDEMEX>
+          <filler></filler>
+          <folioDeRequerimiento></folioDeRequerimiento>
+          <gastosMedicosPensionadosArt25>29.72</gastosMedicosPensionadosArt25>
+          <guarderiaYPrestacionesSociales>0.00</guarderiaYPrestacionesSociales>
+          <invalidezYVida>49.54</invalidezYVida>
+          <multasINFONAVIT>0</multasINFONAVIT>
+          <prestacionesEnDineroDeEnfermedadYMaternidad>3.96</prestacionesEnDineroDeEnfermedadYMaternidad>
+          <recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>0</recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>
+          <recargosDeLosCuatroSegurosIMSS>0</recargosDeLosCuatroSegurosIMSS>
+          <recargosDeRetiroCesantiaYVejez>0</recargosDeRetiroCesantiaYVejez>
+          <retiro>41.72</retiro>
+          <riesgosDeTrabajo>0.00</riesgosDeTrabajo>
+          <subtotalDeCuatroSegurosIMSS>508.76</subtotalDeCuatroSegurosIMSS>
+          <subtotalRetiroCesantiaYVejez>130.90</subtotalRetiroCesantiaYVejez>
+          <tasaDeActualizacionEmpleada>0</tasaDeActualizacionEmpleada>
+          <tasaDeRecargosEmpleada>0</tasaDeRecargosEmpleada>
+        </sumarioPatronal>
+        <registroValidacion>
+          <checkSum>1234567891234567890</checkSum>
+          <cuotaExcedenteObrero>0</cuotaExcedenteObrero>
+          <cuotaExcedentePatronal>0</cuotaExcedentePatronal>
+          <cuotaFija>0</cuotaFija>
+          <factorDeAusentismo>0</factorDeAusentismo>
+          <factorDeReversionCF></factorDeReversionCF>
+          <factorDeReversionExcObrero></factorDeReversionExcObrero>
+          <factorDeReversionExcPatronal></factorDeReversionExcPatronal>
+          <factorDeReversionGMPObrero></factorDeReversionGMPObrero>
+          <factorDeReversionGMPPatronal></factorDeReversionGMPPatronal>
+          <factorDeReversionGPS></factorDeReversionGPS>
+          <factorDeReversionIVObrero></factorDeReversionIVObrero>
+          <factorDeReversionIVPatronal></factorDeReversionIVPatronal>
+          <factorDeReversionPDObrero></factorDeReversionPDObrero>
+          <factorDeReversionPDPatronal></factorDeReversionPDPatronal>
+          <factorDeReversionRT></factorDeReversionRT>
+          <fechaLimiteDePago>2014-11-28T00:00:00-06:00</fechaLimiteDePago>
+          <filler></filler>
+          <gastosMedicosPensionadosObrero>0</gastosMedicosPensionadosObrero>
+          <gastosMedicosPensionadosPatronal>0</gastosMedicosPensionadosPatronal>
+          <guarderiaYPrestacionesSociales>0</guarderiaYPrestacionesSociales>
+          <invalidezYVidaObrero>0</invalidezYVidaObrero>
+          <invalidezYVidaPatronal>0</invalidezYVidaPatronal>
+          <numeroDeDiscos>1</numeroDeDiscos>
+          <prestacionesDineroObrero>0</prestacionesDineroObrero>
+          <prestacionesDineroPatronal>0</prestacionesDineroPatronal>
+          <riesgosDeTrabajo>0</riesgosDeTrabajo>
+          <sumaDeTasasDeRecargosYActualizacionQueSeAplico>0</sumaDeTasasDeRecargosYActualizacionQueSeAplico>
+          <tamanioDelArchivoEnBytes>1475</tamanioDelArchivoEnBytes>
+          <totalADepositarEnCuentaIMSS4RSS>508.76</totalADepositarEnCuentaIMSS4RSS>
+          <totalADepositarEnCuentaIMSSRCV>130.90</totalADepositarEnCuentaIMSSRCV>
+          <totalADepositarINFONAVITAmortizacionCredito>0</totalADepositarINFONAVITAmortizacionCredito>
+          <totalADepositarINFONAVITAportacionPatronal>0</totalADepositarINFONAVITAportacionPatronal>
+          <versionSUA>G395</versionSUA>
+        </registroValidacion>
+        <fechaInicio>2014-12-01T00:00:00-06:00</fechaInicio>
+        <fechaFin>2014-12-31T00:00:00-06:00</fechaFin>
+        <monto>639.66</monto>
+      </suaPago>
+    </pagos>
+<!--     <pago> -->
+<!--       <idPago>114</idPago> -->
+<!--       <fechaInicioPeriodo>2015-01-01T00:00:00-06:00</fechaInicioPeriodo> -->
+<!--       <fechaFinPeriodo>2015-02-28T00:00:00-06:00</fechaFinPeriodo> -->
+<!--       <fechaLimitePago>2014-11-28T00:00:00-06:00</fechaLimitePago> -->
+<!--       <monto>1217.43</monto> -->
+<!--       <suaPago> -->
+<!--         <patron> -->
+<!--           <actividadEconomica>COMERCIO</actividadEconomica> -->
+<!--           <areaGeograficaSalariosMinimos>A</areaGeograficaSalariosMinimos> -->
+<!--           <calleNoYColonia>SAN ANDRÉS MZ122 LT1</calleNoYColonia> -->
+<!--           <codigoPostal>0</codigoPostal> -->
+<!--           <convenioDeReembolsoDeSubsidios>N</convenioDeReembolsoDeSubsidios> -->
+<!--           <delegacionDelIMSS>13</delegacionDelIMSS> -->
+<!--           <diasCotizadosPeriodoConIncidencias>59</diasCotizadosPeriodoConIncidencias> -->
+<!--           <entidadFederativa>13</entidadFederativa> -->
+<!--           <fechaDeLaPrimaDeRiesgoDeTrabajo>2014-09-12T16:18:36.012-05:00</fechaDeLaPrimaDeRiesgoDeTrabajo> -->
+<!--           <filler></filler> -->
+<!--           <folioSUA>568094</folioSUA> -->
+<!--           <municipio>022</municipio> -->
+<!--           <nombreORazonSocial>LUCIO DURAN SILVA</nombreORazonSocial> -->
+<!--           <numeroDeCreditoIMSS>0</numeroDeCreditoIMSS> -->
+<!--           <numeroDeTrabajadoresCotizantes>1</numeroDeTrabajadoresCotizantes> -->
+<!--           <periodoDePago>2015-02-28T00:00:00-06:00</periodoDePago> -->
+<!--           <poblacionYMunicipioODelegacionPolitica>EPAZOYUCAN</poblacionYMunicipioODelegacionPolitica> -->
+<!--           <porcentajeDeAportacionINFONAVIT>0</porcentajeDeAportacionINFONAVIT> -->
+<!--           <primaDeRiesgoDeTrabajo>7.5887</primaDeRiesgoDeTrabajo> -->
+<!--           <registroPatronalIMSS>N4418657107</registroPatronalIMSS> -->
+<!--           <rfcPatron>DUSL821218LN8</rfcPatron> -->
+<!--           <subdelegacionDelIMSS>1</subdelegacionDelIMSS> -->
+<!--           <telefono>0</telefono> -->
+<!--           <tipoDeCotizacion>3</tipoDeCotizacion> -->
+<!--           <tipoDocumento>1</tipoDocumento> -->
+<!--         </patron> -->
+<!--         <trabajadores> -->
+<!--           <actualizacionCesantiaYVejez>0</actualizacionCesantiaYVejez> -->
+<!--           <actualizacionCuatroSegurosIMSS>0</actualizacionCuatroSegurosIMSS> -->
+<!--           <actualizacionRetiro>0</actualizacionRetiro> -->
+<!--           <actualizacionYRecargosDeCesantiaYVejez>0</actualizacionYRecargosDeCesantiaYVejez> -->
+<!--           <actualizacionYRecargosDeLosCuatroSegurosIMSS>0</actualizacionYRecargosDeLosCuatroSegurosIMSS> -->
+<!--           <actualizacionYRecargosDeRetiro>0</actualizacionYRecargosDeRetiro> -->
+<!--           <amortizacionDeCreditoINFONAVIT>0</amortizacionDeCreditoINFONAVIT> -->
+<!--           <apellidoMaternoTrabajador>CRUZ</apellidoMaternoTrabajador> -->
+<!--           <apellidoPaternoTrabajador>GONZALEZ</apellidoPaternoTrabajador> -->
+<!--           <aportacionPatronalINFONAVIT>0</aportacionPatronalINFONAVIT> -->
+<!--           <aportacionVoluntaria>0</aportacionVoluntaria> -->
+<!--           <cesantiaYVejezCuotaObrera>1A3</cesantiaYVejezCuotaObrera> -->
+<!--           <cesantiaYVejezCuotaObreraN>44.67</cesantiaYVejezCuotaObreraN> -->
+<!--           <cesantiaYVejezCuotaPatronal>125.06</cesantiaYVejezCuotaPatronal> -->
+<!--           <cesantiaYVejezCuotaTrabajador>44.67</cesantiaYVejezCuotaTrabajador> -->
+<!--           <claveUnicaDelRegistroDePoblacion>GOCE470105HTSNRR01</claveUnicaDelRegistroDePoblacion> -->
+<!--           <cuotaExcedenteCuotaObrera>000</cuotaExcedenteCuotaObrera> -->
+<!--           <cuotaExcedenteCuotaObreraN>0.00</cuotaExcedenteCuotaObreraN> -->
+<!--           <cuotaExcedenteDeEnfermedadYMaternidad>0.00</cuotaExcedenteDeEnfermedadYMaternidad> -->
+<!--           <cuotaFijaDeEnfermedadYMaternidad>809.90</cuotaFijaDeEnfermedadYMaternidad> -->
+<!--           <diasCotizadosEnElBimestre>59</diasCotizadosEnElBimestre> -->
+<!--           <diasCotizadosEnElMes>59</diasCotizadosEnElMes> -->
+<!--           <diasDeAusentismoEnElBimestre>0</diasDeAusentismoEnElBimestre> -->
+<!--           <diasDeAusentismoEnElMes>0</diasDeAusentismoEnElMes> -->
+<!--           <diasDeIncapacidadEnElBimestre>0</diasDeIncapacidadEnElBimestre> -->
+<!--           <diasDeIncapacidadEnElMes>0</diasDeIncapacidadEnElMes> -->
+<!--           <fechaDeInicioDelDescuentoDeCreditoINFONAVIT>2014-09-12T16:18:36.012-05:00</fechaDeInicioDelDescuentoDeCreditoINFONAVIT> -->
+<!--           <gastosMedicosPensionadosArt25>56.57</gastosMedicosPensionadosArt25> -->
+<!--           <gastosMedicosPensionadosCuotaObrera>0O1</gastosMedicosPensionadosCuotaObrera> -->
+<!--           <gastosMedicosPensionadosCuotaObreraN>14.89</gastosMedicosPensionadosCuotaObreraN> -->
+<!--           <guarderiaYPrestacionesSociales>0.00</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVida>94.29</invalidezYVida> -->
+<!--           <invalidezYVidaCuotaObrera>0e2</invalidezYVidaCuotaObrera> -->
+<!--           <invalidezYVidaCuotaObreraN>24.82</invalidezYVidaCuotaObreraN> -->
+<!--           <jornadaPorSemanaReducida>0</jornadaPorSemanaReducida> -->
+<!--           <movimientos> -->
+<!--             <diasDeIncidencia>0</diasDeIncidencia> -->
+<!--             <fechaDeMovimientoOIncidencia>2015-01-01T00:00:00-06:00</fechaDeMovimientoOIncidencia> -->
+<!--             <folioDeIncapacidad /> -->
+<!--             <nssTrabajador>78684610658</nssTrabajador> -->
+<!--             <salarioDiarioIntegrado>0</salarioDiarioIntegrado> -->
+<!--             <tipoDeMovimientoOIncidencia>0</tipoDeMovimientoOIncidencia> -->
+<!--           </movimientos> -->
+<!--           <municipio>022</municipio> -->
+<!--           <nombreTrabajador>ERNESTO</nombreTrabajador> -->
+<!--           <nssTrabajador>78684610658</nssTrabajador> -->
+<!--           <numeroDeCreditoINFONAVIT>0</numeroDeCreditoINFONAVIT> -->
+<!--           <numeroDeMovimientosEnElPeriodo>1</numeroDeMovimientosEnElPeriodo> -->
+<!--           <prestacionesEnDineroCuotaObrera>03C</prestacionesEnDineroCuotaObrera> -->
+<!--           <prestacionesEnDineroCuotaObreraN>1.98</prestacionesEnDineroCuotaObreraN> -->
+<!--           <prestacionesEnDineroDeEnfermedadYMaternidad>7.54</prestacionesEnDineroDeEnfermedadYMaternidad> -->
+<!--           <recargosCesantiaYVejez>0</recargosCesantiaYVejez> -->
+<!--           <recargosCuatroSegurosIMSS>0</recargosCuatroSegurosIMSS> -->
+<!--           <recargosRetiro>0</recargosRetiro> -->
+<!--           <retiro>79.40</retiro> -->
+<!--           <rfcDelTrabajador>GOCE470105MP7</rfcDelTrabajador> -->
+<!--           <riesgosDeTrabajo>0.00</riesgosDeTrabajo> -->
+<!--           <tipoDeTrabajador>1</tipoDeTrabajador> -->
+<!--           <ultimoSalarioDiarioIntegradoDelPeriodo>67.29</ultimoSalarioDiarioIntegradoDelPeriodo> -->
+<!--         </trabajadores> -->
+<!--         <sumarioPatronal> -->
+<!--           <actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>0</actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT> -->
+<!--           <actualizacionDeLosCuatroSegurosIMSS>0</actualizacionDeLosCuatroSegurosIMSS> -->
+<!--           <actualizacionDeRetiroCesantiaYVejez>0</actualizacionDeRetiroCesantiaYVejez> -->
+<!--           <amortizacionDeCreditoINFONAVIT>0</amortizacionDeCreditoINFONAVIT> -->
+<!--           <aportacionPatronalINFONAVITParaAmortizacionDeCreditos>0</aportacionPatronalINFONAVITParaAmortizacionDeCreditos> -->
+<!--           <aportacionPatronalINFONAVITParaCuentaIndividual>0</aportacionPatronalINFONAVITParaCuentaIndividual> -->
+<!--           <aportacionesComplementarias>0</aportacionesComplementarias> -->
+<!--           <aportacionesVoluntarias>0</aportacionesVoluntarias> -->
+<!--           <cesantiaYVejez>169.73</cesantiaYVejez> -->
+<!--           <cuotaExcedenteDeEnfermedadYMaternidad>0.00</cuotaExcedenteDeEnfermedadYMaternidad> -->
+<!--           <cuotaFijaDeEnfermedadYMaternidad>809.90</cuotaFijaDeEnfermedadYMaternidad> -->
+<!--           <donativoFUNDEMEX>0</donativoFUNDEMEX> -->
+<!--           <filler></filler> -->
+<!--           <folioDeRequerimiento></folioDeRequerimiento> -->
+<!--           <gastosMedicosPensionadosArt25>56.57</gastosMedicosPensionadosArt25> -->
+<!--           <guarderiaYPrestacionesSociales>0.00</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVida>94.29</invalidezYVida> -->
+<!--           <multasINFONAVIT>0</multasINFONAVIT> -->
+<!--           <prestacionesEnDineroDeEnfermedadYMaternidad>7.54</prestacionesEnDineroDeEnfermedadYMaternidad> -->
+<!--           <recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>0</recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT> -->
+<!--           <recargosDeLosCuatroSegurosIMSS>0</recargosDeLosCuatroSegurosIMSS> -->
+<!--           <recargosDeRetiroCesantiaYVejez>0</recargosDeRetiroCesantiaYVejez> -->
+<!--           <retiro>79.40</retiro> -->
+<!--           <riesgosDeTrabajo>0.00</riesgosDeTrabajo> -->
+<!--           <subtotalDeCuatroSegurosIMSS>968.30</subtotalDeCuatroSegurosIMSS> -->
+<!--           <subtotalRetiroCesantiaYVejez>249.13</subtotalRetiroCesantiaYVejez> -->
+<!--           <tasaDeActualizacionEmpleada>0</tasaDeActualizacionEmpleada> -->
+<!--           <tasaDeRecargosEmpleada>0</tasaDeRecargosEmpleada> -->
+<!--         </sumarioPatronal> -->
+<!--         <registroValidacion> -->
+<!--           <checkSum>1234567891234567890</checkSum> -->
+<!--           <cuotaExcedenteObrero>0</cuotaExcedenteObrero> -->
+<!--           <cuotaExcedentePatronal>0</cuotaExcedentePatronal> -->
+<!--           <cuotaFija>0</cuotaFija> -->
+<!--           <factorDeAusentismo>0</factorDeAusentismo> -->
+<!--           <factorDeReversionCF></factorDeReversionCF> -->
+<!--           <factorDeReversionExcObrero></factorDeReversionExcObrero> -->
+<!--           <factorDeReversionExcPatronal></factorDeReversionExcPatronal> -->
+<!--           <factorDeReversionGMPObrero></factorDeReversionGMPObrero> -->
+<!--           <factorDeReversionGMPPatronal></factorDeReversionGMPPatronal> -->
+<!--           <factorDeReversionGPS></factorDeReversionGPS> -->
+<!--           <factorDeReversionIVObrero></factorDeReversionIVObrero> -->
+<!--           <factorDeReversionIVPatronal></factorDeReversionIVPatronal> -->
+<!--           <factorDeReversionPDObrero></factorDeReversionPDObrero> -->
+<!--           <factorDeReversionPDPatronal></factorDeReversionPDPatronal> -->
+<!--           <factorDeReversionRT></factorDeReversionRT> -->
+<!--           <fechaLimiteDePago>2014-11-28T00:00:00-06:00</fechaLimiteDePago> -->
+<!--           <filler></filler> -->
+<!--           <gastosMedicosPensionadosObrero>0</gastosMedicosPensionadosObrero> -->
+<!--           <gastosMedicosPensionadosPatronal>0</gastosMedicosPensionadosPatronal> -->
+<!--           <guarderiaYPrestacionesSociales>0</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVidaObrero>0</invalidezYVidaObrero> -->
+<!--           <invalidezYVidaPatronal>0</invalidezYVidaPatronal> -->
+<!--           <numeroDeDiscos>1</numeroDeDiscos> -->
+<!--           <prestacionesDineroObrero>0</prestacionesDineroObrero> -->
+<!--           <prestacionesDineroPatronal>0</prestacionesDineroPatronal> -->
+<!--           <riesgosDeTrabajo>0</riesgosDeTrabajo> -->
+<!--           <sumaDeTasasDeRecargosYActualizacionQueSeAplico>0</sumaDeTasasDeRecargosYActualizacionQueSeAplico> -->
+<!--           <tamanioDelArchivoEnBytes>1475</tamanioDelArchivoEnBytes> -->
+<!--           <totalADepositarEnCuentaIMSS4RSS>968.30</totalADepositarEnCuentaIMSS4RSS> -->
+<!--           <totalADepositarEnCuentaIMSSRCV>249.13</totalADepositarEnCuentaIMSSRCV> -->
+<!--           <totalADepositarINFONAVITAmortizacionCredito>0</totalADepositarINFONAVITAmortizacionCredito> -->
+<!--           <totalADepositarINFONAVITAportacionPatronal>0</totalADepositarINFONAVITAportacionPatronal> -->
+<!--           <versionSUA>G395</versionSUA> -->
+<!--         </registroValidacion> -->
+<!--         <fechaInicio>2015-01-01T00:00:00-06:00</fechaInicio> -->
+<!--         <fechaFin>2015-02-28T00:00:00-06:00</fechaFin> -->
+<!--         <monto>1217.43</monto> -->
+<!--       </suaPago> -->
+<!--     </pago> -->
+<!--     <pago> -->
+<!--       <idPago>115</idPago> -->
+<!--       <fechaInicioPeriodo>2015-03-01T00:00:00-06:00</fechaInicioPeriodo> -->
+<!--       <fechaFinPeriodo>2015-04-30T00:00:00-05:00</fechaFinPeriodo> -->
+<!--       <fechaLimitePago>2014-11-28T00:00:00-06:00</fechaLimitePago> -->
+<!--       <monto>1258.70</monto> -->
+<!--       <suaPago> -->
+<!--         <patron> -->
+<!--           <actividadEconomica>COMERCIO</actividadEconomica> -->
+<!--           <areaGeograficaSalariosMinimos>A</areaGeograficaSalariosMinimos> -->
+<!--           <calleNoYColonia>SAN ANDRÉS MZ122 LT1</calleNoYColonia> -->
+<!--           <codigoPostal>0</codigoPostal> -->
+<!--           <convenioDeReembolsoDeSubsidios>N</convenioDeReembolsoDeSubsidios> -->
+<!--           <delegacionDelIMSS>13</delegacionDelIMSS> -->
+<!--           <diasCotizadosPeriodoConIncidencias>60</diasCotizadosPeriodoConIncidencias> -->
+<!--           <entidadFederativa>13</entidadFederativa> -->
+<!--           <fechaDeLaPrimaDeRiesgoDeTrabajo>2014-09-12T16:18:36.012-05:00</fechaDeLaPrimaDeRiesgoDeTrabajo> -->
+<!--           <filler></filler> -->
+<!--           <folioSUA>568496</folioSUA> -->
+<!--           <municipio>022</municipio> -->
+<!--           <nombreORazonSocial>LUCIO DURAN SILVA</nombreORazonSocial> -->
+<!--           <numeroDeCreditoIMSS>0</numeroDeCreditoIMSS> -->
+<!--           <numeroDeTrabajadoresCotizantes>1</numeroDeTrabajadoresCotizantes> -->
+<!--           <periodoDePago>2015-04-30T00:00:00-05:00</periodoDePago> -->
+<!--           <poblacionYMunicipioODelegacionPolitica>EPAZOYUCAN</poblacionYMunicipioODelegacionPolitica> -->
+<!--           <porcentajeDeAportacionINFONAVIT>0</porcentajeDeAportacionINFONAVIT> -->
+<!--           <primaDeRiesgoDeTrabajo>7.5887</primaDeRiesgoDeTrabajo> -->
+<!--           <registroPatronalIMSS>N4418657107</registroPatronalIMSS> -->
+<!--           <rfcPatron>DUSL821218LN8</rfcPatron> -->
+<!--           <subdelegacionDelIMSS>1</subdelegacionDelIMSS> -->
+<!--           <telefono>0</telefono> -->
+<!--           <tipoDeCotizacion>3</tipoDeCotizacion> -->
+<!--           <tipoDocumento>1</tipoDocumento> -->
+<!--         </patron> -->
+<!--         <trabajadores> -->
+<!--           <actualizacionCesantiaYVejez>0</actualizacionCesantiaYVejez> -->
+<!--           <actualizacionCuatroSegurosIMSS>0</actualizacionCuatroSegurosIMSS> -->
+<!--           <actualizacionRetiro>0</actualizacionRetiro> -->
+<!--           <actualizacionYRecargosDeCesantiaYVejez>0</actualizacionYRecargosDeCesantiaYVejez> -->
+<!--           <actualizacionYRecargosDeLosCuatroSegurosIMSS>0</actualizacionYRecargosDeLosCuatroSegurosIMSS> -->
+<!--           <actualizacionYRecargosDeRetiro>0</actualizacionYRecargosDeRetiro> -->
+<!--           <amortizacionDeCreditoINFONAVIT>0</amortizacionDeCreditoINFONAVIT> -->
+<!--           <apellidoMaternoTrabajador>CRUZ</apellidoMaternoTrabajador> -->
+<!--           <apellidoPaternoTrabajador>GONZALEZ</apellidoPaternoTrabajador> -->
+<!--           <aportacionPatronalINFONAVIT>0</aportacionPatronalINFONAVIT> -->
+<!--           <aportacionVoluntaria>0</aportacionVoluntaria> -->
+<!--           <cesantiaYVejezCuotaObrera>1CU</cesantiaYVejezCuotaObrera> -->
+<!--           <cesantiaYVejezCuotaObreraN>46.18</cesantiaYVejezCuotaObreraN> -->
+<!--           <cesantiaYVejezCuotaPatronal>129.30</cesantiaYVejezCuotaPatronal> -->
+<!--           <cesantiaYVejezCuotaTrabajador>46.18</cesantiaYVejezCuotaTrabajador> -->
+<!--           <claveUnicaDelRegistroDePoblacion>GOCE470105HTSNRR01</claveUnicaDelRegistroDePoblacion> -->
+<!--           <cuotaExcedenteCuotaObrera>000</cuotaExcedenteCuotaObrera> -->
+<!--           <cuotaExcedenteCuotaObreraN>0.00</cuotaExcedenteCuotaObreraN> -->
+<!--           <cuotaExcedenteDeEnfermedadYMaternidad>0.00</cuotaExcedenteDeEnfermedadYMaternidad> -->
+<!--           <cuotaFijaDeEnfermedadYMaternidad>837.35</cuotaFijaDeEnfermedadYMaternidad> -->
+<!--           <diasCotizadosEnElBimestre>60</diasCotizadosEnElBimestre> -->
+<!--           <diasCotizadosEnElMes>60</diasCotizadosEnElMes> -->
+<!--           <diasDeAusentismoEnElBimestre>0</diasDeAusentismoEnElBimestre> -->
+<!--           <diasDeAusentismoEnElMes>0</diasDeAusentismoEnElMes> -->
+<!--           <diasDeIncapacidadEnElBimestre>0</diasDeIncapacidadEnElBimestre> -->
+<!--           <diasDeIncapacidadEnElMes>0</diasDeIncapacidadEnElMes> -->
+<!--           <fechaDeInicioDelDescuentoDeCreditoINFONAVIT>2014-09-12T16:18:36.022-05:00</fechaDeInicioDelDescuentoDeCreditoINFONAVIT> -->
+<!--           <gastosMedicosPensionadosArt25>58.49</gastosMedicosPensionadosArt25> -->
+<!--           <gastosMedicosPensionadosCuotaObrera>0Op</gastosMedicosPensionadosCuotaObrera> -->
+<!--           <gastosMedicosPensionadosCuotaObreraN>15.39</gastosMedicosPensionadosCuotaObreraN> -->
+<!--           <guarderiaYPrestacionesSociales>0.00</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVida>97.49</invalidezYVida> -->
+<!--           <invalidezYVidaCuotaObrera>0fO</invalidezYVidaCuotaObrera> -->
+<!--           <invalidezYVidaCuotaObreraN>25.66</invalidezYVidaCuotaObreraN> -->
+<!--           <jornadaPorSemanaReducida>0</jornadaPorSemanaReducida> -->
+<!--           <movimientos> -->
+<!--             <diasDeIncidencia>0</diasDeIncidencia> -->
+<!--             <fechaDeMovimientoOIncidencia>2015-03-01T00:00:00-06:00</fechaDeMovimientoOIncidencia> -->
+<!--             <folioDeIncapacidad /> -->
+<!--             <nssTrabajador>78684610658</nssTrabajador> -->
+<!--             <salarioDiarioIntegrado>0</salarioDiarioIntegrado> -->
+<!--             <tipoDeMovimientoOIncidencia>0</tipoDeMovimientoOIncidencia> -->
+<!--           </movimientos> -->
+<!--           <municipio>022</municipio> -->
+<!--           <nombreTrabajador>ERNESTO</nombreTrabajador> -->
+<!--           <nssTrabajador>78684610658</nssTrabajador> -->
+<!--           <numeroDeCreditoINFONAVIT>0</numeroDeCreditoINFONAVIT> -->
+<!--           <numeroDeMovimientosEnElPeriodo>1</numeroDeMovimientosEnElPeriodo> -->
+<!--           <prestacionesEnDineroCuotaObrera>03J</prestacionesEnDineroCuotaObrera> -->
+<!--           <prestacionesEnDineroCuotaObreraN>2.05</prestacionesEnDineroCuotaObreraN> -->
+<!--           <prestacionesEnDineroDeEnfermedadYMaternidad>7.80</prestacionesEnDineroDeEnfermedadYMaternidad> -->
+<!--           <recargosCesantiaYVejez>0</recargosCesantiaYVejez> -->
+<!--           <recargosCuatroSegurosIMSS>0</recargosCuatroSegurosIMSS> -->
+<!--           <recargosRetiro>0</recargosRetiro> -->
+<!--           <retiro>82.09</retiro> -->
+<!--           <rfcDelTrabajador>GOCE470105MP7</rfcDelTrabajador> -->
+<!--           <riesgosDeTrabajo>0.00</riesgosDeTrabajo> -->
+<!--           <tipoDeTrabajador>1</tipoDeTrabajador> -->
+<!--           <ultimoSalarioDiarioIntegradoDelPeriodo>67.29</ultimoSalarioDiarioIntegradoDelPeriodo> -->
+<!--         </trabajadores> -->
+<!--         <sumarioPatronal> -->
+<!--           <actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>0</actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT> -->
+<!--           <actualizacionDeLosCuatroSegurosIMSS>0</actualizacionDeLosCuatroSegurosIMSS> -->
+<!--           <actualizacionDeRetiroCesantiaYVejez>0</actualizacionDeRetiroCesantiaYVejez> -->
+<!--           <amortizacionDeCreditoINFONAVIT>0</amortizacionDeCreditoINFONAVIT> -->
+<!--           <aportacionPatronalINFONAVITParaAmortizacionDeCreditos>0</aportacionPatronalINFONAVITParaAmortizacionDeCreditos> -->
+<!--           <aportacionPatronalINFONAVITParaCuentaIndividual>0</aportacionPatronalINFONAVITParaCuentaIndividual> -->
+<!--           <aportacionesComplementarias>0</aportacionesComplementarias> -->
+<!--           <aportacionesVoluntarias>0</aportacionesVoluntarias> -->
+<!--           <cesantiaYVejez>175.48</cesantiaYVejez> -->
+<!--           <cuotaExcedenteDeEnfermedadYMaternidad>0.00</cuotaExcedenteDeEnfermedadYMaternidad> -->
+<!--           <cuotaFijaDeEnfermedadYMaternidad>837.35</cuotaFijaDeEnfermedadYMaternidad> -->
+<!--           <donativoFUNDEMEX>0</donativoFUNDEMEX> -->
+<!--           <filler></filler> -->
+<!--           <folioDeRequerimiento></folioDeRequerimiento> -->
+<!--           <gastosMedicosPensionadosArt25>58.49</gastosMedicosPensionadosArt25> -->
+<!--           <guarderiaYPrestacionesSociales>0.00</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVida>97.49</invalidezYVida> -->
+<!--           <multasINFONAVIT>0</multasINFONAVIT> -->
+<!--           <prestacionesEnDineroDeEnfermedadYMaternidad>7.80</prestacionesEnDineroDeEnfermedadYMaternidad> -->
+<!--           <recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>0</recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT> -->
+<!--           <recargosDeLosCuatroSegurosIMSS>0</recargosDeLosCuatroSegurosIMSS> -->
+<!--           <recargosDeRetiroCesantiaYVejez>0</recargosDeRetiroCesantiaYVejez> -->
+<!--           <retiro>82.09</retiro> -->
+<!--           <riesgosDeTrabajo>0.00</riesgosDeTrabajo> -->
+<!--           <subtotalDeCuatroSegurosIMSS>1001.13</subtotalDeCuatroSegurosIMSS> -->
+<!--           <subtotalRetiroCesantiaYVejez>257.57</subtotalRetiroCesantiaYVejez> -->
+<!--           <tasaDeActualizacionEmpleada>0</tasaDeActualizacionEmpleada> -->
+<!--           <tasaDeRecargosEmpleada>0</tasaDeRecargosEmpleada> -->
+<!--         </sumarioPatronal> -->
+<!--         <registroValidacion> -->
+<!--           <checkSum>1234567891234567890</checkSum> -->
+<!--           <cuotaExcedenteObrero>0</cuotaExcedenteObrero> -->
+<!--           <cuotaExcedentePatronal>0</cuotaExcedentePatronal> -->
+<!--           <cuotaFija>0</cuotaFija> -->
+<!--           <factorDeAusentismo>0</factorDeAusentismo> -->
+<!--           <factorDeReversionCF></factorDeReversionCF> -->
+<!--           <factorDeReversionExcObrero></factorDeReversionExcObrero> -->
+<!--           <factorDeReversionExcPatronal></factorDeReversionExcPatronal> -->
+<!--           <factorDeReversionGMPObrero></factorDeReversionGMPObrero> -->
+<!--           <factorDeReversionGMPPatronal></factorDeReversionGMPPatronal> -->
+<!--           <factorDeReversionGPS></factorDeReversionGPS> -->
+<!--           <factorDeReversionIVObrero></factorDeReversionIVObrero> -->
+<!--           <factorDeReversionIVPatronal></factorDeReversionIVPatronal> -->
+<!--           <factorDeReversionPDObrero></factorDeReversionPDObrero> -->
+<!--           <factorDeReversionPDPatronal></factorDeReversionPDPatronal> -->
+<!--           <factorDeReversionRT></factorDeReversionRT> -->
+<!--           <fechaLimiteDePago>2014-11-28T00:00:00-06:00</fechaLimiteDePago> -->
+<!--           <filler></filler> -->
+<!--           <gastosMedicosPensionadosObrero>0</gastosMedicosPensionadosObrero> -->
+<!--           <gastosMedicosPensionadosPatronal>0</gastosMedicosPensionadosPatronal> -->
+<!--           <guarderiaYPrestacionesSociales>0</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVidaObrero>0</invalidezYVidaObrero> -->
+<!--           <invalidezYVidaPatronal>0</invalidezYVidaPatronal> -->
+<!--           <numeroDeDiscos>1</numeroDeDiscos> -->
+<!--           <prestacionesDineroObrero>0</prestacionesDineroObrero> -->
+<!--           <prestacionesDineroPatronal>0</prestacionesDineroPatronal> -->
+<!--           <riesgosDeTrabajo>0</riesgosDeTrabajo> -->
+<!--           <sumaDeTasasDeRecargosYActualizacionQueSeAplico>0</sumaDeTasasDeRecargosYActualizacionQueSeAplico> -->
+<!--           <tamanioDelArchivoEnBytes>1475</tamanioDelArchivoEnBytes> -->
+<!--           <totalADepositarEnCuentaIMSS4RSS>1001.13</totalADepositarEnCuentaIMSS4RSS> -->
+<!--           <totalADepositarEnCuentaIMSSRCV>257.57</totalADepositarEnCuentaIMSSRCV> -->
+<!--           <totalADepositarINFONAVITAmortizacionCredito>0</totalADepositarINFONAVITAmortizacionCredito> -->
+<!--           <totalADepositarINFONAVITAportacionPatronal>0</totalADepositarINFONAVITAportacionPatronal> -->
+<!--           <versionSUA>G395</versionSUA> -->
+<!--         </registroValidacion> -->
+<!--         <fechaInicio>2015-03-01T00:00:00-06:00</fechaInicio> -->
+<!--         <fechaFin>2015-04-30T00:00:00-05:00</fechaFin> -->
+<!--         <monto>1258.70</monto> -->
+<!--       </suaPago> -->
+<!--     </pago> -->
+<!--     <pago> -->
+<!--       <idPago>116</idPago> -->
+<!--       <fechaInicioPeriodo>2015-05-01T00:00:00-05:00</fechaInicioPeriodo> -->
+<!--       <fechaFinPeriodo>2015-06-30T00:00:00-05:00</fechaFinPeriodo> -->
+<!--       <fechaLimitePago>2014-11-28T00:00:00-06:00</fechaLimitePago> -->
+<!--       <monto>1258.70</monto> -->
+<!--       <suaPago> -->
+<!--         <patron> -->
+<!--           <actividadEconomica>COMERCIO</actividadEconomica> -->
+<!--           <areaGeograficaSalariosMinimos>A</areaGeograficaSalariosMinimos> -->
+<!--           <calleNoYColonia>SAN ANDRÉS MZ122 LT1</calleNoYColonia> -->
+<!--           <codigoPostal>0</codigoPostal> -->
+<!--           <convenioDeReembolsoDeSubsidios>N</convenioDeReembolsoDeSubsidios> -->
+<!--           <delegacionDelIMSS>13</delegacionDelIMSS> -->
+<!--           <diasCotizadosPeriodoConIncidencias>61</diasCotizadosPeriodoConIncidencias> -->
+<!--           <entidadFederativa>13</entidadFederativa> -->
+<!--           <fechaDeLaPrimaDeRiesgoDeTrabajo>2014-09-12T16:18:36.022-05:00</fechaDeLaPrimaDeRiesgoDeTrabajo> -->
+<!--           <filler></filler> -->
+<!--           <folioSUA>568896</folioSUA> -->
+<!--           <municipio>022</municipio> -->
+<!--           <nombreORazonSocial>LUCIO DURAN SILVA</nombreORazonSocial> -->
+<!--           <numeroDeCreditoIMSS>0</numeroDeCreditoIMSS> -->
+<!--           <numeroDeTrabajadoresCotizantes>1</numeroDeTrabajadoresCotizantes> -->
+<!--           <periodoDePago>2015-06-30T00:00:00-05:00</periodoDePago> -->
+<!--           <poblacionYMunicipioODelegacionPolitica>EPAZOYUCAN</poblacionYMunicipioODelegacionPolitica> -->
+<!--           <porcentajeDeAportacionINFONAVIT>0</porcentajeDeAportacionINFONAVIT> -->
+<!--           <primaDeRiesgoDeTrabajo>7.5887</primaDeRiesgoDeTrabajo> -->
+<!--           <registroPatronalIMSS>N4418657107</registroPatronalIMSS> -->
+<!--           <rfcPatron>DUSL821218LN8</rfcPatron> -->
+<!--           <subdelegacionDelIMSS>1</subdelegacionDelIMSS> -->
+<!--           <telefono>0</telefono> -->
+<!--           <tipoDeCotizacion>3</tipoDeCotizacion> -->
+<!--           <tipoDocumento>1</tipoDocumento> -->
+<!--         </patron> -->
+<!--         <trabajadores> -->
+<!--           <actualizacionCesantiaYVejez>0</actualizacionCesantiaYVejez> -->
+<!--           <actualizacionCuatroSegurosIMSS>0</actualizacionCuatroSegurosIMSS> -->
+<!--           <actualizacionRetiro>0</actualizacionRetiro> -->
+<!--           <actualizacionYRecargosDeCesantiaYVejez>0</actualizacionYRecargosDeCesantiaYVejez> -->
+<!--           <actualizacionYRecargosDeLosCuatroSegurosIMSS>0</actualizacionYRecargosDeLosCuatroSegurosIMSS> -->
+<!--           <actualizacionYRecargosDeRetiro>0</actualizacionYRecargosDeRetiro> -->
+<!--           <amortizacionDeCreditoINFONAVIT>0</amortizacionDeCreditoINFONAVIT> -->
+<!--           <apellidoMaternoTrabajador>CRUZ</apellidoMaternoTrabajador> -->
+<!--           <apellidoPaternoTrabajador>GONZALEZ</apellidoPaternoTrabajador> -->
+<!--           <aportacionPatronalINFONAVIT>0</aportacionPatronalINFONAVIT> -->
+<!--           <aportacionVoluntaria>0</aportacionVoluntaria> -->
+<!--           <cesantiaYVejezCuotaObrera>1CU</cesantiaYVejezCuotaObrera> -->
+<!--           <cesantiaYVejezCuotaObreraN>46.18</cesantiaYVejezCuotaObreraN> -->
+<!--           <cesantiaYVejezCuotaPatronal>129.30</cesantiaYVejezCuotaPatronal> -->
+<!--           <cesantiaYVejezCuotaTrabajador>46.18</cesantiaYVejezCuotaTrabajador> -->
+<!--           <claveUnicaDelRegistroDePoblacion>GOCE470105HTSNRR01</claveUnicaDelRegistroDePoblacion> -->
+<!--           <cuotaExcedenteCuotaObrera>000</cuotaExcedenteCuotaObrera> -->
+<!--           <cuotaExcedenteCuotaObreraN>0.00</cuotaExcedenteCuotaObreraN> -->
+<!--           <cuotaExcedenteDeEnfermedadYMaternidad>0.00</cuotaExcedenteDeEnfermedadYMaternidad> -->
+<!--           <cuotaFijaDeEnfermedadYMaternidad>837.35</cuotaFijaDeEnfermedadYMaternidad> -->
+<!--           <diasCotizadosEnElBimestre>61</diasCotizadosEnElBimestre> -->
+<!--           <diasCotizadosEnElMes>61</diasCotizadosEnElMes> -->
+<!--           <diasDeAusentismoEnElBimestre>0</diasDeAusentismoEnElBimestre> -->
+<!--           <diasDeAusentismoEnElMes>0</diasDeAusentismoEnElMes> -->
+<!--           <diasDeIncapacidadEnElBimestre>0</diasDeIncapacidadEnElBimestre> -->
+<!--           <diasDeIncapacidadEnElMes>0</diasDeIncapacidadEnElMes> -->
+<!--           <fechaDeInicioDelDescuentoDeCreditoINFONAVIT>2014-09-12T16:18:36.032-05:00</fechaDeInicioDelDescuentoDeCreditoINFONAVIT> -->
+<!--           <gastosMedicosPensionadosArt25>58.49</gastosMedicosPensionadosArt25> -->
+<!--           <gastosMedicosPensionadosCuotaObrera>0Op</gastosMedicosPensionadosCuotaObrera> -->
+<!--           <gastosMedicosPensionadosCuotaObreraN>15.39</gastosMedicosPensionadosCuotaObreraN> -->
+<!--           <guarderiaYPrestacionesSociales>0.00</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVida>97.49</invalidezYVida> -->
+<!--           <invalidezYVidaCuotaObrera>0fO</invalidezYVidaCuotaObrera> -->
+<!--           <invalidezYVidaCuotaObreraN>25.66</invalidezYVidaCuotaObreraN> -->
+<!--           <jornadaPorSemanaReducida>0</jornadaPorSemanaReducida> -->
+<!--           <movimientos> -->
+<!--             <diasDeIncidencia>0</diasDeIncidencia> -->
+<!--             <fechaDeMovimientoOIncidencia>2015-05-01T00:00:00-05:00</fechaDeMovimientoOIncidencia> -->
+<!--             <folioDeIncapacidad /> -->
+<!--             <nssTrabajador>78684610658</nssTrabajador> -->
+<!--             <salarioDiarioIntegrado>0</salarioDiarioIntegrado> -->
+<!--             <tipoDeMovimientoOIncidencia>0</tipoDeMovimientoOIncidencia> -->
+<!--           </movimientos> -->
+<!--           <municipio>022</municipio> -->
+<!--           <nombreTrabajador>ERNESTO</nombreTrabajador> -->
+<!--           <nssTrabajador>78684610658</nssTrabajador> -->
+<!--           <numeroDeCreditoINFONAVIT>0</numeroDeCreditoINFONAVIT> -->
+<!--           <numeroDeMovimientosEnElPeriodo>1</numeroDeMovimientosEnElPeriodo> -->
+<!--           <prestacionesEnDineroCuotaObrera>03J</prestacionesEnDineroCuotaObrera> -->
+<!--           <prestacionesEnDineroCuotaObreraN>2.05</prestacionesEnDineroCuotaObreraN> -->
+<!--           <prestacionesEnDineroDeEnfermedadYMaternidad>7.80</prestacionesEnDineroDeEnfermedadYMaternidad> -->
+<!--           <recargosCesantiaYVejez>0</recargosCesantiaYVejez> -->
+<!--           <recargosCuatroSegurosIMSS>0</recargosCuatroSegurosIMSS> -->
+<!--           <recargosRetiro>0</recargosRetiro> -->
+<!--           <retiro>82.09</retiro> -->
+<!--           <rfcDelTrabajador>GOCE470105MP7</rfcDelTrabajador> -->
+<!--           <riesgosDeTrabajo>0.00</riesgosDeTrabajo> -->
+<!--           <tipoDeTrabajador>1</tipoDeTrabajador> -->
+<!--           <ultimoSalarioDiarioIntegradoDelPeriodo>67.29</ultimoSalarioDiarioIntegradoDelPeriodo> -->
+<!--         </trabajadores> -->
+<!--         <sumarioPatronal> -->
+<!--           <actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>0</actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT> -->
+<!--           <actualizacionDeLosCuatroSegurosIMSS>0</actualizacionDeLosCuatroSegurosIMSS> -->
+<!--           <actualizacionDeRetiroCesantiaYVejez>0</actualizacionDeRetiroCesantiaYVejez> -->
+<!--           <amortizacionDeCreditoINFONAVIT>0</amortizacionDeCreditoINFONAVIT> -->
+<!--           <aportacionPatronalINFONAVITParaAmortizacionDeCreditos>0</aportacionPatronalINFONAVITParaAmortizacionDeCreditos> -->
+<!--           <aportacionPatronalINFONAVITParaCuentaIndividual>0</aportacionPatronalINFONAVITParaCuentaIndividual> -->
+<!--           <aportacionesComplementarias>0</aportacionesComplementarias> -->
+<!--           <aportacionesVoluntarias>0</aportacionesVoluntarias> -->
+<!--           <cesantiaYVejez>175.48</cesantiaYVejez> -->
+<!--           <cuotaExcedenteDeEnfermedadYMaternidad>0.00</cuotaExcedenteDeEnfermedadYMaternidad> -->
+<!--           <cuotaFijaDeEnfermedadYMaternidad>837.35</cuotaFijaDeEnfermedadYMaternidad> -->
+<!--           <donativoFUNDEMEX>0</donativoFUNDEMEX> -->
+<!--           <filler></filler> -->
+<!--           <folioDeRequerimiento></folioDeRequerimiento> -->
+<!--           <gastosMedicosPensionadosArt25>58.49</gastosMedicosPensionadosArt25> -->
+<!--           <guarderiaYPrestacionesSociales>0.00</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVida>97.49</invalidezYVida> -->
+<!--           <multasINFONAVIT>0</multasINFONAVIT> -->
+<!--           <prestacionesEnDineroDeEnfermedadYMaternidad>7.80</prestacionesEnDineroDeEnfermedadYMaternidad> -->
+<!--           <recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>0</recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT> -->
+<!--           <recargosDeLosCuatroSegurosIMSS>0</recargosDeLosCuatroSegurosIMSS> -->
+<!--           <recargosDeRetiroCesantiaYVejez>0</recargosDeRetiroCesantiaYVejez> -->
+<!--           <retiro>82.09</retiro> -->
+<!--           <riesgosDeTrabajo>0.00</riesgosDeTrabajo> -->
+<!--           <subtotalDeCuatroSegurosIMSS>1001.13</subtotalDeCuatroSegurosIMSS> -->
+<!--           <subtotalRetiroCesantiaYVejez>257.57</subtotalRetiroCesantiaYVejez> -->
+<!--           <tasaDeActualizacionEmpleada>0</tasaDeActualizacionEmpleada> -->
+<!--           <tasaDeRecargosEmpleada>0</tasaDeRecargosEmpleada> -->
+<!--         </sumarioPatronal> -->
+<!--         <registroValidacion> -->
+<!--           <checkSum>1234567891234567890</checkSum> -->
+<!--           <cuotaExcedenteObrero>0</cuotaExcedenteObrero> -->
+<!--           <cuotaExcedentePatronal>0</cuotaExcedentePatronal> -->
+<!--           <cuotaFija>0</cuotaFija> -->
+<!--           <factorDeAusentismo>0</factorDeAusentismo> -->
+<!--           <factorDeReversionCF></factorDeReversionCF> -->
+<!--           <factorDeReversionExcObrero></factorDeReversionExcObrero> -->
+<!--           <factorDeReversionExcPatronal></factorDeReversionExcPatronal> -->
+<!--           <factorDeReversionGMPObrero></factorDeReversionGMPObrero> -->
+<!--           <factorDeReversionGMPPatronal></factorDeReversionGMPPatronal> -->
+<!--           <factorDeReversionGPS></factorDeReversionGPS> -->
+<!--           <factorDeReversionIVObrero></factorDeReversionIVObrero> -->
+<!--           <factorDeReversionIVPatronal></factorDeReversionIVPatronal> -->
+<!--           <factorDeReversionPDObrero></factorDeReversionPDObrero> -->
+<!--           <factorDeReversionPDPatronal></factorDeReversionPDPatronal> -->
+<!--           <factorDeReversionRT></factorDeReversionRT> -->
+<!--           <fechaLimiteDePago>2014-11-28T00:00:00-06:00</fechaLimiteDePago> -->
+<!--           <filler></filler> -->
+<!--           <gastosMedicosPensionadosObrero>0</gastosMedicosPensionadosObrero> -->
+<!--           <gastosMedicosPensionadosPatronal>0</gastosMedicosPensionadosPatronal> -->
+<!--           <guarderiaYPrestacionesSociales>0</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVidaObrero>0</invalidezYVidaObrero> -->
+<!--           <invalidezYVidaPatronal>0</invalidezYVidaPatronal> -->
+<!--           <numeroDeDiscos>1</numeroDeDiscos> -->
+<!--           <prestacionesDineroObrero>0</prestacionesDineroObrero> -->
+<!--           <prestacionesDineroPatronal>0</prestacionesDineroPatronal> -->
+<!--           <riesgosDeTrabajo>0</riesgosDeTrabajo> -->
+<!--           <sumaDeTasasDeRecargosYActualizacionQueSeAplico>0</sumaDeTasasDeRecargosYActualizacionQueSeAplico> -->
+<!--           <tamanioDelArchivoEnBytes>1475</tamanioDelArchivoEnBytes> -->
+<!--           <totalADepositarEnCuentaIMSS4RSS>1001.13</totalADepositarEnCuentaIMSS4RSS> -->
+<!--           <totalADepositarEnCuentaIMSSRCV>257.57</totalADepositarEnCuentaIMSSRCV> -->
+<!--           <totalADepositarINFONAVITAmortizacionCredito>0</totalADepositarINFONAVITAmortizacionCredito> -->
+<!--           <totalADepositarINFONAVITAportacionPatronal>0</totalADepositarINFONAVITAportacionPatronal> -->
+<!--           <versionSUA>G395</versionSUA> -->
+<!--         </registroValidacion> -->
+<!--         <fechaInicio>2015-05-01T00:00:00-05:00</fechaInicio> -->
+<!--         <fechaFin>2015-06-30T00:00:00-05:00</fechaFin> -->
+<!--         <monto>1258.70</monto> -->
+<!--       </suaPago> -->
+<!--     </pago> -->
+<!--     <pago> -->
+<!--       <idPago>117</idPago> -->
+<!--       <fechaInicioPeriodo>2015-07-01T00:00:00-05:00</fechaInicioPeriodo> -->
+<!--       <fechaFinPeriodo>2015-08-31T00:00:00-05:00</fechaFinPeriodo> -->
+<!--       <fechaLimitePago>2014-11-28T00:00:00-06:00</fechaLimitePago> -->
+<!--       <monto>1279.32</monto> -->
+<!--       <suaPago> -->
+<!--         <patron> -->
+<!--           <actividadEconomica>COMERCIO</actividadEconomica> -->
+<!--           <areaGeograficaSalariosMinimos>A</areaGeograficaSalariosMinimos> -->
+<!--           <calleNoYColonia>SAN ANDRÉS MZ122 LT1</calleNoYColonia> -->
+<!--           <codigoPostal>0</codigoPostal> -->
+<!--           <convenioDeReembolsoDeSubsidios>N</convenioDeReembolsoDeSubsidios> -->
+<!--           <delegacionDelIMSS>13</delegacionDelIMSS> -->
+<!--           <diasCotizadosPeriodoConIncidencias>62</diasCotizadosPeriodoConIncidencias> -->
+<!--           <entidadFederativa>13</entidadFederativa> -->
+<!--           <fechaDeLaPrimaDeRiesgoDeTrabajo>2014-09-12T16:18:36.032-05:00</fechaDeLaPrimaDeRiesgoDeTrabajo> -->
+<!--           <filler></filler> -->
+<!--           <folioSUA>569297</folioSUA> -->
+<!--           <municipio>022</municipio> -->
+<!--           <nombreORazonSocial>LUCIO DURAN SILVA</nombreORazonSocial> -->
+<!--           <numeroDeCreditoIMSS>0</numeroDeCreditoIMSS> -->
+<!--           <numeroDeTrabajadoresCotizantes>1</numeroDeTrabajadoresCotizantes> -->
+<!--           <periodoDePago>2015-08-31T00:00:00-05:00</periodoDePago> -->
+<!--           <poblacionYMunicipioODelegacionPolitica>EPAZOYUCAN</poblacionYMunicipioODelegacionPolitica> -->
+<!--           <porcentajeDeAportacionINFONAVIT>0</porcentajeDeAportacionINFONAVIT> -->
+<!--           <primaDeRiesgoDeTrabajo>7.5887</primaDeRiesgoDeTrabajo> -->
+<!--           <registroPatronalIMSS>N4418657107</registroPatronalIMSS> -->
+<!--           <rfcPatron>DUSL821218LN8</rfcPatron> -->
+<!--           <subdelegacionDelIMSS>1</subdelegacionDelIMSS> -->
+<!--           <telefono>0</telefono> -->
+<!--           <tipoDeCotizacion>3</tipoDeCotizacion> -->
+<!--           <tipoDocumento>1</tipoDocumento> -->
+<!--         </patron> -->
+<!--         <trabajadores> -->
+<!--           <actualizacionCesantiaYVejez>0</actualizacionCesantiaYVejez> -->
+<!--           <actualizacionCuatroSegurosIMSS>0</actualizacionCuatroSegurosIMSS> -->
+<!--           <actualizacionRetiro>0</actualizacionRetiro> -->
+<!--           <actualizacionYRecargosDeCesantiaYVejez>0</actualizacionYRecargosDeCesantiaYVejez> -->
+<!--           <actualizacionYRecargosDeLosCuatroSegurosIMSS>0</actualizacionYRecargosDeLosCuatroSegurosIMSS> -->
+<!--           <actualizacionYRecargosDeRetiro>0</actualizacionYRecargosDeRetiro> -->
+<!--           <amortizacionDeCreditoINFONAVIT>0</amortizacionDeCreditoINFONAVIT> -->
+<!--           <apellidoMaternoTrabajador>CRUZ</apellidoMaternoTrabajador> -->
+<!--           <apellidoPaternoTrabajador>GONZALEZ</apellidoPaternoTrabajador> -->
+<!--           <aportacionPatronalINFONAVIT>0</aportacionPatronalINFONAVIT> -->
+<!--           <aportacionVoluntaria>0</aportacionVoluntaria> -->
+<!--           <cesantiaYVejezCuotaObrera>1Di</cesantiaYVejezCuotaObrera> -->
+<!--           <cesantiaYVejezCuotaObreraN>46.94</cesantiaYVejezCuotaObreraN> -->
+<!--           <cesantiaYVejezCuotaPatronal>131.42</cesantiaYVejezCuotaPatronal> -->
+<!--           <cesantiaYVejezCuotaTrabajador>46.94</cesantiaYVejezCuotaTrabajador> -->
+<!--           <claveUnicaDelRegistroDePoblacion>GOCE470105HTSNRR01</claveUnicaDelRegistroDePoblacion> -->
+<!--           <cuotaExcedenteCuotaObrera>000</cuotaExcedenteCuotaObrera> -->
+<!--           <cuotaExcedenteCuotaObreraN>0.00</cuotaExcedenteCuotaObreraN> -->
+<!--           <cuotaExcedenteDeEnfermedadYMaternidad>0.00</cuotaExcedenteDeEnfermedadYMaternidad> -->
+<!--           <cuotaFijaDeEnfermedadYMaternidad>851.08</cuotaFijaDeEnfermedadYMaternidad> -->
+<!--           <diasCotizadosEnElBimestre>62</diasCotizadosEnElBimestre> -->
+<!--           <diasCotizadosEnElMes>62</diasCotizadosEnElMes> -->
+<!--           <diasDeAusentismoEnElBimestre>0</diasDeAusentismoEnElBimestre> -->
+<!--           <diasDeAusentismoEnElMes>0</diasDeAusentismoEnElMes> -->
+<!--           <diasDeIncapacidadEnElBimestre>0</diasDeIncapacidadEnElBimestre> -->
+<!--           <diasDeIncapacidadEnElMes>0</diasDeIncapacidadEnElMes> -->
+<!--           <fechaDeInicioDelDescuentoDeCreditoINFONAVIT>2014-09-12T16:18:36.042-05:00</fechaDeInicioDelDescuentoDeCreditoINFONAVIT> -->
+<!--           <gastosMedicosPensionadosArt25>59.44</gastosMedicosPensionadosArt25> -->
+<!--           <gastosMedicosPensionadosCuotaObrera>0PE</gastosMedicosPensionadosCuotaObrera> -->
+<!--           <gastosMedicosPensionadosCuotaObreraN>15.64</gastosMedicosPensionadosCuotaObreraN> -->
+<!--           <guarderiaYPrestacionesSociales>0.00</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVida>99.08</invalidezYVida> -->
+<!--           <invalidezYVidaCuotaObrera>0g4</invalidezYVidaCuotaObrera> -->
+<!--           <invalidezYVidaCuotaObreraN>26.08</invalidezYVidaCuotaObreraN> -->
+<!--           <jornadaPorSemanaReducida>0</jornadaPorSemanaReducida> -->
+<!--           <movimientos> -->
+<!--             <diasDeIncidencia>0</diasDeIncidencia> -->
+<!--             <fechaDeMovimientoOIncidencia>2015-07-01T00:00:00-05:00</fechaDeMovimientoOIncidencia> -->
+<!--             <folioDeIncapacidad /> -->
+<!--             <nssTrabajador>78684610658</nssTrabajador> -->
+<!--             <salarioDiarioIntegrado>0</salarioDiarioIntegrado> -->
+<!--             <tipoDeMovimientoOIncidencia>0</tipoDeMovimientoOIncidencia> -->
+<!--           </movimientos> -->
+<!--           <municipio>022</municipio> -->
+<!--           <nombreTrabajador>ERNESTO</nombreTrabajador> -->
+<!--           <nssTrabajador>78684610658</nssTrabajador> -->
+<!--           <numeroDeCreditoINFONAVIT>0</numeroDeCreditoINFONAVIT> -->
+<!--           <numeroDeMovimientosEnElPeriodo>1</numeroDeMovimientosEnElPeriodo> -->
+<!--           <prestacionesEnDineroCuotaObrera>03M</prestacionesEnDineroCuotaObrera> -->
+<!--           <prestacionesEnDineroCuotaObreraN>2.08</prestacionesEnDineroCuotaObreraN> -->
+<!--           <prestacionesEnDineroDeEnfermedadYMaternidad>7.92</prestacionesEnDineroDeEnfermedadYMaternidad> -->
+<!--           <recargosCesantiaYVejez>0</recargosCesantiaYVejez> -->
+<!--           <recargosCuatroSegurosIMSS>0</recargosCuatroSegurosIMSS> -->
+<!--           <recargosRetiro>0</recargosRetiro> -->
+<!--           <retiro>83.44</retiro> -->
+<!--           <rfcDelTrabajador>GOCE470105MP7</rfcDelTrabajador> -->
+<!--           <riesgosDeTrabajo>0.00</riesgosDeTrabajo> -->
+<!--           <tipoDeTrabajador>1</tipoDeTrabajador> -->
+<!--           <ultimoSalarioDiarioIntegradoDelPeriodo>67.29</ultimoSalarioDiarioIntegradoDelPeriodo> -->
+<!--         </trabajadores> -->
+<!--         <sumarioPatronal> -->
+<!--           <actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>0</actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT> -->
+<!--           <actualizacionDeLosCuatroSegurosIMSS>0</actualizacionDeLosCuatroSegurosIMSS> -->
+<!--           <actualizacionDeRetiroCesantiaYVejez>0</actualizacionDeRetiroCesantiaYVejez> -->
+<!--           <amortizacionDeCreditoINFONAVIT>0</amortizacionDeCreditoINFONAVIT> -->
+<!--           <aportacionPatronalINFONAVITParaAmortizacionDeCreditos>0</aportacionPatronalINFONAVITParaAmortizacionDeCreditos> -->
+<!--           <aportacionPatronalINFONAVITParaCuentaIndividual>0</aportacionPatronalINFONAVITParaCuentaIndividual> -->
+<!--           <aportacionesComplementarias>0</aportacionesComplementarias> -->
+<!--           <aportacionesVoluntarias>0</aportacionesVoluntarias> -->
+<!--           <cesantiaYVejez>178.36</cesantiaYVejez> -->
+<!--           <cuotaExcedenteDeEnfermedadYMaternidad>0.00</cuotaExcedenteDeEnfermedadYMaternidad> -->
+<!--           <cuotaFijaDeEnfermedadYMaternidad>851.08</cuotaFijaDeEnfermedadYMaternidad> -->
+<!--           <donativoFUNDEMEX>0</donativoFUNDEMEX> -->
+<!--           <filler></filler> -->
+<!--           <folioDeRequerimiento></folioDeRequerimiento> -->
+<!--           <gastosMedicosPensionadosArt25>59.44</gastosMedicosPensionadosArt25> -->
+<!--           <guarderiaYPrestacionesSociales>0.00</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVida>99.08</invalidezYVida> -->
+<!--           <multasINFONAVIT>0</multasINFONAVIT> -->
+<!--           <prestacionesEnDineroDeEnfermedadYMaternidad>7.92</prestacionesEnDineroDeEnfermedadYMaternidad> -->
+<!--           <recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>0</recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT> -->
+<!--           <recargosDeLosCuatroSegurosIMSS>0</recargosDeLosCuatroSegurosIMSS> -->
+<!--           <recargosDeRetiroCesantiaYVejez>0</recargosDeRetiroCesantiaYVejez> -->
+<!--           <retiro>83.44</retiro> -->
+<!--           <riesgosDeTrabajo>0.00</riesgosDeTrabajo> -->
+<!--           <subtotalDeCuatroSegurosIMSS>1017.52</subtotalDeCuatroSegurosIMSS> -->
+<!--           <subtotalRetiroCesantiaYVejez>261.80</subtotalRetiroCesantiaYVejez> -->
+<!--           <tasaDeActualizacionEmpleada>0</tasaDeActualizacionEmpleada> -->
+<!--           <tasaDeRecargosEmpleada>0</tasaDeRecargosEmpleada> -->
+<!--         </sumarioPatronal> -->
+<!--         <registroValidacion> -->
+<!--           <checkSum>1234567891234567890</checkSum> -->
+<!--           <cuotaExcedenteObrero>0</cuotaExcedenteObrero> -->
+<!--           <cuotaExcedentePatronal>0</cuotaExcedentePatronal> -->
+<!--           <cuotaFija>0</cuotaFija> -->
+<!--           <factorDeAusentismo>0</factorDeAusentismo> -->
+<!--           <factorDeReversionCF></factorDeReversionCF> -->
+<!--           <factorDeReversionExcObrero></factorDeReversionExcObrero> -->
+<!--           <factorDeReversionExcPatronal></factorDeReversionExcPatronal> -->
+<!--           <factorDeReversionGMPObrero></factorDeReversionGMPObrero> -->
+<!--           <factorDeReversionGMPPatronal></factorDeReversionGMPPatronal> -->
+<!--           <factorDeReversionGPS></factorDeReversionGPS> -->
+<!--           <factorDeReversionIVObrero></factorDeReversionIVObrero> -->
+<!--           <factorDeReversionIVPatronal></factorDeReversionIVPatronal> -->
+<!--           <factorDeReversionPDObrero></factorDeReversionPDObrero> -->
+<!--           <factorDeReversionPDPatronal></factorDeReversionPDPatronal> -->
+<!--           <factorDeReversionRT></factorDeReversionRT> -->
+<!--           <fechaLimiteDePago>2014-11-28T00:00:00-06:00</fechaLimiteDePago> -->
+<!--           <filler></filler> -->
+<!--           <gastosMedicosPensionadosObrero>0</gastosMedicosPensionadosObrero> -->
+<!--           <gastosMedicosPensionadosPatronal>0</gastosMedicosPensionadosPatronal> -->
+<!--           <guarderiaYPrestacionesSociales>0</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVidaObrero>0</invalidezYVidaObrero> -->
+<!--           <invalidezYVidaPatronal>0</invalidezYVidaPatronal> -->
+<!--           <numeroDeDiscos>1</numeroDeDiscos> -->
+<!--           <prestacionesDineroObrero>0</prestacionesDineroObrero> -->
+<!--           <prestacionesDineroPatronal>0</prestacionesDineroPatronal> -->
+<!--           <riesgosDeTrabajo>0</riesgosDeTrabajo> -->
+<!--           <sumaDeTasasDeRecargosYActualizacionQueSeAplico>0</sumaDeTasasDeRecargosYActualizacionQueSeAplico> -->
+<!--           <tamanioDelArchivoEnBytes>1475</tamanioDelArchivoEnBytes> -->
+<!--           <totalADepositarEnCuentaIMSS4RSS>1017.52</totalADepositarEnCuentaIMSS4RSS> -->
+<!--           <totalADepositarEnCuentaIMSSRCV>261.80</totalADepositarEnCuentaIMSSRCV> -->
+<!--           <totalADepositarINFONAVITAmortizacionCredito>0</totalADepositarINFONAVITAmortizacionCredito> -->
+<!--           <totalADepositarINFONAVITAportacionPatronal>0</totalADepositarINFONAVITAportacionPatronal> -->
+<!--           <versionSUA>G395</versionSUA> -->
+<!--         </registroValidacion> -->
+<!--         <fechaInicio>2015-07-01T00:00:00-05:00</fechaInicio> -->
+<!--         <fechaFin>2015-08-31T00:00:00-05:00</fechaFin> -->
+<!--         <monto>1279.32</monto> -->
+<!--       </suaPago> -->
+<!--     </pago> -->
+<!--     <pago> -->
+<!--       <idPago>118</idPago> -->
+<!--       <fechaInicioPeriodo>2015-09-01T00:00:00-05:00</fechaInicioPeriodo> -->
+<!--       <fechaFinPeriodo>2015-10-31T00:00:00-06:00</fechaFinPeriodo> -->
+<!--       <fechaLimitePago>2014-11-28T00:00:00-06:00</fechaLimitePago> -->
+<!--       <monto>1258.70</monto> -->
+<!--       <suaPago> -->
+<!--         <patron> -->
+<!--           <actividadEconomica>COMERCIO</actividadEconomica> -->
+<!--           <areaGeograficaSalariosMinimos>A</areaGeograficaSalariosMinimos> -->
+<!--           <calleNoYColonia>SAN ANDRÉS MZ122 LT1</calleNoYColonia> -->
+<!--           <codigoPostal>0</codigoPostal> -->
+<!--           <convenioDeReembolsoDeSubsidios>N</convenioDeReembolsoDeSubsidios> -->
+<!--           <delegacionDelIMSS>13</delegacionDelIMSS> -->
+<!--           <diasCotizadosPeriodoConIncidencias>61</diasCotizadosPeriodoConIncidencias> -->
+<!--           <entidadFederativa>13</entidadFederativa> -->
+<!--           <fechaDeLaPrimaDeRiesgoDeTrabajo>2014-09-12T16:18:36.042-05:00</fechaDeLaPrimaDeRiesgoDeTrabajo> -->
+<!--           <filler></filler> -->
+<!--           <folioSUA>569697</folioSUA> -->
+<!--           <municipio>022</municipio> -->
+<!--           <nombreORazonSocial>LUCIO DURAN SILVA</nombreORazonSocial> -->
+<!--           <numeroDeCreditoIMSS>0</numeroDeCreditoIMSS> -->
+<!--           <numeroDeTrabajadoresCotizantes>1</numeroDeTrabajadoresCotizantes> -->
+<!--           <periodoDePago>2015-10-31T00:00:00-06:00</periodoDePago> -->
+<!--           <poblacionYMunicipioODelegacionPolitica>EPAZOYUCAN</poblacionYMunicipioODelegacionPolitica> -->
+<!--           <porcentajeDeAportacionINFONAVIT>0</porcentajeDeAportacionINFONAVIT> -->
+<!--           <primaDeRiesgoDeTrabajo>7.5887</primaDeRiesgoDeTrabajo> -->
+<!--           <registroPatronalIMSS>N4418657107</registroPatronalIMSS> -->
+<!--           <rfcPatron>DUSL821218LN8</rfcPatron> -->
+<!--           <subdelegacionDelIMSS>1</subdelegacionDelIMSS> -->
+<!--           <telefono>0</telefono> -->
+<!--           <tipoDeCotizacion>3</tipoDeCotizacion> -->
+<!--           <tipoDocumento>1</tipoDocumento> -->
+<!--         </patron> -->
+<!--         <trabajadores> -->
+<!--           <actualizacionCesantiaYVejez>0</actualizacionCesantiaYVejez> -->
+<!--           <actualizacionCuatroSegurosIMSS>0</actualizacionCuatroSegurosIMSS> -->
+<!--           <actualizacionRetiro>0</actualizacionRetiro> -->
+<!--           <actualizacionYRecargosDeCesantiaYVejez>0</actualizacionYRecargosDeCesantiaYVejez> -->
+<!--           <actualizacionYRecargosDeLosCuatroSegurosIMSS>0</actualizacionYRecargosDeLosCuatroSegurosIMSS> -->
+<!--           <actualizacionYRecargosDeRetiro>0</actualizacionYRecargosDeRetiro> -->
+<!--           <amortizacionDeCreditoINFONAVIT>0</amortizacionDeCreditoINFONAVIT> -->
+<!--           <apellidoMaternoTrabajador>CRUZ</apellidoMaternoTrabajador> -->
+<!--           <apellidoPaternoTrabajador>GONZALEZ</apellidoPaternoTrabajador> -->
+<!--           <aportacionPatronalINFONAVIT>0</aportacionPatronalINFONAVIT> -->
+<!--           <aportacionVoluntaria>0</aportacionVoluntaria> -->
+<!--           <cesantiaYVejezCuotaObrera>1CU</cesantiaYVejezCuotaObrera> -->
+<!--           <cesantiaYVejezCuotaObreraN>46.18</cesantiaYVejezCuotaObreraN> -->
+<!--           <cesantiaYVejezCuotaPatronal>129.30</cesantiaYVejezCuotaPatronal> -->
+<!--           <cesantiaYVejezCuotaTrabajador>46.18</cesantiaYVejezCuotaTrabajador> -->
+<!--           <claveUnicaDelRegistroDePoblacion>GOCE470105HTSNRR01</claveUnicaDelRegistroDePoblacion> -->
+<!--           <cuotaExcedenteCuotaObrera>000</cuotaExcedenteCuotaObrera> -->
+<!--           <cuotaExcedenteCuotaObreraN>0.00</cuotaExcedenteCuotaObreraN> -->
+<!--           <cuotaExcedenteDeEnfermedadYMaternidad>0.00</cuotaExcedenteDeEnfermedadYMaternidad> -->
+<!--           <cuotaFijaDeEnfermedadYMaternidad>837.35</cuotaFijaDeEnfermedadYMaternidad> -->
+<!--           <diasCotizadosEnElBimestre>61</diasCotizadosEnElBimestre> -->
+<!--           <diasCotizadosEnElMes>61</diasCotizadosEnElMes> -->
+<!--           <diasDeAusentismoEnElBimestre>0</diasDeAusentismoEnElBimestre> -->
+<!--           <diasDeAusentismoEnElMes>0</diasDeAusentismoEnElMes> -->
+<!--           <diasDeIncapacidadEnElBimestre>0</diasDeIncapacidadEnElBimestre> -->
+<!--           <diasDeIncapacidadEnElMes>0</diasDeIncapacidadEnElMes> -->
+<!--           <fechaDeInicioDelDescuentoDeCreditoINFONAVIT>2014-09-12T16:18:36.052-05:00</fechaDeInicioDelDescuentoDeCreditoINFONAVIT> -->
+<!--           <gastosMedicosPensionadosArt25>58.49</gastosMedicosPensionadosArt25> -->
+<!--           <gastosMedicosPensionadosCuotaObrera>0Op</gastosMedicosPensionadosCuotaObrera> -->
+<!--           <gastosMedicosPensionadosCuotaObreraN>15.39</gastosMedicosPensionadosCuotaObreraN> -->
+<!--           <guarderiaYPrestacionesSociales>0.00</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVida>97.49</invalidezYVida> -->
+<!--           <invalidezYVidaCuotaObrera>0fO</invalidezYVidaCuotaObrera> -->
+<!--           <invalidezYVidaCuotaObreraN>25.66</invalidezYVidaCuotaObreraN> -->
+<!--           <jornadaPorSemanaReducida>0</jornadaPorSemanaReducida> -->
+<!--           <movimientos> -->
+<!--             <diasDeIncidencia>0</diasDeIncidencia> -->
+<!--             <fechaDeMovimientoOIncidencia>2015-09-01T00:00:00-05:00</fechaDeMovimientoOIncidencia> -->
+<!--             <folioDeIncapacidad /> -->
+<!--             <nssTrabajador>78684610658</nssTrabajador> -->
+<!--             <salarioDiarioIntegrado>0</salarioDiarioIntegrado> -->
+<!--             <tipoDeMovimientoOIncidencia>0</tipoDeMovimientoOIncidencia> -->
+<!--           </movimientos> -->
+<!--           <municipio>022</municipio> -->
+<!--           <nombreTrabajador>ERNESTO</nombreTrabajador> -->
+<!--           <nssTrabajador>78684610658</nssTrabajador> -->
+<!--           <numeroDeCreditoINFONAVIT>0</numeroDeCreditoINFONAVIT> -->
+<!--           <numeroDeMovimientosEnElPeriodo>1</numeroDeMovimientosEnElPeriodo> -->
+<!--           <prestacionesEnDineroCuotaObrera>03J</prestacionesEnDineroCuotaObrera> -->
+<!--           <prestacionesEnDineroCuotaObreraN>2.05</prestacionesEnDineroCuotaObreraN> -->
+<!--           <prestacionesEnDineroDeEnfermedadYMaternidad>7.80</prestacionesEnDineroDeEnfermedadYMaternidad> -->
+<!--           <recargosCesantiaYVejez>0</recargosCesantiaYVejez> -->
+<!--           <recargosCuatroSegurosIMSS>0</recargosCuatroSegurosIMSS> -->
+<!--           <recargosRetiro>0</recargosRetiro> -->
+<!--           <retiro>82.09</retiro> -->
+<!--           <rfcDelTrabajador>GOCE470105MP7</rfcDelTrabajador> -->
+<!--           <riesgosDeTrabajo>0.00</riesgosDeTrabajo> -->
+<!--           <tipoDeTrabajador>1</tipoDeTrabajador> -->
+<!--           <ultimoSalarioDiarioIntegradoDelPeriodo>67.29</ultimoSalarioDiarioIntegradoDelPeriodo> -->
+<!--         </trabajadores> -->
+<!--         <sumarioPatronal> -->
+<!--           <actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>0</actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT> -->
+<!--           <actualizacionDeLosCuatroSegurosIMSS>0</actualizacionDeLosCuatroSegurosIMSS> -->
+<!--           <actualizacionDeRetiroCesantiaYVejez>0</actualizacionDeRetiroCesantiaYVejez> -->
+<!--           <amortizacionDeCreditoINFONAVIT>0</amortizacionDeCreditoINFONAVIT> -->
+<!--           <aportacionPatronalINFONAVITParaAmortizacionDeCreditos>0</aportacionPatronalINFONAVITParaAmortizacionDeCreditos> -->
+<!--           <aportacionPatronalINFONAVITParaCuentaIndividual>0</aportacionPatronalINFONAVITParaCuentaIndividual> -->
+<!--           <aportacionesComplementarias>0</aportacionesComplementarias> -->
+<!--           <aportacionesVoluntarias>0</aportacionesVoluntarias> -->
+<!--           <cesantiaYVejez>175.48</cesantiaYVejez> -->
+<!--           <cuotaExcedenteDeEnfermedadYMaternidad>0.00</cuotaExcedenteDeEnfermedadYMaternidad> -->
+<!--           <cuotaFijaDeEnfermedadYMaternidad>837.35</cuotaFijaDeEnfermedadYMaternidad> -->
+<!--           <donativoFUNDEMEX>0</donativoFUNDEMEX> -->
+<!--           <filler></filler> -->
+<!--           <folioDeRequerimiento></folioDeRequerimiento> -->
+<!--           <gastosMedicosPensionadosArt25>58.49</gastosMedicosPensionadosArt25> -->
+<!--           <guarderiaYPrestacionesSociales>0.00</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVida>97.49</invalidezYVida> -->
+<!--           <multasINFONAVIT>0</multasINFONAVIT> -->
+<!--           <prestacionesEnDineroDeEnfermedadYMaternidad>7.80</prestacionesEnDineroDeEnfermedadYMaternidad> -->
+<!--           <recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>0</recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT> -->
+<!--           <recargosDeLosCuatroSegurosIMSS>0</recargosDeLosCuatroSegurosIMSS> -->
+<!--           <recargosDeRetiroCesantiaYVejez>0</recargosDeRetiroCesantiaYVejez> -->
+<!--           <retiro>82.09</retiro> -->
+<!--           <riesgosDeTrabajo>0.00</riesgosDeTrabajo> -->
+<!--           <subtotalDeCuatroSegurosIMSS>1001.13</subtotalDeCuatroSegurosIMSS> -->
+<!--           <subtotalRetiroCesantiaYVejez>257.57</subtotalRetiroCesantiaYVejez> -->
+<!--           <tasaDeActualizacionEmpleada>0</tasaDeActualizacionEmpleada> -->
+<!--           <tasaDeRecargosEmpleada>0</tasaDeRecargosEmpleada> -->
+<!--         </sumarioPatronal> -->
+<!--         <registroValidacion> -->
+<!--           <checkSum>1234567891234567890</checkSum> -->
+<!--           <cuotaExcedenteObrero>0</cuotaExcedenteObrero> -->
+<!--           <cuotaExcedentePatronal>0</cuotaExcedentePatronal> -->
+<!--           <cuotaFija>0</cuotaFija> -->
+<!--           <factorDeAusentismo>0</factorDeAusentismo> -->
+<!--           <factorDeReversionCF></factorDeReversionCF> -->
+<!--           <factorDeReversionExcObrero></factorDeReversionExcObrero> -->
+<!--           <factorDeReversionExcPatronal></factorDeReversionExcPatronal> -->
+<!--           <factorDeReversionGMPObrero></factorDeReversionGMPObrero> -->
+<!--           <factorDeReversionGMPPatronal></factorDeReversionGMPPatronal> -->
+<!--           <factorDeReversionGPS></factorDeReversionGPS> -->
+<!--           <factorDeReversionIVObrero></factorDeReversionIVObrero> -->
+<!--           <factorDeReversionIVPatronal></factorDeReversionIVPatronal> -->
+<!--           <factorDeReversionPDObrero></factorDeReversionPDObrero> -->
+<!--           <factorDeReversionPDPatronal></factorDeReversionPDPatronal> -->
+<!--           <factorDeReversionRT></factorDeReversionRT> -->
+<!--           <fechaLimiteDePago>2014-11-28T00:00:00-06:00</fechaLimiteDePago> -->
+<!--           <filler></filler> -->
+<!--           <gastosMedicosPensionadosObrero>0</gastosMedicosPensionadosObrero> -->
+<!--           <gastosMedicosPensionadosPatronal>0</gastosMedicosPensionadosPatronal> -->
+<!--           <guarderiaYPrestacionesSociales>0</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVidaObrero>0</invalidezYVidaObrero> -->
+<!--           <invalidezYVidaPatronal>0</invalidezYVidaPatronal> -->
+<!--           <numeroDeDiscos>1</numeroDeDiscos> -->
+<!--           <prestacionesDineroObrero>0</prestacionesDineroObrero> -->
+<!--           <prestacionesDineroPatronal>0</prestacionesDineroPatronal> -->
+<!--           <riesgosDeTrabajo>0</riesgosDeTrabajo> -->
+<!--           <sumaDeTasasDeRecargosYActualizacionQueSeAplico>0</sumaDeTasasDeRecargosYActualizacionQueSeAplico> -->
+<!--           <tamanioDelArchivoEnBytes>1475</tamanioDelArchivoEnBytes> -->
+<!--           <totalADepositarEnCuentaIMSS4RSS>1001.13</totalADepositarEnCuentaIMSS4RSS> -->
+<!--           <totalADepositarEnCuentaIMSSRCV>257.57</totalADepositarEnCuentaIMSSRCV> -->
+<!--           <totalADepositarINFONAVITAmortizacionCredito>0</totalADepositarINFONAVITAmortizacionCredito> -->
+<!--           <totalADepositarINFONAVITAportacionPatronal>0</totalADepositarINFONAVITAportacionPatronal> -->
+<!--           <versionSUA>G395</versionSUA> -->
+<!--         </registroValidacion> -->
+<!--         <fechaInicio>2015-09-01T00:00:00-05:00</fechaInicio> -->
+<!--         <fechaFin>2015-10-31T00:00:00-06:00</fechaFin> -->
+<!--         <monto>1258.70</monto> -->
+<!--       </suaPago> -->
+<!--     </pago> -->
+<!--     <pago> -->
+<!--       <idPago>119</idPago> -->
+<!--       <fechaInicioPeriodo>2015-11-01T00:00:00-06:00</fechaInicioPeriodo> -->
+<!--       <fechaFinPeriodo>2015-11-30T00:00:00-06:00</fechaFinPeriodo> -->
+<!--       <fechaLimitePago>2014-11-28T00:00:00-06:00</fechaLimitePago> -->
+<!--       <monto>619.04</monto> -->
+<!--       <suaPago> -->
+<!--         <patron> -->
+<!--           <actividadEconomica>COMERCIO</actividadEconomica> -->
+<!--           <areaGeograficaSalariosMinimos>A</areaGeograficaSalariosMinimos> -->
+<!--           <calleNoYColonia>SAN ANDRÉS MZ122 LT1</calleNoYColonia> -->
+<!--           <codigoPostal>0</codigoPostal> -->
+<!--           <convenioDeReembolsoDeSubsidios>N</convenioDeReembolsoDeSubsidios> -->
+<!--           <delegacionDelIMSS>13</delegacionDelIMSS> -->
+<!--           <diasCotizadosPeriodoConIncidencias>30</diasCotizadosPeriodoConIncidencias> -->
+<!--           <entidadFederativa>13</entidadFederativa> -->
+<!--           <fechaDeLaPrimaDeRiesgoDeTrabajo>2014-09-12T16:18:36.052-05:00</fechaDeLaPrimaDeRiesgoDeTrabajo> -->
+<!--           <filler></filler> -->
+<!--           <folioSUA>569996</folioSUA> -->
+<!--           <municipio>022</municipio> -->
+<!--           <nombreORazonSocial>LUCIO DURAN SILVA</nombreORazonSocial> -->
+<!--           <numeroDeCreditoIMSS>0</numeroDeCreditoIMSS> -->
+<!--           <numeroDeTrabajadoresCotizantes>1</numeroDeTrabajadoresCotizantes> -->
+<!--           <periodoDePago>2015-12-30T00:00:00-06:00</periodoDePago> -->
+<!--           <poblacionYMunicipioODelegacionPolitica>EPAZOYUCAN</poblacionYMunicipioODelegacionPolitica> -->
+<!--           <porcentajeDeAportacionINFONAVIT>0</porcentajeDeAportacionINFONAVIT> -->
+<!--           <primaDeRiesgoDeTrabajo>7.5887</primaDeRiesgoDeTrabajo> -->
+<!--           <registroPatronalIMSS>N4418657107</registroPatronalIMSS> -->
+<!--           <rfcPatron>DUSL821218LN8</rfcPatron> -->
+<!--           <subdelegacionDelIMSS>1</subdelegacionDelIMSS> -->
+<!--           <telefono>0</telefono> -->
+<!--           <tipoDeCotizacion>3</tipoDeCotizacion> -->
+<!--           <tipoDocumento>1</tipoDocumento> -->
+<!--         </patron> -->
+<!--         <trabajadores> -->
+<!--           <actualizacionCesantiaYVejez>0</actualizacionCesantiaYVejez> -->
+<!--           <actualizacionCuatroSegurosIMSS>0</actualizacionCuatroSegurosIMSS> -->
+<!--           <actualizacionRetiro>0</actualizacionRetiro> -->
+<!--           <actualizacionYRecargosDeCesantiaYVejez>0</actualizacionYRecargosDeCesantiaYVejez> -->
+<!--           <actualizacionYRecargosDeLosCuatroSegurosIMSS>0</actualizacionYRecargosDeLosCuatroSegurosIMSS> -->
+<!--           <actualizacionYRecargosDeRetiro>0</actualizacionYRecargosDeRetiro> -->
+<!--           <amortizacionDeCreditoINFONAVIT>0</amortizacionDeCreditoINFONAVIT> -->
+<!--           <apellidoMaternoTrabajador>CRUZ</apellidoMaternoTrabajador> -->
+<!--           <apellidoPaternoTrabajador>GONZALEZ</apellidoPaternoTrabajador> -->
+<!--           <aportacionPatronalINFONAVIT>0</aportacionPatronalINFONAVIT> -->
+<!--           <aportacionVoluntaria>0</aportacionVoluntaria> -->
+<!--           <cesantiaYVejezCuotaObrera>0ad</cesantiaYVejezCuotaObrera> -->
+<!--           <cesantiaYVejezCuotaObreraN>22.71</cesantiaYVejezCuotaObreraN> -->
+<!--           <cesantiaYVejezCuotaPatronal>63.59</cesantiaYVejezCuotaPatronal> -->
+<!--           <cesantiaYVejezCuotaTrabajador>22.71</cesantiaYVejezCuotaTrabajador> -->
+<!--           <claveUnicaDelRegistroDePoblacion>GOCE470105HTSNRR01</claveUnicaDelRegistroDePoblacion> -->
+<!--           <cuotaExcedenteCuotaObrera>000</cuotaExcedenteCuotaObrera> -->
+<!--           <cuotaExcedenteCuotaObreraN>0.00</cuotaExcedenteCuotaObreraN> -->
+<!--           <cuotaExcedenteDeEnfermedadYMaternidad>0.00</cuotaExcedenteDeEnfermedadYMaternidad> -->
+<!--           <cuotaFijaDeEnfermedadYMaternidad>411.81</cuotaFijaDeEnfermedadYMaternidad> -->
+<!--           <diasCotizadosEnElBimestre>30</diasCotizadosEnElBimestre> -->
+<!--           <diasCotizadosEnElMes>30</diasCotizadosEnElMes> -->
+<!--           <diasDeAusentismoEnElBimestre>0</diasDeAusentismoEnElBimestre> -->
+<!--           <diasDeAusentismoEnElMes>0</diasDeAusentismoEnElMes> -->
+<!--           <diasDeIncapacidadEnElBimestre>0</diasDeIncapacidadEnElBimestre> -->
+<!--           <diasDeIncapacidadEnElMes>0</diasDeIncapacidadEnElMes> -->
+<!--           <fechaDeInicioDelDescuentoDeCreditoINFONAVIT>2014-09-12T16:18:36.062-05:00</fechaDeInicioDelDescuentoDeCreditoINFONAVIT> -->
+<!--           <gastosMedicosPensionadosArt25>28.77</gastosMedicosPensionadosArt25> -->
+<!--           <gastosMedicosPensionadosCuotaObrera>0CD</gastosMedicosPensionadosCuotaObrera> -->
+<!--           <gastosMedicosPensionadosCuotaObreraN>7.57</gastosMedicosPensionadosCuotaObreraN> -->
+<!--           <guarderiaYPrestacionesSociales>0.00</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVida>47.95</invalidezYVida> -->
+<!--           <invalidezYVidaCuotaObrera>0KM</invalidezYVidaCuotaObrera> -->
+<!--           <invalidezYVidaCuotaObreraN>12.62</invalidezYVidaCuotaObreraN> -->
+<!--           <jornadaPorSemanaReducida>0</jornadaPorSemanaReducida> -->
+<!--           <movimientos> -->
+<!--             <diasDeIncidencia>0</diasDeIncidencia> -->
+<!--             <fechaDeMovimientoOIncidencia>2015-11-01T00:00:00-06:00</fechaDeMovimientoOIncidencia> -->
+<!--             <folioDeIncapacidad /> -->
+<!--             <nssTrabajador>78684610658</nssTrabajador> -->
+<!--             <salarioDiarioIntegrado>0</salarioDiarioIntegrado> -->
+<!--             <tipoDeMovimientoOIncidencia>0</tipoDeMovimientoOIncidencia> -->
+<!--           </movimientos> -->
+<!--           <municipio>022</municipio> -->
+<!--           <nombreTrabajador>ERNESTO</nombreTrabajador> -->
+<!--           <nssTrabajador>78684610658</nssTrabajador> -->
+<!--           <numeroDeCreditoINFONAVIT>0</numeroDeCreditoINFONAVIT> -->
+<!--           <numeroDeMovimientosEnElPeriodo>1</numeroDeMovimientosEnElPeriodo> -->
+<!--           <prestacionesEnDineroCuotaObrera>01d</prestacionesEnDineroCuotaObrera> -->
+<!--           <prestacionesEnDineroCuotaObreraN>1.01</prestacionesEnDineroCuotaObreraN> -->
+<!--           <prestacionesEnDineroDeEnfermedadYMaternidad>3.84</prestacionesEnDineroDeEnfermedadYMaternidad> -->
+<!--           <recargosCesantiaYVejez>0</recargosCesantiaYVejez> -->
+<!--           <recargosCuatroSegurosIMSS>0</recargosCuatroSegurosIMSS> -->
+<!--           <recargosRetiro>0</recargosRetiro> -->
+<!--           <retiro>40.37</retiro> -->
+<!--           <rfcDelTrabajador>GOCE470105MP7</rfcDelTrabajador> -->
+<!--           <riesgosDeTrabajo>0.00</riesgosDeTrabajo> -->
+<!--           <tipoDeTrabajador>1</tipoDeTrabajador> -->
+<!--           <ultimoSalarioDiarioIntegradoDelPeriodo>67.29</ultimoSalarioDiarioIntegradoDelPeriodo> -->
+<!--         </trabajadores> -->
+<!--         <sumarioPatronal> -->
+<!--           <actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>0</actualizacionDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT> -->
+<!--           <actualizacionDeLosCuatroSegurosIMSS>0</actualizacionDeLosCuatroSegurosIMSS> -->
+<!--           <actualizacionDeRetiroCesantiaYVejez>0</actualizacionDeRetiroCesantiaYVejez> -->
+<!--           <amortizacionDeCreditoINFONAVIT>0</amortizacionDeCreditoINFONAVIT> -->
+<!--           <aportacionPatronalINFONAVITParaAmortizacionDeCreditos>0</aportacionPatronalINFONAVITParaAmortizacionDeCreditos> -->
+<!--           <aportacionPatronalINFONAVITParaCuentaIndividual>0</aportacionPatronalINFONAVITParaCuentaIndividual> -->
+<!--           <aportacionesComplementarias>0</aportacionesComplementarias> -->
+<!--           <aportacionesVoluntarias>0</aportacionesVoluntarias> -->
+<!--           <cesantiaYVejez>86.30</cesantiaYVejez> -->
+<!--           <cuotaExcedenteDeEnfermedadYMaternidad>0.00</cuotaExcedenteDeEnfermedadYMaternidad> -->
+<!--           <cuotaFijaDeEnfermedadYMaternidad>411.81</cuotaFijaDeEnfermedadYMaternidad> -->
+<!--           <donativoFUNDEMEX>0</donativoFUNDEMEX> -->
+<!--           <filler></filler> -->
+<!--           <folioDeRequerimiento></folioDeRequerimiento> -->
+<!--           <gastosMedicosPensionadosArt25>28.77</gastosMedicosPensionadosArt25> -->
+<!--           <guarderiaYPrestacionesSociales>0.00</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVida>47.95</invalidezYVida> -->
+<!--           <multasINFONAVIT>0</multasINFONAVIT> -->
+<!--           <prestacionesEnDineroDeEnfermedadYMaternidad>3.84</prestacionesEnDineroDeEnfermedadYMaternidad> -->
+<!--           <recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT>0</recargosDeAportacionPatronalYAmortizacionDeCreditoINFONAVIT> -->
+<!--           <recargosDeLosCuatroSegurosIMSS>0</recargosDeLosCuatroSegurosIMSS> -->
+<!--           <recargosDeRetiroCesantiaYVejez>0</recargosDeRetiroCesantiaYVejez> -->
+<!--           <retiro>40.37</retiro> -->
+<!--           <riesgosDeTrabajo>0.00</riesgosDeTrabajo> -->
+<!--           <subtotalDeCuatroSegurosIMSS>492.37</subtotalDeCuatroSegurosIMSS> -->
+<!--           <subtotalRetiroCesantiaYVejez>126.67</subtotalRetiroCesantiaYVejez> -->
+<!--           <tasaDeActualizacionEmpleada>0</tasaDeActualizacionEmpleada> -->
+<!--           <tasaDeRecargosEmpleada>0</tasaDeRecargosEmpleada> -->
+<!--         </sumarioPatronal> -->
+<!--         <registroValidacion> -->
+<!--           <checkSum>1234567891234567890</checkSum> -->
+<!--           <cuotaExcedenteObrero>0</cuotaExcedenteObrero> -->
+<!--           <cuotaExcedentePatronal>0</cuotaExcedentePatronal> -->
+<!--           <cuotaFija>0</cuotaFija> -->
+<!--           <factorDeAusentismo>0</factorDeAusentismo> -->
+<!--           <factorDeReversionCF></factorDeReversionCF> -->
+<!--           <factorDeReversionExcObrero></factorDeReversionExcObrero> -->
+<!--           <factorDeReversionExcPatronal></factorDeReversionExcPatronal> -->
+<!--           <factorDeReversionGMPObrero></factorDeReversionGMPObrero> -->
+<!--           <factorDeReversionGMPPatronal></factorDeReversionGMPPatronal> -->
+<!--           <factorDeReversionGPS></factorDeReversionGPS> -->
+<!--           <factorDeReversionIVObrero></factorDeReversionIVObrero> -->
+<!--           <factorDeReversionIVPatronal></factorDeReversionIVPatronal> -->
+<!--           <factorDeReversionPDObrero></factorDeReversionPDObrero> -->
+<!--           <factorDeReversionPDPatronal></factorDeReversionPDPatronal> -->
+<!--           <factorDeReversionRT></factorDeReversionRT> -->
+<!--           <fechaLimiteDePago>2014-11-28T00:00:00-06:00</fechaLimiteDePago> -->
+<!--           <filler></filler> -->
+<!--           <gastosMedicosPensionadosObrero>0</gastosMedicosPensionadosObrero> -->
+<!--           <gastosMedicosPensionadosPatronal>0</gastosMedicosPensionadosPatronal> -->
+<!--           <guarderiaYPrestacionesSociales>0</guarderiaYPrestacionesSociales> -->
+<!--           <invalidezYVidaObrero>0</invalidezYVidaObrero> -->
+<!--           <invalidezYVidaPatronal>0</invalidezYVidaPatronal> -->
+<!--           <numeroDeDiscos>1</numeroDeDiscos> -->
+<!--           <prestacionesDineroObrero>0</prestacionesDineroObrero> -->
+<!--           <prestacionesDineroPatronal>0</prestacionesDineroPatronal> -->
+<!--           <riesgosDeTrabajo>0</riesgosDeTrabajo> -->
+<!--           <sumaDeTasasDeRecargosYActualizacionQueSeAplico>0</sumaDeTasasDeRecargosYActualizacionQueSeAplico> -->
+<!--           <tamanioDelArchivoEnBytes>1475</tamanioDelArchivoEnBytes> -->
+<!--           <totalADepositarEnCuentaIMSS4RSS>492.37</totalADepositarEnCuentaIMSS4RSS> -->
+<!--           <totalADepositarEnCuentaIMSSRCV>126.67</totalADepositarEnCuentaIMSSRCV> -->
+<!--           <totalADepositarINFONAVITAmortizacionCredito>0</totalADepositarINFONAVITAmortizacionCredito> -->
+<!--           <totalADepositarINFONAVITAportacionPatronal>0</totalADepositarINFONAVITAportacionPatronal> -->
+<!--           <versionSUA>G395</versionSUA> -->
+<!--         </registroValidacion> -->
+<!--         <fechaInicio>2015-11-01T00:00:00-06:00</fechaInicio> -->
+<!--         <fechaFin>2015-11-30T00:00:00-06:00</fechaFin> -->
+<!--         <monto>619.04</monto> -->
+<!--       </suaPago> -->
+<!--     </pago> -->
+</sua:compra>
