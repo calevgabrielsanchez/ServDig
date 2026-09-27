@@ -51,6 +51,7 @@
 		<module>ClienteWSBovedaDocumentalConsultaObjectId-V3</module>
 		<module>clientes-externos-rest</module>
 		<module>WSPatronesVigentes-asegurado</module>
+		<module>ClienteWebServices-RetroactividadCVRO</module>
 		<!-- <module>WSClienteFacturacion-jonima</module>-->
 		<!-- <module>WSClienteGastosFunerariosSistrap</module>-->
 		<!-- <module>WsBovedaIMSS-IPICYT</module>-->

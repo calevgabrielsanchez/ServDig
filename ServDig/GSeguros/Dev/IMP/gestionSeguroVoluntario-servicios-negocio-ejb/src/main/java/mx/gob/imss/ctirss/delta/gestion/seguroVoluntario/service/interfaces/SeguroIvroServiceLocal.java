@@ -12,6 +12,7 @@ import mx.gob.imss.digital.modelo.seguros.SeguroIvro;
 
 import javax.ejb.Local;
 import java.util.List;
+
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.exception.IvroException;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.HistorialUltimoSeguroCotizadoDTO;
 
@@ -28,6 +29,9 @@ public interface SeguroIvroServiceLocal {
 
     void guardarHistorialUltimoSeguro(HistorialUltimoSeguroCotizadoDTO historial)
             throws IvroException;
+
+    boolean actualizarHistorialUltimoSeguroModalidad40(String cveNss, String cveEntInegi,
+            String cveMunInegi) throws IvroException;
 
     /**
      * Dada una lista de compras se activa su seguro es decir se marca como valido y en caso de 

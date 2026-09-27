@@ -423,4 +423,22 @@
 		<put-attribute name="contenido"
 			value="/WEB-INF/views/wizard/ivro/seguro/mensajeRenExt.jsp" />
 	</definition>
+	
+    <!-- Retroactividad CIVRO ventanilla  -->
+	<definition name="seleccionRetroactividad"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/retroactividad/eleccion-tramite.jsp" />
+	</definition>
+	<definition name="mostrarPeriodosRetro"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/retroactividad/mostrar-periodo-retro.jsp" />
+	</definition>
+	<definition name="confirmarDatosRetroactividad"
+		extends="wizard.base.definition">
+		<put-attribute name="contenido"
+			value="/WEB-INF/views/wizard/mod-40/retroactividad/ConfirmarDatosRetroactividad.jsp" />
+	</definition>			
+	
 </tiles-definitions>

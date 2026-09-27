@@ -1,22 +1,26 @@
 package mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto;
- 
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
- 
+
 public class HistorialUltimoSeguroCotizadoDTO implements Serializable {
- 
+
     private static final long serialVersionUID = 1L;
- 
+
     private long idUltimoTrabajo;
     private String cveNss;
+    private String refRegistroPatronal;
+    private String cveEntInegi;
+    private String cveMunInegi;
+    private Long cveIdMunicipioImss;
     private Date fecConsulta;
     private String cveMunicipioImss;
     private Integer numAnioUltimoTrabajo;
     private Integer numMesUltimoTrabajo;
     private Integer cveModalidad;
     private BigDecimal salarioUltimoTrabajo;
-    private Integer numSemanasRoUltSanios;
+    private Integer numSemanasRoUlt5anios;
     private Integer indPension;
     private Integer indTrabajadorImss;
     private Date stpAlta;
@@ -29,11 +33,19 @@ public class HistorialUltimoSeguroCotizadoDTO implements Serializable {
     private String cveRfcAsegurado;
     private String nomAsegurado;
     private Date fecBajaUltimoTrabajo;
- 
+
     public long getIdUltimoTrabajo() { return idUltimoTrabajo; }
     public void setIdUltimoTrabajo(long value) { this.idUltimoTrabajo = value; }
     public String getCveNss() { return cveNss; }
     public void setCveNss(String value) { this.cveNss = value; }
+    public String getRefRegistroPatronal() { return refRegistroPatronal; }
+    public void setRefRegistroPatronal(String value) { this.refRegistroPatronal = value; }
+    public String getCveEntInegi() { return cveEntInegi; }
+    public void setCveEntInegi(String value) { this.cveEntInegi = value; }
+    public String getCveMunInegi() { return cveMunInegi; }
+    public void setCveMunInegi(String value) { this.cveMunInegi = value; }
+    public Long getCveIdMunicipioImss() { return cveIdMunicipioImss; }
+    public void setCveIdMunicipioImss(Long value) { this.cveIdMunicipioImss = value; }
     public Date getFecConsulta() { return fecConsulta; }
     public void setFecConsulta(Date value) { this.fecConsulta = value; }
     public String getCveMunicipioImss() { return cveMunicipioImss; }
@@ -83,10 +95,10 @@ public class HistorialUltimoSeguroCotizadoDTO implements Serializable {
 		this.salarioUltimoTrabajo = salarioUltimoTrabajo;
 	}
 	public Integer getNumSemanasRoUltSanios() {
-		return numSemanasRoUltSanios;
+		return numSemanasRoUlt5anios;
 	}
-	public void setNumSemanasRoUltSanios(Integer numSemanasRoUltSanios) {
-		this.numSemanasRoUltSanios = numSemanasRoUltSanios;
+	public void setNumSemanasRoUlt5anios(Integer numSemanasRoUltSanios) {
+		this.numSemanasRoUlt5anios = numSemanasRoUltSanios;
 	}
 	public Integer getIndPension() {
 		return indPension;
@@ -100,4 +112,5 @@ public class HistorialUltimoSeguroCotizadoDTO implements Serializable {
 	public void setIndTrabajadorImss(Integer indTrabajadorImss) {
 		this.indTrabajadorImss = indTrabajadorImss;
 	}
+    
 }

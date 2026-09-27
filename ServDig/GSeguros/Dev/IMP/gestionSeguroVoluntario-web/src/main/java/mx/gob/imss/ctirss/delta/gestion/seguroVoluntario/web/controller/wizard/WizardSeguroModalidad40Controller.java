@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import mx.gob.imss.consultamod40.RespuestaModalidad40;
 import mx.gob.imss.consultamod40.Modalidad40VO;
+import mx.gob.imss.consultamod40.RespuestaModalidad40;
 import mx.gob.imss.consultamod40.WSConsultaMod40;
 import mx.gob.imss.ctirss.delta.exception.domicilio.DomicilioNoLocalizadoException;
 import mx.gob.imss.ctirss.delta.exception.domicilio.DomicilioNoValidoException;
@@ -34,7 +34,7 @@ import mx.gob.imss.ctirss.delta.gestion.domicilio.service.interfaces.domicilio.D
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.exception.IVROServiceException;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.ValidaVigenciaRemote;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.SeguroIvroServiceRemote;
-import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.HistorialUltimoSeguroCotizadoDTO;
+import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.UltimoTrabajoModalidad40DTO;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.util.CriptoUtilities;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.util.SeguroCvroUtil;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.util.SeguroIvroUtil;
@@ -52,6 +52,7 @@ import mx.gob.imss.digital.modelo.cobranza.Pago;
 import mx.gob.imss.digital.modelo.cobranza.PeriodoCuota;
 import mx.gob.imss.digital.modelo.comun.Modalidad;
 import mx.gob.imss.digital.modelo.domicilio.Domicilio;
+import mx.gob.imss.digital.modelo.domicilio.Municipio;
 import mx.gob.imss.digital.modelo.medio.contacto.CorreoElectronico;
 import mx.gob.imss.digital.modelo.persona.Fisica;
 import mx.gob.imss.digital.modelo.persona.Persona;
@@ -95,6 +96,7 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 	private static final String KEY_TERMINANDO_SOLICITUD = "_terminando_sol";
 	private static final String KEY_NSS_MOD40 = "nss";
 	private static final String KEY_NSS_CIFRADO_MOD40 = "nssCifrado";
+	private static final String KEY_NSS_HISTORIAL_MOD40 = "_nssHistorialMod40";
 	private static final String MSG_SIN_FECHA_BAJA = "Por este medio no es posible realizar la inscripci\u00F3n en la Continuaci\u00F3n Voluntaria, por favor acude a tu Subdelegaci\u00F3n a realizar tu solicitud.";
 	private static final Integer NUM_SALARIOS = 25;
 	private static final String MSG_CON_FECHA_BAJA_NSS ="El n\u00FAmero de seguridad social (NSS) no est\u00E1 vigente o no se localiza, favor de acudir a la Subdelegaci\u00F3n";
@@ -119,7 +121,10 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
  	private static final String HOY = "hoy";
  	private static final String COMUN_ERROR = "error";
  	private static final String KEY_MSGERROR = "msgError";
-
+ 	private static final String OPCION_RETROACTIVIDAD = "seleccionRetroactividad";
+ 	
+ 	private static final String DERECHO_RETROACTIVIDAD = "derechoRetroactividad";
+ 	
 	@Autowired
 	@Qualifier("wSConsultaMod40")
 	private WSConsultaMod40 wSConsultaMod40;
@@ -601,37 +606,64 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 			
 			//boolean compraDirecta = seguroCvroUtil.esCompraDirectaPlataformasDigitales(wSConsultaMod40.getConsultaMod40(String.valueOf(asignacionNss.getCveIdAsignacionNss())), seguro, patronesPD);
 			RespuestaModalidad40 responseMod40 = wSConsultaMod40.getConsultaMod40(String.valueOf(asignacionNss.getCveIdAsignacionNss()));
+			if (responseMod40 == null) {
+				throw new IVROServiceException("No se obtuvo respuesta de la consulta de modalidad 40");
+			}
+			Object claveErrorMod40 = responseMod40.getClaveError();
+			if (claveErrorMod40 instanceof javax.xml.bind.JAXBElement) {
+				claveErrorMod40 = ((javax.xml.bind.JAXBElement<?>) claveErrorMod40).getValue();
+			}
+			if (claveErrorMod40 != null && !"0".equals(String.valueOf(claveErrorMod40))) {
+				throw new IVROServiceException("La consulta de modalidad 40 devolvio un error");
+			}
 			
 			boolean compraDirecta = seguroCvroUtil.esCompraDirectaPlataformasDigitales(responseMod40, seguro, patronesPD);
 			
-			log.info("compraDirecta:    "+compraDirecta);
+			log.info("***************************************************************************************************************************************************************************************************************");
 
-			// Guarda el ultimo trabajo consultado en BDTUT_ULTIMO_TRABAJO. CALEV
-			log.error("############################********************************************************************************************************************************************************************************************BDTUT_ULTIMO_TRABAJO");
-			Modalidad40VO modalidad40 = responseMod40.getModalidad40();
+			Modalidad40VO modalidad40 = responseMod40 != null ? responseMod40.getModalidad40() : null;
+			
+			session.setAttribute(DERECHO_RETROACTIVIDAD, true);
+			
 			if (modalidad40 != null) {
-				HistorialUltimoSeguroCotizadoDTO historial = new HistorialUltimoSeguroCotizadoDTO();
+				
+				log.info("compraDirecta:    "+compraDirecta);
+				
 				Fisica titular = seguro != null ? seguro.getTitular() : null;
-				historial.setCveNss(titular != null ? titular.getNss() : null);
-				historial.setFecConsulta(new Date());
-				historial.setCveModalidad(new Integer(modalidad40.getModUltimoMov()));
-				historial.setSalarioUltimoTrabajo(new BigDecimal(String.valueOf(modalidad40.getSalarioObligatorio())));
-				historial.setNumSemanasRoUltSanios(Integer.valueOf(modalidad40.getSemanasCotizadas()));
-				historial.setIndPension(Integer.valueOf(modalidad40.getIndPension()));
-				historial.setIndTrabajadorImss(Integer.valueOf(modalidad40.getIndTrabajadorIMSS()));
-				historial.setCveRfcAsegurado(titular != null ? titular.getRfc() : null);
-				historial.setCveCurp(titular != null ? titular.getCurp() : null);
-				historial.setNomAsegurado(titular != null ? titular.getNombre() : null);
-
-				Date fechaUltimoTrabajo = new SimpleDateFormat("yyyy-MM-dd").parse(modalidad40.getFecMovObligatorio().getValue());
-				historial.setFecBajaUltimoTrabajo(fechaUltimoTrabajo);
-				Calendar fecha = Calendar.getInstance();
-				fecha.setTime(fechaUltimoTrabajo);
-				historial.setNumAnioUltimoTrabajo(Integer.valueOf(fecha.get(Calendar.YEAR)));
-				historial.setNumMesUltimoTrabajo(Integer.valueOf(fecha.get(Calendar.MONTH) + 1));
-				seguroIvroServiceRemote.guardarHistorialUltimoSeguro(historial);
+				String nssConsulta = asignacionNss.getNumNss();
+				if (StringUtils.isBlank(nssConsulta) && titular != null) {
+					nssConsulta = titular.getNss();
+				}
+				if (StringUtils.isNotBlank(nssConsulta)
+						&& modalidad40.getModUltimoObligatorio() != null
+						&& StringUtils.isNotBlank(modalidad40.getModUltimoObligatorio().getValue())
+						&& modalidad40.getFecMovObligatorio() != null
+						&& modalidad40.getSalarioObligatorio() != null) {
+					try {
+						UltimoTrabajoModalidad40DTO ultimoTrabajo = new UltimoTrabajoModalidad40DTO();
+						ultimoTrabajo.setCveCurp(titular != null ? titular.getCurp() : null);
+						ultimoTrabajo.setCveModalidad(Integer.valueOf(modalidad40.getModUltimoObligatorio().getValue()));
+						ultimoTrabajo.setCveNss(nssConsulta);
+						ultimoTrabajo.setCveRfcAsegurado(titular != null ? titular.getRfc() : null);
+						ultimoTrabajo.setNomAsegurado(titular != null ? titular.getNombre() : null);
+						ultimoTrabajo.setRefRegistroPatronal(modalidad40.getRegPatUltimoObligatorio() != null
+								? modalidad40.getRegPatUltimoObligatorio().getValue() : null);
+						ultimoTrabajo.setTipoMovObligatorio(modalidad40.getTipoMovObligatorio() != null
+								? modalidad40.getTipoMovObligatorio().getValue() : null);
+						ultimoTrabajo.setFechaUltimoTrabajo(modalidad40.getFecMovObligatorio().getValue());
+						ultimoTrabajo.setSalarioUltimoTrabajo(modalidad40.getSalarioObligatorio().getValue());
+						ultimoTrabajo.setSemanasCotizadas(modalidad40.getSemanasCotizadas());
+						ultimoTrabajo.setIndPension(modalidad40.getIndPension());
+						ultimoTrabajo.setIndTrabajadorImss(modalidad40.getIndTrabajadorIMSS());
+						seguroIvroServiceRemote.guardarHistorialUltimoSeguroModalidad40(ultimoTrabajo);
+						session.setAttribute(KEY_NSS_HISTORIAL_MOD40, nssConsulta);
+					} catch (Exception e) {
+						log.error("No se pudo registrar la consulta del ultimo trabajo", e);
+					}
+				} else {
+					log.warn("La consulta Mod40 no contiene NSS o datos del ultimo trabajo obligatorio");
+				}
 			}
-//Termina el guardado
 
 			if (seguro != null && 
 					!(compraDirecta && 
@@ -803,7 +835,9 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 
 
 
-		return WIZARD_ALTA;
+		//return WIZARD_ALTA;
+		System.out.println("Paso por opcion_retroactividad en altaInit");
+		return OPCION_RETROACTIVIDAD;
 	}
 
 
@@ -902,6 +936,8 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 			@ModelAttribute("solicitante") Fisica solicitante,
 			@ModelAttribute("idPersonaSolicitante") Long idPersona,
 			@ModelAttribute("datosCalculo") DatosCalculoCuota datosCalculo) {
+		
+		System.out.println("comunSolicitarDomicilio");
 
 		Persona persona = new Persona();
 		persona.setIdPersona(idPersona);
@@ -919,10 +955,32 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 			this.log.info(" --- IdPersona: " + idPersona + " --- CORREO   : " + correoElectronico);
 		}
 
+		boolean isActualizado = false;
 		try {
 			Domicilio domicilio = domicilioExternosServiceBusiness.consultarUltimoDomicilioParticilar(idPersona);
 			solicitante.setIdPersona(idPersona);
 			solicitante.setDomicilioParticular(domicilio);
+			
+			String nssHistorial = (String) session.getAttribute(KEY_NSS_HISTORIAL_MOD40);
+			if (StringUtils.isNotBlank(nssHistorial)) {
+				try {
+					AsignacionNssIvro asignacionNss = seguroIndividualServices.obtenerAsignacionNss(idPersona);
+					Municipio municipio = domicilio != null && domicilio.getLocalidad() != null
+							? domicilio.getLocalidad().getMunicipio() : null;
+					if (asignacionNss != null && StringUtils.equals(nssHistorial, asignacionNss.getNumNss())
+							&& municipio != null && municipio.getEntidadFederativa() != null
+							&& StringUtils.isNotBlank(municipio.getClave())
+							&& StringUtils.isNotBlank(municipio.getEntidadFederativa().getClave())) {
+						isActualizado = seguroIvroServiceRemote.actualizarHistorialUltimoSeguroModalidad40(
+								nssHistorial, municipio.getEntidadFederativa().getClave(), municipio.getClave());
+					} else {
+						log.warn("No se actualizo el ultimo trabajo: NSS o datos de municipio y entidad no disponibles");
+					}
+				} catch (Exception e) {
+					log.error("No se pudo actualizar el ultimo trabajo con municipio y entidad", e);
+				}
+			}
+			
 		} catch (DomicilioNoLocalizadoException e) {
 			model.addAttribute(ERROR, "Ocurri\u00F3 un error al intentar obtener el domicilio del solicitante.");
 			log.error("********** Ocurrio un error al intentar obtener el domicilio del solicitante..", e);
@@ -930,6 +988,7 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
                     model.addAttribute(ERROR, "Ocurri\u00F3 un error al intentar obtener el domicilio del solicitante.");
                     log.error("********** Ocurrio un error al intentar obtener el domicilio del solicitante..", e);
             }
+		model.addAttribute("historialUltimoTrabajoActualizado", isActualizado);
 		model.addAttribute(DATOSCALCULO, datosCalculo);
 		model.addAttribute(SOLICITANTE, solicitante);
 		return "wizardSeguroCVROAgregarDomicilio";
@@ -1266,6 +1325,7 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 		session.removeAttribute(DATOSCOTIZACION);
 		session.removeAttribute(SOLICITUD);
 		session.removeAttribute(KEY_TERMINANDO_SOLICITUD);
+		session.removeAttribute(KEY_NSS_HISTORIAL_MOD40);
 
 		this.log.info(" --- SE LIMPIARON LOS DATOS DE LA SESION ---");
 		return null;

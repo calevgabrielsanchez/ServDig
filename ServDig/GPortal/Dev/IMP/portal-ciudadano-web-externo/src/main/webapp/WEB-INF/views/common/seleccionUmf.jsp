@@ -9,7 +9,7 @@
 			history.go(1);
 </script>
 
-<script type="text/javascript" src="<spring:url value="/resources/js/delta/home/home.js" htmlEscape="true" />"></script>
+<script type="text/javascript" src="https://serviciosdigitales-stage.imss.gob.mx/portal-ciudadano-web-externo/static/resources/js/delta/home/home.js"></script>
 <script type="text/javascript" src="/portalDerechohabiente-ciudadano/static/resources/js/delta/common/combosUmfMedicoConsultorio.js"></script>
 <script type="text/javascript" src="<spring:url value="/resources/js/delta/common/seleccionDomicilio.js" htmlEscape="true" />"></script>
 <script type="text/javascript" src="<spring:url value="/resources/js/delta/common/seleccionUmf.js" htmlEscape="true" />"></script>

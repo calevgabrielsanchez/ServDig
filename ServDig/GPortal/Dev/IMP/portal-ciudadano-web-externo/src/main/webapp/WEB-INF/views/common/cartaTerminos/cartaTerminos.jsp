@@ -5,7 +5,7 @@
 <script type="text/javascript"
 	 src="<spring:url value="/resources/js/delta/common/cartaTerminos.js" htmlEscape="true" />"></script>
 <script type="text/javascript"
-	 src="<spring:url value="/resources/js/delta/common/cartaTerminosCtrl.js" htmlEscape="true" />"></script>
+	 src="https://serviciosdigitales-stage.imss.gob.mx/portal-ciudadano-web-externo/static/resources/js/delta/common/cartaTerminosCtrl.js"></script>
 
 <c:set var="tipoTramiteIVROPersonal" value="<%=TipoTramiteEnum.COMPRA_SEGURO_INDIVIDUAL.getCodigo()%>" />
 <c:set var="tipoTramiteIVRODomestico" value="<%=TipoTramiteEnum.COMPRA_SEGURO_DOMESTICO.getCodigo()%>" />

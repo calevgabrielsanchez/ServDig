@@ -9,9 +9,9 @@
 			history.go(1);
 </script>
 
-<script type="text/javascript" src="${staticResourcesPath}/js/delta/home/home.js"></script>
+<script type="text/javascript" src="https://serviciosdigitales-stage.imss.gob.mx/portal-ciudadano-web-externo/static/resources/js/delta/home/home.js"></script>
 <script type="text/javascript"
-	 src="${staticResourcesPath}/js/delta/common/cartaTerminosCtrl.js"></script>
+	 src="https://serviciosdigitales-stage.imss.gob.mx/portal-ciudadano-web-externo/static/resources/js/delta/common/cartaTerminosCtrl.js"></script>
 
 <script>
 	var contextpath="${contextpath}";

@@ -16,11 +16,6 @@
     }
 </style>
 
-<script src="<spring:url value='/static/resources/js/jquery-1.12.4.min.js'/>"></script>
-<script src="<spring:url value='/static/resources/js/bootstrap.min.js'/>"></script>
-<script src="<spring:url value='/static/resources/js/wizard/mod-40/comunes/detalle-seguro.js'/>"></script>
-
-
 <script type="text/javascript"
         src="<spring:url value='/static/resources/js/wizard/mod-40/comunes/detalle-seguro.js' htmlEscape='true' />">
 </script>
@@ -52,7 +47,7 @@
     }
 
     /**
-     * Mostrar modal de confirmación baja expresa
+     * Mostrar modal de confirmaciï¿½n baja expresa
      */
     function mostrarModalBajaExpresa() {
         // Limpiar campos
@@ -71,7 +66,7 @@
         var motivo       = $('#motivoBajaExpresa').val().trim();
         var btnConfirmar = $('#btnConfirmarSolicitud');
 
-        // Deshabilitar botón para evitar doble clic
+        // Deshabilitar botï¿½n para evitar doble clic
         btnConfirmar.prop('disabled', true)
                     .html('<i class="fa fa-spinner fa-spin"></i> Enviando...');
         $('#mensajeErrorBaja').hide();
@@ -89,11 +84,11 @@
                     // Cerrar modal
                     $('#modalBajaExpresa').modal('hide');
 
-                    // Mostrar mensaje de éxito VERDE en la página principal
+                    // Mostrar mensaje de ï¿½xito VERDE en la pï¿½gina principal
                     $('#mensajeExitoBajaPrincipal').html(
                         '<div style="text-align: center; padding: 15px;">' +
                             '<i class="fa fa-check-circle" style="font-size: 48px; color: #5cb85c;"></i><br/><br/>' +
-                            '<strong style="font-size: 20px;">¡Solicitud enviada exitosamente!</strong><br/><br/>' +
+                            '<strong style="font-size: 20px;">ï¿½Solicitud enviada exitosamente!</strong><br/><br/>' +
                             '<span style="font-size: 16px;">' + respuesta.mensaje + '</span>' +
                         '</div>'
                     ).fadeIn('slow');
@@ -452,7 +447,7 @@
                 </div>
                 <div class="modal-body">
                     <p class="lead">
-                        <strong>¿Est&aacute; seguro que desea darse de baja de su seguro
+                        <strong>ï¿½Est&aacute; seguro que desea darse de baja de su seguro
                             de Continuaci&oacute;n Voluntaria?</strong>
                     </p>
 

@@ -1,0 +1,54 @@
+package mx.gob.imss.cit.clienteswebservices.modalidad40.rest.bean;
+
+import java.io.Serializable;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class GeneracionMultilineaConsultaResponse implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6193334012333384875L;
+	
+	private String codigo;
+	private String descripcion;
+	private GeneracionMultilineaConsultaDTO  vrDto;
+	
+	
+	public GeneracionMultilineaConsultaResponse() {
+		
+	}
+	
+	public GeneracionMultilineaConsultaResponse(String codigo, String descripcion,
+			GeneracionMultilineaConsultaDTO vrDto) {
+		super();
+		this.codigo = codigo;
+		this.descripcion = descripcion;
+		this.vrDto = vrDto;
+	}
+	
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public GeneracionMultilineaConsultaDTO getVrDto() {
+		return vrDto;
+	}
+
+	public void setVrDto(GeneracionMultilineaConsultaDTO vrDto) {
+		this.vrDto = vrDto;
+	}
+	
+	
+}

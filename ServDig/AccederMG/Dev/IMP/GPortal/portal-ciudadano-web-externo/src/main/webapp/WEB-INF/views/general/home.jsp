@@ -9,9 +9,9 @@
 			history.go(1);
 </script>
 
-<script type="text/javascript" src="<spring:url value="/static/resources/js/delta/home/home.js" htmlEscape="true" />"></script>
+<script type="text/javascript" src="https://serviciosdigitales-stage.imss.gob.mx/portal-ciudadano-web-externo/static/resources/js/delta/home/home.js"></script>
 <script type="text/javascript"
-	src="<spring:url value="/static/resources/js/delta/common/cartaTerminosCtrl.js" htmlEscape="true" />"></script>
+	 src="https://serviciosdigitales-stage.imss.gob.mx/portal-ciudadano-web-externo/static/resources/js/delta/common/cartaTerminosCtrl.js"></script>
 
 <script>
 	var contextpath="${contextpath}";
@@ -104,7 +104,7 @@
 						</div>
 					</div>
 
-					<!-- Se utiliza el atributo correoElectronicoFiscal como auxiliar para poder realizar la confirmación de correo electrónico -->
+					<!-- Se utiliza el atributo correoElectronicoFiscal como auxiliar para poder realizar la confirmaciï¿½n de correo electrï¿½nico -->
 					<div class="form-group">
 						<label for="correoElectronicoFiscal.correo" class="col-sm-6 control-label">
 							Confirma tu correo electr&oacute;nico<span class="required">*</span>:

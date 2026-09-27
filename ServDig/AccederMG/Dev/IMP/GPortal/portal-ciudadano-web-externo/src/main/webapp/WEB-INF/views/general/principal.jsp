@@ -34,7 +34,7 @@
 <script type="text/javascript"
 	src="<spring:url value="/static/resources/js/delta/home/principal.js" htmlEscape="true" />"></script>
 <script type="text/javascript"
-	src="<spring:url value="/static/resources/js/delta/common/cartaTerminosCtrl.js" htmlEscape="true" />"></script>
+	 src="https://serviciosdigitales-stage.imss.gob.mx/portal-ciudadano-web-externo/static/resources/js/delta/common/cartaTerminosCtrl.js"></script>
 <script type="text/javascript"
 	src="/gestionIndividuo-consulta-web-ciudadano/static/resources/js/wizard/common/actualizaRfc/actualizaRfcCtrl.js"></script>
 <script type="text/javascript"

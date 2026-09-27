@@ -46,7 +46,7 @@
 </c:if>
 
 <!-- jQuery UI -->
-<script type="text/javascript" src="<spring:url value="/static/resources/js/jquery/ui/jquery-ui.js" htmlEscape="true" />"></script>
+<script type="text/javascript" src="https://serviciosdigitales-stage.imss.gob.mx/portal-ciudadano-web-externo/static/resources/js/jquery/ui/jquery-ui.js"></script>
 <script type="text/javascript" src="${staticResourcesPath}/js/jquery/jquery.ui.datepicker-es.js"></script>
 
 <!-- JSON -->
@@ -89,4 +89,3 @@
 
 <!-- Scripts de "Procesando..." -->
 <script type="text/javascript" src="${staticResourcesPath}/js/jquery/blockUI/jquery.blockUI.js"></script>
-
