@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
     var contextPath = "${pageContext.request.contextPath}";
     
@@ -20,7 +21,7 @@
         			correoSolicitante: "airf%40xe.com",
         			nombreSolicitante: "FAUSTINO+AVILA+REYES"
         		};
-        	var urlDestino = contextPath+"/gestionSeguroVoluntario-web-ciudadano/wizard/continuacionVoluntaria/comunes/agregarDomicilio";
+        	var urlDestino = contextPath+"/wizard/continuacionVoluntaria/comunes/agregarDomicilio";
         	
         	$.post(urlDestino, datosAEnviar, function(respuestaHtml) {
         	    
@@ -85,15 +86,16 @@
 		display: flex;
 		justify-content: center;		
 	}
-.tabla-vino {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Sombra muy ligera para darle profundidad */
-    border-radius: 4px;
-    overflow: hidden;
-}
+	
+	.tabla-vino {
+	    width: 100%;
+	    border-collapse: collapse;
+	    font-family: Arial, sans-serif;
+	    background-color: #ffffff;
+	    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Sombra muy ligera para darle profundidad */
+	    border-radius: 4px;
+	    overflow: hidden;
+	}
 
 .tabla-vino th {
     background-color: #722F37; /* Color vino clï¿½sico (puedes ajustarlo segï¿½n tu tono exacto) */
@@ -119,6 +121,38 @@
     background-color: #f2e3e4; /* Un tono vino un poco mï¿½s marcado para el hover */
     transition: background-color 0.2s ease;
 }
+
+table.cuadricula {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+        }
+        table.cuadricula th, table.cuadricula td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        table.cuadricula th {
+            background-color: #611232;
+        }
+        /* Estilo para los meses activos: Dorado traslúcido */
+        .mes-activo {
+            background-color: rgba(241, 196, 15, 0.35); /* Dorado ámbar con 35% de opacidad */
+            color: #7d6608; /* Un tono dorado oscuro para que el texto resalte legible */
+            font-weight: bold;
+        }
+        /* Estilo para los meses fuera de rango */
+        .mes-inactivo {
+            background-color: #f9f9f9;
+            color: #bbb;
+        }
+	hr.red {
+		margin-bottom: 40px;
+	}   
+	.body{
+	padding-top: 40px;
+	}          
     
 </style>
 
@@ -135,20 +169,45 @@
            <div id="cuerpo" class="container">
            <div>
 	        	<p>El periodo calculado al que tiene derecho es el siguiente: </p>
-				<p> del 12/01/2025 al 23/08/2025 </p>
+				<p> del ${fechaInicio} al ${fechaFin} </p>
 	       </div>
-	       <div class="table-container tabla-vino">
-	        	<table>
-	        		<tr>
-	        		 <td>11/2020</td>
-	        		 <td>11/2021</td>
-	        		 <td>11/2022</td>
-	        		 <td>11/2023</td>
-	        		 <td>11/2024</td>
-	        		 <td>11/2025</td>
-	        		</tr>
-	        	</table>
-	        </div>
+	    <div class="table-container tabla-vino">
+		<table class="cuadricula">
+	        <thead>
+	            <tr>
+	                <th>Año</th>
+
+	                <th>Ene</th>
+	                <th>Feb</th>
+	                <th>Mar</th>
+	                <th>Abr</th>
+	                <th>May</th>
+	                <th>Jun</th>
+	                <th>Jul</th>
+	                <th>Ago</th>
+	                <th>Sep</th>
+	                <th>Oct</th>
+	                <th>Nov</th>
+	                <th>Dic</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            <c:forEach var="fila" items="${filasCuadricula}">
+	                <tr>
+	                    <td><strong>${fila.anio}</strong></td>
+	                    
+							<c:forEach var="mes" items="${fila.meses}">
+							    <c:choose><c:when test="${mes.activo}">
+							        <td class="mes-activo">${mes.nombreMes}</td>
+							    </c:when><c:otherwise>
+							        <td class="mes-inactivo">-</td>
+							    </c:otherwise></c:choose>
+							</c:forEach>
+	                </tr>
+	            </c:forEach>
+	        </tbody>
+	    </table>
+	    </div>
          </div>
         </div>
 

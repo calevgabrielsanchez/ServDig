@@ -21,7 +21,7 @@
                     console.log("No hay ning�n radio button seleccionado.");
                 }
                 
-                $.get(urlDestino,1, function(respuestaHtml) {
+                $.post(urlDestino,1, function(respuestaHtml) {
                 	var iframe = window.frameElement;
             	    if (iframe) {
             	        var doc = iframe.contentDocument || iframe.contentWindow.document;

@@ -18,6 +18,7 @@ public class UltimoTrabajoModalidad40DTO implements Serializable {
     private Integer semanasCotizadas;
     private Integer indPension;
     private Integer indTrabajadorImss;
+    private Long cveMunicipioImss;
 
     public String getCveCurp() { return cveCurp; }
     public void setCveCurp(String cveCurp) { this.cveCurp = cveCurp; }
@@ -43,4 +44,28 @@ public class UltimoTrabajoModalidad40DTO implements Serializable {
     public void setIndPension(Integer indPension) { this.indPension = indPension; }
     public Integer getIndTrabajadorImss() { return indTrabajadorImss; }
     public void setIndTrabajadorImss(Integer indTrabajadorImss) { this.indTrabajadorImss = indTrabajadorImss; }
+	public Long getCveMunicipioImss() {
+		return cveMunicipioImss;
+	}
+	public void setCveMunicipioImss(Long cveMunicipioImss) {
+		this.cveMunicipioImss = cveMunicipioImss;
+	}
+
+	@Override
+	public String toString() {
+		return "UltimoTrabajoModalidad40DTO [cveCurp=" + cveCurp
+				+ ", cveModalidad=" + cveModalidad
+				+ ", cveNss=" + cveNss
+				+ ", cveRfcAsegurado=" + cveRfcAsegurado
+				+ ", nomAsegurado=" + nomAsegurado
+				+ ", refRegistroPatronal=" + refRegistroPatronal
+				+ ", tipoMovObligatorio=" + tipoMovObligatorio
+				+ ", fechaUltimoTrabajo=" + fechaUltimoTrabajo
+				+ ", salarioUltimoTrabajo=" + salarioUltimoTrabajo
+				+ ", semanasCotizadas=" + semanasCotizadas
+				+ ", indPension=" + indPension
+				+ ", indTrabajadorImss=" + indTrabajadorImss
+				+ ", cveMunicipioImss=" + cveMunicipioImss + "]";
+	}
+    
 }

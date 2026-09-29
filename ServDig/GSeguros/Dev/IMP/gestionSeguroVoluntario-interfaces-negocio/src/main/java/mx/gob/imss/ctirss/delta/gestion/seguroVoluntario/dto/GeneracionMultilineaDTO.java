@@ -1,33 +1,18 @@
-package mx.gob.imss.cit.clienteswebservices.modalidad40.rest.bean;
+package mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto;
 
 import java.io.Serializable;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class GeneracionMultilineaDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("idSolicitud")
     private String idSolicitud;
-    
-    @JsonProperty("idCalculo")
     private String idCalculo;
-    
-    @JsonProperty("correlacion")
     private String correlacion;
-    
-    @JsonProperty("estado")
     private String estado;
-    
-    @JsonProperty("numeroPeriodos")
     private Integer numeroPeriodos;
-    
-    @JsonProperty("periodosProcesados")
     private Integer periodosProcesados;
-    
-    @JsonProperty("urlConsulta")
     private String urlConsulta;
 
     public GeneracionMultilineaDTO() {

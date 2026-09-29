@@ -1,39 +1,17 @@
-package mx.gob.imss.cit.clienteswebservices.modalidad40.rest.bean;
+package mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class PeriodoDTO {
 
-	@JsonProperty("idPagoPeriodo")
     private Long idPagoPeriodo;
-	
-	@JsonProperty("anio")
     private Integer anio;
-	
-	@JsonProperty("mes")
     private Integer mes;
-	
-	@JsonProperty("fechaInicio")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date fechaInicio;
-	
-	@JsonProperty("fechaFin")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date fechaFin;
-	
-	@JsonProperty("importeBase")
     private BigDecimal importeBase;
-	
-	@JsonProperty("importeActualizacion")
     private BigDecimal importeActualizacion;
-	
-	@JsonProperty("importeRecargo")
     private BigDecimal importeRecargo;
-	
-	@JsonProperty("importePago")
     private BigDecimal importePago;
 
     public PeriodoDTO() {

@@ -1,33 +1,20 @@
-package mx.gob.imss.cit.clienteswebservices.modalidad40.rest.bean;
+package mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-public class SolicitudCalculoDTO implements Serializable {
+public class CalculoPagosRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @JsonProperty("idCalculo")
     private String idCalculo;
-    
-    @JsonProperty("nss")
     private String nss;
-    
-    @JsonProperty("municipioImss")
     private String municipioImss;
-    
-    @JsonProperty("salarioElegido")
     private BigDecimal salarioElegido;
-    
-    @JsonProperty("origenCalculo")
     private String origenCalculo;
-    
-    @JsonProperty("usuario")
     private String usuario;
 
-    public SolicitudCalculoDTO() {
+    public CalculoPagosRequest() {
     }
 
 

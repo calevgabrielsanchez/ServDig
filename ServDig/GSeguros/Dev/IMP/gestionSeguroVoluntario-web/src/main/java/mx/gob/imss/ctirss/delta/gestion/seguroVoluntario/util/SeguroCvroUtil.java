@@ -362,4 +362,118 @@ public class SeguroCvroUtil {
         }
 	}
 		
+
+    public static mx.gob.imss.digital.modelo.persona.Fisica convertirFisica(
+    		mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica origen) {
+    		 
+    		if (origen == null) {
+    		return null;
+    		}
+    		 
+    		mx.gob.imss.digital.modelo.persona.Fisica destino =
+    		new mx.gob.imss.digital.modelo.persona.Fisica();
+    		 
+    		// Datos básicos
+    		destino.setCveFisica(origen.getCveFisica());
+    		destino.setNombre(origen.getNombre());
+    		destino.setPrimerApellido(origen.getPrimerApellido());
+    		destino.setSegundoApellido(origen.getSegundoApellido());
+    		 
+    		destino.setCurp(origen.getCurp());
+    		destino.setCurpRenapo(origen.getCurpRenapo());
+    		 
+    		destino.setNss(origen.getNss());
+    		destino.setNssCifrado(origen.getNssCifrado());
+    		 
+    		destino.setFechaNacimiento(origen.getFechaNacimiento());
+    		destino.setFechaDefuncion(origen.getFechaDefuncion());
+    		 
+    		destino.setFechaRegistro(origen.getFechaRegistro());
+    		destino.setFechaBaja(origen.getFechaBaja());
+    		destino.setFechaModificacion(origen.getFechaModificacion());
+    		 
+    		destino.setFechaNacimientoFormateada(
+    		origen.getFechaNacimientoFormateada());
+    		 
+    		destino.setAltaEnImss(origen.getAltaEnImss());
+    		destino.setNumeroLineaArchivo(origen.getNumeroLineaArchivo());
+    		 
+    		destino.setBusqAprox(origen.getBusqAprox());
+    		 
+    		destino.setEstadosFormateados(
+    		origen.getEstadosFormateados());
+    		 
+    		destino.setSubEstadosFormateados(
+    		origen.getSubEstadosFormateados());
+    		 
+    		destino.setMesRegistroNac(origen.getMesRegistroNac());
+    		destino.setAnioRegistroNac(origen.getAnioRegistroNac());
+    		 
+    		destino.setEstatusRenapo(origen.getEstatusRenapo());
+    		destino.setCveEstatusRenapo(origen.getCveEstatusRenapo());
+    		 
+    		// Datos heredados de Persona
+    		destino.setIdPersona(origen.getIdPersona());
+    		destino.setRfc(origen.getRfc());
+    		 
+    		if (origen.getTipoPersona() != null) {
+    		 
+    		mx.gob.imss.digital.modelo.persona.TipoPersona tipoPersona =
+    		new mx.gob.imss.digital.modelo.persona.TipoPersona();
+    		 
+    		tipoPersona.setIdTipoPersona(
+    		origen.getTipoPersona().getIdTipoPersona());
+    		 
+    		destino.setTipoPersona(tipoPersona);
+    		}
+    		 
+    		// Sexo
+    		if (origen.getSexo() != null) {
+    		 
+    		mx.gob.imss.digital.modelo.persona.Sexo sexo =
+    		new mx.gob.imss.digital.modelo.persona.Sexo();
+    		 
+    		sexo.setIdSexo(origen.getSexo().getIdSexo());
+    		 
+    		destino.setSexo(sexo);
+    		}
+    		 
+    		// Estado civil
+    		if (origen.getEstadoCivil() != null) {
+    		 
+    		mx.gob.imss.digital.modelo.persona.EstadoCivil estadoCivil =
+    		new mx.gob.imss.digital.modelo.persona.EstadoCivil();
+    		 
+    		estadoCivil.setIdEstadoCivil(
+    		origen.getEstadoCivil().getIdEstadoCivil());
+    		 
+    		destino.setEstadoCivil(estadoCivil);
+    		}
+    		 
+    		// País
+    		if (origen.getPais() != null) {
+    		 
+    		mx.gob.imss.digital.modelo.domicilio.Pais pais =
+    		new mx.gob.imss.digital.modelo.domicilio.Pais();
+    		 
+    		pais.setIdPais(origen.getPais().getIdPais());
+    		 
+    		destino.setPais(pais);
+    		}
+    		 
+    		// Entidad federativa
+    		if (origen.getLugarNacimiento() != null) {
+    		 
+    		mx.gob.imss.digital.modelo.domicilio.EntidadFederativa entidad =
+    		new mx.gob.imss.digital.modelo.domicilio.EntidadFederativa();
+    		 
+    		entidad.setClave(
+    		origen.getLugarNacimiento().getClave());
+    		 
+    		destino.setLugarNacimiento(entidad);
+    		}
+    		 
+	return destino;
+	}
+
 }

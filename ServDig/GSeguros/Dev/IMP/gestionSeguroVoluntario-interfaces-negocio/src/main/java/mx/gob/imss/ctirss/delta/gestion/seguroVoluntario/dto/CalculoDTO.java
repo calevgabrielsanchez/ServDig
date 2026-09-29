@@ -1,43 +1,20 @@
-package mx.gob.imss.cit.clienteswebservices.modalidad40.rest.bean;
+package mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class CalculoDTO {
 
-	@JsonProperty("idCalculo")
     private String idCalculo;
-	
-	@JsonProperty("idCotizacion")
     private String idCotizacion;
-	
-	@JsonProperty("idTramite")
     private String idTramite;
-	
-	@JsonProperty("nss")
     private String nss;
-	
-	@JsonProperty("municipio")
     private String municipio;
-	
-	@JsonProperty("moneda")
     private String moneda;
-	
-	@JsonProperty("numeroPeriodos")
     private Integer numeroPeriodos;
-	
-	@JsonProperty("importeTotal")
     private BigDecimal importeTotal;
-	
-	@JsonProperty("calculoProvisional")
     private Boolean calculoProvisional;
-	
-	@JsonProperty("mensaje")
     private String mensaje;
-	
-	@JsonProperty("periodos")
     private List<PeriodoDTO> periodos;
 
     public CalculoDTO() {

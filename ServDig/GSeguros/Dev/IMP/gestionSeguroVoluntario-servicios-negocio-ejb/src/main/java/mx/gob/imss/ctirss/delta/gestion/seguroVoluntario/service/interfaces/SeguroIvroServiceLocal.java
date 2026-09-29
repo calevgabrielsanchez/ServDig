@@ -5,6 +5,7 @@ package mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces;
 
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.model.DatosMovSeguro;
 import mx.gob.imss.ctirss.delta.model.gestion.individuo.Beneficiario;
+import mx.gob.imss.ctirss.delta.persistence.BdtutUltimoTrabajo;
 import mx.gob.imss.ctirss.delta.persistence.bajas.LoteProcesamientoBaja;
 import mx.gob.imss.digital.modelo.cobranza.ActualizacionCompra;
 import mx.gob.imss.digital.modelo.persona.Persona;
@@ -13,8 +14,8 @@ import mx.gob.imss.digital.modelo.seguros.SeguroIvro;
 import javax.ejb.Local;
 import java.util.List;
 
-import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.exception.IvroException;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.HistorialUltimoSeguroCotizadoDTO;
+import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.exception.IvroException;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,12 +27,6 @@ import java.util.Date;
  */
 @Local
 public interface SeguroIvroServiceLocal {
-
-    void guardarHistorialUltimoSeguro(HistorialUltimoSeguroCotizadoDTO historial)
-            throws IvroException;
-
-    boolean actualizarHistorialUltimoSeguroModalidad40(String cveNss, String cveEntInegi,
-            String cveMunInegi) throws IvroException;
 
     /**
      * Dada una lista de compras se activa su seguro es decir se marca como valido y en caso de 
@@ -341,4 +336,12 @@ public interface SeguroIvroServiceLocal {
 	   */
 	  void enviarCorreoConValidacion(ArrayList<Long> bajasExitosas);
 
+	  
+	  void guardarHistorialUltimoSeguro(HistorialUltimoSeguroCotizadoDTO historial)
+	            throws IvroException;
+
+      boolean actualizarHistorialUltimoSeguroModalidad40(String cveNss, String cveEntInegi,
+	            String cveMunInegi) throws IvroException;
+      
+      BdtutUltimoTrabajo getUltimoTrabajoPorNss(String cveNss) throws IvroException;
 }

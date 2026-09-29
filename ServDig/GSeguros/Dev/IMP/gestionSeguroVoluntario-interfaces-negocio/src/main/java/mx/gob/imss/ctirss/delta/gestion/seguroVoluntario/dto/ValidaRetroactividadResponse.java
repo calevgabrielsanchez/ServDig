@@ -1,12 +1,11 @@
-package mx.gob.imss.cit.clienteswebservices.modalidad40.rest.bean;
+package mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class CalculoPagosResponse implements Serializable{
+public class ValidaRetroactividadResponse implements Serializable{
 
 	/**
 	 * 
@@ -15,15 +14,15 @@ public class CalculoPagosResponse implements Serializable{
 	
 	private String codigo;
 	private String descripcion;
-	private CalculoDTO  vrDto;
+	private ValidaRetroactividadDTO  vrDto;
 	
 	
-	public CalculoPagosResponse() {
+	public ValidaRetroactividadResponse() {
 		
 	}
 	
-	public CalculoPagosResponse(String codigo, String descripcion,
-			CalculoDTO vrDto) {
+	public ValidaRetroactividadResponse(String codigo, String descripcion,
+			ValidaRetroactividadDTO vrDto) {
 		super();
 		this.codigo = codigo;
 		this.descripcion = descripcion;
@@ -43,11 +42,11 @@ public class CalculoPagosResponse implements Serializable{
 		this.descripcion = descripcion;
 	}
 
-	public CalculoDTO getVrDto() {
+	public ValidaRetroactividadDTO getVrDto() {
 		return vrDto;
 	}
 
-	public void setVrDto(CalculoDTO vrDto) {
+	public void setVrDto(ValidaRetroactividadDTO vrDto) {
 		this.vrDto = vrDto;
 	}
 	

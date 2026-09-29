@@ -354,6 +354,17 @@
                   value="mx.gob.imss.ctirss.delta.gestion.beneficio.service.interfaces.BeneficioRissServiceBusinessRemote" />
         ${mvn.web.app.repository.service}
     </bean>
+    
+    <!--  BEAN RETROACTIVIDAD -->
+    <bean id="retroActividadServiceBusiness"
+          class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName"
+                  value="retroactividadServiceBusiness#mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.RetroactividadServiceRemote" />
+        <property name="businessInterface"
+                  value="mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.RetroactividadServiceRemote" />
+        ${mvn.web.app.repository.service}
+    </bean>
+
 
     <!--Servicios Web para consulta de situacion aseguramiento de las diferentes modalidades-->
 

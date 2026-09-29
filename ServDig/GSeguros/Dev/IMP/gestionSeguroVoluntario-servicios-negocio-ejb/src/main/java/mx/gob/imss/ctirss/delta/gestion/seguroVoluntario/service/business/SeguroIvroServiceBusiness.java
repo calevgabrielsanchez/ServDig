@@ -5,12 +5,12 @@ package mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.business;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.text.SimpleDateFormat;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -33,6 +33,7 @@ import mx.gob.imss.ctirss.delta.model.enums.ModalidadEnum;
 import mx.gob.imss.ctirss.delta.model.enums.MotivoCancelacionBeneficioEnum;
 import mx.gob.imss.ctirss.delta.model.gestion.individuo.Beneficiario;
 import mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica;
+import mx.gob.imss.ctirss.delta.persistence.BdtutUltimoTrabajo;
 import mx.gob.imss.digital.modelo.cobranza.ActualizacionCompra;
 import mx.gob.imss.digital.modelo.cobranza.Compra;
 import mx.gob.imss.digital.modelo.cobranza.Cotizacion;
@@ -103,74 +104,6 @@ public class SeguroIvroServiceBusiness implements SeguroIvroServiceRemote {
 
     @Autowired
     private CancelarBeneficioServiceBusinessRemote cancelarBeneficioServiceBusiness;
-
-    @Override
-    public void guardarHistorialUltimoSeguroModalidad40(UltimoTrabajoModalidad40DTO ultimoTrabajo)
-            throws IvroException {
-        try {
-            if (ultimoTrabajo == null) {
-                throw new IllegalArgumentException("Los datos del ultimo trabajo son obligatorios");
-            }
-            if (ultimoTrabajo.getCveNss() == null || !ultimoTrabajo.getCveNss().trim().matches("[0-9]{11}")) {
-                throw new IllegalArgumentException("El NSS debe tener 11 digitos");
-            }
-            if (ultimoTrabajo.getCveModalidad() == null || ultimoTrabajo.getCveModalidad() < 0
-                    || ultimoTrabajo.getCveModalidad() > 99) {
-                throw new IllegalArgumentException("Modalidad de ultimo trabajo invalida");
-            }
-            if (ultimoTrabajo.getFechaUltimoTrabajo() == null
-                    || !ultimoTrabajo.getFechaUltimoTrabajo().matches("[0-9]{4}-[0-9]{2}-[0-9]{2}")) {
-                throw new IllegalArgumentException("Fecha de ultimo trabajo invalida");
-            }
-            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-            formato.setLenient(false);
-            Date fecha = formato.parse(ultimoTrabajo.getFechaUltimoTrabajo());
-            if (ultimoTrabajo.getSalarioUltimoTrabajo() == null
-                    || Float.isNaN(ultimoTrabajo.getSalarioUltimoTrabajo())
-                    || Float.isInfinite(ultimoTrabajo.getSalarioUltimoTrabajo())
-                    || ultimoTrabajo.getSalarioUltimoTrabajo() < 0) {
-                throw new IllegalArgumentException("Salario de ultimo trabajo invalido");
-            }
-            if (ultimoTrabajo.getSemanasCotizadas() != null
-                    && (ultimoTrabajo.getSemanasCotizadas() < 0 || ultimoTrabajo.getSemanasCotizadas() > 999)) {
-                throw new IllegalArgumentException("Semanas en RO de los ultimos cinco anios invalidas");
-            }
-            Calendar calendario = Calendar.getInstance();
-            calendario.setTime(fecha);
-
-            HistorialUltimoSeguroCotizadoDTO historial = new HistorialUltimoSeguroCotizadoDTO();
-            historial.setCveCurp(ultimoTrabajo.getCveCurp());
-            historial.setCveModalidad(ultimoTrabajo.getCveModalidad());
-            historial.setCveMunicipioImss(null);
-            historial.setCveNss(ultimoTrabajo.getCveNss().trim());
-            historial.setRefRegistroPatronal(ultimoTrabajo.getRefRegistroPatronal());
-            historial.setCveRfcAsegurado(ultimoTrabajo.getCveRfcAsegurado());
-            historial.setCveUsuarioAlta("SERVICIOS DIGITALES");
-            if ("02".equals(ultimoTrabajo.getTipoMovObligatorio())) {
-                historial.setFecBajaUltimoTrabajo(fecha);
-            }
-            historial.setFecConsulta(new Date());
-            historial.setIndPension(ultimoTrabajo.getIndPension());
-            historial.setIndTrabajadorImss(ultimoTrabajo.getIndTrabajadorImss());
-            historial.setNomAsegurado(ultimoTrabajo.getNomAsegurado());
-            historial.setNumAnioUltimoTrabajo(calendario.get(Calendar.YEAR));
-            historial.setNumMesUltimoTrabajo(calendario.get(Calendar.MONTH) + 1);
-            historial.setSalarioUltimoTrabajo(new BigDecimal(Float.toString(ultimoTrabajo.getSalarioUltimoTrabajo())));
-            historial.setNumSemanasRoUlt5anios(ultimoTrabajo.getSemanasCotizadas());
-            historial.setStpAlta(new Date());
-
-            seguroIvroServiceLocal.guardarHistorialUltimoSeguro(historial);
-        } catch (Exception e) {
-            throw new IvroException("No fue posible guardar el historial de modalidad 40: " + e.getMessage());
-        }
-    }
-
-    @Override
-    public boolean actualizarHistorialUltimoSeguroModalidad40(String cveNss, String cveEntInegi,
-            String cveMunInegi) throws IvroException {
-        return seguroIvroServiceLocal.actualizarHistorialUltimoSeguroModalidad40(cveNss, cveEntInegi, cveMunInegi);
-    }
-
     
     /*
      * (non-Javadoc)
@@ -780,4 +713,110 @@ public class SeguroIvroServiceBusiness implements SeguroIvroServiceRemote {
 	  public Long completarBitacorasBajaMoraDesde(Date fechaDesde, Date dummy, String usuarioOperador) {
 	      return seguroIvroServiceLocal.completarBitacorasBajaMoraDesde(fechaDesde, dummy, usuarioOperador);
 	  }
+	  
+	  @Override
+	    public void guardarHistorialUltimoSeguroModalidad40(UltimoTrabajoModalidad40DTO ultimoTrabajo)
+	            throws IvroException {
+	        try {
+	            if (ultimoTrabajo == null) {
+	                throw new IllegalArgumentException("Los datos del ultimo trabajo son obligatorios");
+	            }
+	            if (ultimoTrabajo.getCveNss() == null || !ultimoTrabajo.getCveNss().trim().matches("[0-9]{11}")) {
+	                throw new IllegalArgumentException("El NSS debe tener 11 digitos");
+	            }
+	            if (ultimoTrabajo.getCveModalidad() == null || ultimoTrabajo.getCveModalidad() < 0
+	                    || ultimoTrabajo.getCveModalidad() > 99) {
+	                throw new IllegalArgumentException("Modalidad de ultimo trabajo invalida");
+	            }
+	            if (ultimoTrabajo.getFechaUltimoTrabajo() == null
+	                    || !ultimoTrabajo.getFechaUltimoTrabajo().matches("[0-9]{4}-[0-9]{2}-[0-9]{2}")) {
+	                throw new IllegalArgumentException("Fecha de ultimo trabajo invalida");
+	            }
+	            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+	            formato.setLenient(false);
+	            Date fecha = formato.parse(ultimoTrabajo.getFechaUltimoTrabajo());
+	            if (ultimoTrabajo.getSalarioUltimoTrabajo() == null
+	                    || Float.isNaN(ultimoTrabajo.getSalarioUltimoTrabajo())
+	                    || Float.isInfinite(ultimoTrabajo.getSalarioUltimoTrabajo())
+	                    || ultimoTrabajo.getSalarioUltimoTrabajo() < 0) {
+	                throw new IllegalArgumentException("Salario de ultimo trabajo invalido");
+	            }
+	            if (ultimoTrabajo.getSemanasCotizadas() != null
+	                    && (ultimoTrabajo.getSemanasCotizadas() < 0 || ultimoTrabajo.getSemanasCotizadas() > 999)) {
+	                throw new IllegalArgumentException("Semanas en RO de los ultimos cinco anios invalidas");
+	            }
+	            Calendar calendario = Calendar.getInstance();
+	            calendario.setTime(fecha);
+
+	            HistorialUltimoSeguroCotizadoDTO historial = new HistorialUltimoSeguroCotizadoDTO();
+	            historial.setCveCurp(ultimoTrabajo.getCveCurp());
+	            historial.setCveModalidad(ultimoTrabajo.getCveModalidad());
+	            historial.setCveMunicipioImss(null);
+	            historial.setCveNss(ultimoTrabajo.getCveNss().trim());
+	            historial.setRefRegistroPatronal(ultimoTrabajo.getRefRegistroPatronal());
+	            historial.setCveRfcAsegurado(ultimoTrabajo.getCveRfcAsegurado());
+	            historial.setCveUsuarioAlta("SERVICIOS DIGITALES");
+	            if ("02".equals(ultimoTrabajo.getTipoMovObligatorio())) {
+	                historial.setFecBajaUltimoTrabajo(fecha);
+	            }
+	            historial.setFecConsulta(new Date());
+	            historial.setIndPension(ultimoTrabajo.getIndPension());
+	            historial.setIndTrabajadorImss(ultimoTrabajo.getIndTrabajadorImss());
+	            historial.setNomAsegurado(ultimoTrabajo.getNomAsegurado());
+	            historial.setNumAnioUltimoTrabajo(calendario.get(Calendar.YEAR));
+	            historial.setNumMesUltimoTrabajo(calendario.get(Calendar.MONTH) + 1);
+	            historial.setSalarioUltimoTrabajo(new BigDecimal(Float.toString(ultimoTrabajo.getSalarioUltimoTrabajo())));
+	            historial.setNumSemanasRoUlt5anios(ultimoTrabajo.getSemanasCotizadas());
+	            historial.setStpAlta(new Date());
+
+	            seguroIvroServiceLocal.guardarHistorialUltimoSeguro(historial);
+	        } catch (Exception e) {
+	            throw new IvroException("No fue posible guardar el historial de modalidad 40: " + e.getMessage());
+	        }
+	    }
+
+	    @Override
+	    public boolean actualizarHistorialUltimoSeguroModalidad40(String cveNss, String cveEntInegi,
+	            String cveMunInegi) throws IvroException {
+	        return seguroIvroServiceLocal.actualizarHistorialUltimoSeguroModalidad40(cveNss, cveEntInegi, cveMunInegi);
+	    }
+
+	    @Override
+	    public UltimoTrabajoModalidad40DTO getUltimoTrabajoPorNss(String cveNss) throws IvroException {
+	    	BdtutUltimoTrabajo respuesta = seguroIvroServiceLocal.getUltimoTrabajoPorNss(cveNss);
+	    	UltimoTrabajoModalidad40DTO response = convertirDto(respuesta);
+	    	
+	    	return response;
+	    }
+	    
+	    private UltimoTrabajoModalidad40DTO convertirDto(BdtutUltimoTrabajo entity) {
+	    	if (entity == null) {
+	    		return null;
+	    	}
+	    	UltimoTrabajoModalidad40DTO dto = new UltimoTrabajoModalidad40DTO();
+	    	dto.setCveCurp(entity.getCveCurp());
+	    	dto.setCveModalidad(entity.getCveModalidad());
+	    	dto.setCveNss(entity.getCveNss());
+	    	dto.setCveRfcAsegurado(entity.getCveRfcAsegurado());
+	    	dto.setNomAsegurado(entity.getNomAsegurado());
+	    	dto.setRefRegistroPatronal(entity.getRefRegistroPatronal());
+	    	dto.setIndPension(entity.getIndPension());
+	    	dto.setIndTrabajadorImss(entity.getIndTrabajadorImss());
+	    	dto.setSemanasCotizadas(entity.getNumSemanasRoUlt5anios());
+	    	dto.setCveMunicipioImss(entity.getCveIdMunicipioImss());
+	    	if (entity.getNumSalarioUltimoTrabajo() != null) {
+	    		dto.setSalarioUltimoTrabajo(
+	    				entity.getNumSalarioUltimoTrabajo().floatValue()
+	    				);
+	    	}
+	    	if (entity.getFecBajaUltimoTrabajo() != null) {
+	    		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	    		dto.setFechaUltimoTrabajo(
+	    				sdf.format(entity.getFecBajaUltimoTrabajo())
+	    				);
+	    	}
+	    	// No existe equivalente en el entity
+	    	dto.setTipoMovObligatorio(null);
+	    	return dto;
+	    }
 }

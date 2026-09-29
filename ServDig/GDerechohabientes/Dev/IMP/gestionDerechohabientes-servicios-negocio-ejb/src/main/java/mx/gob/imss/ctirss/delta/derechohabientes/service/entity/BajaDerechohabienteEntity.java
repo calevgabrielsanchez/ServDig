@@ -199,7 +199,7 @@ public class BajaDerechohabienteEntity extends AbstractServiceEntity implements 
 			sSql.append("where b.cve_id_asignacion_nss = "+idAsignasionNss+ " ");
 			sSql.append("and b.cve_id_persona_integrante = "+idPersonas+" ");
 			sSql.append("and b.cve_id_tipo_baja_der = "+tipoBaja+" and t.cve_id_estado_tramite = '2' ");
-			sSql.append("and s.cve_id_estado_solicitud = '2' and b.fec_registro_baja is not null and b.ind_baja_activa = 0");
+			sSql.append("and s.cve_id_estado_solicitud = '2' and b.fec_registro_baja is null and b.ind_baja_activa = 1");
 			Session session = this.getSession();
 			String query = sSql.toString();
 			SQLQuery queryNSS = session.createSQLQuery(query);

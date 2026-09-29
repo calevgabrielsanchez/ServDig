@@ -140,4 +140,30 @@ public class BdtutUltimoTrabajo {
 	public void setNomAsegurado(String value) { this.nomAsegurado = value; }
 	public void setFecBajaUltimoTrabajo(Date value) { this.fecBajaUltimoTrabajo = value; }
 
+	public long getIdUltimoTrabajo() { return idUltimoTrabajo; }
+	public String getCveNss() { return cveNss; }
+	public String getRefRegistroPatronal() { return refRegistroPatronal; }
+	public String getCveEntInegi() { return cveEntInegi; }
+	public String getCveMunInegi() { return cveMunInegi; }
+	public Long getCveIdMunicipioImss() { return cveIdMunicipioImss; }
+	public Date getFecConsulta() { return fecConsulta; }
+	public String getCveMunicipioImss() { return cveMunicipioImss; }
+	public Integer getNumAnioUltimoTrabajo() { return numAnioUltimoTrabajo; }
+	public Integer getNumMesUltimoTrabajo() { return numMesUltimoTrabajo; }
+	public Integer getCveModalidad() { return cveModalidad; }
+	public BigDecimal getNumSalarioUltimoTrabajo() { return numSalarioUltimoTrabajo; }
+	public Integer getNumSemanasRoUlt5anios() { return numSemanasRoUlt5anios; }
+	public Integer getIndPension() { return indPension; }
+	public Integer getIndTrabajadorImss() { return indTrabajadorImss; }
+	public Date getStpAlta() { return stpAlta; }
+	public String getCveUsuarioAlta() { return cveUsuarioAlta; }
+	public Date getStpModifica() { return stpModifica; }
+	public String getCveUsuarioModifica() { return cveUsuarioModifica; }
+	public Date getStpBaja() { return stpBaja; }
+	public String getCveUsuarioBaja() { return cveUsuarioBaja; }
+	public String getCveCurp() { return cveCurp; }
+	public String getCveRfcAsegurado() { return cveRfcAsegurado; }
+	public String getNomAsegurado() { return nomAsegurado; }
+	public Date getFecBajaUltimoTrabajo() { return fecBajaUltimoTrabajo; }
+	
 }

@@ -5,8 +5,10 @@ package mx.gob.imss.cit.clienteswebservices.modalidad40.rest;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.security.cert.X509Certificate;
 import java.util.ResourceBundle;
@@ -20,12 +22,25 @@ import javax.net.ssl.X509TrustManager;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 
+import org.apache.http.conn.ssl.TrustStrategy;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.ssl.SSLContexts;
+import org.apache.http.util.EntityUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import mx.gob.imss.cit.clienteswebservices.modalidad40.rest.bean.CalculoPagosDTO;
+import mx.gob.imss.cit.clienteswebservices.modalidad40.rest.bean.CalculoDTO;
 import mx.gob.imss.cit.clienteswebservices.modalidad40.rest.bean.CalculoPagosRequest;
 import mx.gob.imss.cit.clienteswebservices.modalidad40.rest.bean.CalculoPagosResponse;
 import mx.gob.imss.cit.clienteswebservices.modalidad40.rest.bean.GeneracionMultilineaConsultaDTO;
@@ -70,69 +85,81 @@ public class Modalidad40RestLocalImpl implements Modalidad40RestLocal{
 			log.info("el objet transformado es: JSON [{}]", json);
 
 			disableSSLCertificateChecking();
-	    	
-	       
+			
+			SSLContext sslContext = SSLContexts.custom()
+					.loadTrustMaterial(null, new TrustStrategy() {
+					public boolean isTrusted(
+					X509Certificate[] chain,
+					String authType) {
+					return true;
+					}
+					})
+					.build();
 
-	       
-	            URL url = new URL(URL_VALIDA_RETROACTIVIDAD);
-	            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-	            
-	            // Configurar método y propiedades
-	            conn.setRequestMethod("POST");
-	            conn.setRequestProperty("Content-Type", "application/json; utf-8");
-	            conn.setRequestProperty("Accept", "application/json");
-	            conn.setDoOutput(true); // Habilitar envío de cuerpo (payload)
+					SSLConnectionSocketFactory sslsf =
+					new SSLConnectionSocketFactory(
+					sslContext,
+					NoopHostnameVerifier.INSTANCE);
 
-	            // Enviar datos
-	            OutputStream os = conn.getOutputStream();
-	            os.write(json.getBytes("utf-8"));
-	            os.flush();
-	            os.close();
+					CloseableHttpClient httpClient =
+					HttpClients.custom()
+					.setSSLSocketFactory(sslsf)
+					.build();
+			
+	          String url = URL_VALIDA_RETROACTIVIDAD;
+	          HttpPost httppost = new HttpPost(url);
 
-	            // Leer código de respuesta
-	            int responseCode = conn.getResponseCode();
-	            System.out.println("Código de respuesta: " + responseCode);
 	          
-	            // Leer respuesta del servidor
-	            BufferedReader br;
-	            if (responseCode >= 200 && responseCode < 300) {
-	                br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
-	            } else {
-	                br = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "utf-8"));
-	            }
+	         
+	          
+	          
+	          httppost.setHeader("Content-Type","application/json");
+	          
+	          StringEntity jsonEntity = new StringEntity(json, "UTF-8");
+	          jsonEntity.setContentType("application/json");
+	          httppost.setEntity(jsonEntity);
+	          
 
-	           
-	            
-	            StringBuilder response = new StringBuilder();
-	            String responseLine;
-	            while ((responseLine = br.readLine()) != null) {
-	                response.append(responseLine.trim());
-	            }
-	            br.close();
-
-	            JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
-	            obj = gson.fromJson(jsonObject.toString(),ValidaRetroactividadDTO.class);
-	            
-	            
-	          //{ "status": "ERROR", "errorCode": "MISSING_PARAMS", "errorMessage": null, "requestId": "20141014181739_11625805172", "downstreamModuleErrorCode": null, "object": [ "activity_code", "activity_name", "points", "frequency", "strategy", "vsa_app_access_token" ]}
-	            log.info(""+jsonObject.get("idCalculo"));
-	            System.out.println(jsonObject.get("idCalculo"));
-	            System.out.println("Respuesta del servidor: " + response.toString());
-	            conn.disconnect();
-	            
-	            
-	            
-	            vrr.setCodigo("200");
-	            vrr.setDescripcion("NSS encontrado");
+	          //Execute and get the response.
+	          HttpResponse response = httpClient.execute(httppost);
+	          HttpEntity entity = response.getEntity();
+	          
+	          System.out.println(entity.toString());
+	          
+			int status =
+			response.getStatusLine().getStatusCode();
+			
+			System.out.println("STATUS = " + status);
+			
+			String respuesta =
+			EntityUtils.toString(
+			response.getEntity(),
+			"UTF-8");
+			
+			System.out.println("RESPUESTA = " + respuesta);		
+			
+			JsonObject jsonObject = JsonParser.parseString(respuesta).getAsJsonObject();
+			obj = gson.fromJson(respuesta,ValidaRetroactividadDTO.class);
+			vrr.setCodigo(""+status);
+			if(status == 200) {
+	            vrr.setDescripcion(jsonObject.get("mensaje").getAsString());
 	            vrr.setVrDto(obj);
-	            
-	        } catch (Exception e) {
-	        	vrr.setCodigo("300");
-	            vrr.setDescripcion("NSS NO encontrado");
+			}else {
+				 vrr.setDescripcion("NSS no encontrado");
 	            vrr.setVrDto(null);
-	            e.printStackTrace();
-	        }
+			}
+			
+			 
+			 
+		} catch (Exception e) {
+        	vrr.setCodigo("300");
+            vrr.setDescripcion("Hubo un error, y no se pudo procesar la peticion: "+e);
+            vrr.setVrDto(null);
+            e.printStackTrace();
+        }
 		return vrr;
+			
+			
 	}
 	
 	@Override
@@ -140,7 +167,7 @@ public class Modalidad40RestLocalImpl implements Modalidad40RestLocal{
 		
 		
 		CalculoPagosResponse cpResponse = new CalculoPagosResponse();
-		CalculoPagosDTO obj = new CalculoPagosDTO();
+		CalculoDTO obj = new CalculoDTO();
 		Gson gson = new Gson();
 		try {		
 			
@@ -151,64 +178,66 @@ public class Modalidad40RestLocalImpl implements Modalidad40RestLocal{
 
 			disableSSLCertificateChecking();
 	    	
-	       
+			SSLContext sslContext = SSLContexts.custom()
+					.loadTrustMaterial(null, new TrustStrategy() {
+					public boolean isTrusted(
+					X509Certificate[] chain,
+					String authType) {
+					return true;
+					}
+					})
+					.build();
 
+					SSLConnectionSocketFactory sslsf =
+					new SSLConnectionSocketFactory(
+					sslContext,
+					NoopHostnameVerifier.INSTANCE);
+
+					CloseableHttpClient httpClient =
+					HttpClients.custom()
+					.setSSLSocketFactory(sslsf)
+					.build();
+
+			
+			
 	       
             URL url = new URL(URL_CALCULO_PAGOS);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            HttpPost httppost = new HttpPost(url.toURI());
             
-            // Configurar método y propiedades
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json; utf-8");
-            conn.setRequestProperty("Accept", "application/json");
-            conn.setDoOutput(true); // Habilitar envío de cuerpo (payload)
+            httppost.setHeader("Content-Type","application/json");
+	          
+	          StringEntity jsonEntity = new StringEntity(json, "UTF-8");
+	          jsonEntity.setContentType("application/json");
+	          httppost.setEntity(jsonEntity);
 
-            // Enviar datos
-            OutputStream os = conn.getOutputStream();
-            os.write(json.getBytes("utf-8"));
-            os.flush();
-            os.close();
+	        //Execute and get the response.
+	          HttpResponse response = httpClient.execute(httppost);
+	          HttpEntity entity = response.getEntity();
+	          
+	          System.out.println(entity.toString());
+	          
+			int status =
+			response.getStatusLine().getStatusCode();
+			
+			System.out.println("STATUS = " + status);
 
-            // Leer código de respuesta
-            int responseCode = conn.getResponseCode();
-            System.out.println("Código de respuesta: " + responseCode);
-          
-            // Leer respuesta del servidor
-            BufferedReader br;
-            if (responseCode >= 200 && responseCode < 300) {
-                br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
-            } else {
-                br = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "utf-8"));
-            }
+			String respuesta =
+					EntityUtils.toString(
+					response.getEntity(),
+					"UTF-8");
+					
+					System.out.println("RESPUESTA = " + respuesta);	
 
-           
+            JsonObject jsonObject = JsonParser.parseString(respuesta.toString()).getAsJsonObject();
+            obj = gson.fromJson(jsonObject.toString(),CalculoDTO.class);
             
-            StringBuilder response = new StringBuilder();
-            String responseLine;
-            while ((responseLine = br.readLine()) != null) {
-                response.append(responseLine.trim());
-            }
-            br.close();
-
-            JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
-            obj = gson.fromJson(jsonObject.toString(),CalculoPagosDTO.class);
-            
-            
-          //{ "status": "ERROR", "errorCode": "MISSING_PARAMS", "errorMessage": null, "requestId": "20141014181739_11625805172", "downstreamModuleErrorCode": null, "object": [ "activity_code", "activity_name", "points", "frequency", "strategy", "vsa_app_access_token" ]}
-            log.info(""+jsonObject.get("idTramite"));
-            System.out.println(jsonObject.get("idTramite"));
-            System.out.println("Respuesta del servidor: " + response.toString());
-            conn.disconnect();
-            
-            
-            
-            cpResponse.setCodigo("200");
-            cpResponse.setDescripcion("Calculo Generado Correctamente");
+            cpResponse.setCodigo(""+status);
+            cpResponse.setDescripcion(jsonObject.get("mensaje").getAsString() );
             cpResponse.setVrDto(obj);
             
         } catch (Exception e) {
         	cpResponse.setCodigo("300");
-        	cpResponse.setDescripcion("Calculo No generado");
+        	cpResponse.setDescripcion("Error, no se pudo generar la solicitud: "+e);
         	cpResponse.setVrDto(null);
             e.printStackTrace();
         }
@@ -216,7 +245,7 @@ public class Modalidad40RestLocalImpl implements Modalidad40RestLocal{
 	}
 	
 	@Override
-	public GeneracionMultilineaResponse genracionMultilinea(GeneracionMultilineaRequest consulta) throws ModalidadResponseException{
+	public GeneracionMultilineaResponse generacionMultilinea(GeneracionMultilineaRequest consulta) throws ModalidadResponseException{
 		
 		
 		GeneracionMultilineaResponse vrr = new GeneracionMultilineaResponse();
@@ -231,63 +260,63 @@ public class Modalidad40RestLocalImpl implements Modalidad40RestLocal{
 
 			disableSSLCertificateChecking();
 	    	
-       
+			SSLContext sslContext = SSLContexts.custom()
+					.loadTrustMaterial(null, new TrustStrategy() {
+					public boolean isTrusted(
+					X509Certificate[] chain,
+					String authType) {
+					return true;
+					}
+					})
+					.build();
 
-       
-            URL url = new URL(URL_GENERACION_MULTILINEA);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            
-            // Configurar método y propiedades
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json; utf-8");
-            conn.setRequestProperty("Accept", "application/json");
-            conn.setDoOutput(true); // Habilitar envío de cuerpo (payload)
+					SSLConnectionSocketFactory sslsf =
+					new SSLConnectionSocketFactory(
+					sslContext,
+					NoopHostnameVerifier.INSTANCE);
 
-            // Enviar datos
-            OutputStream os = conn.getOutputStream();
-            os.write(json.getBytes("utf-8"));
-            os.flush();
-            os.close();
+					CloseableHttpClient httpClient =
+					HttpClients.custom()
+					.setSSLSocketFactory(sslsf)
+					.build();
+			
+	          String url = URL_GENERACION_MULTILINEA;
+	          HttpPost httppost = new HttpPost(url);
 
-            // Leer código de respuesta
-            int responseCode = conn.getResponseCode();
-            System.out.println("Código de respuesta: " + responseCode);
-          
-            // Leer respuesta del servidor
-            BufferedReader br;
-            if (responseCode >= 200 && responseCode < 300) {
-                br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
-            } else {
-                br = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "utf-8"));
-            }
+            httppost.setHeader("Content-Type","application/json");
+	          
+	          StringEntity jsonEntity = new StringEntity(json, "UTF-8");
+	          jsonEntity.setContentType("application/json");
+	          httppost.setEntity(jsonEntity);
+	          
 
-           
-            
-            StringBuilder response = new StringBuilder();
-            String responseLine;
-            while ((responseLine = br.readLine()) != null) {
-                response.append(responseLine.trim());
-            }
-            br.close();
-
-            JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
+	          //Execute and get the response.
+	          HttpResponse response = httpClient.execute(httppost);
+	          HttpEntity entity = response.getEntity();
+	          
+	          System.out.println(entity.toString());
+	          
+			int status =
+			response.getStatusLine().getStatusCode();
+			
+			System.out.println("STATUS = " + status);
+			
+			String respuesta =
+			EntityUtils.toString(
+			response.getEntity(),
+			"UTF-8");
+			
+			System.out.println("RESPUESTA = " + respuesta);	
+            JsonObject jsonObject = JsonParser.parseString(respuesta).getAsJsonObject();
             obj = gson.fromJson(jsonObject.toString(),GeneracionMultilineaDTO.class);
             
-            
-            log.info(""+jsonObject.get("idSolicitud"));
-            System.out.println(jsonObject.get("idSolicitud"));
-            System.out.println("Respuesta del servidor: " + response.toString());
-            conn.disconnect();
-            
-            
-            
-            vrr.setCodigo("202");
-            vrr.setDescripcion("ID Calculo encontrado");
+            vrr.setCodigo(""+status);
+            vrr.setDescripcion(jsonObject.get("estado").getAsString());
             vrr.setVrDto(obj);
             
         } catch (Exception e) {
         	vrr.setCodigo("300");
-            vrr.setDescripcion("ID Calculo NO encontrado");
+            vrr.setDescripcion("No se pudo generar la multilinea: "+e);
             vrr.setVrDto(null);
             e.printStackTrace();
         }
@@ -295,7 +324,7 @@ public class Modalidad40RestLocalImpl implements Modalidad40RestLocal{
 	}
 	
 	@Override
-	public GeneracionMultilineaConsultaResponse genracionMultilineaConsulta(String idSolicitud) throws ModalidadResponseException{
+	public GeneracionMultilineaConsultaResponse generacionMultilineaConsulta(String nss) throws ModalidadResponseException{
 		
 		
 		GeneracionMultilineaConsultaResponse vrr = new GeneracionMultilineaConsultaResponse();
@@ -303,62 +332,77 @@ public class Modalidad40RestLocalImpl implements Modalidad40RestLocal{
 		Gson gson = new Gson();
 		try {		
 			
-			String idCodificado = URLEncoder.encode(idSolicitud, "UTF-8");
+			
+			String idCodificado = URLEncoder.encode(nss, "UTF-8");
 			
 			log.info("la url a consumir es " + URL_GENERACION_MULTILINEA );
-			log.info("el idSolicitud a buscar es: {}", idSolicitud);
+			log.info("el nss a buscar es: {}", nss);
 
 			disableSSLCertificateChecking();
+			
+			// 1. Configuración de SSL para saltar los certificados (Misma del método anterior)
+	        SSLContext sslContext = SSLContexts.custom()
+	                .loadTrustMaterial(null, new TrustStrategy() {
+	                    public boolean isTrusted(X509Certificate[] chain, String authType) {
+	                        return true;
+	                    }
+	                })
+	                .build();
+
+	        SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(
+	                sslContext,
+	                NoopHostnameVerifier.INSTANCE);
+
+	        CloseableHttpClient httpClient = HttpClients.custom()
+	                .setSSLSocketFactory(sslsf)
+	                .build();
 	    	
-            URL url = new URL(URL_GENERACION_MULTILINEA+"/"+idCodificado); //idSolicitud
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            
-            // Configurar método y propiedades
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Accept", "application/json");
+	     // 2. Construcción de la URL con el Path Parameter
+	        String urlFinal = URL_GENERACION_MULTILINEA + "/nss/" + idCodificado;
+	        
+	        // 3. Crear petición HTTP GET usando Apache HttpClient
+	        HttpGet httpGet = new HttpGet(urlFinal);
+	        httpGet.setHeader("Accept", "application/json");
+	        
+	        // 4. Ejecutar la petición
+	        HttpResponse response = httpClient.execute(httpGet);
+	        
+	        // 5. Leer código de respuesta
+	        int statusCode = response.getStatusLine().getStatusCode();
+	        System.out.println("Código de respuesta: " + statusCode);
+	      
+	        // 6. Leer la respuesta del servidor de forma simplificada con EntityUtils
+	        String respuestaStr = "";
+	        HttpEntity entity = response.getEntity();
+	        if (entity != null) {
+	            respuestaStr = EntityUtils.toString(entity, "UTF-8");
+	        }
+	        
+	        System.out.println("Respuesta del servidor: " + respuestaStr);
 
-            // Leer código de respuesta
-            int statusCode = conn.getResponseCode();
-            System.out.println("Código de respuesta: " + statusCode);
-          
-            // Leer respuesta del servidor
-            BufferedReader br;
-            if (statusCode >= 200 && statusCode < 300) {
-                br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
-            } else {
-                br = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "utf-8"));
-            }
-
-           
-            
-            StringBuilder response = new StringBuilder();
-            String output;
-            while ((output = br.readLine()) != null) {
-                response.append(output.trim());
-            }
-            br.close();
-
-            JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
-            obj = gson.fromJson(jsonObject.toString(),GeneracionMultilineaConsultaDTO.class);
-            
-            log.info(""+jsonObject.get("idSolicitud"));
-            System.out.println(jsonObject.get("idSolicitud"));
-            System.out.println("Respuesta del servidor: " + response.toString());
-            conn.disconnect();
-            
-            
-            
-            vrr.setCodigo(""+statusCode);
-            vrr.setDescripcion("ID Solicitud encontrado");
-            vrr.setVrDto(obj);
-            
-        } catch (Exception e) {
-        	vrr.setCodigo("300");
-            vrr.setDescripcion("ID Solicitud NO encontrado");
-            vrr.setVrDto(null);
-            e.printStackTrace();
-        }
-		return vrr;
+	        // 7. Parsear la respuesta JSON
+	        JsonObject jsonObject = JsonParser.parseString(respuestaStr).getAsJsonObject();
+	        obj = gson.fromJson(jsonObject.toString(), GeneracionMultilineaConsultaDTO.class);
+	        
+	        if (jsonObject.get("idSolicitud") != null) {
+	            log.info("" + jsonObject.get("idSolicitud"));
+	            System.out.println(jsonObject.get("idSolicitud"));
+	        }
+	        
+	        // Cierre del cliente Apache
+	        httpClient.close();
+	        
+	        vrr.setCodigo("" + statusCode);
+	        vrr.setDescripcion("ID Solicitud encontrado");
+	        vrr.setVrDto(obj);
+	        
+	    } catch (Exception e) {
+	        vrr.setCodigo("300");
+	        vrr.setDescripcion("ID Solicitud NO encontrado: "+e);
+	        vrr.setVrDto(null);
+	        e.printStackTrace();
+	    }
+	    return vrr;
 	}
 	
 	// Método para saltarse la validación SSL (Compatible con Java 6)
@@ -385,4 +429,39 @@ public class Modalidad40RestLocalImpl implements Modalidad40RestLocal{
         }
     }
 
+    public static void main(String[] args) {
+		ValidaRetroactividadRequest vrr = new ValidaRetroactividadRequest();
+		CalculoPagosRequest solicitud = new  CalculoPagosRequest();
+		GeneracionMultilineaRequest genMultiReq = new  GeneracionMultilineaRequest();
+		vrr.setNss("04016206015");
+		vrr.setUsuario("MODALIDAD40");
+
+		solicitud.setIdCalculo("616");
+		solicitud.setNss("04016206015");
+		solicitud.setMunicipioImss("02A06");
+		solicitud.setSalarioElegido(new BigDecimal("1500.00"));
+		solicitud.setOrigenCalculo("CONTRATACION");
+		solicitud.setUsuario("MODALIDAD40");
+		solicitud.setEntidadInegi("09");
+		solicitud.setMunicipioInegi("016");
+		genMultiReq.setIdCalculo("631");
+
+
+		Modalidad40RestLocal m40rl = new Modalidad40RestLocalImpl(); //= new Modalidad40RestLocal();//validaRetroactividad()
+		try {
+			ValidaRetroactividadResponse response =	m40rl.validaRetroactividad(vrr);
+			System.out.println("Response: service 1: "+response.getDescripcion());
+			solicitud.setIdCalculo(response.getVrDto().getIdCalculo());
+			CalculoPagosResponse calPagRes = m40rl.calculoPagos(solicitud);
+			System.out.println("Response: service 2: "+calPagRes.getDescripcion());
+			genMultiReq.setIdCalculo(calPagRes.getVrDto().getIdCalculo());
+			GeneracionMultilineaResponse gmr = m40rl.generacionMultilinea(genMultiReq);
+			System.out.println("Response: service 3: "+gmr.getDescripcion());
+			System.out.println("Response: service 3: "+gmr.getVrDto().getIdSolicitud()  );
+			m40rl.generacionMultilineaConsulta("04016206015");
+		} catch (ModalidadResponseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

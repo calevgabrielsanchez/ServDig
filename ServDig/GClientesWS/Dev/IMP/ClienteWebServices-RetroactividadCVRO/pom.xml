@@ -67,7 +67,11 @@
 			<artifactId>log4j</artifactId>
 			<version>${org.log4j.version}</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.13</version>
+		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
@@ -138,7 +142,7 @@
 				<mvn.servicios.externos.rest.timeOut.response>30000</mvn.servicios.externos.rest.timeOut.response>
 				<mvn.servicios.externos.rest.url.valida.retroactividad>https://msm40-validar-pagos-lmxi-ds.apps.ocp.imss.gob.mx/api/mod40/v1/validar-retroactividad</mvn.servicios.externos.rest.url.valida.retroactividad>
 				<mvn.servicios.externos.rest.url.calculo.pagos>https://msm40-calcular-pagos-lmxi-ds.apps.ocp.imss.gob.mx/api/mod40/v1/calculo-pagos</mvn.servicios.externos.rest.url.calculo.pagos>
-				<mvn.servicios.externos.rest.url.generacion.multilinea>https://msm40-calcular-pagos-lmxi-ds.apps.ocp.imss.gob.mx/api/mod40/v1/generacion-multilinea</mvn.servicios.externos.rest.url.generacion.multilinea>
+				<mvn.servicios.externos.rest.url.generacion.multilinea>https://msm40-generar-lineas-lmxi-ds.apps.ocp.imss.gob.mx/api/mod40/v1/generacion-multilinea</mvn.servicios.externos.rest.url.generacion.multilinea>
 			</properties>
 			<build>
 				<plugins>

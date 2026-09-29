@@ -832,10 +832,10 @@ public class ValidaVigenciaEntity implements ValidaVigenciaLocal {
 		}
 		
 		
-		if (respuesta.getValido() && existeBajaPreviaSeguro(resultado)) {
-			respuesta.setValido(false);
-			respuesta.setMensajeValidacion(MSJ_PERIODO_BAJA_40);
-		}
+//		if (respuesta.getValido() && existeBajaPreviaSeguro(resultado)) {
+//			respuesta.setValido(false);
+//			respuesta.setMensajeValidacion(MSJ_PERIODO_BAJA_40);
+//		}
 		return respuesta;
 	}
 

@@ -8,7 +8,6 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.exception.IvroException;
-import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.UltimoTrabajoModalidad40DTO;
 import mx.gob.imss.ctirss.delta.model.gestion.individuo.Beneficiario;
 import mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica;
 import mx.gob.imss.digital.modelo.cobranza.ActualizacionCompra;
@@ -18,6 +17,7 @@ import mx.gob.imss.digital.modelo.seguros.SeguroIvro;
 import mx.gob.imss.digital.modelo.sindo.MovimientoTrabajadorSindo;
 import mx.gob.imss.digital.modelo.sindo.MovimientosTrabajadorSindo;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.DetalleReingresoRODTO;
+import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.UltimoTrabajoModalidad40DTO;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.DetalleMoraDTO;
 import java.util.Date;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.DetalleBajaExpresaDTO ;
@@ -29,13 +29,6 @@ import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.DetalleBajaExpresaD
  */
 @Remote
 public interface SeguroIvroServiceRemote {
-
-    void guardarHistorialUltimoSeguroModalidad40(UltimoTrabajoModalidad40DTO ultimoTrabajo)
-            throws IvroException;
-
-    boolean actualizarHistorialUltimoSeguroModalidad40(String cveNss, String cveEntInegi,
-            String cveMunInegi) throws IvroException;
-
     
     /**
      * Dada una lista de compras se activa su seguro es decir se marca como valido y en caso de 
@@ -337,5 +330,27 @@ Boolean darBajaPorMoraSeguro(Long cveIdSeguroIvro, String usuarioOperador);
 * @return ID del lote creado
 */
 Long completarBitacorasBajaMoraDesde(Date fechaDesde, Date dummy, String usuarioOperador);
+
+/**
+ * Se inserta el ultimoTrabajo desde consultaMod40
+ * @param ultimoTrabajo
+ * @throws IvroException
+ */
+void guardarHistorialUltimoSeguroModalidad40(UltimoTrabajoModalidad40DTO ultimoTrabajo)
+        throws IvroException;
+
+/**
+ * Se actualiza el domicilio del asegurado
+ * @param cveNss
+ * @param cveEntInegi
+ * @param cveMunInegi
+ * @return
+ * @throws IvroException
+ */
+boolean actualizarHistorialUltimoSeguroModalidad40(String cveNss, String cveEntInegi,
+        String cveMunInegi) throws IvroException;
+
+
+UltimoTrabajoModalidad40DTO getUltimoTrabajoPorNss(String cveNss) throws IvroException;
 
 }

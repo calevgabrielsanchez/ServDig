@@ -33,9 +33,7 @@ table.table {
 	float: right;
 }
 
-/* ============================================================
-   TABLA PRINCIPAL RETROACTIVIDAD
-   ============================================================ */
+
 #tblCotizacionRetroactividad {
 	width: 100%;
 	margin-top: 15px;
@@ -63,17 +61,13 @@ table.table {
 	text-decoration: underline;
 }
 
-/* ============================================================
-   MENSAJE ERROR CÁLCULO
-   ============================================================ */
+
 #errorCalculoPagos {
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
 
-/* ============================================================
-   POPUP DETALLE RETROACTIVIDAD
-   ============================================================ */
+
 .modalRetroactividadDialog {
 	padding: 0 !important;
 	background: #ffffff !important;
@@ -82,9 +76,7 @@ table.table {
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 }
 
-/* ============================================================
-   ENCABEZADO POPUP
-   ============================================================ */
+
 .modalRetroactividadDialog .ui-dialog-titlebar {
 	background: #ffffff !important;
 	border: none !important;
@@ -104,9 +96,7 @@ table.table {
 	text-align: left;
 }
 
-/* ============================================================
-   BOTÓN X POPUP
-   ============================================================ */
+
 .modalRetroactividadDialog .ui-dialog-titlebar-close {
 	position: absolute;
 	right: 12px;
@@ -127,9 +117,7 @@ table.table {
 	outline: none !important;
 }
 
-/* ============================================================
-   CONTENIDO POPUP
-   ============================================================ */
+
 .modalRetroactividadDialog .ui-dialog-content {
 	background: #ffffff !important;
 	padding: 20px !important;
@@ -140,9 +128,7 @@ table.table {
 	padding: 20px !important;
 }
 
-/* ============================================================
-   TEXTO POPUP
-   ============================================================ */
+
 .textoDetalleRetroactividad {
 	margin-bottom: 15px;
 	color: #555555;
@@ -150,18 +136,14 @@ table.table {
 	text-align: justify;
 }
 
-/* ============================================================
-   SCROLL DETALLE
-   ============================================================ */
+
 .detallePeriodosScroll {
 	max-height: 420px;
 	overflow-y: auto;
 	overflow-x: auto;
 }
 
-/* ============================================================
-   TABLA POPUP
-   ============================================================ */
+
 #tblDetalleRetroactividad {
 	width: 100%;
 	margin: 0;
@@ -198,9 +180,7 @@ table.table {
 	background: #f5f5f5 !important;
 }
 
-/* ============================================================
-   SIN INFORMACIÓN
-   ============================================================ */
+
 .sinDetalleRetroactividad {
 	text-align: center !important;
 	padding: 20px !important;
@@ -208,9 +188,7 @@ table.table {
 	color: #777777 !important;
 }
 
-/* ============================================================
-   PIE POPUP
-   ============================================================ */
+
 .modalRetroactividadDialog .ui-dialog-buttonpane {
 	background: #ffffff !important;
 	border: none !important;
@@ -232,9 +210,7 @@ table.table {
 	font-size: 14px !important;
 }
 
-/* ============================================================
-   RESPONSIVO
-   ============================================================ */
+
 @media ( max-width : 767px) {
 	.modalRetroactividadDialog {
 		width: 94% !important;
@@ -250,24 +226,14 @@ table.table {
 </style>
 
 
-
 <script type="text/javascript">
 
-
-	/* ============================================================
-	   RESPUESTA ACTUAL DEL SERVICIO DE CÁLCULO
-	   ============================================================ */
 
 	var calculoPagosActual = null;
 
 
-
 	$(function() {
 
-
-		/* ========================================================
-		   TÉRMINOS Y CONDICIONES
-		   ======================================================== */
 
 		$('a#condiciones').click(function() {
 
@@ -369,11 +335,6 @@ table.table {
 		});
 
 
-
-		/* ========================================================
-		   CANCELAR TRÁMITE
-		   ======================================================== */
-
 		$('a#cancelarTramiteDialogo').click(function() {
 
 			$('#dialogoCancelarTramite').html(
@@ -464,11 +425,6 @@ table.table {
 		});
 
 
-
-		/* ========================================================
-		   INICIALIZACIÓN POPUP RETROACTIVIDAD
-		   ======================================================== */
-
 		$('#modalDetalleRetroactividad').dialog({
 
 			title: 'Detalle de montos a pagar por periodo',
@@ -524,11 +480,6 @@ table.table {
 		});
 
 
-
-		/* ========================================================
-		   CLICK VER DETALLE
-		   ======================================================== */
-
 		$(document).on(
 
 			'click',
@@ -546,264 +497,79 @@ table.table {
 		);
 
 
+		var idCalculo =
+			$('#idCalculoRetroactividad').val();
 
-		/* ========================================================
-		   MOCK TEMPORAL
+		var nss =
+			$('#nssRetroactividad').val();
 
-		  SERVICIOO
-		   ======================================================== */
+		var municipioImss =
+			$('#municipioImssRetroactividad').val();
 
-		var responseMock = obtenerCalculoPagosMock();
+		var salarioElegido =
+			$('#salarioElegidoRetroactividad').val();
 
-		procesarRespuestaCalculoPagos(
-			responseMock
+
+		console.log(
+			'Servicio 2 - idCalculo: ',
+			idCalculo
+		);
+
+		console.log(
+			'Servicio 2 - NSS: ',
+			nss
+		);
+
+		console.log(
+			'Servicio 2 - municipioImss: ',
+			municipioImss
+		);
+
+		console.log(
+			'Servicio 2 - salarioElegido: ',
+			salarioElegido
+		);
+
+
+		if (!idCalculo ||
+			!nss ||
+			!municipioImss ||
+			!salarioElegido) {
+
+			$('#errorCalculoPagos')
+				.html(
+					'No fue posible obtener todos los datos necesarios ' +
+					'para realizar el c&aacute;lculo de pagos.'
+				)
+				.show();
+
+			return;
+
+		}
+
+
+		var requestCalculo =
+			crearRequestCalculoPagos(
+				idCalculo,
+				nss,
+				municipioImss,
+				salarioElegido
+			);
+
+
+		console.log(
+			'Request Servicio 2: ',
+			requestCalculo
+		);
+
+
+		consultarCalculoPagos(
+			requestCalculo
 		);
 
 
 	});
 
-
-
-	/* ============================================================
-	   MOCK DEL SERVICIO
-
-	   POST /API/MOD40/V1/CALCULO-PAGOS
-	   ============================================================ */
-
-	function obtenerCalculoPagosMock() {
-
-
-		return {
-
-
-			idCalculo: 123,
-
-
-			idCotizacion: 123,
-
-
-			idTramite: 'M40-CALC-123',
-
-
-			nss: '90000000120',
-
-
-			municipio: '02A06',
-
-
-			moneda: 'MXN',
-
-
-			numeroPeriodos: 6,
-
-
-			importeTotal: 6994.02,
-
-
-			calculoProvisional: false,
-
-
-			periodos: [
-
-
-				{
-
-					idPagoPeriodo: 301,
-
-					anio: 2021,
-
-					mes: 10,
-
-					fechaInicio: '2021-10-15',
-
-					fechaFin: '2021-10-31',
-
-					diasNaturales: 17,
-
-					salarioElegido: 1500.00,
-
-					salarioAplicado: 1500.00,
-
-					importeBase: 812.34,
-
-					importeActualizacion: 145.22,
-
-					importeRecargo: 208.11,
-
-					importePago: 1165.67,
-
-					detalleRamas: []
-
-				},
-
-
-				{
-
-					idPagoPeriodo: 302,
-
-					anio: 2021,
-
-					mes: 11,
-
-					fechaInicio: '2021-11-01',
-
-					fechaFin: '2021-11-30',
-
-					diasNaturales: 30,
-
-					salarioElegido: 1500.00,
-
-					salarioAplicado: 1500.00,
-
-					importeBase: 820.00,
-
-					importeActualizacion: 140.00,
-
-					importeRecargo: 205.67,
-
-					importePago: 1165.67,
-
-					detalleRamas: []
-
-				},
-
-
-				{
-
-					idPagoPeriodo: 303,
-
-					anio: 2021,
-
-					mes: 12,
-
-					fechaInicio: '2021-12-01',
-
-					fechaFin: '2021-12-31',
-
-					diasNaturales: 31,
-
-					salarioElegido: 1500.00,
-
-					salarioAplicado: 1500.00,
-
-					importeBase: 820.00,
-
-					importeActualizacion: 140.00,
-
-					importeRecargo: 205.67,
-
-					importePago: 1165.67,
-
-					detalleRamas: []
-
-				},
-
-
-				{
-
-					idPagoPeriodo: 304,
-
-					anio: 2022,
-
-					mes: 1,
-
-					fechaInicio: '2022-01-01',
-
-					fechaFin: '2022-01-31',
-
-					diasNaturales: 31,
-
-					salarioElegido: 1500.00,
-
-					salarioAplicado: 1500.00,
-
-					importeBase: 820.00,
-
-					importeActualizacion: 140.00,
-
-					importeRecargo: 205.67,
-
-					importePago: 1165.67,
-
-					detalleRamas: []
-
-				},
-
-
-				{
-
-					idPagoPeriodo: 305,
-
-					anio: 2022,
-
-					mes: 2,
-
-					fechaInicio: '2022-02-01',
-
-					fechaFin: '2022-02-28',
-
-					diasNaturales: 28,
-
-					salarioElegido: 1500.00,
-
-					salarioAplicado: 1500.00,
-
-					importeBase: 820.00,
-
-					importeActualizacion: 140.00,
-
-					importeRecargo: 205.67,
-
-					importePago: 1165.67,
-
-					detalleRamas: []
-
-				},
-
-
-				{
-
-					idPagoPeriodo: 306,
-
-					anio: 2022,
-
-					mes: 3,
-
-					fechaInicio: '2022-03-01',
-
-					fechaFin: '2022-03-31',
-
-					diasNaturales: 31,
-
-					salarioElegido: 1500.00,
-
-					salarioAplicado: 1500.00,
-
-					importeBase: 820.00,
-
-					importeActualizacion: 140.00,
-
-					importeRecargo: 205.66,
-
-					importePago: 1165.67,
-
-					detalleRamas: []
-
-				}
-
-
-			]
-
-
-		};
-
-	}
-
-
-
-	/* ============================================================
-	   PROCESAR RESPUESTA DEL SERVICIO
-	   ============================================================ */
 
 	function procesarRespuestaCalculoPagos(response) {
 
@@ -813,20 +579,57 @@ table.table {
 			.empty();
 
 
-		calculoPagosActual = response;
+		if (!response) {
+
+			$('#errorCalculoPagos')
+				.html(
+					'No se obtuvo respuesta del servicio de c&aacute;lculo.'
+				)
+				.show();
+
+			return;
+
+		}
+
+
+		if (response.codigo != '200') {
+
+			$('#errorCalculoPagos')
+				.html(
+					response.descripcion
+						? response.descripcion
+						: 'No fue posible realizar el c&aacute;lculo de pagos.'
+				)
+				.show();
+
+			return;
+
+		}
+
+
+		if (!response.vrDto) {
+
+			$('#errorCalculoPagos')
+				.html(
+					'El servicio no devolvi&oacute; informaci&oacute;n de c&aacute;lculo.'
+				)
+				.show();
+
+			return;
+
+		}
+
+
+		calculoPagosActual =
+			response.vrDto;
 
 
 		pintarResumenCalculoPagos(
-			response
+			response.vrDto
 		);
 
 	}
 
-
-
-	/* ============================================================
-	   PINTAR TABLA PRINCIPAL
-	   ============================================================ */
 
 	function pintarResumenCalculoPagos(response) {
 
@@ -836,7 +639,6 @@ table.table {
 
 
 		body.empty();
-
 
 
 		if (!response ||
@@ -864,7 +666,6 @@ table.table {
 		}
 
 
-
 		var primerPeriodo =
 			response.periodos[0];
 
@@ -875,10 +676,8 @@ table.table {
 			];
 
 
-
 		var salarioElegido =
 			primerPeriodo.salarioElegido;
-
 
 
 		var fila =
@@ -938,18 +737,12 @@ table.table {
 			'</tr>';
 
 
-
 		body.append(
 			fila
 		);
 
 	}
 
-
-
-	/* ============================================================
-	   ABRIR DETALLE
-	   ============================================================ */
 
 	function abrirDetalleRetroactividad() {
 
@@ -963,11 +756,9 @@ table.table {
 		}
 
 
-
 		pintarDetalleRetroactividad(
 			calculoPagosActual.periodos
 		);
-
 
 
 		$('#modalDetalleRetroactividad')
@@ -975,11 +766,6 @@ table.table {
 
 	}
 
-
-
-	/* ============================================================
-	   PINTAR DETALLE DE PERIODOS
-	   ============================================================ */
 
 	function pintarDetalleRetroactividad(periodos) {
 
@@ -989,7 +775,6 @@ table.table {
 
 
 		body.empty();
-
 
 
 		if (!periodos ||
@@ -1018,7 +803,6 @@ table.table {
 			return;
 
 		}
-
 
 
 		$.each(
@@ -1067,7 +851,6 @@ table.table {
 					'</tr>';
 
 
-
 				body.append(
 					fila
 				);
@@ -1078,12 +861,6 @@ table.table {
 
 	}
 
-
-
-	/* ============================================================
-	   FORMATEAR FECHA
-	   YYYY-MM-DD -> DD/MM/YYYY
-	   ============================================================ */
 
 	function formatearFechaServicio(fecha) {
 
@@ -1115,11 +892,6 @@ table.table {
 	}
 
 
-
-	/* ============================================================
-	   FORMATEAR MONEDA
-	   ============================================================ */
-
 	function formatearMoneda(valor) {
 
 
@@ -1133,10 +905,8 @@ table.table {
 		}
 
 
-
 		var numero =
 			parseFloat(valor);
-
 
 
 		if (isNaN(numero)) {
@@ -1144,7 +914,6 @@ table.table {
 			return valor;
 
 		}
-
 
 
 		return '$'
@@ -1157,23 +926,6 @@ table.table {
 
 	}
 
-
-
-	/* ============================================================
-	   REQUEST REAL DEL SERVICIO
-
-	   CUANDO ESTÉ DISPONIBLE EL SERVICIO SE UTILIZARÁ
-	   UNA ESTRUCTURA COMO ESTA.
-
-	   CAMPOS REQUERIDOS:
-
-	   idCalculo
-	   nss
-	   municipioImss
-	   salarioElegido
-	   origenCalculo
-	   usuario
-	   ============================================================ */
 
 	function crearRequestCalculoPagos(
 		idCalculo,
@@ -1220,21 +972,7 @@ table.table {
 	}
 
 
-
-	/* ============================================================
-	   CONSUMO REAL DEL SERVICIO
-
-	   ESTA FUNCIÓN YA QUEDA PREPARADA.
-
-	   FALTA CONFIRMAR HOST REAL DEL SERVICIO.
-
-	   NO SE LLAMA TODAVÍA.
-	   ============================================================ */
-
-	function consultarCalculoPagos(
-		request,
-		urlServicio
-	) {
+	function consultarCalculoPagos(request) {
 
 
 		$('#errorCalculoPagos')
@@ -1242,12 +980,11 @@ table.table {
 			.empty();
 
 
-
 		$.ajax({
 
 
 			url:
-				urlServicio,
+				'${contextPath}/retroactividad/calculoPagos',
 
 
 			type:
@@ -1271,6 +1008,12 @@ table.table {
 			success: function(response) {
 
 
+				console.log(
+					'Respuesta Servicio 2: ',
+					response
+				);
+
+
 				procesarRespuestaCalculoPagos(
 					response
 				);
@@ -1280,6 +1023,12 @@ table.table {
 
 
 			error: function(xhr) {
+
+
+				console.log(
+					'Error Servicio 2: ',
+					xhr
+				);
 
 
 				manejarErrorCalculoPagos(
@@ -1295,11 +1044,6 @@ table.table {
 	}
 
 
-
-	/* ============================================================
-	   MANEJO DE ERROR DEL SERVICIO
-	   ============================================================ */
-
 	function manejarErrorCalculoPagos(xhr) {
 
 
@@ -1311,7 +1055,6 @@ table.table {
 			'No fue posible realizar el c&aacute;lculo de pagos.';
 
 
-
 		if (response &&
 			response.mensaje) {
 
@@ -1319,8 +1062,14 @@ table.table {
 			mensaje =
 				response.mensaje;
 
-		}
+		} else if (response &&
+			response.descripcion) {
 
+
+			mensaje =
+				response.descripcion;
+
+		}
 
 
 		$('#errorCalculoPagos')
@@ -1332,9 +1081,7 @@ table.table {
 	}
 
 
-
 </script>
-
 
 
 <div class="contenedor col-sm-12">
@@ -1352,11 +1099,6 @@ table.table {
 			<fmt:setLocale value="es_MX" scope="session" />
 
 
-
-			<!-- ===================================================
-			     ENCABEZADO
-			     =================================================== -->
-
 			<jsp:include page="encabezadoMod40.jsp">
 
 
@@ -1365,11 +1107,6 @@ table.table {
 
 			</jsp:include>
 
-
-
-			<!-- ===================================================
-			     MENSAJE SOLICITUD
-			     =================================================== -->
 
 			<div class="alert alert-success">
 
@@ -1382,15 +1119,22 @@ table.table {
 			</div>
 
 
-
 			<input type="hidden" id="idSolicitud"
 				value="${solicitud.idSolicitud}" />
 
 
+			<input type="hidden" id="idCalculoRetroactividad"
+				value="${solicitud.idCalculo}" />
 
-			<!-- ===================================================
-			     DATOS SOLICITANTE
-			     =================================================== -->
+			<input type="hidden" id="nssRetroactividad"
+				value="${solicitante.nss}" />
+
+			<input type="hidden" id="municipioImssRetroactividad"
+				value="${municipioImss}" />
+
+			<input type="hidden" id="salarioElegidoRetroactividad"
+				value="${sbc}" />
+
 
 			<div id="datosSolicitante" class="m-b-lg">
 
@@ -1405,7 +1149,6 @@ table.table {
 
 
 				</div>
-
 
 
 				<form class="form-horizontal" role="form">
@@ -1426,7 +1169,6 @@ table.table {
 						</div>
 
 
-
 						<label class="col-sm-3 control-label"> NSS: </label>
 
 
@@ -1440,7 +1182,6 @@ table.table {
 
 
 					</div>
-
 
 
 					<div class="form-group">
@@ -1460,7 +1201,6 @@ table.table {
 
 
 						</div>
-
 
 
 						<label class="col-sm-3 control-label"> Fecha solicitud: </label>
@@ -1490,11 +1230,6 @@ table.table {
 			</div>
 
 
-
-			<!-- ===================================================
-			     DOMICILIO
-			     =================================================== -->
-
 			<div id="datosDomicilio" class="m-b-lg">
 
 
@@ -1508,7 +1243,6 @@ table.table {
 
 
 				</div>
-
 
 
 				<form class="form-horizontal" role="form">
@@ -1532,7 +1266,6 @@ table.table {
 						</div>
 
 
-
 						<label class="col-sm-3 control-label"> Colonia: </label>
 
 
@@ -1548,7 +1281,6 @@ table.table {
 
 
 					</div>
-
 
 
 					<div class="form-group">
@@ -1567,7 +1299,6 @@ table.table {
 
 
 						</div>
-
 
 
 						<label class="col-sm-3 control-label"> Estado: </label>
@@ -1589,7 +1320,6 @@ table.table {
 					</div>
 
 
-
 					<div class="form-group">
 
 
@@ -1606,7 +1336,6 @@ table.table {
 
 
 						</div>
-
 
 
 						<label class="col-sm-3 control-label"> N&uacute;mero: </label>
@@ -1658,11 +1387,6 @@ table.table {
 			</div>
 
 
-
-			<!-- ===================================================
-			     ÚLTIMO MOVIMIENTO AFILIATORIO
-			     =================================================== -->
-
 			<div id="datosMovimientoAfiliatorio" class="m-b-lg">
 
 
@@ -1676,7 +1400,6 @@ table.table {
 
 
 				</div>
-
 
 
 				<form class="form-horizontal" role="form">
@@ -1701,7 +1424,6 @@ table.table {
 
 
 						</div>
-
 
 
 						<label class="col-sm-3 control-label"> &Uacute;ltimo
@@ -1732,11 +1454,6 @@ table.table {
 			</div>
 
 
-
-			<!-- ===================================================
-			     DETALLE COTIZACIÓN RETROACTIVIDAD
-			     =================================================== -->
-
 			<div id="detalleCotizacion" class="m-b-lg">
 
 
@@ -1753,10 +1470,8 @@ table.table {
 				</div>
 
 
-
 				<div id="errorCalculoPagos" class="alert alert-danger"
 					style="display: none;"></div>
-
 
 
 				<div class="table-responsive m-t-md">
@@ -1793,7 +1508,6 @@ table.table {
 						</thead>
 
 
-
 						<tbody id="bodyCotizacionRetroactividad">
 
 
@@ -1809,11 +1523,6 @@ table.table {
 			</div>
 
 
-
-			<!-- ===================================================
-			     TEXTO INFORMATIVO
-			     =================================================== -->
-
 			<div class="col-sm-12 alert alert-info">
 
 
@@ -1826,7 +1535,6 @@ table.table {
 
 
 				<br>
-
 
 
 				<div style="text-align: center;">
@@ -1853,7 +1561,6 @@ table.table {
 				</div>
 
 
-
 				<div style="display: none;">
 
 
@@ -1867,7 +1574,6 @@ table.table {
 			</div>
 
 
-
 			<fmt:setLocale value="${defaultLocale}" scope="session" />
 
 
@@ -1877,17 +1583,11 @@ table.table {
 	</div>
 
 
-
-	<!-- =========================================================
-	     POPUP DETALLE PERIODOS
-	     ========================================================= -->
-
 	<div id="modalDetalleRetroactividad" style="display: none;">
 
 
 		<p class="textoDetalleRetroactividad">Consulta el desglose de los
 			montos correspondientes a los periodos calculados.</p>
-
 
 
 		<div class="table-responsive detallePeriodosScroll">
@@ -1921,7 +1621,6 @@ table.table {
 				</thead>
 
 
-
 				<tbody id="bodyDetalleRetroactividad">
 
 
@@ -1937,11 +1636,6 @@ table.table {
 	</div>
 
 
-
-	<!-- =========================================================
-	     FORMULARIO IMPRESIÓN
-	     ========================================================= -->
-
 	<form:form id="impresionDocumentosForm"
 		action="${contextPath}/wizard/continuacionVoluntaria/comunes/impresionDocumentos"
 		method="post">
@@ -1950,16 +1644,10 @@ table.table {
 	</form:form>
 
 
-
-	<!-- =========================================================
-	     BOTONES
-	     ========================================================= -->
-
 	<div class="pie row">
 
 
 		<div class="opciones col-sm-6"></div>
-
 
 
 		<div class="col-sm-6 text-right">
@@ -1973,7 +1661,6 @@ table.table {
 
 
 				Cancelar</button>
-
 
 
 			<button id="siguientePaso" class="btn btn-primary"
@@ -1992,13 +1679,7 @@ table.table {
 	</div>
 
 
-
-	<!-- =========================================================
-	     DIÁLOGOS EXISTENTES
-	     ========================================================= -->
-
 	<div id="dialogoMsgSeleccion"></div>
-
 
 
 	<div id="dialogoMsgCondiciones" style="width: 100%; height: 100%">
@@ -2007,9 +1688,7 @@ table.table {
 	</div>
 
 
-
 	<div id="dialogoCancelarTramite"></div>
-
 
 
 	<div id="dialog-confirm-cancelar"
@@ -2032,7 +1711,6 @@ table.table {
 	</div>
 
 
-
 	<div id="dialog-confirm" title="Mensaje">
 
 
@@ -2051,7 +1729,6 @@ table.table {
 
 
 </div>
-
 
 
 <script language="JavaScript1.2"

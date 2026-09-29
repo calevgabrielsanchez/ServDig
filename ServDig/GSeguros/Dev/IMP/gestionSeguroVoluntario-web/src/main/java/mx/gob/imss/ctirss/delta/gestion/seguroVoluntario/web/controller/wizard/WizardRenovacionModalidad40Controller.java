@@ -23,6 +23,7 @@ import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.web.servicios.SeguroInd
 import mx.gob.imss.ctirss.delta.gestion.solicitud.service.interfaces.ParametrosServiceBusinessRemote;
 import mx.gob.imss.ctirss.delta.model.enums.*;
 import mx.gob.imss.ctirss.delta.model.gestion.solicitud.OrigenSolicitudEnum;
+import mx.gob.imss.ctirss.gestionpersonas.servicios.business.PersonaBusinessRemote;
 import mx.gob.imss.digital.modelo.cobranza.Cotizacion;
 import mx.gob.imss.digital.modelo.cobranza.DatosCalculoCuota;
 import mx.gob.imss.digital.modelo.cobranza.DatosEmpleado;
@@ -92,6 +93,10 @@ public class WizardRenovacionModalidad40Controller extends WebServiceCallerContr
     @Autowired
     @Qualifier("webServiceSolicitudSeguroIvro")
     private WebServiceTemplate webServiceSolicitudSeguroIvro;
+    
+    @Autowired
+    @Qualifier("personaBusiness")
+    private PersonaBusinessRemote personaBusiness;
 
     @Autowired
     private SeguroIndividualServices seguroIndividualServices;
@@ -505,9 +510,25 @@ public class WizardRenovacionModalidad40Controller extends WebServiceCallerContr
 
         List<Fisica> integrantes = new ArrayList<Fisica>();
         integrantes.add(solicitante);
+        
 
         try {
+        	
+        	Long idPersona = solicitante.getIdPersona();
+        	
+        	log.info("idPersona: "+idPersona);
+        	
+        	String nss= null;
+        	mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica personaFisica = personaBusiness.getPersonaFisica(idPersona);
+        	
+        	if (personaFisica != null&& StringUtils.isNotBlank(personaFisica.getNss())) {
+        		nss = personaFisica.getNss();
+        		log.info("Se copio el NSS");
+        	}
+        	
+        	log.info("nss: "+nss);
 
+        	
             String zonaSalarialCompra = (String)session.getAttribute("zonaSalarialCompra");
 
             if(zonaSalarialCompra!=null){
@@ -523,7 +544,7 @@ public class WizardRenovacionModalidad40Controller extends WebServiceCallerContr
 
             Cotizacion cotizacionSolicitante = this.generarCotizacion(
                     solicitante, integrantes, datosCotizacion, salarioCotizar,
-                    recargoPorFechaBaja, fechaTramite, ultSdi);
+                    recargoPorFechaBaja, fechaTramite, ultSdi,nss);
 
             this.log.info(" --- Cotizacion: " + cotizacionSolicitante.getIdCotizacion() 
                     + "\n --- Concepto: " + cotizacionSolicitante.getConcepto()
@@ -658,7 +679,7 @@ public class WizardRenovacionModalidad40Controller extends WebServiceCallerContr
     private Cotizacion generarCotizacion(Fisica solicitante,
             List<Fisica> integrantes, DatosCalculoCuota datosCalculo,
             String sdi, boolean recargoPorFechaBaja, Date fechaTramite,
-            BigDecimal ultimoSalarioRegistrado)
+            BigDecimal ultimoSalarioRegistrado,String nss)
             throws IVROServiceException {
 
         String sueldoS = sdi;
@@ -698,8 +719,14 @@ public class WizardRenovacionModalidad40Controller extends WebServiceCallerContr
             empleado.setParentesco(-1L);
         }
 
+
         dcc.setEmpleados(empleados.toArray(new DatosEmpleado[0]));
 
+        //VALIDAR
+        if(dcc.getEmpleados()[0]!=null&& dcc.getEmpleados()[0].getNumeroSeguridadSocial()==null) {
+        	dcc.getEmpleados()[0].setNumeroSeguridadSocial(nss);
+        }
+        
         Cotizacion cotizacionIntegrante = new Cotizacion();
         try {
             log.info("********** Enviando datos: Modalidad: "
@@ -824,5 +851,316 @@ public class WizardRenovacionModalidad40Controller extends WebServiceCallerContr
             }
 
         return domicilio;
+    }
+    
+    /*
+     * ==============================================================
+     * RENOVACION
+     * ==============================================================
+     *
+     * ==============================================================
+     */
+    @RequestMapping(
+            value = "/alta/initServicio/{fechaInicio}/{idPersona}/{nssCifrado}",
+            method = RequestMethod.GET
+    )
+    public String altaInitServicio(
+            Model model,
+            SessionStatus sessionStatus,
+            HttpSession session,
+            @PathVariable String fechaInicio,
+            @PathVariable Long idPersona,
+            @PathVariable String nssCifrado) {
+ 
+ 
+        String nss = null;
+ 
+ 
+        /*
+         * ==========================================================
+         * nss
+         * ==========================================================
+         */
+        if (!nssCifrado.equals("-1")) {
+ 
+            Map<String, Object> result =
+                    seguroCvroUtil.descifrarNss(
+                            session,
+                            null,
+                            nssCifrado
+                    );
+ 
+            nss =
+                    (String) result.get(
+                            KEY_NSS_MOD40
+                    );
+ 
+            nssCifrado =
+                    (String) result.get(
+                            KEY_NSS_CIFRADO_MOD40
+                    );
+ 
+        } else {
+ 
+            nssCifrado = null;
+ 
+        }
+ 
+ 
+        /*
+         * ==========================================================
+         * PERSONA
+         * ==========================================================
+         */
+        Fisica persona = new Fisica();
+ 
+        persona.setIdPersona(idPersona);
+ 
+ 
+        TipoPersona tipoPersona = new TipoPersona();
+ 
+        tipoPersona.setIdTipoPersona(
+                TipoPersona.TIPO_PERSONA_FISICA
+        );
+ 
+        persona.setTipoPersona(
+                tipoPersona
+        );
+ 
+        persona.setNssCifrado(
+                nssCifrado
+        );
+ 
+        persona.setNss(
+                nss
+        );
+ 
+ 
+        /*
+         * ==========================================================
+         * TRAMITE
+         * ==========================================================
+         */
+        TramiteSeguroIvroMod40 tramiteSeguro =
+                new TramiteSeguroIvroMod40();
+ 
+        tramiteSeguro.setSolicitante(
+                persona
+        );
+ 
+        /*
+         * Muy importante.
+         * El resto del proceso debe reconocer
+         * que estamos en RENOVACION.
+         */
+        tramiteSeguro.setRenovacion(
+                true
+        );
+ 
+ 
+        List<TramiteSeguroIvroMod40> tramites =
+                new ArrayList<TramiteSeguroIvroMod40>();
+ 
+        tramites.add(
+                tramiteSeguro
+        );
+ 
+ 
+        /*
+         * ==========================================================
+         * ATRIBUTOS FLUJO DE RENOVACION
+         * ==========================================================
+         */
+        model.addAttribute(
+                "tramiteSeguro",
+                tramiteSeguro
+        );
+ 
+        model.addAttribute(
+                "tramites",
+                tramites
+        );
+ 
+        model.addAttribute(
+                "idPersonaSolicitante",
+                idPersona
+        );
+ 
+        model.addAttribute(
+                "solicitante",
+                persona
+        );
+ 
+ 
+        /*
+         * Este nuevo camino no tiene un idSeguro anterior.
+         *
+         * El controller actual ya utiliza 0 como valor
+         * por defecto de idSeguroRenovacion.
+         *
+         * Lo establecemos explícitamente para evitar
+         * reutilizar accidentalmente un ID que pudiera
+         * haber quedado en sesión de un flujo anterior.
+         */
+        model.addAttribute(
+                "idSeguroRenovacion",
+                new Long(0)
+        );
+ 
+ 
+        this.log.info(
+                "Inicio renovacion desde Servicio MOD40. "
+                + "idPersona: "
+                + persona.getIdPersona()
+                + " con NSS: "
+                + persona.getNss()
+                + " y fechaInicio: "
+                + fechaInicio
+        );
+ 
+ 
+        try {
+ 
+ 
+            /*
+             * ======================================================
+             * MISMO SERVICIO DE VALIDACION QUE UTILIZA
+             * EL altaInit ACTUAL DE RENOVACION
+             * ======================================================
+             */
+            DatosCalculoCuota calculo =
+                    callWebService(
+                            webServiceValidaPersonaContVoluntaria,
+                            persona,
+                            DatosCalculoCuota.class
+                    );
+ 
+ 
+            /*
+             * ======================================================
+             * CAMBIO PRINCIPAL DEL NUEVO CASO
+             * ======================================================
+             */
+ 
+ 
+            SimpleDateFormat formatoFechaInicio =
+                    new SimpleDateFormat(
+                            "yyyy-MM-dd"
+                    );
+ 
+            formatoFechaInicio.setLenient(
+                    false
+            );
+ 
+ 
+            Date fechaBajaMora =
+                    formatoFechaInicio.parse(
+                            fechaInicio
+                    );
+ 
+ 
+            this.log.info(
+                    "fechaInicio recibida del Servicio MOD40 "
+                    + "utilizada como fechaBajaMora: "
+                    + fechaBajaMora
+            );
+ 
+ 
+            /*
+             * ======================================================
+             *  VALIDACION RENOVACION
+             * ======================================================
+             */
+            String FECHA_LIBERA_SEGS_CVRO_RENOVA =
+                    parametrosServiceBusinessRemote
+                            .obtenerParametroDeConfiguracion(
+                                    ParametroSistemaEnum
+                                            .FECHA_LIBERA_SEGS_CVRO_RENOVA
+                                            .getCodigo()
+                            );
+ 
+ 
+            Date fechaLiberaSegsCvroRenova =
+                    new SimpleDateFormat(
+                            "dd/MM/yyyy"
+                    ).parse(
+                            FECHA_LIBERA_SEGS_CVRO_RENOVA
+                    );
+ 
+ 
+            if(fechaBajaMora.before(
+                    fechaLiberaSegsCvroRenova)) {
+ 
+ 
+                model.addAttribute(
+                        "error",
+                        "No es posible realizar tu renovaci\u00F3n, "
+                        + "por favor acude a tu subdelegaci\u00F3n"
+                );
+ 
+ 
+            } else {
+ 
+ 
+                /*
+                 * fechaBajaMora
+                 * y datosCalculo en @SessionAttributes,
+                 */
+                model.addAttribute(
+                        "fechaBajaMora",
+                        fechaBajaMora
+                );
+ 
+                model.addAttribute(
+                        "datosCalculo",
+                        calculo
+                );
+ 
+ 
+                if (!calculo
+                        .getErrorFormGeneral()
+                        .equals("")) {
+ 
+ 
+                    this.log.info(
+                            " --- MENSAJE DEL WEBSERVICE: "
+                            + calculo.getErrorFormGeneral()
+                            + " ---"
+                    );
+ 
+ 
+                    model.addAttribute(
+                            "error",
+                            calculo.getErrorFormGeneral()
+                    );
+ 
+                }
+ 
+            }
+ 
+ 
+        } catch (Exception e) {
+ 
+ 
+            model.addAttribute(
+                    "error",
+                    "Ocurrio un error al intentar validar "
+                    + "los datos del solicitante."
+            );
+ 
+ 
+            log.error(
+                    "--- Ocurrio un ERROR al iniciar "
+                    + "la renovacion desde Servicio MOD40. ---",
+                    e
+            );
+ 
+        }
+ 
+ 
+        /*
+         * Pantalla de renovación
+         */
+        return "wizardSeguroCVROInicioRenovacion";
     }
 }

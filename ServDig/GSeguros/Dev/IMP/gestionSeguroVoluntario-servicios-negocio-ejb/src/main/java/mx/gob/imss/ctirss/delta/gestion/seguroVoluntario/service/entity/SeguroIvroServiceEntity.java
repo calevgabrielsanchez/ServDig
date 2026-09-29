@@ -18,7 +18,6 @@ import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.Cons
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.ConsultaSeguroIvroLocal;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.EnviaCorreoLocal;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.SeguroIvroServiceLocal;
-import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.HistorialUltimoSeguroCotizadoDTO;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.model.DatosMovSeguro;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.model.MovimientoPeriodo;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.util.BajaMoraUtil;
@@ -34,7 +33,6 @@ import mx.gob.imss.ctirss.delta.persistence.DicEstadoSeguro;
 import mx.gob.imss.ctirss.delta.persistence.DicModalidad;
 import mx.gob.imss.ctirss.delta.persistence.DitFormaContacto;
 import mx.gob.imss.ctirss.delta.persistence.DitSeguroIvro;
-import mx.gob.imss.ctirss.delta.persistence.BdtutUltimoTrabajo;
 import mx.gob.imss.ctirss.delta.persistence.cobranza.DicEstadoCompra;
 import mx.gob.imss.ctirss.delta.persistence.cobranza.DicEstadoPago;
 import mx.gob.imss.ctirss.delta.persistence.cobranza.DitCompra;
@@ -155,105 +153,6 @@ import java.sql.Timestamp;
  */
 @Stateless(name = "seguroIvroServiceEntity", mappedName = "seguroIvroServiceEntity")
 public class SeguroIvroServiceEntity implements SeguroIvroServiceLocal {
-
-    @Override
-    public void guardarHistorialUltimoSeguro(HistorialUltimoSeguroCotizadoDTO historial)
-            throws IvroException {
-        if (historial == null) {
-            throw new IvroException("El historial del ultimo seguro es obligatorio");
-        }
-
-        if (historial.getCveNss() == null || !historial.getCveNss().trim().matches("[0-9]{11}")
-                || historial.getFecConsulta() == null) {
-            throw new IvroException("NSS y fecha de consulta son obligatorios");
-        }
-        java.util.Calendar inicio = java.util.Calendar.getInstance();
-        inicio.setTime(historial.getFecConsulta());
-        inicio.set(java.util.Calendar.HOUR_OF_DAY, 0);
-        inicio.set(java.util.Calendar.MINUTE, 0);
-        inicio.set(java.util.Calendar.SECOND, 0);
-        inicio.set(java.util.Calendar.MILLISECOND, 0);
-        java.util.Date desde = inicio.getTime();
-        inicio.add(java.util.Calendar.DAY_OF_MONTH, 1);
-        java.util.Date hasta = inicio.getTime();
-        if (!entityManager.createQuery("select u.idUltimoTrabajo from BdtutUltimoTrabajo u "
-                + "where trim(u.cveNss) = :nss and u.fecConsulta >= :desde and u.fecConsulta < :hasta")
-                .setParameter("nss", historial.getCveNss().trim())
-                .setParameter("desde", desde)
-                .setParameter("hasta", hasta)
-                .setMaxResults(1).getResultList().isEmpty()) {
-            return;
-        }
-
-        BdtutUltimoTrabajo entity = new BdtutUltimoTrabajo();
-        entity.setCveNss(historial.getCveNss());
-        entity.setRefRegistroPatronal(historial.getRefRegistroPatronal());
-        entity.setCveEntInegi(historial.getCveEntInegi());
-        entity.setCveMunInegi(historial.getCveMunInegi());
-        entity.setCveIdMunicipioImss(historial.getCveIdMunicipioImss());
-        entity.setFecConsulta(historial.getFecConsulta());
-        entity.setCveMunicipioImss(historial.getCveMunicipioImss());
-        entity.setNumAnioUltimoTrabajo(historial.getNumAnioUltimoTrabajo());
-        entity.setNumMesUltimoTrabajo(historial.getNumMesUltimoTrabajo());
-        entity.setCveModalidad(historial.getCveModalidad());
-        entity.setNumSalarioUltimoTrabajo(historial.getSalarioUltimoTrabajo());
-        entity.setNumSemanasRoUlt5anios(historial.getNumSemanasRoUltSanios());
-        entity.setIndPension(historial.getIndPension());
-        entity.setIndTrabajadorImss(historial.getIndTrabajadorImss());
-        entity.setStpAlta(historial.getStpAlta());
-        entity.setCveUsuarioAlta(historial.getCveUsuarioAlta());
-        entity.setStpModifica(historial.getStpModifica());
-        entity.setCveUsuarioModifica(historial.getCveUsuarioModifica());
-        entity.setStpBaja(historial.getStpBaja());
-        entity.setCveUsuarioBaja(historial.getCveUsuarioBaja());
-        entity.setCveCurp(historial.getCveCurp());
-        entity.setCveRfcAsegurado(historial.getCveRfcAsegurado());
-        entity.setNomAsegurado(historial.getNomAsegurado());
-        entity.setFecBajaUltimoTrabajo(historial.getFecBajaUltimoTrabajo());
-        entityManager.persist(entity);
-    }
-
-    @Override
-    public boolean actualizarHistorialUltimoSeguroModalidad40(String cveNss, String cveEntInegi,
-            String cveMunInegi) throws IvroException {
-        if (cveNss == null || !cveNss.trim().matches("[0-9]{11}")) {
-            return false;
-        }
-        if (cveEntInegi == null || cveEntInegi.trim().isEmpty()
-                || cveMunInegi == null || cveMunInegi.trim().isEmpty()) {
-            return false;
-        }
-
-        java.util.Calendar inicio = java.util.Calendar.getInstance();
-        inicio.set(java.util.Calendar.HOUR_OF_DAY, 0);
-        inicio.set(java.util.Calendar.MINUTE, 0);
-        inicio.set(java.util.Calendar.SECOND, 0);
-        inicio.set(java.util.Calendar.MILLISECOND, 0);
-        java.util.Date desde = inicio.getTime();
-        inicio.add(java.util.Calendar.DAY_OF_MONTH, 1);
-
-        java.util.List<BdtutUltimoTrabajo> registros = entityManager.createQuery(
-                "select u from BdtutUltimoTrabajo u "
-                + "where trim(u.cveNss) = :nss and u.fecConsulta >= :desde "
-                + "and u.fecConsulta < :hasta "
-                + "order by u.fecConsulta desc, u.idUltimoTrabajo desc", BdtutUltimoTrabajo.class)
-                .setParameter("nss", cveNss.trim())
-                .setParameter("desde", desde)
-                .setParameter("hasta", inicio.getTime())
-                .setMaxResults(1).getResultList();
-
-        if (registros.isEmpty()) {
-            return false;
-        }
-
-        BdtutUltimoTrabajo ultimoTrabajo = registros.get(0);
-        ultimoTrabajo.setCveEntInegi(cveEntInegi.trim());
-        ultimoTrabajo.setCveMunInegi(cveMunInegi.trim());
-        ultimoTrabajo.setStpModifica(new java.util.Date());
-        ultimoTrabajo.setCveUsuarioModifica("MODALIDAD40");
-        entityManager.flush();
-        return true;
-    }
 
     /**
      * Logger de la clase
@@ -4255,5 +4154,135 @@ private String obtenerUrlBaseConfirmacion(String token) {
 		
 		return correosInt;
 	}
+
+	
+	@Override
+    public void guardarHistorialUltimoSeguro(HistorialUltimoSeguroCotizadoDTO historial)
+            throws IvroException {
+        if (historial == null) {
+            throw new IvroException("El historial del ultimo seguro es obligatorio");
+        }
+
+        if (historial.getCveNss() == null || !historial.getCveNss().trim().matches("[0-9]{11}")
+                || historial.getFecConsulta() == null) {
+            throw new IvroException("NSS y fecha de consulta son obligatorios");
+        }
+        java.util.Calendar inicio = java.util.Calendar.getInstance();
+        inicio.setTime(historial.getFecConsulta());
+        inicio.set(java.util.Calendar.HOUR_OF_DAY, 0);
+        inicio.set(java.util.Calendar.MINUTE, 0);
+        inicio.set(java.util.Calendar.SECOND, 0);
+        inicio.set(java.util.Calendar.MILLISECOND, 0);
+        java.util.Date desde = inicio.getTime();
+        inicio.add(java.util.Calendar.DAY_OF_MONTH, 1);
+        java.util.Date hasta = inicio.getTime();
+        if (!entityManager.createQuery("select u.idUltimoTrabajo from BdtutUltimoTrabajo u "
+                + "where trim(u.cveNss) = :nss and u.fecConsulta >= :desde and u.fecConsulta < :hasta")
+                .setParameter("nss", historial.getCveNss().trim())
+                .setParameter("desde", desde)
+                .setParameter("hasta", hasta)
+                .setMaxResults(1).getResultList().isEmpty()) {
+        	
+        	LOGGER.info("***Se detecta que el asegurado ya tiene un registro el dia de hoy, no se vuelve a guardar.");
+        	
+            return;
+        }
+
+        BdtutUltimoTrabajo entity = new BdtutUltimoTrabajo();
+        entity.setCveNss(historial.getCveNss());
+        entity.setRefRegistroPatronal(historial.getRefRegistroPatronal());
+        entity.setCveEntInegi(historial.getCveEntInegi());
+        entity.setCveMunInegi(historial.getCveMunInegi());
+        entity.setCveIdMunicipioImss(historial.getCveIdMunicipioImss());
+        entity.setFecConsulta(historial.getFecConsulta());
+        entity.setCveMunicipioImss(historial.getCveMunicipioImss());
+        entity.setNumAnioUltimoTrabajo(historial.getNumAnioUltimoTrabajo());
+        entity.setNumMesUltimoTrabajo(historial.getNumMesUltimoTrabajo());
+        entity.setCveModalidad(historial.getCveModalidad());
+        entity.setNumSalarioUltimoTrabajo(historial.getSalarioUltimoTrabajo());
+        entity.setNumSemanasRoUlt5anios(historial.getNumSemanasRoUltSanios());
+        entity.setIndPension(historial.getIndPension());
+        entity.setIndTrabajadorImss(historial.getIndTrabajadorImss());
+        entity.setStpAlta(historial.getStpAlta());
+        entity.setCveUsuarioAlta(historial.getCveUsuarioAlta());
+        entity.setStpModifica(historial.getStpModifica());
+        entity.setCveUsuarioModifica(historial.getCveUsuarioModifica());
+        entity.setStpBaja(historial.getStpBaja());
+        entity.setCveUsuarioBaja(historial.getCveUsuarioBaja());
+        entity.setCveCurp(historial.getCveCurp());
+        entity.setCveRfcAsegurado(historial.getCveRfcAsegurado());
+        entity.setNomAsegurado(historial.getNomAsegurado());
+        entity.setFecBajaUltimoTrabajo(historial.getFecBajaUltimoTrabajo());
+        entityManager.persist(entity);
+    }
+
+    @Override
+    public boolean actualizarHistorialUltimoSeguroModalidad40(String cveNss, String cveEntInegi,
+            String cveMunInegi) throws IvroException {
+        if (cveNss == null || !cveNss.trim().matches("[0-9]{11}")) {
+            return false;
+        }
+        if (cveEntInegi == null || cveEntInegi.trim().isEmpty()
+                || cveMunInegi == null || cveMunInegi.trim().isEmpty()) {
+            return false;
+        }
+
+        java.util.Calendar inicio = java.util.Calendar.getInstance();
+        inicio.set(java.util.Calendar.HOUR_OF_DAY, 0);
+        inicio.set(java.util.Calendar.MINUTE, 0);
+        inicio.set(java.util.Calendar.SECOND, 0);
+        inicio.set(java.util.Calendar.MILLISECOND, 0);
+        java.util.Date desde = inicio.getTime();
+        inicio.add(java.util.Calendar.DAY_OF_MONTH, 1);
+
+        java.util.List<BdtutUltimoTrabajo> registros = entityManager.createQuery(
+                "select u from BdtutUltimoTrabajo u "
+                + "where trim(u.cveNss) = :nss and u.fecConsulta >= :desde "
+                + "and u.fecConsulta < :hasta "
+                + "order by u.fecConsulta desc, u.idUltimoTrabajo desc", BdtutUltimoTrabajo.class)
+                .setParameter("nss", cveNss.trim())
+                .setParameter("desde", desde)
+                .setParameter("hasta", inicio.getTime())
+                .setMaxResults(1).getResultList();
+
+        if (registros.isEmpty()) {
+            return false;
+        }
+
+        BdtutUltimoTrabajo ultimoTrabajo = registros.get(0);
+        ultimoTrabajo.setCveEntInegi(cveEntInegi.trim());
+        ultimoTrabajo.setCveMunInegi(cveMunInegi.trim());
+        ultimoTrabajo.setStpModifica(new java.util.Date());
+        ultimoTrabajo.setCveUsuarioModifica("MODALIDAD40");
+        entityManager.flush();
+        return true;
+    }
+    
+    
+    @Override
+    public BdtutUltimoTrabajo getUltimoTrabajoPorNss(String cveNss) throws IvroException {
+        if (cveNss == null || !cveNss.trim().matches("[0-9]{11}")) {
+            throw new IvroException("El NSS debe tener 11 digitos");
+        }
+ 
+        java.util.Calendar inicio = java.util.Calendar.getInstance();
+        inicio.set(java.util.Calendar.HOUR_OF_DAY, 0);
+        inicio.set(java.util.Calendar.MINUTE, 0);
+        inicio.set(java.util.Calendar.SECOND, 0);
+        inicio.set(java.util.Calendar.MILLISECOND, 0);
+        java.util.Date desde = inicio.getTime();
+        inicio.add(java.util.Calendar.DAY_OF_MONTH, 1);
+ 
+        java.util.List<BdtutUltimoTrabajo> registros = entityManager.createQuery(
+                "select u from BdtutUltimoTrabajo u where trim(u.cveNss) = :nss "
+                + "and u.fecConsulta >= :desde and u.fecConsulta < :hasta "
+                + "order by u.fecConsulta desc, u.idUltimoTrabajo desc", BdtutUltimoTrabajo.class)
+                .setParameter("nss", cveNss.trim())
+                .setParameter("desde", desde)
+                .setParameter("hasta", inicio.getTime())
+                .setMaxResults(1).getResultList();
+ 
+        return registros.isEmpty() ? null : registros.get(0);
+    }
 
 }

@@ -15,7 +15,7 @@ public interface Modalidad40RestLocal {
 	
 	CalculoPagosResponse calculoPagos(CalculoPagosRequest cpr) throws ModalidadResponseException;
 	
-	GeneracionMultilineaResponse genracionMultilinea(GeneracionMultilineaRequest consulta) throws ModalidadResponseException;
+	GeneracionMultilineaResponse generacionMultilinea(GeneracionMultilineaRequest consulta) throws ModalidadResponseException;
 	
-	GeneracionMultilineaConsultaResponse genracionMultilineaConsulta(String idSolicitud) throws ModalidadResponseException;
+	GeneracionMultilineaConsultaResponse generacionMultilineaConsulta(String nss) throws ModalidadResponseException;
 }
