@@ -19,7 +19,7 @@
 </style>
 
 <script type="text/javascript"
-	src="<spring:url value="/static/resources/js/wizard/persona/ivro/detalle/detalle-seguro.js" htmlEscape="true" />"></script>
+	src="https://serviciosdigitales-stage.imss.gob.mx/gestionSeguroVoluntario-web-ciudadano/static/resources/js/wizard/persona/ivro/detalle/detalle-seguro.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 	 	idSeguro = '<c:out value="${seguro.cveIdSeguroIvro}"/>';

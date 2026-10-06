@@ -333,7 +333,7 @@ public class Modalidad40RestLocalImpl implements Modalidad40RestLocal{
 		try {		
 			
 			
-			String idCodificado = URLEncoder.encode(nss, "UTF-8");
+			//String idCodificado = URLEncoder.encode(nss, "UTF-8");
 			
 			log.info("la url a consumir es " + URL_GENERACION_MULTILINEA );
 			log.info("el nss a buscar es: {}", nss);
@@ -358,7 +358,7 @@ public class Modalidad40RestLocalImpl implements Modalidad40RestLocal{
 	                .build();
 	    	
 	     // 2. Construcción de la URL con el Path Parameter
-	        String urlFinal = URL_GENERACION_MULTILINEA + "/nss/" + idCodificado;
+	        String urlFinal = URL_GENERACION_MULTILINEA + "/nss/" + nss;
 	        
 	        // 3. Crear petición HTTP GET usando Apache HttpClient
 	        HttpGet httpGet = new HttpGet(urlFinal);

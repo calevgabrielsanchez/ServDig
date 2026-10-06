@@ -133,9 +133,9 @@
 	<profiles>
 		<profile>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
-			<id>compile-qa</id>
+			<id>compile-stage</id>
 			<properties>
 				<mvn.ws.client.version>1.0</mvn.ws.client.version>
 				<mvn.servicios.externos.rest.timeOut.connection>5000</mvn.servicios.externos.rest.timeOut.connection>
@@ -168,10 +168,10 @@
 			</build>
 		</profile>
 		<profile>
-			<id>compile-prod</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
+			<id>compile-prod</id>
 			<properties>
 				<mvn.ws.client.version>1.0</mvn.ws.client.version>
 				<mvn.servicios.externos.rest.timeOut.connection>5000</mvn.servicios.externos.rest.timeOut.connection>

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -197,4 +198,27 @@ public class ValidaRetroactividadDTO implements Serializable {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
+    
+    @Override
+    public String toString() {
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+    return new StringBuilder()
+    .append("idCalculo=").append(idCalculo)
+    .append(", idTramite=").append(idTramite)
+    .append(", nss=").append(nss)
+    .append(", modalidad=").append(modalidad)
+    .append(", aplicaRetroactividad=").append(aplicaRetroactividad)
+    .append(", aplicaRenovacion=").append(aplicaRenovacion)
+    .append(", fechaInicio=").append(fechaInicio != null ? sdf.format(fechaInicio) : null)
+    .append(", fechaFin=").append(fechaFin != null ? sdf.format(fechaFin) : null)
+    .append(", numeroMeses=").append(numeroMeses)
+    .append(", fechaCorteValidacion=").append(fechaCorteValidacion != null ? sdf.format(fechaCorteValidacion) : null)
+    .append(", fechaLimiteElegibilidad=").append(fechaLimiteElegibilidad != null ? sdf.format(fechaLimiteElegibilidad) : null)
+    .append(", salarioPiso=").append(salarioPiso)
+    .append(", salarioTope=").append(salarioTope)
+    .append(", mensaje=").append(mensaje)
+    .toString();
+    }
+   
 }

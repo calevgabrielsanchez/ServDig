@@ -71,6 +71,8 @@
 				action="${contextPath}/wizard/continuacionVoluntaria/comunes/datosInscripcion" accept-charset="ISO-8859-1">
 				<form:hidden id="idDomSeguro" path="domicilioSeguro.idDomicilio" />
 				<form:hidden id="cpDomSeguro" path="domicilioSeguro.codigoPostal"/>
+				
+
 			</form:form>
 			
 			<form action="${contextPath}/wizard/continuacionVoluntaria/comunes/otraUbicacion" id="otraUbicacionForm" accept-charset="ISO-8859-1"></form>

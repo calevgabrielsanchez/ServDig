@@ -108,6 +108,11 @@
       <artifactId>gestionAsegurados-interfaces-negocio</artifactId>
       <version>${delta.asegurados}</version>
     </dependency>
+    <dependency>
+      <groupId>mx.gob.imss.cit.clienteswebservices.modalidad40</groupId>
+	  <artifactId>ClienteWebServices-RetroactividadCVRO</artifactId>
+	  <version>1.0</version>
+	</dependency>  
 
     <!-- FIN DE LAS DEPENDENCIAS DEL FRAMEWORK DELTA -->
 

@@ -82,6 +82,7 @@ public class MapeoRetroUtil {
 		destino.setImporteActualizacion(origen.getImporteActualizacion());
 		destino.setImporteRecargo(origen.getImporteRecargo());
 		destino.setImportePago(origen.getImportePago());
+		destino.setSalarioElegido(origen.getSalarioElegido());
 		return destino;
 	}
 

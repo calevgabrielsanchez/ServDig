@@ -85,7 +85,8 @@ public class RetroactividadServiceBusiness implements RetroactividadServiceRemot
 			
 			requestRest.setIdCalculo(request.getIdCalculo());
 			requestRest.setNss(request.getNss());
-			requestRest.setMunicipioImss(request.getMunicipioImss());
+			requestRest.setMunicipioInegi(request.getMunicipioInegi());
+			requestRest.setEntidadInegi(request.getEntidadInegi());
 			requestRest.setSalarioElegido(request.getSalarioElegido());
 			requestRest.setOrigenCalculo(request.getOrigenCalculo());
 			requestRest.setUsuario(request.getUsuario());
@@ -134,6 +135,8 @@ public class RetroactividadServiceBusiness implements RetroactividadServiceRemot
 			Modalidad40RestLocal modalidad40RestLocal = new Modalidad40RestLocalImpl();
 			
 			mx.gob.imss.cit.clienteswebservices.modalidad40.rest.bean.GeneracionMultilineaRequest requestRest = new mx.gob.imss.cit.clienteswebservices.modalidad40.rest.bean.GeneracionMultilineaRequest();
+			
+			requestRest.setIdCalculo(request.getIdCalculo());
 			mx.gob.imss.cit.clienteswebservices.modalidad40.rest.bean.GeneracionMultilineaResponse responseRest =	modalidad40RestLocal.generacionMultilinea(requestRest);
 			
 			log.info("responseRest: "+responseRest);

@@ -42,7 +42,7 @@ public class RespuestaWS {
 
     @XmlElement(required = true, type = Integer.class, nillable = true)
     protected Integer claveError;
-    @XmlElementRef(name = "mensajeError", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "mensajeError", type = JAXBElement.class)
     protected JAXBElement<String> mensajeError;
 
     /**

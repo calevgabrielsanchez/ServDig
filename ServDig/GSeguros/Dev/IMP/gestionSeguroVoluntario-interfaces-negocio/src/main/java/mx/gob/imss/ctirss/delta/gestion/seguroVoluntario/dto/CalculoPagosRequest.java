@@ -7,12 +7,15 @@ public class CalculoPagosRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String idCalculo;
-    private String nss;
-    private String municipioImss;
-    private BigDecimal salarioElegido;
-    private String origenCalculo;
-    private String usuario;
+	private String idCalculo;
+	private String nss;
+	private String entidadInegi;
+	private String municipioInegi;
+	private String municipioImss;
+	private BigDecimal salarioElegido;
+	private String origenCalculo;
+	private String idTramite;
+	private String usuario;
 
     public CalculoPagosRequest() {
     }
@@ -67,4 +70,35 @@ public class CalculoPagosRequest implements Serializable {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
+
+
+	public String getEntidadInegi() {
+		return entidadInegi;
+	}
+
+
+	public void setEntidadInegi(String entidadInegi) {
+		this.entidadInegi = entidadInegi;
+	}
+
+
+	public String getMunicipioInegi() {
+		return municipioInegi;
+	}
+
+
+	public void setMunicipioInegi(String municipioInegi) {
+		this.municipioInegi = municipioInegi;
+	}
+
+
+	public String getIdTramite() {
+		return idTramite;
+	}
+
+
+	public void setIdTramite(String idTramite) {
+		this.idTramite = idTramite;
+	}
+    
 }

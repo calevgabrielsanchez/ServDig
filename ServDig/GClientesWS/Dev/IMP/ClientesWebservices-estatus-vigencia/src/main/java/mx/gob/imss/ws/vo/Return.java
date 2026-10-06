@@ -37,11 +37,11 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Return {
 
-    @XmlElementRef(name = "claveError", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "claveError", type = JAXBElement.class)
     protected JAXBElement<Integer> claveError;
-    @XmlElementRef(name = "mensajeError", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "mensajeError", type = JAXBElement.class)
     protected JAXBElement<String> mensajeError;
-    @XmlElementRef(name = "resultado", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "resultado", type = JAXBElement.class)
     protected JAXBElement<Resultado> resultado;
 
     /**

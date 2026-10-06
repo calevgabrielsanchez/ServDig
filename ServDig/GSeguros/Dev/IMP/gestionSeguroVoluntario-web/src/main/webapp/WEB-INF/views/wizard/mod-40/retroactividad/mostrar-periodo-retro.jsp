@@ -1,26 +1,41 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../../../general/taglibs.jsp"%>
+<c:set var="contextPath" value="<%=request.getContextPath()%>" />
 <script type="text/javascript">
-    var contextPath = "${pageContext.request.contextPath}";
+    var contextPath = "${contextPath}";
     
+    var emailPersonaSolicitante = parent.$('#correo').val();
+    var nombrePersonaSolicitante = parent.$('#nombre').val();   
     
     document.addEventListener("DOMContentLoaded", function() {
         var boton = document.getElementById("btnContinuarRetroDomicilio");
+        var botonCancelar = document.getElementById("btnCancelar");
+        
+        if(botonCancelar){
+        	botonCancelar.addEventListener("click", function(event) {
+                event.preventDefault();
+                uid_call('imss.gestion.seguro.voluntario.mod40.confirmarDatos.btn_cancelar','clickout');                
+        	});
+        }
         
         if (boton) {
         	
-        	console.log('En funcion para dirigir a captura de domicilio');
+        	var idPersona = null;
+        	var correoSolicitante = null;
+        	var nombreSolicitante = null;
+        	
+        	idPersona =
+				$('#idPersonaSolicitante').val();
         	
         
         	boton.addEventListener("click", function(event) {
-        		event.preventDefault();
-
-        
+        		event.preventDefault();        
         	
         	var datosAEnviar = {
-        			idPersona: "15161242",
-        			correoSolicitante: "airf%40xe.com",
-        			nombreSolicitante: "FAUSTINO+AVILA+REYES"
+        			idPersona: idPersona,
+        			correoSolicitante: emailPersonaSolicitante,
+        			nombreSolicitante: nombrePersonaSolicitante
         		};
+        	
         	var urlDestino = contextPath+"/wizard/continuacionVoluntaria/comunes/agregarDomicilio";
         	
         	$.post(urlDestino, datosAEnviar, function(respuestaHtml) {
@@ -42,7 +57,6 @@
         }
     }); 
 </script>
-<script src="<spring:url value='/static/resources/js/wizard/persona/ivro/detalle/detalle-seguro.js'/>"></script>
 <style>
     a.print {
         color: inherit;
@@ -136,9 +150,9 @@ table.cuadricula {
         table.cuadricula th {
             background-color: #611232;
         }
-        /* Estilo para los meses activos: Dorado traslúcido */
+        /* Estilo para los meses activos: Dorado traslï¿½cido */
         .mes-activo {
-            background-color: rgba(241, 196, 15, 0.35); /* Dorado ámbar con 35% de opacidad */
+            background-color: rgba(241, 196, 15, 0.35); /* Dorado ï¿½mbar con 35% de opacidad */
             color: #7d6608; /* Un tono dorado oscuro para que el texto resalte legible */
             font-weight: bold;
         }
@@ -160,6 +174,18 @@ table.cuadricula {
 
 <div id="eleccion-retroactividad" class="pila-container">
 
+<input type="hidden"
+    id="idPersonaSolicitante"
+    value="${idPersona}" />
+    
+<input type="hidden"
+    id="correoSolicitante"
+    value="${correoSolicitante}" />
+    
+<input type="hidden"
+    id="nombreSolicitante"
+    value="${nombreSolicitante}" />        
+
         <div class="bloque titulo">
             <span>Calculo de Periodo Retroactivo</span>
             <hr class="red m-b-none">
@@ -175,7 +201,7 @@ table.cuadricula {
 		<table class="cuadricula">
 	        <thead>
 	            <tr>
-	                <th>Año</th>
+	                <th>Aï¿½o</th>
 
 	                <th>Ene</th>
 	                <th>Feb</th>
@@ -212,7 +238,7 @@ table.cuadricula {
         </div>
 
         <div class="modal-footer">
-             <button type="button" class="btn btn-default" data-dismiss="modal">
+             <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCancelar">
                  Cancelar
              </button>
              <button type="button" id="btnContinuarRetroDomicilio"

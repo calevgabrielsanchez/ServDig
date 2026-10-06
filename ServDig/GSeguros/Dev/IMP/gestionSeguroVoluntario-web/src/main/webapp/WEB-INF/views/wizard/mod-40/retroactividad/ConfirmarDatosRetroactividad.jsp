@@ -2,14 +2,17 @@
 
 <script type="text/javascript"
 	src="<spring:url value="/static/resources/js/wizard/mod-40/comunes/wizardCVROalta.js" htmlEscape="true" />">
+	
 </script>
 
 <script type="text/javascript"
 	src="<spring:url value="/static/resources/js/wizard/mod-40/comunes/resumen.js" htmlEscape="true" />">
+	
 </script>
 
 <script type="text/javascript"
 	src="<spring:url value="/static/resources/js/wizard/comunes/obtenerPais.js" htmlEscape="true" />">
+	
 </script>
 
 <c:set var="contextPath" value="<%=request.getContextPath()%>" />
@@ -32,7 +35,6 @@ table.table {
 .row_right {
 	float: right;
 }
-
 
 #tblCotizacionRetroactividad {
 	width: 100%;
@@ -61,12 +63,10 @@ table.table {
 	text-decoration: underline;
 }
 
-
 #errorCalculoPagos {
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
-
 
 .modalRetroactividadDialog {
 	padding: 0 !important;
@@ -75,7 +75,6 @@ table.table {
 	border-radius: 0 !important;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 }
-
 
 .modalRetroactividadDialog .ui-dialog-titlebar {
 	background: #ffffff !important;
@@ -95,7 +94,6 @@ table.table {
 	font-weight: normal;
 	text-align: left;
 }
-
 
 .modalRetroactividadDialog .ui-dialog-titlebar-close {
 	position: absolute;
@@ -117,7 +115,6 @@ table.table {
 	outline: none !important;
 }
 
-
 .modalRetroactividadDialog .ui-dialog-content {
 	background: #ffffff !important;
 	padding: 20px !important;
@@ -128,7 +125,6 @@ table.table {
 	padding: 20px !important;
 }
 
-
 .textoDetalleRetroactividad {
 	margin-bottom: 15px;
 	color: #555555;
@@ -136,13 +132,11 @@ table.table {
 	text-align: justify;
 }
 
-
 .detallePeriodosScroll {
 	max-height: 420px;
 	overflow-y: auto;
 	overflow-x: auto;
 }
-
 
 #tblDetalleRetroactividad {
 	width: 100%;
@@ -180,14 +174,12 @@ table.table {
 	background: #f5f5f5 !important;
 }
 
-
 .sinDetalleRetroactividad {
 	text-align: center !important;
 	padding: 20px !important;
 	background: #ffffff !important;
 	color: #777777 !important;
 }
-
 
 .modalRetroactividadDialog .ui-dialog-buttonpane {
 	background: #ffffff !important;
@@ -210,7 +202,6 @@ table.table {
 	font-size: 14px !important;
 }
 
-
 @media ( max-width : 767px) {
 	.modalRetroactividadDialog {
 		width: 94% !important;
@@ -227,498 +218,603 @@ table.table {
 
 
 <script type="text/javascript">
-
-
 	var calculoPagosActual = null;
-
 
 	$(function() {
 
+		$('a#condiciones')
+				.click(
+						function() {
 
-		$('a#condiciones').click(function() {
+							$('#dialogoMsgCondiciones').html(
 
-			$('#dialogoMsgCondiciones').html(
+									'<div class="separadorseccion">' +
 
-				'<div class="separadorseccion">' +
+									'<span>Términos y Condiciones</span>' +
 
-					'<span>Términos y Condiciones</span>' +
+									'</div>' +
 
-				'</div>' +
+									'<p>' +
 
-				'<p>' +
+									'CARTA DE TÉRMINOS Y CONDICIONES EN LOS ACTOS QUE SE '
+											+
 
-					'CARTA DE TÉRMINOS Y CONDICIONES EN LOS ACTOS QUE SE ' +
+											'REALICEN ANTE EL INSTITUTO MEXICANO DEL SEGURO SOCIAL '
+											+
 
-					'REALICEN ANTE EL INSTITUTO MEXICANO DEL SEGURO SOCIAL ' +
+											'(IMSS) EN EL PORTAL CIUDADANO, MEDIANTE EL USO DE LA '
+											+
 
-					'(IMSS) EN EL PORTAL CIUDADANO, MEDIANTE EL USO DE LA ' +
+											'CLAVE ÚNICA DEL REGISTRO DE POBLACIÓN (CURP) Y EL '
+											+
 
-					'CLAVE ÚNICA DEL REGISTRO DE POBLACIÓN (CURP) Y EL ' +
+											'REGISTRO FEDERAL DE CONTRIBUYENTES (RFC).'
+											+
 
-					'REGISTRO FEDERAL DE CONTRIBUYENTES (RFC).' +
+											'</p>' +
 
-				'</p>' +
+											'<p>' +
 
-				'<p>' +
+											'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
+											+
 
-					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' +
+											'Quisque purus lorem, maximus nec nisl ac, vehicula ornare erat. '
+											+
 
-					'Quisque purus lorem, maximus nec nisl ac, vehicula ornare erat. ' +
+											'Curabitur pharetra, orci ac viverra commodo, purus sem convallis '
+											+
 
-					'Curabitur pharetra, orci ac viverra commodo, purus sem convallis ' +
+											'quam, sed ornare arcu erat ac ipsum. Aenean ultrices ante nec '
+											+
 
-					'quam, sed ornare arcu erat ac ipsum. Aenean ultrices ante nec ' +
+											'ipsum ultricies tincidunt. Praesent ultrices augue dapibus '
+											+
 
-					'ipsum ultricies tincidunt. Praesent ultrices augue dapibus ' +
+											'volutpat pulvinar. Nam malesuada fringilla efficitur. Donec at '
+											+
 
-					'volutpat pulvinar. Nam malesuada fringilla efficitur. Donec at ' +
+											'justo non sapien dapibus varius. Aliquam vitae urna vitae turpis '
+											+
 
-					'justo non sapien dapibus varius. Aliquam vitae urna vitae turpis ' +
+											'sodales dapibus. Curabitur pharetra ac turpis a consequat. '
+											+
 
-					'sodales dapibus. Curabitur pharetra ac turpis a consequat. ' +
+											'Nunc vel est pulvinar, venenatis elit at, auctor dui.'
+											+
 
-					'Nunc vel est pulvinar, venenatis elit at, auctor dui.' +
+											'</p>'
 
-				'</p>'
+							);
 
-			);
+							$('#dialogoMsgCondiciones')
+									.dialog(
+											{
 
+												title : 'IMSS Digital',
 
-			$('#dialogoMsgCondiciones').dialog({
+												dialogClass : "no-close",
 
-				title: 'IMSS Digital',
+												width : 800,
 
-				dialogClass: "no-close",
+												modal : true,
 
-				width: 800,
+												resizable : false,
 
-				modal: true,
+												autoResize : true,
 
-				resizable: false,
+												position : {
 
-				autoResize: true,
+													my : 'top',
 
-				position: {
+													at : 'top',
 
-					my: 'top',
+													of : window.document,
 
-					at: 'top',
+													offset : '0 10'
 
-					of: window.document,
+												},
 
-					offset: '0 10'
+												buttons : {
 
-				},
+													'ACEPTAR' : function() {
 
-				buttons: {
+														$(this).dialog("close");
 
-					'ACEPTAR': function() {
+														$(
+																'#dialogoMsgCondiciones')
+																.html('');
 
-						$(this).dialog("close");
+														uid_call(
 
-						$('#dialogoMsgCondiciones').html('');
+																'imss.gestion.seguro.voluntario.mod40.confirmarDatos.dialogoCcondiciones.btn_aceptar',
 
-						uid_call(
+																'clickin'
 
-							'imss.gestion.seguro.voluntario.mod40.confirmarDatos.dialogoCcondiciones.btn_aceptar',
+														);
 
-							'clickin'
+													}
 
-						);
+												}
 
-					}
+											});
 
-				}
+						});
 
-			});
+		$('a#cancelarTramiteDialogo')
+				.click(
+						function() {
 
-		});
+							$('#dialogoCancelarTramite')
+									.html(
 
+											'<p style="text-align: justify">'
+													+
 
-		$('a#cancelarTramiteDialogo').click(function() {
-
-			$('#dialogoCancelarTramite').html(
-
-				'<p style="text-align: justify">' +
-
-					'<span ' +
+													'<span ' +
 
 						'style="float: left; margin: 0 7px 20px 0;" ' +
 
-						'class="ui-icon ui-icon-alert">' +
+						'class="ui-icon ui-icon-alert">'
+													+
 
-					'</span>' +
+													'</span>' +
 
-					'¿Estas seguro de cancelar el proceso de registro de ' +
+													'¿Estas seguro de cancelar el proceso de registro de '
+													+
 
-					'Incripci&oacute;n a la Continuaci&oacute;n Voluntaria ' +
+													'Incripci&oacute;n a la Continuaci&oacute;n Voluntaria '
+													+
 
-					'en el R&eacute;gimen Obligatorio?' +
+													'en el R&eacute;gimen Obligatorio?'
+													+
 
-				'</p>'
+													'</p>'
 
-			);
+									);
 
+							$('#dialogoCancelarTramite')
+									.dialog(
+											{
 
-			$('#dialogoCancelarTramite').dialog({
+												title : 'IMSS Digital',
 
-				title: 'IMSS Digital',
+												dialogClass : "no-close",
 
-				dialogClass: "no-close",
+												height : 'auto',
 
-				height: 'auto',
+												width : 300,
 
-				width: 300,
+												modal : true,
 
-				modal: true,
+												resizable : false,
 
-				resizable: false,
+												autoResize : true,
 
-				autoResize: true,
+												position : {
 
-				position: {
+													my : 'top',
 
-					my: 'top',
+													at : 'top',
 
-					at: 'top',
+													of : window.document,
 
-					of: window.document,
+													offset : '0 10'
 
-					offset: '0 10'
+												},
 
-				},
+												buttons : {
 
-				buttons: {
+													'ACEPTAR' : function() {
 
-					'ACEPTAR': function() {
+														closeWizard();
 
-						closeWizard();
+														uid_call(
 
-						uid_call(
+																'imss.gestion.seguro.voluntario.mod40.confirmarDatos.dialogoCancelar.btn_aceptar',
 
-							'imss.gestion.seguro.voluntario.mod40.confirmarDatos.dialogoCancelar.btn_aceptar',
+																'clickin'
 
-							'clickin'
+														);
 
-						);
+													},
 
-					},
+													'CANCELAR' : function() {
 
-					'CANCELAR': function() {
+														$(this).dialog("close");
 
-						$(this).dialog("close");
+														uid_call(
 
-						uid_call(
+																'imss.gestion.seguro.voluntario.mod40.confirmarDatos.dialogoCancelar.btn_cancelar',
 
-							'imss.gestion.seguro.voluntario.mod40.confirmarDatos.dialogoCancelar.btn_cancelar',
+																'clickin'
 
-							'clickin'
+														);
 
-						);
+													}
 
-					}
+												}
 
-				}
+											});
 
-			});
+						});
 
-		});
+		$('#modalDetalleRetroactividad')
+				.dialog(
+						{
 
+							title : 'Detalle de montos a pagar por periodo',
 
-		$('#modalDetalleRetroactividad').dialog({
+							dialogClass : 'modalRetroactividadDialog',
 
-			title: 'Detalle de montos a pagar por periodo',
+							autoOpen : false,
 
-			dialogClass: 'modalRetroactividadDialog',
+							width : 700,
 
-			autoOpen: false,
+							height : 'auto',
 
-			width: 700,
+							modal : true,
 
-			height: 'auto',
+							resizable : false,
 
-			modal: true,
+							draggable : false,
 
-			resizable: false,
+							closeOnEscape : true,
 
-			draggable: false,
+							position : {
 
-			closeOnEscape: true,
+								my : 'center',
 
-			position: {
+								at : 'center',
 
-				my: 'center',
+								of : window
 
-				at: 'center',
+							},
 
-				of: window
+							buttons : {
 
-			},
+								'Cerrar' : function() {
 
-			buttons: {
+									$(this).dialog('close');
 
-				'Cerrar': function() {
+								}
 
-					$(this).dialog('close');
+							},
 
-				}
+							open : function() {
 
-			},
+								$(this)
+										.parent()
+										.find('.ui-dialog-buttonpane button')
+										.removeClass(
+												'ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only')
+										.addClass('btn btn-default');
 
-			open: function() {
+							}
 
-				$(this)
-					.parent()
-					.find('.ui-dialog-buttonpane button')
-					.removeClass(
-						'ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only'
-					)
-					.addClass('btn btn-default');
-
-			}
-
-		});
-
+						});
 
 		$(document).on(
 
-			'click',
+		'click',
 
-			'.linkDetalleRetroactividad',
+		'.linkDetalleRetroactividad',
 
-			function(event) {
+		function(event) {
 
-				event.preventDefault();
+			event.preventDefault();
 
-				abrirDetalleRetroactividad();
-
-			}
-
-		);
-
-
-		var idCalculo =
-			$('#idCalculoRetroactividad').val();
-
-		var nss =
-			$('#nssRetroactividad').val();
-
-		var municipioImss =
-			$('#municipioImssRetroactividad').val();
-
-		var salarioElegido =
-			$('#salarioElegidoRetroactividad').val();
-
-
-		console.log(
-			'Servicio 2 - idCalculo: ',
-			idCalculo
-		);
-
-		console.log(
-			'Servicio 2 - NSS: ',
-			nss
-		);
-
-		console.log(
-			'Servicio 2 - municipioImss: ',
-			municipioImss
-		);
-
-		console.log(
-			'Servicio 2 - salarioElegido: ',
-			salarioElegido
-		);
-
-
-		if (!idCalculo ||
-			!nss ||
-			!municipioImss ||
-			!salarioElegido) {
-
-			$('#errorCalculoPagos')
-				.html(
-					'No fue posible obtener todos los datos necesarios ' +
-					'para realizar el c&aacute;lculo de pagos.'
-				)
-				.show();
-
-			return;
+			abrirDetalleRetroactividad();
 
 		}
 
-
-		var requestCalculo =
-			crearRequestCalculoPagos(
-				idCalculo,
-				nss,
-				municipioImss,
-				salarioElegido
-			);
-
-
-		console.log(
-			'Request Servicio 2: ',
-			requestCalculo
 		);
 
+		$('#finalizarRetroactividad').prop('disabled', true);
 
-		consultarCalculoPagos(
-			requestCalculo
-		);
+		$('#chkTCCuestionario').change(
+				function() {
 
+					$('#finalizarRetroactividad').prop('disabled',
+							!$(this).is(':checked'));
+
+				});
+
+		$('#finalizarRetroactividad')
+				.click(
+						function(event) {
+
+							event.preventDefault();
+
+							$('#errorCalculoPagos').hide().empty();
+
+							if (!$('#chkTCCuestionario').is(':checked')) {
+
+								$('#errorCalculoPagos')
+										.html(
+												'Debes aceptar los t&eacute;rminos y condiciones.')
+										.show();
+
+								return;
+
+							}
+
+							var idCalculo = null;
+
+							if (calculoPagosActual
+									&& calculoPagosActual.idCalculo) {
+
+								idCalculo = calculoPagosActual.idCalculo;
+
+							} else {
+
+								idCalculo = $('#idCalculoRetroactividad').val();
+
+							}
+
+							if (!idCalculo) {
+
+								$('#errorCalculoPagos')
+										.html(
+												'No fue posible obtener el identificador del c&aacute;lculo.')
+										.show();
+
+								return;
+
+							}
+
+							var requestMultilinea = {
+								idCalculo : String(idCalculo)
+							};
+
+							$('#finalizarRetroactividad')
+									.prop('disabled', true);
+
+							$
+									.ajax({
+
+										url : '${contextPath}/retroactividad/generarMultilinea',
+
+										type : 'POST',
+
+										contentType : 'application/json; charset=UTF-8',
+
+										dataType : 'json',
+
+										data : JSON
+												.stringify(requestMultilinea),
+
+										complete : function() {
+
+											var ventanaPadre = window.parent
+													&& window.parent !== window ? window.parent
+													: window;
+
+											var jqueryPadre = ventanaPadre.jQuery
+													|| ventanaPadre.$;
+
+											var dialogo = null;
+
+											if (jqueryPadre && jqueryPadre.fn
+													&& jqueryPadre.fn.dialog) {
+
+												dialogo = jqueryPadre('#dialogoTramiteEnCursoRetroactividad');
+
+												if (dialogo.length === 0) {
+
+													jqueryPadre('body')
+															.append(
+																	'<div id="dialogoTramiteEnCursoRetroactividad"></div>');
+
+													dialogo = jqueryPadre('#dialogoTramiteEnCursoRetroactividad');
+
+												}
+
+												dialogo
+														.html(
+																'<p>El tr&aacute;mite se encuentra en curso, favor de intentar m&aacute;s tarde.</p>')
+														.dialog(
+																{
+
+																	title : 'IMSS Digital',
+
+																	autoOpen : false,
+
+																	width : 450,
+
+																	modal : true,
+
+																	resizable : false,
+
+																	buttons : {
+
+																		'ACEPTAR' : function() {
+
+																			jqueryPadre(
+																					this)
+																					.dialog(
+																							'close')
+																					.remove();
+
+																		}
+
+																	}
+
+																});
+
+											}
+
+											closeWizard();
+
+											if (dialogo) {
+
+												dialogo.dialog('open');
+
+											} else {
+
+												ventanaPadre
+														.alert('El tramite se encuentra en curso, favor de intentar mas tarde.');
+
+											}
+
+										}
+
+									});
+
+						});
+
+		var idCalculo = $('#idCalculoRetroactividad').val();
+
+		var nss = $('#nssRetroactividad').val();
+
+		var entidadInegi = $('#entidadInegiRetroactividad').val();
+
+		var municipioInegi = $('#municipioInegiRetroactividad').val();
+
+		var salarioElegido = $('#salarioElegidoRetroactividad').val();
+
+		var origenCalculo = $('#origenCalculoRetroactividad').val();
+
+		var usuario = $('#usuarioRetroactividad').val();
+
+		console.log('Servicio 2 - idCalculo: ', idCalculo);
+
+		console.log('Servicio 2 - NSS: ', nss);
+
+		console.log('Servicio 2 - salarioElegido: ', salarioElegido);
+
+		if (!idCalculo || !nss || !entidadInegi || !municipioInegi
+				|| !salarioElegido || !origenCalculo || !usuario) {
+
+			$('#errorCalculoPagos').html(
+					'No fue posible obtener todos los datos necesarios '
+							+ 'para realizar el c&aacute;lculo de pagos.')
+					.show();
+
+			return;
+		}
+
+		var requestCalculo = crearRequestCalculoPagos(idCalculo, nss,
+				entidadInegi, municipioInegi, salarioElegido, origenCalculo,
+				usuario);
+
+		console.log('Request Servicio 2: ', requestCalculo);
+
+		consultarCalculoPagos(requestCalculo);
 
 	});
 
-
 	function procesarRespuestaCalculoPagos(response) {
 
-
-		$('#errorCalculoPagos')
-			.hide()
-			.empty();
-
+		$('#errorCalculoPagos').hide().empty();
 
 		if (!response) {
 
-			$('#errorCalculoPagos')
-				.html(
-					'No se obtuvo respuesta del servicio de c&aacute;lculo.'
-				)
-				.show();
+			$('#errorCalculoPagos').html(
+					'No se obtuvo respuesta del servicio de c&aacute;lculo.')
+					.show();
 
 			return;
 
 		}
-
 
 		if (response.codigo != '200') {
 
 			$('#errorCalculoPagos')
-				.html(
-					response.descripcion
-						? response.descripcion
-						: 'No fue posible realizar el c&aacute;lculo de pagos.'
-				)
-				.show();
+					.html(
+							response.descripcion ? response.descripcion
+									: 'No fue posible realizar el c&aacute;lculo de pagos.')
+					.show();
 
 			return;
 
 		}
-
 
 		if (!response.vrDto) {
 
 			$('#errorCalculoPagos')
-				.html(
-					'El servicio no devolvi&oacute; informaci&oacute;n de c&aacute;lculo.'
-				)
-				.show();
+					.html(
+							'El servicio no devolvi&oacute; informaci&oacute;n de c&aacute;lculo.')
+					.show();
 
 			return;
 
 		}
 
+		calculoPagosActual = response.vrDto;
 
-		calculoPagosActual =
-			response.vrDto;
-
-
-		pintarResumenCalculoPagos(
-			response.vrDto
-		);
+		pintarResumenCalculoPagos(response.vrDto);
 
 	}
 
-
 	function pintarResumenCalculoPagos(response) {
 
-
-		var body =
-			$('#bodyCotizacionRetroactividad');
-
+		var body = $('#bodyCotizacionRetroactividad');
 
 		body.empty();
 
-
-		if (!response ||
-			!response.periodos ||
-			response.periodos.length === 0) {
-
+		if (!response || !response.periodos || response.periodos.length === 0) {
 
 			body.append(
 
-				'<tr>' +
+			'<tr>' +
 
-					'<td colspan="5" class="text-center">' +
+			'<td colspan="4" class="text-center">' +
 
-						'No se encontraron periodos de cotizaci&oacute;n.' +
+			'No se encontraron periodos de cotizaci&oacute;n.' +
 
-					'</td>' +
+			'</td>' +
 
-				'</tr>'
+			'</tr>'
 
 			);
-
 
 			return;
 
 		}
 
+		var primerPeriodo = response.periodos[0];
 
-		var primerPeriodo =
-			response.periodos[0];
+		var ultimoPeriodo = response.periodos[response.periodos.length - 1];
 
-
-		var ultimoPeriodo =
-			response.periodos[
-				response.periodos.length - 1
-			];
-
-
-		var salarioElegido =
-			primerPeriodo.salarioElegido;
-
+		$('#fechaBajaRetroactividad').text(
+				obtenerFechaBajaRetroactividad(primerPeriodo.fechaInicio));
 
 		var fila =
 
-			'<tr>' +
+		'<tr>'
+				+
 
-				'<td>' +
+				'<td>'
+				+
 
-					formatearFechaServicio(
-						primerPeriodo.fechaInicio
-					) +
+				formatearFechaServicio(primerPeriodo.fechaInicio)
+				+
 
-				'</td>' +
+				'</td>'
+				+
 
-				'<td>' +
+				'<td>'
+				+
 
-					formatearFechaServicio(
-						ultimoPeriodo.fechaFin
-					) +
+				formatearFechaServicio(ultimoPeriodo.fechaFin)
+				+
 
-				'</td>' +
+				'</td>'
+				+
 
-				'<td>' +
+				'<td>'
+				+
 
-					formatearMoneda(
-						salarioElegido
-					) +
+				formatearMoneda(response.importeTotal)
+				+
 
-				'</td>' +
+				'</td>'
+				+
 
-				'<td>' +
+				'<td>'
+				+
 
-					formatearMoneda(
-						response.importeTotal
-					) +
-
-				'</td>' +
-
-				'<td>' +
-
-					'<a href="#" ' +
+				'<a href="#" ' +
 
 						'class="linkDetalleRetroactividad" ' +
 
@@ -726,144 +822,186 @@ table.table {
 
 							response.idCalculo +
 
-						'">' +
+						'">'
+				+
 
-						'Ver detalle' +
+				'Ver detalle' +
 
-					'</a>' +
+				'</a>' +
 
 				'</td>' +
 
-			'</tr>';
+				'</tr>';
 
-
-		body.append(
-			fila
-		);
+		body.append(fila);
 
 	}
-
 
 	function abrirDetalleRetroactividad() {
 
-
-		if (!calculoPagosActual ||
-			!calculoPagosActual.periodos) {
-
+		if (!calculoPagosActual || !calculoPagosActual.periodos) {
 
 			return;
 
 		}
 
+		pintarDetalleRetroactividad(calculoPagosActual.periodos);
 
-		pintarDetalleRetroactividad(
-			calculoPagosActual.periodos
-		);
-
-
-		$('#modalDetalleRetroactividad')
-			.dialog('open');
+		$('#modalDetalleRetroactividad').dialog('open');
 
 	}
-
 
 	function pintarDetalleRetroactividad(periodos) {
 
-
-		var body =
-			$('#bodyDetalleRetroactividad');
-
+		var body = $('#bodyDetalleRetroactividad');
 
 		body.empty();
 
-
-		if (!periodos ||
-			periodos.length === 0) {
-
+		if (!periodos || periodos.length === 0) {
 
 			body.append(
 
-				'<tr>' +
+			'<tr>' +
 
-					'<td colspan="4" ' +
+			'<td colspan="4" ' +
 
 						'class="sinDetalleRetroactividad">' +
 
-						'No se encontr&oacute; ' +
+			'No se encontr&oacute; ' +
 
-						'informaci&oacute;n de detalle.' +
+			'informaci&oacute;n de detalle.' +
 
-					'</td>' +
+			'</td>' +
 
-				'</tr>'
+			'</tr>'
 
 			);
-
 
 			return;
 
 		}
 
-
 		$.each(
 
-			periodos,
+		periodos,
 
-			function(index, periodo) {
+		function(index, periodo) {
 
+			var fila =
 
-				var fila =
+			'<tr>' +
 
-					'<tr>' +
+			'<td>' +
 
-						'<td>' +
+			formatearFechaServicio(periodo.fechaInicio) +
 
-							formatearFechaServicio(
-								periodo.fechaInicio
-							) +
+			'</td>' +
 
-						'</td>' +
+			'<td>' +
 
-						'<td>' +
+			formatearFechaServicio(periodo.fechaFin) +
 
-							formatearFechaServicio(
-								periodo.fechaFin
-							) +
+			'</td>' +
 
-						'</td>' +
+			'<td>' +
 
-						'<td>' +
+			formatearMoneda(periodo.salarioElegido) +
 
-							formatearMoneda(
-								periodo.salarioAplicado
-							) +
+			'</td>' +
 
-						'</td>' +
+			'<td>' +
 
-						'<td>' +
+			formatearMoneda(periodo.importePago) +
 
-							formatearMoneda(
-								periodo.importePago
-							) +
+			'</td>' +
 
-						'</td>' +
+			'</tr>';
 
-					'</tr>';
+			body.append(fila);
 
-
-				body.append(
-					fila
-				);
-
-			}
+		}
 
 		);
 
 	}
 
+	function obtenerFechaBajaRetroactividad(fechaInicio) {
+
+		if (!fechaInicio) {
+
+			return '';
+
+		}
+
+		var anio;
+		var mes;
+		var dia;
+
+		if (fechaInicio.indexOf('-') !== -1) {
+
+			var partesGuion = fechaInicio.split('-');
+
+			if (partesGuion.length !== 3) {
+
+				return '';
+
+			}
+
+			anio = parseInt(partesGuion[0], 10);
+
+			mes = parseInt(partesGuion[1], 10);
+
+			dia = parseInt(partesGuion[2], 10);
+
+		} else if (fechaInicio.indexOf('/') !== -1) {
+
+			var partesDiagonal = fechaInicio.split('/');
+
+			if (partesDiagonal.length !== 3) {
+
+				return '';
+
+			}
+
+			dia = parseInt(partesDiagonal[0], 10);
+
+			mes = parseInt(partesDiagonal[1], 10);
+
+			anio = parseInt(partesDiagonal[2], 10);
+
+		} else {
+
+			return '';
+
+		}
+
+		var fecha = new Date(anio, mes - 1, dia);
+
+		fecha.setDate(fecha.getDate() - 1);
+
+		var diaBaja = fecha.getDate();
+
+		var mesBaja = fecha.getMonth() + 1;
+
+		var anioBaja = fecha.getFullYear();
+
+		if (diaBaja < 10) {
+
+			diaBaja = '0' + diaBaja;
+
+		}
+
+		if (mesBaja < 10) {
+
+			mesBaja = '0' + mesBaja;
+
+		}
+
+		return diaBaja + '/' + mesBaja + '/' + anioBaja;
+
+	}
 
 	function formatearFechaServicio(fecha) {
-
 
 		if (!fecha) {
 
@@ -871,10 +1009,7 @@ table.table {
 
 		}
 
-
-		var partes =
-			fecha.split('-');
-
+		var partes = fecha.split('-');
 
 		if (partes.length !== 3) {
 
@@ -882,32 +1017,19 @@ table.table {
 
 		}
 
-
-		return partes[2]
-			+ '/'
-			+ partes[1]
-			+ '/'
-			+ partes[0];
+		return partes[2] + '/' + partes[1] + '/' + partes[0];
 
 	}
 
-
 	function formatearMoneda(valor) {
 
-
-		if (valor === null ||
-			valor === undefined ||
-			valor === '') {
-
+		if (valor === null || valor === undefined || valor === '') {
 
 			return '';
 
 		}
 
-
-		var numero =
-			parseFloat(valor);
-
+		var numero = parseFloat(valor);
 
 		if (isNaN(numero)) {
 
@@ -915,172 +1037,88 @@ table.table {
 
 		}
 
-
-		return '$'
-			+ numero
-				.toFixed(2)
-				.replace(
-					/\B(?=(\d{3})+(?!\d))/g,
-					','
-				);
+		return '$' + numero.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
 	}
 
-
-	function crearRequestCalculoPagos(
-		idCalculo,
-		nss,
-		municipioImss,
-		salarioElegido
-	) {
-
+	function crearRequestCalculoPagos(idCalculo, nss, entidadInegi,
+			municipioInegi, salarioElegido, origenCalculo, usuario) {
 
 		return {
 
+			idCalculo : parseInt(idCalculo, 10),
 
-			idCalculo:
-				parseInt(
-					idCalculo,
-					10
-				),
+			nss : nss,
 
+			entidadInegi : entidadInegi,
 
-			nss:
-				nss,
+			municipioInegi : municipioInegi,
 
+			salarioElegido : parseFloat(salarioElegido),
 
-			municipioImss:
-				municipioImss,
+			origenCalculo : origenCalculo,
 
-
-			salarioElegido:
-				parseFloat(
-					salarioElegido
-				),
-
-
-			origenCalculo:
-				'CONTRATACION',
-
-
-			usuario:
-				'MODALIDAD40'
-
+			usuario : usuario
 
 		};
 
 	}
 
-
 	function consultarCalculoPagos(request) {
 
-
-		$('#errorCalculoPagos')
-			.hide()
-			.empty();
-
+		$('#errorCalculoPagos').hide().empty();
 
 		$.ajax({
 
+			url : '${contextPath}/retroactividad/calculoPagos',
 
-			url:
-				'${contextPath}/retroactividad/calculoPagos',
+			type : 'POST',
 
+			contentType : 'application/json; charset=UTF-8',
 
-			type:
-				'POST',
+			dataType : 'json',
 
+			data : JSON.stringify(request),
 
-			contentType:
-				'application/json; charset=UTF-8',
+			success : function(response) {
 
+				console.log('Respuesta Servicio 2: ', response);
 
-			dataType:
-				'json',
-
-
-			data:
-				JSON.stringify(
-					request
-				),
-
-
-			success: function(response) {
-
-
-				console.log(
-					'Respuesta Servicio 2: ',
-					response
-				);
-
-
-				procesarRespuestaCalculoPagos(
-					response
-				);
-
+				procesarRespuestaCalculoPagos(response);
 
 			},
 
+			error : function(xhr) {
 
-			error: function(xhr) {
+				console.log('Error Servicio 2: ', xhr);
 
-
-				console.log(
-					'Error Servicio 2: ',
-					xhr
-				);
-
-
-				manejarErrorCalculoPagos(
-					xhr
-				);
-
+				manejarErrorCalculoPagos(xhr);
 
 			}
-
 
 		});
 
 	}
 
-
 	function manejarErrorCalculoPagos(xhr) {
 
+		var response = xhr.responseJSON;
 
-		var response =
-			xhr.responseJSON;
+		var mensaje = 'No fue posible realizar el c&aacute;lculo de pagos.';
 
+		if (response && response.mensaje) {
 
-		var mensaje =
-			'No fue posible realizar el c&aacute;lculo de pagos.';
+			mensaje = response.mensaje;
 
+		} else if (response && response.descripcion) {
 
-		if (response &&
-			response.mensaje) {
-
-
-			mensaje =
-				response.mensaje;
-
-		} else if (response &&
-			response.descripcion) {
-
-
-			mensaje =
-				response.descripcion;
+			mensaje = response.descripcion;
 
 		}
 
-
-		$('#errorCalculoPagos')
-			.html(
-				mensaje
-			)
-			.show();
+		$('#errorCalculoPagos').html(mensaje).show();
 
 	}
-
-
 </script>
 
 
@@ -1111,29 +1149,23 @@ table.table {
 			<div class="alert alert-success">
 
 
-				Tu solicitud ha sido creada exitosamente: <strong>
-
-					${solicitud.numSolicitud} </strong>
+				Tu solicitud ha sido creada exitosamente. <strong> </strong>
 
 
 			</div>
 
 
-			<input type="hidden" id="idSolicitud"
-				value="${solicitud.idSolicitud}" />
-
 
 			<input type="hidden" id="idCalculoRetroactividad"
-				value="${solicitud.idCalculo}" />
-
-			<input type="hidden" id="nssRetroactividad"
-				value="${solicitante.nss}" />
-
-			<input type="hidden" id="municipioImssRetroactividad"
-				value="${municipioImss}" />
-
-			<input type="hidden" id="salarioElegidoRetroactividad"
-				value="${sbc}" />
+				value="${solicitud.idCalculo}" /> <input type="hidden"
+				id="nssRetroactividad" value="${solicitante.nss}" /> <input
+				type="hidden" id="entidadInegiRetroactividad"
+				value="${entidadInegi}" /> <input type="hidden"
+				id="municipioInegiRetroactividad" value="${municipioInegi}" /> <input
+				type="hidden" id="origenCalculoRetroactividad"
+				value="${solicitud.origenCalculo}" /> <input type="hidden"
+				id="usuarioRetroactividad" value="${solicitud.usuario}" /> <input
+				type="hidden" id="salarioElegidoRetroactividad" value="${sbc}" />
 
 
 			<div id="datosSolicitante" class="m-b-lg">
@@ -1414,13 +1446,7 @@ table.table {
 						<div class="col-sm-3">
 
 
-							<p class="form-control-static">
-
-
-								<fmt:formatDate value="${fechaBaja}" pattern="dd/MM/yyyy" />
-
-
-							</p>
+							<p id="fechaBajaRetroactividad" class="form-control-static"></p>
 
 
 						</div>
@@ -1433,13 +1459,7 @@ table.table {
 						<div class="col-sm-3">
 
 
-							<p class="form-control-static">
-
-
-								<fmt:formatNumber value="${ultSdi}" type="currency" />
-
-
-							</p>
+							<p class="form-control-static"></p>
 
 
 						</div>
@@ -1491,9 +1511,6 @@ table.table {
 
 
 								<th>T&eacute;rmino del periodo</th>
-
-
-								<th>Salario base</th>
 
 
 								<th>Pago</th>
@@ -1662,8 +1679,8 @@ table.table {
 
 				Cancelar</button>
 
-
-			<button id="siguientePaso" class="btn btn-primary"
+			<button type="button" id="finalizarRetroactividad"
+				class="btn btn-primary" disabled="disabled"
 				onclick="uid_call(
 					'imss.gestion.seguro.voluntario.mod40.confirmarDatos.btn_finalizar',
 					'clickout'
@@ -1700,9 +1717,7 @@ table.table {
 
 			<span class="ui-icon ui-icon-alert"
 				style="float: left; margin: 0 7px 20px 0;"> </span> ¿Desea cancelar
-			la solicitud pendiente con folio: <strong>
-
-				${solicitud.numSolicitud} </strong> ?
+			la solicitud pendiente con folio: <strong> </strong> ?
 
 
 		</p>
@@ -1733,4 +1748,10 @@ table.table {
 
 <script language="JavaScript1.2"
 	src="${staticResourcesPath}/js/comscore/Form.js">
+	
+	
+	
+
+
+
 </script>

@@ -1,8 +1,33 @@
+<%@ include file="../../../general/taglibs.jsp"%>
+<c:set var="contextPath" value="<%=request.getContextPath()%>" />
+
 <script type="text/javascript">
-    var contextPath = "${pageContext.request.contextPath}";
+   $(function(){
+	  var email = parent.$('#correo').val();
+	  $('#correoSolicitante').val(email);
+	  
+	  var nombre = parent.$('#nombre').val();
+	  $('#nombreSolicitante').val(nombre);
+   });
+</script>
+<script type="text/javascript">
+    var contextPath = "${contextPath}";
+    
+    var email = parent.$('#correo').val();
+    var nombre = parent.$('#nombre').val();
+    
+    
     
     document.addEventListener("DOMContentLoaded", function() {
         var boton = document.getElementById("btnContinuar");
+        var botonCancelar = document.getElementById("btnCancelar");
+    
+    if(botonCancelar){
+    	botonCancelar.addEventListener("click", function(event) {
+            event.preventDefault();
+            uid_call('imss.gestion.seguro.voluntario.mod40.confirmarDatos.btn_cancelar','clickout');                
+    	});
+    }
         
         if (boton) {
             
@@ -15,13 +40,15 @@
 
                 if (radioSeleccionado) {
                     var valorSeleccionado = radioSeleccionado.value;
-                    urlDestino = contextPath + "/retroactividad/periodos/"+valorSeleccionado;                    
+                    urlDestino = contextPath + "/retroactividad/periodos/";                    
                     
                 } else {
                     console.log("No hay ning�n radio button seleccionado.");
                 }
                 
-                $.post(urlDestino,1, function(respuestaHtml) {
+                var datosEnviar = {valorSeleccionado: valorSeleccionado};
+                
+                $.post(urlDestino,datosEnviar, function(respuestaHtml) {
                 	var iframe = window.frameElement;
             	    if (iframe) {
             	        var doc = iframe.contentDocument || iframe.contentWindow.document;
@@ -40,8 +67,6 @@
     }); 
 </script>
 
-
-<script src="<spring:url value='/static/resources/js/wizard/persona/ivro/detalle/detalle-seguro.js'/>"></script>
 
 <script type = "text/javascript">
 
@@ -124,7 +149,8 @@
         </div>
 
         <div class="bloque modal-footer">
-             <button type="button" class="btn btn-default" data-dismiss="modal">
+             <button type="button" class="btn btn-default" id="btnCancelar"
+             onclick="uid_call('imss.gestion.seguro.voluntario.mod40.alta.btn_cancelarSolicitud','clickout');">
                  Cancelar
              </button>
              <button type="button" 

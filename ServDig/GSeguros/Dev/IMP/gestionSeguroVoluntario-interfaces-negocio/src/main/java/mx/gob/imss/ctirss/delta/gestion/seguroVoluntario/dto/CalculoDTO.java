@@ -1,11 +1,13 @@
 package mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class CalculoDTO {
+public class CalculoDTO implements Serializable {
 
-    private String idCalculo;
+    private static final long serialVersionUID = 1L;
+	private String idCalculo;
     private String idCotizacion;
     private String idTramite;
     private String nss;

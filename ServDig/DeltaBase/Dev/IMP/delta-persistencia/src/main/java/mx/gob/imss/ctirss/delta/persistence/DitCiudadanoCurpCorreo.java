@@ -17,7 +17,15 @@ public class DitCiudadanoCurpCorreo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(
+			name = "DIT_CIUDADANO_CURP_CORREO_GENERATOR",
+			sequenceName = "SEQ_DITCIUDADANOCURPCORREO",
+			allocationSize = 1
+	)
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "DIT_CIUDADANO_CURP_CORREO_GENERATOR"
+	)
 	@Column(name="CVE_ID_CIUDADANO_CURP_CORREO")
 	private long cveIdCiudadanoCurpCorreo;
 

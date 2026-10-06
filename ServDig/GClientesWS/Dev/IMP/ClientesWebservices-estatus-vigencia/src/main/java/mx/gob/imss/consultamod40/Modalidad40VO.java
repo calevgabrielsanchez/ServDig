@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="tipoUltimoMov" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="fecUltimoMov" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="estadoVigencia" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="listModVigentes" type="{http://consultaMod40.imss.gob.mx/}modalidad" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="listModVigentes" type="{http://consultaMod40.imss.gob.mx/}modalidadVigente" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="indPension" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="tipoPension" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="indTrabajadorIMSS" type="{http://www.w3.org/2001/XMLSchema}int"/>
@@ -36,6 +36,11 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="tipoMovObligatorio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="fecMovObligatorio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="salarioObligatorio" type="{http://www.w3.org/2001/XMLSchema}float" minOccurs="0"/>
+ *         &lt;element name="regPatUltimoMod40" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="modUltimoMod40" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="tipoMovMod40" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="fecMovMod40" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="salarioMod40" type="{http://www.w3.org/2001/XMLSchema}float" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -60,7 +65,12 @@ import javax.xml.bind.annotation.XmlType;
     "modUltimoObligatorio",
     "tipoMovObligatorio",
     "fecMovObligatorio",
-    "salarioObligatorio"
+    "salarioObligatorio",
+    "regPatUltimoMod40",
+    "modUltimoMod40",
+    "tipoMovMod40",
+    "fecMovMod40",
+    "salarioMod40"
 })
 public class Modalidad40VO {
 
@@ -70,22 +80,32 @@ public class Modalidad40VO {
     protected String fecUltimoMov;
     protected int estadoVigencia;
     @XmlElement(nillable = true)
-    protected List<Modalidad> listModVigentes;
+    protected List<ModalidadVigente> listModVigentes;
     protected int indPension;
-    @XmlElementRef(name = "tipoPension", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "tipoPension", type = JAXBElement.class)
     protected JAXBElement<String> tipoPension;
     protected int indTrabajadorIMSS;
     protected Integer semanasCotizadas;
-    @XmlElementRef(name = "regPatUltimoObligatorio", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "regPatUltimoObligatorio", type = JAXBElement.class)
     protected JAXBElement<String> regPatUltimoObligatorio;
-    @XmlElementRef(name = "modUltimoObligatorio", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "modUltimoObligatorio", type = JAXBElement.class)
     protected JAXBElement<String> modUltimoObligatorio;
-    @XmlElementRef(name = "tipoMovObligatorio", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "tipoMovObligatorio", type = JAXBElement.class)
     protected JAXBElement<String> tipoMovObligatorio;
-    @XmlElementRef(name = "fecMovObligatorio", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "fecMovObligatorio", type = JAXBElement.class)
     protected JAXBElement<String> fecMovObligatorio;
-    @XmlElementRef(name = "salarioObligatorio", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "salarioObligatorio", type = JAXBElement.class)
     protected JAXBElement<Float> salarioObligatorio;
+    @XmlElementRef(name = "regPatUltimoMod40", type = JAXBElement.class)
+    protected JAXBElement<String> regPatUltimoMod40;
+    @XmlElementRef(name = "modUltimoMod40", type = JAXBElement.class)
+    protected JAXBElement<String> modUltimoMod40;
+    @XmlElementRef(name = "tipoMovMod40", type = JAXBElement.class)
+    protected JAXBElement<String> tipoMovMod40;
+    @XmlElementRef(name = "fecMovMod40", type = JAXBElement.class)
+    protected JAXBElement<String> fecMovMod40;
+    @XmlElementRef(name = "salarioMod40", type = JAXBElement.class)
+    protected JAXBElement<Float> salarioMod40;
 
     /**
      * Gets the value of the regPatUltimoMov property.
@@ -217,13 +237,13 @@ public class Modalidad40VO {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Modalidad }
+     * {@link ModalidadVigente }
      * 
      * 
      */
-    public List<Modalidad> getListModVigentes() {
+    public List<ModalidadVigente> getListModVigentes() {
         if (listModVigentes == null) {
-            listModVigentes = new ArrayList<Modalidad>();
+            listModVigentes = new ArrayList<ModalidadVigente>();
         }
         return this.listModVigentes;
     }
@@ -265,7 +285,7 @@ public class Modalidad40VO {
      *     
      */
     public void setTipoPension(JAXBElement<String> value) {
-        this.tipoPension = value;
+        this.tipoPension = ((JAXBElement<String> ) value);
     }
 
     /**
@@ -329,7 +349,7 @@ public class Modalidad40VO {
      *     
      */
     public void setRegPatUltimoObligatorio(JAXBElement<String> value) {
-        this.regPatUltimoObligatorio = value;
+        this.regPatUltimoObligatorio = ((JAXBElement<String> ) value);
     }
 
     /**
@@ -353,7 +373,7 @@ public class Modalidad40VO {
      *     
      */
     public void setModUltimoObligatorio(JAXBElement<String> value) {
-        this.modUltimoObligatorio = value;
+        this.modUltimoObligatorio = ((JAXBElement<String> ) value);
     }
 
     /**
@@ -377,7 +397,7 @@ public class Modalidad40VO {
      *     
      */
     public void setTipoMovObligatorio(JAXBElement<String> value) {
-        this.tipoMovObligatorio = value;
+        this.tipoMovObligatorio = ((JAXBElement<String> ) value);
     }
 
     /**
@@ -401,7 +421,7 @@ public class Modalidad40VO {
      *     
      */
     public void setFecMovObligatorio(JAXBElement<String> value) {
-        this.fecMovObligatorio = value;
+        this.fecMovObligatorio = ((JAXBElement<String> ) value);
     }
 
     /**
@@ -425,7 +445,140 @@ public class Modalidad40VO {
      *     
      */
     public void setSalarioObligatorio(JAXBElement<Float> value) {
-        this.salarioObligatorio = value;
+        this.salarioObligatorio = ((JAXBElement<Float> ) value);
     }
+
+    /**
+     * Gets the value of the regPatUltimoMod40 property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getRegPatUltimoMod40() {
+        return regPatUltimoMod40;
+    }
+
+    /**
+     * Sets the value of the regPatUltimoMod40 property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setRegPatUltimoMod40(JAXBElement<String> value) {
+        this.regPatUltimoMod40 = ((JAXBElement<String> ) value);
+    }
+
+    /**
+     * Gets the value of the modUltimoMod40 property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getModUltimoMod40() {
+        return modUltimoMod40;
+    }
+
+    /**
+     * Sets the value of the modUltimoMod40 property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setModUltimoMod40(JAXBElement<String> value) {
+        this.modUltimoMod40 = ((JAXBElement<String> ) value);
+    }
+
+    /**
+     * Gets the value of the tipoMovMod40 property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getTipoMovMod40() {
+        return tipoMovMod40;
+    }
+
+    /**
+     * Sets the value of the tipoMovMod40 property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setTipoMovMod40(JAXBElement<String> value) {
+        this.tipoMovMod40 = ((JAXBElement<String> ) value);
+    }
+
+    /**
+     * Gets the value of the fecMovMod40 property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getFecMovMod40() {
+        return fecMovMod40;
+    }
+
+    /**
+     * Sets the value of the fecMovMod40 property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setFecMovMod40(JAXBElement<String> value) {
+        this.fecMovMod40 = ((JAXBElement<String> ) value);
+    }
+
+    /**
+     * Gets the value of the salarioMod40 property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link Float }{@code >}
+     *     
+     */
+    public JAXBElement<Float> getSalarioMod40() {
+        return salarioMod40;
+    }
+
+    /**
+     * Sets the value of the salarioMod40 property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link Float }{@code >}
+     *     
+     */
+    public void setSalarioMod40(JAXBElement<Float> value) {
+        this.salarioMod40 = ((JAXBElement<Float> ) value);
+    }
+
+	@Override
+	public String toString() {
+		return "Modalidad40VO [regPatUltimoMov=" + regPatUltimoMov + ", modUltimoMov=" + modUltimoMov
+				+ ", tipoUltimoMov=" + tipoUltimoMov + ", fecUltimoMov=" + fecUltimoMov + ", estadoVigencia="
+				+ estadoVigencia + ", listModVigentes=" + listModVigentes + ", indPension=" + indPension
+				+ ", tipoPension=" + tipoPension + ", indTrabajadorIMSS=" + indTrabajadorIMSS + ", semanasCotizadas="
+				+ semanasCotizadas + ", regPatUltimoObligatorio=" + regPatUltimoObligatorio + ", modUltimoObligatorio="
+				+ modUltimoObligatorio + ", tipoMovObligatorio=" + tipoMovObligatorio + ", fecMovObligatorio="
+				+ fecMovObligatorio + ", salarioObligatorio=" + salarioObligatorio + ", regPatUltimoMod40="
+				+ regPatUltimoMod40 + ", modUltimoMod40=" + modUltimoMod40 + ", tipoMovMod40=" + tipoMovMod40
+				+ ", fecMovMod40=" + fecMovMod40 + ", salarioMod40=" + salarioMod40 + "]";
+	}
 
 }

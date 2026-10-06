@@ -56,9 +56,9 @@ public class Resultado {
     protected Integer indPension;
     @XmlElement(required = true, type = Integer.class, nillable = true)
     protected Integer indTrabajadorIMSS;
-    @XmlElementRef(name = "fecUltimaBajaObligatorio", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "fecUltimaBajaObligatorio", type = JAXBElement.class)
     protected JAXBElement<String> fecUltimaBajaObligatorio;
-    @XmlElementRef(name = "fecUltimaBajaMod33", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "fecUltimaBajaMod33", type = JAXBElement.class)
     protected JAXBElement<String> fecUltimaBajaMod33;
     @XmlElement(required = true, type = Integer.class, nillable = true)
     protected Integer semanasCotizadas;

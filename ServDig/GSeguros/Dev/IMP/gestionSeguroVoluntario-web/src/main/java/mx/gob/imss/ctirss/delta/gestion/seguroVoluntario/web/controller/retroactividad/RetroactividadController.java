@@ -1,14 +1,16 @@
 package mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.web.controller.retroactividad;
 
+import java.lang.reflect.UndeclaredThrowableException;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
+ 
 import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
+ 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,20 +30,24 @@ import mx.gob.imss.ctirss.delta.framework.base.controller.AbstractController;
 import mx.gob.imss.ctirss.delta.gestion.beneficio.service.interfaces.BeneficioRissServiceBusinessRemote;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.CalculoPagosRequest;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.CalculoPagosResponse;
+import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.GeneracionMultilineaRequest;
+import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.GeneracionMultilineaResponse;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.ModalidadResponseException;
+import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.UltimoTrabajoModalidad40DTO;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.ValidaRetroactividadDTO;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.ValidaRetroactividadRequest;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.dto.ValidaRetroactividadResponse;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.retroactividad.vo.FilaAnioVigencia;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.retroactividad.vo.MesEstadoRetroactividad;
+import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.exception.IvroException;
 import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.RetroactividadServiceRemote;
-import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.web.controller.BajaExpresaController;
+import mx.gob.imss.ctirss.delta.gestion.seguroVoluntario.service.interfaces.SeguroIvroServiceRemote;
 import mx.gob.imss.digital.modelo.cobranza.DatosCalculoCuota;
 import mx.gob.imss.ws.pagos.ivro.implementacion.ClienteWebserviceValidaPagosVentanilla;
 
 @Controller
 @RequestMapping(value = "/retroactividad")
-@SessionAttributes("dtoResponse")
+@SessionAttributes(value={"dtoResponse","idPersonaSolicitante", "tramiteRetroactividadEnCurso"})
 public class RetroactividadController extends AbstractController {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(RetroactividadController.class);
@@ -50,12 +56,15 @@ public class RetroactividadController extends AbstractController {
 	private static final String WIZARD_ALTA = "wizardContinuacionVoluntariaAltaInit";
 	private static final String PERIODOS_RETRO = "mostrarPeriodosRetro";
 	private static final String USUARIO_MODALIDAD = "MODALIDAD40";
-
+	
 	@Autowired
     @Qualifier("retroActividadServiceBusiness")
 	RetroactividadServiceRemote retroactividadServiceRemote;
 	
-	
+	@Autowired
+    @Qualifier("seguroIvroServiceBusiness")
+    private SeguroIvroServiceRemote seguroIvroServiceRemote;
+
 	@RequestMapping(value = "/permisoRetroactividad", method = RequestMethod.GET)
 	public String permisoRetroactividad(@RequestParam("nss") String nss) {
 		System.out.println("permiso Retroactividad");
@@ -79,15 +88,29 @@ public class RetroactividadController extends AbstractController {
 		}		
 	}
 	
-	@RequestMapping(value = "/periodos/{opcion}", method = RequestMethod.POST)
+	@RequestMapping(value = "/periodos", method = RequestMethod.POST)
 	public String mostrarPeriodosPost(Model model, HttpServletRequest request, HttpSession session,
-			@ModelAttribute("dtoResponse") ValidaRetroactividadDTO  dtoResponse) {
+			@ModelAttribute("dtoResponse") ValidaRetroactividadDTO  dtoResponse,
+			@ModelAttribute("idPersonaSolicitante") Long  idPersona,
+			@RequestParam("valorSeleccionado") String valorSeleccionado) {
+		
 		System.out.println("Mostrar periodos");
 		System.out.println(dtoResponse);
 		System.out.println("Imprimiendo objeto dto");
 		System.out.println(dtoResponse.getIdCalculo());
+		LOGGER.info("Imprimiendo idPersona "+idPersona);
+		LOGGER.info("Opcion: "+valorSeleccionado);
 		
-		//Obtener años	
+		LOGGER.info("*****revisando direccionamiento a pantalla wizard");
+		
+		session.setAttribute("tramiteRetroactividadEnCurso",String.valueOf(valorSeleccionado));
+		
+		if(Integer.valueOf(valorSeleccionado) == 2) {
+			LOGGER.info("Mostrar wizard inicial");
+			return WIZARD_ALTA;
+		}
+		
+		//Obtener aÃ±os	
 		Calendar calInicio = Calendar.getInstance();
 		calInicio.setTime(dtoResponse.getFechaInicio());
 		int anioInicio = calInicio.get(Calendar.YEAR);
@@ -99,15 +122,11 @@ public class RetroactividadController extends AbstractController {
 		int mesFin = calFin.get(Calendar.MONTH);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 	    
-	    System.out.println(anioInicio);
-	    System.out.println(anioFin);
-	    
 	    String[] nombresMeses = {"Ene", "Feb", "Mar", "Abr", "May", "Jun", 
                 "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"};
 	    
 	    List<Integer> listaAnios = new ArrayList<Integer>();
 	    for (int anio = anioInicio; anio <= anioFin; anio++) {
-	    	System.out.println(anio);
 	        listaAnios.add(anio);
 	    }	
 		
@@ -138,11 +157,12 @@ public class RetroactividadController extends AbstractController {
         model.addAttribute("filasCuadricula", filasCuadricula);
         model.addAttribute("fechaInicio", sdf.format(dtoResponse.getFechaInicio()));
         model.addAttribute("fechaFin", sdf.format(dtoResponse.getFechaFin()));
+        model.addAttribute("dtoResponse", dtoResponse);
         
+        model.addAttribute("idPersona",idPersona);	
 		
+		return PERIODOS_RETRO;
 		
-		
-		return PERIODOS_RETRO;		
 	}	
 	
 	@RequestMapping(value = "/confirmarRetroactividad/{nssCifrado}", method = RequestMethod.GET)
@@ -151,9 +171,8 @@ public class RetroactividadController extends AbstractController {
 	System.out.println("Mostrar periodos");
 		
 		return "confirmarDatosRetroactividad";
-		
-	}	
-
+	}
+	
 	/*
      * ==========================================================
      * CALCULO DE PAGOS
@@ -167,19 +186,31 @@ public class RetroactividadController extends AbstractController {
     public CalculoPagosResponse calculoPagos(
             @RequestBody CalculoPagosRequest request)
             throws ModalidadResponseException {
-
     	
         LOGGER.info(
                 "Iniciando consumo Servicio 2 - Calculo Pagos"
         );
+        
+        CalculoPagosResponse response = new CalculoPagosResponse();
        
-		CalculoPagosResponse response = retroactividadServiceRemote.calculoPagosRetroactividad(request);
+        try {
+        		response = retroactividadServiceRemote.calculoPagosRetroactividad(request);
+        		//LOGGER.info(response.toString());
+        		
+        		if(response!=null && !response.getCodigo().equals("200")) {
+        			LOGGER.info(
+        	                "Ejecucion correcta de Servicio 2 - Calculo Pagos"
+        	        );
+        		}
+        }catch(UndeclaredThrowableException e) {
+            Throwable causaReal = e.getCause();
+            causaReal.printStackTrace();
+        }catch(Exception e) {
+        	LOGGER.error(e.toString());
+        }
 		
-		if(response!=null && !response.getCodigo().equals("200")) {
-			LOGGER.info(
-	                "Ejecucion correcta de Servicio 2 - Calculo Pagos"
-	        );
-		}
+		
+
 		
         
         LOGGER.info(
@@ -189,5 +220,116 @@ public class RetroactividadController extends AbstractController {
         return response;
     }
 	
+	@RequestMapping(value = "/confirmarRetroactividad", method = RequestMethod.POST)
+	public String confirmarDatosRetroactPost(Model model, HttpSession session,
+			@ModelAttribute("dtoResponse") ValidaRetroactividadDTO  dtoResponse,
+			@RequestParam("salario")String  salario) throws IvroException {
+		
+		System.out.println("Mostrar pantalla para imprimir datos calculo");
+		LOGGER.info("salario: "+salario);
+		LOGGER.info("dtoResponse"+dtoResponse.getAplicaRetroactividad());
+		LOGGER.info("nss: "+dtoResponse.getNss());
+		
+		LOGGER.info("pruebas inegi");
+		
+		String cveEntInegiParam = (String) session.getAttribute("cveEntInegiParam");
+		String cveMunInegiParam = (String) session.getAttribute("cveMunInegiParam");
+		
+		if( ("").equals(cveEntInegiParam) || ("").equals(cveMunInegiParam)
+				|| (cveEntInegiParam == null || cveMunInegiParam == null)) {
+			LOGGER.warn("Sin informacion en parametros geograficos");
+		}		
+		
+		CalculoPagosRequest solicitud = new CalculoPagosRequest();		
+		solicitud.setIdCalculo(dtoResponse.getIdCalculo());
+		solicitud.setNss(dtoResponse.getNss());
+		solicitud.setEntidadInegi(cveEntInegiParam);
+		solicitud.setMunicipioInegi(cveMunInegiParam);		
+		solicitud.setSalarioElegido(new BigDecimal(salario));
+		solicitud.setOrigenCalculo("CONTRATACION");
+		solicitud.setUsuario("MODALIDAD40");
+		
+		LOGGER.info("Mostrando datos de solicitud");
+		LOGGER.info(solicitud.toString());
+		
+		model.addAttribute("solicitud",solicitud);
+		model.addAttribute("sbc", salario);
+		model.addAttribute("municipioInegi", cveMunInegiParam);
+		model.addAttribute("entidadInegi", cveEntInegiParam);
+		
+		return "confirmarDatosRetroactividad";
+		
+	}
 	
+	/*
+     * ==========================================================
+     * MULTILINEA
+     * ==========================================================
+     */
+    @RequestMapping(
+            value = "/generarMultilinea",
+            method = RequestMethod.POST
+    )
+    @ResponseBody
+    public GeneracionMultilineaResponse generarMultilineaRetroactividad(
+            @RequestBody GeneracionMultilineaRequest request) {
+
+        GeneracionMultilineaResponse response =
+                new GeneracionMultilineaResponse();
+
+        try {
+
+            if (request == null
+                    || request.getIdCalculo() == null
+                    || request.getIdCalculo().trim().isEmpty()) {
+
+                response.setCodigo("400");
+                response.setDescripcion(
+                        "No se recibiï¿½ el idCalculo."
+                );
+
+                return response;
+            }
+
+            LOGGER.info(
+                    "Generando multilinea para idCalculo: "
+                    + request.getIdCalculo()
+            );
+
+            response =
+                    retroactividadServiceRemote
+                        .generaMultilineaRetroactividad(
+                                request
+                        );
+
+            if (response == null) {
+
+                response =
+                        new GeneracionMultilineaResponse();
+
+                response.setCodigo("400");
+                response.setDescripcion(
+                        "No se obtuvo respuesta del servicio."
+                );
+            }
+
+        } catch (Exception e) {
+
+            LOGGER.error(
+                    "Ocurriï¿½ un error al generar la multilï¿½nea.",
+                    e
+            );
+
+            response =
+                    new GeneracionMultilineaResponse();
+
+            response.setCodigo("400");
+            response.setDescripcion(
+                    "Ocurrio un error al generar la multilinea."
+            );
+        }
+
+        return response;
+    }	
+
 }

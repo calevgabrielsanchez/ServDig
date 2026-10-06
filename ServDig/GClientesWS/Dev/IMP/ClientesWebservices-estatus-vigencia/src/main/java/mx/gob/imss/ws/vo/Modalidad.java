@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Modalidad {
 
-    @XmlElementRef(name = "modalidad", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "modalidad", type = JAXBElement.class)
     protected JAXBElement<String> modalidad;
 
     /**

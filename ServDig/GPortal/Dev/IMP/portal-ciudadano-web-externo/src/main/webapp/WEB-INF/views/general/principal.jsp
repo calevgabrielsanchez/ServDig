@@ -32,9 +32,9 @@
 <script type="text/javascript"
 	src="/gestionSeguroVoluntario-web-ciudadano/static/resources/js/wizard/seguroDomestico/ventanilla/wizardControl.js"></script>
 <script type="text/javascript"
-	 src="https://serviciosdigitales-stage.imss.gob.mx/portal-ciudadano-web-externo/static/resources/js/delta/home/principal.js"></script>
+	 src="${contextpath}/resources/js/delta/home/principal.js"></script>
 <script type="text/javascript"
-	 src="https://serviciosdigitales-stage.imss.gob.mx/portal-ciudadano-web-externo/static/resources/js/delta/common/cartaTerminosCtrl.js"></script>
+	 src="${contextpath}/resources/js/delta/common/cartaTerminosCtrl.js"></script>
 <script type="text/javascript"
 	src="/gestionIndividuo-consulta-web-ciudadano/static/resources/js/wizard/common/actualizaRfc/actualizaRfcCtrl.js"></script>
 <script type="text/javascript"

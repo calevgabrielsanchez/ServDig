@@ -53,19 +53,19 @@ public class UltimoTrabajoModalidad40DTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "UltimoTrabajoModalidad40DTO [cveCurp=" + cveCurp
-				+ ", cveModalidad=" + cveModalidad
-				+ ", cveNss=" + cveNss
-				+ ", cveRfcAsegurado=" + cveRfcAsegurado
-				+ ", nomAsegurado=" + nomAsegurado
-				+ ", refRegistroPatronal=" + refRegistroPatronal
-				+ ", tipoMovObligatorio=" + tipoMovObligatorio
-				+ ", fechaUltimoTrabajo=" + fechaUltimoTrabajo
-				+ ", salarioUltimoTrabajo=" + salarioUltimoTrabajo
-				+ ", semanasCotizadas=" + semanasCotizadas
-				+ ", indPension=" + indPension
-				+ ", indTrabajadorImss=" + indTrabajadorImss
-				+ ", cveMunicipioImss=" + cveMunicipioImss + "]";
+	return "UltimoTrabajoModalidad40DTO [cveCurp=" + cveCurp
+	+ ", cveModalidad=" + cveModalidad
+	+ ", cveNss=" + cveNss
+	+ ", cveRfcAsegurado=" + cveRfcAsegurado
+	+ ", nomAsegurado=" + nomAsegurado
+	+ ", refRegistroPatronal=" + refRegistroPatronal
+	+ ", tipoMovObligatorio=" + tipoMovObligatorio
+	+ ", fechaUltimoTrabajo=" + fechaUltimoTrabajo
+	+ ", salarioUltimoTrabajo=" + salarioUltimoTrabajo
+	+ ", semanasCotizadas=" + semanasCotizadas
+	+ ", indPension=" + indPension
+	+ ", indTrabajadorImss=" + indTrabajadorImss
+	+ ", cveMunicipioImss=" + cveMunicipioImss
+	+ "]";
 	}
-    
 }

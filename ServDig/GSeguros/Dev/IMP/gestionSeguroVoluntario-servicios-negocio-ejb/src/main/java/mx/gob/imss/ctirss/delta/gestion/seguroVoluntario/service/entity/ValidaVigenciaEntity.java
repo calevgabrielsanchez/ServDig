@@ -810,10 +810,10 @@ public class ValidaVigenciaEntity implements ValidaVigenciaLocal {
 			respuesta.setMensajeValidacion(MSJ_MIN_SEMANAS_COTIZADAS);
 		}
 
-		if (respuesta.getValido() && !bajaMenorFechaSolicitud(resultado.getFecMovObligatorio(), modalidad)) {
-			respuesta.setValido(false);
-			respuesta.setMensajeValidacion(MSJ_NO_BAJA_40);
-		}
+//		if (respuesta.getValido() && !bajaMenorFechaSolicitud(resultado.getFecMovObligatorio(), modalidad)) {
+//			respuesta.setValido(false);
+//			respuesta.setMensajeValidacion(MSJ_NO_BAJA_40);
+//		}
 
 		if(respuesta.getValido() && resultado.getIndPension() != 0) {
 			respuesta.setValido(false);

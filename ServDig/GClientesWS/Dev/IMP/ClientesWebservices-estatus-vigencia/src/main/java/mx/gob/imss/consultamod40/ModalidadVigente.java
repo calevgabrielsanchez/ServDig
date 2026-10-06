@@ -9,16 +9,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for modalidad complex type.
+ * <p>Java class for modalidadVigente complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="modalidad">
+ * &lt;complexType name="modalidadVigente">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="modalidad" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="registroPatronal" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,13 +29,16 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "modalidad", propOrder = {
-    "modalidad"
+@XmlType(name = "modalidadVigente", propOrder = {
+    "modalidad",
+    "registroPatronal"
 })
-public class Modalidad {
+public class ModalidadVigente {
 
     @XmlElementRef(name = "modalidad", type = JAXBElement.class)
     protected JAXBElement<String> modalidad;
+    @XmlElementRef(name = "registroPatronal", type = JAXBElement.class)
+    protected JAXBElement<String> registroPatronal;
 
     /**
      * Gets the value of the modalidad property.
@@ -57,7 +61,31 @@ public class Modalidad {
      *     
      */
     public void setModalidad(JAXBElement<String> value) {
-        this.modalidad = value;
+        this.modalidad = ((JAXBElement<String> ) value);
+    }
+
+    /**
+     * Gets the value of the registroPatronal property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getRegistroPatronal() {
+        return registroPatronal;
+    }
+
+    /**
+     * Sets the value of the registroPatronal property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setRegistroPatronal(JAXBElement<String> value) {
+        this.registroPatronal = ((JAXBElement<String> ) value);
     }
 
 }

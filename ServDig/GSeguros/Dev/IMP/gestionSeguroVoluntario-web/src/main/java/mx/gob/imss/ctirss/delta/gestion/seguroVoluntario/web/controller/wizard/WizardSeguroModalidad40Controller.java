@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import mx.gob.imss.consultamod40.Modalidad40VO;
 import mx.gob.imss.consultamod40.RespuestaModalidad40;
 import mx.gob.imss.consultamod40.WSConsultaMod40;
@@ -96,7 +95,7 @@ import mx.gob.imss.ctirss.delta.gestion.motorCalculo.service.interfaces.CompraSe
 import mx.gob.imss.ctirss.delta.gestion.motorCalculo.service.exception.SUAException;
 
 @Controller
-@SessionAttributes(value={"tramiteSeguro","tramites","idPersonaSolicitante","solicitante","datosCalculo","domicilioSeguro", "domicilioOtraUbicacion","datosCotizacion","solicitud","correoCVRO", "dtoResponse"})
+@SessionAttributes(value={"tramiteSeguro","tramites","idPersonaSolicitante","solicitante","datosCalculo","domicilioSeguro", "domicilioOtraUbicacion","datosCotizacion","solicitud","correoCVRO", "dtoResponse", "tramiteRetroactividadEnCurso"})
 @RequestMapping(value="/wizard/continuacionVoluntaria")
 public class WizardSeguroModalidad40Controller extends WebServiceCallerController {
 
@@ -133,7 +132,11 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
  	
  	private static final String USUARIO_MODALIDAD = "MODALIDAD40";
  	private static final String DERECHO_RETROACTIVIDAD = "derechoRetroactividad";
- 	private static final String MSG_RETROACTIVIDAD_EN_PROCESO = "Su tr\u00F3mite se encuentra en proceso. Agradecemos su paciencia y le invitamos a consultar nuevamente m\u00E1s tarde.";
+ 	private static final String MSG_RETROACTIVIDAD_EN_PROCESO = "Su tr\u00E1mite se encuentra en proceso. Agradecemos su paciencia y le invitamos a consultar nuevamente m\u00E1s tarde.";
+ 	private static final String FORMULARIO = "formAction";
+ 	
+ 	private static final String CVE_ENT_INEGI = "cveEntInegi";
+ 	private static final String CVE_MUN_INEGI = "cveMunInegi";
  	 
 
 	@Autowired
@@ -537,6 +540,41 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 			return result;
 		}
 
+		mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica titutarSinSeguro = null;
+		
+		try {
+			titutarSinSeguro = personaBusiness.getPersonaFisica(idPersona);
+			log.info("Se realiza la consulta de persona para recuperar en NSS: "+titutarSinSeguro.getNss());
+			
+			//Se evalua si tiene una solicitud de finalizar tramite en curso
+			GeneracionMultilineaConsultaResponse generacionMultilinea = retroactividadServiceRemote.consultaMultilineaRetroactividad(titutarSinSeguro.getNss());
+			 
+			if (generacionMultilinea.getVrDto() != null && generacionMultilinea.getVrDto().getEstado()!=null) {
+				if (generacionMultilinea.getVrDto().getEstado().equals("EN_PROCESO")) {
+					log.warn("La multilinea esta en proceso");
+					result.put(ERROR, true);
+					result.put(MSG_ERROR, MSG_RETROACTIVIDAD_EN_PROCESO);
+					return result;
+				} else {
+					if (generacionMultilinea.getVrDto().getResultado() != null && generacionMultilinea.getVrDto().getMultilinea() != null) {
+						log.warn("Se genero la multilinea, se mostrara detalle");
+					}
+					log.info("Consulta multilinea: Se continua con el flujo");
+				}
+
+			}else {
+				log.info("No existe una solicitud de terminado previa. Se continua con el flujo");
+			}
+		}catch (Exception e) {
+			this.log.info("El idPersona es: "+idPersona+" -- Excepcion controlada: " + e.getLocalizedMessage()
+			+ ", no se pudo revisar servicio multilinea",e);
+			result.put(ERROR, true);
+			result.put(MSG_ERROR, ERROR_1);
+			return result;
+		}
+		
+
+		
 
 		String xmlValidacion = seguroCvroUtil.generarXMLValidacionCorreoElectronico(idPersona);
 		log.debug("********** XML PARA VALIDACION\n" + xmlValidacion);
@@ -623,24 +661,22 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 			
 			if(titular==null) {
 				log.info("Caso de ventanilla, no se tiene un seguro previo");
-				mx.gob.imss.ctirss.delta.model.gestion.individuo.Fisica titutarSinSeguro = personaBusiness.getPersonaFisica(idPersona);
-				titular =  seguroCvroUtil.convertirFisica(titutarSinSeguro);
+				titular =  SeguroCvroUtil.convertirFisica(titutarSinSeguro);
 				
 				log.info("titular:"+titular==null?"error, titular nulo":titular.getCurp());
 			}
 			log.info("Se consulta compra para cveAsignacionNSS: "+asignacionNss.getCveIdAsignacionNss());
+			//boolean compraDirecta = seguroCvroUtil.esCompraDirectaPlataformasDigitales(wSConsultaMod40.getConsultaMod40(String.valueOf(asignacionNss.getCveIdAsignacionNss())), seguro, patronesPD);
 			
 			List<PatronPlataformasDigitales> patronesPD = validaVigenciaBusinesss.consultaPatronesPlataformasDigitales();
 			
-			//boolean compraDirecta = seguroCvroUtil.esCompraDirectaPlataformasDigitales(wSConsultaMod40.getConsultaMod40(String.valueOf(asignacionNss.getCveIdAsignacionNss())), seguro, patronesPD);
 			RespuestaModalidad40 responseMod40 = wSConsultaMod40.getConsultaMod40(String.valueOf(asignacionNss.getCveIdAsignacionNss()));
 			
 			boolean compraDirecta = seguroCvroUtil.esCompraDirectaPlataformasDigitales(responseMod40, seguro, patronesPD);
 			
 			log.info("compraDirecta:    "+compraDirecta);
 			
-			//Serviocio 1 
-			Boolean aplicaRetro = true;
+			
 			
 			// Guarda el ultimo trabajo consultado en BDTUT_ULTIMO_TRABAJO. 
 			log.info("***************************************************************************************************************************************************************************************************************");
@@ -653,29 +689,11 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 			
 			//UltimoTrabajoModalidad40DTO bdtutUltimoTrabajo = seguroIvroServiceRemote
 			//		.getUltimoTrabajoPorNss(titular.getNss());
-			GeneracionMultilineaConsultaResponse generacionMultilinea = retroactividadServiceRemote.consultaMultilineaRetroactividad(titular.getNss());
- 
-			boolean muestraDetalle=false;
-			
-			if (generacionMultilinea.getVrDto() != null && generacionMultilinea.getVrDto().getIdSolicitud()!=null) {
-				if (generacionMultilinea.getVrDto().getEstado().equals("EN_PROCESO")) {
-					log.warn("La multilinea esta en proceso");
-					result.put(ERROR, true);
-					result.put(MSG_ERROR, MSG_RETROACTIVIDAD_EN_PROCESO);
-					return result;
-				} else {
-					if (generacionMultilinea.getVrDto().getResultado() != null && generacionMultilinea.getVrDto().getMultilinea() != null) {
-						log.warn("Se genero la multilinea, se mostrara detalle");
-						muestraDetalle= true;
-					}
-				}
- 
-			}
 			
 			
 				
 				
-				if (modalidad40 != null&&muestraDetalle==false) {
+				if (modalidad40 != null&& (seguro==null||compraDirecta) )  {
 					
 					log.info("compraDirecta:    "+compraDirecta);
 					
@@ -683,11 +701,7 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 					if (StringUtils.isBlank(nssConsulta) && titular != null) {
 						nssConsulta = titular.getNss();
 					}
-					if (StringUtils.isNotBlank(nssConsulta)
-							&& modalidad40.getModUltimoObligatorio() != null
-							&& StringUtils.isNotBlank(modalidad40.getModUltimoObligatorio().getValue())
-							&& modalidad40.getFecMovObligatorio() != null
-							&& modalidad40.getSalarioObligatorio() != null) {
+					if (StringUtils.isNotBlank(nssConsulta)) {
 						try {
 							
 							Integer modalidad = Integer.valueOf(modalidad40.getModUltimoMov());
@@ -701,21 +715,22 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 							ultimoTrabajo.setRefRegistroPatronal(null);
 							ultimoTrabajo.setTipoMovObligatorio(modalidad40.getTipoMovObligatorio() != null
 									? modalidad40.getTipoMovObligatorio().getValue() : null);
-							ultimoTrabajo.setFechaUltimoTrabajo(modalidad40.getFecMovObligatorio().getValue());
-							ultimoTrabajo.setSalarioUltimoTrabajo(modalidad40.getSalarioObligatorio().getValue());
+							ultimoTrabajo.setFechaUltimoTrabajo(modalidad40.getFecUltimoMov());
+							
+							
+							if(modalidad40.getModUltimoMov()!=null && !modalidad40.getModUltimoMov().equals("40")) {
+								ultimoTrabajo.setSalarioUltimoTrabajo(modalidad40.getSalarioObligatorio().getValue());
+							}else if(responseMod40.getModalidad40().getSalarioMod40().getValue() != null) {
+								ultimoTrabajo.setSalarioUltimoTrabajo(responseMod40.getModalidad40().getSalarioMod40().getValue());
+							}else {
+								ultimoTrabajo.setSalarioUltimoTrabajo(null);
+							}
+						
 							ultimoTrabajo.setSemanasCotizadas(modalidad40.getSemanasCotizadas());
 							ultimoTrabajo.setIndPension(modalidad40.getIndPension());
 							ultimoTrabajo.setIndTrabajadorImss(modalidad40.getIndTrabajadorIMSS());
 							seguroIvroServiceRemote.guardarHistorialUltimoSeguroModalidad40(ultimoTrabajo);
-							
-							//
-							seguroIvroServiceRemote.actualizarHistorialUltimoSeguroModalidad40(titular.getNss(), "09", "011");
-							
-							UltimoTrabajoModalidad40DTO ultimoTrabajoTemp = seguroIvroServiceRemote.getUltimoTrabajoPorNss(titular.getNss());
-							
-							log.info("ultimoTrabajoTemp: "+ultimoTrabajoTemp.toString());
-							
-							//session.setAttribute(KEY_NSS_HISTORIAL_MOD40, nssConsulta);
+
 						} catch (Exception e) {
 							log.error("No se pudo registrar la consulta del ultimo trabajo", e);
 						}
@@ -764,15 +779,21 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 					seguro = seguroIndividualServices.getDetalleSeguro(seguro
 							.getCveIdSeguroIvro());
 					log.debug("El idPersona" + idPersona + " con Seguro en baja: " + seguro.getCveIdSeguroIvro());
+					
 					if (seguroCvroUtil.isRenovacionATiempo(seguro)) {
 						result.put("tieneSeguro", Boolean.TRUE);
 						//result.put("idSeguro", seguro.getCveIdSeguroIvro());
 						result.put("idSeguro",CriptoUtilities.cifrar(String.valueOf(seguro.getCveIdSeguroIvro())));
 					} else {
-						String msgError = MSG_VALIDACION_EXPIRADO;
-						this.log.error(msgError);
-						result.put(ERROR, Boolean.TRUE);
-						result.put(MSG_ERROR, msgError);
+						
+						//validar con NORMATIVO
+						//String msgError = MSG_VALIDACION_EXPIRADO;
+						//this.log.error(msgError);
+						//result.put(ERROR, Boolean.TRUE);
+						//result.put(MSG_ERROR, msgError);
+						
+						result.put("tieneSeguro", Boolean.FALSE);
+						
 					}
 				} else {
 					this.log.debug("La persona [id=" + idPersona
@@ -1070,27 +1091,27 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 			solicitante.setIdPersona(idPersona);
 			solicitante.setDomicilioParticular(domicilio);
 
-			//String nssHistorial = (String) session.getAttribute(KEY_NSS_HISTORIAL_MOD40);
-			String nssHistorial = solicitante.getNss();
-			if (StringUtils.isNotBlank(nssHistorial)) {
 				try {
-					AsignacionNssIvro asignacionNss = seguroIndividualServices.obtenerAsignacionNss(idPersona);
+					
 					Municipio municipio = domicilio != null && domicilio.getLocalidad() != null
 							? domicilio.getLocalidad().getMunicipio() : null;
-					if (asignacionNss != null && StringUtils.equals(nssHistorial, asignacionNss.getNumNss())
-							&& municipio != null && municipio.getEntidadFederativa() != null
+					if (municipio != null && municipio.getEntidadFederativa() != null
 							&& StringUtils.isNotBlank(municipio.getClave())
 							&& StringUtils.isNotBlank(municipio.getEntidadFederativa().getClave())) {
-						isActualizado = seguroIvroServiceRemote.actualizarHistorialUltimoSeguroModalidad40(
-								nssHistorial, municipio.getEntidadFederativa().getClave(), municipio.getClave());
+						
+						
+						model.addAttribute(CVE_ENT_INEGI, municipio.getEntidadFederativa().getClave());
+						model.addAttribute(CVE_MUN_INEGI, municipio.getClave());
+						
+						session.setAttribute("cveEntInegiParam", municipio.getEntidadFederativa().getClave());
+						session.setAttribute("cveMunInegiParam", municipio.getClave());
+						
 					} else {
-						log.warn("No se actualizo el ultimo trabajo: NSS o datos de municipio y entidad no disponibles");
+						log.warn("No se actualizo el ultimo trabajo: datos de municipio y entidad no disponibles");
 					}
 				} catch (Exception e) {
 					log.error("No se pudo actualizar el ultimo trabajo con municipio y entidad", e);
 				}
-			}
-			
 			
 		} catch (DomicilioNoLocalizadoException e) {
 			model.addAttribute(ERROR, "Ocurri\u00F3 un error al intentar obtener el domicilio del solicitante.");
@@ -1113,12 +1134,13 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 			@ModelAttribute("tramiteSeguro") TramiteSeguroIvroMod40 tramiteSeguro,
 			@ModelAttribute("domicilioOtraUbicacion") Domicilio domicilioOtraUbicacion,
 			@ModelAttribute("domicilioSeguro") Domicilio domicilioSeguro,
-			@ModelAttribute("solicitante") Fisica solicitante) {
-
+			@ModelAttribute("solicitante") Fisica solicitante,
+			@ModelAttribute("dtoResponse") ValidaRetroactividadDTO  dtoResponse) {
+ 
 		String valida ="";
-
+ 
 		Domicilio domicilio;
-
+ 
                 //Revisar que se pueda determinar de quien es el domicilo
 		if (tramiteSeguro.getDomicilioSeguro().getIdDomicilio() != null) {
 			domicilio = solicitante.getDomicilioParticular();
@@ -1133,7 +1155,7 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
                                 + " Numero exterior: " + domicilio.getNumExteriorAlf()
                                 + " Numero interior: " + domicilio.getNumInteriorAlf());
 		}
-
+ 
 		solicitante.setDomicilioParticular(domicilio);
 		BigDecimal sdiUltReg = BigDecimal.ZERO;
 		String sdiUltRegFormat ="0.00";
@@ -1141,7 +1163,7 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 			sdiUltReg = datosCalculo.getEmpleados()[0].getMovimientos()[0].getSalario();
 		this.log.info(" --- Ultimo Salario Registrado:  " + sdiUltReg + " ---");
 	    sdiUltRegFormat = seguroCvroUtil.formatCurrency(sdiUltReg);
-
+ 
 		}catch(Exception ex){
 			this.log.error(" --- Ultimo Salario registrado No Disponible: " + sdiUltReg + " ---",ex);
 		}
@@ -1149,31 +1171,31 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 			//WEB SERVICE QUE OBTIENE ELVALOR DE LA UMA VIGENTE DEL DF
 			BigDecimal uma = this.seguroIndividualServices.obtenerUmaPorFecha(new Date());
 			this.log.info(" --- UMA: " + uma + " ---");
-
+ 
 			//WEB SERVICE QUE OBTIENE EL SALARIO MINIMO VIGENTE DEL DF
 //			BigDecimal smv = this.seguroIndividualServices.obtenerSalarioMinimoVigenteDF("A");
 //			this.log.info(" --- SMV: " + smv + " ---");
-
+ 
 			DatosCalculoCuota validaCompra = callWebService(webServiceValidaCompraPersonaContVoluntaria, solicitante, DatosCalculoCuota.class);
 			BigDecimal smv = validaCompra.getSalarioMinimo();
 			this.log.info(" --- SMV: " + smv + " ---");
 			BigDecimal salMin = smv;
-
+ 
 			// DEBE SER EL SALARIO MINIMO ACORDE AL DF
 			BigDecimal salMax = seguroCvroUtil.calcularSalaraioMaximo(uma);
 			model.addAttribute("sdiMax", salMax);
 			model.addAttribute(SDIMIN, salMin);
-
+ 
 			this.log.info(" --- Ultimo Salario registrado antes de validar:  " + sdiUltReg + " ---");
-
+ 
 			if(sdiUltReg!=null){
 				model.addAttribute("sdiUltRegNum", sdiUltReg);
 				int resultadoPrimeraCondicion;
 				int resultadoSegundaCondicion;
-
+ 
 				resultadoPrimeraCondicion = sdiUltReg.compareTo(salMin);
 				resultadoSegundaCondicion = sdiUltReg.compareTo(salMax);
-
+ 
 				if(resultadoPrimeraCondicion == 1 && resultadoSegundaCondicion == -1){
 					//Si sdiUltReg > salMin y sdiUltReg < salMax
 					model.addAttribute(SDIMIN, sdiUltReg);
@@ -1189,7 +1211,7 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 			} else {
 				model.addAttribute("sdiUltRegNum", 0);
 			}
-
+ 
 			if(!validaCompra.getErrorFormGeneral().equals(valida)){
 				this.log.info(" -- MENSAJE DEL WEBSERVICE: "+validaCompra.getErrorFormGeneral());
 				model.addAttribute(ERROR, validaCompra.getErrorFormGeneral());
@@ -1199,11 +1221,29 @@ public class WizardSeguroModalidad40Controller extends WebServiceCallerControlle
 			model.addAttribute(ERROR, ERROR_1);
 			log.error(ERROR_1, e);
 		}
-
+ 
 		model.addAttribute("sdiUltReg", sdiUltRegFormat);
 		model.addAttribute(SOLICITANTE, solicitante);
 		model.addAttribute(DATOSCALCULO, datosCalculo);
-
+		this.log.info("Seccion imprimir dtoResponse");
+		System.out.println(dtoResponse.getAplicaRetroactividad());
+		/*identificar si es candidato a retroactividad*/
+		String tramiteRetroactividadEnCurso = "";
+		tramiteRetroactividadEnCurso = (String) session.getAttribute("tramiteRetroactividadEnCurso");
+		if(dtoResponse.getAplicaRetroactividad() && ("1").equals(tramiteRetroactividadEnCurso)) {
+			/**Definimos accion de form para redirigir a pantalla de 
+			/* confirmacion de retroactividad **/
+			this.log.info("Aplica retroactividad");
+			String ruta = "/retroactividad/confirmarRetroactividad";
+			model.addAttribute(FORMULARIO, ruta);
+			/* Actualizar variables de maximos y minimos de salario*/
+			model.addAttribute(SDIMIN, dtoResponse.getSalarioPiso());
+			model.addAttribute("sdiMax", dtoResponse.getSalarioTope());
+		}else {
+			String ruta = "/wizard/continuacionVoluntaria/comunes/confirmarDatos";
+			model.addAttribute(FORMULARIO, ruta);
+		}
+ 
 		return "wizardSeguroCVROComunSolicitarDatosInscripcion";
 	}
 
